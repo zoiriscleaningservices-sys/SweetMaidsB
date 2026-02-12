@@ -37,7 +37,7 @@ foreach ($file in $services.Keys) {
     "@type": "LocalBusiness",
     "name": "Sweet Maid Cleaning Service",
     "image": "https://i.ibb.co/QSD3Ydt/image.jpg",
-    "telephone": "941-222-2080",
+    "telephone": "645-217-6738",
     "email": "info@sweetmaidcleaning.com",
     "address": {
       "@type": "PostalAddress",
