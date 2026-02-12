@@ -1,59 +1,6 @@
 $root = "c:\Users\lucia\OneDrive\Desktop\SweetMaidsB"
 $files = Get-ChildItem -Path $root -Filter "*.html" -Recurse
 
-$newCss = "    /* Mobile Menu Animations */
-    #mobile-menu {
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: translateX(100%);
-    }
-
-    #mobile-menu.active {
-      transform: translateX(0);
-    }
-
-    .mobile-menu-glass {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-
-    .accordion-active .accordion-content {
-      max-height: 2000px;
-    }
-
-    .accordion-icon {
-      transition: transform 0.3s ease;
-    }
-
-    .accordion-active .accordion-icon {
-      transform: rotate(180deg);
-    }
-
-    .menu-item {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    #mobile-menu.active .menu-item {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.15s; }
-    .delay-3 { transition-delay: 0.2s; }
-    .delay-4 { transition-delay: 0.25s; }
-    .delay-5 { transition-delay: 0.3s; }
-    .delay-6 { transition-delay: 0.35s; }
-    .delay-7 { transition-delay: 0.4s; }"
-
 $newMenuHtml = @"
   <!-- Mobile Menu Expansion -->
   <div id="mobile-menu" class="fixed inset-0 z-[100] mobile-menu-glass flex flex-col invisible">
@@ -103,17 +50,39 @@ $newMenuHtml = @"
             <i class="fa-solid fa-chevron-down accordion-icon text-pink-300"></i>
           </button>
           <div class="accordion-content">
-            <div class="grid grid-cols-2 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">
-              <a href="/bradenton-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Bradenton</a>
-              <a href="/sarasota-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Sarasota</a>
-              <a href="/lakewood-ranch-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Lakewood Ranch</a>
-              <a href="/siesta-key-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Siesta Key</a>
-              <a href="/nokomis-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Nokomis</a>
-              <a href="/osprey-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Osprey</a>
-              <a href="/palmetto-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Palmetto</a>
-              <a href="/venice-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Venice</a>
-              <a href="/ellenton-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Ellenton</a>
-              <a href="/parrish-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Parrish</a>
+            <div class="grid grid-cols-2 gap-x-4 gap-y-1 p-4 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">
+              <a href="/anna-maria-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Anna Maria</a>
+              <a href="/bayshore-gardens-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bayshore Gardens</a>
+              <a href="/bee-ridge-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bee Ridge</a>
+              <a href="/bird-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bird Key</a>
+              <a href="/braden-river-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Braden River</a>
+              <a href="/bradenton-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bradenton</a>
+              <a href="/bradenton-beach-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bradenton Beach</a>
+              <a href="/ellenton-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Ellenton</a>
+              <a href="/foxleigh-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Foxleigh</a>
+              <a href="/fruitville-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Fruitville</a>
+              <a href="/gulf-gate-estates-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Gulf Gate Estates</a>
+              <a href="/holmes-beach-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Holmes Beach</a>
+              <a href="/lake-sarasota-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Lake Sarasota</a>
+              <a href="/lakewood-ranch-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Lakewood Ranch</a>
+              <a href="/laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
+              <a href="/longboat-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Longboat Key</a>
+              <a href="/myakka-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Myakka</a>
+              <a href="/nokomis-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Nokomis</a>
+              <a href="/osprey-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Osprey</a>
+              <a href="/palma-sola-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palma Sola</a>
+              <a href="/palmer-ranch-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palmer Ranch</a>
+              <a href="/palmetto-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palmetto</a>
+              <a href="/parrish-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Parrish</a>
+              <a href="/sarasota-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Sarasota</a>
+              <a href="/sarasota-springs-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Sarasota Springs</a>
+              <a href="/siesta-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Siesta Key</a>
+              <a href="/south-gate-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">South Gate</a>
+              <a href="/south-sarasota-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">South Sarasota</a>
+              <a href="/the-meadows-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">The Meadows</a>
+              <a href="/university-park-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">University Park</a>
+              <a href="/venice-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Venice</a>
+              <a href="/whitfield-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Whitfield</a>
             </div>
           </div>
         </div>
@@ -142,35 +111,7 @@ $newMenuHtml = @"
   </div>
 "@
 
-$newJs = "    // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobile-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeBtn = document.getElementById('close-mobile');
-
-    const openMenu = () => {
-      mobileMenu.classList.remove('invisible');
-      mobileMenu.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeMenu = () => {
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = 'auto';
-      setTimeout(() => {
-        mobileMenu.classList.add('invisible');
-      }, 400); 
-    };
-
-    mobileBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });"
-
-$oldMenuPattern = '(?s)<!-- Mobile Menu -->\s*<div id="mobile-menu".*?</div>\s*</div>'
-$oldJsPattern = '(?s)// Mobile menu toggle.*?mobileLinks\.forEach\(link => \{.*?\}\);'
-$cssMarker = '(?s)\.animate-float \{.*?\}'
+$oldMenuPattern = '(?s)<!-- Mobile Menu Expansion -->\s*<div id="mobile-menu".*?</div>\s*</div>'
 
 foreach ($file in $files) {
     if ($file.Name -eq "index.html" -and $file.DirectoryName -match "SweetMaidsB$") { continue }
@@ -178,31 +119,16 @@ foreach ($file in $files) {
     $content = Get-Content $file.FullName -Raw
     $changed = $false
 
-    # Update CSS
-    if ($content -match '\.animate-float \{' -and $content -notmatch 'Mobile Menu Animations') {
-        $content = [regex]::Replace($content, $cssMarker, ".animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
-$newCss")
-        $changed = $true
-    }
-
     # Update HTML
     if ($content -match $oldMenuPattern) {
         $content = [regex]::Replace($content, $oldMenuPattern, $newMenuHtml)
         $changed = $true
     }
 
-    # Update JS
-    if ($content -match $oldJsPattern) {
-        $content = [regex]::Replace($content, $oldJsPattern, $newJs)
-        $changed = $true
-    }
-
     if ($changed) {
         Set-Content -Path $file.FullName -Value $content -Encoding UTF8
-        Write-Host "Upgraded mobile header in $($file.FullName)"
+        Write-Host "Updated mobile locations in $($file.FullName)"
     }
 }
 
-Write-Host "Global mobile header upgrade complete."
+Write-Host "Global location update complete."
