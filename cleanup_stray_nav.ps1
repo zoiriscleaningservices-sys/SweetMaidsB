@@ -2,7 +2,7 @@ $root = "c:\Users\lucia\OneDrive\Desktop\SweetMaidsB"
 $files = Get-ChildItem -Path $root -Filter "*.html" -Recurse
 
 $newMenuHtml = @"
-  <!-- Mobile Menu Expansion -->
+        <!-- Mobile Menu Expansion -->
   <div id="mobile-menu" class="fixed inset-0 z-[100] mobile-menu-glass flex flex-col invisible">
     <div class="p-6 flex justify-between items-center border-b border-pink-100 bg-white/50">
       <div class="flex items-center gap-2">
@@ -95,7 +95,7 @@ $newMenuHtml = @"
           <i class="fa-solid fa-camera text-pink-300"></i>
         </a>
         <div class="menu-item delay-7 mt-4 flex flex-col gap-4">
-          <a href="#quote" class="w-full bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-200 hover:shadow-xl transition-all">Get Your Free Quote</a>
+          <a href="#quote" onclick="closeMenu()" class="w-full bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-200 hover:shadow-xl transition-all">Get Your Free Quote</a>
           <a href="tel:16452176738" class="w-full bg-white text-pink-400 border-2 border-pink-100 text-center rounded-2xl py-4 font-bold hover:bg-pink-50 transition-all"><i class="fa-solid fa-phone mr-2"></i> (645) 217-6738</a>
         </div>
       </nav>
@@ -111,24 +111,22 @@ $newMenuHtml = @"
   </div>
 "@
 
-$oldMenuPattern = '(?s)<!-- Mobile Menu Expansion -->\s*<div id="mobile-menu".*?</div>\s*</div>'
+# Note: Added \s* after the block to consume extra whitespace/newlines
+$masterPattern = "(?s)<!--\s*Mobile Menu Expansion\s*-->.*?(?=\s*<!--\s*=+?\s*HERO)"
 
 foreach ($file in $files) {
-    if ($file.Name -eq "index.html" -and $file.DirectoryName -match "SweetMaidsB$") { continue }
-    
     $content = Get-Content $file.FullName -Raw
     $changed = $false
 
-    # Update HTML
-    if ($content -match $oldMenuPattern) {
-        $content = [regex]::Replace($content, $oldMenuPattern, $newMenuHtml)
+    if ($content -match $masterPattern) {
+        $content = [regex]::Replace($content, $masterPattern, $newMenuHtml)
         $changed = $true
     }
 
     if ($changed) {
         Set-Content -Path $file.FullName -Value $content -Encoding UTF8
-        Write-Host "Updated mobile locations in $($file.FullName)"
+        Write-Host "Fixed stray nav links in $($file.FullName)"
     }
 }
 
-Write-Host "Global location update complete."
+Write-Host "Cleanup complete."

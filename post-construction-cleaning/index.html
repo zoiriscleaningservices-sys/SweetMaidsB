@@ -544,7 +544,7 @@
     </div>
   </header>
 
-      <!-- Mobile Menu Expansion -->
+              <!-- Mobile Menu Expansion -->
   <div id="mobile-menu" class="fixed inset-0 z-[100] mobile-menu-glass flex flex-col invisible">
     <div class="p-6 flex justify-between items-center border-b border-pink-100 bg-white/50">
       <div class="flex items-center gap-2">
@@ -637,7 +637,7 @@
           <i class="fa-solid fa-camera text-pink-300"></i>
         </a>
         <div class="menu-item delay-7 mt-4 flex flex-col gap-4">
-          <a href="#quote" class="w-full bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-200 hover:shadow-xl transition-all">Get Your Free Quote</a>
+          <a href="#quote" onclick="closeMenu()" class="w-full bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-200 hover:shadow-xl transition-all">Get Your Free Quote</a>
           <a href="tel:16452176738" class="w-full bg-white text-pink-400 border-2 border-pink-100 text-center rounded-2xl py-4 font-bold hover:bg-pink-50 transition-all"><i class="fa-solid fa-phone mr-2"></i> (645) 217-6738</a>
         </div>
       </nav>
@@ -650,61 +650,6 @@
         </div>
       </div>
     </div>
-  </div>
-        </div>
-        <div class="menu-item delay-4 accordion-group">
-          <button onclick="this.parentElement.classList.toggle('accordion-active')" class="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
-            <span class="font-bold text-gray-800">Locations We Serve</span>
-            <i class="fa-solid fa-chevron-down accordion-icon text-pink-300"></i>
-          </button>
-          <div class="accordion-content">
-            <div class="grid grid-cols-2 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">
-              <a href="/bradenton-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Bradenton</a>
-              <a href="/sarasota-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Sarasota</a>
-              <a href="/lakewood-ranch-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Lakewood Ranch</a>
-              <a href="/siesta-key-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Siesta Key</a>
-              <a href="/nokomis-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Nokomis</a>
-              <a href="/osprey-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Osprey</a>
-              <a href="/palmetto-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Palmetto</a>
-              <a href="/venice-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Venice</a>
-              <a href="/ellenton-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Ellenton</a>
-              <a href="/parrish-cleaning/" class="mobile-link p-2 text-sm text-gray-600 hover:text-pink-400">Parrish</a>
-            </div>
-          </div>
-        </div>
-        <a href="/blog/" class="menu-item delay-5 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
-          <span class="font-bold text-gray-800">Blogs</span>
-          <i class="fa-solid fa-newspaper text-pink-300"></i>
-        </a>
-        <a href="/gallery/" class="menu-item delay-6 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
-          <span class="font-bold text-gray-800">Gallery</span>
-          <i class="fa-solid fa-camera text-pink-300"></i>
-        </a>
-        <div class="menu-item delay-7 mt-4 flex flex-col gap-4">
-          <a href="#quote" class="w-full bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-200 hover:shadow-xl transition-all">Get Your Free Quote</a>
-          <a href="tel:16452176738" class="w-full bg-white text-pink-400 border-2 border-pink-100 text-center rounded-2xl py-4 font-bold hover:bg-pink-50 transition-all"><i class="fa-solid fa-phone mr-2"></i> (645) 217-6738</a>
-        </div>
-      </nav>
-      <div class="menu-item delay-7 mt-12 pt-8 border-t border-pink-100 flex flex-col items-center gap-4 text-center">
-        <p class="text-sm text-gray-500 font-medium">Follow us for cleaning tips!</p>
-        <div class="flex gap-4">
-          <a href="#" class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-      <a href="/blog/"
-        class="mobile-link text-lg font-semibold text-gray-800 py-2 border-b border-gray-100">Blogs</a>
-      <a href="/gallery/"
-        class="mobile-link text-lg font-semibold text-gray-800 py-2 border-b border-gray-100">Gallery</a>
-
-      <a href="#quote"
-        class="bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 mt-4 font-bold shadow-lg">Get
-        Free Quote</a>
-    </nav>
   </div>
 <!-- ================================================
      HERO
@@ -2878,6 +2823,7 @@
 </body>
 
 </html>
+
 
 
 
