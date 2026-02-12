@@ -176,6 +176,14 @@
     .animate-float {
       animation: float 6s ease-in-out infinite;
     }
+
+    /* Global Horizontal Overflow Fix */
+    html,
+    body {
+      overflow-x: hidden !important;
+      position: relative;
+      width: 100%;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -427,7 +435,7 @@
        MINI HERO (blog.html)
     ================================================ -->
   <!-- ==== Sweet Maid Cleaning Services Blog Embed (Bradenton FL - Fully SEO Optimized) ==== -->
-  <section class="truewebx-blog-section" aria-labelledby="truewebx-blog-heading">
+  <section overflow-hidden class="truewebx-blog-section" aria-labelledby="truewebx-blog-heading">
     <style>
       :root {
         --coral: #ff6b6b;
@@ -969,7 +977,7 @@
   <!-- ================================================
      SERVICES CAROUSEL
 =============================================== -->
-  <section id="services" class="py-24 bg-slate-50 overflow-hidden relative">
+  <section overflow-hidden id="services" class="py-24 bg-slate-50 overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16" data-aos="fade-up">
         <span class="text-pink-300 font-bold tracking-widest uppercase text-xs">Our Professional Services</span>
@@ -1400,7 +1408,7 @@
   <!-- ================================================
      REVIEWS
 =============================================== -->
-  <section id="reviews" class="py-24 bg-white">
+  <section overflow-hidden id="reviews" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <!-- Header -->
@@ -1550,11 +1558,11 @@
 
         <!-- Navigation Arrows -->
         <button onclick="document.getElementById('reviews-carousel').scrollBy({left: -400, behavior: 'smooth'})"
-          class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition">
+          class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition">
           <i class="fa-solid fa-chevron-left text-gray-600"></i>
         </button>
         <button onclick="document.getElementById('reviews-carousel').scrollBy({left: 400, behavior: 'smooth'})"
-          class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition">
+          class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition">
           <i class="fa-solid fa-chevron-right text-gray-600"></i>
         </button>
       </div>
@@ -1587,7 +1595,7 @@
   <!-- ================================================
      AREAS & MAP
 =============================================== -->
-  <section id="areas" class="py-24 bg-white">
+  <section overflow-hidden id="areas" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -1784,7 +1792,7 @@
   <!-- ================================================
      FAQ
 =============================================== -->
-  <section class="py-20 bg-white">
+  <section overflow-hidden class="py-20 bg-white">
     <div class="max-w-3xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold">Frequently Asked Questions</h2>
@@ -1843,7 +1851,7 @@
      CONTACT / CTA
 =============================================== -->
   <!-- Contact Form Section -->
-  <section id="quote" class="py-24 bg-slate-50 scroll-mt-28">
+  <section overflow-hidden id="quote" class="py-24 bg-slate-50 scroll-mt-28">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12">
 
@@ -2435,3 +2443,4 @@
 </body>
 
 </html>
+
