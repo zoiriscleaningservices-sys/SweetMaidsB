@@ -40,7 +40,11 @@ foreach ($file in $files) {
     "@type": "LocalBusiness",
     "name": "Sweet Maid Cleaning Service - $location",
     "image": "https://i.ibb.co/QSD3Ydt/image.jpg",
-    "telephone": "645-217-6738",
+    "sameAs": [
+        "https://www.facebook.com/sweetmaidcleaning",
+        "https://www.instagram.com/sweetmaidcleaning"
+    ],
+    "telephone": "(941) 222-2080",
     "email": "info@sweetmaidcleaning.com",
     "address": {
       "@type": "PostalAddress",
@@ -48,8 +52,33 @@ foreach ($file in $files) {
       "addressRegion": "FL",
       "addressCountry": "US"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "27.4989",
+      "longitude": "-82.5748"
+    },
     "url": "https://sweetmaidcleaning.com/$folderName/",
     "priceRange": "$$",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "16:00"
+      }
+    ],
     "areaServed": {
       "@type": "Place",
       "name": "$location, FL"
