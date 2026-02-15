@@ -1,8 +1,8 @@
-$sourceFile = "index.html"
-$content = Get-Content $sourceFile -Raw
+$sourceFile = "home/index.html"
+$content = Get-Content $sourceFile -Raw -Encoding UTF8
 
 if ($null -eq $content -or $content.Length -lt 100) {
-    Write-Error "Could not read index.html"
+    Write-Error "Could not read home/index.html"
     exit
 }
 
@@ -30,7 +30,7 @@ $sourceHeader = $headerMatch.Value
 
 # 3. Extract Mobile Menu
 $menuEndMatch = [regex]::Match($content, '(?s)<!-- ================================================\s+HERO')
-$menuStartIdx = $content.IndexOf("<!-- Mobile Menu -->")
+$menuStartIdx = $content.IndexOf("<!-- Mobile Menu Expansion -->")
 if ($menuStartIdx -ge 0 -and $menuEndMatch.Success) {
     $sourceMenu = $content.Substring($menuStartIdx, $menuEndMatch.Index - $menuStartIdx).Trim()
 } else { $sourceMenu = "" }
@@ -66,13 +66,13 @@ if ($postFooterIdx -ge 9) {
     foreach ($m in $scriptsMatch) { $sourceScripts += $m.Value + "`n" }
 } else { $sourceScripts = "" }
 
-$areaNames = "Bradenton", "Anna Maria", "Fosleight", "Palmer Ranch", "Lakewood Ranch", "Osprey", "University Park", "Laurel", "Sarasota", "Longboat Key", "Bradenton Beach", "Nokomis", "Siesta Key", "Fruitville", "Holmes Beach", "Whitfield", "Parrish", "Braden River", "Bee Ridge", "Bayshore Gardens", "Venice", "The Meadows", "Gulf Gate Estates", "South Gate", "Ellenton", "Sarasota Springs", "Lake Sarasota", "South Sarasota", "Palmetto", "Palma Sola", "Myakka", "Bird Key"
+$areaNames = "Bradenton", "Anna Maria", "Foxleigh", "Palmer Ranch", "Lakewood Ranch", "Osprey", "University Park", "Laurel", "Sarasota", "Longboat Key", "Bradenton Beach", "Nokomis", "Siesta Key", "Fruitville", "Holmes Beach", "Whitfield", "Parrish", "Braden River", "Bee Ridge", "Bayshore Gardens", "Venice", "The Meadows", "Gulf Gate Estates", "South Gate", "Ellenton", "Sarasota Springs", "Lake Sarasota", "South Sarasota", "Palmetto", "Palma Sola", "Myakka", "Bird Key"
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
 foreach ($name in $areaNames) {
     $cleanName = if ($name -eq "Anna Maria") { "Anna Maria Island" } else { $name }
-    $fileName = $name.ToLower().Replace(" ", "-") + "-cleaning.html"
+    $fileName = $name.ToLower().Replace(" ", "-") + "-cleaning/index.html" # Fixed to use subdirectories
     
     $title = "Sweet Maid Cleaning Service - #1 Rated House Cleaning in $cleanName, FL"
     $desc = "Looking for top-rated cleaning services in $cleanName, FL? Sweet Maid offers professional house cleaning, deep cleaning, and more. Licensed & Insured. Get a free quote today!"
@@ -92,34 +92,17 @@ foreach ($name in $areaNames) {
     $localMain = $localMain -replace "Top Rated in Bradenton", "Top Rated in $cleanName"
     $localMain = $localMain -replace 'Bradenton%2C%20FL', ($cleanName -replace ' ', '+')
     
+    # Surgical remainder replacement (avoiding Bradenton Beach overlap)
+    $localMain = [regex]::Replace($localMain, '(?<!Bradenton\s)Bradenton(?! Beach)', $cleanName)
+
     # Link absolute parity
     $localMain = $localMain -replace 'index.html#contact', '#contact'
     $localMain = $localMain -replace 'index.html#home', '#home'
     $localMain = $localMain -replace 'index.html#about', '#about'
 
-    $localFooter = $sourceFooter -replace "Made with love in Bradenton", "Made with love in $cleanName"
 
-    # Surgical remainder replacement (avoiding Bradenton Beach overlap)
-    $localMain = [regex]::Replace($localMain, '(?<!Bradenton\s)Bradenton(?! Beach)', $name)
-
-    # Extreme Alt Tag Localization
-    # 1. Replace existing "Bradenton" in alts
-    $localMain = [regex]::Replace($localMain, 'alt="([^"]*?)Bradenton([^"]*?)"', 'alt="$1' + $cleanName + '$2"')
-    
-    # 2. Append " in City" to generic alts that don't have the city name yet
-    # We use a negative lookahead to ensure we don't double up
-    $pattern = 'alt="([^"]*?)(?<!' + [regex]::Escape($cleanName) + ')"' 
-    # This is tricky with regex in PS. Let's do a simpler approach: 
-    # Find all alts, check if they contain the city. If not, append it.
-    
-    $localMain = [regex]::Replace($localMain, 'alt="([^"]+?)"', { 
-        param($match) 
-        $currentAlt = $match.Groups[1].Value
-        if ($currentAlt -notmatch $cleanName) {
-            return 'alt="' + $currentAlt + ' in ' + $cleanName + '"'
-        }
-        return $match.Value
-    })
+    # Localization logic for links
+    $localMain = $localMain -replace '/house-cleaning/', '/house-cleaning/'
 
     # FAQ Section Injection
     $faqSection = @"
