@@ -80,6 +80,7 @@ foreach ($name in $areaNames) {
     
     # Customize Content
     $localHeader = $sourceHeader -replace 'in Bradenton</span>', "in $cleanName</span>"
+    $localFooter = $sourceFooter
     
     $localMain = $sourceMain
     $localMain = $localMain -replace "Bradenton’s", "$cleanName's" # Unified to standard quote
@@ -101,27 +102,54 @@ foreach ($name in $areaNames) {
     $localMain = $localMain -replace 'index.html#about', '#about'
 
 
-    # Localization logic for links
-    $localMain = $localMain -replace '/house-cleaning/', '/house-cleaning/'
+    # Path sanity fix for one-level deep location folder (Ensuring images work)
+    $localMain = $localMain -replace 'src="images/', 'src="../images/'
+    $localMain = $localMain -replace 'url\("?images/', 'url("../images/'
+    $localMain = $localMain -replace 'url\(''?images/', "url('../images/"
+    
+    # Discovery Matrix Logic (Linking to localized sub-pages)
+    $services = @(
+        @{ name = "House Cleaning"; slug = "house-cleaning" },
+        @{ name = "Deep Cleaning"; slug = "deep-cleaning" },
+        @{ name = "Move In/Out Cleaning"; slug = "move-in-out-cleaning" },
+        @{ name = "Airbnb Cleaning"; slug = "airbnb-cleaning" },
+        @{ name = "Commercial Cleaning"; slug = "commercial-cleaning" },
+        @{ name = "Post-Construction Cleaning"; slug = "post-construction-cleaning" },
+        @{ name = "Carpet Cleaning"; slug = "carpet-cleaning" },
+        @{ name = "Pressure Washing"; slug = "pressure-washing" },
+        @{ name = "Window Cleaning"; slug = "window-cleaning" }
+    )
 
-    # FAQ Section Injection
-    $faqSection = @"
-    <section class="py-16 bg-pink-50">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Common Questions about Cleaning in $cleanName</h2>
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 class="font-bold text-lg text-gray-900 mb-2">Do you offer cleaning services in $name?</h3>
-                    <p class="text-gray-600">Yes! We are proud to serve $name and the surrounding neighborhoods with our top-rated house cleaning, deep cleaning, and maid services.</p>
+    $locSlug = $name.ToLower().Replace(" ", "-") + "-cleaning"
+    $matrixCards = ""
+    foreach ($svc in $services) {
+        $svcName = $svc.name
+        $svcSlug = $svc.slug
+        $svcLink = "/$locSlug/$svcSlug/"
+        $matrixCards += @"
+            <a href="$svcLink" class="group p-8 rounded-3xl bg-white border border-pink-100 hover:border-pink-300 hover:shadow-xl hover:shadow-pink-200/20 transition-all duration-300 flex flex-col items-center text-center">
+                <div class="w-12 h-12 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-300 mb-6 group-hover:bg-pink-300 group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-sparkles"></i>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 class="font-bold text-lg text-gray-900 mb-2">Are your cleaners in $name insured?</h3>
-                    <p class="text-gray-600">Absolutely. Every member of our $name cleaning team is fully background-checked, licensed, and insured for your peace of mind.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 class="font-bold text-lg text-gray-900 mb-2">Can I get a same-day quote for my home in $name?</h3>
-                    <p class="text-gray-600">Yes, we offer fast, free quotes for all $name residents. Simply fill out our online form or give us a call to get started.</p>
-                </div>
+                <h3 class="font-bold text-xl text-gray-900 mb-2">$cleanName $svcName</h3>
+                <p class="text-sm text-gray-500 mb-4 leading-relaxed">Expert $svcName tailored for $cleanName homes and businesses.</p>
+                <span class="text-pink-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-2 text-sm">
+                    View Details <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </a>
+"@
+    }
+
+    $matrixSection = @"
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">Localized Services in $cleanName</h2>
+                <div class="w-24 h-1.5 bg-pink-300 mx-auto rounded-full"></div>
+                <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Explore our high-quality cleaning solutions available specifically in the $cleanName area.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                $matrixCards
             </div>
         </div>
     </section>
@@ -136,11 +164,11 @@ foreach ($name in $areaNames) {
     <title>$title</title>
     <meta name="description" content="$desc">
     <meta name="keywords" content="$keywords">
-    <link rel="canonical" href="https://sweetmaidcleaning.com/$fileName" />
+    <link rel="canonical" href="https://sweetmaidcleaning.com/$locSlug/" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sweetmaidcleaning.com/$fileName">
+    <meta property="og:url" content="https://sweetmaidcleaning.com/$locSlug/">
     <meta property="og:title" content="Sweet Maid Cleaning Service - $cleanName's Favorite Cleaners">
     <meta property="og:description" content="Professional, reliable, and friendly cleaning services for $cleanName and surrounding areas. Book your sparkle today!">
     <meta property="og:image" content="https://i.ibb.co/QSD3Ydt/image.jpg">
@@ -160,7 +188,7 @@ foreach ($name in $areaNames) {
         "addressRegion": "FL",
         "addressCountry": "US"
       },
-      "url": "https://sweetmaidcleaning.com/$fileName",
+      "url": "https://sweetmaidcleaning.com/$locSlug/",
       "priceRange": "$$",
       "areaServed": {
         "@type": "Place",
@@ -237,7 +265,7 @@ foreach ($name in $areaNames) {
     $localHeader
     $sourceMenu
     $localMain
-    $faqSection
+    $matrixSection
     $localFooter
     $sourceScripts
 </body>

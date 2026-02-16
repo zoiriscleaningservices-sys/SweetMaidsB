@@ -40,25 +40,39 @@ $footerHtml = @'
           <h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">
             <span class="w-1 h-6 bg-pink-300 rounded-full"></span>Locations We Serve
           </h4>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-sm">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">
             <a href="/bradenton-cleaning/" class="hover:text-pink-400 transition-colors">Bradenton</a>
-            <a href="/sarasota-cleaning/" class="hover:text-pink-400 transition-colors">Sarasota</a>
-            <a href="/lakewood-ranch-cleaning/" class="hover:text-pink-400 transition-colors">Lakewood Ranch</a>
-            <a href="/venice-cleaning/" class="hover:text-pink-400 transition-colors">Venice</a>
-            <a href="/palmetto-cleaning/" class="hover:text-pink-400 transition-colors">Palmetto</a>
-            <a href="/parrish-cleaning/" class="hover:text-pink-400 transition-colors">Parrish</a>
             <a href="/anna-maria-cleaning/" class="hover:text-pink-400 transition-colors">Anna Maria</a>
-            <a href="/siesta-key-cleaning/" class="hover:text-pink-400 transition-colors">Siesta Key</a>
-            <a href="/longboat-key-cleaning/" class="hover:text-pink-400 transition-colors">Longboat Key</a>
-            <a href="/nokomis-cleaning/" class="hover:text-pink-400 transition-colors">Nokomis</a>
-            <a href="/osprey-cleaning/" class="hover:text-pink-400 transition-colors">Osprey</a>
-            <a href="/ellenton-cleaning/" class="hover:text-pink-400 transition-colors">Ellenton</a>
-            <a href="/fruitville-cleaning/" class="hover:text-pink-400 transition-colors">Fruitville</a>
-            <a href="/bee-ridge-cleaning/" class="hover:text-pink-400 transition-colors">Bee Ridge</a>
-            <a href="/whitfield-cleaning/" class="hover:text-pink-400 transition-colors">Whitfield</a>
-            <a href="/university-park-cleaning/" class="hover:text-pink-400 transition-colors">University Park</a>
+            <a href="/foxleigh-cleaning/" class="hover:text-pink-400 transition-colors">Foxleigh</a>
             <a href="/palmer-ranch-cleaning/" class="hover:text-pink-400 transition-colors">Palmer Ranch</a>
+            <a href="/lakewood-ranch-cleaning/" class="hover:text-pink-400 transition-colors">Lakewood Ranch</a>
+            <a href="/osprey-cleaning/" class="hover:text-pink-400 transition-colors">Osprey</a>
+            <a href="/university-park-cleaning/" class="hover:text-pink-400 transition-colors">University Park</a>
+            <a href="/laurel-cleaning/" class="hover:text-pink-400 transition-colors">Laurel</a>
+            <a href="/sarasota-cleaning/" class="hover:text-pink-400 transition-colors">Sarasota</a>
+            <a href="/longboat-key-cleaning/" class="hover:text-pink-400 transition-colors">Longboat Key</a>
+            <a href="/bradenton-beach-cleaning/" class="hover:text-pink-400 transition-colors">Bradenton Beach</a>
+            <a href="/nokomis-cleaning/" class="hover:text-pink-400 transition-colors">Nokomis</a>
+            <a href="/siesta-key-cleaning/" class="hover:text-pink-400 transition-colors">Siesta Key</a>
+            <a href="/fruitville-cleaning/" class="hover:text-pink-400 transition-colors">Fruitville</a>
+            <a href="/holmes-beach-cleaning/" class="hover:text-pink-400 transition-colors">Holmes Beach</a>
+            <a href="/whitfield-cleaning/" class="hover:text-pink-400 transition-colors">Whitfield</a>
+            <a href="/parrish-cleaning/" class="hover:text-pink-400 transition-colors">Parrish</a>
+            <a href="/braden-river-cleaning/" class="hover:text-pink-400 transition-colors">Braden River</a>
+            <a href="/bee-ridge-cleaning/" class="hover:text-pink-400 transition-colors">Bee Ridge</a>
+            <a href="/bayshore-gardens-cleaning/" class="hover:text-pink-400 transition-colors">Bayshore Gardens</a>
+            <a href="/venice-cleaning/" class="hover:text-pink-400 transition-colors">Venice</a>
+            <a href="/the-meadows-cleaning/" class="hover:text-pink-400 transition-colors">The Meadows</a>
             <a href="/gulf-gate-estates-cleaning/" class="hover:text-pink-400 transition-colors">Gulf Gate</a>
+            <a href="/south-gate-cleaning/" class="hover:text-pink-400 transition-colors">South Gate</a>
+            <a href="/ellenton-cleaning/" class="hover:text-pink-400 transition-colors">Ellenton</a>
+            <a href="/sarasota-springs-cleaning/" class="hover:text-pink-400 transition-colors">Sarasota Springs</a>
+            <a href="/lake-sarasota-cleaning/" class="hover:text-pink-400 transition-colors">Lake Sarasota</a>
+            <a href="/south-sarasota-cleaning/" class="hover:text-pink-400 transition-colors">South Sarasota</a>
+            <a href="/palmetto-cleaning/" class="hover:text-pink-400 transition-colors">Palmetto</a>
+            <a href="/palma-sola-cleaning/" class="hover:text-pink-400 transition-colors">Palma Sola</a>
+            <a href="/myakka-cleaning/" class="hover:text-pink-400 transition-colors">Myakka</a>
+            <a href="/bird-key-cleaning/" class="hover:text-pink-400 transition-colors">Bird Key</a>
           </div>
         </div>
       </div>
@@ -66,7 +80,7 @@ $footerHtml = @'
         <div>&copy; 2026 Sweet Maid Cleaning Service. Licensed & Insured.</div>
         <div class="flex gap-6">
           <a href="/sitemap.xml" class="hover:text-pink-400">Sitemap</a>
-          <a href="/home/" class="hover:text-pink-400 font-bold">Call Now: (645) 217-6738</a>
+          <a href="/home/" class="hover:text-pink-400 font-bold">Call Now: (941) 222-2080</a>
         </div>
       </div>
     </div>
