@@ -355,15 +355,279 @@
 
 <body class="antialiased overflow-x-hidden">
 
-  <!-- ================================================
+  
+
+  <style>
+    @keyframes blob {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      25% {
+        transform: translate(20px, -50px) scale(1.1);
+      }
+
+      50% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+
+      75% {
+        transform: translate(50px, 50px) scale(1.05);
+      }
+    }
+
+    .animate-blob {
+      animation: blob 20s infinite;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    @keyframes float-particle {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: linear-gradient(45deg, #a78bfa, #ec4899);
+      border-radius: 50%;
+      animation: float-particle 15s infinite;
+    }
+
+    .particle:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 12s;
+    }
+
+    .particle:nth-child(2) {
+      left: 30%;
+      animation-delay: 3s;
+      animation-duration: 15s;
+    }
+
+    .particle:nth-child(3) {
+      left: 50%;
+      animation-delay: 6s;
+      animation-duration: 18s;
+    }
+
+    .particle:nth-child(4) {
+      left: 70%;
+      animation-delay: 9s;
+      animation-duration: 14s;
+    }
+
+    .particle:nth-child(5) {
+      left: 90%;
+      animation-delay: 12s;
+      animation-duration: 16s;
+    }
+  </style>
+
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    // Services Carousel Logic
+    const track = document.getElementById('services-track');
+    const prevBtn = document.getElementById('prev-service');
+    const nextBtn = document.getElementById('next-service');
+    const dotsContainer = document.getElementById('services-dots');
+    const cards = Array.from(track.children);
+
+    let currentIndex = 0;
+    let autoPlayInterval;
+
+    // Determine how many cards to show
+    const getVisibleCards = () => {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    };
+
+    const updateCarousel = () => {
+      const visible = getVisibleCards();
+      const maxIndex = cards.length - visible;
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+      const cardWidth = track.offsetWidth / visible;
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+      // Update dots
+      const dots = Array.from(dotsContainer.children);
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('bg-pink-200', idx === currentIndex);
+        dot.classList.toggle('bg-gray-600', idx !== currentIndex);
+      });
+    };
+
+    // Create dots
+    const createDots = () => {
+      dotsContainer.innerHTML = '';
+      const visible = getVisibleCards();
+      const numDots = cards.length - visible + 1;
+
+      for (let i = 0; i < numDots; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-pink-200' : 'bg-gray-600'}`;
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateCarousel();
+          resetAutoPlay();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    };
+
+    const nextSlide = () => {
+      const visible = getVisibleCards();
+      if (currentIndex < cards.length - visible) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateCarousel();
+    };
+
+    const prevSlide = () => {
+      const visible = getVisibleCards();
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = cards.length - visible;
+      }
+      updateCarousel();
+    };
+
+    const startAutoPlay = () => {
+      autoPlayInterval = setInterval(nextSlide, 4000);
+    };
+
+    const resetAutoPlay = () => {
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    };
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      resetAutoPlay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      resetAutoPlay();
+    });
+
+    // Pause on hover
+    track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    track.parentElement.addEventListener('mouseleave', startAutoPlay);
+
+    // Initial setup & resize handling
+    window.addEventListener('resize', () => {
+      createDots();
+      updateCarousel();
+    });
+
+    createDots();
+    updateCarousel();
+    startAutoPlay();
+
+        // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('close-mobile');
+
+    const openMenu = () => {
+      mobileMenu.classList.remove('invisible');
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      setTimeout(() => {
+        mobileMenu.classList.add('invisible');
+      }, 400); 
+    };
+
+    mobileBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Hero Contact Form Handler
+    const heroForm = document.getElementById("heroContactForm");
+    const heroSuccess = document.getElementById("heroFormSuccess");
+    const heroError = document.getElementById("heroFormError");
+
+    if (heroForm) {
+      heroForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const data = new FormData(heroForm);
+
+        try {
+          const ghl = await fetch("https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/acaff8c7-b7ea-47e8-90d5-adfe581d1517", { method: "POST", body: data });
+
+          if (ghl.ok) {
+            heroForm.style.display = "none";
+            heroError.classList.add("hidden");
+            heroSuccess.classList.remove("hidden");
+          } else {
+            throw new Error();
+          }
+        } catch {
+          heroSuccess.classList.add("hidden");
+          heroError.classList.remove("hidden");
+        }
+      });
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- ================================================
      HEADER
 =============================================== -->
   <header class="fixed top-0 left-0 right-0 z-50 header-glass shadow-lg transition-all duration-300">
-        <!-- Top Bar -->
+    <!-- Top Bar -->
     <div
       class="bg-gradient-to-r from-pink-300 via-pink-300 to-pink-300 text-gray-800 text-xs py-2.5 text-center font-semibold tracking-wide px-4">
       <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-1">
-        <span><i class="fa-solid fa-star text-yellow-300 mr-1 animate-pulse"></i> #1 Rated Cleaning Service in Laurel</span>
+        <span><i class="fa-solid fa-star text-yellow-300 mr-1 animate-pulse"></i> #1 Rated Cleaning Service in
+          Laurel</span>
         <span class="hidden sm:inline">|</span>
         <span><i class="fa-solid fa-phone mr-1"></i> Call Now: (941) 222-2080</span>
       </div>
@@ -480,7 +744,8 @@
                 <a href="/Foxleigh-cleaning/"
                   class="block px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-pink-50 hover:to-pink-50 text-gray-700 hover:text-pink-300 font-medium text-xs transition">Foxleigh</a>
                 <a href="/university-park-cleaning/"
-                  class="block px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-pink-50 hover:to-pink-50 text-gray-700 hover:text-pink-300 font-medium text-xs transition">University Park, FL</a>
+                  class="block px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-pink-50 hover:to-pink-50 text-gray-700 hover:text-pink-300 font-medium text-xs transition">University
+                  Park, FL</a>
                 <a href="/Laurel-beach-cleaning/"
                   class="block px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-pink-50 hover:to-pink-50 text-gray-700 hover:text-pink-300 font-medium text-xs transition">Laurel
                   Beach</a>
@@ -523,8 +788,7 @@
             </div>
           </div>
 
-          <a href="/blog/"
-            class="text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors">Blogs</a>
+          <a href="/blog/" class="text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors">Blogs</a>
           <a href="/gallery/"
             class="text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors">Gallery</a>
         </nav>
@@ -549,7 +813,7 @@
     </div>
   </header>
 
-                      <!-- Mobile Menu Expansion -->
+  <!-- Mobile Menu Expansion -->
   <div id="mobile-menu" class="fixed inset-0 z-[100] mobile-menu-glass flex flex-col invisible">
     <div class="p-6 flex justify-between items-center border-b border-pink-100 bg-white/50">
       <div class="flex items-center gap-2">
@@ -564,99 +828,162 @@
     </div>
     <div class="flex-1 overflow-y-auto px-6 py-8">
       <nav class="flex flex-col gap-4">
-        <a href="/home/" class="menu-item delay-1 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
+        <a href="/home/"
+          class="menu-item delay-1 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
           <span class="font-bold text-gray-800">Home</span>
           <i class="fa-solid fa-house text-pink-300"></i>
         </a>
-        <a href="/about/" class="menu-item delay-2 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
+        <a href="/about/"
+          class="menu-item delay-2 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
           <span class="font-bold text-gray-800">About Us</span>
           <i class="fa-solid fa-circle-info text-pink-300"></i>
         </a>
         <div class="menu-item delay-3 accordion-group">
-          <button onclick="this.parentElement.classList.toggle('accordion-active')" class="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
+          <button onclick="this.parentElement.classList.toggle('accordion-active')"
+            class="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
             <span class="font-bold text-gray-800">Our Services</span>
             <i class="fa-solid fa-chevron-down accordion-icon text-pink-300"></i>
           </button>
           <div class="accordion-content">
             <div class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">
-              <a href="/house-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-broom text-pink-300 w-5"></i> House Cleaning</a>
-              <a href="/airbnb-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-key text-pink-300 w-5"></i> Airbnb Cleaning</a>
-              <a href="/deep-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-sparkles text-pink-300 w-5"></i> Deep Cleaning</a>
-              <a href="/post-construction-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-trowel-bricks text-pink-300 w-5"></i> Post-Construction</a>
-              <a href="/commercial-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-building text-pink-300 w-5"></i> Commercial Cleaning</a>
-              <a href="/move-in-out-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-truck-ramp-box text-pink-300 w-5"></i> Move In/Out</a>
-              <a href="/pressure-washing/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-water text-pink-300 w-5"></i> Pressure Washing</a>
-              <a href="/carpet-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-rug text-pink-300 w-5"></i> Carpet Cleaning</a>
-              <a href="/window-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-window-maximize text-pink-300 w-5"></i> Window Cleaning</a>
+              <a href="/house-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-broom text-pink-300 w-5"></i> House Cleaning</a>
+              <a href="/airbnb-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-key text-pink-300 w-5"></i> Airbnb Cleaning</a>
+              <a href="/deep-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-sparkles text-pink-300 w-5"></i> Deep Cleaning</a>
+              <a href="/post-construction-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-trowel-bricks text-pink-300 w-5"></i> Post-Construction</a>
+              <a href="/commercial-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-building text-pink-300 w-5"></i> Commercial Cleaning</a>
+              <a href="/move-in-out-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-truck-ramp-box text-pink-300 w-5"></i> Move In/Out</a>
+              <a href="/pressure-washing/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-water text-pink-300 w-5"></i> Pressure Washing</a>
+              <a href="/carpet-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-rug text-pink-300 w-5"></i> Carpet Cleaning</a>
+              <a href="/window-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-window-maximize text-pink-300 w-5"></i> Window Cleaning</a>
             </div>
           </div>
         </div>
         <div class="menu-item delay-4 accordion-group">
-          <button onclick="this.parentElement.classList.toggle('accordion-active')" class="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
+          <button onclick="this.parentElement.classList.toggle('accordion-active')"
+            class="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
             <span class="font-bold text-gray-800">Locations We Serve</span>
             <i class="fa-solid fa-chevron-down accordion-icon text-pink-300"></i>
           </button>
           <div class="accordion-content">
             <div class="grid grid-cols-2 gap-x-4 gap-y-1 p-4 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">
-              <a href="/anna-maria-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Anna Maria</a>
-              <a href="/bayshore-gardens-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bayshore Gardens</a>
-              <a href="/bee-ridge-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bee Ridge</a>
-              <a href="/bird-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bird Key</a>
-              <a href="/braden-river-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Braden River</a>
-              <a href="/Laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
-              <a href="/Laurel-beach-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel Beach</a>
-              <a href="/ellenton-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Ellenton</a>
-              <a href="/foxleigh-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Foxleigh</a>
-              <a href="/fruitville-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Fruitville</a>
-              <a href="/gulf-gate-estates-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Gulf Gate Estates</a>
-              <a href="/holmes-beach-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Holmes Beach</a>
-              <a href="/lake-Laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Lake Laurel</a>
-              <a href="/lakewood-ranch-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
+              <a href="/anna-maria-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Anna
+                Maria</a>
+              <a href="/bayshore-gardens-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bayshore Gardens</a>
+              <a href="/bee-ridge-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bee
+                Ridge</a>
+              <a href="/bird-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Bird
+                Key</a>
+              <a href="/braden-river-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Braden River</a>
+              <a href="/Laurel-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
+              <a href="/Laurel-beach-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel Beach</a>
+              <a href="/ellenton-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Ellenton</a>
+              <a href="/foxleigh-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Foxleigh</a>
+              <a href="/fruitville-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Fruitville</a>
+              <a href="/gulf-gate-estates-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Gulf Gate Estates</a>
+              <a href="/holmes-beach-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Holmes Beach</a>
+              <a href="/lake-Laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Lake
+                Laurel</a>
+              <a href="/lakewood-ranch-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
               <a href="/laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
-              <a href="/longboat-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Longboat Key</a>
+              <a href="/longboat-key-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Longboat Key</a>
               <a href="/myakka-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Myakka</a>
-              <a href="/nokomis-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Nokomis</a>
+              <a href="/nokomis-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Nokomis</a>
               <a href="/osprey-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Osprey</a>
-              <a href="/palma-sola-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palma Sola</a>
-              <a href="/palmer-ranch-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palmer Ranch</a>
-              <a href="/palmetto-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palmetto</a>
+              <a href="/palma-sola-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palma
+                Sola</a>
+              <a href="/palmer-ranch-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palmer Ranch</a>
+              <a href="/palmetto-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Palmetto</a>
+              <a href="/Laurel-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
+              <a href="/Laurel-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
+              <a href="/Laurel-springs-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel Springs</a>
+              <a href="/siesta-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Siesta
+                Key</a>
+              <a href="/south-gate-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">South
+                Gate</a>
+              <a href="/south-Laurel-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">South Laurel</a>
+              <a href="/the-meadows-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">The
+                Meadows</a>
+              <a href="/university-park-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">University Park</a>
               <a href="/Laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
-              <a href="/Laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
-              <a href="/Laurel-springs-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel Springs</a>
-              <a href="/siesta-key-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Siesta Key</a>
-              <a href="/south-gate-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">South Gate</a>
-              <a href="/south-Laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">South Laurel</a>
-              <a href="/the-meadows-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">The Meadows</a>
-              <a href="/university-park-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">University Park</a>
-              <a href="/Laurel-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Laurel</a>
-              <a href="/whitfield-cleaning/" class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Whitfield</a>
+              <a href="/whitfield-cleaning/"
+                class="mobile-link py-2 text-sm text-gray-600 hover:text-pink-400">Whitfield</a>
             </div>
           </div>
         </div>
-        <a href="/blog/" class="menu-item delay-5 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
+        <a href="/blog/"
+          class="menu-item delay-5 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
           <span class="font-bold text-gray-800">Blogs</span>
           <i class="fa-solid fa-newspaper text-pink-300"></i>
         </a>
-        <a href="/gallery/" class="menu-item delay-6 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
+        <a href="/gallery/"
+          class="menu-item delay-6 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
           <span class="font-bold text-gray-800">Gallery</span>
           <i class="fa-solid fa-camera text-pink-300"></i>
         </a>
         <div class="menu-item delay-7 mt-4 flex flex-col gap-4">
-          <a href="#quote" onclick="closeMenu()" class="w-full bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-200 hover:shadow-xl transition-all">Get Your Free Quote</a>
-          <a href="tel:19412222080" class="w-full bg-white text-pink-400 border-2 border-pink-100 text-center rounded-2xl py-4 font-bold hover:bg-pink-50 transition-all"><i class="fa-solid fa-phone mr-2"></i> (941) 222-2080</a>
+          <a href="#quote" onclick="closeMenu()"
+            class="w-full bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-200 hover:shadow-xl transition-all">Get
+            Your Free Quote</a>
+          <a href="tel:19412222080"
+            class="w-full bg-white text-pink-400 border-2 border-pink-100 text-center rounded-2xl py-4 font-bold hover:bg-pink-50 transition-all"><i
+              class="fa-solid fa-phone mr-2"></i> (941) 222-2080</a>
         </div>
       </nav>
       <div class="menu-item delay-7 mt-12 pt-8 border-t border-pink-100 flex flex-col items-center gap-4 text-center">
         <p class="text-sm text-gray-500 font-medium">Follow us for cleaning tips!</p>
         <div class="flex gap-4">
-          <a href="#" class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"
+            class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"
+            class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="#"
+            class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-400 hover:bg-pink-300 hover:text-white transition-all"><i
+              class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
     </div>
   </div>
-<!-- ================================================
+
+  <!-- ================================================
      HERO
 =============================================== -->
   <section overflow-hidden id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -677,7 +1004,7 @@
         <div class="bg-white rounded-2xl shadow-xl p-6 border-2 border-pink-100">
           <div class="flex flex-col md:flex-row items-center gap-4">
             <div class="flex-shrink-0">
-              <h3 class="text-lg font-bold text-gray-900">Let Our Cleaning Team Contact You</h3>
+              <h3 class="text-lg font-bold text-gray-900">Let Our Laurel Team Contact You</h3>
               <p class="text-sm text-gray-600">Get a free quote in 24 hours</p>
             </div>
 
@@ -687,7 +1014,7 @@
               <input type="tel" name="phone" placeholder="Phone Number" required
                 class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-300 focus:border-transparent transition">
               <button type="submit"
-                class="bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:from-violet-700 hover:to-pink-700 transition duration-300 shadow-lg hover:shadow-xl sm:whitespace-nowrap">
+                class="bg-gradient-to-r from-pink-300 to-pink-300 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:from-violet-700 hover:to-pink-700 transition duration-300 shadow-lg hover:shadow-xl sm:sm:whitespace-nowrap">
                 <i class="fas fa-phone mr-2"></i>
                 Call Me
               </button>
@@ -697,11 +1024,12 @@
           <!-- Success / Error Messages -->
           <div id="heroFormSuccess"
             class="hidden mt-4 text-green-700 bg-green-50 border border-green-200 rounded-lg p-3 text-sm font-semibold text-center">
-            &#9989; Thanks! We'll call you within 24 hours.
+            ✅... Thanks! We'll call you within 24 hours.
           </div>
           <div id="heroFormError"
             class="hidden mt-4 text-red-700 bg-red-50 border border-red-200 rounded-lg p-3 text-sm font-semibold text-center">
-            &#10060; Oops! Please try again or call us at (941) 222-2080.
+            ⚠️ Oops!
+            Please try again or call us at (941) 222-2080.
           </div>
         </div>
       </div>
@@ -711,17 +1039,17 @@
         <div data-aos="fade-right" data-aos-duration="1000">
           <div
             class="inline-flex items-center gap-2 bg-white border border-pink-100 px-4 py-1.5 rounded-full mb-8 text-sm font-semibold text-pink-300 shadow-sm">
-            <i class="fa-solid fa-check-circle"></i> Licensed & Insured Cleaners
+            <i class="fa-solid fa-check-circle"></i> Licensed & Insured Laurel Cleaners
           </div>
 
           <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-gray-900">
-            Professional Window Cleaning <br>
-            <span class="text-gradient">in Laurel.</span>
+            Experience the <br>
+            <span class="text-gradient">Joy of Clean in Laurel.</span>
           </h1>
 
           <p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
-            Crystal-clear, streak-free windows for your Laurel home or business. Maximize your view and natural
-            light.
+            Laurel's most trusted cleaning service. We bring the sparkle back to your home so you can focus on what
+            matters most.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4">
@@ -744,8 +1072,7 @@
 
         <div class="relative hidden lg:block" data-aos="fade-left" data-aos-duration="1200">
           <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-pink-200/50 border-4 border-white">
-            <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm-3.jpeg"
-              alt="Pristine living room in Laurel home"
+            <img id="heroImage" src="https://i.ibb.co/QSD3Ydt/image.jpg" alt="Pristine living room in Laurel home"
               class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
           </div>
 
@@ -807,8 +1134,8 @@
             <i class="fa-solid fa-gem"></i>
           </div>
           <h3 class="text-2xl font-bold mb-4">Impeccable Detail</h3>
-          <p class="text-slate-600 leading-relaxed">We focus on the hidden details...from baseboards to ceiling
-            fans...ensuring a level of clean that exceeds expectations.</p>
+          <p class="text-slate-600 leading-relaxed">We focus on the hidden details &mdash; from baseboards to ceiling
+            fans &mdash; ensuring a level of clean that exceeds expectations.</p>
         </div>
 
         <!-- Feature 3 -->
@@ -822,63 +1149,6 @@
           <h3 class="text-2xl font-bold mb-4">Pure Satisfaction</h3>
           <p class="text-slate-600 leading-relaxed">Not absolutely thrilled? Let us know within 24 hours and we'll
             re-clean the area at no additional cost to you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================
-     WINDOW CLEANING EXCELLENCE
-================================================ -->
-  <section overflow-hidden class="py-24 bg-white relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div data-aos="fade-right">
-          <span class="text-pink-300 font-bold tracking-widest uppercase text-xs">Transform Your View</span>
-          <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-8">Laurel's Choice for Streak-Free Clarity</h2>
-          <p class="text-lg text-slate-600 mb-8 leading-relaxed">
-            Dirty windows can dull even the most beautiful home. Our professional window cleaning service in Laurel
-            provides a meticulous, streak-free finish that allows maximum natural light into your space. Using
-            eco-friendly solutions and specialized tools, we clean both interior and exterior glass, including frames,
-            sills, and tracks, ensuring a crystal-clear result every time.
-          </p>
-
-          <div class="grid sm:grid-cols-2 gap-6 mb-10">
-            <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
-              <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-pink-300 mb-4 shadow-sm">
-                <i class="fa-solid fa-sun"></i>
-              </div>
-              <h4 class="font-bold mb-2">Inside & Out Precision</h4>
-              <p class="text-sm text-slate-600">Comprehensive cleaning of all glass surfaces, including hard-to-reach
-                second-story windows.</p>
-            </div>
-            <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
-              <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-pink-300 mb-4 shadow-sm">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-              </div>
-              <h4 class="font-bold mb-2">Streak-Free Guarantee</h4>
-              <p class="text-sm text-slate-600">Using purified water and professional squeegee techniques for a
-                flawless, spot-free finish.</p>
-            </div>
-          </div>
-
-          <a href="index.html#contact"
-            class="inline-flex items-center gap-2 text-pink-300 font-bold hover:text-pink-900 transition">
-            Clear Your View Now <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="relative" data-aos="fade-left">
-          <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
-            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80"
-              alt="Sweet Maid Window Cleaning Excellence" class="w-full h-auto">
-          </div>
-          <!-- Floating Stats -->
-          <div
-            class="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-2xl border border-pink-50 animate-float hidden md:block">
-            <div class="text-4xl font-bold text-pink-300 mb-1">100%</div>
-            <div class="text-sm font-semibold text-slate-500">Crystal Clear View</div>
-          </div>
         </div>
       </div>
     </div>
@@ -925,7 +1195,7 @@
                     <i class="fa-solid fa-house-chimney"></i>
                   </div>
                   <img src="../../images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.jpeg"
-                    alt="Deep Cleaning - Pristine Bathroom in Laurel"
+                    alt="Deep Cleaning - Pristine Bathroom"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -963,14 +1233,15 @@
                     class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 rounded-full border-4 border-white flex items-center justify-center text-gray-800 text-3xl shadow-2xl z-10">
                     <i class="fa-solid fa-house"></i>
                   </div>
-                  <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm.jpeg" alt="Home Cleaning - Modern Kitchen in Laurel"
+                  <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm.jpeg"
+                    alt="Home Cleaning - Modern Kitchen"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
                 <div class="pt-14 pb-8 px-8 text-center flex-1 flex flex-col">
                   <h3 class="text-2xl font-bold text-gray-900 mb-3">Home Cleaning</h3>
                   <p class="text-gray-600 mb-6 flex-1 text-sm leading-relaxed">
-                    Flexible residential cleaning for apartments, condos, and houses ... one-time or recurring.
+                    Flexible residential cleaning for apartments, condos, and houses — one-time or recurring.
                   </p>
                   <div class="relative group/btn">
                     <a href="/house-cleaning/"
@@ -1002,7 +1273,7 @@
                     <i class="fa-solid fa-spray-can-sparkles"></i>
                   </div>
                   <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.jpeg"
-                    alt="Move-In Cleaning - Luxury Living Room in Laurel"
+                    alt="Move-In Cleaning - Luxury Living Room"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1041,7 +1312,7 @@
                     <i class="fa-solid fa-thumbs-up"></i>
                   </div>
                   <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm-3.jpeg"
-                    alt="Move-Out Cleaning - Empty Clean Room in Laurel"
+                    alt="Move-Out Cleaning - Empty Clean Room"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1080,7 +1351,7 @@
                     <i class="fa-solid fa-briefcase"></i>
                   </div>
                   <img src="../../images/whatsapp-image-2026-02-10-at-3.46.50-pm.jpeg"
-                    alt="Commercial Cleaning - Office Space in Laurel"
+                    alt="Commercial Cleaning - Office Space"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1118,7 +1389,7 @@
                     class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 rounded-full border-4 border-white flex items-center justify-center text-gray-800 text-3xl shadow-2xl z-10">
                     <i class="fa-solid fa-hard-hat"></i>
                   </div>
-                  <img src="../../images/whatsapp-image-2026-02-11-at-12.07.26-pm.jpeg" alt="Post-Construction Cleaning in Laurel"
+                  <img src="../../images/whatsapp-image-2026-02-11-at-12.07.26-pm.jpeg" alt="Post-Construction Cleaning"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1157,7 +1428,7 @@
                     <i class="fa-solid fa-key"></i>
                   </div>
                   <img src="../../images/whatsapp-image-2026-02-10-at-11.17.59-pm.jpeg"
-                    alt="Airbnb Cleaning - Luxury Bathroom in Laurel"
+                    alt="Airbnb Cleaning - Luxury Bathroom"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1196,7 +1467,7 @@
                     <i class="fa-solid fa-rug"></i>
                   </div>
                   <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80"
-                    alt="Carpet Cleaning in Laurel"
+                    alt="Carpet Cleaning"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1234,7 +1505,7 @@
                     class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 rounded-full border-4 border-white flex items-center justify-center text-gray-800 text-3xl shadow-2xl z-10">
                     <i class="fa-solid fa-water"></i>
                   </div>
-                  <img src="../../images/whatsapp-image-2026-02-10-at-11.17.58-pm.jpeg" alt="Pressure Washing Service in Laurel"
+                  <img src="../../images/whatsapp-image-2026-02-10-at-11.17.58-pm.jpeg" alt="Pressure Washing Service"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1273,7 +1544,7 @@
                     <i class="fa-solid fa-window-maximize"></i>
                   </div>
                   <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80"
-                    alt="Window Cleaning in Laurel"
+                    alt="Window Cleaning"
                     class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -1361,7 +1632,7 @@
             <div
               class="absolute -inset-4 bg-pink-100 rounded-[3rem] -rotate-2 group-hover:rotate-0 transition-transform duration-500">
             </div>
-            <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm-2.jpeg" alt="Professional Living Room Cleaning in Laurel"
+            <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm-2.jpeg" alt="Professional Living Room Cleaning"
               class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[450px]">
           </div>
         </div>
@@ -1373,7 +1644,7 @@
           <div
             class="absolute -inset-4 bg-slate-100 rounded-[3rem] rotate-2 group-hover:rotate-0 transition-transform duration-500">
           </div>
-          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm-1.jpeg" alt="Airbnb Turnover Service in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm-1.jpeg" alt="Airbnb Turnover Service"
             class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[450px]">
         </div>
         <div>
@@ -1455,7 +1726,7 @@
             <div
               class="absolute -inset-4 bg-pink-50 rounded-[3rem] -rotate-2 group-hover:rotate-0 transition-transform duration-500">
             </div>
-            <img src="../../images/whatsapp-image-2026-02-10-at-11.18.06-pm.jpeg" alt="Deep Kitchen Cleaning in Laurel"
+            <img src="../../images/whatsapp-image-2026-02-10-at-11.18.06-pm.jpeg" alt="Deep Kitchen Cleaning"
               class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[450px]">
           </div>
         </div>
@@ -1467,7 +1738,7 @@
           <div
             class="absolute -inset-4 bg-slate-100 rounded-[3rem] rotate-2 group-hover:rotate-0 transition-transform duration-500">
           </div>
-          <img src="../../images/whatsapp-image-2026-02-11-at-12.07.26-pm.jpeg" alt="Post Construction Cleaning in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-11-at-12.07.26-pm.jpeg" alt="Post Construction Cleaning"
             class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[450px]">
         </div>
         <div>
@@ -1530,7 +1801,7 @@
         <!-- Gallery Item 1 -->
         <div
           class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm-2.jpeg" alt="Sparkling Clean Bathroom in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm-2.jpeg" alt="Sparkling Clean Bathroom"
             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
           <div
             class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1544,7 +1815,7 @@
         <!-- Gallery Item 2 -->
         <div
           class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm.jpeg" alt="Modern Kitchen Cleaning in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm.jpeg" alt="Modern Kitchen Cleaning"
             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
           <div
             class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1558,7 +1829,7 @@
         <!-- Gallery Item 3 -->
         <div
           class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm-4.jpeg" alt="Luxury Bathroom Spa in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.08-pm-4.jpeg" alt="Luxury Bathroom Spa"
             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
           <div
             class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1572,7 +1843,7 @@
         <!-- Gallery Item 4 -->
         <div
           class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm-3.jpeg" alt="High-End Kitchen Design in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-10-at-11.18.09-pm-3.jpeg" alt="High-End Kitchen Design"
             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
           <div
             class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1586,7 +1857,7 @@
         <!-- Gallery Item 5 -->
         <div
           class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          <img src="../../images/whatsapp-image-2026-02-10-at-3.47.15-pm.jpeg" alt="Waterfront Condo Living Room in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-10-at-3.47.15-pm.jpeg" alt="Waterfront Condo Living Room"
             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
           <div
             class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1600,7 +1871,7 @@
         <!-- Gallery Item 6 -->
         <div
           class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          <img src="../../images/whatsapp-image-2026-02-10-at-3.46.50-pm.jpeg" alt="Commercial Office Space in Laurel"
+          <img src="../../images/whatsapp-image-2026-02-10-at-3.46.50-pm.jpeg" alt="Commercial Office Space"
             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
           <div
             class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1895,7 +2166,7 @@
           </iframe>
           <div
             class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-xs font-semibold shadow-sm">
-            📍 Servicing entire 34205, 34209, 34208, 34210 areas
+            📍 Servicing entire 34205, 34209, 34208, 34210 areas
           </div>
         </div>
 
@@ -1936,7 +2207,7 @@
               <div class="flex-1">
                 <div class="flex items-center justify-between mb-1">
                   <h4 class="font-bold text-gray-900">Justin Fyffe</h4>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google in Laurel"
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
                     class="w-6 h-6">
                 </div>
                 <div class="text-sm text-gray-500 mb-2">2025-08-24</div>
@@ -1964,12 +2235,12 @@
               <div
                 class="w-12 h-12 rounded-full bg-pink-200 flex items-center justify-center text-gray-800 font-bold text-xl flex-shrink-0">
                 <img src="https://ui-avatars.com/api/?name=Luis+Jasa&background=3b82f6&color=fff&size=48"
-                  alt="Luis Jasa in Laurel" class="w-full h-full rounded-full">
+                  alt="Luis Jasa" class="w-full h-full rounded-full">
               </div>
               <div class="flex-1">
                 <div class="flex items-center justify-between mb-1">
                   <h4 class="font-bold text-gray-900">Luis Jasa</h4>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google in Laurel"
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
                     class="w-6 h-6">
                 </div>
                 <div class="text-sm text-gray-500 mb-2">2025-08-08</div>
@@ -2000,7 +2271,7 @@
               <div class="flex-1">
                 <div class="flex items-center justify-between mb-1">
                   <h4 class="font-bold text-gray-900">Gustavo Delgado</h4>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google in Laurel"
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
                     class="w-6 h-6">
                 </div>
                 <div class="text-sm text-gray-500 mb-2">2025-07-28</div>
@@ -2031,7 +2302,7 @@
               <div class="flex-1">
                 <div class="flex items-center justify-between mb-1">
                   <h4 class="font-bold text-gray-900">Dayra Delgado</h4>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google in Laurel"
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
                     class="w-6 h-6">
                 </div>
                 <div class="text-sm text-gray-500 mb-2">2025-07-25</div>
@@ -2236,12 +2507,13 @@
           <!-- Success / Error (SCOPED TO THIS FORM ONLY) -->
           <div id="formSuccess"
             class="hidden mt-6 text-green-700 bg-green-50 border border-green-200 rounded-lg p-4 font-semibold text-center">
-            &#9989; Thanks! Your message has been sent. We'll contact you shortly.
+            ✅... Thanks! Your message has been sent. We'll contact you shortly.
           </div>
 
           <div id="formError"
             class="hidden mt-6 text-red-700 bg-red-50 border border-red-200 rounded-lg p-4 font-semibold text-center">
-            &#10060; Oops! Something went wrong. Please try again or call us directly.
+            ⚠️ Oops!
+            Something went wrong. Please try again or call us directly.
           </div>
         </div>
 
@@ -2286,7 +2558,7 @@
             </div>
           </div>
 
-                    <!-- WhatsApp -->
+          <!-- WhatsApp -->
           <a href="https://wa.me/16452176738" target="_blank" class="block group">
             <div
               class="bg-gradient-to-r from-green-400 to-green-600 rounded-2xl shadow-xl p-8 text-gray-800 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
@@ -2342,284 +2614,92 @@
   <!-- ================================================
      FOOTER
 ===============================================<!-- FOOTER -->
-    <!-- ================================================
-     FAQ SECTION (Window Cleaning)
-=============================================== -->
-  <section overflow-hidden class="py-16 bg-pink-50">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Common Questions about Window Cleaning in Laurel</h2>
-      <div class="space-y-6">
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <h3 class="font-bold text-lg text-gray-900 mb-2">What is included in your Window Cleaning service?</h3>
-          <p class="text-gray-600">Our Window Cleaning service in Laurel includes a comprehensive checklist to ensure every corner of your home is spotless. We use eco-friendly products and professional equipment.</p>
+        <footer class="relative bg-gradient-to-br from-pink-50 via-pink-100 to-pink-50 text-gray-700 pt-24 pb-12 overflow-hidden">
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div class="lg:col-span-2">
+          <div class="mb-6">
+            <img src="https://i.ibb.co/PzPDfC1N/Whats-App-Image-2026-02-09-at-4-52-59-PM-Picsart-Background-Remover.png" alt="Sweet Maid Cleaning Service" class="h-24 w-auto object-contain">
+          </div>
+          <p class="text-gray-700 leading-relaxed mb-6">Southwest Florida's most trusted cleaning service. We bring joy, sparkle, and peace of mind to every home we touch.</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://www.facebook.com/SweetMaidCleaningService/" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/sweetmaidcleaningservice/" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/sweetmaidclean" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@sweetmaidcleaning" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@sweetmaidcleaningservice" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/in/sweet-maid-cleaning-service-5b625435a/" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.pinterest.com/sweetmaidcleaning/" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://wa.me/19412222080" target="_blank" class="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center hover:bg-pink-300 transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
         </div>
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <h3 class="font-bold text-lg text-gray-900 mb-2">How much does Window Cleaning cost in Laurel?</h3>
-          <p class="text-gray-600">We offer competitive pricing for Window Cleaning in Laurel. Contact us for a free, no-obligation quote tailored to your home's needs.</p>
+        <div>
+          <h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">
+            <span class="w-1 h-6 bg-pink-300 rounded-full"></span>Our Services
+          </h4>
+          <ul class="space-y-3">
+            <li><a href="/house-cleaning/" class="hover:text-pink-400 transition-colors">House Cleaning</a></li>
+            <li><a href="/deep-cleaning/" class="hover:text-pink-400 transition-colors">Deep Cleaning</a></li>
+            <li><a href="/airbnb-cleaning/" class="hover:text-pink-400 transition-colors">Airbnb Cleaning</a></li>
+            <li><a href="/move-in-out-cleaning/" class="hover:text-pink-400 transition-colors">Move In/Out</a></li>
+            <li><a href="/commercial-cleaning/" class="hover:text-pink-400 transition-colors">Commercial</a></li>
+            <li><a href="/carpet-cleaning/" class="hover:text-pink-400 transition-colors">Carpet Cleaning</a></li>
+          </ul>
         </div>
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <h3 class="font-bold text-lg text-gray-900 mb-2">Do you provide Window Cleaning near me?</h3>
-          <p class="text-gray-600">Yes, we provide top-rated Window Cleaning services throughout Laurel, Laurel, Laurel, and surrounding areas.</p>
+        <div class="lg:col-span-2">
+          <h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">
+            <span class="w-1 h-6 bg-pink-300 rounded-full"></span>Locations We Serve
+          </h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">
+            <a href="/bradenton-cleaning/" class="hover:text-pink-400 transition-colors">Bradenton</a>
+            <a href="/anna-maria-cleaning/" class="hover:text-pink-400 transition-colors">Anna Maria</a>
+            <a href="/foxleigh-cleaning/" class="hover:text-pink-400 transition-colors">Foxleigh</a>
+            <a href="/palmer-ranch-cleaning/" class="hover:text-pink-400 transition-colors">Palmer Ranch</a>
+            <a href="/lakewood-ranch-cleaning/" class="hover:text-pink-400 transition-colors">Lakewood Ranch</a>
+            <a href="/osprey-cleaning/" class="hover:text-pink-400 transition-colors">Osprey</a>
+            <a href="/university-park-cleaning/" class="hover:text-pink-400 transition-colors">University Park</a>
+            <a href="/laurel-cleaning/" class="hover:text-pink-400 transition-colors">Laurel</a>
+            <a href="/sarasota-cleaning/" class="hover:text-pink-400 transition-colors">Sarasota</a>
+            <a href="/longboat-key-cleaning/" class="hover:text-pink-400 transition-colors">Longboat Key</a>
+            <a href="/bradenton-beach-cleaning/" class="hover:text-pink-400 transition-colors">Bradenton Beach</a>
+            <a href="/nokomis-cleaning/" class="hover:text-pink-400 transition-colors">Nokomis</a>
+            <a href="/siesta-key-cleaning/" class="hover:text-pink-400 transition-colors">Siesta Key</a>
+            <a href="/fruitville-cleaning/" class="hover:text-pink-400 transition-colors">Fruitville</a>
+            <a href="/holmes-beach-cleaning/" class="hover:text-pink-400 transition-colors">Holmes Beach</a>
+            <a href="/whitfield-cleaning/" class="hover:text-pink-400 transition-colors">Whitfield</a>
+            <a href="/parrish-cleaning/" class="hover:text-pink-400 transition-colors">Parrish</a>
+            <a href="/braden-river-cleaning/" class="hover:text-pink-400 transition-colors">Braden River</a>
+            <a href="/bee-ridge-cleaning/" class="hover:text-pink-400 transition-colors">Bee Ridge</a>
+            <a href="/bayshore-gardens-cleaning/" class="hover:text-pink-400 transition-colors">Bayshore Gardens</a>
+            <a href="/venice-cleaning/" class="hover:text-pink-400 transition-colors">Venice</a>
+            <a href="/the-meadows-cleaning/" class="hover:text-pink-400 transition-colors">The Meadows</a>
+            <a href="/gulf-gate-estates-cleaning/" class="hover:text-pink-400 transition-colors">Gulf Gate</a>
+            <a href="/south-gate-cleaning/" class="hover:text-pink-400 transition-colors">South Gate</a>
+            <a href="/ellenton-cleaning/" class="hover:text-pink-400 transition-colors">Ellenton</a>
+            <a href="/sarasota-springs-cleaning/" class="hover:text-pink-400 transition-colors">Sarasota Springs</a>
+            <a href="/lake-sarasota-cleaning/" class="hover:text-pink-400 transition-colors">Lake Sarasota</a>
+            <a href="/south-sarasota-cleaning/" class="hover:text-pink-400 transition-colors">South Sarasota</a>
+            <a href="/palmetto-cleaning/" class="hover:text-pink-400 transition-colors">Palmetto</a>
+            <a href="/palma-sola-cleaning/" class="hover:text-pink-400 transition-colors">Palma Sola</a>
+            <a href="/myakka-cleaning/" class="hover:text-pink-400 transition-colors">Myakka</a>
+            <a href="/bird-key-cleaning/" class="hover:text-pink-400 transition-colors">Bird Key</a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-pink-200 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500">
+        <div>&copy; 2026 Sweet Maid Cleaning Service. Licensed & Insured. | Made by <a href="https://truewebx.site/" target="_blank" class="font-bold text-[#D4AF37] hover:text-[#FFD700] transition-colors">TrueWebX</a></div>
+        <div class="flex gap-6">
+          <a href="/sitemap.xml" class="hover:text-pink-400">Sitemap</a>
+          <a href="/home/" class="hover:text-pink-400 font-bold">Call Now: (941) 222-2080</a>
         </div>
       </div>
     </div>
-  </section>
-                    <footer\ class="relative\ bg-gradient-to-br\ from-pink-50\ via-pink-100\ to-pink-50\ text-gray-700\ pt-24\ pb-12\ overflow-hidden">\r\n\ \ \ \ <div\ class="absolute\ inset-0\ opacity-30">\r\n\ \ \ \ \ \ <div\ class="absolute\ top-0\ left-0\ w-96\ h-96\ bg-pink-300\ rounded-full\ mix-blend-multiply\ filter\ blur-3xl\ animate-blob"></div>\r\n\ \ \ \ \ \ <div\ class="absolute\ top-0\ right-0\ w-96\ h-96\ bg-pink-300\ rounded-full\ mix-blend-multiply\ filter\ blur-3xl\ animate-blob\ animation-delay-2000"></div>\r\n\ \ \ \ \ \ <div\ class="absolute\ bottom-0\ left-1/2\ w-96\ h-96\ bg-pink-300\ rounded-full\ mix-blend-multiply\ filter\ blur-3xl\ animate-blob\ animation-delay-4000"></div>\r\n\ \ \ \ </div>\r\n\ \ \ \ <div\ class="max-w-7xl\ mx-auto\ px-6\ lg:px-8\ relative\ z-10">\r\n\ \ \ \ \ \ <div\ class="grid\ md:grid-cols-2\ lg:grid-cols-5\ gap-12\ mb-16">\r\n\ \ \ \ \ \ \ \ <div\ class="lg:col-span-2">\r\n\ \ \ \ \ \ \ \ \ \ <div\ class="mb-6">\r\n\ \ \ \ \ \ \ \ \ \ \ \ <img\ src="https://i\.ibb\.co/PzPDfC1N/Whats-App-Image-2026-02-09-at-4-52-59-PM-Picsart-Background-Remover\.png"\ alt="Sweet\ Maid\ Cleaning\ Service"\ class="h-24\ w-auto\ object-contain">\r\n\ \ \ \ \ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ \ \ \ \ <p\ class="text-gray-700\ leading-relaxed\ mb-6">Southwest\ Florida's\ most\ trusted\ cleaning\ service\.\ We\ bring\ joy,\ sparkle,\ and\ peace\ of\ mind\ to\ every\ home\ we\ touch\.</p>\r\n\ \ \ \ \ \ \ \ \ \ <div\ class="flex\ flex-wrap\ gap-3">\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://www\.facebook\.com/SweetMaidCleaningService/"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-facebook-f"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://www\.instagram\.com/sweetmaidcleaningservice/"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-instagram"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://x\.com/sweetmaidclean"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-x-twitter"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://www\.youtube\.com/@sweetmaidcleaning"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-youtube"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://www\.tiktok\.com/@sweetmaidcleaningservice"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-tiktok"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://www\.linkedin\.com/in/sweet-maid-cleaning-service-5b625435a/"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-linkedin-in"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://www\.pinterest\.com/sweetmaidcleaning/"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-pinterest-p"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="https://wa\.me/19412222080"\ target="_blank"\ class="w-10\ h-10\ rounded-xl\ bg-white/50\ flex\ items-center\ justify-center\ hover:bg-pink-300\ transition-all"><i\ class="fa-brands\ fa-whatsapp"></i></a>\r\n\ \ \ \ \ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ \ \ <div>\r\n\ \ \ \ \ \ \ \ \ \ <h4\ class="text-gray-800\ font-bold\ text-lg\ mb-6\ flex\ items-center\ gap-2">\r\n\ \ \ \ \ \ \ \ \ \ \ \ <span\ class="w-1\ h-6\ bg-pink-300\ rounded-full"></span>Our\ Services\r\n\ \ \ \ \ \ \ \ \ \ </h4>\r\n\ \ \ \ \ \ \ \ \ \ <ul\ class="space-y-3">\r\n\ \ \ \ \ \ \ \ \ \ \ \ <li><a\ href="/house-cleaning/"\ class="hover:text-pink-400\ transition-colors">House\ Cleaning</a></li>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <li><a\ href="/deep-cleaning/"\ class="hover:text-pink-400\ transition-colors">Deep\ Cleaning</a></li>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <li><a\ href="/airbnb-cleaning/"\ class="hover:text-pink-400\ transition-colors">Airbnb\ Cleaning</a></li>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <li><a\ href="/move-in-out-cleaning/"\ class="hover:text-pink-400\ transition-colors">Move\ In/Out</a></li>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <li><a\ href="/commercial-cleaning/"\ class="hover:text-pink-400\ transition-colors">Commercial</a></li>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <li><a\ href="/carpet-cleaning/"\ class="hover:text-pink-400\ transition-colors">Carpet\ Cleaning</a></li>\r\n\ \ \ \ \ \ \ \ \ \ </ul>\r\n\ \ \ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ \ \ <div\ class="lg:col-span-2">\r\n\ \ \ \ \ \ \ \ \ \ <h4\ class="text-gray-800\ font-bold\ text-lg\ mb-6\ flex\ items-center\ gap-2">\r\n\ \ \ \ \ \ \ \ \ \ \ \ <span\ class="w-1\ h-6\ bg-pink-300\ rounded-full"></span>Locations\ We\ Serve\r\n\ \ \ \ \ \ \ \ \ \ </h4>\r\n\ \ \ \ \ \ \ \ \ \ <div\ class="grid\ grid-cols-2\ sm:grid-cols-4\ gap-x-4\ gap-y-2\ text-xs">\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/bradenton-cleaning/"\ class="hover:text-pink-400\ transition-colors">Bradenton</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/anna-maria-cleaning/"\ class="hover:text-pink-400\ transition-colors">Anna\ Maria</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/foxleigh-cleaning/"\ class="hover:text-pink-400\ transition-colors">Foxleigh</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/palmer-ranch-cleaning/"\ class="hover:text-pink-400\ transition-colors">Palmer\ Ranch</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/lakewood-ranch-cleaning/"\ class="hover:text-pink-400\ transition-colors">Lakewood\ Ranch</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/osprey-cleaning/"\ class="hover:text-pink-400\ transition-colors">Osprey</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/university-park-cleaning/"\ class="hover:text-pink-400\ transition-colors">University\ Park</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/laurel-cleaning/"\ class="hover:text-pink-400\ transition-colors">Laurel</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/sarasota-cleaning/"\ class="hover:text-pink-400\ transition-colors">Sarasota</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/longboat-key-cleaning/"\ class="hover:text-pink-400\ transition-colors">Longboat\ Key</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/bradenton-beach-cleaning/"\ class="hover:text-pink-400\ transition-colors">Bradenton\ Beach</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/nokomis-cleaning/"\ class="hover:text-pink-400\ transition-colors">Nokomis</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/siesta-key-cleaning/"\ class="hover:text-pink-400\ transition-colors">Siesta\ Key</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/fruitville-cleaning/"\ class="hover:text-pink-400\ transition-colors">Fruitville</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/holmes-beach-cleaning/"\ class="hover:text-pink-400\ transition-colors">Holmes\ Beach</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/whitfield-cleaning/"\ class="hover:text-pink-400\ transition-colors">Whitfield</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/parrish-cleaning/"\ class="hover:text-pink-400\ transition-colors">Parrish</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/braden-river-cleaning/"\ class="hover:text-pink-400\ transition-colors">Braden\ River</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/bee-ridge-cleaning/"\ class="hover:text-pink-400\ transition-colors">Bee\ Ridge</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/bayshore-gardens-cleaning/"\ class="hover:text-pink-400\ transition-colors">Bayshore\ Gardens</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/venice-cleaning/"\ class="hover:text-pink-400\ transition-colors">Venice</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/the-meadows-cleaning/"\ class="hover:text-pink-400\ transition-colors">The\ Meadows</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/gulf-gate-estates-cleaning/"\ class="hover:text-pink-400\ transition-colors">Gulf\ Gate</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/south-gate-cleaning/"\ class="hover:text-pink-400\ transition-colors">South\ Gate</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/ellenton-cleaning/"\ class="hover:text-pink-400\ transition-colors">Ellenton</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/sarasota-springs-cleaning/"\ class="hover:text-pink-400\ transition-colors">Sarasota\ Springs</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/lake-sarasota-cleaning/"\ class="hover:text-pink-400\ transition-colors">Lake\ Sarasota</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/south-sarasota-cleaning/"\ class="hover:text-pink-400\ transition-colors">South\ Sarasota</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/palmetto-cleaning/"\ class="hover:text-pink-400\ transition-colors">Palmetto</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/palma-sola-cleaning/"\ class="hover:text-pink-400\ transition-colors">Palma\ Sola</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/myakka-cleaning/"\ class="hover:text-pink-400\ transition-colors">Myakka</a>\r\n\ \ \ \ \ \ \ \ \ \ \ \ <a\ href="/bird-key-cleaning/"\ class="hover:text-pink-400\ transition-colors">Bird\ Key</a>\r\n\ \ \ \ \ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ <div\ class="pt-8\ border-t\ border-pink-200\ flex\ flex-col\ md:flex-row\ justify-between\ items-center\ gap-6\ text-sm\ text-gray-500">\r\n\ \ \ \ \ \ \ \ <div>&copy;\ 2026\ Sweet\ Maid\ Cleaning\ Service\.\ Licensed\ &\ Insured\.\ \|\ Made\ by\ <a\ href="https://truewebx\.site/"\ target="_blank"\ class="font-bold\ text-\[\#D4AF37]\ hover:text-\[\#FFD700]\ transition-colors">TrueWebX</a></div>\r\n\ \ \ \ \ \ \ \ <div\ class="flex\ gap-6">\r\n\ \ \ \ \ \ \ \ \ \ <a\ href="/sitemap\.xml"\ class="hover:text-pink-400">Sitemap</a>\r\n\ \ \ \ \ \ \ \ \ \ <a\ href="/home/"\ class="hover:text-pink-400\ font-bold">Call\ Now:\ \(941\)\ 222-2080</a>\r\n\ \ \ \ \ \ \ \ </div>\r\n\ \ \ \ \ \ </div>\r\n\ \ \ \ </div>\r\n\ \ </footer>
-
-  <style>
-    @keyframes blob {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      25% {
-        transform: translate(20px, -50px) scale(1.1);
-      }
-
-      50% {
-        transform: translate(-20px, 20px) scale(0.9);
-      }
-
-      75% {
-        transform: translate(50px, 50px) scale(1.05);
-      }
-    }
-
-    .animate-blob {
-      animation: blob 20s infinite;
-    }
-
-    .animation-delay-2000 {
-      animation-delay: 2s;
-    }
-
-    .animation-delay-4000 {
-      animation-delay: 4s;
-    }
-
-    @keyframes float-particle {
-      0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
-        opacity: 0;
-      }
-
-      10% {
-        opacity: 1;
-      }
-
-      90% {
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(-100vh) translateX(100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: linear-gradient(45deg, #a78bfa, #ec4899);
-      border-radius: 50%;
-      animation: float-particle 15s infinite;
-    }
-
-    .particle:nth-child(1) {
-      left: 10%;
-      animation-delay: 0s;
-      animation-duration: 12s;
-    }
-
-    .particle:nth-child(2) {
-      left: 30%;
-      animation-delay: 3s;
-      animation-duration: 15s;
-    }
-
-    .particle:nth-child(3) {
-      left: 50%;
-      animation-delay: 6s;
-      animation-duration: 18s;
-    }
-
-    .particle:nth-child(4) {
-      left: 70%;
-      animation-delay: 9s;
-      animation-duration: 14s;
-    }
-
-    .particle:nth-child(5) {
-      left: 90%;
-      animation-delay: 12s;
-      animation-duration: 16s;
-    }
-  </style>
-
-  <script>
-    AOS.init({ duration: 800, once: true, offset: 50 });
-
-    // Services Carousel Logic
-    const track = document.getElementById('services-track');
-    const prevBtn = document.getElementById('prev-service');
-    const nextBtn = document.getElementById('next-service');
-    const dotsContainer = document.getElementById('services-dots');
-    const cards = Array.from(track.children);
-
-    let currentIndex = 0;
-    let autoPlayInterval;
-
-    // Determine how many cards to show
-    const getVisibleCards = () => {
-      if (window.innerWidth >= 1024) return 3;
-      if (window.innerWidth >= 768) return 2;
-      return 1;
-    };
-
-    const updateCarousel = () => {
-      const visible = getVisibleCards();
-      const maxIndex = cards.length - visible;
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-
-      const cardWidth = track.offsetWidth / visible;
-      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-
-      // Update dots
-      const dots = Array.from(dotsContainer.children);
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('bg-pink-200', idx === currentIndex);
-        dot.classList.toggle('bg-gray-600', idx !== currentIndex);
-      });
-    };
-
-    // Create dots
-    const createDots = () => {
-      dotsContainer.innerHTML = '';
-      const visible = getVisibleCards();
-      const numDots = cards.length - visible + 1;
-
-      for (let i = 0; i < numDots; i++) {
-        const dot = document.createElement('button');
-        dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-pink-200' : 'bg-gray-600'}`;
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          updateCarousel();
-          resetAutoPlay();
-        });
-        dotsContainer.appendChild(dot);
-      }
-    };
-
-    const nextSlide = () => {
-      const visible = getVisibleCards();
-      if (currentIndex < cards.length - visible) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateCarousel();
-    };
-
-    const prevSlide = () => {
-      const visible = getVisibleCards();
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = cards.length - visible;
-      }
-      updateCarousel();
-    };
-
-    const startAutoPlay = () => {
-      autoPlayInterval = setInterval(nextSlide, 4000);
-    };
-
-    const resetAutoPlay = () => {
-      clearInterval(autoPlayInterval);
-      startAutoPlay();
-    };
-
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      resetAutoPlay();
-    });
-
-    prevBtn.addEventListener('click', () => {
-      prevSlide();
-      resetAutoPlay();
-    });
-
-    // Pause on hover
-    track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-    track.parentElement.addEventListener('mouseleave', startAutoPlay);
-
-    // Initial setup & resize handling
-    window.addEventListener('resize', () => {
-      createDots();
-      updateCarousel();
-    });
-
-    createDots();
-    updateCarousel();
-    startAutoPlay();
-
-        // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobile-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeBtn = document.getElementById('close-mobile');
-
-    const openMenu = () => {
-      mobileMenu.classList.remove('invisible');
-      mobileMenu.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeMenu = () => {
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = 'auto';
-      setTimeout(() => {
-        mobileMenu.classList.add('invisible');
-      }, 400); 
-    };
-
-    mobileBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Hero Contact Form Handler
-    const heroForm = document.getElementById("heroContactForm");
-    const heroSuccess = document.getElementById("heroFormSuccess");
-    const heroError = document.getElementById("heroFormError");
-
-    if (heroForm) {
-      heroForm.addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        const data = new FormData(heroForm);
-
-        try {
-          const ghl = await fetch("https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/acaff8c7-b7ea-47e8-90d5-adfe581d1517", { method: "POST", body: data });
-
-          if (ghl.ok) {
-            heroForm.style.display = "none";
-            heroError.classList.add("hidden");
-            heroSuccess.classList.remove("hidden");
-          } else {
-            throw new Error();
-          }
-        } catch {
-          heroSuccess.classList.add("hidden");
-          heroError.classList.remove("hidden");
-        }
-      });
-    }
-  </script>
+  </footer>
 
 </body>
 

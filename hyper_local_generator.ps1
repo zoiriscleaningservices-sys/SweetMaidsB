@@ -44,7 +44,8 @@ foreach ($loc in $locations) {
             $originalFooter = ""
             if ($footerMatch.Success) {
                 $originalFooter = $footerMatch.Value
-                $content = $content -replace [regex]::Escape($originalFooter), "{{FOOTER_PLACEHOLDER}}"
+                # Use a unique placeholder that won't be affected by replacements
+                $content = $content.Replace($originalFooter, "{{FOOTER_PLACEHOLDER_UNIQUE}}")
             }
             
             # 1. Localize Titles and Metas
@@ -100,6 +101,11 @@ foreach ($loc in $locations) {
             $content = $content -replace 'cost in House', "cost in $cleanLoc"
             $content = $content -replace 'service in House', "service in $cleanLoc"
             $content = $content -replace 'rated cleaning service in House', "rated cleaning service in $cleanLoc"
+            
+            # Restore the original footer
+            if ($footerMatch.Success) {
+                $content = $content.Replace("{{FOOTER_PLACEHOLDER_UNIQUE}}", $originalFooter)
+            }
             
             # Restore the original footer
             if ($footerMatch.Success) {
