@@ -38,6 +38,15 @@ foreach ($loc in $locations) {
         if (Test-Path $sourceFile) {
             $content = Get-Content $sourceFile -Raw -Encoding UTF8
             
+            # Extract footer to protect it from location name replacements
+            $footerPattern = '(?s)(<footer class=".*?">.*?</footer>)'
+            $footerMatch = [regex]::Match($content, $footerPattern)
+            $originalFooter = ""
+            if ($footerMatch.Success) {
+                $originalFooter = $footerMatch.Value
+                $content = $content -replace [regex]::Escape($originalFooter), "{{FOOTER_PLACEHOLDER}}"
+            }
+            
             # 1. Localize Titles and Metas
             $content = $content -replace '(?s)<title>.*?</title>', "<title>$svcName in $cleanLoc, FL | #1 Rated Cleaning Service</title>"
             $content = $content -replace '(?s)<meta name="description".*?>', "<meta name=""description"" content=""Looking for $svcName in $cleanLoc, FL? Sweet Maid offers top-rated localized cleaning services. Licensed, insured, and 100% satisfaction guaranteed. Book today!"" />"
@@ -91,6 +100,11 @@ foreach ($loc in $locations) {
             $content = $content -replace 'cost in House', "cost in $cleanLoc"
             $content = $content -replace 'service in House', "service in $cleanLoc"
             $content = $content -replace 'rated cleaning service in House', "rated cleaning service in $cleanLoc"
+            
+            # Restore the original footer
+            if ($footerMatch.Success) {
+                $content = $content -replace "{{FOOTER_PLACEHOLDER}}", [regex]::Escape($originalFooter)
+            }
 
             [System.IO.File]::WriteAllText((Resolve-Path .).Path + "\$destFile", $content, $utf8NoBom)
         }
