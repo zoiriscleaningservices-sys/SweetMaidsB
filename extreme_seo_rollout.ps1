@@ -10,12 +10,22 @@ foreach ($file in $files) {
     if ([string]::IsNullOrWhiteSpace($content)) { continue }
 
     $folderName = $file.Directory.Name
+    $parentFolderName = $file.Directory.Parent.Name
     
     # Identify Location
-    $location = $folderName -replace "-cleaning", ""
+    $location = ""
+    if ($folderName -match "-cleaning" -and ($parentFolderName -match "-cleaning")) {
+        # This is a service-at-location page like /bradenton-cleaning/house-cleaning/
+        $location = $parentFolderName -replace "-cleaning", ""
+    } else {
+        $location = $folderName -replace "-cleaning", ""
+    }
+    
     $location = (Get-Culture).TextInfo.ToTitleCase($location.Replace("-", " "))
     
-    if ($folderName -eq "home" -or $folderName -eq "SweetMaidsB") { $location = "Bradenton" }
+    if ($folderName -eq "home" -or $folderName -eq "SweetMaidsB" -or $location -eq "" -or $location -eq "House" -or $location -eq "Deep" -or $location -eq "Airbnb" -or $location -eq "Move In Out" -or $location -eq "Commercial" -or $location -eq "Post Construction" -or $location -eq "Carpet" -or $location -eq "Pressure Washing" -or $location -eq "Window") { 
+        $location = "Bradenton" 
+    }
     
     Write-Host "Optimizing SEO for: $location ($folderName)"
 

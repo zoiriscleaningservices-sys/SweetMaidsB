@@ -74,9 +74,9 @@ foreach ($name in $areaNames) {
     $cleanName = if ($name -eq "Anna Maria") { "Anna Maria Island" } else { $name }
     $fileName = $name.ToLower().Replace(" ", "-") + "-cleaning/index.html" # Fixed to use subdirectories
     
-    $title = "Sweet Maid Cleaning Service - #1 Rated House Cleaning in $cleanName, FL"
-    $desc = "Looking for top-rated cleaning services in $cleanName, FL? Sweet Maid offers professional house cleaning, deep cleaning, and more. Licensed & Insured. Get a free quote today!"
-    $keywords = "cleaning service $cleanName, house cleaning $cleanName, maid service $cleanName, deep cleaning $cleanName, move out cleaning $cleanName, residential cleaning $cleanName, eco-friendly cleaning $name"
+    $title = "Best House Cleaning Services in $cleanName, FL | Top Rated & Reliable"
+    $desc = "Looking for the best house cleaning in $cleanName, FL? Sweet Maid provides top-rated, reliable, and affordable maid services. 100% Satisfaction Guaranteed. Book Now!"
+    $keywords = "best house cleaning $cleanName, top rated maid service $cleanName, best cleaning services $cleanName, reliable house cleaners $cleanName, affordable maid service $cleanName"
     
     # Customize Content
     $localHeader = $sourceHeader -replace 'in Bradenton</span>', "in $cleanName</span>"
@@ -85,21 +85,108 @@ foreach ($name in $areaNames) {
     $localMain = $sourceMain
     $localMain = $localMain -replace "Bradenton’s", "$cleanName's" # Unified to standard quote
     $localMain = $localMain -replace "Bradenton's", "$cleanName's" 
-    $localMain = $localMain -replace "Why Bradenton Trusts Us", "Why $cleanName Trusts Us"
-    $localMain = $localMain -replace "Trusted by homeowners in Bradenton", "Trusted by homeowners in $cleanName"
     $localMain = $localMain -replace "across Bradenton and Southwest Florida", "across $cleanName and Southwest Florida"
     $localMain = $localMain -replace "in Bradenton home", "in $cleanName home"
     $localMain = $localMain -replace "Favorite Cleaners in Bradenton", "Favorite Cleaners in $cleanName"
     $localMain = $localMain -replace "Top Rated in Bradenton", "Top Rated in $cleanName"
     $localMain = $localMain -replace 'Bradenton%2C%20FL', ($cleanName -replace ' ', '+')
     
+    # Extreme SEO H1 Overhaul
+    $localMain = [regex]::Replace($localMain, '(?s)<h1.*?>.*?</h1>', @"
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-gray-900">
+            Best Cleaning Services in <br>
+            <span class="text-gradient">$cleanName, FL</span>
+        </h1>
+"@)
+
+    # Extreme SEO Hero Description Overhaul
+    # Extreme SEO Hero Description Overhaul
+    $localMain = [regex]::Replace($localMain, '(?s)<p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">.*?</p>', @"
+        <p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
+            Looking for the best house cleaning in LOC_TOKEN? Sweet Maid provides top-rated, reliable, and affordable maid services. 100% Satisfaction Guaranteed.
+        </p>
+"@)
+    $localMain = $localMain -replace 'LOC_TOKEN', $cleanName
+    
     # Surgical remainder replacement (avoiding Bradenton Beach overlap)
     $localMain = [regex]::Replace($localMain, '(?<!Bradenton\s)Bradenton(?! Beach)', $cleanName)
 
     # Link absolute parity
     $localMain = $localMain -replace 'index.html#contact', '#contact'
+    
+    # ---------------------------------------------------------
+    # DEEP CONTENT INJECTION (Body Text Overhaul)
+    # ---------------------------------------------------------
+
+    # 1. Section Headers & Subheaders
+    $localMain = $localMain -replace "Why Locals Trust Us", "Why $cleanName Trusts Us"
+    $localMain = $localMain -replace "The Sweet Maid Standard", "The Sweet Maid Standard in $cleanName"
+    $localMain = $localMain -replace "Let Our Team Contact You", "Let Our $cleanName Team Contact You"
+    $localMain = $localMain -replace "Licensed & Insured Cleaners", "Licensed & Insured $cleanName Cleaners"
+
+    # 2. Feature Titles & Descriptions
+    $localMain = $localMain -replace "Trusted Professionals", "Trusted $cleanName Cleaning Experts"
+    $localMain = $localMain -replace "Every team member undergoes", "Every $cleanName team member undergoes"
+    $localMain = $localMain -replace "Impeccable Detail", "Impeccable Cleaning Detail"
+    $localMain = $localMain -replace "re-clean the area", "re-clean your $cleanName home"
+    
+    # 3. General Body Text Expansion
+    $localMain = $localMain -replace "premier cleaning solutions", "premier cleaning solutions in $cleanName"
+    $localMain = $localMain -replace "keep your home spotless", "keep your $cleanName home spotless"
+    $localMain = $localMain -replace "Trusted by homeowners", "Trusted by homeowners in $cleanName"
+    
+    # 4. CTA & Footer Context
+    $localMain = $localMain -replace "Get Your Free Quote", "Get Your Free Quote in $cleanName"
+    $localMain = $localMain -replace "Call Me", "Call for $cleanName Service"
+    $localMain = $localMain -replace "Follow us for cleaning tips", "Follow us for $cleanName cleaning tips"
     $localMain = $localMain -replace 'index.html#home', '#home'
     $localMain = $localMain -replace 'index.html#about', '#about'
+    
+    # ---------------------------------------------------------
+    # EXTREME SEO: SERVICE DESCRIPTIONS (Location Pages)
+    # ---------------------------------------------------------
+    
+    # Service card descriptions with location context
+    $localMain = $localMain -replace "Professional steam cleaning to remove stains, odors, and allergens from carpets and rugs\.", "Professional carpet cleaning in $cleanName to remove stains and allergens. Trusted by $cleanName homeowners."
+    $localMain = $localMain -replace "Crystal-clear, streak-free windows inside and out for maximum natural light and curb appeal\.", "Crystal-clear window cleaning in $cleanName for maximum natural light. Professional service for $cleanName homes."
+    $localMain = $localMain -replace "Restore driveways, patios, and exterior surfaces with powerful, professional pressure washing\.", "Restore $cleanName driveways and patios with professional pressure washing. Expert service in $cleanName."
+    $localMain = $localMain -replace "Impress clients and protect employees with professional office janitorial services\.", "Professional commercial cleaning in $cleanName. Expert janitorial services for $cleanName businesses."
+    $localMain = $localMain -replace "Fast, reliable turnovers between guests with linen service and restocking for 5-star reviews\.", "Fast Airbnb cleaning in $cleanName for vacation rental hosts. Professional turnover service in $cleanName."
+    $localMain = $localMain -replace "Removing fine dust and debris after renovations so your new space truly sparkles\.", "Expert post-construction cleaning in $cleanName removes dust and debris. Renovation cleaning for $cleanName properties."
+    $localMain = $localMain -replace "Flexible residential cleaning for apartments, condos, and houses - one-time or recurring\.", "Flexible house cleaning in $cleanName for apartments and homes. Recurring service for $cleanName residents."
+    $localMain = $localMain -replace "A top-to-bottom, detailed clean to reset your space and eliminate hidden grime\.", "Top-to-bottom deep cleaning in $cleanName to eliminate grime. Professional service for $cleanName homes."
+    $localMain = $localMain -replace "Make your new house fresh, sanitized, and move-in ready from day one\.", "Professional move-in cleaning in $cleanName to make your home move-in ready. Trusted service in $cleanName."
+    $localMain = $localMain -replace "Make your new home fresh, sanitized, and move-in ready from day one\.", "Professional move-in cleaning in $cleanName to make your home move-in ready. Trusted service in $cleanName."
+    $localMain = $localMain -replace "Leave your space spotless and stress-free when it's time to move out\.", "Expert move-out cleaning in $cleanName leaves your space spotless. Professional service for $cleanName renters."
+    
+    # ---------------------------------------------------------
+    # EXTREME SEO: DETAILED CONTENT
+    # ---------------------------------------------------------
+    
+    $localMain = $localMain -replace "Experience the luxury of a consistently pristine home\.", "Experience luxury cleaning services in $cleanName for a consistently pristine home."
+    $localMain = $localMain -replace "Our residential services are designed for busy professionals and families who value their time and peace of mind\.", "Our $cleanName cleaning services are designed for busy professionals and families in $cleanName."
+    
+    # Generic references
+    $localMain = $localMain -replace "for your home\.", "for your $cleanName home."
+    $localMain = $localMain -replace "in your home\.", "in your $cleanName home."
+    $localMain = $localMain -replace "your entire home\.", "your entire $cleanName home."
+    $localMain = $localMain -replace "our professional team", "our professional $cleanName cleaning team"
+    $localMain = $localMain -replace "Our team arrives", "Our $cleanName team arrives"
+    
+    # CTAs
+    $localMain = $localMain -replace "Book Now\<", "Book Cleaning in $cleanName Now\<"
+    $localMain = $localMain -replace "\>Learn More\<", "\>Learn More About $cleanName Cleaning\<"
+    $localMain = $localMain -replace "Contact Us Today", "Contact Us for $cleanName Cleaning"
+    
+    # Process steps
+    $localMain = $localMain -replace "We arrive on time", "Our $cleanName cleaning team arrives on time"
+    $localMain = $localMain -replace "assess your space", "assess your $cleanName property"
+    $localMain = $localMain -replace "Professional equipment and supplies", "Professional cleaning equipment in $cleanName"
+    $localMain = $localMain -replace "Background-checked cleaners", "Background-checked cleaning experts serving $cleanName"
+    
+    # Paragraph content
+    $localMain = $localMain -replace "hotel-standard training before entering your home", "hotel-standard training before entering your $cleanName home"
+    $localMain = $localMain -replace "from baseboards to ceiling fans", "from baseboards to ceiling fans in your $cleanName home"
 
 
     # Path sanity fix for one-level deep location folder (Ensuring images work)
