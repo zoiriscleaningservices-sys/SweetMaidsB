@@ -89,7 +89,16 @@ foreach ($name in $areaNames) {
     $localMain = $localMain -replace "in Bradenton home", "in $cleanName home"
     $localMain = $localMain -replace "Favorite Cleaners in Bradenton", "Favorite Cleaners in $cleanName"
     $localMain = $localMain -replace "Top Rated in Bradenton", "Top Rated in $cleanName"
-    $localMain = $localMain -replace 'Bradenton%2C%20FL', ($cleanName -replace ' ', '+')
+    # Map Optimization (Google Maps Embed)
+    $mapPb = "!1m18!1m12!1m3!1d113425.29828882585!2d-82.64501464999999!3d27.497495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e663693aa661%3A0x628f8694032a1740!2s$($cleanName -replace ' ', '+')%2C+FL%2C+USA!5e0!3m2!1sen!2sus!4v1707520000000!5m2!1sen!2sus"
+    
+    if ($name -eq "Venice") {
+        $mapPb = "!1m18!1m12!1m3!1d113643.08051786196!2d-82.49089947930467!3d27.391629853974495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c341399426f30d%3A0xc3b83c518b532924!2sVenice%2C+FL+34285%2C+USA!5e0!3m2!1sen!2sus!4v1739561081827!5m2!1sen!2sus"
+    } elseif ($name -eq "University Park") {
+        $mapPb = "!1m18!1m12!1m3!1d113643.08051786196!2d-82.49089947930467!3d27.391629853974495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c341399426f30d%3A0xc3b83c518b532924!2sUniversity+Park%2C+FL+34201%2C+USA!5e0!3m2!1sen!2sus!4v1739561081827!5m2!1sen!2sus"
+    }
+    
+    $localMain = $localMain -replace 'MAP_PLACEHOLDER', $mapPb
     
     # Extreme SEO H1 Overhaul
     $localMain = [regex]::Replace($localMain, '(?s)<h1.*?>.*?</h1>', @"

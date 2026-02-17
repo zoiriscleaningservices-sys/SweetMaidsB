@@ -158,6 +158,17 @@ foreach ($loc in $locations) {
             
             # Legacy/Pollution Fixes (Targeting Bradenton specifically)
             $content = $content -replace "Why Bradenton Trusts Us", "Why $cleanLoc Trusts Us for $svcName"
+            
+            # Map Optimization (Google Maps Embed)
+            $mapPb = "!1m18!1m12!1m3!1d113425.29828882585!2d-82.64501464999999!3d27.497495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e663693aa661%3A0x628f8694032a1740!2s$($cleanLoc -replace ' ', '+')%2C+FL%2C+USA!5e0!3m2!1sen!2sus!4v1707520000000!5m2!1sen!2sus"
+            
+            if ($cleanLoc -eq "Venice") {
+                $mapPb = "!1m18!1m12!1m3!1d113643.08051786196!2d-82.49089947930467!3d27.391629853974495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c341399426f30d%3A0xc3b83c518b532924!2sVenice%2C+FL+34285%2C+USA!5e0!3m2!1sen!2sus!4v1739561081827!5m2!1sen!2sus"
+            } elseif ($cleanLoc -eq "University Park") {
+                $mapPb = "!1m18!1m12!1m3!1d113643.08051786196!2d-82.49089947930467!3d27.391629853974495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c341399426f30d%3A0xc3b83c518b532924!2sUniversity+Park%2C+FL+34201%2C+USA!5e0!3m2!1sen!2sus!4v1739561081827!5m2!1sen!2sus"
+            }
+            
+            $content = $content -replace 'MAP_PLACEHOLDER', $mapPb
             $content = $content -replace "Bradenton's most trusted", "$cleanLoc's most trusted $svcName service"
             $content = $content -replace "Joy of Clean in Bradenton", "Joy of Clean in $cleanLoc"
             $content = $content -replace "Let Our Bradenton Team Contact You", "Let Our $cleanLoc Team Contact You"
