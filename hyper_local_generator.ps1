@@ -3,7 +3,9 @@ $locations = @(
     "Sarasota", "Longboat Key", "Bradenton Beach", "Nokomis", "Siesta Key", "Fruitville", "Holmes Beach", 
     "Whitfield", "Parrish", "Braden River", "Bee Ridge", "Bayshore Gardens", "Venice", "The Meadows", 
     "Gulf Gate Estates", "South Gate", "Ellenton", "Sarasota Springs", "Lake Sarasota", "South Sarasota", 
-    "Palmetto", "Palma Sola", "Myakka", "Bird Key"
+    "Palmetto", "Palma Sola", "Myakka", "Bird Key",
+    "North Port", "South Venice", "Englewood", "Rotonda West", "Port Charlotte", "Ruskin", 
+    "Apollo Beach", "Terra Ceia", "Lido Key", "Vamo", "Sun City Center", "Arcadia"
 )
 
 $services = @(
@@ -111,21 +113,19 @@ foreach ($loc in $locations) {
             $content = $content -replace '<meta property="og:url" content=".*?">', "<meta property=""og:url"" content=""https://sweetmaidcleaning.com/$locSlug/$svcSlug/"">"
             $content = $content -replace '<meta property="og:title" content=".*?">', "<meta property=""og:title"" content=""$svcName in $cleanLoc, FL | Sweet Maid Cleaning"">"
 
-            # 3. Content Localization (Holistic Silo Replacement)
-            # Replace all main service areas with the current localized one
-            $content = $content -replace "Bradenton & Sarasota", "$cleanLoc"
-            $content = $content -replace "Bradenton and Sarasota", "$cleanLoc"
-            $content = $content -replace "Bradenton’s", "$cleanLoc's"
-            $content = $content -replace "Bradenton's", "$cleanLoc's"
-            $content = $content -replace "Bradenton", "$cleanLoc"
-            $content = $content -replace "Sarasota", "$cleanLoc"
-            $content = $content -replace "Lakewood Ranch", "$cleanLoc"
-            $content = $content -replace "Parrish", "$cleanLoc"
-            $content = $content -replace "Venice", "$cleanLoc"
+            # 3. Content Localization (Targeted)
+            # We replace "Bradenton" in specific phrases instead of globally to avoid breaking URLs
+            $phrases = @(
+                "Bradenton & Sarasota", "Bradenton and Sarasota", "Bradenton’s", "Bradenton's",
+                "across Bradenton and Southwest Florida", "Bradenton area", "Bradenton home"
+            )
+            foreach ($p in $phrases) {
+                $replacement = $p -replace "Bradenton", $cleanLoc
+                $content = $content -replace [regex]::Escape($p), $replacement
+            }
             
-            # Cleanup duplicate localizations
-            $content = $content -replace "$cleanLoc & $cleanLoc", "$cleanLoc"
-            $content = $content -replace "$cleanLoc and $cleanLoc", "$cleanLoc"
+            # Specifically replace "Bradenton" in the top bar
+            $content = [regex]::Replace($content, '(?s)Rated Cleaning Service in\s+Bradenton</span>', "Rated Cleaning Service in $cleanLoc</span>")
             
             # 4. Schema Localization Fixes (Regex & Literal)
             $content = $content -replace '"addressLocality":\s*".*?"', "`"addressLocality`": `"$cleanLoc`""

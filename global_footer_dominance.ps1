@@ -73,6 +73,18 @@ $footerHtml = @'
             <a href="/palma-sola-cleaning/" class="hover:text-pink-400 transition-colors">Palma Sola</a>
             <a href="/myakka-cleaning/" class="hover:text-pink-400 transition-colors">Myakka</a>
             <a href="/bird-key-cleaning/" class="hover:text-pink-400 transition-colors">Bird Key</a>
+            <a href="/north-port-cleaning/" class="hover:text-pink-400 transition-colors">North Port</a>
+            <a href="/south-venice-cleaning/" class="hover:text-pink-400 transition-colors">South Venice</a>
+            <a href="/englewood-cleaning/" class="hover:text-pink-400 transition-colors">Englewood</a>
+            <a href="/rotonda-west-cleaning/" class="hover:text-pink-400 transition-colors">Rotonda West</a>
+            <a href="/port-charlotte-cleaning/" class="hover:text-pink-400 transition-colors">Port Charlotte</a>
+            <a href="/ruskin-cleaning/" class="hover:text-pink-400 transition-colors">Ruskin</a>
+            <a href="/apollo-beach-cleaning/" class="hover:text-pink-400 transition-colors">Apollo Beach</a>
+            <a href="/terra-ceia-cleaning/" class="hover:text-pink-400 transition-colors">Terra Ceia</a>
+            <a href="/lido-key-cleaning/" class="hover:text-pink-400 transition-colors">Lido Key</a>
+            <a href="/vamo-cleaning/" class="hover:text-pink-400 transition-colors">Vamo</a>
+            <a href="/sun-city-center-cleaning/" class="hover:text-pink-400 transition-colors">Sun City Center</a>
+            <a href="/arcadia-cleaning/" class="hover:text-pink-400 transition-colors">Arcadia</a>
           </div>
         </div>
       </div>

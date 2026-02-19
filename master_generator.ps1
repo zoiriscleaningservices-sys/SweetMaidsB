@@ -66,7 +66,7 @@ if ($postFooterIdx -ge 9) {
     foreach ($m in $scriptsMatch) { $sourceScripts += $m.Value + "`n" }
 } else { $sourceScripts = "" }
 
-$areaNames = "Bradenton", "Anna Maria", "Foxleigh", "Palmer Ranch", "Lakewood Ranch", "Osprey", "University Park", "Laurel", "Sarasota", "Longboat Key", "Bradenton Beach", "Nokomis", "Siesta Key", "Fruitville", "Holmes Beach", "Whitfield", "Parrish", "Braden River", "Bee Ridge", "Bayshore Gardens", "Venice", "The Meadows", "Gulf Gate Estates", "South Gate", "Ellenton", "Sarasota Springs", "Lake Sarasota", "South Sarasota", "Palmetto", "Palma Sola", "Myakka", "Bird Key"
+$areaNames = "Bradenton", "Anna Maria", "Foxleigh", "Palmer Ranch", "Lakewood Ranch", "Osprey", "University Park", "Laurel", "Sarasota", "Longboat Key", "Bradenton Beach", "Nokomis", "Siesta Key", "Fruitville", "Holmes Beach", "Whitfield", "Parrish", "Braden River", "Bee Ridge", "Bayshore Gardens", "Venice", "The Meadows", "Gulf Gate Estates", "South Gate", "Ellenton", "Sarasota Springs", "Lake Sarasota", "South Sarasota", "Palmetto", "Palma Sola", "Myakka", "Bird Key", "North Port", "South Venice", "Englewood", "Rotonda West", "Port Charlotte", "Ruskin", "Apollo Beach", "Terra Ceia", "Lido Key", "Vamo", "Sun City Center", "Arcadia"
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
@@ -79,7 +79,7 @@ foreach ($name in $areaNames) {
     $keywords = "best house cleaning $cleanName, top rated maid service $cleanName, best cleaning services $cleanName, reliable house cleaners $cleanName, affordable maid service $cleanName"
     
     # Customize Content
-    $localHeader = $sourceHeader -replace 'in Bradenton</span>', "in $cleanName</span>"
+    $localHeader = [regex]::Replace($sourceHeader, '(?s)Rated Cleaning Service in\s+Bradenton</span>', "Rated Cleaning Service in $cleanName</span>")
     $localFooter = $sourceFooter
     
     $localMain = $sourceMain
@@ -367,6 +367,8 @@ foreach ($name in $areaNames) {
 </body>
 </html>
 "@
+    $destDir = $fileName.Substring(0, $fileName.LastIndexOf("/"))
+    if (!(Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
     [System.IO.File]::WriteAllText((Resolve-Path .).Path + "\$fileName", $pageHtml, $utf8NoBom)
 }
 
