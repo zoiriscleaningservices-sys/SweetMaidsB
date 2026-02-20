@@ -26,8 +26,12 @@ foreach ($item in $items) {
     $priority = "0.6"
     if ($urlPath -eq "") { $priority = "1.0" }
     elseif ($urlPath -eq "home/") { $priority = "1.0" }
-    elseif ($urlPath -match "^[a-z-]+-cleaning/$") { $priority = "0.9" } # Main location pages
+    elseif ($urlPath -match "^[a-z-]+-fl/$") { $priority = "0.9" } # Main location silos
+    elseif ($urlPath -match "^[a-z-]+-[a-z]+/$") { $priority = "0.9" } # Fallback other root locs
+    elseif ($urlPath -match "^[a-z-]+-fl/about/$" -or $urlPath -match "^[a-z-]+-fl/gallery/$") { $priority = "0.85" } # Hub sub-pages
     elseif ($urlPath -match "/[a-z-]+-cleaning/$") { $priority = "0.8" } # Hyper-local service pages
+    elseif ($urlPath -match "/[a-z-]+-services/$" -or $urlPath -match "/[a-z-]+-management/$") { $priority = "0.8" } # Other services
+    else { $priority = "0.7" }
     
     $fullUrl = "$baseUrl/$urlPath"
 

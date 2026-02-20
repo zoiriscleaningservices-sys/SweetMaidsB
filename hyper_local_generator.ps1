@@ -139,8 +139,14 @@ foreach ($loc in $locations) {
             
             # Inject Siloed Links into ALL content (Header, Menu, Body)
             foreach ($sSlug in $serviceSlugs) {
+                # Be careful not to double-replace if already correct
                 $content = $content -replace "/$sSlug/", "/$locSlug/$sSlug/"
             }
+
+            # Silo navigation links and logo
+            $content = $content -replace '"/home/"', "`"/$locSlug/`""
+            $content = $content -replace '"/about/"', "`"/$locSlug/about/`""
+            $content = $content -replace '"/gallery/"', "`"/$locSlug/gallery/`""
 
             # Fix Area Navigation Links (rename -cleaning to -fl) in all content
             $content = $content -replace "-cleaning/", "-fl/"

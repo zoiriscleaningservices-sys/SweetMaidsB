@@ -1,5 +1,7 @@
 $sourceFile = "home/index.html"
 $content = Get-Content $sourceFile -Raw -Encoding UTF8
+$aboutTemplate = Get-Content "about/index.html" -Raw -Encoding UTF8
+$galleryTemplate = Get-Content "gallery/index.html" -Raw -Encoding UTF8
 
 if ($null -eq $content -or $content.Length -lt 100) {
     Write-Error "Could not read home/index.html"
@@ -110,6 +112,15 @@ foreach ($name in $areaNames) {
         $localMenu = $localMenu -replace "/$svcSlug/", "/$locSlug/$svcSlug/"
     }
 
+    # Silo navigation links and logo within Header and Menu
+    $localHeader = $localHeader -replace '"/home/"', "`"/$locSlug/`""
+    $localHeader = $localHeader -replace '"/about/"', "`"/$locSlug/about/`""
+    $localHeader = $localHeader -replace '"/gallery/"', "`"/$locSlug/gallery/`""
+    
+    $localMenu = $localMenu -replace '"/home/"', "`"/$locSlug/`""
+    $localMenu = $localMenu -replace '"/about/"', "`"/$locSlug/about/`""
+    $localMenu = $localMenu -replace '"/gallery/"', "`"/$locSlug/gallery/`""
+
     # Fix Area Navigation Links (rename -cleaning to -fl)
     $localHeader = $localHeader -replace "-cleaning/", "-fl/"
     $localMenu = $localMenu -replace "-cleaning/", "-fl/"
@@ -130,6 +141,10 @@ foreach ($name in $areaNames) {
     foreach ($svcSlug in $serviceSlugs) {
         $localMain = $localMain -replace "/$svcSlug/", "/$locSlug/$svcSlug/"
     }
+
+    $localFooter = $localFooter -replace '"/home/"', "`"/$locSlug/`""
+    $localFooter = $localFooter -replace '"/about/"', "`"/$locSlug/about/`""
+    $localFooter = $localFooter -replace '"/gallery/"', "`"/$locSlug/gallery/`""
 
     # Map Optimization
     $mapPb = "!1m18!1m12!1m3!1d113425.29828882585!2d-82.64501464999999!3d27.497495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e663693aa661%3A0x628f8694032a1740!2s$($cleanName -replace ' ', '+')%2C+FL%2C+USA!5e0!3m2!1sen!2sus!4v1707520000000!5m2!1sen!2sus"
@@ -221,6 +236,53 @@ foreach ($name in $areaNames) {
     $destDir = $locSlug
     if (!(Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
     [System.IO.File]::WriteAllText("$destDir/index.html", $pageHtml, $utf8NoBom)
+
+    # 1.5 Generate About and Gallery Pages
+    foreach ($pageType in @("about", "gallery")) {
+        Write-Host "Generating Base Page: $locSlug/$pageType/index.html"
+        
+        $baseContent = if ($pageType -eq "about") { $aboutTemplate } else { $galleryTemplate }
+
+        # Localize Header Top Bar
+        $baseContent = [regex]::Replace($baseContent, '(?s)#1 Rated Cleaning Service in\s+Bradenton</span>', "#1 Rated Cleaning Service in $cleanName</span>")
+        
+        # We leave the generic "We Serve 32+" menu sections alone here as there's no localized array setup in the master generator 
+        # But we DO need to silo the active paths:
+        foreach ($svcSlug in $serviceSlugs) {
+            $baseContent = $baseContent -replace "/$svcSlug/", "/$locSlug/$svcSlug/"
+        }
+        
+        $baseContent = $baseContent -replace '"/home/"', "`"/$locSlug/`""
+        $baseContent = $baseContent -replace '"/about/"', "`"/$locSlug/about/`""
+        $baseContent = $baseContent -replace '"/gallery/"', "`"/$locSlug/gallery/`""
+
+        # SEO Overhaul for Base Pages
+        $pageTitleCap = (Get-Culture).TextInfo.ToTitleCase($pageType)
+        $baseContent = $baseContent -replace '(?s)<title>.*?</title>', "<title>#1 Rated Cleaning Service $pageTitleCap in $cleanName, FL | Sweet Maid Cleaning</title>"
+        $baseContent = $baseContent -replace '(?s)<meta name="description".*?>', "<meta name=""description"" content=""Learn more $pageType our top-rated luxury cleaning services in $cleanName, FL. Guaranteed satisfaction!"" />"
+        $baseContent = $baseContent -replace '<link rel="canonical" href=".*?" />', "<link rel=""canonical"" href=""https://sweetmaidcleaning.com/$locSlug/$pageType/"" />"
+        
+        # OG Fixes
+        $baseContent = $baseContent -replace '<meta property="og:url" content=".*?"', "<meta property=""og:url"" content=""https://sweetmaidcleaning.com/$locSlug/$pageType/"""
+        $baseContent = $baseContent -replace '<meta property="og:title" content=".*?"', "<meta property=""og:title"" content=""#1 Rated Cleaning Service $pageTitleCap in $cleanName, FL"""
+        
+        # Localize mentions
+        $baseContent = $baseContent -replace "Bradenton’s", "$cleanName's"
+        $baseContent = $baseContent -replace "Bradenton's", "$cleanName's"
+        $baseContent = $baseContent -replace "across Bradenton and Southwest Florida", "across $cleanName and Southwest Florida"
+        $baseContent = $baseContent -replace "in Bradenton, FL", "in $cleanName, FL"
+        $baseContent = $baseContent -replace '"name": "Bradenton, FL"', "`"name`": `"$cleanName, FL`""
+        $baseContent = $baseContent -replace '"addressLocality": "Bradenton"', "`"addressLocality`": `"$cleanName`""
+        
+        # Fix Image Paths
+        $baseContent = $baseContent -replace 'src="../images/', 'src="../../images/'
+        $baseContent = $baseContent -replace 'url\("?\.\./images/', 'url("../../images/'
+        $baseContent = $baseContent -replace 'src="/images/', 'src="../../images/'
+
+        $baseDir = "$locSlug/$pageType"
+        if (!(Test-Path $baseDir)) { New-Item -ItemType Directory -Path $baseDir -Force | Out-Null }
+        [System.IO.File]::WriteAllText("$baseDir/index.html", $baseContent, $utf8NoBom)
+    }
 }
 
 Write-Host "Site Silo Restructuring Complete: $($areaNames.Count) City Hubs generated."
