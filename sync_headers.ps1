@@ -1,4 +1,4 @@
-$sourceFile = "index.html"
+$sourceFile = "home/index.html"
 Write-Host "Current Directory: $((Get-Location).Path)"
 $content = Get-Content $sourceFile -Raw
 
@@ -7,7 +7,7 @@ $headerMatch = [regex]::Match($content, '(?s)<header.*?</header>')
 if ($headerMatch.Success) {
     $headerContent = $headerMatch.Value
 } else {
-    Write-Error "Could not find header in index.html"
+    Write-Error "Could not find header in $sourceFile"
     exit
 }
 
@@ -19,12 +19,16 @@ if ($menuMatch.Success) {
     $menuContent = $menuMatch.Value -replace '(?s)<!-- ================================================\s+HERO.*', ''
     $menuContent = $menuContent.Trim()
 } else {
-    Write-Error "Could not find mobile menu in index.html"
+    Write-Error "Could not find mobile menu in $sourceFile"
     exit
 }
 
-$files = Get-ChildItem -Path *.html
-$files = $files | Where-Object { $_.Name -ne "index.html" }
+$files = Get-ChildItem -Path . -Filter *.html -Recurse
+$files = $files | Where-Object { 
+    $_.FullName -notmatch "node_modules" -and 
+    $_.FullName -notmatch "home\\index.html" -and 
+    $_.FullName -ne (Join-Path (Get-Location).Path "index.html")
+}
 
 Write-Host "Found $($files.Count) files to sync."
 
@@ -38,8 +42,8 @@ foreach ($file in $files) {
     }
 
     # Replace Mobile Menu
-    if ($fileContent -match '(?s)<!-- Mobile Menu -->.*?<!-- ================================================') {
-        $fileContent = [regex]::Replace($fileContent, '(?s)<!-- Mobile Menu -->.*?<!-- ================================================', "$menuContent`n<!-- ================================================")
+    if ($fileContent -match '(?s)<!-- Mobile Menu.*?-->.*?<!-- ================================================') {
+        $fileContent = [regex]::Replace($fileContent, '(?s)<!-- Mobile Menu.*?-->.*?<!-- ================================================', "$menuContent`n<!-- ================================================")
     }
     
     # Save

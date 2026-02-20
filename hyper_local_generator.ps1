@@ -1,5 +1,5 @@
 $locations = @(
-    "Bradenton", "Anna Maria", "Foxleigh", "Palmer Ranch", "Lakewood Ranch", "Osprey", "University Park", "Laurel", 
+    "Bradenton", "Miami", "Anna Maria", "Foxleigh", "Palmer Ranch", "Lakewood Ranch", "Osprey", "University Park", "Laurel", 
     "Sarasota", "Longboat Key", "Bradenton Beach", "Nokomis", "Siesta Key", "Fruitville", "Holmes Beach", 
     "Whitfield", "Parrish", "Braden River", "Bee Ridge", "Bayshore Gardens", "Venice", "The Meadows", 
     "Gulf Gate Estates", "South Gate", "Ellenton", "Sarasota Springs", "Lake Sarasota", "South Sarasota", 
@@ -17,7 +17,34 @@ $services = @(
     @{ slug = "post-construction-cleaning"; name = "Post-Construction Cleaning" },
     @{ slug = "carpet-cleaning"; name = "Carpet Cleaning" },
     @{ slug = "pressure-washing"; name = "Pressure Washing" },
-    @{ slug = "window-cleaning"; name = "Window Cleaning" }
+    @{ slug = "window-cleaning"; name = "Window Cleaning" },
+    @{ slug = "home-watch-services"; name = "Home Watch Services" },
+    @{ slug = "office-janitorial-services"; name = "Office Janitorial Services" },
+    @{ slug = "janitorial-cleaning-services"; name = "Janitorial Cleaning Services" },
+    @{ slug = "medical-dental-facility-cleaning"; name = "Medical & Dental Facility Cleaning" },
+    @{ slug = "industrial-warehouse-cleaning"; name = "Industrial & Warehouse Cleaning" },
+    @{ slug = "floor-stripping-waxing"; name = "Floor Stripping & Waxing" },
+    @{ slug = "gym-fitness-center-cleaning"; name = "Gym & Fitness Center Cleaning" },
+    @{ slug = "school-daycare-cleaning"; name = "School & Daycare Cleaning" },
+    @{ slug = "church-worship-center-cleaning"; name = "Church & Worship Center Cleaning" },
+    @{ slug = "property-management-janitorial"; name = "Property Management Janitorial" },
+    @{ slug = "luxury-estate-cleaning"; name = "Luxury Estate Cleaning" },
+    @{ slug = "solar-panel-cleaning"; name = "Solar Panel Cleaning" },
+    @{ slug = "gutter-cleaning"; name = "Gutter Cleaning" },
+    @{ slug = "property-maintenance"; name = "Property Maintenance" },
+    @{ slug = "airbnb-vacation-rental-management"; name = "Airbnb & Vacation Rental Management" },
+    @{ slug = "luxury-estate-management"; name = "Luxury Estate Management" }
+)
+
+$serviceSlugs = @(
+    "house-cleaning", "deep-cleaning", "move-in-out-cleaning", "airbnb-cleaning", "commercial-cleaning",
+    "post-construction-cleaning", "carpet-cleaning", "pressure-washing", "window-cleaning",
+    "home-watch-services", "office-janitorial-services", "janitorial-cleaning-services",
+    "medical-dental-facility-cleaning", "industrial-warehouse-cleaning", "floor-stripping-waxing",
+    "gym-fitness-center-cleaning", "school-daycare-cleaning", "church-worship-center-cleaning",
+    "property-management-janitorial", "luxury-estate-cleaning", "solar-panel-cleaning",
+    "gutter-cleaning", "property-maintenance", "airbnb-vacation-rental-management",
+    "luxury-estate-management"
 )
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
@@ -35,7 +62,7 @@ $serviceImageMap = @{
     "window-cleaning" = "../../images/whatsapp-image-2026-02-10-at-11.18.08-pm.jpeg"
 }
 
-# EXTREME SEO H1 MAPPING - Unique, High-Impact Titles
+# EXTREME SEO H1 MAPPING
 $serviceH1Map = @{
     "house-cleaning" = "House Cleaning Services in {LOCATION}, FL"
     "deep-cleaning" = "Deep House Cleaning in {LOCATION}, FL"
@@ -48,7 +75,7 @@ $serviceH1Map = @{
     "post-construction-cleaning" = "Post-Construction Cleaning in {LOCATION}, FL"
 }
 
-# KEYWORD-RICH HERO DESCRIPTIONS - Precise and Natural
+# KEYWORD-RICH HERO DESCRIPTIONS
 $serviceDescMap = @{
     "house-cleaning" = "Top-rated house cleaning and professional maid services in {LOCATION}, FL. 100% Satisfaction Guaranteed."
     "deep-cleaning" = "Detailed deep cleaning services to reset your {LOCATION} home. Every corner cleaned, every surface sanitized."
@@ -63,7 +90,7 @@ $serviceDescMap = @{
 
 foreach ($loc in $locations) {
     $cleanLoc = if ($loc -eq "Anna Maria") { "Anna Maria Island" } else { $loc }
-    $locSlug = $loc.ToLower().Replace(" ", "-") + "-cleaning"
+    $locSlug = $loc.ToLower().Replace(" ", "-") + "-fl"
     
     foreach ($svc in $services) {
         $svcSlug = $svc.slug
@@ -72,268 +99,77 @@ foreach ($loc in $locations) {
         $destDir = "$locSlug/$svcSlug"
         $destFile = "$destDir/index.html"
         
-        Write-Host "Generating: $destFile"
-        
-        if (!(Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
-        
         if (Test-Path $sourceFile) {
+            Write-Host "Generating: $destFile"
+            if (!(Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
+            
             $content = Get-Content $sourceFile -Raw -Encoding UTF8
             
-            # Extract footer to protect it from location name replacements
-            $footerPattern = '(?s)(<footer class=".*?">.*?</footer>)'
-            $footerMatch = [regex]::Match($content, $footerPattern)
-            $originalFooter = ""
-            if ($footerMatch.Success) {
-                $originalFooter = $footerMatch.Value
-                # Use a unique placeholder that won't be affected by replacements
-                $content = $content.Replace($originalFooter, "{{FOOTER_PLACEHOLDER_UNIQUE}}")
+            # Inject Siloed Links into ALL content (Header, Menu, Body)
+            foreach ($sSlug in $serviceSlugs) {
+                $content = $content -replace "/$sSlug/", "/$locSlug/$sSlug/"
             }
+
+            # Fix Area Navigation Links (rename -cleaning to -fl) in all content
+            $content = $content -replace "-cleaning/", "-fl/"
+
+            # Localize Header (Rated Service)
+            $content = [regex]::Replace($content, '(?s)Rated Cleaning Service in\s+Bradenton</span>', "Rated Cleaning Service in $cleanLoc</span>")
             
             # 1. Localize Titles and Metas
             $content = $content -replace '(?s)<title>.*?</title>', "<title>Best $svcName in $cleanLoc, FL | Top Rated & Reliable Service</title>"
             $content = $content -replace '(?s)<meta name="description".*?>', "<meta name=""description"" content=""Need the best $svcName in $cleanLoc, FL? Sweet Maid offers expert, affordable, and top-rated cleaning services. Licensed & Insured. 100% Guaranteed. Get a Quote!"" />"
             
-            # Extreme SEO H1 Overhaul
-            $content = $content -replace '(?s)<h1.*?>.*?</h1>', @"
+            # SEO H1 Overhaul
+            $seoH1 = if ($serviceH1Map.ContainsKey($svcSlug)) { $serviceH1Map[$svcSlug] -replace '\{LOCATION\}', $cleanLoc } else { "$svcName in $cleanLoc, FL" }
+            $content = [regex]::Replace($content, '(?s)<h1.*?>.*?</h1>', @"
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-gray-900">
-                Best $svcName in <br>
-                <span class="text-gradient">$cleanLoc, FL</span>
+                $($seoH1 -replace " in $cleanLoc, FL", " in <br><span class=`"text-gradient`">$cleanLoc, FL</span>")
             </h1>
-"@
+"@)
 
-            # Extreme SEO Hero Description Overhaul
-            $content = $content -replace '(?s)<p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">.*?</p>', @"
+            # SEO Hero Description
+            $seoDesc = if ($serviceDescMap.ContainsKey($svcSlug)) { $serviceDescMap[$svcSlug] -replace '\{LOCATION\}', $cleanLoc } else { "Expert $svcName in $cleanLoc. 100% Satisfaction Guaranteed." }
+            $content = [regex]::Replace($content, '(?s)<p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">.*?</p>', @"
             <p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
-                Expert $svcName in $cleanLoc. Licensed & Insured. 100% Satisfaction Guaranteed.
+                $seoDesc
             </p>
-"@
+"@)
             
             # 2. Canonical and OG Tags
             $content = $content -replace '<link rel="canonical" href=".*?" />', "<link rel=""canonical"" href=""https://sweetmaidcleaning.com/$locSlug/$svcSlug/"" />"
             $content = $content -replace '<meta property="og:url" content=".*?">', "<meta property=""og:url"" content=""https://sweetmaidcleaning.com/$locSlug/$svcSlug/"">"
             $content = $content -replace '<meta property="og:title" content=".*?">', "<meta property=""og:title"" content=""$svcName in $cleanLoc, FL | Sweet Maid Cleaning"">"
 
-            # 3. Content Localization (Targeted)
-            # We replace "Bradenton" in specific phrases instead of globally to avoid breaking URLs
-            $phrases = @(
-                "Bradenton & Sarasota", "Bradenton and Sarasota", "Bradenton’s", "Bradenton's",
-                "across Bradenton and Southwest Florida", "Bradenton area", "Bradenton home"
-            )
-            foreach ($p in $phrases) {
-                $replacement = $p -replace "Bradenton", $cleanLoc
-                $content = $content -replace [regex]::Escape($p), $replacement
-            }
-            
-            # Specifically replace "Bradenton" in the top bar
-            $content = [regex]::Replace($content, '(?s)Rated Cleaning Service in\s+Bradenton</span>', "Rated Cleaning Service in $cleanLoc</span>")
-            
-            # 4. Schema Localization Fixes (Regex & Literal)
+            # 3. Content Localization
+            $content = $content -replace "Bradenton’s", "$cleanLoc's"
+            $content = $content -replace "Bradenton's", "$cleanLoc's" 
+            $content = $content -replace "across Bradenton and Southwest Florida", "across $cleanLoc and Southwest Florida"
+            $content = $content -replace "Bradenton home", "$cleanLoc home"
+            $content = $content -replace "Why Bradenton Trusts Us", "Why $cleanLoc Trusts Us for $svcName"
+            $content = $content -replace "Trusted by homeowners in Bradenton", "Trusted by homeowners in $cleanLoc"
+
+            # 4. Schema Localization
             $content = $content -replace '"addressLocality":\s*".*?"', "`"addressLocality`": `"$cleanLoc`""
             $content = $content -replace '"name":\s*"Sweet Maid Cleaning Service - .*?"', "`"name`": `"Sweet Maid Cleaning Service - $svcName $cleanLoc`""
             $content = $content -replace '"url":\s*".*?"', "`"url`": `"https://sweetmaidcleaning.com/$locSlug/$svcSlug/`""
-            # Fix the areaServed name (which might have been 'House, FL' or 'Bradenton, FL' in source)
-            # This regex matches any "name": "...", followed by ", FL"
             $content = $content -replace '"name":\s*".*?, FL"', "`"name`": `"$cleanLoc, FL`""
             
-            # Fix image paths for two-level deep directories (../images/ -> ../../images/)
-            # We do this AFTER other replacements to avoid double-correcting if any were already fixed
+            # 5. Path fix for images (Two levels deep)
             $content = $content.Replace('src="../images/', 'src="../../images/')
             $content = $content.Replace('url("../images/', 'url("../../images/')
-            $content = $content.Replace("url('../images/", "url('../../images/")
-            $content = $content.Replace("url(../images/", "url(../../images/")
             
-            # Literal replacements for FAQ (Regex-safe)
-            $content = $content.Replace('best cleaning service in "', "best cleaning service in $cleanLoc?`"")
-            $content = $content.Replace('house cleaning cost in "', "house cleaning cost in $cleanLoc?`"")
-            
-            # 5. Metadata URL Standards (Ensures lowercase and avoids accidental replacement from content logic)
-            # We use (?i) for case-insensitive match but provide a known lowercase replacement
-            $content = $content -replace '(?i)<link rel="canonical" href=".*?" />', "<link rel=""canonical"" href=""https://sweetmaidcleaning.com/$locSlug/$svcSlug/"" />"
-            $content = $content -replace '(?i)<meta property="og:url" content=".*?">', "<meta property=""og:url"" content=""https://sweetmaidcleaning.com/$locSlug/$svcSlug/"">"
-            
-            # Generic catch-all for any leftover 'House' or 'Bradenton' place-holders in text
-            $content = $content -replace 'cost in House', "cost in $cleanLoc"
-            $content = $content -replace 'service in House', "service in $cleanLoc"
-            $content = $content -replace 'rated cleaning service in House', "rated cleaning service in $cleanLoc" 
-            
-            # Legacy/Pollution Fixes (Targeting Bradenton specifically)
-            $content = $content -replace "Why Bradenton Trusts Us", "Why $cleanLoc Trusts Us for $svcName"
-            
-            # Map Optimization (Google Maps Embed)
+            # Map Optimization
             $mapPb = "!1m18!1m12!1m3!1d113425.29828882585!2d-82.64501464999999!3d27.497495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e663693aa661%3A0x628f8694032a1740!2s$($cleanLoc -replace ' ', '+')%2C+FL%2C+USA!5e0!3m2!1sen!2sus!4v1707520000000!5m2!1sen!2sus"
-            
-            if ($cleanLoc -eq "Venice") {
-                $mapPb = "!1m18!1m12!1m3!1d113643.08051786196!2d-82.49089947930467!3d27.391629853974495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c341399426f30d%3A0xc3b83c518b532924!2sVenice%2C+FL+34285%2C+USA!5e0!3m2!1sen!2sus!4v1739561081827!5m2!1sen!2sus"
-            } elseif ($cleanLoc -eq "University Park") {
-                $mapPb = "!1m18!1m12!1m3!1d113643.08051786196!2d-82.49089947930467!3d27.391629853974495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c341399426f30d%3A0xc3b83c518b532924!2sUniversity+Park%2C+FL+34201%2C+USA!5e0!3m2!1sen!2sus!4v1739561081827!5m2!1sen!2sus"
+            if ($cleanLoc -eq "Miami") {
+                $mapPb = "!1m18!1m12!1m3!1d3592.518!2d-80.19179!3d25.76168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a5015b3c53%3A0xc074744040974837!2sMiami%2C+FL%2C+USA!5e0!3m2!1sen!2sus!4v1739561081827!5m2!1sen!2sus"
             }
-            
             $content = $content -replace 'MAP_PLACEHOLDER', $mapPb
-            $content = $content -replace "Bradenton's most trusted", "$cleanLoc's most trusted $svcName service"
-            $content = $content -replace "Joy of Clean in Bradenton", "Joy of Clean in $cleanLoc"
-            $content = $content -replace "Let Our Bradenton Team Contact You", "Let Our $cleanLoc Team Contact You"
-            $content = $content -replace "Licensed & Insured Bradenton Cleaners", "Licensed & Insured $svcName Experts in $cleanLoc"
-            $content = $content -replace "Trusted by homeowners in Bradenton", "Trusted by homeowners in $cleanLoc"
-            
-            # ---------------------------------------------------------
-            # DEEP CONTENT INJECTION (Body Text Overhaul)
-            # ---------------------------------------------------------
-            
-            # 1. Section Headers & Subheaders
-            $content = $content -replace "The Sweet Maid Standard", "The Sweet Maid $svcName Standard"
-            $content = $content -replace "Why Locals Trust Us", "Why $cleanLoc Trusts Us for $svcName"
-            $content = $content -replace "Expert Cleaning for Every Need", "Expert $svcName for Every Need in $cleanLoc"
-            
-            # 2. Feature Titles & Descriptions
-            $content = $content -replace "Trusted Professionals", "Trusted $svcName Experts"
-            $content = $content -replace "Every team member undergoes", "Every $cleanLoc team member undergoes"
-            $content = $content -replace "Impeccable Detail", "Impeccable $svcName Detail"
-            $content = $content -replace "ensureing a level of clean", "ensuring a level of $svcName"
-            $content = $content -replace "re-clean your Bradenton home", "re-clean your $cleanLoc home"
-            $content = $content -replace "re-clean your home", "re-clean your $cleanLoc home"
-            
-            # 3. General Body Text Expansion
-            # "cleaning service" -> "$svcName service" (Contextual)
-            $content = $content -replace "premier cleaning solutions", "premier $svcName solutions"
-            $content = $content -replace "keep your home spotless", "keep your $cleanLoc home spotless"
-            $content = $content -replace "time to move on", "time to move out of your $cleanLoc home"
-            $content = $content -replace "Make your new home fresh", "Make your new $cleanLoc home fresh"
-            
-            # 4. CTA & Footer
-            $content = $content -replace "Get Your Free Quote", "Get Your Free $svcName Quote"
-            $content = $content -replace "Call Me", "Call for $svcName"
-            $content = $content -replace "Follow us for cleaning tips", "Follow us for $cleanLoc cleaning tips"
-            
-            # 5. FAQ Specifics (Aggressive)
-            $content = $content -replace "cleaning services in", "$svcName services in"
-            $content = $content -replace "Licensed & Insured Cleaners", "Licensed & Insured $svcName Experts in $cleanLoc"
-            $content = $content -replace "quote for my home", "quote for my $cleanLoc home"
-            
-            # ---------------------------------------------------------
-            # EXTREME SEO: SERVICE CARD DESCRIPTIONS
-            # ---------------------------------------------------------
-            
-            # Carpet Cleaning
-            $content = $content -replace "Professional steam cleaning to remove stains, odors, and allergens from carpets and rugs\.", "Professional $svcName in $cleanLoc to remove stains, odors, and allergens. Trusted by $cleanLoc homeowners."
-            
-            # Window Cleaning
-            $content = $content -replace "Crystal-clear, streak-free windows inside and out for maximum natural light and curb appeal\.", "Crystal-clear $svcName in $cleanLoc for maximum natural light. Trusted window cleaning serving $cleanLoc."
-            
-            # Pressure Washing
-            $content = $content -replace "Restore driveways, patios, and exterior surfaces with powerful, professional pressure washing\.", "Restore $cleanLoc driveways and patios with professional $svcName. Expert power washing in $cleanLoc."
-            
-            # Commercial Cleaning
-            $content = $content -replace "Impress clients and protect employees with professional office janitorial services\.", "Impress clients with professional $svcName in $cleanLoc. Expert commercial cleaning for $cleanLoc businesses."
-            
-            # Airbnb Cleaning
-            $content = $content -replace "Fast, reliable turnovers between guests with linen service and restocking for 5-star reviews\.", "Fast $svcName in $cleanLoc for Airbnb hosts. Professional vacation rental cleaning in $cleanLoc."
-            
-            # Post-Construction Cleaning
-            $content = $content -replace "Removing fine dust and debris after renovations so your new space truly sparkles\.", "Expert $svcName in $cleanLoc removes construction dust and debris. Post-renovation cleaning for $cleanLoc properties."
-            
-            # House/Home Cleaning
-            $content = $content -replace "Flexible residential cleaning for apartments, condos, and houses - one-time or recurring\.", "Flexible $svcName in $cleanLoc for apartments, condos, and houses. Recurring cleaning for $cleanLoc homeowners."
-            
-            # Deep Cleaning
-            $content = $content -replace "A top-to-bottom, detailed clean to reset your space and eliminate hidden grime\.", "Top-to-bottom $svcName in $cleanLoc to eliminate hidden grime. Deep cleaning for $cleanLoc homes."
-            
-            # Move-In Cleaning
-            $content = $content -replace "Make your new house fresh, sanitized, and move-in ready from day one\.", "Professional $svcName in $cleanLoc to make your home move-in ready. Trusted move-in cleaning in $cleanLoc."
-            $content = $content -replace "Make your new home fresh, sanitized, and move-in ready from day one\.", "Professional $svcName in $cleanLoc to make your home move-in ready. Trusted move-in cleaning in $cleanLoc."
-            
-            # Move-Out Cleaning  
-            $content = $content -replace "Leave your space spotless and stress-free when it's time to move out\.", "Expert $svcName in $cleanLoc leaves your space spotless. Professional move-out cleaning for $cleanLoc renters."
-            $content = $content -replace "Leave your space spotless and stress-free when it's time to move out of your home\.", "Expert $svcName in $cleanLoc leaves your space spotless. Professional move-out cleaning for $cleanLoc renters."
-            
-            # ---------------------------------------------------------
-            # EXTREME SEO: DETAILED SERVICE SECTIONS
-            # ---------------------------------------------------------
-            
-            $content = $content -replace "Experience the luxury of a consistently pristine home\.", "Experience luxury $svcName in $cleanLoc for a consistently pristine home."
-            $content = $content -replace "Our residential services are designed for busy professionals and families who value their time and peace of mind\.", "Our $svcName in $cleanLoc is designed for busy $cleanLoc professionals and families."
-            
-            # Generic "home" and "space" references
-            $content = $content -replace "for your home\.", "for your $cleanLoc home."
-            $content = $content -replace "in your home\.", "in your $cleanLoc home."
-            $content = $content -replace "your entire home\.", "your entire $cleanLoc home."
-            $content = $content -replace "spotless home\.", "spotless $cleanLoc home."
-            $content = $content -replace "pristine home\.", "pristine $cleanLoc home."
-            
-            # Generic "team" references
-            $content = $content -replace "our professional team", "our professional $cleanLoc $svcName team"
-            $content = $content -replace "Our team arrives", "Our $cleanLoc $svcName team arrives"
-            $content = $content -replace "the team will", "the $cleanLoc team will"
-            
-            # ---------------------------------------------------------
-            # EXTREME SEO: CTA ENHANCEMENTS
-            # ---------------------------------------------------------
-            
-            $content = $content -replace "Book Now\<", "Book $svcName in $cleanLoc Now\<"
-            $content = $content -replace "\>Learn More\<", "\>Learn More About $svcName in $cleanLoc\<"
-            $content = $content -replace "Contact Us Today", "Contact Us for $svcName in $cleanLoc"
-            $content = $content -replace "Schedule Your Cleaning", "Schedule Your $cleanLoc $svcName"
-            
-            # ---------------------------------------------------------
-            # EXTREME SEO: PROCESS STEPS & FEATURES
-            # ---------------------------------------------------------
-            
-            $content = $content -replace "We arrive on time", "Our $cleanLoc $svcName team arrives on time"
-            $content = $content -replace "assess your space", "assess your $cleanLoc property"
-            $content = $content -replace "Professional equipment and supplies", "Professional $svcName equipment in $cleanLoc"
-            $content = $content -replace "Background-checked cleaners", "Background-checked $svcName experts serving $cleanLoc"
-            
-            # ---------------------------------------------------------
-            # EXTREME SEO: PARAGRAPH CONTENT
-            # ---------------------------------------------------------
-            
-            $content = $content -replace "Southwest Florida's premier cleaning solutions", "Southwest Florida's premier $svcName solutions"
-            $content = $content -replace "designed to keep your home spotless and stress-free", "designed to keep your $cleanLoc home spotless and stress-free"
-            $content = $content -replace "Trusted by homeowners", "Trusted by $cleanLoc homeowners"
-            $content = $content -replace "and beyond\.", "and throughout Southwest Florida."
-            
-            # Feature descriptions
-            $content = $content -replace "hotel-standard training before entering your home", "hotel-standard $svcName training before entering your $cleanLoc home"
-            $content = $content -replace "from baseboards to ceiling fans", "from baseboards to ceiling fans in your $cleanLoc home"
-            
-            # ---------------------------------------------------------
-            # UNIQUE HERO IMAGE INJECTION
-            # ---------------------------------------------------------
-            if ($serviceImageMap.ContainsKey($svcSlug)) {
-                $heroImage = $serviceImageMap[$svcSlug]
-                $content = $content -replace 'id="heroImage" src=".*?"', "id=`"heroImage`" src=`"$heroImage`""
-            }
-            
-            # ---------------------------------------------------------
-            # EXTREME SEO H1 INJECTION
-            # ---------------------------------------------------------
-            if ($serviceH1Map.ContainsKey($svcSlug)) {
-                $seoH1 = $serviceH1Map[$svcSlug] -replace '\{LOCATION\}', $cleanLoc
-                # Find and replace the H1 content, preserving HTML structure
-                $content = $content -replace '(?s)(\<h1[^\>]*\>).*?(\</h1\>)', "`$1$seoH1`$2"
-            }
-            
-            # ---------------------------------------------------------
-            # KEYWORD-RICH DESCRIPTION INJECTION
-            # ---------------------------------------------------------
-            if ($serviceDescMap.ContainsKey($svcSlug)) {
-                $seoDesc = $serviceDescMap[$svcSlug] -replace '\{LOCATION\}', $cleanLoc
-                # Replace the hero paragraph description
-                $content = $content -replace '(?s)Expert .*? in .*?\. Licensed & Insured\. 100% Satisfaction Guaranteed\.', $seoDesc
-            }
-            
-            # Restore the original footer
-            if ($footerMatch.Success) {
-                $content = $content.Replace("{{FOOTER_PLACEHOLDER_UNIQUE}}", $originalFooter)
-            }
-            
-            # Restore the original footer
-            if ($footerMatch.Success) {
-                $content = $content -replace "{{FOOTER_PLACEHOLDER}}", [regex]::Escape($originalFooter)
-            }
 
+            # Save
             [System.IO.File]::WriteAllText((Resolve-Path .).Path + "\$destFile", $content, $utf8NoBom)
         }
     }
 }
 
-Write-Host "Hyper-Local SEO Rollout Complete: $(($locations.Count * $services.Count)) pages generated."
+Write-Host "Hyper-Local SEO Siloing Complete: $(($locations.Count * $services.Count)) pages generated."
