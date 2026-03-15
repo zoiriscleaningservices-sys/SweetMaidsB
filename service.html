@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TrueWebX Business Profile</title>
+  <meta name="description" content="Professional local services on TrueWebX – free consultation available.">
+
+  <link rel="canonical" id="canonicalLink" href="">
+
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" id="ogTitle" content="Local Business Profile">
+  <meta property="og:description" id="ogDesc" content="Contact this trusted local service provider.">
+  <meta property="og:image" id="ogImage" content="">
+  <meta property="og:url" id="ogUrl" content="">
+  <meta property="og:site_name" content="TrueWebX">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" id="twitterTitle" content="Local Business Profile">
+  <meta name="twitter:description" id="twitterDesc" content="Contact this trusted local service provider.">
+  <meta name="twitter:image" id="twitterImage" content="">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --coral: #ff6b6b;
+      --turquoise: #0d9488;
+      --text: #ffffff;
+      --glass: rgba(255, 255, 255, 0.15);
+      --bg-gradient: linear-gradient(135deg, var(--turquoise), var(--coral));
+    }
+
+    /* Hyper-Drive Scroller */
+    .hyper-scroller {
+      width: 100%;
+      overflow: hidden;
+      background: #000;
+      border-bottom: 2px solid var(--coral);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10002;
+      white-space: nowrap;
+      padding: 14px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .hyper-scroller-content {
+      display: flex;
+      animation: hyperDrive 30s linear infinite;
+    }
+
+    @keyframes hyperDrive {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .hyper-text {
+      display: flex;
+      align-items: center;
+      font-weight: 900;
+      font-size: 1rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      padding-right: 50px;
+      flex-shrink: 0;
+    }
+
+    .hyper-text b {
+      color: var(--coral);
+      text-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
+    }
+
+    .hyper-text i {
+      color: var(--turquoise);
+      margin: 0 15px;
+      font-size: 1.2rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: 32px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, #fff, #ff8fa3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+
+    .profile-img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 6px solid var(--coral);
+      margin: 20px auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin: 20px 0;
+      line-height: 1.2;
+    }
+
+    .location {
+      font-size: 1.6rem;
+      opacity: 0.95;
+      margin: 20px 0;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin: 40px auto;
+      max-width: 800px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 25px;
+      border-radius: 20px;
+    }
+
+    .contact-info {
+      margin: 40px 0;
+      font-size: 1.4rem;
+    }
+
+    .contact-info p {
+      margin: 15px 0;
+    }
+
+    .contact-info a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 50px 0;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .social-links a {
+      background: rgba(255, 255, 255, 0.2);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--coral);
+      transform: translateY(-8px) scale(1.1);
+    }
+
+    .cta-button {
+      background: var(--coral);
+      color: white;
+      padding: 18px 40px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 15px;
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+      transition: 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #ff5252;
+      transform: translateY(-5px);
+    }
+
+    .loading {
+      font-size: 1.6rem;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .loading i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .not-found {
+      font-size: 1.6rem;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .not-found i {
+      font-size: 4rem;
+      opacity: 0.7;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .back-home {
+      margin-top: 30px;
+      font-size: 1.2rem;
+    }
+
+    .back-home a {
+      color: white;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      opacity: 0.8;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .logo {
+        font-size: 2.8rem;
+      }
+
+      .cta-button {
+        font-size: 1.3rem;
+        padding: 16px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hyper-Drive Infinite Scroller (Global Rollout) -->
+  <div class="hyper-scroller" onclick="window.location.href='https://truewebx.site/rollout.html'">
+    <div class="hyper-scroller-content">
+      <span class="hyper-text">TRUEWEBX <b>GLOBAL ROLLOUT</b> <i>//</i> ZADAPT SYSTEMS <b>ADAPTIVE TECH</b> <i>//</i>
+        LIMPIEZA DIGITAL <b>PERFORMANCE ENGINE</b> <i>//</i> REAL-TIME <b>RANKING SUPREMACY</b> <i>//</i> GOING
+        <b>WORLDWIDE</b> <i>//</i> </span>
+      <span class="hyper-text">TRUEWEBX <b>GLOBAL ROLLOUT</b> <i>//</i> ZADAPT SYSTEMS <b>ADAPTIVE TECH</b> <i>//</i>
+        LIMPIEZA DIGITAL <b>PERFORMANCE ENGINE</b> <i>//</i> REAL-TIME <b>RANKING SUPREMACY</b> <i>//</i> GOING
+        <b>WORLDWIDE</b> <i>//</i> </span>
+      <span class="hyper-text">TRUEWEBX <b>GLOBAL ROLLOUT</b> <i>//</i> ZADAPT SYSTEMS <b>ADAPTIVE TECH</b> <i>//</i>
+        LIMPIEZA DIGITAL <b>PERFORMANCE ENGINE</b> <i>//</i> REAL-TIME <b>RANKING SUPREMACY</b> <i>//</i> GOING
+        <b>WORLDWIDE</b> <i>//</i> </span>
+      <span class="hyper-text">TRUEWEBX <b>GLOBAL ROLLOUT</b> <i>//</i> ZADAPT SYSTEMS <b>ADAPTIVE TECH</b> <i>//</i>
+        LIMPIEZA DIGITAL <b>PERFORMANCE ENGINE</b> <i>//</i> REAL-TIME <b>RANKING SUPREMACY</b> <i>//</i> GOING
+        <b>WORLDWIDE</b> <i>//</i> </span>
+    </div>
+  </div>
+
+  <div class="container" id="content">
+    <div class="loading">
+      <i class="fas fa-spinner fa-spin"></i>
+      <br>Loading your business profile...
+    </div>
+  </div>
+
+  <script type="application/ld+json" id="structuredData">{}</script>
+
+  <script>
+    // SINGLE, CLEAN Supabase client declaration
+    const supabase = supabase.createClient('https://vrpyomevjlsacourdmki.supabase.co', 'sb_publishable_CyhH7Cwymoqf2fxdNj6D1Q_NHl6TmTV');
+
+    async function loadServicePage() {
+      const params = new URLSearchParams(window.location.search);
+      const serviceId = params.get('id');
+      const content = document.getElementById('content');
+
+      if (!serviceId) {
+        content.innerHTML = `
+          <div class="not-found">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>Invalid Link</h2>
+            <p>No business ID was provided.</p>
+            <div class="back-home"><a href="https://truewebx.site/">← Back to TrueWebX Directory</a></div>
+          </div>
+        `;
+        return;
+      }
+
+      const { data: business, error } = await supabase
+        .from('services')
+        .select('*')
+        .eq('id', serviceId)
+        .single();
+
+      if (error || !business) {
+        content.innerHTML = `
+          <div class="not-found">
+            <i class="fas fa-search"></i>
+            <h2>Business Profile Not Found</h2>
+            <p>This listing may have been removed or the link is no longer valid.</p>
+            <div class="back-home"><a href="https://truewebx.site/">← Browse All Businesses on TrueWebX</a></div>
+          </div>
+        `;
+        return;
+      }
+
+      const currentUrl = window.location.href;
+
+      // Update page title and SEO
+      document.title = `${business.name} - ${business.city} | TrueWebX`;
+      document.querySelector('meta[name="description"]').setAttribute('content',
+        business.description ? business.description.substring(0, 157) + '...' : 'Professional local service'
+      );
+
+      document.getElementById('canonicalLink').setAttribute('href', currentUrl);
+
+      document.getElementById('ogTitle').setAttribute('content', `${business.name} in ${business.city}`);
+      document.getElementById('ogDesc').setAttribute('content', business.description ? business.description.substring(0, 200) : '');
+      document.getElementById('ogImage').setAttribute('content', business.profile || '');
+      document.getElementById('ogUrl').setAttribute('content', currentUrl);
+
+      document.getElementById('twitterTitle').setAttribute('content', `${business.name} in ${business.city}`);
+      document.getElementById('twitterDesc').setAttribute('content', business.description ? business.description.substring(0, 200) : '');
+      document.getElementById('twitterImage').setAttribute('content', business.profile || '');
+
+      // Structured Data
+      const [cityName = '', country = 'US'] = (business.city || '').split(',').map(s => s.trim());
+      document.getElementById('structuredData').textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": business.name,
+        "image": business.profile,
+        "telephone": business.phone,
+        "email": business.gmail,
+        "address": { "@type": "PostalAddress", "addressLocality": cityName, "addressCountry": country },
+        "description": business.description,
+        "url": currentUrl
+      }, null, 2);
+
+      // Render the full business profile
+      content.innerHTML = `
+        <div class="logo" onclick="window.location.href='https://truewebx.site/'">TrueWebX</div>
+
+        <img src="${business.profile || 'https://via.placeholder.com/400?text=Profile'}" alt="${business.name} logo/profile" class="profile-img">
+
+        <h1>${business.name}</h1>
+        <div class="location"><i class="fas fa-map-marker-alt"></i> ${business.city}</div>
+
+        <div class="description">${(business.description || 'No description available.').replace(/\n/g, '<br>')}</div>
+
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> <a href="tel:${business.phone}">${business.phone}</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:${business.gmail}">${business.gmail}</a></p>
+        </div>
+
+        ${Array.isArray(business.photos) && business.photos.length > 0 ? `
+          <div class="gallery">
+            ${business.photos.map(photo => `<img src="${photo}" alt="${business.name} service photo">`).join('')}
+          </div>
+        ` : ''}
+
+        ${Array.isArray(business.social_links) && business.social_links.length > 0 ? `
+          <div class="social-links">
+            ${business.social_links.map(link => {
+        const icons = {
+          instagram: 'instagram', tiktok: 'tiktok', facebook: 'facebook-f',
+          twitter: 'twitter', linkedin: 'linkedin-in', youtube: 'youtube',
+          whatsapp: 'whatsapp', other: 'globe'
+        };
+        const icon = icons[link.type.toLowerCase()] || 'globe';
+        return `<a href="${link.url}" target="_blank" rel="noopener" aria-label="${link.type}"><i class="fab fa-${icon}"></i></a>`;
+      }).join('')}
+          </div>
+        ` : ''}
+
+        <div style="margin:40px 0;">
+          <button class="cta-button" onclick="document.getElementById('msgModal').style.display='flex'">
+            Get Free Consultation
+          </button>
+          <button class="cta-button" onclick="const btn=this; const originalText=btn.innerText; navigator.clipboard.writeText('${currentUrl}'); btn.innerText='\\u2713 Copied!'; btn.style.background='#0d9488'; setTimeout(()=>{btn.innerText=originalText; btn.style.background='';}, 2500)">
+            Share This Profile
+          </button>
+        </div>
+
+        <!-- Messaging Modal -->
+        <div id="msgModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; backdrop-filter:blur(10px); padding:20px;">
+            <div style="background:var(--bg-gradient); width:100%; max-width:500px; padding:40px; border-radius:32px; position:relative; border:1px solid rgba(255,255,255,0.2); box-shadow:0 25px 50px rgba(0,0,0,0.5);">
+                <h2 style="margin-bottom:15px; font-size:1.8rem; text-align:center;">Chat with ${business.name}</h2>
+                <div id="chatHistory" style="height:300px; overflow-y:auto; margin-bottom:20px; padding:15px; background:rgba(0,0,0,0.2); border-radius:15px; display:flex; flex-direction:column; gap:10px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent;">
+                    <!-- Messages will load here -->
+                    <p style="text-align:center; opacity:0.6; margin:auto;">Loading history...</p>
+                </div>
+                <form id="contactForm" onsubmit="event.preventDefault(); sendMessage('${business.id}');">
+                    <div id="guestFields" style="display:none;">
+                        <input type="text" id="custName" placeholder="Your Name" style="width:100%; padding:12px; margin-bottom:10px; border-radius:10px; border:none; background:rgba(255,255,255,0.1); color:white; outline:none;">
+                        <input type="text" id="custContact" placeholder="Email or Phone" style="width:100%; padding:12px; margin-bottom:10px; border-radius:10px; border:none; background:rgba(255,255,255,0.1); color:white; outline:none;">
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <textarea id="custMsg" placeholder="Type your message..." required style="flex:1; padding:12px; border-radius:10px; border:none; background:rgba(255,255,255,0.15); color:white; min-height:50px; height:50px; outline:none; resize:none;"></textarea>
+                        <button type="submit" id="sendBtn" style="padding:0 20px; border-radius:10px; border:none; background:var(--coral); color:white; font-weight:bold; cursor:pointer; transition:0.3s;"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            <div id="authPrompt" style="display:none; text-align:center; margin-top:20px; font-size:0.9rem; opacity:0.8;">
+                <p>Logging in allows you to receive private replies directly in your dashboard.</p>
+                <a href="https://truewebx.site/dashboard.html" style="color:white; text-decoration:underline; font-weight:bold;">Login / Sign Up</a>
+            </div>
+            <div id="successMsg" style="display:none; text-align:center; margin-top:20px; color:#0f0; font-weight:bold;">
+                <i class="fas fa-check-circle" style="font-size:3rem; display:block; margin-bottom:10px;"></i>
+                Sent! The owner will reach out shortly.
+            </div>
+        </div>
+    </div>
+
+    </footer>
+  `;
+    }
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBam-ZJXtbgHnhI7IeGLgKS-HeRdSBQNS0",
+      authDomain: "limpieza-digital.firebaseapp.com",
+      projectId: "limpieza-digital",
+      storageBucket: "limpieza-digital.firebasestorage.app",
+      messagingSenderId: "410437614466",
+      appId: "1:410437614466:web:8abec9eb1189a2369bad9b"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const supabaseClient = supabase.createClient('https://vrpyomevjlsacourdmki.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZycHlvbWV2amxzYWNvdXJkbWtpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxNzA4ODUsImV4cCI6MjA4MTc0Njg4NX0.BsugjF75UO4TArkH5CeOIvJnMZAj8g6Ccf6hu1NsrUM');
+
+    auth.onAuthStateChanged(user => {
+      const guestFields = document.getElementById('guestFields');
+      const authPrompt = document.getElementById('authPrompt');
+      if (user) {
+        if (guestFields) guestFields.style.display = 'none';
+        if (authPrompt) authPrompt.style.display = 'none';
+      } else {
+        if (guestFields) guestFields.style.display = 'block';
+        if (authPrompt) authPrompt.style.display = 'block';
+      }
+      // Persistent Client ID for history without account
+      if (!localStorage.getItem('TRUEWEBX_CLIENT_ID')) {
+        localStorage.setItem('TRUEWEBX_CLIENT_ID', 'G-' + Math.random().toString(36).substring(2, 15));
+      }
+      if (window.currentBusinessId) loadChatHistory(window.currentBusinessId);
+    });
+
+    const persistentClientId = localStorage.getItem('TRUEWEBX_CLIENT_ID') || ('G-' + Math.random().toString(36).substring(2, 15));
+
+    let chatTimer = null;
+
+    async function loadChatHistory(serviceId) {
+      window.currentBusinessId = serviceId;
+      const user = auth.currentUser;
+      const historyDiv = document.getElementById('chatHistory');
+      if (!historyDiv) return;
+
+      let filter = `text.ilike.%[GuestID: ${persistentClientId}]%`;
+      if (user) filter += `,text.ilike.%[User: ${user.uid}]%`;
+
+      const { data, error } = await supabaseClient.from('messages')
+        .select('*')
+        .eq('service_id', serviceId)
+        .or(filter)
+        .order('created_at', { ascending: true });
+
+      if (error) {
+        console.error('History error:', error);
+        return;
+      }
+
+      const isScrolledToBottom = historyDiv.scrollHeight - historyDiv.clientHeight <= historyDiv.scrollTop + 1;
+
+      historyDiv.innerHTML = data.length ? data.map(m => {
+        let cleanText = m.text;
+        if (cleanText.includes('] - ')) {
+          cleanText = cleanText.split('] - ').pop();
+        }
+        cleanText = cleanText.replace('[Owner]: ', '');
+
+        return `
+          <div style="align-self: ${m.is_from_owner ? 'flex-start' : 'flex-end'}; 
+                      background: ${m.is_from_owner ? 'rgba(255,255,255,0.1)' : 'var(--coral)'}; 
+                      padding: 10px 15px; border-radius: 15px; max-width: 80%; font-size: 0.95rem;">
+            ${cleanText}
+            <div style="font-size: 0.7rem; opacity: 0.6; margin-top: 4px; text-align: right;">
+              ${new Date(m.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </div>
+          </div>
+        `;
+      }).join('') : '<p style="text-align:center; opacity:0.6; margin:auto;">Start the conversation!</p>';
+
+      if (isScrolledToBottom) {
+        historyDiv.scrollTop = historyDiv.scrollHeight;
+      }
+    }
+
+    async function sendMessage(serviceId) {
+      const btn = document.getElementById('sendBtn');
+      const msgInput = document.getElementById('custMsg');
+      const message = msgInput.value.trim();
+      if (!message) return;
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+      const user = auth.currentUser;
+      const name = user ? (user.displayName || user.email.split('@')[0]) : document.getElementById('custName').value;
+      const contact = user ? user.email : document.getElementById('custContact').value;
+
+      const prefix = user ? `[User: ${user.uid}]` : `[GuestID: ${persistentClientId}]`;
+      const fullText = user ? `${prefix} - ${message}` : `${prefix} [Guest: ${name} | Contact: ${contact}] - ${message}`;
+
+      const { error } = await supabase.from('messages').insert([{
+        service_id: serviceId,
+        customer_id: null,
+        text: fullText,
+        is_from_owner: false
+      }]);
+
+      if (error) {
+        alert('Error sending: ' + error.message);
+      } else {
+        msgInput.value = '';
+        loadChatHistory(serviceId);
+      }
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+    }
+
+    // Export for modal trigger
+    window.closeModal = () => {
+      document.getElementById('msgModal').style.display = 'none';
+      if (chatTimer) clearInterval(chatTimer);
+    };
+
+    window.openContactChat = (id) => {
+      document.getElementById('msgModal').style.display = 'flex';
+      loadChatHistory(id);
+      if (chatTimer) clearInterval(chatTimer);
+      chatTimer = setInterval(() => loadChatHistory(id), 4000);
+    };
+
+    // Clear timer on modal close
+    window.addEventListener('click', (e) => {
+      if (e.target.id === 'msgModal') {
+        clearInterval(chatTimer);
+        document.getElementById('msgModal').style.display = 'none';
+      }
+    });
+
+    // Start loading immediately
+    loadServicePage();
+  </script>
+</body>
+
+</html>

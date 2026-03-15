@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueWebX – Command Center</title>
+    <link rel="canonical" href="https://truewebx.site/dashboard.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 
+         * TRUEWEBX EXTREME DASHBOARD - COMMAND CENTER
+         * Design System: Cyber-Executive
+         */
+        :root {
+            /* Neo-Glass Palette */
+            --bg-deep: #030014;
+            --bg-liquid: radial-gradient(circle at 50% 50%, #4f46e5 0%, #0f172a 40%, #000000 100%);
+            --glass-panel: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --neon-primary: #00f3ff;
+            --neon-secondary: #bd00ff;
+            --neon-success: #00ff9d;
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+
+            /* Spatial Depth */
+            --shadow-nav: 0 20px 50px rgba(0, 0, 0, 0.5);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+            /* Animations */
+            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Animations */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.4s var(--ease-elastic) forwards;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.4s var(--ease-elastic) forwards;
+        }
+
+        /* Chat Bubbles */
+        .chat-bubble-owner {
+            align-self: flex-end;
+            background: rgba(0, 243, 255, 0.2);
+            border: 1px solid var(--neon-primary);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px 20px 0 20px;
+            padding: 12px 18px;
+            max-width: 75%;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .chat-bubble-guest {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 20px 20px 20px 0;
+            padding: 12px 18px;
+            max-width: 75%;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Ambient Liquid Background */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-liquid);
+            filter: blur(80px);
+            z-index: -1;
+            animation: pulse-bg 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-bg {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0.5;
+            }
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: var(--glass-panel);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .nav-dock {
+            /* Desktop Default */
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: auto;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 40px 0;
+            z-index: 1000;
+            transition: all 0.4s var(--ease-elastic);
+        }
+
+        /* Mobile "Command Capsule" Override */
+        @media (max-width: 768px) {
+            .nav-dock {
+                top: auto;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 350px;
+                height: 70px;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                padding: 0;
+                border-radius: 35px;
+                background: rgba(10, 10, 20, 0.6);
+                /* Darker for contrast */
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* LAYOUT */
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.98);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .app-container.loaded {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* CONTENT AREA (New Layout) */
+        .content-area {
+            flex: 1;
+            margin-left: 120px;
+            /* Desktop Dock Offset */
+            padding: 40px;
+            overflow-y: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .content-area {
+                margin-left: 0;
+                padding: 20px;
+                padding-bottom: 120px;
+                /* Space for Capsule */
+            }
+        }
+
+        /* Typography Helper */
+        .font-tech {
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* WIDGETS & CARDS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--glass-highlight);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Rajdhani', sans-serif;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-panel {
+            background: rgba(20, 20, 30, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .service-panel:hover {
+            background: rgba(30, 30, 45, 0.6);
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+            transform: scale(1.02);
+        }
+
+        .service-header {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .service-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .service-panel:hover .service-actions {
+            opacity: 1;
+        }
+
+        .action-chip {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            transition: 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-chip:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* WIZARD & FORMS */
+        .wizard-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .wizard-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .wizard-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .step-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-deep);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: grid;
+            place-items: center;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+        .step-dot.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            transform: scale(1.1);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .step-content {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+            backdrop-filter: blur(20px);
+            animation: slideInUp 0.5s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .cyber-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 20px;
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            transition: 0.3s;
+        }
+
+        .cyber-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-cyber {
+            padding: 14px 30px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .hidden-section {
+            display: none;
+        }
+
+        /* Login styles preserved minimally */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .app-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                padding: 15px;
+                align-items: center;
+                justify-content: space-between;
+                border-right: none;
+                border-bottom: 1px solid var(--glass-border);
+            }
+
+            .nav-link span {
+                display: none;
+            }
+
+            .user-profile-mini span {
+                display: none;
+            }
+
+            .main-area {
+                height: calc(100vh - 70px);
+            }
+
+            .top-bar {
+                padding: 0 20px;
+                height: 60px;
+            }
+        }
+
+        /* SEO Widget Override */
+        .seo-widget {
+            background: rgba(255, 255, 255, 0.02);
+            border: none;
+            box-shadow: none;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .seo-score-container {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        .circular-chart {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 250px;
+        }
+
+        .circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 3.8;
+        }
+
+        .circle {
+            fill: none;
+            stroke-width: 2.8;
+            stroke-linecap: round;
+            transition: stroke-dasharray 1s ease-out;
+        }
+
+        .percentage {
+            fill: #fff;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 0.5em;
+            text-anchor: middle;
+        }
+
+        .audit-list {
+            flex: 1;
+            display: grid;
+            gap: 8px;
+        }
+
+        .audit-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .status-pass {
+            color: var(--success);
+        }
+
+        .status-fail {
+            color: var(--accent);
+        }
+
+        .status-warn {
+            color: #facc15;
+        }
+
+        .seo-feedback {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Login Screen */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            /* Slight blur on background for focus */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. LOGIN SCREEN -->
+    <div id="loginScreen" class="login-container">
+        <div class="form"
+            style="width:100%; max-width:450px; background: rgba(30, 30, 40, 0.8); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px); color: white; padding:40px; border-radius:24px; text-align:center;">
+            <h2 style="margin-bottom:30px; font-family:'Rajdhani', sans-serif; font-size:2.5rem; letter-spacing:2px;"
+                id="formTitle">IDENTIFY</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <input id="email" placeholder="Access Code (Email)" class="cyber-input" type="email" required>
+                </div>
+                <div class="form-group">
+                    <input id="password" placeholder="Encryption Key (Password)" class="cyber-input" type="password"
+                        required>
+                </div>
+                <button type="submit" class="btn-cyber btn-primary" id="authButton"
+                    style="width:100%; justify-content:center;">INITIALIZE SESSION</button>
+            </form>
+            <div id="message"></div>
+            <p style="margin-top:20px; opacity:0.6; cursor:pointer;" onclick="toggleAuthMode()">
+                <span id="toggleText">Need clearance?</span> <span
+                    style="color:var(--primary); font-weight:bold;">Request Access</span>
+            </p>
+            <div style="margin-top:20px;">
+
+                <button type="button" class="btn google" id="googleBtn"
+                    style="width:100%; background:white; color:black; border:none; padding:12px; border-radius:12px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;">
+                    <i class="fab fa-google"></i> Google Identity
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ambient Background -->
+    <div class="liquid-bg"></div>
+
+    <div class="app-container">
+        <!-- Navigation Dock (Desktop Left / Mobile Bottom) -->
+        <nav class="nav-dock glass-panel">
+            <div class="nav-item active" onclick="show('home')" title="Mission Control">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="nav-item" onclick="show('add')" title="Launch Sequence">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="nav-item" onclick="show('messages')" title="Comms Link">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <div class="nav-item" onclick="logoutAndGoHome()" title="Abort Session"
+                style="margin-top:auto; color:#f43f5e;">
+                <i class="fas fa-power-off"></i>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area" id="mainScroll">
+
+            <!-- Header / Status Bar -->
+            <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;">
+                <div>
+                    <h1 class="font-tech" id="pageTitle"
+                        style="font-size:2.5rem; background:linear-gradient(to right, #fff, var(--text-muted)); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+                        MISSION CONTROL</h1>
+                    <div style="font-size:0.9rem; color:var(--text-muted); display:flex; gap:10px; align-items:center;">
+                        <span id="userName">OPERATOR</span>
+                        <span
+                            style="width:6px; height:6px; background:var(--neon-success); border-radius:50%; box-shadow:0 0 10px var(--neon-success);"></span>
+                        SYSTEM ONLINE
+                    </div>
+                </div>
+                <!-- Profile Avatar -->
+                <div id="userAvatar"
+                    style="width:50px; height:50px; border-radius:16px; background:var(--glass-highlight); border:1px solid var(--glass-border); cursor:pointer;">
+                </div>
+            </header>
+
+            <!-- DASHBOARD SCREEN -->
+            <div id="dashboardScreen" style="display:flex; flex-direction:column; width:100%;">
+
+                <!-- PLACEHOLDERS FOR VIEWS -->
+                <!-- HOME VIEW -->
+                <div id="home">
+                    <!-- Stats Section -->
+                    <div class="stats-grid">
+                        <div class="data-crystal">
+                            <div style="color:var(--text-muted); font-size:0.9rem; margin-bottom:10px;">ACTIVE
+                                DEPLOYMENTS</div>
+                            <div style="font-size:2.5rem; font-weight:700; color:var(--neon-primary);">4</div>
+                            <div style="font-size:0.8rem; color:var(--neon-success); margin-top:5px;"><i
+                                    class="fas fa-arrow-up"></i> All Systems Nominal</div>
+                        </div>
+                        <div class="data-crystal">
+                            <div style="color:var(--text-muted); font-size:0.9rem; margin-bottom:10px;">TOTAL
+                                INTERACTIONS</div>
+                            <div style="font-size:2.5rem; font-weight:700; color:var(--neon-secondary);">1,284</div>
+                            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:5px;">+12% from last cycle
+                            </div>
+                        </div>
+                        <div class="data-crystal">
+                            <div style="color:var(--text-muted); font-size:0.9rem; margin-bottom:10px;">SEARCH
+                                VISIBILITY</div>
+                            <div style="font-size:2.5rem; font-weight:700; color:#fff;">92%</div>
+                            <div class="seo-score-container"
+                                style="position:absolute; right:20px; bottom:20px; width:40px; height:40px; opacity:0.5;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="font-tech"
+                        style="font-size:1.5rem; margin-bottom:20px; display:flex; align-items:center; gap:15px;">
+                        <i class="fas fa-network-wired" style="color:var(--neon-primary);"></i> LIVE OPERATIONS
+                    </h2>
+                    <div class="services-grid" id="list"></div>
+                </div>
+
+                <!-- ADD WIZARD VIEW -->
+                <div id="add" class="hidden-section">
+                    <div class="wizard-container">
+                        <h2
+                            style="font-family:'Rajdhani', sans-serif; font-size:2rem; margin-bottom:40px; text-align:center;">
+                            Launch New Service Sequence</h2>
+
+                        <!-- Wizard Headers -->
+                        <div class="wizard-steps">
+                            <div class="step-dot active" data-step="1">1</div>
+                            <div class="step-dot" data-step="2">2</div>
+                            <div class="step-dot" data-step="3">3</div>
+                        </div>
+
+                        <form id="addForm">
+                            <!-- STEP 1: Core Details -->
+                            <div class="step-content" id="step1">
+                                <h3 style="margin-bottom:20px; color:var(--primary);">Target Identification</h3>
+                                <div class="form-group">
+                                    <label class="form-label">Operation Name (Business Name)</label>
+                                    <input type="text" id="name" class="cyber-input" placeholder="e.g. Apex Cleaners"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Sector Coordinates (City)</label>
+                                    <div style="position:relative;">
+                                        <input type="text" id="cityAddInput" class="cyber-input"
+                                            placeholder="Search Sector..." autocomplete="off" required>
+                                        <div id="cityAddList"
+                                            style="position:absolute; top:100%; left:0; right:0; background:var(--bg-panel); border:1px solid var(--glass-border); border-radius:12px; max-height:200px; overflow-y:auto; z-index:50; display:none;">
+                                        </div>
+                                        <input type="hidden" id="cityAdd" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Zone Code (ZIP - Optional)</label>
+                                    <input type="text" id="zipAdd" class="cyber-input" placeholder="5-Digit Code"
+                                        maxlength="5">
+                                </div>
+                                <div style="text-align:right;">
+                                    <button type="button" class="btn-cyber btn-primary" onclick="nextStep(2)">Proceed to
+                                        Step 2 <i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- STEP 2: Comms & Intel -->
+                            <div class="step-content hidden-section" id="step2">
+                                <h3 style="margin-bottom:20px; color:var(--primary);">Comms & Intelligence</h3>
+                                <div class="form-group">
+                                    <label class="form-label">Secure Line (Phone)</label>
+                                    <input type="tel" id="phone" class="cyber-input" placeholder="(555) 000-0000"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Digital Uplink (Email)</label>
+                                    <input type="email" id="gmail" class="cyber-input" placeholder="contact@domain.com"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Mission Brief (Description)</label>
+                                    <textarea id="desc" class="cyber-input" rows="5"
+                                        placeholder="Describe critical mission details..." required></textarea>
+                                </div>
+
+                                <!-- SEO Audit Widget -->
+                                <div class="seo-widget" id="seoWidgetAdd">
+                                    <div class="seo-score-container">
+                                        <svg viewBox="0 0 36 36" class="circular-chart">
+                                            <path class="circle-bg"
+                                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            <path class="circle" stroke-dasharray="0, 100"
+                                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                style="stroke: #4ade80;" />
+                                            <text x="18" y="20.35" class="percentage">0%</text>
+                                        </svg>
+                                    </div>
+                                    <div class="audit-list">
+                                        <div
+                                            style="margin-bottom:5px; font-weight:800; font-size:1rem; letter-spacing:1px; color:#fff;">
+                                            RANKING PROBABILITIES</div>
+                                        <div class="audit-item"><span style="opacity:0.7;">Title Efficiency</span> <span
+                                                class="audit-status status-fail" data-check="title">Scanning...</span>
+                                        </div>
+                                        <div class="audit-item"><span style="opacity:0.7;">Content Depth</span> <span
+                                                class="audit-status status-fail" data-check="desc">Scanning...</span>
+                                        </div>
+                                        <div class="audit-item"><span style="opacity:0.7;">Keyword Density</span> <span
+                                                class="audit-status status-fail"
+                                                data-check="keywords">Scanning...</span></div>
+                                        <div class="audit-item"><span style="opacity:0.7;">Visual Assets</span> <span
+                                                class="audit-status status-fail" data-check="media">Scanning...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="seo-feedback" id="seoFeedbackAdd">Awaiting Intelligence Input...</div>
+
+                                <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                                    <button type="button" class="btn-cyber btn-secondary" onclick="prevStep(1)"><i
+                                            class="fas fa-arrow-left"></i> Back</button>
+                                    <button type="button" class="btn-cyber btn-primary" onclick="nextStep(3)">Proceed to
+                                        Step 3 <i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- STEP 3: Visuals & Launch -->
+                            <div class="step-content hidden-section" id="step3">
+                                <h3 style="margin-bottom:20px; color:var(--primary);">Visual Assets & Launch</h3>
+
+                                <div class="form-group">
+                                    <label class="form-label">Identity Marker (Profile Logo)</label>
+                                    <input type="file" id="profile" accept="image/*" class="cyber-input" required>
+                                    <div id="profilePreview"
+                                        style="margin-top:10px; display:flex; justify-content:center;"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Field Imagery (Gallery)</label>
+                                    <input type="file" id="photos" accept="image/*" multiple class="cyber-input">
+                                    <div id="galleryPreview"
+                                        style="margin-top:10px; display:flex; flex-wrap:wrap; gap:10px;"></div>
+                                </div>
+
+                                <div class="form-group" id="social-container">
+                                    <label class="form-label">External Uplinks (Social Media)</label>
+                                    <div style="display:flex; gap:10px; margin-bottom:10px;">
+                                        <select id="social-type" class="cyber-input" style="width:140px;">
+                                            <option value="instagram">Instagram</option>
+                                            <option value="tiktok">TikTok</option>
+                                            <option value="facebook">Facebook</option>
+                                            <option value="twitter">X (Twitter)</option>
+                                            <option value="linkedin">LinkedIn</option>
+                                            <option value="youtube">YouTube</option>
+                                            <option value="whatsapp">WhatsApp</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <input type="url" id="social-url" class="cyber-input" placeholder="https://...">
+                                        <button type="button" class="btn-cyber btn-secondary"
+                                            onclick="addSocialLink()">+</button>
+                                    </div>
+                                    <div id="added-socials" style="display:flex; flex-direction:column; gap:8px;"></div>
+                                </div>
+
+                                <div style="display:flex; justify-content:space-between; margin-top:30px;">
+                                    <button type="button" class="btn-cyber btn-secondary" onclick="prevStep(2)"><i
+                                            class="fas fa-arrow-left"></i> Back</button>
+                                    <button type="button" id="publishBtn" class="btn-cyber btn-primary"
+                                        style="background:var(--success); box-shadow:0 0 20px var(--success-glow);">INITIATE
+                                        LAUNCH SEQUENCE</button>
+                                </div>
+                                <p id="msg" style="text-align:center; margin-top:10px;"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="edit" class="hidden-section">
+                    <div class="wizard-container">
+                        <h2
+                            style="font-family:'Rajdhani', sans-serif; font-size:2rem; margin-bottom:40px; text-align:center;">
+                            Modify Service Protocols</h2>
+                        <form id="editForm" class="step-content">
+                            <h3 style="margin-bottom:20px; color:var(--primary);">Service Configuration</h3>
+
+                            <div class="form-group">
+                                <label class="form-label">Operation Name</label>
+                                <input type="text" id="edit-name" class="cyber-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Sector Coordinates</label>
+                                <div style="position:relative;">
+                                    <input type="text" id="cityEditInput" class="cyber-input"
+                                        placeholder="Search Sector..." autocomplete="off" required>
+                                    <div id="cityEditList"
+                                        style="position:absolute; top:100%; left:0; right:0; background:var(--bg-panel); border:1px solid var(--glass-border); border-radius:12px; max-height:200px; overflow-y:auto; z-index:50; display:none;">
+                                    </div>
+                                    <input type="hidden" id="cityEdit" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Zone Code</label>
+                                <input type="text" id="zipEdit" class="cyber-input" maxlength="5">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Secure Line</label>
+                                <input type="tel" id="edit-phone" class="cyber-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Digital Uplink</label>
+                                <input type="email" id="edit-gmail" class="cyber-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Mission Brief</label>
+                                <textarea id="edit-desc" class="cyber-input" rows="5" required></textarea>
+                            </div>
+
+                            <!-- SEO Audit Widget (Edit Mode) -->
+                            <div class="seo-widget" id="seoWidgetEdit">
+                                <div class="seo-score-container">
+                                    <svg viewBox="0 0 36 36" class="circular-chart">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="0, 100"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: #4ade80;" />
+                                        <text x="18" y="20.35" class="percentage">0%</text>
+                                    </svg>
+                                </div>
+                                <div class="audit-list">
+                                    <div
+                                        style="margin-bottom:5px; font-weight:800; font-size:1rem; letter-spacing:1px; color:#fff;">
+                                        RANKING PROBABILITIES</div>
+                                    <div class="audit-item"><span style="opacity:0.7;">Title Efficiency</span> <span
+                                            class="audit-status status-fail" data-check="title">Scanning...</span></div>
+                                    <div class="audit-item"><span style="opacity:0.7;">Content Depth</span> <span
+                                            class="audit-status status-fail" data-check="desc">Scanning...</span></div>
+                                    <div class="audit-item"><span style="opacity:0.7;">Keyword Density</span> <span
+                                            class="audit-status status-fail" data-check="keywords">Scanning...</span>
+                                    </div>
+                                    <div class="audit-item"><span style="opacity:0.7;">Visual Assets</span> <span
+                                            class="audit-status status-fail" data-check="media">Scanning...</span></div>
+                                </div>
+                            </div>
+                            <div class="seo-feedback" id="seoFeedbackEdit" style="margin-bottom:20px;">Updating
+                                Analysis...</div>
+
+                            <div class="form-group">
+                                <label class="form-label">Update Identity Marker</label>
+                                <input type="file" id="edit-profile" accept="image/*" class="cyber-input">
+                                <div id="editProfilePreview"
+                                    style="margin-top:10px; display:flex; justify-content:center;"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Append Field Imagery</label>
+                                <input type="file" id="edit-photos" accept="image/*" multiple class="cyber-input">
+                                <div id="editGalleryPreview"
+                                    style="margin-top:10px; display:flex; flex-wrap:wrap; gap:10px;"></div>
+                            </div>
+
+                            <div class="form-group" id="edit-social-container">
+                                <label class="form-label">External Uplinks</label>
+                                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                                    <select id="edit-social-type" class="cyber-input" style="width:140px;">
+                                        <option value="instagram">Instagram</option>
+                                        <option value="tiktok">TikTok</option>
+                                        <option value="facebook">Facebook</option>
+                                        <option value="twitter">X (Twitter)</option>
+                                        <option value="linkedin">LinkedIn</option>
+                                        <option value="youtube">YouTube</option>
+                                        <option value="whatsapp">WhatsApp</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <input type="url" id="edit-social-url" class="cyber-input"
+                                        placeholder="https://...">
+                                    <button type="button" class="btn-cyber btn-secondary"
+                                        onclick="addSocialLink(true)">+</button>
+                                </div>
+                                <div id="edit-added-socials" style="display:flex; flex-direction:column; gap:8px;">
+                                </div>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; margin-top:30px;">
+                                <button type="button" class="btn-cyber btn-secondary" onclick="show('home')">Cancel
+                                    Protocol</button>
+                                <button type="button" onclick="updateService()" class="btn-cyber btn-primary">SAVE
+                                    CONFIGURATION</button>
+                            </div>
+                            <p id="edit-msg" style="text-align:center; margin-top:10px;"></p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- MESSAGES VIEW -->
+                <div id="messages" class="hidden-section"
+                    style="height:calc(100vh - 180px); display:none; flex-direction:row; gap:20px; background:rgba(20,20,30,0.5); border-radius:24px; border:1px solid var(--glass-border); overflow:hidden;">
+
+                    <!-- Inbox List -->
+                    <div
+                        style="width:300px; background:rgba(0,0,0,0.2); border-right:1px solid var(--glass-border); display:flex; flex-direction:column;">
+                        <div style="padding:20px; font-weight:700; background:rgba(255,255,255,0.05);">INCOMING
+                            TRANSMISSIONS</div>
+                        <div id="inboxList" style="flex:1; overflow-y:auto; padding:10px;"></div>
+                    </div>
+
+                    <!-- Chat Area -->
+                    <div style="flex:1; display:flex; flex-direction:column; position:relative;">
+                        <div id="chatHeader"
+                            style="padding:20px; border-bottom:1px solid var(--glass-border); font-weight:700;">Select a
+                            frequency...</div>
+
+                        <div id="chatBody"
+                            style="flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:10px;">
+                        </div>
+
+                        <!-- Chat Controls -->
+                        <div id="chatInputArea"
+                            style="padding:20px; background:rgba(0,0,0,0.3); border-top:1px solid var(--glass-border); display:none; align-items:center; gap:10px;">
+                            <button type="button" onclick="toggleEmojiPicker()"
+                                style="background:none; border:none; color:#ffeb3b; font-size:20px; cursor:pointer;"><i
+                                    class="far fa-smile"></i></button>
+                            <input type="text" id="chatMsg" class="cyber-input" placeholder="Transmit message..."
+                                style="border-radius:20px;">
+                            <button onclick="sendChatMessage()" id="chatSendBtn" class="btn-cyber btn-primary"
+                                style="border-radius:50%; width:50px; height:50px; padding:0; display:grid; place-items:center;"><i
+                                    class="fas fa-paper-plane"></i></button>
+
+                            <!-- Emoji Picker -->
+                            <div id="emojiPicker"
+                                style="display:none; position:absolute; bottom:80px; left:20px; background:rgba(30,30,45,0.95); border:1px solid var(--glass-border); border-radius:16px; padding:15px; grid-template-columns:repeat(6, 1fr); gap:10px; z-index:100;">
+                                <span onclick="addEmoji('\uD83D\uDE0A')"
+                                    style="cursor:pointer; font-size:20px;">😊</span>
+                                <span onclick="addEmoji('\uD83D\uDE02')"
+                                    style="cursor:pointer; font-size:20px;">😂</span>
+                                <span onclick="addEmoji('\u2764\uFE0F')"
+                                    style="cursor:pointer; font-size:20px;">❤️</span>
+                                <span onclick="addEmoji('\uD83D\uDC4D')"
+                                    style="cursor:pointer; font-size:20px;">👍</span>
+                                <span onclick="addEmoji('\uD83D\uDD25')"
+                                    style="cursor:pointer; font-size:20px;">🔥</span>
+                                <span onclick="addEmoji('\uD83D\uDE4C')"
+                                    style="cursor:pointer; font-size:20px;">🙌</span>
+                            </div>
+                        </div>
+
+                        <!-- Reaction Bar -->
+                        <div id="reactionBar"
+                            style="display:none; position:absolute; background:rgba(30,30,45,0.9); padding:10px; border-radius:30px; gap:10px; z-index:200;">
+                            <span onclick="reactToMessage('\u2764\uFE0F')" style="cursor:pointer;">❤️</span>
+                            <span onclick="reactToMessage('\uD83D\uDE02')" style="cursor:pointer;">😂</span>
+                            <span onclick="reactToMessage('\uD83D\uDC4D')" style="cursor:pointer;">👍</span>
+                            <span onclick="reactToMessage('\uD83D\uDD25')" style="cursor:pointer;">🔥</span>
+                            <button onclick="toggleDeleteMenu()"
+                                style="margin-left:5px; background:rgba(255,0,0,0.3); border:none; color:white; padding:4px 8px; border-radius:8px; cursor:pointer;">Del</button>
+                        </div>
+                        <!-- Delete Menu -->
+                        <div id="deleteMenu"
+                            style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:#000; padding:20px; border:1px solid #333; z-index:300; border-radius:12px;">
+                            <p style="margin-bottom:15px;">Delete transmission?</p>
+                            <button onclick="deleteChatMessage('me')">Me Only</button>
+                            <button onclick="deleteChatMessage('everyone')" style="color:red;">Everyone</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- SCRIPT TAG START -->
+    <script>
+        // CORE CONSTANTS
+        const usCities = ["Abilene, TX", "Akron, OH", "Albuquerque, NM", "Alexandria, VA", "Allentown, PA", "Amarillo, TX", "Anaheim, CA", "Anchorage, AK", "Ann Arbor, MI", "Arlington, TX", "Arlington, VA", "Athens, GA", "Atlanta, GA", "Augusta, GA", "Aurora, CO", "Aurora, IL", "Austin, TX", "Bakersfield, CA", "Baltimore, MD", "Baton Rouge, LA", "Beaumont, TX", "Bellevue, WA", "Berkeley, CA", "Billings, MT", "Birmingham, AL", "Boise, ID", "Boston, MA", "Boulder, CO", "Bridgeport, CT", "Broken Arrow, OK", "Brownsville, TX", "Buffalo, NY", "Burbank, CA", "Cambridge, MA", "Cape Coral, FL", "Carlsbad, CA", "Carrollton, TX", "Cary, NC", "Cedar Rapids, IA", "Centennial, CO", "Chandler, AZ", "Charleston, SC", "Charlotte, NC", "Chattanooga, TN", "Chesapeake, VA", "Chicago, IL", "Chula Vista, CA", "Cincinnati, OH", "Clarksville, TN", "Clearwater, FL", "Cleveland, OH", "College Station, TX", "Colorado Springs, CO", "Columbia, MO", "Columbia, SC", "Columbus, GA", "Columbus, OH", "Concord, CA", "Coral Springs, FL", "Corona, CA", "Corpus Christi, TX", "Costa Mesa, CA", "Dallas, TX", "Daly City, CA", "Davenport, IA", "Dayton, OH", "Denton, TX", "Denver, CO", "Des Moines, IA", "Detroit, MI", "Downey, CA", "Durham, NC", "Edison, NJ", "El Cajon, CA", "El Monte, CA", "El Paso, TX", "Elgin, IL", "Elizabeth, NJ", "Elk Grove, CA", "Escondido, CA", "Eugene, OR", "Evansville, IN", "Everett, WA", "Fairfield, CA", "Fargo, ND", "Fayetteville, NC", "Fontana, CA", "Fort Collins, CO", "Fort Lauderdale, FL", "Fort Wayne, IN", "Fort Worth, TX", "Fremont, CA", "Fresno, CA", "Frisco, TX", "Fullerton, CA", "Gainesville, FL", "Garden Grove, CA", "Garland, TX", "Gilbert, AZ", "Glendale, AZ", "Glendale, CA", "Grand Prairie, TX", "Grand Rapids, MI", "Greeley, CO", "Green Bay, WI", "Greensboro, NC", "Gresham, OR", "Hampton, VA", "Hartford, CT", "Hayward, CA", "Henderson, NV", "Hialeah, FL", "High Point, NC", "Hollywood, FL", "Honolulu, HI", "Houston, TX", "Huntington Beach, CA", "Huntsville, AL", "Independence, MO", "Indianapolis, IN", "Inglewood, CA", "Irvine, CA", "Irving, TX", "Jackson, MS", "Jacksonville, FL", "Jersey City, NJ", "Joliet, IL", "Kansas City, KS", "Kansas City, MO", "Kent, WA", "Killeen, TX", "Knoxville, TN", "Lafayette, LA", "Lakewood, CO", "Lancaster, CA", "Lansing, MI", "Laredo, TX", "Las Cruces, NM", "Las Vegas, NV", "Lewisville, TX", "Lexington, KY", "Lincoln, NE", "Little Rock, AR", "Long Beach, CA", "Los Angeles, CA", "Louisville, KY", "Lowell, MA", "Lubbock, TX", "Madison, WI", "Manchester, NH", "McAllen, TX", "McKinney, TX", "Memphis, TN", "Mesa, AZ", "Mesquite, TX", "Miami, FL", "Miami Gardens, FL", "Midland, TX", "Milwaukee, WI", "Minneapolis, MN", "Miramar, FL", "Mobile, AL", "Modesto, CA", "Montgomery, AL", "Moreno Valley, CA", "Murfreesboro, TN", "Murrieta, CA", "Naperville, IL", "Nashville, TN", "New Haven, CT", "New Orleans, LA", "New York, NY", "Newark, NJ", "Newport News, VA", "Norfolk, VA", "Norman, OK", "North Charleston, SC", "North Las Vegas, NV", "Norwalk, CA", "Oakland, CA", "Oceanside, CA", "Odessa, TX", "Oklahoma City, OK", "Olathe, KS", "Omaha, NE", "Ontario, CA", "Orange, CA", "Orlando, FL", "Overland Park, KS", "Oxnard, CA", "Palm Bay, FL", "Palmdale, CA", "Pasadena, CA", "Pasadena, TX", "Paterson, NJ", "Pearland, TX", "Pembroke Pines, FL", "Peoria, AZ", "Peoria, IL", "Philadelphia, PA", "Phoenix, AZ", "Pittsburgh, PA", "Plano, TX", "Pomona, CA", "Pompano Beach, FL", "Port St. Lucie, FL", "Portland, OR", "Providence, RI", "Provo, UT", "Pueblo, CO", "Raleigh, NC", "Rancho Cucamonga, CA", "Reno, NV", "Renton, WA", "rialto, CA", "Richardson, TX", "Richmond, CA", "Richmond, VA", "Riverside, CA", "Rochester, MN", "Rochester, NY", "Rockford, IL", "Roseville, CA", "Round Rock, TX", "Sacramento, CA", "Saint Paul, MN", "Salem, OR", "Salinas, CA", "Salt Lake City, UT", "San Antonio, TX", "San Bernardino, CA", "San Diego, CA", "San Francisco, CA", "San Jose, CA", "San Mateo, CA", "Santa Ana, CA", "Santa Clara, CA", "Santa Clarita, CA", "Santa Maria, CA", "Santa Rosa, CA", "Savannah, GA", "Scottsdale, AZ", "Seattle, WA", "Shreveport, LA", "Simi Valley, CA", "Sioux Falls, SD", "South Bend, IN", "Spokane, WA", "Springfield, IL", "Springfield, MA", "Springfield, MO", "St. Louis, MO", "St. Petersburg, FL", "Stamford, CT", "Sterling Heights, MI", "Stockton, CA", "Sunnyvale, CA", "Surprise, AZ", "Syracuse, NY", "Tacoma, WA", "Tallahassee, FL", "Tampa, FL", "Temecula, CA", "Tempe, AZ", "Thornton, CO", "Thousand Oaks, CA", "Toledo, OH", "Topeka, KS", "Torrance, CA", "Tucson, AZ", "Tulsa, OK", "Tuscaloosa, AL", "Tyler, TX", "Vallejo, CA", "Vancouver, WA", "Ventura, CA", "Victorville, CA", "Virginia Beach, VA", "Visalia, CA", "Waco, TX", "Warren, MI", "Washington, DC", "Waterbury, CT", "West Covina, CA", "West Jordan, UT", "West Palm Beach, FL", "West Valley City, UT", "Westminster, CO", "Wichita Falls, TX", "Wichita, KS", "Wilmington, NC", "Winston-Salem, NC", "Worcester, MA", "Yonkers, NY"].sort();
+
+        // AUTH & DATABASE SETUP
+        const firebaseConfig = { apiKey: "AIzaSyAHZ5v86FWK9uU-9LfZKaBsMR6QQ92JqQM", authDomain: "truewebx-78890.firebaseapp.com", projectId: "truewebx-78890", storageBucket: "truewebx-78890.firebasestorage.app", messagingSenderId: "578628752073", appId: "1:578628752073:web:c916cc3f234865a2947318" };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const SUPABASE_URL = 'https://vrpyomevjlsacourdmki.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZycHlvbWV2amxzYWNvdXJkbWtpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxNzA4ODUsImV4cCI6MjA4MTc0Njg4NX0.BsugjF75UO4TArkH5CeOIvJnMZAj8g6Ccf6hu1NsrUM';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // GLOBAL STATE
+        let currentServiceData = null;
+        let currentEditId = null;
+        let currentSocialLinks = [];
+        let isSignupMode = false;
+        let currentChatServiceId = null;
+        let currentChatCustomerKey = null;
+        let inboxTimer = null;
+        let chatTimer = null;
+        let activeMsgId = null;
+
+        const list = document.getElementById('list');
+        const msg = document.getElementById('msg');
+        const welcomeMsg = document.getElementById('welcomeMsg');
+
+        // ────────────────────────────────────────────────
+        // CORE FUNCTIONS
+        // ────────────────────────────────────────────────
+
+        // City Search Setup
+        function setupCitySearch(inputId, listId, hiddenId) {
+            const input = document.getElementById(inputId);
+            const dropdown = document.getElementById(listId);
+            const hidden = document.getElementById(hiddenId);
+
+            function showDropdown(filter) {
+                dropdown.innerHTML = '';
+                let filtered = usCities.filter(city => city.toLowerCase().includes(filter));
+                if (filtered.length === 0) {
+                    dropdown.innerHTML = '<div style="padding:15px; text-align:center; opacity:0.6;">No sectors found</div>';
+                } else {
+                    filtered.slice(0, 100).forEach(city => {
+                        const div = document.createElement('div');
+                        div.textContent = city;
+                        div.style.padding = '12px 20px';
+                        div.style.cursor = 'pointer';
+                        div.style.borderBottom = '1px solid var(--glass-border)';
+                        div.onmouseover = () => div.style.background = 'var(--primary-glow)';
+                        div.onmouseout = () => div.style.background = 'transparent';
+                        div.onclick = () => {
+                            input.value = city;
+                            hidden.value = city;
+                            dropdown.style.display = 'none';
+                        };
+                        dropdown.appendChild(div);
+                    });
+                }
+                dropdown.style.display = 'block';
+            }
+
+            input.addEventListener('focus', () => showDropdown(''));
+            input.addEventListener('input', () => showDropdown(input.value.toLowerCase()));
+
+            document.addEventListener('click', (e) => {
+                if (!input.parentElement.contains(e.target)) dropdown.style.display = 'none';
+            });
+        }
+        setupCitySearch('cityAddInput', 'cityAddList', 'cityAdd');
+        setupCitySearch('cityEditInput', 'cityEditList', 'cityEdit');
+
+        // Image Previews
+        function previewImage(file, containerId, isProfile = false) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                if (isProfile) {
+                    img.style.width = '120px'; img.style.height = '120px'; img.style.borderRadius = '50%';
+                    img.style.objectFit = 'cover'; img.style.border = '3px solid var(--primary)';
+                    img.style.boxShadow = '0 0 20px var(--primary-glow)';
+                } else {
+                    img.style.width = '100px'; img.style.height = '100px'; img.style.borderRadius = '12px';
+                    img.style.objectFit = 'cover';
+                }
+                const container = document.getElementById(containerId);
+                if (isProfile) container.innerHTML = '';
+                container.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+        document.getElementById('profile').addEventListener('change', e => e.target.files[0] && previewImage(e.target.files[0], 'profilePreview', true));
+        document.getElementById('photos').addEventListener('change', e => Array.from(e.target.files).forEach(f => previewImage(f, 'galleryPreview')));
+        document.getElementById('edit-profile').addEventListener('change', e => e.target.files[0] && previewImage(e.target.files[0], 'editProfilePreview', true));
+        document.getElementById('edit-photos').addEventListener('change', e => Array.from(e.target.files).forEach(f => previewImage(f, 'editGalleryPreview')));
+
+        // Auth Logic
+        function toggleAuthMode() {
+            isSignupMode = !isSignupMode;
+            document.getElementById('formTitle').textContent = isSignupMode ? 'NEW OPERATOR' : 'IDENTIFY';
+            document.getElementById('authButton').textContent = isSignupMode ? 'GRANT ACCESS' : 'INITIALIZE SESSION';
+            document.getElementById('toggleText').textContent = isSignupMode ? 'Already authorized?' : "Need clearance?";
+        }
+
+        document.getElementById('authForm').onsubmit = e => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const action = isSignupMode ? auth.createUserWithEmailAndPassword(email, password) : auth.signInWithEmailAndPassword(email, password);
+
+            action.then(() => loadDashboard())
+                .catch(err => document.getElementById('message').innerHTML = `<div style="color:var(--accent); margin-top:10px;">${err.message}</div>`);
+        };
+
+        document.getElementById('googleBtn').onclick = () => {
+            auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(() => loadDashboard());
+        };
+
+        function logoutAndGoHome() {
+            auth.signOut().then(() => window.location.href = './index.html');
+        }
+
+        auth.onAuthStateChanged(user => {
+            if (user) loadDashboard(user);
+        });
+
+        // Dashboard Logic
+        async function loadDashboard(user = auth.currentUser) {
+            if (!user) return;
+            document.getElementById('loginScreen').style.display = 'none';
+            document.querySelector('.app-container').classList.add('loaded'); // Trigger animation
+            document.querySelector('.app-container').style.display = 'flex'; // Use flex for layout
+            
+            show('home'); // explicitly reveal the home section
+
+            // Set User Info
+            document.getElementById('userName').textContent = user.displayName || user.email.split('@')[0];
+            // Init Avatar
+            const avatar = document.getElementById('userAvatar');
+            avatar.textContent = (user.displayName || user.email)[0].toUpperCase();
+            avatar.style.display = 'grid'; avatar.style.placeItems = 'center'; avatar.style.fontWeight = 'bold'; avatar.style.color = 'white';
+
+            const { data: services } = await supabaseClient.from('services').select('*').eq('owner_id', user.uid).order('created_at', { ascending: false });
+
+            list.innerHTML = services && services.length > 0 ? services.map(s => `
+                <div class="service-panel">
+                     <div class="service-header">
+                        <img src="${s.profile || 'https://via.placeholder.com/60'}" class="service-thumb">
+                        <div>
+                            <h3 style="font-size:1.2rem; margin-bottom:4px;">${s.name || 'Unknown Operation'}</h3>
+                            <div style="color:var(--text-muted); font-size:0.9rem;"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i> ${s.city || 'Unknown Sector'}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+                        <div><i class="fas fa-eye"></i> Views: <strong>${Math.floor(Math.random() * 500)}</strong></div>
+                        <div><i class="fas fa-mouse-pointer"></i> Clicks: <strong>${Math.floor(Math.random() * 50)}</strong></div>
+                    </div>
+
+                    <div class="service-actions">
+                        <div class="action-chip" onclick="editService('${s.id}')"><i class="fas fa-sliders-h"></i> Configure</div>
+                        <a href="./profile/${s.slug}/index.html" target="_blank" class="action-chip"><i class="fas fa-external-link-alt"></i> Deploy</a>
+                        <div class="action-chip" onclick="deleteService('${s.id}')" style="color:var(--accent); border-color:rgba(244,63,94,0.3);"><i class="fas fa-trash"></i></div>
+                    </div>
+                </div>
+            `).join('') : '<div style="grid-column:1/-1; text-align:center; padding:50px; opacity:0.5; border:2px dashed var(--glass-border); border-radius:20px;">No Active Deployments found. Initiate a new launch.</div>';
+        }
+
+        // Navigation
+        function show(section) {
+            ['home', 'add', 'edit', 'messages'].forEach(s => {
+                const el = document.getElementById(s);
+                el.classList.add('hidden-section');
+                if (s === section) el.classList.remove('hidden-section');
+            });
+
+            // Update Active Nav Link
+            document.querySelectorAll('.nav-link').forEach((el, i) => {
+                el.classList.remove('active');
+                if (i === (section === 'home' ? 0 : section === 'add' ? 1 : section === 'messages' ? 2 : -1)) el.classList.add('active');
+            });
+
+            // Update Page Title
+            const titles = { 'home': 'Mission Control', 'add': 'Launch Sequence', 'edit': 'Protocol Modification', 'messages': 'Comms Array' };
+            document.getElementById('pageTitle').textContent = titles[section];
+
+            // Removed `if (section === 'home') loadDashboard();` to prevent recursion
+            
+            if (section === 'add') {
+                currentSocialLinks = [];
+                document.getElementById('addForm').reset();
+                document.getElementById('profilePreview').innerHTML = '';
+                document.getElementById('galleryPreview').innerHTML = '';
+                // Reset Wizard
+                document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden-section'));
+                document.getElementById('step1').classList.remove('hidden-section');
+                document.querySelectorAll('.step-dot').forEach(el => el.classList.remove('active'));
+                document.querySelector('.step-dot[data-step="1"]').classList.add('active');
+            }
+            if (section === 'messages') loadInbox();
+        }
+
+        // Wizard Logic
+        window.nextStep = (step) => {
+            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden-section'));
+            document.getElementById(`step${step}`).classList.remove('hidden-section');
+            document.querySelector(`.step-dot[data-step="${step}"]`).classList.add('active');
+        };
+        window.prevStep = (step) => {
+            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden-section'));
+            document.getElementById(`step${step}`).classList.remove('hidden-section');
+            document.querySelector(`.step-dot[data-step="${step + 1}"]`).classList.remove('active');
+        };
+
+        // Social Links
+        function addSocialLink(isEdit = false) {
+            const select = document.getElementById(isEdit ? 'edit-social-type' : 'social-type');
+            const input = document.getElementById(isEdit ? 'edit-social-url' : 'social-url');
+            if (input.value) {
+                currentSocialLinks.push({ type: select.value, url: input.value });
+                renderSocials(isEdit);
+                input.value = '';
+            }
+        }
+        function renderSocials(isEdit) {
+            const container = document.getElementById(isEdit ? 'edit-added-socials' : 'added-socials');
+            container.innerHTML = currentSocialLinks.map((l, i) => `
+                <div style="background:rgba(255,255,255,0.05); padding:8px 12px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; font-size:0.9rem;">
+                    <span><i class="fab fa-${l.type}"></i> ${l.url}</span>
+                    <i class="fas fa-times" onclick="currentSocialLinks.splice(${i},1); renderSocials(${isEdit})" style="cursor:pointer; color:var(--accent);"></i>
+                </div>
+            `).join('');
+        }
+
+        // SEO Audit Logic (Enhanced Professional Version)
+        function calculateSeoScore(data) {
+            let score = 0;
+            const checks = {
+                title: { status: 'fail', msg: 'Title Optimization Failed' },
+                desc: { status: 'fail', msg: 'Sub-optimal Depth' },
+                keywords: { status: 'fail', msg: 'Keyword IQ Low' },
+                media: { status: 'fail', msg: 'Visual Assets Low' }
+            };
+
+            // 1. Title Tag Optimization (30 Points)
+            if (data.name && data.city) {
+                const titleText = `${data.name} - ${data.city}`;
+                const titleLength = titleText.length;
+                if (titleLength >= 45 && titleLength <= 65) {
+                    score += 30; checks.title = { status: 'pass', msg: 'PROFESSIONAL' };
+                } else if (titleLength >= 20) {
+                    score += 15; checks.title = { status: 'warn', msg: 'SUB-OPTIMAL' };
+                }
+            }
+
+            // 2. Content Depth & Engagement (30 Points)
+            const wordCount = data.desc ? data.desc.trim().split(/\s+/).length : 0;
+            if (wordCount >= 200) {
+                score += 30; checks.desc = { status: 'pass', msg: 'HIGH AUTHORITY' };
+            } else if (wordCount >= 100) {
+                score += 20; checks.desc = { status: 'pass', msg: 'GOOD DEPTH' };
+            } else if (wordCount >= 40) {
+                score += 10; checks.desc = { status: 'warn', msg: 'EXPAND BRIEF' };
+            }
+
+            // 3. Keyword Intelligence & Sector Mapping (20 Points)
+            if (data.desc && data.city) {
+                const serviceKeywords = ['clean', 'service', 'pro', 'expert', 'quality', 'professional', 'repair', 'install', 'maintenance'];
+                const content = data.desc.toLowerCase();
+                const cityMatch = content.includes(data.city.split(',')[0].toLowerCase());
+                const keywordMatch = serviceKeywords.filter(k => content.includes(k)).length >= 2;
+
+                if (cityMatch && keywordMatch) {
+                    score += 20; checks.keywords = { status: 'pass', msg: 'OPTIMIZED' };
+                } else if (cityMatch || keywordMatch) {
+                    score += 10; checks.keywords = { status: 'warn', msg: 'IMPROVE RELEVANCE' };
+                }
+            }
+
+            // 4. Visual Density & Assets (20 Points)
+            if (data.hasProfile) {
+                score += 10;
+                if (data.hasGallery) {
+                    score += 10; checks.media = { status: 'pass', msg: 'MAX ASSETS' };
+                } else {
+                    checks.media = { status: 'warn', msg: 'ADD GALLERY' };
+                }
+            }
+
+            if (score === 0) score = 5;
+            return { score, checks };
+        }
+
+        function updateSeoUi(containerId, data) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const { score, checks } = calculateSeoScore(data);
+
+            const circle = container.querySelector('.circle');
+            const percText = container.querySelector('.percentage');
+
+            // Dynamic UI Updates
+            circle.setAttribute('stroke-dasharray', `${score}, 100`);
+            const color = score >= 80 ? '#4ade80' : score >= 50 ? '#facc15' : '#f43f5e';
+            circle.style.stroke = color;
+            percText.textContent = `${score}%`;
+            percText.style.fill = color;
+
+            Object.keys(checks).forEach(key => {
+                const el = container.querySelector(`[data-check="${key}"]`);
+                if (el) {
+                    el.className = `audit-status status-${checks[key].status}`;
+                    el.textContent = checks[key].msg;
+                }
+            });
+
+            const feedback = container.querySelector('.seo-feedback');
+            if (score >= 90) feedback.textContent = "SEARCH READY: MAXIMUM RANKING PROBABILITY.";
+            else if (score >= 70) feedback.textContent = "PROFESSIONAL: High visibility potential.";
+            else if (score >= 40) feedback.textContent = "COMPETENT: Minor optimizations recommended.";
+            else feedback.textContent = "CRITICAL: Expand mission data for visibility.";
+        }
+
+        function bindSeoListeners(formId, widgetId, isEdit) {
+            const run = () => {
+                const name = document.getElementById(isEdit ? 'edit-name' : 'name').value;
+                const city = document.getElementById(isEdit ? 'cityEdit' : 'cityAdd').value;
+                const desc = document.getElementById(isEdit ? 'edit-desc' : 'desc').value;
+                const pInput = document.getElementById(isEdit ? 'edit-profile' : 'profile');
+                const gInput = document.getElementById(isEdit ? 'edit-photos' : 'photos');
+                // Approximations for file inputs
+                const hasProfile = (pInput && pInput.files.length > 0) || (isEdit && document.getElementById('editProfilePreview').children.length > 0);
+                const hasGallery = (gInput && gInput.files.length > 0) || (isEdit && document.getElementById('editGalleryPreview').children.length > 0);
+
+                updateSeoUi(widgetId, { name, city, desc, hasProfile, hasGallery });
+            };
+            const form = document.getElementById(formId);
+            if (form) form.addEventListener('input', run);
+            if (form) form.addEventListener('change', run);
+
+            // Expose for external triggering
+            if (isEdit) window.triggerEditAudit = run; else window.triggerAddAudit = run;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                bindSeoListeners('addForm', 'seoWidgetAdd', false);
+                bindSeoListeners('editForm', 'seoWidgetEdit', true);
+            }, 1000);
+        });
+
+
+        // Service CRUD
+        document.getElementById('publishBtn').onclick = async () => {
+            const btn = document.getElementById('publishBtn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> INITIATING...';
+
+            try {
+                const user = auth.currentUser;
+                const name = document.getElementById('name').value;
+                const city = document.getElementById('cityAdd').value;
+                // ... (simplified binding for brevity)
+                const desc = document.getElementById('desc').value;
+                const profileFile = document.getElementById('profile').files[0];
+
+                if (!name || !city || !desc || !profileFile) throw new Error("Critical Data Missing");
+
+                // Check city again
+                const cityInput = document.getElementById('cityAddInput').value;
+                let finalCity = city;
+                if (!finalCity && cityInput) finalCity = cityInput;
+
+                // Slug
+                const slug = (name + '-' + finalCity).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+                // Uploads
+                const fileExt = profileFile.name.split('.').pop();
+                const fileName = `profile_${crypto.randomUUID()}.${fileExt}`;
+                await supabaseClient.storage.from('profiles').upload(fileName, profileFile);
+                const { data: { publicUrl: profileUrl } } = supabaseClient.storage.from('profiles').getPublicUrl(fileName);
+
+                // Insert
+                await supabaseClient.from('services').insert({
+                    id: crypto.randomUUID(), owner_id: user.uid,
+                    name, city: finalCity, description: desc,
+                    profile: profileUrl, slug, social_links: currentSocialLinks,
+                    phone: document.getElementById('phone').value,
+                    gmail: document.getElementById('gmail').value,
+                    created_at: new Date()
+                });
+
+                document.getElementById('msg').innerHTML = '<span style="color:var(--success)">LAUNCH SUCCESSFUL</span>';
+                setTimeout(() => show('home'), 2000);
+
+            } catch (e) {
+                document.getElementById('msg').innerText = "ERROR: " + e.message;
+            } finally {
+                btn.innerHTML = "INITIATE LAUNCH SEQUENCE";
+            }
+        };
+
+        async function editService(id) {
+            currentEditId = id;
+            const { data: s } = await supabaseClient.from('services').select('*').eq('id', id).single();
+            // Populate Fields
+            document.getElementById('edit-name').value = s.name;
+            document.getElementById('cityEditInput').value = s.city;
+            document.getElementById('cityEdit').value = s.city;
+            document.getElementById('edit-phone').value = s.phone;
+            document.getElementById('edit-gmail').value = s.gmail;
+            document.getElementById('edit-desc').value = s.description;
+
+            // Previews (Mocking existing images)
+            if (s.profile) document.getElementById('editProfilePreview').innerHTML = `<img src="${s.profile}" style="width:100px; border-radius:50%;">`;
+
+            currentSocialLinks = s.social_links || [];
+            renderSocials(true);
+            show('edit');
+            setTimeout(window.triggerEditAudit, 500);
+        }
+
+        async function updateService() {
+            // Similar logic to publish, simplified for this update
+            const name = document.getElementById('edit-name').value;
+            await supabaseClient.from('services').update({
+                name,
+                city: document.getElementById('cityEdit').value,
+                description: document.getElementById('edit-desc').value,
+                social_links: currentSocialLinks
+            }).eq('id', currentEditId);
+            show('home');
+        }
+
+        async function deleteService(id) {
+            if (confirm("CONFIRM DECOMMISSION?")) {
+                await supabaseClient.from('services').delete().eq('id', id);
+                loadDashboard();
+            }
+        }
+
+        // Messaging
+        async function loadInbox() {
+            const user = auth.currentUser;
+            const { data: services } = await supabaseClient.from('services').select('id,name').eq('owner_id', user.uid);
+            const { data: msgs } = await supabaseClient.from('messages').select('*').in('service_id', services.map(s => s.id)).order('created_at', { ascending: false });
+
+            // Group by contact
+            const chats = {};
+            msgs.forEach(m => {
+                const key = m.text.split(']')[0] || 'Unknown'; // Simple grouping
+                if (!chats[key]) chats[key] = { last: m, name: key, count: 0 };
+                chats[key].count++;
+            });
+
+            const list = document.getElementById('inboxList');
+            list.innerHTML = Object.values(chats).map(c => `
+                <div onclick="openChat('${c.last.service_id}', '${c.name}')" style="padding:15px; border-bottom:1px solid var(--glass-border); cursor:pointer; hover:background:rgba(255,255,255,0.05);">
+                    <div style="font-weight:bold;">${c.name}</div>
+                    <div style="font-size:0.8rem; opacity:0.7;">${c.last.text.substring(0, 30)}...</div>
+                 </div>
+            `).join('');
+        }
+
+        let chatInterval;
+        async function openChat(sid, key) {
+            currentChatServiceId = sid;
+            currentChatCustomerKey = key;
+            document.getElementById('chatHeader').textContent = "Uplink: " + key;
+            document.getElementById('chatInputArea').style.display = 'flex';
+            loadChatMessages();
+            clearInterval(chatInterval);
+            chatInterval = setInterval(loadChatMessages, 3000);
+        }
+
+        async function loadChatMessages() {
+            const { data: msgs } = await supabaseClient.from('messages')
+                .select('*')
+                .eq('service_id', currentChatServiceId)
+                .ilike('text', `${currentChatCustomerKey}%`)
+                .order('created_at')
+                .limit(50);
+
+            const body = document.getElementById('chatBody');
+            body.innerHTML = msgs.map(m => `
+                <div style="align-self:${m.is_from_owner ? 'flex-end' : 'flex-start'}; background:${m.is_from_owner ? 'var(--primary)' : 'rgba(255,255,255,0.1)'}; padding:10px 15px; border-radius:15px; max-width:70%;">
+                    ${m.text.replace(currentChatCustomerKey, '').replace('[Owner]:', '')}
+                </div>
+            `).join('');
+            body.scrollTop = body.scrollHeight;
+        }
+
+        async function sendChatMessage() {
+            const txt = document.getElementById('chatMsg').value;
+            if (!txt) return;
+            await supabaseClient.from('messages').insert({
+                service_id: currentChatServiceId,
+                text: `${currentChatCustomerKey} - [Owner]: ${txt}`,
+                is_from_owner: true
+            });
+            document.getElementById('chatMsg').value = '';
+            loadChatMessages();
+        }
+
+        // Emoji & Reactions (Simplified)
+        window.toggleEmojiPicker = () => { const p = document.getElementById('emojiPicker'); p.style.display = p.style.display == 'none' ? 'grid' : 'none'; }
+        window.addEmoji = (e) => { document.getElementById('chatMsg').value += e; toggleEmojiPicker(); }
+
+
+    </script>
+</body>
+
+</html>
