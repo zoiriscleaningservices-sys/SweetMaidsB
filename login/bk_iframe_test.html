@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>BK Iframe Test</title>
+
+    <style>
+        .login-container {
+            width: 100%;
+            min-height: 800px;
+            border: 2px solid blue;
+        }
+    </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+
+    <h2>Testing Standard BookingKoala Iframe</h2>
+    <div class="login-container">
+        <!-- Standard BK iframe integration snippet -->
+        <div id="bookingkoala-container"></div>
+        <script src="https://bookingkoala.com/api/v4/integration/script/script.js"></script>
+        <script>
+            // The user's account must be tied to sweetmaidsb or a generic customer portal endpoint.
+            // Often, the public booking form is what people embed, but for login:
+            // A common pattern is loading their subdomain.
+            const iframe = document.createElement('iframe');
+            // If we don't know the exact subdomain, let's try a standard iframe directed to their live site or a known login path
+            iframe.src = "https://sweetmaidcleaning.bookingkoala.com/login";
+            iframe.style.width = "100%";
+            iframe.style.height = "800px";
+            iframe.style.border = "none";
+            document.getElementById('bookingkoala-container').appendChild(iframe);
+        </script>
+    </div>
+
+</body>
+
+</html>

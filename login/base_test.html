@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Base Tag Test</title>
+    <base href="https://sweetmaidcleaningservice.bookingkoala.com/">
+
+    <link rel="stylesheet" id="theme-css" href="https://cdn.bookingkoala.com/assets/css/29/simple-theme.css"
+        media="all">
+    <link rel="stylesheet" href="https://cdn.bookingkoala.com/customer-build/139/styles.be840003d5879412.css"
+        media="all">
+
+    <script src="https://cdn.bookingkoala.com/assets/tinymce-5-10-5/tinymce.min.js"></script>
+    <script>window.allowOldVersion = false;</script>
+
+    <style>
+        bk-root {
+            display: block;
+            min-height: 800px;
+            border: 2px solid green;
+        }
+
+        .tjs-component-loader #page-container>div {
+            min-height: auto !important;
+        }
+    </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body id="bkIframe" class="tjs-app--root tjs-component-loader">
+    <bk-root></bk-root>
+
+    <script
+        src="https://cdn.bookingkoala.com/assets/js/16/app.min.js?&offsetTop=0&offsetTopM=0&theme=simple&summaryOffset=0"
+        id="tjsAppJS" defer></script>
+    <script src="https://cdn.bookingkoala.com/assets/js/15/tejas-bootstrap.min.js" defer></script>
+    <script src="https://cdn.bookingkoala.com/resources/bk-tracking.js"></script>
+
+    <script src="https://cdn.bookingkoala.com/customer-build/139/runtime.8e298df1c2d46a94.js" type="module"></script>
+    <script src="https://cdn.bookingkoala.com/customer-build/139/polyfills.3538d5e41a26a3ea.js" type="module"></script>
+    <script src="https://cdn.bookingkoala.com/customer-build/139/vendor.a67c9f2fcb86619c.js" type="module"></script>
+    <script src="https://cdn.bookingkoala.com/customer-build/139/main.d30b3fdf0bccb42c.js" type="module"></script>
+
+    <script>setTimeout(() => { document.body.classList.remove('tjs-component-loader') }, 3000)</script>
+</body>
+
+</html>

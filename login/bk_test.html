@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>BK Test</title>
+    <base href="/login/">
+
+    <style>
+        bk-root {
+            display: block;
+            border: 2px solid red;
+            min-height: 500px;
+        }
+
+        .tjs-app--root {
+            background: #fee;
+        }
+    </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body id="bkIframe" class="antialiased tjs-app--root tjs-component-loader">
+
+    <h2>Testing BookingKoala Script Initialization</h2>
+    <bk-root></bk-root>
+
+    <script
+        src="https://cdn.bookingkoala.com/assets/js/16/app.min.js?&offsetTop=0&offsetTopM=0&theme=simple&summaryOffset=0"
+        id="tjsAppJS" defer></script>
+    <script src="https://cdn.bookingkoala.com/assets/js/15/tejas-bootstrap.min.js" defer></script>
+    <script src="https://cdn.bookingkoala.com/resources/bk-tracking.js"></script>
+
+    <!-- Trying standard Angular bootstrap tags -->
+    <script src="https://cdn.bookingkoala.com/customer-build/139/runtime.8e298df1c2d46a94.js" type="module"></script>
+    <script src="https://cdn.bookingkoala.com/customer-build/139/polyfills.3538d5e41a26a3ea.js" type="module"></script>
+
+    <!-- The main app bundle -->
+    <script src="https://cdn.bookingkoala.com/customer-build/139/main.d30b3fdf0bccb42c.js" type="module"></script>
+
+    <script>
+        console.log("Test page loaded. Waiting for BK root...");
+        setTimeout(() => { document.body.classList.remove('tjs-component-loader'); }, 3000);
+    </script>
+</body>
+
+</html>
