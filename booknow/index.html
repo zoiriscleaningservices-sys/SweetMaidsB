@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="canonical" href="https://sweetmaidcleaning.com/booknow/" />
+  <meta property="og:url" content="https://sweetmaidcleaning.com/booknow/">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Cleaning Online | Sweet Maid Cleaning | Southwest Florida</title>
+  <meta name="description" content="Book your professional cleaning service online in seconds. Sweet Maid Cleaning serves Bradenton, Sarasota, Naples, Fort Myers and all of Southwest Florida. Instant booking, 5-star rated, 100% satisfaction guaranteed." />
+  <meta name="keywords" content="book cleaning online Florida, schedule house cleaning Bradenton, book maid service Sarasota, cleaning appointment Naples, online booking cleaning Southwest Florida" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Book Your Cleaning | Sweet Maid Cleaning | Southwest Florida">
+  <meta property="og:description" content="Book your professional cleaning service online in seconds. Sweet Maid Cleaning serves all of Southwest Florida — Bradenton, Sarasota, Naples, Fort Myers.">
+  <meta property="og:image" content="../images/whatsapp-image-2026-02-10-at-3.46.50-pm.jpeg">
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CleaningService",
+    "name": "Sweet Maid Cleaning — Book Online",
+    "description": "Book your professional house or commercial cleaning service online. Sweet Maid serves all of Southwest Florida.",
+    "url": "https://sweetmaidcleaning.com/booknow/",
+    "telephone": "(941) 222-2080",
+    "email": "info@sweetmaidcleaning.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bradenton",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "areaServed": { "@type": "Place", "name": "Southwest Florida" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "312"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sweetmaidcleaning.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Book Now", "item": "https://sweetmaidcleaning.com/booknow/" }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pink: {
+              50:  '#fff0f6',
+              100: '#ffd6eb',
+              200: '#ffb3d9',
+              300: '#ff80bf',
+              400: '#ff4da6',
+              500: '#e6008a',
+            },
+            plum: { DEFAULT: '#2d1b2e' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Nav JS -->
+  <script src="../js/navigation-dynamic.js" defer></script>
+
+  <style>
+    :root {
+      --pink-light: #ffc9e0;
+      --pink-soft:  #ffe0ed;
+      --pink-accent:#ffd4e8;
+      --bg:         #fffafc;
+      --text-dark:  #2d1b2e;
+      --text-gray:  #8b5a7d;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text-dark); overflow-x: hidden; }
+
+    /* ─ Mesh Background ─ */
+    .mesh-bg {
+      background-color: #fffafc;
+      background-image:
+        radial-gradient(at 0% 0%,   hsla(330,100%,88%,0.35) 0px, transparent 55%),
+        radial-gradient(at 100% 0%,  hsla(310,80%,92%,0.25) 0px, transparent 55%),
+        radial-gradient(at 100% 100%,hsla(330,100%,88%,0.30) 0px, transparent 55%),
+        radial-gradient(at 0% 100%,  hsla(310,80%,92%,0.20) 0px, transparent 55%);
+    }
+
+    /* ─ Glassmorphism ─ */
+    .glass {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    /* ─ Gradient Text ─ */
+    .text-gradient {
+      background: linear-gradient(135deg, #e91e8c 0%, #ff6eb4 50%, #c2185b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─ Floating animation ─ */
+    @keyframes float {
+      0%,100% { transform: translateY(0)   rotate(0deg); }
+      50%      { transform: translateY(-18px) rotate(2deg); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+
+    /* ─ Bubbles ─ */
+    @keyframes bubble {
+      0%   { transform: translateY(100vh) scale(0); opacity:0; }
+      50%  { opacity:0.4; }
+      100% { transform: translateY(-5vh) scale(1.4); opacity:0; }
+    }
+    .bubble { animation: bubble 18s linear infinite; position:fixed; border-radius:50%; pointer-events:none; z-index:0; }
+
+    /* ─ Sticky Header ─ */
+    header { position: sticky; top:0; z-index:50; }
+
+    /* ─ Nav Dropdown ─ */
+    .nav-dropdown { position:relative; }
+    .dropdown-menu {
+      position:absolute; top:100%; left:0; min-width:220px;
+      opacity:0; visibility:hidden; transform:translateY(8px);
+      transition:all .22s ease;
+    }
+    .nav-dropdown:hover .dropdown-menu {
+      opacity:1; visibility:visible; transform:translateY(0);
+    }
+
+    /* ─ Form Input ─ */
+    .form-input {
+      width:100%; padding:.75rem 1rem; border-radius:.75rem;
+      border:2px solid #ffc9e0; font-family:'Poppins',sans-serif;
+      font-size:.95rem; background:#fff; transition:border .2s;
+      outline:none;
+    }
+    .form-input:focus { border-color:#e91e8c; }
+
+    /* ─ Pink Button ─ */
+    .btn-pink {
+      background: linear-gradient(135deg,#e91e8c,#ff6eb4);
+      color:#fff; font-weight:700; border-radius:999px;
+      padding:.875rem 2.5rem; font-size:1rem; cursor:pointer;
+      transition:all .3s; box-shadow:0 8px 24px rgba(233,30,140,.28);
+      border:none;
+    }
+    .btn-pink:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(233,30,140,.38); }
+
+    /* ─ Mobile Menu ─ */
+    #mobile-menu {
+      position:fixed; inset:0; z-index:200;
+      background:rgba(45,27,46,.97); backdrop-filter:blur(12px);
+      transform:translateX(100%); transition:transform .4s ease;
+      overflow-y:auto;
+    }
+    #mobile-menu.active { transform:translateX(0); }
+  </style>
+</head>
+
+<body class="mesh-bg min-h-screen">
+
+  <!-- Floating bubbles -->
+  <div class="bubble w-24 h-24 bg-pink-200/20 bottom-0 left-[8%]"  style="animation-delay:0s"></div>
+  <div class="bubble w-12 h-12 bg-pink-300/15 bottom-0 left-[30%]" style="animation-delay:5s"></div>
+  <div class="bubble w-36 h-36 bg-pink-100/10 bottom-0 left-[60%]" style="animation-delay:2s"></div>
+  <div class="bubble w-20 h-20 bg-pink-200/15 bottom-0 left-[85%]" style="animation-delay:8s"></div>
+
+  <!-- ═══════════════════════ HEADER ═══════════════════════ -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-pink-100 shadow-sm">
+    <!-- Top Bar -->
+    <div class="bg-gradient-to-r from-pink-300 via-pink-200 to-pink-300 text-center py-2 px-4">
+      <p class="text-sm font-semibold text-plum">
+        ✨ #1 Rated Cleaning Service in Southwest Florida &nbsp;|&nbsp;
+        <a href="tel:9412222080" class="font-bold underline hover:text-pink-500">(941) 222-2080</a>
+      </p>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-3">
+          <img src="../images/sweet-maid-logo.png"
+               onerror="this.onerror=null;this.src='../images/whatsapp-image-2026-02-10-at-3.46.50-pm.jpeg';this.style.borderRadius='12px';this.style.objectFit='cover';this.style.width='48px';this.style.height='48px';"
+               alt="Sweet Maid Cleaning — #1 House Cleaning in Southwest Florida"
+               class="h-12 w-auto object-contain transition-transform hover:scale-105 duration-300">
+          <span class="font-bold text-lg text-plum hidden sm:block">Sweet Maid <span class="text-gradient">Cleaning</span></span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold">
+          <a href="/" class="text-gray-700 hover:text-pink-400 transition-colors py-8">Home</a>
+
+          <!-- Services dropdown -->
+          <div class="nav-dropdown">
+            <button class="flex items-center gap-1 text-gray-700 hover:text-pink-400 transition-colors py-8">
+              Services <i class="fa-solid fa-chevron-down text-xs"></i>
+            </button>
+            <div class="dropdown-menu bg-white rounded-2xl shadow-2xl border border-pink-100 p-5 grid grid-cols-2 gap-4 w-[520px]">
+              <div>
+                <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-3">Residential</div>
+                <div class="space-y-1">
+                  <a href="/house-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">House Cleaning</a>
+                  <a href="/deep-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Deep Cleaning</a>
+                  <a href="/move-in-out-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Move In / Out</a>
+                  <a href="/airbnb-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Airbnb Cleaning</a>
+                  <a href="/luxury-estate-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Luxury Estate</a>
+                  <a href="/carpet-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Carpet Cleaning</a>
+                </div>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-3">Commercial & Specialty</div>
+                <div class="space-y-1">
+                  <a href="/commercial-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Commercial Cleaning</a>
+                  <a href="/post-construction-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Post-Construction</a>
+                  <a href="/pressure-washing/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Pressure Washing</a>
+                  <a href="/window-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Window Cleaning</a>
+                  <a href="/home-watch-services/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Home Watch</a>
+                  <a href="/office-janitorial-services/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Office Janitorial</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Locations dropdown -->
+          <div class="nav-dropdown">
+            <button class="flex items-center gap-1 text-gray-700 hover:text-pink-400 transition-colors py-8">
+              Locations <i class="fa-solid fa-chevron-down text-xs"></i>
+            </button>
+            <div class="dropdown-menu bg-white rounded-2xl shadow-2xl border border-pink-100 p-5 w-[260px]">
+              <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-3">Nearby Cities</div>
+              <div id="nearby-locations-list" class="space-y-1">
+                <a href="/bradenton-fl/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Bradenton, FL</a>
+                <a href="/sarasota-fl/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Sarasota, FL</a>
+                <a href="/venice-fl/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Venice, FL</a>
+                <a href="/naples-fl/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Naples, FL</a>
+                <a href="/fort-myers-fl/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 text-sm transition">Fort Myers, FL</a>
+              </div>
+              <div class="border-t border-pink-50 mt-4 pt-4">
+                <a href="/house-cleaning/" class="text-xs font-bold text-pink-400 uppercase tracking-widest hover:text-pink-600 transition flex items-center justify-between">
+                  View All Locations <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/blog/" class="text-gray-700 hover:text-pink-400 transition-colors">Blog</a>
+          <a href="/gallery/" class="text-gray-700 hover:text-pink-400 transition-colors">Gallery</a>
+
+          <a href="/booknow/" class="ml-2 px-6 py-3 btn-pink text-sm rounded-full">Book Now</a>
+        </nav>
+
+        <!-- Mobile toggle -->
+        <button id="mobile-btn" class="lg:hidden p-2 rounded-xl hover:bg-pink-50 transition-colors" aria-label="Open menu">
+          <i class="fa-solid fa-bars text-2xl text-plum"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="invisible">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-white/10">
+        <span class="text-white font-bold text-xl">Sweet Maid Cleaning</span>
+        <button id="close-mobile" class="text-white text-3xl"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="px-6 py-8 space-y-2">
+        <a href="/" class="block py-4 text-white text-lg font-semibold border-b border-white/10">Home</a>
+        <a href="/house-cleaning/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">— House Cleaning</a>
+        <a href="/deep-cleaning/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">— Deep Cleaning</a>
+        <a href="/airbnb-cleaning/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">— Airbnb Cleaning</a>
+        <a href="/move-in-out-cleaning/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">— Move In/Out</a>
+        <a href="/commercial-cleaning/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">— Commercial</a>
+        <a href="/luxury-estate-cleaning/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">— Luxury Estate</a>
+        <div class="border-t border-white/10 pt-4"></div>
+        <a href="/bradenton-fl/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">📍 Bradenton, FL</a>
+        <a href="/sarasota-fl/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">📍 Sarasota, FL</a>
+        <a href="/naples-fl/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">📍 Naples, FL</a>
+        <a href="/fort-myers-fl/" class="block py-3 text-white/80 hover:text-pink-300 transition-colors">📍 Fort Myers, FL</a>
+        <div class="pt-6">
+          <a href="/booknow/" class="block py-4 px-8 btn-pink text-center text-lg rounded-2xl">✨ Book Your Cleaning</a>
+        </div>
+        <div class="pt-4 text-center">
+          <a href="tel:9412222080" class="text-pink-300 font-bold text-lg">(941) 222-2080</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════ MAIN ═══════════════════════ -->
+  <main class="relative z-10">
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-5 sm:px-10 pt-16 pb-10 text-center" data-aos="fade-down">
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-pink-100 text-pink-500 font-semibold text-sm mb-6 shadow-sm">
+        <i class="fa-solid fa-calendar-check"></i> Instant Online Booking Available
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black text-plum leading-tight tracking-tight">
+        Book Your <span class="text-gradient">Professional</span><br>Cleaning Today
+      </h1>
+      <p class="mt-6 text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+        Southwest Florida's most trusted cleaning service. Serving <strong>Bradenton, Sarasota, Naples, Fort Myers</strong> and surrounding communities — with 5-star results every time.
+      </p>
+      <!-- Star Rating -->
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <div class="flex text-yellow-400 text-2xl">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <span class="text-gray-500 font-semibold">5.0 · Over 312 Five-Star Reviews</span>
+      </div>
+    </section>
+
+    <!-- Main Grid -->
+    <section class="max-w-7xl mx-auto px-5 sm:px-10 pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+
+        <!-- LEFT: Trust Sidebar -->
+        <div class="hidden lg:block lg:col-span-4 sticky top-32" data-aos="fade-right">
+          <div class="relative">
+            <!-- Glow -->
+            <div class="absolute -inset-8 bg-pink-300/20 rounded-full blur-[80px] animate-pulse pointer-events-none"></div>
+
+            <!-- Mascot-style hero image -->
+            <div class="relative glass rounded-[2.5rem] p-6 shadow-2xl border border-pink-100">
+              <img src="../images/whatsapp-image-2026-02-10-at-11.18.06-pm.jpeg"
+                   alt="Sweet Maid Professional Cleaning Team"
+                   class="w-full h-64 object-cover rounded-[1.5rem] shadow-lg animate-float"
+                   onerror="this.style.display='none'">
+
+              <!-- Trust badge -->
+              <div class="absolute -top-5 -right-5 bg-gradient-to-br from-pink-400 to-pink-300 text-white w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-xl text-center font-bold text-xs leading-tight">
+                <span class="text-2xl font-black">5★</span>
+                <span>Rated</span>
+              </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="mt-8 glass p-8 rounded-[2.5rem] border border-pink-100 shadow-xl space-y-5">
+              <h3 class="text-xl font-black text-plum border-b-2 border-pink-100 pb-3">Why Southwest Florida Chooses Us</h3>
+              <ul class="space-y-4 text-gray-700 font-medium">
+                <li class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 shrink-0"><i class="fa-solid fa-shield-check"></i></span>
+                  Fully Licensed & Insured
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 shrink-0"><i class="fa-solid fa-id-badge"></i></span>
+                  Background-Checked Cleaners
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 shrink-0"><i class="fa-solid fa-dollar-sign"></i></span>
+                  Transparent, Flat-Rate Pricing
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 shrink-0"><i class="fa-solid fa-rotate-left"></i></span>
+                  100% Satisfaction Guarantee
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 shrink-0"><i class="fa-solid fa-leaf"></i></span>
+                  Eco-Friendly Products
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 shrink-0"><i class="fa-solid fa-clock"></i></span>
+                  Flexible Scheduling
+                </li>
+              </ul>
+
+              <!-- Phone CTA -->
+              <a href="tel:9412222080" class="flex items-center gap-4 mt-6 p-4 bg-gradient-to-r from-pink-400 to-pink-300 rounded-2xl text-white font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+                <i class="fa-solid fa-phone text-xl"></i>
+                <div>
+                  <div class="text-xs font-semibold opacity-80">Call us directly</div>
+                  <div class="text-lg">(941) 222-2080</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Service areas chips -->
+            <div class="mt-6 glass p-6 rounded-[2rem] border border-pink-100 shadow-lg">
+              <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-4">We Serve All Of</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Bradenton</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Sarasota</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Venice</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Siesta Key</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Longboat Key</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Naples</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Fort Myers</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Cape Coral</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Port Charlotte</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Marco Island</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">Lakewood Ranch</span>
+                <span class="px-3 py-1.5 bg-pink-100 text-pink-500 rounded-full text-xs font-bold">& More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Booking Form -->
+        <div class="lg:col-span-8 space-y-10" data-aos="fade-left">
+
+          <!-- Mobile trust badges -->
+          <div class="lg:hidden flex flex-wrap justify-center gap-3 mb-6">
+            <span class="flex items-center gap-2 px-4 py-2 glass rounded-full text-sm font-bold text-gray-700 border border-pink-100"><i class="fa-solid fa-shield-check text-pink-400"></i> Licensed & Insured</span>
+            <span class="flex items-center gap-2 px-4 py-2 glass rounded-full text-sm font-bold text-gray-700 border border-pink-100"><i class="fa-solid fa-star text-yellow-400"></i> 5-Star Rated</span>
+            <span class="flex items-center gap-2 px-4 py-2 glass rounded-full text-sm font-bold text-gray-700 border border-pink-100"><i class="fa-solid fa-rotate-left text-pink-400"></i> 100% Guarantee</span>
+          </div>
+
+          <!-- Booking Form Card -->
+          <div class="relative p-1 rounded-[3rem] bg-gradient-to-br from-pink-300/60 via-pink-200/40 to-pink-300/60 shadow-[0_30px_80px_rgba(233,30,140,0.18)]">
+            <div class="bg-white rounded-[2.75rem] overflow-hidden">
+
+              <!-- Form Header -->
+              <div class="px-8 py-7 bg-gradient-to-r from-pink-50 to-white border-b border-pink-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                  <h2 class="text-3xl font-black text-plum">Request Your Cleaning</h2>
+                  <p class="text-gray-500 font-medium mt-1">We'll confirm your appointment within hours.</p>
+                </div>
+                <div class="flex items-center gap-2 px-5 py-2.5 bg-white rounded-2xl shadow-sm border border-pink-100 shrink-0">
+                  <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-ping"></span>
+                  <span class="font-bold text-plum text-xs uppercase tracking-widest">Available Now</span>
+                </div>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="p-8 sm:p-10">
+                <form id="bookNowForm" class="space-y-5">
+                  <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+                      <input type="text" name="firstName" required placeholder="Your first name" class="form-input">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+                      <input type="text" name="lastName" required placeholder="Your last name" class="form-input">
+                    </div>
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                      <input type="tel" name="phone" required placeholder="(941) 000-0000" class="form-input">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                      <input type="email" name="email" required placeholder="your@email.com" class="form-input">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Service Address *</label>
+                    <input type="text" name="address" required placeholder="123 Main St, Bradenton, FL" class="form-input">
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2">Service Type *</label>
+                      <select name="serviceType" required class="form-input">
+                        <option value="">Select a service…</option>
+                        <option>House Cleaning (Recurring)</option>
+                        <option>Deep Cleaning</option>
+                        <option>Move In / Move Out Cleaning</option>
+                        <option>Airbnb / Vacation Rental Cleaning</option>
+                        <option>Luxury Estate Cleaning</option>
+                        <option>Commercial Cleaning</option>
+                        <option>Post-Construction Cleaning</option>
+                        <option>Carpet Cleaning</option>
+                        <option>Pressure Washing</option>
+                        <option>Window Cleaning</option>
+                        <option>Home Watch Services</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Date</label>
+                      <input type="date" name="preferredDate" class="form-input">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Home Size / Notes</label>
+                    <textarea name="message" rows="4" placeholder="e.g. 3 bed / 2 bath, pet-friendly products please, gate code 1234…" class="form-input resize-none"></textarea>
+                  </div>
+
+                  <!-- Submit -->
+                  <div class="pt-2">
+                    <button type="submit" class="btn-pink w-full text-lg py-4">
+                      <i class="fa-solid fa-calendar-check mr-2"></i> Request My Cleaning
+                    </button>
+                    <p class="text-center text-xs text-gray-400 font-medium mt-3">
+                      <i class="fa-solid fa-lock text-pink-300 mr-1"></i>
+                      Your info is 100% private. We respond within 2 hours.
+                    </p>
+                  </div>
+
+                  <!-- Success / Error -->
+                  <div id="formSuccess" class="hidden mt-4 p-5 rounded-2xl bg-green-50 border border-green-200 text-green-700 font-semibold text-center">
+                    <i class="fa-solid fa-circle-check text-2xl mb-2 block"></i>
+                    Thank you! We'll reach out within 2 hours to confirm your appointment. ✨
+                  </div>
+                  <div id="formError" class="hidden mt-4 p-5 rounded-2xl bg-red-50 border border-red-200 text-red-600 font-semibold text-center">
+                    <i class="fa-solid fa-triangle-exclamation text-2xl mb-2 block"></i>
+                    Something went wrong. Please call us at <a href="tel:9412222080" class="underline">(941) 222-2080</a>.
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEO Block — Why Book With Sweet Maid -->
+          <div class="glass p-10 md:p-14 rounded-[3rem] border border-pink-100 shadow-xl space-y-8" data-aos="fade-up">
+            <div class="flex items-center gap-5">
+              <div class="w-16 h-2 bg-gradient-to-r from-pink-400 to-pink-300 rounded-full"></div>
+              <h2 class="text-3xl lg:text-4xl font-black text-plum">Southwest Florida's Most Trusted Cleaning Company</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="space-y-3">
+                <h3 class="text-xl font-black text-pink-400">Residential Cleaning</h3>
+                <p class="text-gray-600 font-medium leading-relaxed">
+                  From the barrier islands of <strong>Siesta Key and Longboat Key</strong> to the master-planned communities of <strong>Lakewood Ranch and Parrish</strong>, our residential cleaning teams deliver meticulous results for every home — big or small.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <h3 class="text-xl font-black text-pink-400">Vacation Rental Cleaning</h3>
+                <p class="text-gray-600 font-medium leading-relaxed">
+                  Keep your Airbnb guests happy and your reviews glowing. Our <strong>vacation rental turnover service</strong> is fast, hotel-standard, and trusted by hundreds of hosts across Sarasota, Anna Maria Island, and the Naples coast.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <h3 class="text-xl font-black text-pink-400">Luxury Estate Service</h3>
+                <p class="text-gray-600 font-medium leading-relaxed">
+                  For Florida's most prestigious homes — <strong>Port Royal, Pelican Bay, Bird Key, Bay Colony</strong> — Sweet Maid's white-glove estate team delivers an unmatched standard of cleaning and discretion.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <h3 class="text-xl font-black text-pink-400">Commercial Cleaning</h3>
+                <p class="text-gray-600 font-medium leading-relaxed">
+                  Offices, retail spaces, medical facilities, and commercial properties across <strong>Bradenton, Sarasota, Fort Myers, and Naples</strong> rely on Sweet Maid for consistent, insured janitorial service.
+                </p>
+              </div>
+            </div>
+            <p class="text-gray-400 italic font-semibold text-center border-t border-pink-50 pt-6">
+              Proudly serving Manatee County, Sarasota County, Charlotte County, Lee County, and Collier County.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="relative bg-gradient-to-br from-plum via-[#3a1f3b] to-[#1a0d1b] text-white pt-20 pb-8 overflow-hidden">
+    <!-- Glow blobs -->
+    <div class="absolute top-0 left-1/4 w-80 h-80 bg-pink-400/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-pink-300/8 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+        <!-- Brand -->
+        <div class="space-y-5">
+          <a href="/" class="inline-block">
+            <img src="../images/sweet-maid-logo.png"
+                 onerror="this.style.display='none'"
+                 alt="Sweet Maid Cleaning Logo"
+                 class="h-14 w-auto brightness-110 hover:scale-105 transition-transform duration-300">
+          </a>
+          <p class="font-black text-lg text-gradient" style="-webkit-text-fill-color:initial">Sweet Maid Cleaning</p>
+          <p class="text-gray-400 text-sm leading-relaxed">Southwest Florida's premier cleaning service. Licensed, insured, and 5-star rated across Manatee, Sarasota, Charlotte, Lee & Collier counties.</p>
+          <div class="flex gap-3 pt-1">
+            <a href="https://www.facebook.com/sweetmaidcleaning" target="_blank" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-pink-400 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/sweetmaidcleaning" target="_blank" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-pink-400 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-base font-bold mb-5 flex items-center gap-3"><span class="w-6 h-1 bg-gradient-to-r from-pink-400 to-pink-300 rounded-full"></span>Services</h3>
+          <ul class="space-y-3 text-sm text-gray-400 font-medium">
+            <li><a href="/house-cleaning/" class="hover:text-pink-300 transition-colors">• House Cleaning</a></li>
+            <li><a href="/deep-cleaning/" class="hover:text-pink-300 transition-colors">• Deep Cleaning</a></li>
+            <li><a href="/airbnb-cleaning/" class="hover:text-pink-300 transition-colors">• Airbnb Cleaning</a></li>
+            <li><a href="/move-in-out-cleaning/" class="hover:text-pink-300 transition-colors">• Move In / Out</a></li>
+            <li><a href="/luxury-estate-cleaning/" class="hover:text-pink-300 transition-colors">• Luxury Estate</a></li>
+            <li><a href="/commercial-cleaning/" class="hover:text-pink-300 transition-colors">• Commercial</a></li>
+            <li><a href="/pressure-washing/" class="hover:text-pink-300 transition-colors">• Pressure Washing</a></li>
+          </ul>
+        </div>
+
+        <!-- Locations -->
+        <div>
+          <h3 class="text-base font-bold mb-5 flex items-center gap-3"><span class="w-6 h-1 bg-gradient-to-r from-pink-400 to-pink-300 rounded-full"></span>Top Locations</h3>
+          <ul class="space-y-3 text-sm text-gray-400 font-medium">
+            <li><a href="/bradenton-fl/" class="hover:text-pink-300 transition-colors">Bradenton, FL</a></li>
+            <li><a href="/sarasota-fl/" class="hover:text-pink-300 transition-colors">Sarasota, FL</a></li>
+            <li><a href="/siesta-key-fl/" class="hover:text-pink-300 transition-colors">Siesta Key, FL</a></li>
+            <li><a href="/naples-fl/" class="hover:text-pink-300 transition-colors">Naples, FL</a></li>
+            <li><a href="/fort-myers-fl/" class="hover:text-pink-300 transition-colors">Fort Myers, FL</a></li>
+            <li><a href="/cape-coral-fl/" class="hover:text-pink-300 transition-colors">Cape Coral, FL</a></li>
+            <li><a href="/lakewood-ranch-fl/" class="hover:text-pink-300 transition-colors">Lakewood Ranch, FL</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-base font-bold mb-5 flex items-center gap-3"><span class="w-6 h-1 bg-gradient-to-r from-pink-400 to-pink-300 rounded-full"></span>Contact</h3>
+          <div class="space-y-4">
+            <a href="tel:9412222080" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-pink-400 transition-colors text-pink-300 group-hover:text-white">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <span class="text-white font-semibold">(941) 222-2080</span>
+            </a>
+            <a href="mailto:info@sweetmaidcleaning.com" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-pink-400 transition-colors text-pink-300 group-hover:text-white">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <span class="text-gray-400 font-medium text-sm group-hover:text-pink-300 transition-colors">info@sweetmaidcleaning.com</span>
+            </a>
+            <a href="/booknow/" class="mt-4 block py-3 px-6 btn-pink text-center text-sm font-bold rounded-2xl">
+              <i class="fa-solid fa-calendar-check mr-2"></i> Book Online Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
+        <p>&copy; 2026 Sweet Maid Cleaning. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="/house-cleaning/" class="hover:text-pink-300 transition-colors">Services</a>
+          <a href="/bradenton-fl/" class="hover:text-pink-300 transition-colors">Locations</a>
+          <a href="/booknow/" class="hover:text-pink-300 transition-colors">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LeadConnector Chat Widget -->
+  <script
+    src="https://widgets.leadconnectorhq.com/loader.js"
+    data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+    data-widget-id="688944c881758bda483c0af4">
+  </script>
+
+  <!-- Scripts -->
+  <script>
+    AOS.init({ once: true, duration: 700, offset: 60 });
+
+    // Mobile menu
+    const mobileBtn  = document.getElementById('mobile-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn   = document.getElementById('close-mobile');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('invisible');
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    const closeMenu = () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => mobileMenu.classList.add('invisible'), 400);
+    };
+    closeBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+
+    // Booking form → GHL webhook
+    const form       = document.getElementById('bookNowForm');
+    const successMsg = document.getElementById('formSuccess');
+    const errorMsg   = document.getElementById('formError');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Sending…';
+
+      const data = new FormData(form);
+      // Append source page
+      data.append('source', 'sweetmaidcleaning.com/booknow/');
+
+      try {
+        const res = await fetch(
+          'https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/acaff8c7-b7ea-47e8-90d5-adfe581d1517',
+          { method: 'POST', body: data }
+        );
+        if (res.ok) {
+          form.style.display = 'none';
+          successMsg.classList.remove('hidden');
+          errorMsg.classList.add('hidden');
+        } else throw new Error();
+      } catch {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-calendar-check mr-2"></i> Request My Cleaning';
+        successMsg.classList.add('hidden');
+        errorMsg.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
