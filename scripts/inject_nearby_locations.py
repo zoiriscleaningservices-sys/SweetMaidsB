@@ -3,12 +3,17 @@
 inject_nearby_locations.py
 --------------------------
 Updates the "Service Areas" card grid and nav hardcoded links in every
-*-fl/index.html location page to show the geographically nearest cities
-using the Haversine formula.
+location page to show the geographically nearest cities using Haversine.
+
+Handles ALL page types:
+  - *-fl/index.html         (uses slug as-is)
+  - *-cleaning/index.html   (strips -cleaning suffix, maps to *-fl slug)
+  - *-miami-fl/index.html   (e.g. miami-cleaning -> miami-fl)
 
 Usage:
-    python scripts/inject_nearby_locations.py           # All pages
-    python scripts/inject_nearby_locations.py --test bradenton-fl  # One page
+    python scripts/inject_nearby_locations.py              # All pages
+    python scripts/inject_nearby_locations.py --test bradenton-fl
+    python scripts/inject_nearby_locations.py --test bradenton-cleaning
 
 Run from the SweetMaidsB root directory.
 """
@@ -25,8 +30,8 @@ import glob
 # ---------------------------------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COORDS_FILE = os.path.join(BASE_DIR, 'js', 'city_coords.json')
-NUM_NEARBY_BODY = 16  # How many cities in the body areas grid
-NUM_NEARBY_NAV  = 8   # How many cities in the nav dropdown (also used as fallback)
+NUM_NEARBY_BODY = 16
+NUM_NEARBY_NAV  = 8
 
 # ---------------------------------------------------------------------------
 # Load coordinates
@@ -34,9 +39,42 @@ NUM_NEARBY_NAV  = 8   # How many cities in the nav dropdown (also used as fallba
 with open(COORDS_FILE, 'r', encoding='utf-8') as f:
     CITY_COORDS = json.load(f)
 
+# Build a "name -> slug" reverse lookup for convenience
+NAME_TO_SLUG = {v['name'].lower(): k for k, v in CITY_COORDS.items()}
+
+
+def resolve_slug(folder_name):
+    """
+    Given a folder name, return the matching city slug in CITY_COORDS.
+    
+    Examples:
+      'bradenton-fl'      -> 'bradenton-fl'
+      'bradenton-cleaning'-> 'bradenton-fl'
+      'miami-cleaning'    -> 'miami-fl'
+      'sarasota-cleaning' -> 'sarasota-fl'
+    """
+    # Direct match
+    if folder_name in CITY_COORDS:
+        return folder_name
+
+    # Try stripping -cleaning and appending -fl
+    if folder_name.endswith('-cleaning'):
+        base = folder_name[:-len('-cleaning')]
+        candidate = base + '-fl'
+        if candidate in CITY_COORDS:
+            return candidate
+
+    # Try any other suffix patterns — look for first word(s) matching a slug
+    for slug in CITY_COORDS:
+        city_base = slug.replace('-fl', '')
+        folder_base = re.sub(r'-(cleaning|fl|services)$', '', folder_name)
+        if city_base == folder_base:
+            return slug
+
+    return None
+
 
 def haversine(lat1, lng1, lat2, lng2):
-    """Return distance in miles between two lat/lng points."""
     R = 3958.8
     dlat = math.radians(lat2 - lat1)
     dlng = math.radians(lng2 - lng1)
@@ -47,7 +85,6 @@ def haversine(lat1, lng1, lat2, lng2):
 
 
 def get_nearest(slug, count):
-    """Return list of {slug, name} dicts sorted by distance from given slug."""
     if slug not in CITY_COORDS:
         return []
     cur = CITY_COORDS[slug]
@@ -65,7 +102,6 @@ def get_nearest(slug, count):
 # HTML generation helpers
 # ---------------------------------------------------------------------------
 def build_body_grid_html(nearest):
-    """Generate the location card grid HTML for the body areas section."""
     cards = []
     for city in nearest:
         card = (
@@ -81,7 +117,6 @@ def build_body_grid_html(nearest):
 
 
 def build_nav_links_html(nearest):
-    """Generate the hardcoded fallback nav nearby links HTML (inside nearby-locations-list)."""
     lines = []
     for city in nearest:
         lines.append(
@@ -95,8 +130,6 @@ def build_nav_links_html(nearest):
 # ---------------------------------------------------------------------------
 # Injection logic
 # ---------------------------------------------------------------------------
-# Regex to match the entire grid div inside the areas section
-# The grid starts after the description paragraph inside the left column
 BODY_GRID_PATTERN = re.compile(
     r'(<div class="grid grid-cols-2 md:grid-cols-4 gap-3">)'
     r'.*?'
@@ -104,7 +137,6 @@ BODY_GRID_PATTERN = re.compile(
     re.DOTALL
 )
 
-# Regex to match the content inside nearby-locations-list div
 NAV_LIST_PATTERN = re.compile(
     r'(<div id="nearby-locations-list"[^>]*>)'
     r'\s*.*?'
@@ -113,8 +145,12 @@ NAV_LIST_PATTERN = re.compile(
 )
 
 
-def inject_page(slug, html_path):
-    """Inject correct nearby locations into a single page."""
+def inject_page(folder_name, html_path):
+    slug = resolve_slug(folder_name)
+    if not slug:
+        print(f'  [SKIP] Cannot resolve city slug for: {folder_name}')
+        return False
+
     with open(html_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
@@ -122,12 +158,12 @@ def inject_page(slug, html_path):
     nearest_nav  = get_nearest(slug, NUM_NEARBY_NAV)
 
     if not nearest_body:
-        print(f"  [SKIP] No coordinates found for slug: {slug}")
+        print(f'  [SKIP] No coordinates found for slug: {slug} (from {folder_name})')
         return False
 
     changed = False
 
-    # ---- 1. Update the body service areas grid ----
+    # ---- 1. Update body service areas grid ----
     grid_html = build_body_grid_html(nearest_body)
     new_grid_block = (
         '<div class="grid grid-cols-2 md:grid-cols-4 gap-3">\n'
@@ -135,24 +171,22 @@ def inject_page(slug, html_path):
         + '          </div>'
     )
 
-    def replace_body_grid(m):
-        # Rebuild: keep the map div that follows
-        return new_grid_block + '\n        </div>\n\n        <div ' + m.group(2).split('<div ', 1)[1]
-
-    new_content, n = re.subn(BODY_GRID_PATTERN,
-                              lambda m: new_grid_block + '\n        </div>\n\n        <div ' + m.group(2).split('<div ', 1)[1],
-                              content, count=1)
+    new_content, n = re.subn(
+        BODY_GRID_PATTERN,
+        lambda m: new_grid_block + '\n        </div>\n\n        <div ' + m.group(2).split('<div ', 1)[1],
+        content, count=1
+    )
     if n:
         content = new_content
         changed = True
 
-    # ---- 2. Update nav nearby-locations-list (hardcoded fallback) ----
+    # ---- 2. Update nav nearby-locations-list (only if hardcoded links exist) ----
     nav_html = build_nav_links_html(nearest_nav)
-
-    def replace_nav(m):
-        return m.group(1) + '\n' + nav_html + '\n' + m.group(2)
-
-    new_content, n = re.subn(NAV_LIST_PATTERN, replace_nav, content, count=1)
+    new_content, n = re.subn(
+        NAV_LIST_PATTERN,
+        lambda m: m.group(1) + '\n' + nav_html + '\n' + m.group(2),
+        content, count=1
+    )
     if n:
         content = new_content
         changed = True
@@ -160,9 +194,9 @@ def inject_page(slug, html_path):
     if changed:
         with open(html_path, 'w', encoding='utf-8') as f:
             f.write(content)
-        print(f"  [OK]   {slug}")
+        print(f'  [OK]   {folder_name} -> {slug}')
     else:
-        print(f"  [WARN] No replaceable sections found in {slug}")
+        print(f'  [WARN] No replaceable sections in {folder_name}')
 
     return changed
 
@@ -171,34 +205,36 @@ def inject_page(slug, html_path):
 # Entry point
 # ---------------------------------------------------------------------------
 def main():
-    test_slug = None
+    test_folder = None
     if '--test' in sys.argv:
         idx = sys.argv.index('--test')
         if idx + 1 < len(sys.argv):
-            test_slug = sys.argv[idx + 1]
+            test_folder = sys.argv[idx + 1]
 
-    if test_slug:
-        slugs = [test_slug]
+    if test_folder:
+        folders = [test_folder]
     else:
-        # Find all *-fl directories that contain an index.html
-        pattern = os.path.join(BASE_DIR, '*-fl', 'index.html')
-        slugs = [
-            os.path.basename(os.path.dirname(p))
-            for p in glob.glob(pattern)
-        ]
-        slugs.sort()
+        # Collect all folders that have an index.html (excluding service-only folders)
+        all_index = glob.glob(os.path.join(BASE_DIR, '*/index.html'))
+        # Filter to location-type folders: ends with -fl or -cleaning
+        folders = []
+        for path in all_index:
+            folder = os.path.basename(os.path.dirname(path))
+            if folder.endswith('-fl') or folder.endswith('-cleaning'):
+                folders.append(folder)
+        folders.sort()
 
-    print(f"Processing {len(slugs)} location page(s)...")
+    print(f'Processing {len(folders)} location page(s)...')
     ok = 0
-    for slug in slugs:
-        html_path = os.path.join(BASE_DIR, slug, 'index.html')
+    for folder in folders:
+        html_path = os.path.join(BASE_DIR, folder, 'index.html')
         if not os.path.exists(html_path):
-            print(f"  [MISS] {html_path} not found")
+            print(f'  [MISS] {html_path} not found')
             continue
-        if inject_page(slug, html_path):
+        if inject_page(folder, html_path):
             ok += 1
 
-    print(f"\nDone: {ok}/{len(slugs)} pages updated.")
+    print(f'\nDone: {ok}/{len(folders)} pages updated.')
 
 
 if __name__ == '__main__':
