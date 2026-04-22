@@ -5,7 +5,7 @@ import { serviceSlugs, formatName } from './data';
 export function getTemplate(templateName: string) {
   try {
     const isService = serviceSlugs.includes(templateName);
-    const folder = isService ? \`services_source/\${templateName}\` : templateName;
+    const folder = isService ? "services_source/" + templateName : templateName;
     const filePath = path.join(process.cwd(), 'templates', folder, 'index.html');
     return fs.readFileSync(filePath, 'utf8');
   } catch (e) {
