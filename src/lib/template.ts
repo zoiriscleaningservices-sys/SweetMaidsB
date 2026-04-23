@@ -202,8 +202,54 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   `;
 
   if (newContent.includes('</footer>')) {
-    newContent = newContent.replace('</footer>', seoSection + '\\n</footer>');
+    newContent = newContent.replace('</footer>', seoSection + '\n</footer>');
   }
+
+  // Dynamic SEO-Maximized FAQs tailored specifically to the Service and Location
+  const dynamicFaqHtml = `<div class="space-y-4">
+        <!-- Q1 -->
+        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
+          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
+            Who provides the best ${serviceName.toLowerCase()} in ${clean_name}, FL?
+            <span class="transition duration-300 group-open:-rotate-180">
+              <i class="fa-solid fa-chevron-down text-pink-300"></i>
+            </span>
+          </summary>
+          <p class="mt-4 text-gray-600 leading-relaxed">
+            Sweet Maid is widely recognized as the #1 top-rated provider for <strong>${serviceName.toLowerCase()} in ${clean_name}, Florida</strong>. Our expert team delivers highly affordable, meticulous, and professional ${serviceName.toLowerCase()} perfectly tailored for both residential and commercial properties in ${clean_name}. We stand by our work with a 100% satisfaction guarantee.
+          </p>
+        </details>
+
+        <!-- Q2 -->
+        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
+          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
+            How much does professional ${serviceName.toLowerCase()} cost near me in ${clean_name}?
+            <span class="transition duration-300 group-open:-rotate-180">
+              <i class="fa-solid fa-chevron-down text-pink-300"></i>
+            </span>
+          </summary>
+          <p class="mt-4 text-gray-600 leading-relaxed">
+            The cost for affordable ${serviceName.toLowerCase()} in ${clean_name} varies depending on your specific needs, the size of your property, and the frequency of the service. Sweet Maid offers highly competitive and transparent pricing for expert ${serviceName.toLowerCase()} in ${clean_name}, FL. Contact us today for a fast, free local estimate!
+          </p>
+        </details>
+
+        <!-- Q3 -->
+        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
+          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
+            Are there reliable ${serviceName.toLowerCase()} experts in ${clean_name}?
+            <span class="transition duration-300 group-open:-rotate-180">
+              <i class="fa-solid fa-chevron-down text-pink-300"></i>
+            </span>
+          </summary>
+          <p class="mt-4 text-gray-600 leading-relaxed">
+            Yes! Sweet Maid employs the most reliable and highly-trained local experts for ${serviceName.toLowerCase()} in the ${clean_name} area. We specialize in comprehensive, eco-friendly ${serviceName.toLowerCase()} solutions tailored specifically for homes and businesses in ${clean_name}, Florida. All of our cleaners are fully vetted, insured, and bonded.
+          </p>
+        </details>
+      </div>`;
+
+  // Swap out the static generic FAQ accordion block with the SEO-maximized dynamic block
+  const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
+  newContent = newContent.replace(staticFaqBlockRegex, dynamicFaqHtml);
 
   return newContent;
 }
