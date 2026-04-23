@@ -41,6 +41,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/Best Cleaning Services in/gi, `${serviceName} in`);
   newContent = newContent.replace(/House Cleaning Services in/gi, `${serviceName} in`);
   newContent = newContent.replace(/House Cleaning in/gi, `${serviceName} in`);
+
+  // Strip ALL legacy favicon tags from templates to prevent Next.js Vercel Triangle fallback
+  newContent = newContent.replace(/<link rel="icon"[^>]*>/gi, '');
+  newContent = newContent.replace(/<link rel="apple-touch-icon"[^>]*>/gi, '');
+  newContent = newContent.replace(/<link rel="shortcut icon"[^>]*>/gi, '');
   
   // Aggressive SEO location and service targeting
   newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
