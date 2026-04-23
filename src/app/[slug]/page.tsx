@@ -1,19 +1,23 @@
-import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
-import { getLocationData, formatName, serviceSlugs } from '@/lib/data';
 import { Metadata } from 'next';
+import { serviceSlugs, getLocationData, formatName } from '@/lib/data';
+import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 
 export async function generateStaticParams() {
   const data = getLocationData();
-  const locationParams = Object.keys(data).map((loc) => ({ slug: loc }));
-  const serviceParams = serviceSlugs.map((s) => ({ slug: s }));
-  
-  return [...locationParams, ...serviceParams];
+  const slugs = Object.keys(data);
+  const params: { slug: string }[] = [];
+
+  slugs.forEach((slug) => {
+    params.push({ slug });
+  });
+
+  return params;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const isService = serviceSlugs.includes(slug);
-  
+
   if (isService) {
     const serviceName = formatName(slug.replace(/-/g, ' '));
     const title = `Top ${serviceName} in Bradenton, FL | Sweet Maid`;
@@ -42,17 +46,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-export default async function SlugPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function LocationOrServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const isService = serviceSlugs.includes(slug);
 
   if (isService) {
-    const cleanName = formatName('Bradenton');
     const rawHtml = getTemplate(slug);
     if (!rawHtml) return <div>Service template missing</div>;
 
     const bodyContent = extractSections(rawHtml);
-    const localizedHtml = localizedReplace(bodyContent, cleanName, 'bradenton-fl', true);
+    const localizedHtml = localizedReplace(bodyContent, 'Bradenton', slug, false);
     return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
   } else {
     const data = getLocationData();
@@ -60,7 +63,7 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
     if (!locData) return <div>Location not found</div>;
 
     const cleanName = formatName(locData.name);
-    const rawHtml = getTemplate('home');
+    const rawHtml = getTemplate('house-cleaning');
     if (!rawHtml) return <div>Template missing</div>;
 
     const bodyContent = extractSections(rawHtml);

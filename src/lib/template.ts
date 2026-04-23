@@ -14,11 +14,10 @@ export function getTemplate(templateName: string) {
 }
 
 export function extractSections(html: string) {
-  const bodyStart = html.indexOf('<body class="antialiased">');
-  const bodyEnd = html.indexOf('</body>');
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
   
-  if (bodyStart !== -1 && bodyEnd !== -1) {
-    return html.substring(bodyStart + 26, bodyEnd).trim();
+  if (bodyMatch && bodyMatch[1]) {
+    return bodyMatch[1].trim();
   }
   
   return html;
@@ -29,7 +28,7 @@ export function exportHead(html: string) {
   return match ? match[1] : '';
 }
 
-export function localizedReplace(content: string, clean_name: string, loc_slug: string, is_sub_page = false) {
+export function localizedReplace(content: string, clean_name: string, loc_slug: string, is_sub_page = false, currentService: string = 'house-cleaning') {
   if (!content) return '';
   
   let newContent = content;
@@ -46,13 +45,90 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   
   // Navigation Links
   for (const s_slug of serviceSlugs) {
+    newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
     newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
     newContent = newContent.replace(new RegExp(`href="https://sweetmaidcleaning.com/${s_slug}/"`, 'g'), `href="https://sweetmaidcleaning.com/${loc_slug}/${s_slug}/"`);
   }
   
-  newContent = newContent.replace(/href="\/home\/"/g, `href="/${loc_slug}/"`);
+  newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, `href="/${loc_slug}/about/"`);
   newContent = newContent.replace(/href="\/about\/"/g, `href="/${loc_slug}/about/"`);
+  
+  newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
   newContent = newContent.replace(/href="\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
+
+  // Explicitly fix corrupted Home links and logos
+  newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/${loc_slug}/"$1>Home</a>`);
+  newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, `<a href="/${loc_slug}/"$1class="flex items-center group">`);
+  
+  newContent = newContent.replace(/href="\/home\/"/g, `href="/${loc_slug}/"`);
+
+  // Fix Cross-City Location Links (e.g. href="/anna-maria-cleaning/")
+  newContent = newContent.replace(/href="\/([a-z0-9-]+)-cleaning\/"/g, `href="/$1-fl/${currentService}/"`);
+
+  // Strip native inline onclick to let React ClientInteractions intercept it perfectly
+  newContent = newContent.replace(/onclick="this\.parentElement\.classList\.toggle\('accordion-active'\)"/gi, "");
+
+  // Eliminate ONLY the pink button locations grid from the Service Areas section while preserving the Map
+  newContent = newContent.replace(/<div class="grid grid-cols-2 md:grid-cols-4 gap-3">[\s\S]*?<\/div>/g, '');
+
+  // Eliminate the "Let Our Team Contact You" floating horizontal form (string block removal)
+  const formStartStr = '<!-- Let Us Contact You Form -->';
+  const formEndStr = '<div class="grid lg:grid-cols-2 gap-12';
+  if (newContent.includes(formStartStr)) {
+    const parts = newContent.split(formStartStr);
+    newContent = parts[0] + parts.slice(1).map(part => {
+      const idx = part.indexOf(formEndStr);
+      return idx !== -1 ? part.substring(idx) : part;
+    }).join('');
+  }
+
+  // Eliminate the GLOBAL SEARCH BAR SECTION
+  const searchKey = 'GLOBAL SEARCH BAR SECTION';
+  const searchStartIdx = newContent.indexOf(searchKey);
+  if (searchStartIdx !== -1) {
+    const commentStartIdx = newContent.lastIndexOf('<!--', searchStartIdx);
+    const sectionEndIdx = newContent.indexOf('</section>', searchStartIdx);
+    if (commentStartIdx !== -1 && sectionEndIdx !== -1) {
+      newContent = newContent.substring(0, commentStartIdx) + newContent.substring(sectionEndIdx + '</section>'.length);
+    }
+  }
+
+  // Hide the Locations We Serve footer grid so it remains in the DOM for React to scrape, but is invisible to the user.
+  newContent = newContent.replace(
+    /(<div class="lg:col-span-2">)(\s*<h4[^>]*>\s*<span[^>]*><\/span>Locations We Serve)/,
+    '<div class="lg:col-span-2 hidden" style="display: none!important;">$2'
+  );
+
+  // Re-organize and re-balance the Footer Layout to compensate for the hidden locations block.
+  // 1. Shift master grid from 5 columns to 4 columns
+  newContent = newContent.replace(/<div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">/g, '<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">');
+  
+  // 2. Expand "Our Services" to take up the 2 completely vacant grid columns, and split its UL into a 2-column layout.
+  newContent = newContent.replace(
+    /<div>(\s*<h4[^>]*>\s*<span[^>]*><\/span>Our Services\s*<\/h4>\s*<div[^>]*>\s*<ul class=")([^"]+)(")/i,
+    '<div class="lg:col-span-2">$1$2 sm:columns-2 gap-x-8$3'
+  );
+
+  // Upgrade Eco-Friendly block flat icon with the Premium CSS-animated Earth Globe
+  const GLOBE_HTML = `<style>
+        @keyframes earthRotate { 0% { background-position: 0 0; } 100% { background-position: 400px 0; } }
+        @keyframes twinkling { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+        @keyframes twinkling-slow { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+        @keyframes twinkling-long { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+        @keyframes twinkling-fast { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+      </style>
+      <div class="flex items-center justify-center mb-8">
+        <div class="relative w-[200px] h-[200px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.2),-5px_0_8px_#c3f4ff_inset,15px_2px_25px_#000_inset,-24px_-2px_34px_#c3f4ff99_inset,200px_0_44px_#00000066_inset,100px_0_38px_#000000aa_inset]" style="background-image: url('https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/globe.jpeg'); background-size: cover; background-position: left; animation: earthRotate 30s linear infinite;">
+          <div class="absolute left-[-20px] w-1 h-1 bg-white rounded-full" style="animation: twinkling 3s infinite"></div>
+          <div class="absolute left-[-40px] top-[30px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-slow 2s infinite"></div>
+          <div class="absolute left-[150px] top-[90px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
+          <div class="absolute left-[100px] top-[180px] w-1 h-1 bg-white rounded-full" style="animation: twinkling 3s infinite"></div>
+          <div class="absolute left-[50px] top-[150px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-fast 1.5s infinite"></div>
+          <div class="absolute left-[180px] top-[20px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
+          <div class="absolute left-[90px] top-[60px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-slow 2s infinite"></div>
+        </div>
+      </div>`;
+  newContent = newContent.replace(/<i class="fa-solid fa-earth-americas[^>]*><\/i>/gi, GLOBE_HTML);
 
   // Image Paths
   if (is_sub_page) {

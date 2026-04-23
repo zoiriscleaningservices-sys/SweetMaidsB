@@ -1,15 +1,15 @@
-import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
-import { getLocationData, formatName, serviceSlugs } from '@/lib/data';
 import { Metadata } from 'next';
+import { serviceSlugs, getLocationData, formatName } from '@/lib/data';
+import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 
 export async function generateStaticParams() {
   const data = getLocationData();
-  const locations = Object.keys(data);
-  const params: { slug: string, service: string }[] = [];
+  const slugs = Object.keys(data);
+  const params: { slug: string; service: string }[] = [];
 
-  locations.forEach(loc => {
-    serviceSlugs.forEach(service => {
-      params.push({ slug: loc, service: service });
+  slugs.forEach((slug) => {
+    serviceSlugs.forEach((service) => {
+      params.push({ slug, service });
     });
   });
 
@@ -44,20 +44,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string, service: string }> }) {
   const { slug, service } = await params;
+  
   const data = getLocationData();
   const locData = data[slug];
-
-  if (!locData) {
-    return <div>Location not found</div>;
-  }
+  if (!locData) return <div>Location not found</div>;
 
   const cleanName = formatName(locData.name);
-  
+
   const rawHtml = getTemplate(service);
   if (!rawHtml) return <div>Service template missing</div>;
 
   const bodyContent = extractSections(rawHtml);
-  const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true);
+  const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true, service);
 
   return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
 }
