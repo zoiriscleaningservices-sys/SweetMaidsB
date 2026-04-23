@@ -171,5 +171,34 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/https:\/\/maps\.google\.com\/maps\?q=[^&]+&t=&z=13&ie=UTF8&iwloc=&output=embed/g, map_url);
   newContent = newContent.replace(/Servicing entire 34205, 34209, 34208, 34210 areas/g, `Servicing ${clean_name} and surrounding areas`);
 
+  // Aggressive SEO Tag Cloud Injection
+  const seoTags = [
+    `${serviceName} ${clean_name} FL`,
+    `Best ${serviceName} in ${clean_name}`,
+    `Top rated ${serviceName.toLowerCase()} near me`,
+    `Affordable ${serviceName.toLowerCase()} ${clean_name}`,
+    `${clean_name} ${serviceName.toLowerCase()} company`,
+    `Professional ${serviceName.toLowerCase()} ${clean_name} Florida`,
+    `Reliable ${serviceName.toLowerCase()} experts`
+  ];
+
+  const seoSection = `
+  <section class="py-12 bg-white border-t border-pink-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-gray-900">Top Local Searches in ${clean_name}</h3>
+        <p class="text-gray-500 mt-2">Find the best local services matching your needs</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        ${seoTags.map(tag => \`<span class="bg-pink-50 text-pink-600 border border-pink-100 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:bg-pink-100 hover:text-pink-700 transition-colors cursor-default">\${tag}</span>\`).join('')}
+      </div>
+    </div>
+  </section>
+  `;
+
+  if (newContent.includes('</footer>')) {
+    newContent = newContent.replace('</footer>', seoSection + '\\n</footer>');
+  }
+
   return newContent;
 }

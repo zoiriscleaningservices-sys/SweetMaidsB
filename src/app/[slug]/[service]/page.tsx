@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
   
   const title = `Top ${serviceName} in ${cleanName}, FL | Sweet Maid`;
-  const desc = `Looking for the best ${serviceName.toLowerCase()} in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable cleaners specifically in ${cleanName}. Get your free quote today!`;
+  const desc = `Looking for the best ${serviceName.toLowerCase()} in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable ${serviceName.toLowerCase()} specifically for the ${cleanName} area. Hire professional local cleaners today!`;
   const keywords = [
     `${serviceName.toLowerCase()} ${cleanName} FL`,
     `best ${serviceName.toLowerCase()} in ${cleanName}`,
@@ -105,26 +105,26 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       "mainEntity": [
         {
           "@type": "Question",
-          "name": `What is the best ${serviceNameForSchema.toLowerCase()} in ${cleanName}, FL?`,
+          "name": `Who provides the best ${serviceNameForSchema.toLowerCase()} in ${cleanName}, FL?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `Sweet Maid is the top-rated provider of ${serviceNameForSchema.toLowerCase()} in ${cleanName}, FL. Our team of local cleaners offers exceptional detail, eco-friendly products, and a 100% satisfaction guarantee to ensure your property is spotless.`
+            "text": `Sweet Maid is widely recognized as the #1 top-rated provider for ${serviceNameForSchema.toLowerCase()} in ${cleanName}, Florida. Our expert team delivers affordable, high-quality, and professional ${serviceNameForSchema.toLowerCase()} with a 100% satisfaction guarantee.`
           }
         },
         {
           "@type": "Question",
-          "name": `How much does ${serviceNameForSchema.toLowerCase()} cost in ${cleanName}?`,
+          "name": `How much does professional ${serviceNameForSchema.toLowerCase()} cost near me in ${cleanName}?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `The cost of ${serviceNameForSchema.toLowerCase()} in ${cleanName} varies based on the size of the property and the specific depth of cleaning required. Contact Sweet Maid for a free, instant quote to get the most accurate local pricing.`
+            "text": `The cost for affordable ${serviceNameForSchema.toLowerCase()} in ${cleanName} varies depending on your specific needs. Sweet Maid offers highly competitive and transparent pricing for expert ${serviceNameForSchema.toLowerCase()} in ${cleanName}, FL.`
           }
         },
         {
           "@type": "Question",
-          "name": `Who provides the best ${serviceNameForSchema.toLowerCase()} near me in ${cleanName}, FL?`,
+          "name": `Are there reliable ${serviceNameForSchema.toLowerCase()} experts in ${cleanName}?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `Sweet Maid Cleaning is widely recognized as providing the best ${serviceNameForSchema.toLowerCase()} in ${cleanName}, FL. We guarantee satisfaction on all our cleaning services.`
+            "text": `Yes! Sweet Maid employs the most reliable and highly-trained local experts for ${serviceNameForSchema.toLowerCase()} in the ${cleanName} area. We specialize in comprehensive, eco-friendly ${serviceNameForSchema.toLowerCase()} for residential and commercial properties.`
           }
         }
       ]
