@@ -19,7 +19,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const isService = serviceSlugs.includes(slug);
 
   if (isService) {
-    const serviceName = formatName(slug.replace(/-/g, ' '));
+    let serviceName = formatName(slug.replace(/-/g, ' '));
+    if (!serviceName.toLowerCase().endsWith('services')) {
+      serviceName += ' Services';
+    }
     const title = `Top ${serviceName} in Bradenton, FL | Sweet Maid`;
     const desc = `Looking for the best ${serviceName.toLowerCase()} in Bradenton, FL? Sweet Maid provides top-rated, reliable, and affordable cleaners specifically in Bradenton. Get your free quote today!`;
     const keywords = [

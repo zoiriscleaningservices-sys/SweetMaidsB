@@ -32,7 +32,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   if (!content) return '';
   
   let newContent = content;
-  const serviceName = currentService.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  let serviceName = currentService.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  if (!serviceName.toLowerCase().endsWith('services')) {
+    serviceName += ' Services';
+  }
 
   // Safe Text Replacements for H1 without destroying HTML tags
   newContent = newContent.replace(/Best Cleaning Services in/gi, `${serviceName} in`);

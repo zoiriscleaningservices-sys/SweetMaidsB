@@ -23,7 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
-  const serviceName = formatName(service.replace(/-/g, ' '));
+  let serviceName = formatName(service.replace(/-/g, ' '));
+  if (!serviceName.toLowerCase().endsWith('services')) {
+    serviceName += ' Services';
+  }
   
   const title = `Top ${serviceName} in ${cleanName}, FL | Sweet Maid`;
   const desc = `Looking for the best ${serviceName.toLowerCase()} in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable cleaners specifically in ${cleanName}. Get your free quote today!`;
@@ -76,7 +79,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const bodyContent = extractSections(rawHtml);
   const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true, service);
-  const serviceNameForSchema = formatName(service.replace(/-/g, ' '));
+  
+  let serviceNameForSchema = formatName(service.replace(/-/g, ' '));
+  if (!serviceNameForSchema.toLowerCase().endsWith('services')) {
+    serviceNameForSchema += ' Services';
+  }
 
   // Dynamically generate the localized JSON-LD schema with FAQ
   const schemaStr = JSON.stringify([
