@@ -164,9 +164,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/src="\.\.\/images\//g, 'src="/images/').replace(/url\("\.\.\/images\//g, 'url("/images/').replace(/url\('\.\.\/images\//g, "url('/images/");
   }
 
+  // Fix Map Headings and Pin Labels
+  newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
+  newContent = newContent.replace(/Servicing Florida and surrounding areas/gi, `Servicing ${clean_name} and surrounding areas`);
+
   // Maps
   const loc_query = encodeURIComponent(`${clean_name}, Florida`);
   const map_url = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${loc_query}+()&t=&z=13&ie=UTF8&iwloc=B&output=embed`;
+  newContent = newContent.replace(/https:\/\/maps\.google\.com\/maps\?q=Florida%2C%20FL&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed/gi, map_url);
   newContent = newContent.replace(/https:\/\/www\.google\.com\/maps\/embed\?pb=MAP_PLACEHOLDER/g, map_url);
   newContent = newContent.replace(/https:\/\/maps\.google\.com\/maps\?q=[^&]+&t=&z=13&ie=UTF8&iwloc=&output=embed/g, map_url);
   newContent = newContent.replace(/Servicing entire 34205, 34209, 34208, 34210 areas/g, `Servicing ${clean_name} and surrounding areas`);
