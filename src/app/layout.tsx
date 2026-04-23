@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   keywords: "cleaning service Bradenton, house cleaning Lakewood Ranch, maid service Palmetto, deep cleaning Parrish, move out cleaning Bradenton, residential cleaning Manatee County, eco-friendly cleaning",
 };
 
+import ClientInteractions from "@/components/ClientInteractions";
+import FloatingBookingButton from "@/components/FloatingBookingButton";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,10 +32,9 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <FloatingBookingButton />
+        <ClientInteractions />
         <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js" strategy="beforeInteractive" />
-        <Script id="aos-init" strategy="afterInteractive">
-          {`if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });`}
-        </Script>
         <Script src="/js/navigation-dynamic.js" strategy="afterInteractive" />
       </body>
     </html>
