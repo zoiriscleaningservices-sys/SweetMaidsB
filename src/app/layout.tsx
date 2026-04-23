@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   keywords: "cleaning service Bradenton, house cleaning Lakewood Ranch, maid service Palmetto, deep cleaning Parrish, move out cleaning Bradenton, residential cleaning Manatee County, eco-friendly cleaning",
   icons: {
     icon: [
-      { url: '/favicon.ico?v=10', sizes: 'any' },
-      { url: '/images/favicon.png?v=10', type: 'image/png' }
+      { url: '/favicon-final.ico', sizes: 'any' },
+      { url: '/images/favicon-final.png', type: 'image/png' }
     ],
-    shortcut: '/images/favicon.png?v=10',
-    apple: '/images/favicon.png?v=10',
+    shortcut: '/images/favicon-final.png',
+    apple: '/images/favicon-final.png',
   },
 };
 
