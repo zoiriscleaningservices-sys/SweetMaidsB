@@ -7,10 +7,7 @@ export const metadata: Metadata = {
   description: "Looking for the best cleaning service in Bradenton, FL? Sweet Maid offers top-rated house cleaning, deep cleaning, and move-out services. Licensed, insured, and 100% satisfaction guaranteed. Book your sparkle today!",
   keywords: "cleaning service Bradenton, house cleaning Lakewood Ranch, maid service Palmetto, deep cleaning Parrish, move out cleaning Bradenton, residential cleaning Manatee County, eco-friendly cleaning",
   icons: {
-    icon: [
-      { url: '/favicon-final.ico', sizes: 'any' },
-      { url: '/images/favicon-final.png', type: 'image/png' }
-    ],
+    icon: '/images/favicon-final.png',
     shortcut: '/images/favicon-final.png',
     apple: '/images/favicon-final.png',
   },
