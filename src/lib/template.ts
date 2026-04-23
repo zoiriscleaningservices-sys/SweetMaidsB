@@ -96,6 +96,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Remove Login Buttons from all navigation menus
   newContent = newContent.replace(/<a[^>]*href="\/login\/"[^>]*>[\s\S]*?<\/a>/gi, '');
 
+  // Replace Unsplash placeholders with unique ultra-realistic AI images
+  newContent = newContent.replace('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&amp;fit=crop&amp;q=80', '../../../images/carpet-cleaning.jpeg');
+  newContent = newContent.replace('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&amp;fit=crop&amp;q=80', '../../../images/window-cleaning.jpeg');
+
   // Eliminate the "Let Our Team Contact You" floating horizontal form (string block removal)
   const formStartStr = '<!-- Let Us Contact You Form -->';
   const formEndStr = '<div class="grid lg:grid-cols-2 gap-12';
