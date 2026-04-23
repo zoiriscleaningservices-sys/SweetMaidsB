@@ -34,12 +34,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   let newContent = content;
   const serviceName = currentService.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
-  // Aggressively replace H1 to be the EXACT targeted keyword for top-level SEO
-  newContent = newContent.replace(
-    /(<h1[^>]*>)([\s\S]*?)(<\/h1>)/i, 
-    `$1${serviceName} in <br><span class="text-gradient">${clean_name}, FL</span>$3`
-  );
-
+  // Safe Text Replacements for H1 without destroying HTML tags
+  newContent = newContent.replace(/Best Cleaning Services in/gi, `${serviceName} in`);
+  newContent = newContent.replace(/House Cleaning Services in/gi, `${serviceName} in`);
+  newContent = newContent.replace(/House Cleaning in/gi, `${serviceName} in`);
+  
   // Aggressive SEO location and service targeting
   newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
   newContent = newContent.replace(/across Bradenton and Southwest Florida/gi, `across ${clean_name} and Southwest Florida`);
