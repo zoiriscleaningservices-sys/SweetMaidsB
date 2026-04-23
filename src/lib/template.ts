@@ -190,7 +190,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         <p class="text-gray-500 mt-2">Find the best local services matching your needs</p>
       </div>
       <div class="flex flex-wrap justify-center gap-3">
-        ${seoTags.map(tag => \`<span class="bg-pink-50 text-pink-600 border border-pink-100 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:bg-pink-100 hover:text-pink-700 transition-colors cursor-default">\${tag}</span>\`).join('')}
+        ${seoTags.map(tag => '<span class="bg-pink-50 text-pink-600 border border-pink-100 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:bg-pink-100 hover:text-pink-700 transition-colors cursor-default">' + tag + '</span>').join('')}
       </div>
     </div>
   </section>
