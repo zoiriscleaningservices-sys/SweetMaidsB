@@ -201,8 +201,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   </section>
   `;
 
-  if (newContent.includes('</footer>')) {
-    newContent = newContent.replace('</footer>', seoSection + '\n</footer>');
+  if (newContent.includes('<footer')) {
+    newContent = newContent.replace(/<footer/i, seoSection + '\n<footer');
   }
 
   // Dynamic SEO-Maximized FAQs tailored specifically to the Service and Location
