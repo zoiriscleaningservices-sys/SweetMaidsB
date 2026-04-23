@@ -1,114 +1,3997 @@
 {
-  "anna-maria-fl": { "name": "Anna Maria", "lat": 27.5300, "lng": -82.7329 },
-  "apollo-beach-fl": { "name": "Apollo Beach", "lat": 27.7731, "lng": -82.4019 },
-  "aventura-fl": { "name": "Aventura", "lat": 25.9565, "lng": -80.1392 },
-  "bal-harbour-fl": { "name": "Bal Harbour", "lat": 25.8993, "lng": -80.1268 },
-  "belleair-beach-fl": { "name": "Belleair Beach", "lat": 27.9331, "lng": -82.8427 },
-  "big-pine-key-fl": { "name": "Big Pine Key", "lat": 24.6677, "lng": -81.3562 },
-  "bird-key-fl": { "name": "Bird Key", "lat": 27.3283, "lng": -82.5779 },
-  "biscayne-park-fl": { "name": "Biscayne Park", "lat": 25.8738, "lng": -80.1753 },
-  "boca-raton-fl": { "name": "Boca Raton", "lat": 26.3683, "lng": -80.1289 },
-  "bonita-springs-fl": { "name": "Bonita Springs", "lat": 26.3398, "lng": -81.7787 },
-  "boynton-beach-fl": { "name": "Boynton Beach", "lat": 26.5352, "lng": -80.0906 },
-  "bradenton-fl": { "name": "Bradenton", "lat": 27.4989, "lng": -82.5748 },
-  "brandon-fl": { "name": "Brandon", "lat": 27.9378, "lng": -82.2859 },
-  "brickell-fl": { "name": "Brickell", "lat": 25.7617, "lng": -80.1918 },
-  "cape-coral-fl": { "name": "Cape Coral", "lat": 26.5629, "lng": -81.9495 },
-  "carrollwood-fl": { "name": "Carrollwood", "lat": 28.0570, "lng": -82.5145 },
-  "cheval-fl": { "name": "Cheval", "lat": 28.1453, "lng": -82.5104 },
-  "clearwater-fl": { "name": "Clearwater", "lat": 27.9659, "lng": -82.8001 },
-  "coconut-creek-fl": { "name": "Coconut Creek", "lat": 26.2517, "lng": -80.1787 },
-  "coconut-grove-fl": { "name": "Coconut Grove", "lat": 25.7272, "lng": -80.2380 },
-  "coral-gables-fl": { "name": "Coral Gables", "lat": 25.7215, "lng": -80.2684 },
-  "coral-ridge-fl": { "name": "Coral Ridge", "lat": 26.1484, "lng": -80.1081 },
-  "coral-springs-fl": { "name": "Coral Springs", "lat": 26.2706, "lng": -80.2706 },
-  "crystal-lake-fl": { "name": "Crystal Lake", "lat": 27.9659, "lng": -82.5301 },
-  "dania-fl": { "name": "Dania", "lat": 26.0523, "lng": -80.1440 },
-  "davis-islands-fl": { "name": "Davis Islands", "lat": 27.9180, "lng": -82.4528 },
-  "delray-beach-fl": { "name": "Delray Beach", "lat": 26.4615, "lng": -80.0728 },
-  "duck-key-fl": { "name": "Duck Key", "lat": 24.7773, "lng": -80.9106 },
-  "east-tampa-fl": { "name": "East Tampa", "lat": 27.9597, "lng": -82.4096 },
-  "ellenton-fl": { "name": "Ellenton", "lat": 27.5264, "lng": -82.5262 },
-  "englewood-fl": { "name": "Englewood", "lat": 26.9626, "lng": -82.3549 },
-  "estero-fl": { "name": "Estero", "lat": 26.4384, "lng": -81.8068 },
-  "fort-lauderdale-fl": { "name": "Fort Lauderdale", "lat": 26.1224, "lng": -80.1373 },
-  "fort-myers-fl": { "name": "Fort Myers", "lat": 26.6406, "lng": -81.8723 },
-  "gibsonton-fl": { "name": "Gibsonton", "lat": 27.8378, "lng": -82.3744 },
-  "golden-beach-fl": { "name": "Golden Beach", "lat": 25.9707, "lng": -80.1215 },
-  "greenacres-fl": { "name": "Greenacres", "lat": 26.6262, "lng": -80.1337 },
-  "hallandale-fl": { "name": "Hallandale", "lat": 25.9812, "lng": -80.1483 },
-  "hialeah-fl": { "name": "Hialeah", "lat": 25.8576, "lng": -80.2781 },
-  "hollywood-fl": { "name": "Hollywood", "lat": 26.0112, "lng": -80.1495 },
-  "homestead-fl": { "name": "Homestead", "lat": 25.4687, "lng": -80.4776 },
-  "hyde-park-fl": { "name": "Hyde Park", "lat": 27.9389, "lng": -82.4697 },
-  "indian-rocks-beach-fl": { "name": "Indian Rocks Beach", "lat": 27.8884, "lng": -82.8471 },
-  "islamorada-fl": { "name": "Islamorada", "lat": 24.9251, "lng": -80.6473 },
-  "key-biscayne-fl": { "name": "Key Biscayne", "lat": 25.6908, "lng": -80.1623 },
-  "key-largo-fl": { "name": "Key Largo", "lat": 25.0866, "lng": -80.4473 },
-  "keystone-fl": { "name": "Keystone", "lat": 28.1278, "lng": -82.6049 },
-  "lake-park-fl": { "name": "Lake Park", "lat": 26.8000, "lng": -80.0651 },
-  "lake-worth-fl": { "name": "Lake Worth", "lat": 26.6195, "lng": -80.0589 },
-  "lakeland-fl": { "name": "Lakeland", "lat": 28.0395, "lng": -81.9498 },
-  "lakewood-ranch-fl": { "name": "Lakewood Ranch", "lat": 27.4260, "lng": -82.4137 },
-  "land-o-lakes-fl": { "name": "Land O Lakes", "lat": 28.2122, "lng": -82.4596 },
-  "largo-fl": { "name": "Largo", "lat": 27.9095, "lng": -82.7873 },
-  "laurel-fl": { "name": "Laurel", "lat": 27.1456, "lng": -82.4621 },
-  "lehigh-acres-fl": { "name": "Lehigh Acres", "lat": 26.6109, "lng": -81.7476 },
-  "lido-key-fl": { "name": "Lido Key", "lat": 27.3199, "lng": -82.5599 },
-  "longboat-key-fl": { "name": "Longboat Key", "lat": 27.3977, "lng": -82.6269 },
-  "lutz-fl": { "name": "Lutz", "lat": 28.1553, "lng": -82.4596 },
-  "marathon-fl": { "name": "Marathon", "lat": 24.7214, "lng": -81.0538 },
-  "marco-island-fl": { "name": "Marco Island", "lat": 25.9413, "lng": -81.7182 },
-  "miami-beach-fl": { "name": "Miami Beach", "lat": 25.7907, "lng": -80.1300 },
-  "miami-fl": { "name": "Miami", "lat": 25.7617, "lng": -80.1918 },
-  "miami-shores-fl": { "name": "Miami Shores", "lat": 25.8643, "lng": -80.1873 },
-  "miramar-fl": { "name": "Miramar", "lat": 25.9871, "lng": -80.2328 },
-  "myakka-city-fl": { "name": "Myakka City", "lat": 27.3798, "lng": -82.1876 },
-  "naples-fl": { "name": "Naples", "lat": 26.1420, "lng": -81.7948 },
-  "nokomis-fl": { "name": "Nokomis", "lat": 27.1173, "lng": -82.4326 },
-  "north-palm-beach-fl": { "name": "North Palm Beach", "lat": 26.8198, "lng": -80.0534 },
-  "north-port-fl": { "name": "North Port", "lat": 27.0442, "lng": -82.2359 },
-  "odessa-fl": { "name": "Odessa", "lat": 28.1803, "lng": -82.5832 },
-  "osprey-fl": { "name": "Osprey", "lat": 27.1970, "lng": -82.4993 },
-  "palm-beach-fl": { "name": "Palm Beach", "lat": 26.7057, "lng": -80.0365 },
-  "palm-beach-gardens-fl": { "name": "Palm Beach Gardens", "lat": 26.8234, "lng": -80.1428 },
-  "palm-harbor-fl": { "name": "Palm Harbor", "lat": 28.0784, "lng": -82.7618 },
-  "palmer-ranch-fl": { "name": "Palmer Ranch", "lat": 27.2337, "lng": -82.4852 },
-  "palmetto-bay-fl": { "name": "Palmetto Bay", "lat": 25.6196, "lng": -80.3260 },
-  "palmetto-fl": { "name": "Palmetto", "lat": 27.5239, "lng": -82.5768 },
-  "parrish-fl": { "name": "Parrish", "lat": 27.5845, "lng": -82.4360 },
-  "pelican-bay-fl": { "name": "Pelican Bay", "lat": 26.2197, "lng": -81.8046 },
-  "pembroke-pines-fl": { "name": "Pembroke Pines", "lat": 26.0070, "lng": -80.2962 },
-  "pinecrest-fl": { "name": "Pinecrest", "lat": 25.6649, "lng": -80.3029 },
-  "plantation-fl": { "name": "Plantation", "lat": 26.1276, "lng": -80.2331 },
-  "pompano-beach-fl": { "name": "Pompano Beach", "lat": 26.2379, "lng": -80.1248 },
-  "port-charlotte-fl": { "name": "Port Charlotte", "lat": 26.9787, "lng": -82.0906 },
-  "port-richey-fl": { "name": "Port Richey", "lat": 28.2714, "lng": -82.7193 },
-  "punta-gorda-fl": { "name": "Punta Gorda", "lat": 26.9276, "lng": -82.0454 },
-  "riverview-fl": { "name": "Riverview", "lat": 27.8656, "lng": -82.3287 },
-  "riviera-beach-fl": { "name": "Riviera Beach", "lat": 26.7751, "lng": -80.0584 },
-  "ruskin-fl": { "name": "Ruskin", "lat": 27.7220, "lng": -82.4335 },
-  "safety-harbor-fl": { "name": "Safety Harbor", "lat": 27.9908, "lng": -82.6929 },
-  "saint-petersburg-fl": { "name": "St. Petersburg", "lat": 27.7731, "lng": -82.6397 },
-  "sarasota-fl": { "name": "Sarasota", "lat": 27.3364, "lng": -82.5307 },
-  "seminole-fl": { "name": "Seminole", "lat": 27.8395, "lng": -82.7787 },
-  "siesta-key-fl": { "name": "Siesta Key", "lat": 27.2660, "lng": -82.5465 },
-  "south-venice-fl": { "name": "South Venice", "lat": 27.0620, "lng": -82.4259 },
-  "sun-city-center-fl": { "name": "Sun City Center", "lat": 27.7178, "lng": -82.3576 },
-  "sunny-isles-beach-fl": { "name": "Sunny Isles Beach", "lat": 25.9382, "lng": -80.1226 },
-  "surfside-fl": { "name": "Surfside", "lat": 25.8732, "lng": -80.1237 },
-  "tampa-fl": { "name": "Tampa", "lat": 27.9506, "lng": -82.4572 },
-  "tampa-palms-fl": { "name": "Tampa Palms", "lat": 28.1011, "lng": -82.3895 },
-  "tarpon-springs-fl": { "name": "Tarpon Springs", "lat": 28.1456, "lng": -82.7565 },
-  "tavernier-fl": { "name": "Tavernier", "lat": 25.0101, "lng": -80.5156 },
-  "temple-terrace-fl": { "name": "Temple Terrace", "lat": 28.0345, "lng": -82.3830 },
-  "treasure-island-fl": { "name": "Treasure Island", "lat": 27.7700, "lng": -82.7698 },
-  "university-park-fl": { "name": "University Park", "lat": 27.3912, "lng": -82.4868 },
-  "vamo-fl": { "name": "Vamo", "lat": 27.2393, "lng": -82.5046 },
-  "venice-fl": { "name": "Venice", "lat": 27.0998, "lng": -82.4543 },
-  "wellington-fl": { "name": "Wellington", "lat": 26.6590, "lng": -80.2684 },
-  "west-palm-beach-fl": { "name": "West Palm Beach", "lat": 26.7153, "lng": -80.0534 },
-  "westchase-fl": { "name": "Westchase", "lat": 28.0648, "lng": -82.5968 },
-  "winter-haven-fl": { "name": "Winter Haven", "lat": 28.0220, "lng": -81.7329 },
-  "wynwood-fl": { "name": "Wynwood", "lat": 25.7998, "lng": -80.1996 }
+  "anna-maria-fl": {
+    "name": "Anna Maria",
+    "lat": 27.53,
+    "lng": -82.7329
+  },
+  "apollo-beach-fl": {
+    "name": "Apollo Beach",
+    "lat": 27.7731,
+    "lng": -82.4019
+  },
+  "aventura-fl": {
+    "name": "Aventura",
+    "lat": 25.9565,
+    "lng": -80.1392
+  },
+  "bal-harbour-fl": {
+    "name": "Bal Harbour",
+    "lat": 25.8993,
+    "lng": -80.1268
+  },
+  "belleair-beach-fl": {
+    "name": "Belleair Beach",
+    "lat": 27.9331,
+    "lng": -82.8427
+  },
+  "big-pine-key-fl": {
+    "name": "Big Pine Key",
+    "lat": 24.6677,
+    "lng": -81.3562
+  },
+  "bird-key-fl": {
+    "name": "Bird Key",
+    "lat": 27.3283,
+    "lng": -82.5779
+  },
+  "biscayne-park-fl": {
+    "name": "Biscayne Park",
+    "lat": 25.8738,
+    "lng": -80.1753
+  },
+  "boca-raton-fl": {
+    "name": "Boca Raton",
+    "lat": 26.3683,
+    "lng": -80.1289
+  },
+  "bonita-springs-fl": {
+    "name": "Bonita Springs",
+    "lat": 26.3398,
+    "lng": -81.7787
+  },
+  "boynton-beach-fl": {
+    "name": "Boynton Beach",
+    "lat": 26.5352,
+    "lng": -80.0906
+  },
+  "bradenton-fl": {
+    "name": "Bradenton",
+    "lat": 27.4989,
+    "lng": -82.5748
+  },
+  "brandon-fl": {
+    "name": "Brandon",
+    "lat": 27.9378,
+    "lng": -82.2859
+  },
+  "brickell-fl": {
+    "name": "Brickell",
+    "lat": 25.7617,
+    "lng": -80.1918
+  },
+  "cape-coral-fl": {
+    "name": "Cape Coral",
+    "lat": 26.5629,
+    "lng": -81.9495
+  },
+  "carrollwood-fl": {
+    "name": "Carrollwood",
+    "lat": 28.057,
+    "lng": -82.5145
+  },
+  "cheval-fl": {
+    "name": "Cheval",
+    "lat": 28.1453,
+    "lng": -82.5104
+  },
+  "clearwater-fl": {
+    "name": "Clearwater",
+    "lat": 27.9659,
+    "lng": -82.8001
+  },
+  "coconut-creek-fl": {
+    "name": "Coconut Creek",
+    "lat": 26.2517,
+    "lng": -80.1787
+  },
+  "coconut-grove-fl": {
+    "name": "Coconut Grove",
+    "lat": 25.7272,
+    "lng": -80.238
+  },
+  "coral-gables-fl": {
+    "name": "Coral Gables",
+    "lat": 25.7215,
+    "lng": -80.2684
+  },
+  "coral-ridge-fl": {
+    "name": "Coral Ridge",
+    "lat": 26.1484,
+    "lng": -80.1081
+  },
+  "coral-springs-fl": {
+    "name": "Coral Springs",
+    "lat": 26.2706,
+    "lng": -80.2706
+  },
+  "crystal-lake-fl": {
+    "name": "Crystal Lake",
+    "lat": 27.9659,
+    "lng": -82.5301
+  },
+  "dania-fl": {
+    "name": "Dania",
+    "lat": 26.0523,
+    "lng": -80.144
+  },
+  "davis-islands-fl": {
+    "name": "Davis Islands",
+    "lat": 27.918,
+    "lng": -82.4528
+  },
+  "delray-beach-fl": {
+    "name": "Delray Beach",
+    "lat": 26.4615,
+    "lng": -80.0728
+  },
+  "duck-key-fl": {
+    "name": "Duck Key",
+    "lat": 24.7773,
+    "lng": -80.9106
+  },
+  "east-tampa-fl": {
+    "name": "East Tampa",
+    "lat": 27.9597,
+    "lng": -82.4096
+  },
+  "ellenton-fl": {
+    "name": "Ellenton",
+    "lat": 27.5264,
+    "lng": -82.5262
+  },
+  "englewood-fl": {
+    "name": "Englewood",
+    "lat": 26.9626,
+    "lng": -82.3549
+  },
+  "estero-fl": {
+    "name": "Estero",
+    "lat": 26.4384,
+    "lng": -81.8068
+  },
+  "fort-lauderdale-fl": {
+    "name": "Fort Lauderdale",
+    "lat": 26.1224,
+    "lng": -80.1373
+  },
+  "fort-myers-fl": {
+    "name": "Fort Myers",
+    "lat": 26.6406,
+    "lng": -81.8723
+  },
+  "gibsonton-fl": {
+    "name": "Gibsonton",
+    "lat": 27.8378,
+    "lng": -82.3744
+  },
+  "golden-beach-fl": {
+    "name": "Golden Beach",
+    "lat": 25.9707,
+    "lng": -80.1215
+  },
+  "greenacres-fl": {
+    "name": "Greenacres",
+    "lat": 26.6262,
+    "lng": -80.1337
+  },
+  "hallandale-fl": {
+    "name": "Hallandale",
+    "lat": 25.9812,
+    "lng": -80.1483
+  },
+  "hialeah-fl": {
+    "name": "Hialeah",
+    "lat": 25.8576,
+    "lng": -80.2781
+  },
+  "hollywood-fl": {
+    "name": "Hollywood",
+    "lat": 26.0112,
+    "lng": -80.1495
+  },
+  "homestead-fl": {
+    "name": "Homestead",
+    "lat": 25.4687,
+    "lng": -80.4776
+  },
+  "hyde-park-fl": {
+    "name": "Hyde Park",
+    "lat": 27.9389,
+    "lng": -82.4697
+  },
+  "indian-rocks-beach-fl": {
+    "name": "Indian Rocks Beach",
+    "lat": 27.8884,
+    "lng": -82.8471
+  },
+  "islamorada-fl": {
+    "name": "Islamorada",
+    "lat": 24.9251,
+    "lng": -80.6473
+  },
+  "key-biscayne-fl": {
+    "name": "Key Biscayne",
+    "lat": 25.6908,
+    "lng": -80.1623
+  },
+  "key-largo-fl": {
+    "name": "Key Largo",
+    "lat": 25.0866,
+    "lng": -80.4473
+  },
+  "keystone-fl": {
+    "name": "Keystone",
+    "lat": 28.1278,
+    "lng": -82.6049
+  },
+  "lake-park-fl": {
+    "name": "Lake Park",
+    "lat": 26.8,
+    "lng": -80.0651
+  },
+  "lake-worth-fl": {
+    "name": "Lake Worth",
+    "lat": 26.6195,
+    "lng": -80.0589
+  },
+  "lakeland-fl": {
+    "name": "Lakeland",
+    "lat": 28.0395,
+    "lng": -81.9498
+  },
+  "lakewood-ranch-fl": {
+    "name": "Lakewood Ranch",
+    "lat": 27.426,
+    "lng": -82.4137
+  },
+  "land-o-lakes-fl": {
+    "name": "Land O Lakes",
+    "lat": 28.2122,
+    "lng": -82.4596
+  },
+  "largo-fl": {
+    "name": "Largo",
+    "lat": 27.9095,
+    "lng": -82.7873
+  },
+  "laurel-fl": {
+    "name": "Laurel",
+    "lat": 27.1456,
+    "lng": -82.4621
+  },
+  "lehigh-acres-fl": {
+    "name": "Lehigh Acres",
+    "lat": 26.6109,
+    "lng": -81.7476
+  },
+  "lido-key-fl": {
+    "name": "Lido Key",
+    "lat": 27.3199,
+    "lng": -82.5599
+  },
+  "longboat-key-fl": {
+    "name": "Longboat Key",
+    "lat": 27.3977,
+    "lng": -82.6269
+  },
+  "lutz-fl": {
+    "name": "Lutz",
+    "lat": 28.1553,
+    "lng": -82.4596
+  },
+  "marathon-fl": {
+    "name": "Marathon",
+    "lat": 24.7214,
+    "lng": -81.0538
+  },
+  "marco-island-fl": {
+    "name": "Marco Island",
+    "lat": 25.9413,
+    "lng": -81.7182
+  },
+  "miami-beach-fl": {
+    "name": "Miami Beach",
+    "lat": 25.7907,
+    "lng": -80.13
+  },
+  "miami-fl": {
+    "name": "Miami",
+    "lat": 25.7617,
+    "lng": -80.1918
+  },
+  "miami-shores-fl": {
+    "name": "Miami Shores",
+    "lat": 25.8643,
+    "lng": -80.1873
+  },
+  "miramar-fl": {
+    "name": "Miramar",
+    "lat": 25.9871,
+    "lng": -80.2328
+  },
+  "myakka-city-fl": {
+    "name": "Myakka City",
+    "lat": 27.3798,
+    "lng": -82.1876
+  },
+  "naples-fl": {
+    "name": "Naples",
+    "lat": 26.142,
+    "lng": -81.7948
+  },
+  "nokomis-fl": {
+    "name": "Nokomis",
+    "lat": 27.1173,
+    "lng": -82.4326
+  },
+  "north-palm-beach-fl": {
+    "name": "North Palm Beach",
+    "lat": 26.8198,
+    "lng": -80.0534
+  },
+  "north-port-fl": {
+    "name": "North Port",
+    "lat": 27.0442,
+    "lng": -82.2359
+  },
+  "odessa-fl": {
+    "name": "Odessa",
+    "lat": 28.1803,
+    "lng": -82.5832
+  },
+  "osprey-fl": {
+    "name": "Osprey",
+    "lat": 27.197,
+    "lng": -82.4993
+  },
+  "palm-beach-fl": {
+    "name": "Palm Beach",
+    "lat": 26.7057,
+    "lng": -80.0365
+  },
+  "palm-beach-gardens-fl": {
+    "name": "Palm Beach Gardens",
+    "lat": 26.8234,
+    "lng": -80.1428
+  },
+  "palm-harbor-fl": {
+    "name": "Palm Harbor",
+    "lat": 28.0784,
+    "lng": -82.7618
+  },
+  "palmer-ranch-fl": {
+    "name": "Palmer Ranch",
+    "lat": 27.2337,
+    "lng": -82.4852
+  },
+  "palmetto-bay-fl": {
+    "name": "Palmetto Bay",
+    "lat": 25.6196,
+    "lng": -80.326
+  },
+  "palmetto-fl": {
+    "name": "Palmetto",
+    "lat": 27.5239,
+    "lng": -82.5768
+  },
+  "parrish-fl": {
+    "name": "Parrish",
+    "lat": 27.5845,
+    "lng": -82.436
+  },
+  "pelican-bay-fl": {
+    "name": "Pelican Bay",
+    "lat": 26.2197,
+    "lng": -81.8046
+  },
+  "pembroke-pines-fl": {
+    "name": "Pembroke Pines",
+    "lat": 26.007,
+    "lng": -80.2962
+  },
+  "pinecrest-fl": {
+    "name": "Pinecrest",
+    "lat": 25.6649,
+    "lng": -80.3029
+  },
+  "plantation-fl": {
+    "name": "Plantation",
+    "lat": 26.1276,
+    "lng": -80.2331
+  },
+  "pompano-beach-fl": {
+    "name": "Pompano Beach",
+    "lat": 26.2379,
+    "lng": -80.1248
+  },
+  "port-charlotte-fl": {
+    "name": "Port Charlotte",
+    "lat": 26.9787,
+    "lng": -82.0906
+  },
+  "port-richey-fl": {
+    "name": "Port Richey",
+    "lat": 28.2714,
+    "lng": -82.7193
+  },
+  "punta-gorda-fl": {
+    "name": "Punta Gorda",
+    "lat": 26.9276,
+    "lng": -82.0454
+  },
+  "riverview-fl": {
+    "name": "Riverview",
+    "lat": 27.8656,
+    "lng": -82.3287
+  },
+  "riviera-beach-fl": {
+    "name": "Riviera Beach",
+    "lat": 26.7751,
+    "lng": -80.0584
+  },
+  "ruskin-fl": {
+    "name": "Ruskin",
+    "lat": 27.722,
+    "lng": -82.4335
+  },
+  "safety-harbor-fl": {
+    "name": "Safety Harbor",
+    "lat": 27.9908,
+    "lng": -82.6929
+  },
+  "saint-petersburg-fl": {
+    "name": "St. Petersburg",
+    "lat": 27.7731,
+    "lng": -82.6397
+  },
+  "sarasota-fl": {
+    "name": "Sarasota",
+    "lat": 27.3364,
+    "lng": -82.5307
+  },
+  "seminole-fl": {
+    "name": "Seminole",
+    "lat": 27.8395,
+    "lng": -82.7787
+  },
+  "siesta-key-fl": {
+    "name": "Siesta Key",
+    "lat": 27.266,
+    "lng": -82.5465
+  },
+  "south-venice-fl": {
+    "name": "South Venice",
+    "lat": 27.062,
+    "lng": -82.4259
+  },
+  "sun-city-center-fl": {
+    "name": "Sun City Center",
+    "lat": 27.7178,
+    "lng": -82.3576
+  },
+  "sunny-isles-beach-fl": {
+    "name": "Sunny Isles Beach",
+    "lat": 25.9382,
+    "lng": -80.1226
+  },
+  "surfside-fl": {
+    "name": "Surfside",
+    "lat": 25.8732,
+    "lng": -80.1237
+  },
+  "tampa-fl": {
+    "name": "Tampa",
+    "lat": 27.9506,
+    "lng": -82.4572
+  },
+  "tampa-palms-fl": {
+    "name": "Tampa Palms",
+    "lat": 28.1011,
+    "lng": -82.3895
+  },
+  "tarpon-springs-fl": {
+    "name": "Tarpon Springs",
+    "lat": 28.1456,
+    "lng": -82.7565
+  },
+  "tavernier-fl": {
+    "name": "Tavernier",
+    "lat": 25.0101,
+    "lng": -80.5156
+  },
+  "temple-terrace-fl": {
+    "name": "Temple Terrace",
+    "lat": 28.0345,
+    "lng": -82.383
+  },
+  "treasure-island-fl": {
+    "name": "Treasure Island",
+    "lat": 27.77,
+    "lng": -82.7698
+  },
+  "university-park-fl": {
+    "name": "University Park",
+    "lat": 27.3912,
+    "lng": -82.4868
+  },
+  "vamo-fl": {
+    "name": "Vamo",
+    "lat": 27.2393,
+    "lng": -82.5046
+  },
+  "venice-fl": {
+    "name": "Venice",
+    "lat": 27.0998,
+    "lng": -82.4543
+  },
+  "wellington-fl": {
+    "name": "Wellington",
+    "lat": 26.659,
+    "lng": -80.2684
+  },
+  "west-palm-beach-fl": {
+    "name": "West Palm Beach",
+    "lat": 26.7153,
+    "lng": -80.0534
+  },
+  "westchase-fl": {
+    "name": "Westchase",
+    "lat": 28.0648,
+    "lng": -82.5968
+  },
+  "winter-haven-fl": {
+    "name": "Winter Haven",
+    "lat": 28.022,
+    "lng": -81.7329
+  },
+  "wynwood-fl": {
+    "name": "Wynwood",
+    "lat": 25.7998,
+    "lng": -80.1996
+  },
+  "jacksonville-fl": {
+    "name": "Jacksonville",
+    "lat": 30.3321838,
+    "lng": -81.65565099999999
+  },
+  "orlando-fl": {
+    "name": "Orlando",
+    "lat": 28.5383355,
+    "lng": -81.3792365
+  },
+  "st-petersburg-fl": {
+    "name": "St. Petersburg",
+    "lat": 27.773056,
+    "lng": -82.64
+  },
+  "tallahassee-fl": {
+    "name": "Tallahassee",
+    "lat": 30.4382559,
+    "lng": -84.28073289999999
+  },
+  "port-st-lucie-fl": {
+    "name": "Port St. Lucie",
+    "lat": 27.2730492,
+    "lng": -80.3582261
+  },
+  "gainesville-fl": {
+    "name": "Gainesville",
+    "lat": 29.6516344,
+    "lng": -82.32482619999999
+  },
+  "miami-gardens-fl": {
+    "name": "Miami Gardens",
+    "lat": 25.9420377,
+    "lng": -80.2456045
+  },
+  "palm-bay-fl": {
+    "name": "Palm Bay",
+    "lat": 28.0344621,
+    "lng": -80.5886646
+  },
+  "davie-fl": {
+    "name": "Davie",
+    "lat": 26.0764783,
+    "lng": -80.25211569999999
+  },
+  "sunrise-fl": {
+    "name": "Sunrise",
+    "lat": 26.1669711,
+    "lng": -80.25659499999999
+  },
+  "deltona-fl": {
+    "name": "Deltona",
+    "lat": 28.9005446,
+    "lng": -81.26367379999999
+  },
+  "palm-coast-fl": {
+    "name": "Palm Coast",
+    "lat": 29.5844524,
+    "lng": -81.20786989999999
+  },
+  "deerfield-beach-fl": {
+    "name": "Deerfield Beach",
+    "lat": 26.3184123,
+    "lng": -80.09976569999999
+  },
+  "melbourne-fl": {
+    "name": "Melbourne",
+    "lat": 28.0836269,
+    "lng": -80.60810889999999
+  },
+  "lauderhill-fl": {
+    "name": "Lauderhill",
+    "lat": 26.1403635,
+    "lng": -80.2133808
+  },
+  "weston-fl": {
+    "name": "Weston",
+    "lat": 26.1003654,
+    "lng": -80.3997748
+  },
+  "kissimmee-fl": {
+    "name": "Kissimmee",
+    "lat": 28.2919557,
+    "lng": -81.40757099999999
+  },
+  "tamarac-fl": {
+    "name": "Tamarac",
+    "lat": 26.2128609,
+    "lng": -80.2497707
+  },
+  "daytona-beach-fl": {
+    "name": "Daytona Beach",
+    "lat": 29.2108147,
+    "lng": -81.0228331
+  },
+  "north-miami-fl": {
+    "name": "North Miami",
+    "lat": 25.8900949,
+    "lng": -80.1867138
+  },
+  "jupiter-fl": {
+    "name": "Jupiter",
+    "lat": 26.9342246,
+    "lng": -80.0942087
+  },
+  "ocala-fl": {
+    "name": "Ocala",
+    "lat": 29.1871986,
+    "lng": -82.14009229999999
+  },
+  "port-orange-fl": {
+    "name": "Port Orange",
+    "lat": 29.1383165,
+    "lng": -80.9956105
+  },
+  "sanford-fl": {
+    "name": "Sanford",
+    "lat": 28.8028612,
+    "lng": -81.269453
+  },
+  "margate-fl": {
+    "name": "Margate",
+    "lat": 26.2445263,
+    "lng": -80.206436
+  },
+  "pensacola-fl": {
+    "name": "Pensacola",
+    "lat": 30.42130899999999,
+    "lng": -87.2169149
+  },
+  "doral-fl": {
+    "name": "Doral",
+    "lat": 25.8195424,
+    "lng": -80.3553302
+  },
+  "pinellas-park-fl": {
+    "name": "Pinellas Park",
+    "lat": 27.8428025,
+    "lng": -82.6995443
+  },
+  "apopka-fl": {
+    "name": "Apopka",
+    "lat": 28.6934076,
+    "lng": -81.5322149
+  },
+  "titusville-fl": {
+    "name": "Titusville",
+    "lat": 28.6122187,
+    "lng": -80.8075537
+  },
+  "cutler-bay-fl": {
+    "name": "Cutler Bay",
+    "lat": 25.5808323,
+    "lng": -80.34685929999999
+  },
+  "oakland-park-fl": {
+    "name": "Oakland Park",
+    "lat": 26.1723065,
+    "lng": -80.1319893
+  },
+  "north-miami-beach-fl": {
+    "name": "North Miami Beach",
+    "lat": 25.9331488,
+    "lng": -80.1625463
+  },
+  "fort-pierce-fl": {
+    "name": "Fort Pierce",
+    "lat": 27.4467056,
+    "lng": -80.3256056
+  },
+  "north-lauderdale-fl": {
+    "name": "North Lauderdale",
+    "lat": 26.217305,
+    "lng": -80.2258811
+  },
+  "altamonte-springs-fl": {
+    "name": "Altamonte Springs",
+    "lat": 28.6611089,
+    "lng": -81.3656242
+  },
+  "st-cloud-fl": {
+    "name": "St. Cloud",
+    "lat": 28.2489016,
+    "lng": -81.2811801
+  },
+  "ocoee-fl": {
+    "name": "Ocoee",
+    "lat": 28.5691677,
+    "lng": -81.5439619
+  },
+  "ormond-beach-fl": {
+    "name": "Ormond Beach",
+    "lat": 29.2858129,
+    "lng": -81.0558894
+  },
+  "hallandale-beach-fl": {
+    "name": "Hallandale Beach",
+    "lat": 25.9812024,
+    "lng": -80.14837899999999
+  },
+  "winter-garden-fl": {
+    "name": "Winter Garden",
+    "lat": 28.5652787,
+    "lng": -81.58618469999999
+  },
+  "panama-city-fl": {
+    "name": "Panama City",
+    "lat": 30.1588129,
+    "lng": -85.6602058
+  },
+  "trinity-fl": {
+    "name": "Trinity",
+    "lat": 28.18085,
+    "lng": -82.68177
+  },
+  "villas-fl": {
+    "name": "Villas",
+    "lat": 26.55035,
+    "lng": -81.8687
+  },
+  "aberdeen-fl": {
+    "name": "Aberdeen",
+    "lat": 26.55063,
+    "lng": -80.14866
+  },
+  "alachua-fl": {
+    "name": "Alachua",
+    "lat": 29.75163,
+    "lng": -82.42483
+  },
+  "allapattah-fl": {
+    "name": "Allapattah",
+    "lat": 25.81454,
+    "lng": -80.22394
+  },
+  "alturas-fl": {
+    "name": "Alturas",
+    "lat": 27.87169,
+    "lng": -81.71508
+  },
+  "alva-fl": {
+    "name": "Alva",
+    "lat": 26.71562,
+    "lng": -81.61008
+  },
+  "andover-fl": {
+    "name": "Andover",
+    "lat": 25.96843,
+    "lng": -80.21283
+  },
+  "apalachicola-fl": {
+    "name": "Apalachicola",
+    "lat": 29.726,
+    "lng": -84.9856
+  },
+  "arcadia-fl": {
+    "name": "Arcadia",
+    "lat": 27.21588,
+    "lng": -81.85842
+  },
+  "archer-fl": {
+    "name": "Archer",
+    "lat": 29.52997,
+    "lng": -82.519
+  },
+  "asbury-lake-fl": {
+    "name": "Asbury Lake",
+    "lat": 30.04913,
+    "lng": -81.82149
+  },
+  "astatula-fl": {
+    "name": "Astatula",
+    "lat": 28.70972,
+    "lng": -81.73285
+  },
+  "astor-fl": {
+    "name": "Astor",
+    "lat": 29.16248,
+    "lng": -81.52535
+  },
+  "atlantic-beach-fl": {
+    "name": "Atlantic Beach",
+    "lat": 30.33441,
+    "lng": -81.3987
+  },
+  "atlantis-fl": {
+    "name": "Atlantis",
+    "lat": 26.5909,
+    "lng": -80.10088
+  },
+  "auburndale-fl": {
+    "name": "Auburndale",
+    "lat": 28.0653,
+    "lng": -81.78869
+  },
+  "avon-park-fl": {
+    "name": "Avon Park",
+    "lat": 27.59587,
+    "lng": -81.50619
+  },
+  "azalea-park-fl": {
+    "name": "Azalea Park",
+    "lat": 28.54111,
+    "lng": -81.30062
+  },
+  "babson-park-fl": {
+    "name": "Babson Park",
+    "lat": 27.83197,
+    "lng": -81.5223
+  },
+  "bagdad-fl": {
+    "name": "Bagdad",
+    "lat": 30.5988,
+    "lng": -87.03223
+  },
+  "baldwin-fl": {
+    "name": "Baldwin",
+    "lat": 30.30274,
+    "lng": -81.97539
+  },
+  "balm-fl": {
+    "name": "Balm",
+    "lat": 27.75947,
+    "lng": -82.2612
+  },
+  "bartow-fl": {
+    "name": "Bartow",
+    "lat": 27.89641,
+    "lng": -81.84314
+  },
+  "bay-harbor-islands-fl": {
+    "name": "Bay Harbor Islands",
+    "lat": 25.88759,
+    "lng": -80.13116
+  },
+  "bay-hill-fl": {
+    "name": "Bay Hill",
+    "lat": 28.46806,
+    "lng": -81.51618
+  },
+  "bay-pines-fl": {
+    "name": "Bay Pines",
+    "lat": 27.81419,
+    "lng": -82.77816
+  },
+  "bayonet-point-fl": {
+    "name": "Bayonet Point",
+    "lat": 28.32667,
+    "lng": -82.68343
+  },
+  "bayshore-gardens-fl": {
+    "name": "Bayshore Gardens",
+    "lat": 27.42532,
+    "lng": -82.59038
+  },
+  "beacon-square-fl": {
+    "name": "Beacon Square",
+    "lat": 28.20862,
+    "lng": -82.75538
+  },
+  "bee-ridge-fl": {
+    "name": "Bee Ridge",
+    "lat": 27.28394,
+    "lng": -82.48065
+  },
+  "belle-glade-fl": {
+    "name": "Belle Glade",
+    "lat": 26.68451,
+    "lng": -80.66756
+  },
+  "belle-glade-camp-fl": {
+    "name": "Belle Glade Camp",
+    "lat": 26.65757,
+    "lng": -80.68284
+  },
+  "belle-isle-fl": {
+    "name": "Belle Isle",
+    "lat": 28.45834,
+    "lng": -81.35924
+  },
+  "belleair-fl": {
+    "name": "Belleair",
+    "lat": 27.93585,
+    "lng": -82.80621
+  },
+  "belleair-bluffs-fl": {
+    "name": "Belleair Bluffs",
+    "lat": 27.92141,
+    "lng": -82.81705
+  },
+  "belleview-fl": {
+    "name": "Belleview",
+    "lat": 29.05526,
+    "lng": -82.06231
+  },
+  "bellview-fl": {
+    "name": "Bellview",
+    "lat": 30.46159,
+    "lng": -87.31497
+  },
+  "beverly-hills-fl": {
+    "name": "Beverly Hills",
+    "lat": 28.91692,
+    "lng": -82.45815
+  },
+  "big-coppitt-key-fl": {
+    "name": "Big Coppitt Key",
+    "lat": 24.59653,
+    "lng": -81.66009
+  },
+  "bithlo-fl": {
+    "name": "Bithlo",
+    "lat": 28.55472,
+    "lng": -81.10645
+  },
+  "black-diamond-fl": {
+    "name": "Black Diamond",
+    "lat": 28.91248,
+    "lng": -82.48593
+  },
+  "bloomingdale-fl": {
+    "name": "Bloomingdale",
+    "lat": 27.89364,
+    "lng": -82.24037
+  },
+  "blountstown-fl": {
+    "name": "Blountstown",
+    "lat": 30.44379,
+    "lng": -85.04744
+  },
+  "boca-del-mar-fl": {
+    "name": "Boca Del Mar",
+    "lat": 26.34508,
+    "lng": -80.14671
+  },
+  "boca-pointe-fl": {
+    "name": "Boca Pointe",
+    "lat": 26.33313,
+    "lng": -80.15949
+  },
+  "bokeelia-fl": {
+    "name": "Bokeelia",
+    "lat": 26.70563,
+    "lng": -82.15898
+  },
+  "bonifay-fl": {
+    "name": "Bonifay",
+    "lat": 30.79186,
+    "lng": -85.67965
+  },
+  "bowling-green-fl": {
+    "name": "Bowling Green",
+    "lat": 27.63837,
+    "lng": -81.82397
+  },
+  "boyette-fl": {
+    "name": "Boyette",
+    "lat": 27.81753,
+    "lng": -82.22259
+  },
+  "bradenton-beach-fl": {
+    "name": "Bradenton Beach",
+    "lat": 27.46698,
+    "lng": -82.70399
+  },
+  "brent-fl": {
+    "name": "Brent",
+    "lat": 30.46881,
+    "lng": -87.23608
+  },
+  "bristol-fl": {
+    "name": "Bristol",
+    "lat": 30.43247,
+    "lng": -84.97702
+  },
+  "broadview-park-fl": {
+    "name": "Broadview Park",
+    "lat": 26.09953,
+    "lng": -80.20866
+  },
+  "bronson-fl": {
+    "name": "Bronson",
+    "lat": 29.44774,
+    "lng": -82.64233
+  },
+  "brookridge-fl": {
+    "name": "Brookridge",
+    "lat": 28.5511,
+    "lng": -82.49204
+  },
+  "brooksville-fl": {
+    "name": "Brooksville",
+    "lat": 28.55554,
+    "lng": -82.38991
+  },
+  "broward-estates-fl": {
+    "name": "Broward Estates",
+    "lat": 26.12564,
+    "lng": -80.19338
+  },
+  "brownsville-fl": {
+    "name": "Brownsville",
+    "lat": 25.82176,
+    "lng": -80.24116
+  },
+  "buckhead-ridge-fl": {
+    "name": "Buckhead Ridge",
+    "lat": 27.13033,
+    "lng": -80.89367
+  },
+  "buckingham-fl": {
+    "name": "Buckingham",
+    "lat": 26.67507,
+    "lng": -81.73203
+  },
+  "buenaventura-lakes-fl": {
+    "name": "Buenaventura Lakes",
+    "lat": 28.33584,
+    "lng": -81.35313
+  },
+  "bunche-park-fl": {
+    "name": "Bunche Park",
+    "lat": 25.92065,
+    "lng": -80.23699
+  },
+  "bunnell-fl": {
+    "name": "Bunnell",
+    "lat": 29.46609,
+    "lng": -81.25784
+  },
+  "burnt-store-marina-fl": {
+    "name": "Burnt Store Marina",
+    "lat": 26.76507,
+    "lng": -82.05092
+  },
+  "bushnell-fl": {
+    "name": "Bushnell",
+    "lat": 28.66499,
+    "lng": -82.11286
+  },
+  "butler-beach-fl": {
+    "name": "Butler Beach",
+    "lat": 29.7983,
+    "lng": -81.26701
+  },
+  "callahan-fl": {
+    "name": "Callahan",
+    "lat": 30.56218,
+    "lng": -81.83066
+  },
+  "callaway-fl": {
+    "name": "Callaway",
+    "lat": 30.15298,
+    "lng": -85.56993
+  },
+  "campbell-fl": {
+    "name": "Campbell",
+    "lat": 28.2589,
+    "lng": -81.45646
+  },
+  "cantonment-fl": {
+    "name": "Cantonment",
+    "lat": 30.60853,
+    "lng": -87.33998
+  },
+  "cape-canaveral-fl": {
+    "name": "Cape Canaveral",
+    "lat": 28.40584,
+    "lng": -80.60477
+  },
+  "carol-city-fl": {
+    "name": "Carol City",
+    "lat": 25.94065,
+    "lng": -80.2456
+  },
+  "carrabelle-fl": {
+    "name": "Carrabelle",
+    "lat": 29.85326,
+    "lng": -84.66435
+  },
+  "carrollwood-village-fl": {
+    "name": "Carrollwood Village",
+    "lat": 28.06752,
+    "lng": -82.52093
+  },
+  "carver-ranches-fl": {
+    "name": "Carver Ranches",
+    "lat": 25.98842,
+    "lng": -80.19227
+  },
+  "casselberry-fl": {
+    "name": "Casselberry",
+    "lat": 28.67778,
+    "lng": -81.32785
+  },
+  "cedar-grove-fl": {
+    "name": "Cedar Grove",
+    "lat": 30.17103,
+    "lng": -85.6252
+  },
+  "celebration-fl": {
+    "name": "Celebration",
+    "lat": 28.32529,
+    "lng": -81.53313
+  },
+  "center-hill-fl": {
+    "name": "Center Hill",
+    "lat": 28.64999,
+    "lng": -81.99258
+  },
+  "century-fl": {
+    "name": "Century",
+    "lat": 30.97324,
+    "lng": -87.26386
+  },
+  "charlotte-harbor-fl": {
+    "name": "Charlotte Harbor",
+    "lat": 26.95839,
+    "lng": -82.06703
+  },
+  "charlotte-park-fl": {
+    "name": "Charlotte Park",
+    "lat": 26.91006,
+    "lng": -82.05398
+  },
+  "chattahoochee-fl": {
+    "name": "Chattahoochee",
+    "lat": 30.70546,
+    "lng": -84.84574
+  },
+  "chiefland-fl": {
+    "name": "Chiefland",
+    "lat": 29.47496,
+    "lng": -82.85984
+  },
+  "chipley-fl": {
+    "name": "Chipley",
+    "lat": 30.78186,
+    "lng": -85.53854
+  },
+  "christmas-fl": {
+    "name": "Christmas",
+    "lat": 28.53639,
+    "lng": -81.01756
+  },
+  "chuluota-fl": {
+    "name": "Chuluota",
+    "lat": 28.64194,
+    "lng": -81.1234
+  },
+  "citra-fl": {
+    "name": "Citra",
+    "lat": 29.41192,
+    "lng": -82.10982
+  },
+  "citrus-hills-fl": {
+    "name": "Citrus Hills",
+    "lat": 28.88831,
+    "lng": -82.4326
+  },
+  "citrus-park-fl": {
+    "name": "Citrus Park",
+    "lat": 28.07835,
+    "lng": -82.56982
+  },
+  "citrus-ridge-fl": {
+    "name": "Citrus Ridge",
+    "lat": 28.33385,
+    "lng": -81.64232
+  },
+  "citrus-springs-fl": {
+    "name": "Citrus Springs",
+    "lat": 28.99748,
+    "lng": -82.47065
+  },
+  "clarcona-fl": {
+    "name": "Clarcona",
+    "lat": 28.61278,
+    "lng": -81.49868
+  },
+  "clermont-fl": {
+    "name": "Clermont",
+    "lat": 28.54944,
+    "lng": -81.77285
+  },
+  "clewiston-fl": {
+    "name": "Clewiston",
+    "lat": 26.75423,
+    "lng": -80.93368
+  },
+  "cleveland-fl": {
+    "name": "Cleveland",
+    "lat": 26.96173,
+    "lng": -81.98398
+  },
+  "cocoa-fl": {
+    "name": "Cocoa",
+    "lat": 28.38612,
+    "lng": -80.742
+  },
+  "cocoa-beach-fl": {
+    "name": "Cocoa Beach",
+    "lat": 28.32055,
+    "lng": -80.60922
+  },
+  "combee-settlement-fl": {
+    "name": "Combee Settlement",
+    "lat": 28.05835,
+    "lng": -81.90536
+  },
+  "conway-fl": {
+    "name": "Conway",
+    "lat": 28.50278,
+    "lng": -81.33062
+  },
+  "cooper-city-fl": {
+    "name": "Cooper City",
+    "lat": 26.05731,
+    "lng": -80.27172
+  },
+  "coral-terrace-fl": {
+    "name": "Coral Terrace",
+    "lat": 25.74593,
+    "lng": -80.3045
+  },
+  "cortez-fl": {
+    "name": "Cortez",
+    "lat": 27.46921,
+    "lng": -82.68621
+  },
+  "country-walk-fl": {
+    "name": "Country Walk",
+    "lat": 25.63399,
+    "lng": -80.43228
+  },
+  "country-club-fl": {
+    "name": "Country Club",
+    "lat": 25.94815,
+    "lng": -80.317
+  },
+  "crawfordville-fl": {
+    "name": "Crawfordville",
+    "lat": 30.17604,
+    "lng": -84.37518
+  },
+  "crescent-city-fl": {
+    "name": "Crescent City",
+    "lat": 29.43025,
+    "lng": -81.51063
+  },
+  "crestview-fl": {
+    "name": "Crestview",
+    "lat": 30.76213,
+    "lng": -86.57051
+  },
+  "crooked-lake-park-fl": {
+    "name": "Crooked Lake Park",
+    "lat": 27.82919,
+    "lng": -81.58397
+  },
+  "cross-city-fl": {
+    "name": "Cross City",
+    "lat": 29.63465,
+    "lng": -83.12694
+  },
+  "crystal-river-fl": {
+    "name": "Crystal River",
+    "lat": 28.90248,
+    "lng": -82.5926
+  },
+  "crystal-springs-fl": {
+    "name": "Crystal Springs",
+    "lat": 28.1814,
+    "lng": -82.15758
+  },
+  "cudjoe-key-fl": {
+    "name": "Cudjoe Key",
+    "lat": 24.67153,
+    "lng": -81.49842
+  },
+  "cutler-fl": {
+    "name": "Cutler",
+    "lat": 25.6151,
+    "lng": -80.31061
+  },
+  "cutler-ridge-fl": {
+    "name": "Cutler Ridge",
+    "lat": 25.58066,
+    "lng": -80.34672
+  },
+  "cypress-gardens-fl": {
+    "name": "Cypress Gardens",
+    "lat": 27.99391,
+    "lng": -81.69008
+  },
+  "cypress-lake-fl": {
+    "name": "Cypress Lake",
+    "lat": 26.53813,
+    "lng": -81.89925
+  },
+  "cypress-quarters-fl": {
+    "name": "Cypress Quarters",
+    "lat": 27.25199,
+    "lng": -80.81395
+  },
+  "dade-city-fl": {
+    "name": "Dade City",
+    "lat": 28.36472,
+    "lng": -82.19592
+  },
+  "dania-beach-fl": {
+    "name": "Dania Beach",
+    "lat": 26.05231,
+    "lng": -80.14393
+  },
+  "davenport-fl": {
+    "name": "Davenport",
+    "lat": 28.1614,
+    "lng": -81.60174
+  },
+  "daytona-beach-shores-fl": {
+    "name": "Daytona Beach Shores",
+    "lat": 29.17609,
+    "lng": -80.98283
+  },
+  "defuniak-springs-fl": {
+    "name": "DeFuniak Springs",
+    "lat": 30.72102,
+    "lng": -86.11522
+  },
+  "deland-fl": {
+    "name": "DeLand",
+    "lat": 29.02832,
+    "lng": -81.30312
+  },
+  "de-leon-springs-fl": {
+    "name": "De Leon Springs",
+    "lat": 29.11989,
+    "lng": -81.35286
+  },
+  "debary-fl": {
+    "name": "DeBary",
+    "lat": 28.88305,
+    "lng": -81.30868
+  },
+  "desoto-lakes-fl": {
+    "name": "Desoto Lakes",
+    "lat": 27.37143,
+    "lng": -82.48982
+  },
+  "destin-fl": {
+    "name": "Destin",
+    "lat": 30.39353,
+    "lng": -86.49578
+  },
+  "doctor-phillips-fl": {
+    "name": "Doctor Phillips",
+    "lat": 28.44945,
+    "lng": -81.49229
+  },
+  "dover-fl": {
+    "name": "Dover",
+    "lat": 27.99419,
+    "lng": -82.21953
+  },
+  "dundee-fl": {
+    "name": "Dundee",
+    "lat": 28.02252,
+    "lng": -81.61924
+  },
+  "dunedin-fl": {
+    "name": "Dunedin",
+    "lat": 28.0199,
+    "lng": -82.77323
+  },
+  "dunnellon-fl": {
+    "name": "Dunnellon",
+    "lat": 29.04914,
+    "lng": -82.46093
+  },
+  "eagle-lake-fl": {
+    "name": "Eagle Lake",
+    "lat": 27.97836,
+    "lng": -81.75647
+  },
+  "east-lake-fl": {
+    "name": "East Lake",
+    "lat": 28.11085,
+    "lng": -82.69482
+  },
+  "east-milton-fl": {
+    "name": "East Milton",
+    "lat": 30.61519,
+    "lng": -87.02163
+  },
+  "east-naples-fl": {
+    "name": "East Naples",
+    "lat": 26.13842,
+    "lng": -81.76648
+  },
+  "east-palatka-fl": {
+    "name": "East Palatka",
+    "lat": 29.6583,
+    "lng": -81.59841
+  },
+  "east-pensacola-heights-fl": {
+    "name": "East Pensacola Heights",
+    "lat": 30.42881,
+    "lng": -87.17997
+  },
+  "east-perrine-fl": {
+    "name": "East Perrine",
+    "lat": 25.60872,
+    "lng": -80.33894
+  },
+  "eastpoint-fl": {
+    "name": "Eastpoint",
+    "lat": 29.7366,
+    "lng": -84.87852
+  },
+  "eatonville-fl": {
+    "name": "Eatonville",
+    "lat": 28.61472,
+    "lng": -81.38062
+  },
+  "edgewater-fl": {
+    "name": "Edgewater",
+    "lat": 28.98888,
+    "lng": -80.90228
+  },
+  "edgewood-fl": {
+    "name": "Edgewood",
+    "lat": 28.48612,
+    "lng": -81.37229
+  },
+  "eglin-village-fl": {
+    "name": "Eglin Village",
+    "lat": 30.46298,
+    "lng": -86.5394
+  },
+  "egypt-lake-leto-fl": {
+    "name": "Egypt Lake-Leto",
+    "lat": 28.01769,
+    "lng": -82.50619
+  },
+  "el-portal-fl": {
+    "name": "El Portal",
+    "lat": 25.85537,
+    "lng": -80.1931
+  },
+  "elfers-fl": {
+    "name": "Elfers",
+    "lat": 28.21668,
+    "lng": -82.72232
+  },
+  "ensley-fl": {
+    "name": "Ensley",
+    "lat": 30.51881,
+    "lng": -87.27275
+  },
+  "eustis-fl": {
+    "name": "Eustis",
+    "lat": 28.85277,
+    "lng": -81.68535
+  },
+  "fairview-shores-fl": {
+    "name": "Fairview Shores",
+    "lat": 28.59111,
+    "lng": -81.39424
+  },
+  "feather-sound-fl": {
+    "name": "Feather Sound",
+    "lat": 27.90079,
+    "lng": -82.67349
+  },
+  "fellsmere-fl": {
+    "name": "Fellsmere",
+    "lat": 27.76781,
+    "lng": -80.60144
+  },
+  "fern-park-fl": {
+    "name": "Fern Park",
+    "lat": 28.64916,
+    "lng": -81.35118
+  },
+  "fernandina-beach-fl": {
+    "name": "Fernandina Beach",
+    "lat": 30.66968,
+    "lng": -81.46259
+  },
+  "ferry-pass-fl": {
+    "name": "Ferry Pass",
+    "lat": 30.5102,
+    "lng": -87.21247
+  },
+  "fish-hawk-fl": {
+    "name": "Fish Hawk",
+    "lat": 27.85058,
+    "lng": -82.21092
+  },
+  "five-points-fl": {
+    "name": "Five Points",
+    "lat": 30.20912,
+    "lng": -82.63735
+  },
+  "flagami-fl": {
+    "name": "Flagami",
+    "lat": 25.76232,
+    "lng": -80.31616
+  },
+  "flagler-beach-fl": {
+    "name": "Flagler Beach",
+    "lat": 29.47498,
+    "lng": -81.127
+  },
+  "fleming-island-fl": {
+    "name": "Fleming Island",
+    "lat": 30.0933,
+    "lng": -81.71898
+  },
+  "floral-city-fl": {
+    "name": "Floral City",
+    "lat": 28.74999,
+    "lng": -82.29676
+  },
+  "florida-city-fl": {
+    "name": "Florida City",
+    "lat": 25.44789,
+    "lng": -80.47922
+  },
+  "florida-ridge-fl": {
+    "name": "Florida Ridge",
+    "lat": 27.58031,
+    "lng": -80.38672
+  },
+  "forest-city-fl": {
+    "name": "Forest City",
+    "lat": 28.66678,
+    "lng": -81.44334
+  },
+  "fort-meade-fl": {
+    "name": "Fort Meade",
+    "lat": 27.75225,
+    "lng": -81.80175
+  },
+  "fort-myers-beach-fl": {
+    "name": "Fort Myers Beach",
+    "lat": 26.45271,
+    "lng": -81.95011
+  },
+  "fort-myers-shores-fl": {
+    "name": "Fort Myers Shores",
+    "lat": 26.70924,
+    "lng": -81.74592
+  },
+  "fort-walton-beach-fl": {
+    "name": "Fort Walton Beach",
+    "lat": 30.42059,
+    "lng": -86.61707
+  },
+  "fountainebleau-fl": {
+    "name": "Fountainebleau",
+    "lat": 25.77288,
+    "lng": -80.34783
+  },
+  "freeport-fl": {
+    "name": "Freeport",
+    "lat": 30.49825,
+    "lng": -86.13605
+  },
+  "frostproof-fl": {
+    "name": "Frostproof",
+    "lat": 27.74586,
+    "lng": -81.53063
+  },
+  "fruit-cove-fl": {
+    "name": "Fruit Cove",
+    "lat": 30.11107,
+    "lng": -81.64176
+  },
+  "fruitland-park-fl": {
+    "name": "Fruitland Park",
+    "lat": 28.86138,
+    "lng": -81.90647
+  },
+  "fruitville-fl": {
+    "name": "Fruitville",
+    "lat": 27.32977,
+    "lng": -82.4576
+  },
+  "fuller-heights-fl": {
+    "name": "Fuller Heights",
+    "lat": 27.90919,
+    "lng": -81.99814
+  },
+  "fussels-corner-fl": {
+    "name": "Fussels Corner",
+    "lat": 28.05419,
+    "lng": -81.86064
+  },
+  "gandy-fl": {
+    "name": "Gandy",
+    "lat": 27.8685,
+    "lng": -82.61612
+  },
+  "gateway-fl": {
+    "name": "Gateway",
+    "lat": 26.57757,
+    "lng": -81.75036
+  },
+  "geneva-fl": {
+    "name": "Geneva",
+    "lat": 28.73972,
+    "lng": -81.11506
+  },
+  "gibsonia-fl": {
+    "name": "Gibsonia",
+    "lat": 28.11474,
+    "lng": -81.97369
+  },
+  "gifford-fl": {
+    "name": "Gifford",
+    "lat": 27.67531,
+    "lng": -80.40922
+  },
+  "gladeview-fl": {
+    "name": "Gladeview",
+    "lat": 25.83926,
+    "lng": -80.2356
+  },
+  "glencoe-fl": {
+    "name": "Glencoe",
+    "lat": 29.02582,
+    "lng": -80.972
+  },
+  "glenvar-heights-fl": {
+    "name": "Glenvar Heights",
+    "lat": 25.7076,
+    "lng": -80.32561
+  },
+  "golden-gate-fl": {
+    "name": "Golden Gate",
+    "lat": 26.18787,
+    "lng": -81.69509
+  },
+  "golden-glades-fl": {
+    "name": "Golden Glades",
+    "lat": 25.91176,
+    "lng": -80.20033
+  },
+  "goldenrod-fl": {
+    "name": "Goldenrod",
+    "lat": 28.61028,
+    "lng": -81.28868
+  },
+  "gonzalez-fl": {
+    "name": "Gonzalez",
+    "lat": 30.58158,
+    "lng": -87.29136
+  },
+  "gotha-fl": {
+    "name": "Gotha",
+    "lat": 28.52778,
+    "lng": -81.52313
+  },
+  "goulding-fl": {
+    "name": "Goulding",
+    "lat": 30.44298,
+    "lng": -87.22247
+  },
+  "goulds-fl": {
+    "name": "Goulds",
+    "lat": 25.56261,
+    "lng": -80.38228
+  },
+  "graceville-fl": {
+    "name": "Graceville",
+    "lat": 30.95685,
+    "lng": -85.5166
+  },
+  "green-cove-springs-fl": {
+    "name": "Green Cove Springs",
+    "lat": 29.99191,
+    "lng": -81.67815
+  },
+  "greenacres-city-fl": {
+    "name": "Greenacres City",
+    "lat": 26.62368,
+    "lng": -80.12532
+  },
+  "gretna-fl": {
+    "name": "Gretna",
+    "lat": 30.61714,
+    "lng": -84.65991
+  },
+  "grove-city-fl": {
+    "name": "Grove City",
+    "lat": 26.91423,
+    "lng": -82.32704
+  },
+  "groveland-fl": {
+    "name": "Groveland",
+    "lat": 28.55805,
+    "lng": -81.85119
+  },
+  "gulf-breeze-fl": {
+    "name": "Gulf Breeze",
+    "lat": 30.35714,
+    "lng": -87.16386
+  },
+  "gulf-gate-estates-fl": {
+    "name": "Gulf Gate Estates",
+    "lat": 27.25173,
+    "lng": -82.51471
+  },
+  "gulfport-fl": {
+    "name": "Gulfport",
+    "lat": 27.74836,
+    "lng": -82.70343
+  },
+  "haines-city-fl": {
+    "name": "Haines City",
+    "lat": 28.1145,
+    "lng": -81.62009
+  },
+  "harbor-bluffs-fl": {
+    "name": "Harbor Bluffs",
+    "lat": 27.90947,
+    "lng": -82.8276
+  },
+  "harbour-heights-fl": {
+    "name": "Harbour Heights",
+    "lat": 26.99089,
+    "lng": -82.00231
+  },
+  "harlem-fl": {
+    "name": "Harlem",
+    "lat": 26.73757,
+    "lng": -80.9509
+  },
+  "harlem-heights-fl": {
+    "name": "Harlem Heights",
+    "lat": 26.51619,
+    "lng": -81.92787
+  },
+  "havana-fl": {
+    "name": "Havana",
+    "lat": 30.62381,
+    "lng": -84.41463
+  },
+  "haverhill-fl": {
+    "name": "Haverhill",
+    "lat": 26.69118,
+    "lng": -80.12004
+  },
+  "hawthorne-fl": {
+    "name": "Hawthorne",
+    "lat": 29.59191,
+    "lng": -82.08732
+  },
+  "heathrow-fl": {
+    "name": "Heathrow",
+    "lat": 28.76333,
+    "lng": -81.37225
+  },
+  "hernando-fl": {
+    "name": "Hernando",
+    "lat": 28.89998,
+    "lng": -82.37454
+  },
+  "hernando-beach-fl": {
+    "name": "Hernando Beach",
+    "lat": 28.46944,
+    "lng": -82.65927
+  },
+  "hialeah-gardens-fl": {
+    "name": "Hialeah Gardens",
+    "lat": 25.8651,
+    "lng": -80.3245
+  },
+  "high-springs-fl": {
+    "name": "High Springs",
+    "lat": 29.82691,
+    "lng": -82.59678
+  },
+  "highland-beach-fl": {
+    "name": "Highland Beach",
+    "lat": 26.39952,
+    "lng": -80.0656
+  },
+  "highland-city-fl": {
+    "name": "Highland City",
+    "lat": 27.9653,
+    "lng": -81.87786
+  },
+  "hiland-park-fl": {
+    "name": "Hiland Park",
+    "lat": 30.20103,
+    "lng": -85.62687
+  },
+  "hill-n-dale-fl": {
+    "name": "Hill 'n Dale",
+    "lat": 28.51972,
+    "lng": -82.29926
+  },
+  "hilliard-fl": {
+    "name": "Hilliard",
+    "lat": 30.69107,
+    "lng": -81.91733
+  },
+  "hillsboro-beach-fl": {
+    "name": "Hillsboro Beach",
+    "lat": 26.29397,
+    "lng": -80.07893
+  },
+  "hobe-sound-fl": {
+    "name": "Hobe Sound",
+    "lat": 27.0595,
+    "lng": -80.13643
+  },
+  "holden-heights-fl": {
+    "name": "Holden Heights",
+    "lat": 28.49667,
+    "lng": -81.38785
+  },
+  "holiday-fl": {
+    "name": "Holiday",
+    "lat": 28.18779,
+    "lng": -82.73955
+  },
+  "holley-fl": {
+    "name": "Holley",
+    "lat": 30.44686,
+    "lng": -86.90691
+  },
+  "holly-hill-fl": {
+    "name": "Holly Hill",
+    "lat": 29.24359,
+    "lng": -81.03756
+  },
+  "holmes-beach-fl": {
+    "name": "Holmes Beach",
+    "lat": 27.49532,
+    "lng": -82.71093
+  },
+  "homosassa-fl": {
+    "name": "Homosassa",
+    "lat": 28.78137,
+    "lng": -82.6151
+  },
+  "homosassa-springs-fl": {
+    "name": "Homosassa Springs",
+    "lat": 28.80359,
+    "lng": -82.57593
+  },
+  "howey-in-the-hills-fl": {
+    "name": "Howey-in-the-Hills",
+    "lat": 28.71694,
+    "lng": -81.77341
+  },
+  "hudson-fl": {
+    "name": "Hudson",
+    "lat": 28.36445,
+    "lng": -82.69343
+  },
+  "hunters-creek-fl": {
+    "name": "Hunters Creek",
+    "lat": 28.36056,
+    "lng": -81.42229
+  },
+  "hypoluxo-fl": {
+    "name": "Hypoluxo",
+    "lat": 26.56646,
+    "lng": -80.05337
+  },
+  "immokalee-fl": {
+    "name": "Immokalee",
+    "lat": 26.41869,
+    "lng": -81.4173
+  },
+  "indialantic-fl": {
+    "name": "Indialantic",
+    "lat": 28.08946,
+    "lng": -80.56561
+  },
+  "indian-harbour-beach-fl": {
+    "name": "Indian Harbour Beach",
+    "lat": 28.1489,
+    "lng": -80.58839
+  },
+  "indian-river-estates-fl": {
+    "name": "Indian River Estates",
+    "lat": 27.36449,
+    "lng": -80.30977
+  },
+  "indian-river-shores-fl": {
+    "name": "Indian River Shores",
+    "lat": 27.7167,
+    "lng": -80.38422
+  },
+  "indian-shores-fl": {
+    "name": "Indian Shores",
+    "lat": 27.8628,
+    "lng": -82.84844
+  },
+  "indiantown-fl": {
+    "name": "Indiantown",
+    "lat": 27.02728,
+    "lng": -80.48561
+  },
+  "inglis-fl": {
+    "name": "Inglis",
+    "lat": 29.03025,
+    "lng": -82.66872
+  },
+  "interlachen-fl": {
+    "name": "Interlachen",
+    "lat": 29.62421,
+    "lng": -81.89256
+  },
+  "inverness-fl": {
+    "name": "Inverness",
+    "lat": 28.83582,
+    "lng": -82.33037
+  },
+  "inwood-fl": {
+    "name": "Inwood",
+    "lat": 28.03697,
+    "lng": -81.76508
+  },
+  "iona-fl": {
+    "name": "Iona",
+    "lat": 26.52036,
+    "lng": -81.96398
+  },
+  "isle-of-normandy-fl": {
+    "name": "Isle of Normandy",
+    "lat": 25.85287,
+    "lng": -80.13505
+  },
+  "ives-estates-fl": {
+    "name": "Ives Estates",
+    "lat": 25.96231,
+    "lng": -80.17671
+  },
+  "jacksonville-beach-fl": {
+    "name": "Jacksonville Beach",
+    "lat": 30.29469,
+    "lng": -81.39314
+  },
+  "jan-phyl-village-fl": {
+    "name": "Jan-Phyl Village",
+    "lat": 28.01474,
+    "lng": -81.77175
+  },
+  "jasmine-estates-fl": {
+    "name": "Jasmine Estates",
+    "lat": 28.29306,
+    "lng": -82.6901
+  },
+  "jasper-fl": {
+    "name": "Jasper",
+    "lat": 30.51827,
+    "lng": -82.94819
+  },
+  "jensen-beach-fl": {
+    "name": "Jensen Beach",
+    "lat": 27.25449,
+    "lng": -80.22977
+  },
+  "june-park-fl": {
+    "name": "June Park",
+    "lat": 28.07224,
+    "lng": -80.68006
+  },
+  "juno-beach-fl": {
+    "name": "Juno Beach",
+    "lat": 26.87978,
+    "lng": -80.05337
+  },
+  "kathleen-fl": {
+    "name": "Kathleen",
+    "lat": 28.12085,
+    "lng": -82.02314
+  },
+  "kendale-lakes-fl": {
+    "name": "Kendale Lakes",
+    "lat": 25.70816,
+    "lng": -80.407
+  },
+  "kendall-fl": {
+    "name": "Kendall",
+    "lat": 25.67927,
+    "lng": -80.31727
+  },
+  "kendall-green-fl": {
+    "name": "Kendall Green",
+    "lat": 26.25397,
+    "lng": -80.12393
+  },
+  "kenneth-city-fl": {
+    "name": "Kenneth City",
+    "lat": 27.81558,
+    "lng": -82.7201
+  },
+  "kensington-park-fl": {
+    "name": "Kensington Park",
+    "lat": 27.35949,
+    "lng": -82.49649
+  },
+  "key-west-fl": {
+    "name": "Key West",
+    "lat": 24.55524,
+    "lng": -81.78163
+  },
+  "keystone-heights-fl": {
+    "name": "Keystone Heights",
+    "lat": 29.78608,
+    "lng": -82.03149
+  },
+  "kings-point-fl": {
+    "name": "Kings Point",
+    "lat": 26.44535,
+    "lng": -80.13977
+  },
+  "labelle-fl": {
+    "name": "LaBelle",
+    "lat": 26.76173,
+    "lng": -81.43841
+  },
+  "lacoochee-fl": {
+    "name": "Lacoochee",
+    "lat": 28.46583,
+    "lng": -82.17203
+  },
+  "lady-lake-fl": {
+    "name": "Lady Lake",
+    "lat": 28.91749,
+    "lng": -81.92286
+  },
+  "laguna-beach-fl": {
+    "name": "Laguna Beach",
+    "lat": 30.23965,
+    "lng": -85.9241
+  },
+  "lake-alfred-fl": {
+    "name": "Lake Alfred",
+    "lat": 28.09196,
+    "lng": -81.72341
+  },
+  "lake-belvedere-estates-fl": {
+    "name": "Lake Belvedere Estates",
+    "lat": 26.68923,
+    "lng": -80.13338
+  },
+  "lake-butler-fl": {
+    "name": "Lake Butler",
+    "lat": 30.02274,
+    "lng": -82.33956
+  },
+  "lake-city-fl": {
+    "name": "Lake City",
+    "lat": 30.18968,
+    "lng": -82.63929
+  },
+  "lake-clarke-shores-fl": {
+    "name": "Lake Clarke Shores",
+    "lat": 26.64534,
+    "lng": -80.07588
+  },
+  "lake-forest-fl": {
+    "name": "Lake Forest",
+    "lat": 25.97759,
+    "lng": -80.1831
+  },
+  "lake-hamilton-fl": {
+    "name": "Lake Hamilton",
+    "lat": 28.04446,
+    "lng": -81.62785
+  },
+  "lake-helen-fl": {
+    "name": "Lake Helen",
+    "lat": 28.98082,
+    "lng": -81.23339
+  },
+  "lake-lorraine-fl": {
+    "name": "Lake Lorraine",
+    "lat": 30.44159,
+    "lng": -86.56523
+  },
+  "lake-lucerne-fl": {
+    "name": "Lake Lucerne",
+    "lat": 25.96509,
+    "lng": -80.24144
+  },
+  "lake-magdalene-fl": {
+    "name": "Lake Magdalene",
+    "lat": 28.07418,
+    "lng": -82.47176
+  },
+  "lake-panasoffkee-fl": {
+    "name": "Lake Panasoffkee",
+    "lat": 28.75582,
+    "lng": -82.09481
+  },
+  "lake-placid-fl": {
+    "name": "Lake Placid",
+    "lat": 27.35197,
+    "lng": -81.32631
+  },
+  "lake-sarasota-fl": {
+    "name": "Lake Sarasota",
+    "lat": 27.29255,
+    "lng": -82.4376
+  },
+  "lake-mary-fl": {
+    "name": "Lake Mary",
+    "lat": 28.75888,
+    "lng": -81.31784
+  },
+  "lake-wales-fl": {
+    "name": "Lake Wales",
+    "lat": 27.90141,
+    "lng": -81.58591
+  },
+  "lake-worth-corridor-fl": {
+    "name": "Lake Worth Corridor",
+    "lat": 26.61649,
+    "lng": -80.10102
+  },
+  "lakeland-highlands-fl": {
+    "name": "Lakeland Highlands",
+    "lat": 27.95975,
+    "lng": -81.95008
+  },
+  "lakes-by-the-bay-fl": {
+    "name": "Lakes by the Bay",
+    "lat": 25.57233,
+    "lng": -80.32533
+  },
+  "lakeside-fl": {
+    "name": "Lakeside",
+    "lat": 30.12996,
+    "lng": -81.76815
+  },
+  "lakewood-park-fl": {
+    "name": "Lakewood Park",
+    "lat": 27.54309,
+    "lng": -80.40227
+  },
+  "lantana-fl": {
+    "name": "Lantana",
+    "lat": 26.58674,
+    "lng": -80.05199
+  },
+  "lauderdale-lakes-fl": {
+    "name": "Lauderdale Lakes",
+    "lat": 26.16647,
+    "lng": -80.20838
+  },
+  "lauderdale-by-the-sea-fl": {
+    "name": "Lauderdale-by-the-Sea",
+    "lat": 26.19203,
+    "lng": -80.09643
+  },
+  "lealman-fl": {
+    "name": "Lealman",
+    "lat": 27.82114,
+    "lng": -82.67927
+  },
+  "lecanto-fl": {
+    "name": "Lecanto",
+    "lat": 28.85165,
+    "lng": -82.4876
+  },
+  "leesburg-fl": {
+    "name": "Leesburg",
+    "lat": 28.81082,
+    "lng": -81.87786
+  },
+  "leisure-city-fl": {
+    "name": "Leisure City",
+    "lat": 25.49539,
+    "lng": -80.42922
+  },
+  "lely-fl": {
+    "name": "Lely",
+    "lat": 26.10065,
+    "lng": -81.72842
+  },
+  "lely-resort-fl": {
+    "name": "Lely Resort",
+    "lat": 26.08093,
+    "lng": -81.69786
+  },
+  "lighthouse-point-fl": {
+    "name": "Lighthouse Point",
+    "lat": 26.27564,
+    "lng": -80.08727
+  },
+  "limestone-creek-fl": {
+    "name": "Limestone Creek",
+    "lat": 26.94284,
+    "lng": -80.14115
+  },
+  "live-oak-fl": {
+    "name": "Live Oak",
+    "lat": 30.29495,
+    "lng": -82.98402
+  },
+  "lochmoor-waterway-estates-fl": {
+    "name": "Lochmoor Waterway Estates",
+    "lat": 26.64424,
+    "lng": -81.90981
+  },
+  "lockhart-fl": {
+    "name": "Lockhart",
+    "lat": 28.61944,
+    "lng": -81.44257
+  },
+  "longwood-fl": {
+    "name": "Longwood",
+    "lat": 28.70305,
+    "lng": -81.3384
+  },
+  "loughman-fl": {
+    "name": "Loughman",
+    "lat": 28.24196,
+    "lng": -81.56674
+  },
+  "lower-grand-lagoon-fl": {
+    "name": "Lower Grand Lagoon",
+    "lat": 30.14409,
+    "lng": -85.75076
+  },
+  "loxahatchee-groves-fl": {
+    "name": "Loxahatchee Groves",
+    "lat": 26.68368,
+    "lng": -80.27977
+  },
+  "lynn-haven-fl": {
+    "name": "Lynn Haven",
+    "lat": 30.24548,
+    "lng": -85.64826
+  },
+  "macclenny-fl": {
+    "name": "Macclenny",
+    "lat": 30.28218,
+    "lng": -82.12206
+  },
+  "madeira-beach-fl": {
+    "name": "Madeira Beach",
+    "lat": 27.79808,
+    "lng": -82.79732
+  },
+  "madison-fl": {
+    "name": "Madison",
+    "lat": 30.46938,
+    "lng": -83.41293
+  },
+  "maitland-fl": {
+    "name": "Maitland",
+    "lat": 28.62778,
+    "lng": -81.36312
+  },
+  "malabar-fl": {
+    "name": "Malabar",
+    "lat": 28.00363,
+    "lng": -80.56561
+  },
+  "malone-fl": {
+    "name": "Malone",
+    "lat": 30.95769,
+    "lng": -85.16215
+  },
+  "manasota-key-fl": {
+    "name": "Manasota Key",
+    "lat": 26.92534,
+    "lng": -82.35204
+  },
+  "manatee-road-fl": {
+    "name": "Manatee Road",
+    "lat": 29.51302,
+    "lng": -82.91429
+  },
+  "mango-fl": {
+    "name": "Mango",
+    "lat": 27.97974,
+    "lng": -82.30648
+  },
+  "mangonia-park-fl": {
+    "name": "Mangonia Park",
+    "lat": 26.76034,
+    "lng": -80.07365
+  },
+  "marco-fl": {
+    "name": "Marco",
+    "lat": 25.9726,
+    "lng": -81.72898
+  },
+  "marianna-fl": {
+    "name": "Marianna",
+    "lat": 30.77436,
+    "lng": -85.22687
+  },
+  "mary-esther-fl": {
+    "name": "Mary Esther",
+    "lat": 30.41015,
+    "lng": -86.66509
+  },
+  "masaryktown-fl": {
+    "name": "Masaryktown",
+    "lat": 28.44167,
+    "lng": -82.45704
+  },
+  "mascotte-fl": {
+    "name": "Mascotte",
+    "lat": 28.57833,
+    "lng": -81.88675
+  },
+  "mayo-fl": {
+    "name": "Mayo",
+    "lat": 30.053,
+    "lng": -83.17486
+  },
+  "mcgregor-fl": {
+    "name": "McGregor",
+    "lat": 26.56091,
+    "lng": -81.91453
+  },
+  "meadow-woods-fl": {
+    "name": "Meadow Woods",
+    "lat": 28.38556,
+    "lng": -81.36646
+  },
+  "medulla-fl": {
+    "name": "Medulla",
+    "lat": 27.9678,
+    "lng": -81.97342
+  },
+  "melbourne-beach-fl": {
+    "name": "Melbourne Beach",
+    "lat": 28.06835,
+    "lng": -80.56033
+  },
+  "melrose-park-fl": {
+    "name": "Melrose Park",
+    "lat": 26.11342,
+    "lng": -80.19338
+  },
+  "memphis-fl": {
+    "name": "Memphis",
+    "lat": 27.53587,
+    "lng": -82.56121
+  },
+  "merritt-island-fl": {
+    "name": "Merritt Island",
+    "lat": 28.53917,
+    "lng": -80.672
+  },
+  "mexico-beach-fl": {
+    "name": "Mexico Beach",
+    "lat": 29.94809,
+    "lng": -85.41995
+  },
+  "miami-lakes-fl": {
+    "name": "Miami Lakes",
+    "lat": 25.90871,
+    "lng": -80.30866
+  },
+  "miami-springs-fl": {
+    "name": "Miami Springs",
+    "lat": 25.82232,
+    "lng": -80.2895
+  },
+  "micco-fl": {
+    "name": "Micco",
+    "lat": 27.88058,
+    "lng": -80.50033
+  },
+  "midway-fl": {
+    "name": "Midway",
+    "lat": 30.49548,
+    "lng": -84.45435
+  },
+  "middleburg-fl": {
+    "name": "Middleburg",
+    "lat": 30.06885,
+    "lng": -81.86038
+  },
+  "milton-fl": {
+    "name": "Milton",
+    "lat": 30.63241,
+    "lng": -87.03969
+  },
+  "mims-fl": {
+    "name": "Mims",
+    "lat": 28.66527,
+    "lng": -80.84478
+  },
+  "minneola-fl": {
+    "name": "Minneola",
+    "lat": 28.57444,
+    "lng": -81.74619
+  },
+  "miramar-beach-fl": {
+    "name": "Miramar Beach",
+    "lat": 30.37437,
+    "lng": -86.35856
+  },
+  "molino-fl": {
+    "name": "Molino",
+    "lat": 30.72408,
+    "lng": -87.31414
+  },
+  "monticello-fl": {
+    "name": "Monticello",
+    "lat": 30.54515,
+    "lng": -83.8713
+  },
+  "montverde-fl": {
+    "name": "Montverde",
+    "lat": 28.60028,
+    "lng": -81.67396
+  },
+  "moore-haven-fl": {
+    "name": "Moore Haven",
+    "lat": 26.83312,
+    "lng": -81.09312
+  },
+  "mount-dora-fl": {
+    "name": "Mount Dora",
+    "lat": 28.80249,
+    "lng": -81.64452
+  },
+  "mount-plymouth-fl": {
+    "name": "Mount Plymouth",
+    "lat": 28.80805,
+    "lng": -81.53313
+  },
+  "mulberry-fl": {
+    "name": "Mulberry",
+    "lat": 27.8953,
+    "lng": -81.97342
+  },
+  "myrtle-grove-fl": {
+    "name": "Myrtle Grove",
+    "lat": 30.42103,
+    "lng": -87.30747
+  },
+  "naples-manor-fl": {
+    "name": "Naples Manor",
+    "lat": 26.0887,
+    "lng": -81.7262
+  },
+  "naples-park-fl": {
+    "name": "Naples Park",
+    "lat": 26.26175,
+    "lng": -81.80925
+  },
+  "naranja-fl": {
+    "name": "Naranja",
+    "lat": 25.51816,
+    "lng": -80.42283
+  },
+  "navarre-fl": {
+    "name": "Navarre",
+    "lat": 30.40159,
+    "lng": -86.86357
+  },
+  "neptune-beach-fl": {
+    "name": "Neptune Beach",
+    "lat": 30.31191,
+    "lng": -81.39647
+  },
+  "new-port-richey-fl": {
+    "name": "New Port Richey",
+    "lat": 28.24418,
+    "lng": -82.71927
+  },
+  "new-smyrna-beach-fl": {
+    "name": "New Smyrna Beach",
+    "lat": 29.02582,
+    "lng": -80.927
+  },
+  "newberry-fl": {
+    "name": "Newberry",
+    "lat": 29.64635,
+    "lng": -82.6065
+  },
+  "niceville-fl": {
+    "name": "Niceville",
+    "lat": 30.51686,
+    "lng": -86.48217
+  },
+  "nocatee-fl": {
+    "name": "Nocatee",
+    "lat": 27.16033,
+    "lng": -81.88231
+  },
+  "norland-fl": {
+    "name": "Norland",
+    "lat": 25.94898,
+    "lng": -80.21227
+  },
+  "north-andrews-gardens-fl": {
+    "name": "North Andrews Gardens",
+    "lat": 26.19147,
+    "lng": -80.14421
+  },
+  "north-bay-village-fl": {
+    "name": "North Bay Village",
+    "lat": 25.84621,
+    "lng": -80.15394
+  },
+  "north-brooksville-fl": {
+    "name": "North Brooksville",
+    "lat": 28.57305,
+    "lng": -82.40815
+  },
+  "north-deland-fl": {
+    "name": "North DeLand",
+    "lat": 29.04943,
+    "lng": -81.29812
+  },
+  "north-fort-myers-fl": {
+    "name": "North Fort Myers",
+    "lat": 26.66729,
+    "lng": -81.88009
+  },
+  "north-key-largo-fl": {
+    "name": "North Key Largo",
+    "lat": 25.26734,
+    "lng": -80.32339
+  },
+  "north-redington-beach-fl": {
+    "name": "North Redington Beach",
+    "lat": 27.81614,
+    "lng": -82.82066
+  },
+  "north-river-shores-fl": {
+    "name": "North River Shores",
+    "lat": 27.21755,
+    "lng": -80.26977
+  },
+  "north-sarasota-fl": {
+    "name": "North Sarasota",
+    "lat": 27.37393,
+    "lng": -82.51843
+  },
+  "oak-hill-fl": {
+    "name": "Oak Hill",
+    "lat": 28.86443,
+    "lng": -80.8545
+  },
+  "oak-ridge-fl": {
+    "name": "Oak Ridge",
+    "lat": 28.47112,
+    "lng": -81.42452
+  },
+  "oakland-fl": {
+    "name": "Oakland",
+    "lat": 28.555,
+    "lng": -81.63313
+  },
+  "ocean-city-fl": {
+    "name": "Ocean City",
+    "lat": 30.44103,
+    "lng": -86.61356
+  },
+  "ocean-ridge-fl": {
+    "name": "Ocean Ridge",
+    "lat": 26.52702,
+    "lng": -80.04837
+  },
+  "ojus-fl": {
+    "name": "Ojus",
+    "lat": 25.94843,
+    "lng": -80.1506
+  },
+  "okeechobee-fl": {
+    "name": "Okeechobee",
+    "lat": 27.24393,
+    "lng": -80.82978
+  },
+  "oldsmar-fl": {
+    "name": "Oldsmar",
+    "lat": 28.03418,
+    "lng": -82.6651
+  },
+  "olga-fl": {
+    "name": "Olga",
+    "lat": 26.71896,
+    "lng": -81.7123
+  },
+  "olympia-heights-fl": {
+    "name": "Olympia Heights",
+    "lat": 25.72677,
+    "lng": -80.35533
+  },
+  "opa-locka-fl": {
+    "name": "Opa-locka",
+    "lat": 25.90232,
+    "lng": -80.25033
+  },
+  "orange-city-fl": {
+    "name": "Orange City",
+    "lat": 28.94888,
+    "lng": -81.29867
+  },
+  "orange-park-fl": {
+    "name": "Orange Park",
+    "lat": 30.16607,
+    "lng": -81.70648
+  },
+  "orangetree-fl": {
+    "name": "Orangetree",
+    "lat": 26.29286,
+    "lng": -81.58842
+  },
+  "oriole-beach-fl": {
+    "name": "Oriole Beach",
+    "lat": 30.37381,
+    "lng": -87.09136
+  },
+  "orlovista-fl": {
+    "name": "Orlovista",
+    "lat": 28.53834,
+    "lng": -81.46035
+  },
+  "ormond-by-the-sea-fl": {
+    "name": "Ormond-by-the-Sea",
+    "lat": 29.34914,
+    "lng": -81.06645
+  },
+  "oviedo-fl": {
+    "name": "Oviedo",
+    "lat": 28.67,
+    "lng": -81.20812
+  },
+  "pace-fl": {
+    "name": "Pace",
+    "lat": 30.59936,
+    "lng": -87.16108
+  },
+  "pahokee-fl": {
+    "name": "Pahokee",
+    "lat": 26.82006,
+    "lng": -80.66534
+  },
+  "palatka-fl": {
+    "name": "Palatka",
+    "lat": 29.64858,
+    "lng": -81.63758
+  },
+  "palm-aire-fl": {
+    "name": "Palm Aire",
+    "lat": 26.20619,
+    "lng": -80.19171
+  },
+  "palm-beach-shores-fl": {
+    "name": "Palm Beach Shores",
+    "lat": 26.77812,
+    "lng": -80.0356
+  },
+  "palm-city-fl": {
+    "name": "Palm City",
+    "lat": 27.16783,
+    "lng": -80.26616
+  },
+  "palm-springs-fl": {
+    "name": "Palm Springs",
+    "lat": 26.6359,
+    "lng": -80.09615
+  },
+  "palm-springs-north-fl": {
+    "name": "Palm Springs North",
+    "lat": 25.9351,
+    "lng": -80.33383
+  },
+  "palm-valley-fl": {
+    "name": "Palm Valley",
+    "lat": 30.17746,
+    "lng": -81.38758
+  },
+  "palmetto-estates-fl": {
+    "name": "Palmetto Estates",
+    "lat": 25.62149,
+    "lng": -80.362
+  },
+  "palmona-park-fl": {
+    "name": "Palmona Park",
+    "lat": 26.68646,
+    "lng": -81.89648
+  },
+  "panama-city-beach-fl": {
+    "name": "Panama City Beach",
+    "lat": 30.17659,
+    "lng": -85.80549
+  },
+  "paradise-heights-fl": {
+    "name": "Paradise Heights",
+    "lat": 28.62361,
+    "lng": -81.54396
+  },
+  "parker-fl": {
+    "name": "Parker",
+    "lat": 30.13104,
+    "lng": -85.60326
+  },
+  "parkland-fl": {
+    "name": "Parkland",
+    "lat": 26.31008,
+    "lng": -80.23727
+  },
+  "pebble-creek-fl": {
+    "name": "Pebble Creek",
+    "lat": 28.14835,
+    "lng": -82.34565
+  },
+  "pembroke-park-fl": {
+    "name": "Pembroke Park",
+    "lat": 25.98787,
+    "lng": -80.17477
+  },
+  "perry-fl": {
+    "name": "Perry",
+    "lat": 30.11766,
+    "lng": -83.58274
+  },
+  "pierson-fl": {
+    "name": "Pierson",
+    "lat": 29.23942,
+    "lng": -81.46563
+  },
+  "pine-castle-fl": {
+    "name": "Pine Castle",
+    "lat": 28.47195,
+    "lng": -81.36785
+  },
+  "pine-hills-fl": {
+    "name": "Pine Hills",
+    "lat": 28.55778,
+    "lng": -81.4534
+  },
+  "pine-island-center-fl": {
+    "name": "Pine Island Center",
+    "lat": 26.61369,
+    "lng": -82.11815
+  },
+  "pine-island-ridge-fl": {
+    "name": "Pine Island Ridge",
+    "lat": 26.09481,
+    "lng": -80.27394
+  },
+  "pine-manor-fl": {
+    "name": "Pine Manor",
+    "lat": 26.57285,
+    "lng": -81.87814
+  },
+  "pine-ridge-fl": {
+    "name": "Pine Ridge",
+    "lat": 28.93831,
+    "lng": -82.47343
+  },
+  "pinewood-fl": {
+    "name": "Pinewood",
+    "lat": 25.86898,
+    "lng": -80.21699
+  },
+  "placid-lakes-fl": {
+    "name": "Placid Lakes",
+    "lat": 27.24144,
+    "lng": -81.40702
+  },
+  "plant-city-fl": {
+    "name": "Plant City",
+    "lat": 28.01888,
+    "lng": -82.11469
+  },
+  "plantation-mobile-home-park-fl": {
+    "name": "Plantation Mobile Home Park",
+    "lat": 26.70312,
+    "lng": -80.13227
+  },
+  "poinciana-fl": {
+    "name": "Poinciana",
+    "lat": 28.14029,
+    "lng": -81.45841
+  },
+  "point-baker-fl": {
+    "name": "Point Baker",
+    "lat": 30.69019,
+    "lng": -87.05358
+  },
+  "polk-city-fl": {
+    "name": "Polk City",
+    "lat": 28.18251,
+    "lng": -81.82397
+  },
+  "pompano-beach-highlands-fl": {
+    "name": "Pompano Beach Highlands",
+    "lat": 26.28286,
+    "lng": -80.10699
+  },
+  "ponce-inlet-fl": {
+    "name": "Ponce Inlet",
+    "lat": 29.09637,
+    "lng": -80.937
+  },
+  "ponte-vedra-beach-fl": {
+    "name": "Ponte Vedra Beach",
+    "lat": 30.23969,
+    "lng": -81.38564
+  },
+  "port-labelle-fl": {
+    "name": "Port LaBelle",
+    "lat": 26.75645,
+    "lng": -81.40508
+  },
+  "port-saint-joe-fl": {
+    "name": "Port Saint Joe",
+    "lat": 29.81188,
+    "lng": -85.30297
+  },
+  "port-saint-john-fl": {
+    "name": "Port Saint John",
+    "lat": 28.47695,
+    "lng": -80.78867
+  },
+  "port-saint-lucie-fl": {
+    "name": "Port Saint Lucie",
+    "lat": 27.29393,
+    "lng": -80.35033
+  },
+  "port-salerno-fl": {
+    "name": "Port Salerno",
+    "lat": 27.14422,
+    "lng": -80.2006
+  },
+  "pretty-bayou-fl": {
+    "name": "Pretty Bayou",
+    "lat": 30.19659,
+    "lng": -85.6966
+  },
+  "princeton-fl": {
+    "name": "Princeton",
+    "lat": 25.53844,
+    "lng": -80.40894
+  },
+  "progress-village-fl": {
+    "name": "Progress Village",
+    "lat": 27.9003,
+    "lng": -82.36454
+  },
+  "punta-gorda-isles-fl": {
+    "name": "Punta Gorda Isles",
+    "lat": 26.91756,
+    "lng": -82.07842
+  },
+  "punta-rassa-fl": {
+    "name": "Punta Rassa",
+    "lat": 26.48786,
+    "lng": -82.01231
+  },
+  "quincy-fl": {
+    "name": "Quincy",
+    "lat": 30.58714,
+    "lng": -84.58325
+  },
+  "redington-beach-fl": {
+    "name": "Redington Beach",
+    "lat": 27.80864,
+    "lng": -82.81121
+  },
+  "redington-shores-fl": {
+    "name": "Redington Shores",
+    "lat": 27.82614,
+    "lng": -82.82899
+  },
+  "richmond-heights-fl": {
+    "name": "Richmond Heights",
+    "lat": 25.63149,
+    "lng": -80.36894
+  },
+  "richmond-west-fl": {
+    "name": "Richmond West",
+    "lat": 25.6105,
+    "lng": -80.42971
+  },
+  "ridge-manor-fl": {
+    "name": "Ridge Manor",
+    "lat": 28.5075,
+    "lng": -82.17036
+  },
+  "ridge-wood-heights-fl": {
+    "name": "Ridge Wood Heights",
+    "lat": 27.28727,
+    "lng": -82.51315
+  },
+  "ridgecrest-fl": {
+    "name": "Ridgecrest",
+    "lat": 27.8975,
+    "lng": -82.80529
+  },
+  "river-park-fl": {
+    "name": "River Park",
+    "lat": 27.31421,
+    "lng": -80.34727
+  },
+  "rock-island-fl": {
+    "name": "Rock Island",
+    "lat": 26.15509,
+    "lng": -80.17699
+  },
+  "rockledge-fl": {
+    "name": "Rockledge",
+    "lat": 28.35084,
+    "lng": -80.72533
+  },
+  "roseland-fl": {
+    "name": "Roseland",
+    "lat": 27.83586,
+    "lng": -80.49311
+  },
+  "rotonda-west-fl": {
+    "name": "Rotonda West",
+    "lat": 26.88368,
+    "lng": -82.29009
+  },
+  "royal-palm-beach-fl": {
+    "name": "Royal Palm Beach",
+    "lat": 26.7084,
+    "lng": -80.2306
+  },
+  "royal-palm-estates-fl": {
+    "name": "Royal Palm Estates",
+    "lat": 26.68173,
+    "lng": -80.12504
+  },
+  "saint-augustine-fl": {
+    "name": "Saint Augustine",
+    "lat": 29.89469,
+    "lng": -81.31452
+  },
+  "saint-augustine-beach-fl": {
+    "name": "Saint Augustine Beach",
+    "lat": 29.85053,
+    "lng": -81.26535
+  },
+  "saint-augustine-shores-fl": {
+    "name": "Saint Augustine Shores",
+    "lat": 29.8108,
+    "lng": -81.31035
+  },
+  "saint-cloud-fl": {
+    "name": "Saint Cloud",
+    "lat": 28.2489,
+    "lng": -81.28118
+  },
+  "saint-george-fl": {
+    "name": "Saint George",
+    "lat": 28.05641,
+    "lng": -82.72788
+  },
+  "saint-james-city-fl": {
+    "name": "Saint James City",
+    "lat": 26.49758,
+    "lng": -82.07843
+  },
+  "saint-leo-fl": {
+    "name": "Saint Leo",
+    "lat": 28.33723,
+    "lng": -82.25842
+  },
+  "saint-pete-beach-fl": {
+    "name": "Saint Pete Beach",
+    "lat": 27.72531,
+    "lng": -82.74121
+  },
+  "samoset-fl": {
+    "name": "Samoset",
+    "lat": 27.46948,
+    "lng": -82.54149
+  },
+  "san-antonio-fl": {
+    "name": "San Antonio",
+    "lat": 28.33611,
+    "lng": -82.27453
+  },
+  "san-carlos-park-fl": {
+    "name": "San Carlos Park",
+    "lat": 26.4673,
+    "lng": -81.80147
+  },
+  "sanibel-fl": {
+    "name": "Sanibel",
+    "lat": 26.44897,
+    "lng": -82.02231
+  },
+  "sarasota-springs-fl": {
+    "name": "Sarasota Springs",
+    "lat": 27.30894,
+    "lng": -82.47954
+  },
+  "satellite-beach-fl": {
+    "name": "Satellite Beach",
+    "lat": 28.17612,
+    "lng": -80.59005
+  },
+  "sawgrass-fl": {
+    "name": "Sawgrass",
+    "lat": 30.19274,
+    "lng": -81.37064
+  },
+  "schall-circle-fl": {
+    "name": "Schall Circle",
+    "lat": 26.71562,
+    "lng": -80.11504
+  },
+  "scott-lake-fl": {
+    "name": "Scott Lake",
+    "lat": 25.94148,
+    "lng": -80.23199
+  },
+  "seaside-fl": {
+    "name": "Seaside",
+    "lat": 30.32103,
+    "lng": -86.14161
+  },
+  "sebastian-fl": {
+    "name": "Sebastian",
+    "lat": 27.81641,
+    "lng": -80.47061
+  },
+  "sebring-fl": {
+    "name": "Sebring",
+    "lat": 27.49559,
+    "lng": -81.44091
+  },
+  "seffner-fl": {
+    "name": "Seffner",
+    "lat": 27.98363,
+    "lng": -82.27565
+  },
+  "seminole-manor-fl": {
+    "name": "Seminole Manor",
+    "lat": 26.58368,
+    "lng": -80.10032
+  },
+  "sewalls-point-fl": {
+    "name": "Sewall's Point",
+    "lat": 27.19949,
+    "lng": -80.20227
+  },
+  "shady-hills-fl": {
+    "name": "Shady Hills",
+    "lat": 28.41,
+    "lng": -82.54288
+  },
+  "sharpes-fl": {
+    "name": "Sharpes",
+    "lat": 28.43223,
+    "lng": -80.76005
+  },
+  "silver-lake-fl": {
+    "name": "Silver Lake",
+    "lat": 28.84193,
+    "lng": -81.79841
+  },
+  "silver-springs-fl": {
+    "name": "Silver Springs",
+    "lat": 29.21664,
+    "lng": -82.05759
+  },
+  "silver-springs-shores-fl": {
+    "name": "Silver Springs Shores",
+    "lat": 29.10442,
+    "lng": -82.02064
+  },
+  "sky-lake-fl": {
+    "name": "Sky Lake",
+    "lat": 28.45723,
+    "lng": -81.39146
+  },
+  "sneads-fl": {
+    "name": "Sneads",
+    "lat": 30.70801,
+    "lng": -84.92552
+  },
+  "south-bay-fl": {
+    "name": "South Bay",
+    "lat": 26.66396,
+    "lng": -80.71617
+  },
+  "south-beach-fl": {
+    "name": "South Beach",
+    "lat": 27.59115,
+    "lng": -80.34422
+  },
+  "south-bradenton-fl": {
+    "name": "South Bradenton",
+    "lat": 27.4631,
+    "lng": -82.58176
+  },
+  "south-apopka-fl": {
+    "name": "South Apopka",
+    "lat": 28.66194,
+    "lng": -81.50952
+  },
+  "south-brooksville-fl": {
+    "name": "South Brooksville",
+    "lat": 28.53582,
+    "lng": -82.38403
+  },
+  "south-daytona-fl": {
+    "name": "South Daytona",
+    "lat": 29.16582,
+    "lng": -81.0045
+  },
+  "south-gate-ridge-fl": {
+    "name": "South Gate Ridge",
+    "lat": 27.28644,
+    "lng": -82.49676
+  },
+  "south-highpoint-fl": {
+    "name": "South Highpoint",
+    "lat": 27.91697,
+    "lng": -82.71288
+  },
+  "south-miami-fl": {
+    "name": "South Miami",
+    "lat": 25.7076,
+    "lng": -80.29338
+  },
+  "south-miami-heights-fl": {
+    "name": "South Miami Heights",
+    "lat": 25.59761,
+    "lng": -80.38061
+  },
+  "south-palm-beach-fl": {
+    "name": "South Palm Beach",
+    "lat": 26.58896,
+    "lng": -80.03865
+  },
+  "south-pasadena-fl": {
+    "name": "South Pasadena",
+    "lat": 27.75503,
+    "lng": -82.7376
+  },
+  "south-patrick-shores-fl": {
+    "name": "South Patrick Shores",
+    "lat": 28.20223,
+    "lng": -80.6095
+  },
+  "south-sarasota-fl": {
+    "name": "South Sarasota",
+    "lat": 27.28616,
+    "lng": -82.53288
+  },
+  "southchase-fl": {
+    "name": "Southchase",
+    "lat": 28.39306,
+    "lng": -81.3834
+  },
+  "southgate-fl": {
+    "name": "Southgate",
+    "lat": 27.3081,
+    "lng": -82.50982
+  },
+  "southwest-ranches-fl": {
+    "name": "Southwest Ranches",
+    "lat": 26.0587,
+    "lng": -80.33727
+  },
+  "spring-hill-fl": {
+    "name": "Spring Hill",
+    "lat": 28.47688,
+    "lng": -82.52546
+  },
+  "springfield-fl": {
+    "name": "Springfield",
+    "lat": 30.15326,
+    "lng": -85.61132
+  },
+  "starke-fl": {
+    "name": "Starke",
+    "lat": 29.94413,
+    "lng": -82.10983
+  },
+  "steinhatchee-fl": {
+    "name": "Steinhatchee",
+    "lat": 29.67106,
+    "lng": -83.38764
+  },
+  "stock-island-fl": {
+    "name": "Stock Island",
+    "lat": 24.56709,
+    "lng": -81.73842
+  },
+  "stuart-fl": {
+    "name": "Stuart",
+    "lat": 27.19755,
+    "lng": -80.25283
+  },
+  "sugarmill-woods-fl": {
+    "name": "Sugarmill Woods",
+    "lat": 28.73221,
+    "lng": -82.50621
+  },
+  "suncoast-estates-fl": {
+    "name": "Suncoast Estates",
+    "lat": 26.71174,
+    "lng": -81.86897
+  },
+  "sunset-fl": {
+    "name": "Sunset",
+    "lat": 25.70594,
+    "lng": -80.35228
+  },
+  "sunshine-ranches-fl": {
+    "name": "Sunshine Ranches",
+    "lat": 26.04592,
+    "lng": -80.32894
+  },
+  "sweetwater-fl": {
+    "name": "Sweetwater",
+    "lat": 25.76343,
+    "lng": -80.37311
+  },
+  "taft-fl": {
+    "name": "Taft",
+    "lat": 28.42973,
+    "lng": -81.36507
+  },
+  "tamiami-fl": {
+    "name": "Tamiami",
+    "lat": 25.75871,
+    "lng": -80.39839
+  },
+  "tangelo-park-fl": {
+    "name": "Tangelo Park",
+    "lat": 28.45584,
+    "lng": -81.4459
+  },
+  "tangerine-fl": {
+    "name": "Tangerine",
+    "lat": 28.76499,
+    "lng": -81.63063
+  },
+  "tavares-fl": {
+    "name": "Tavares",
+    "lat": 28.80416,
+    "lng": -81.72563
+  },
+  "taylor-creek-fl": {
+    "name": "Taylor Creek",
+    "lat": 27.21671,
+    "lng": -80.7895
+  },
+  "tedder-fl": {
+    "name": "Tedder",
+    "lat": 26.28425,
+    "lng": -80.12227
+  },
+  "tequesta-fl": {
+    "name": "Tequesta",
+    "lat": 26.96811,
+    "lng": -80.12865
+  },
+  "terra-mar-fl": {
+    "name": "Terra Mar",
+    "lat": 26.21619,
+    "lng": -80.09532
+  },
+  "the-crossings-fl": {
+    "name": "The Crossings",
+    "lat": 25.67066,
+    "lng": -80.40117
+  },
+  "the-hammocks-fl": {
+    "name": "The Hammocks",
+    "lat": 25.67149,
+    "lng": -80.4445
+  },
+  "the-meadows-fl": {
+    "name": "The Meadows",
+    "lat": 27.36171,
+    "lng": -82.46898
+  },
+  "the-villages-fl": {
+    "name": "The Villages",
+    "lat": 28.93408,
+    "lng": -81.95994
+  },
+  "thonotosassa-fl": {
+    "name": "Thonotosassa",
+    "lat": 28.06141,
+    "lng": -82.30231
+  },
+  "three-lakes-fl": {
+    "name": "Three Lakes",
+    "lat": 25.64205,
+    "lng": -80.39839
+  },
+  "three-oaks-fl": {
+    "name": "Three Oaks",
+    "lat": 26.47008,
+    "lng": -81.79397
+  },
+  "tice-fl": {
+    "name": "Tice",
+    "lat": 26.67479,
+    "lng": -81.81508
+  },
+  "tierra-verde-fl": {
+    "name": "Tierra Verde",
+    "lat": 27.69197,
+    "lng": -82.72343
+  },
+  "tiger-point-fl": {
+    "name": "Tiger Point",
+    "lat": 30.37853,
+    "lng": -87.05552
+  },
+  "timber-pines-fl": {
+    "name": "Timber Pines",
+    "lat": 28.47028,
+    "lng": -82.60316
+  },
+  "town-n-country-fl": {
+    "name": "Town 'n' Country",
+    "lat": 28.01057,
+    "lng": -82.57732
+  },
+  "trenton-fl": {
+    "name": "Trenton",
+    "lat": 29.61329,
+    "lng": -82.81762
+  },
+  "twin-lakes-fl": {
+    "name": "Twin Lakes",
+    "lat": 26.18092,
+    "lng": -80.16005
+  },
+  "umatilla-fl": {
+    "name": "Umatilla",
+    "lat": 28.92943,
+    "lng": -81.66563
+  },
+  "union-park-fl": {
+    "name": "Union Park",
+    "lat": 28.56806,
+    "lng": -81.28618
+  },
+  "upper-grand-lagoon-fl": {
+    "name": "Upper Grand Lagoon",
+    "lat": 30.16326,
+    "lng": -85.74076
+  },
+  "valparaiso-fl": {
+    "name": "Valparaiso",
+    "lat": 30.50853,
+    "lng": -86.50273
+  },
+  "valrico-fl": {
+    "name": "Valrico",
+    "lat": 27.93789,
+    "lng": -82.23644
+  },
+  "venice-gardens-fl": {
+    "name": "Venice Gardens",
+    "lat": 27.07311,
+    "lng": -82.4076
+  },
+  "vero-beach-fl": {
+    "name": "Vero Beach",
+    "lat": 27.63864,
+    "lng": -80.39727
+  },
+  "villages-of-oriole-fl": {
+    "name": "Villages of Oriole",
+    "lat": 26.4623,
+    "lng": -80.15282
+  },
+  "villano-beach-fl": {
+    "name": "Villano Beach",
+    "lat": 29.93858,
+    "lng": -81.30202
+  },
+  "vineyards-fl": {
+    "name": "Vineyards",
+    "lat": 26.22373,
+    "lng": -81.72798
+  },
+  "virginia-gardens-fl": {
+    "name": "Virginia Gardens",
+    "lat": 25.81038,
+    "lng": -80.30227
+  },
+  "wabasso-beach-fl": {
+    "name": "Wabasso Beach",
+    "lat": 27.76475,
+    "lng": -80.39894
+  },
+  "wahneta-fl": {
+    "name": "Wahneta",
+    "lat": 27.9528,
+    "lng": -81.72702
+  },
+  "waldo-fl": {
+    "name": "Waldo",
+    "lat": 29.78969,
+    "lng": -82.16732
+  },
+  "wallace-fl": {
+    "name": "Wallace",
+    "lat": 30.67741,
+    "lng": -87.17997
+  },
+  "warm-mineral-springs-fl": {
+    "name": "Warm Mineral Springs",
+    "lat": 27.05978,
+    "lng": -82.26009
+  },
+  "warrington-fl": {
+    "name": "Warrington",
+    "lat": 30.38409,
+    "lng": -87.27497
+  },
+  "washington-park-fl": {
+    "name": "Washington Park",
+    "lat": 26.13259,
+    "lng": -80.18116
+  },
+  "watertown-fl": {
+    "name": "Watertown",
+    "lat": 30.19245,
+    "lng": -82.61457
+  },
+  "wauchula-fl": {
+    "name": "Wauchula",
+    "lat": 27.54726,
+    "lng": -81.81147
+  },
+  "wedgefield-fl": {
+    "name": "Wedgefield",
+    "lat": 28.48778,
+    "lng": -81.07729
+  },
+  "weeki-wachee-gardens-fl": {
+    "name": "Weeki Wachee Gardens",
+    "lat": 28.53361,
+    "lng": -82.62954
+  },
+  "wekiwa-springs-fl": {
+    "name": "Wekiwa Springs",
+    "lat": 28.69861,
+    "lng": -81.42563
+  },
+  "wellborn-fl": {
+    "name": "Wellborn",
+    "lat": 30.23106,
+    "lng": -82.81957
+  },
+  "wesley-chapel-fl": {
+    "name": "Wesley Chapel",
+    "lat": 28.23973,
+    "lng": -82.32787
+  },
+  "west-bradenton-fl": {
+    "name": "West Bradenton",
+    "lat": 27.50254,
+    "lng": -82.61399
+  },
+  "west-deland-fl": {
+    "name": "West DeLand",
+    "lat": 29.01582,
+    "lng": -81.33312
+  },
+  "west-gate-fl": {
+    "name": "West Gate",
+    "lat": 26.70257,
+    "lng": -80.0981
+  },
+  "west-hollywood-fl": {
+    "name": "West Hollywood",
+    "lat": 26.02065,
+    "lng": -80.18394
+  },
+  "west-little-river-fl": {
+    "name": "West Little River",
+    "lat": 25.85704,
+    "lng": -80.23699
+  },
+  "west-melbourne-fl": {
+    "name": "West Melbourne",
+    "lat": 28.07168,
+    "lng": -80.65339
+  },
+  "west-miami-fl": {
+    "name": "West Miami",
+    "lat": 25.76343,
+    "lng": -80.29616
+  },
+  "west-park-fl": {
+    "name": "West Park",
+    "lat": 25.98454,
+    "lng": -80.19894
+  },
+  "west-pensacola-fl": {
+    "name": "West Pensacola",
+    "lat": 30.42659,
+    "lng": -87.27969
+  },
+  "west-perrine-fl": {
+    "name": "West Perrine",
+    "lat": 25.60594,
+    "lng": -80.36283
+  },
+  "west-samoset-fl": {
+    "name": "West Samoset",
+    "lat": 27.46948,
+    "lng": -82.55676
+  },
+  "west-vero-corridor-fl": {
+    "name": "West Vero Corridor",
+    "lat": 27.63775,
+    "lng": -80.48576
+  },
+  "west-and-east-lealman-fl": {
+    "name": "West and East Lealman",
+    "lat": 27.81993,
+    "lng": -82.68944
+  },
+  "westchester-fl": {
+    "name": "Westchester",
+    "lat": 25.75482,
+    "lng": -80.32727
+  },
+  "westview-fl": {
+    "name": "Westview",
+    "lat": 25.88204,
+    "lng": -80.24199
+  },
+  "westwood-lake-fl": {
+    "name": "Westwood Lake",
+    "lat": 25.72927,
+    "lng": -80.37283
+  },
+  "wewahitchka-fl": {
+    "name": "Wewahitchka",
+    "lat": 30.1127,
+    "lng": -85.20047
+  },
+  "whiskey-creek-fl": {
+    "name": "Whiskey Creek",
+    "lat": 26.57258,
+    "lng": -81.89009
+  },
+  "white-city-fl": {
+    "name": "White City",
+    "lat": 27.37393,
+    "lng": -80.33394
+  },
+  "whitfield-fl": {
+    "name": "Whitfield",
+    "lat": 27.41171,
+    "lng": -82.56593
+  },
+  "wildwood-fl": {
+    "name": "Wildwood",
+    "lat": 28.86542,
+    "lng": -82.04058
+  },
+  "williamsburg-fl": {
+    "name": "Williamsburg",
+    "lat": 28.41445,
+    "lng": -81.44285
+  },
+  "williston-fl": {
+    "name": "Williston",
+    "lat": 29.38747,
+    "lng": -82.44677
+  },
+  "williston-highlands-fl": {
+    "name": "Williston Highlands",
+    "lat": 29.34052,
+    "lng": -82.5415
+  },
+  "willow-oak-fl": {
+    "name": "Willow Oak",
+    "lat": 27.91614,
+    "lng": -82.01786
+  },
+  "wilton-manors-fl": {
+    "name": "Wilton Manors",
+    "lat": 26.16036,
+    "lng": -80.13893
+  },
+  "wimauma-fl": {
+    "name": "Wimauma",
+    "lat": 27.71253,
+    "lng": -82.29898
+  },
+  "windermere-fl": {
+    "name": "Windermere",
+    "lat": 28.49556,
+    "lng": -81.5348
+  },
+  "winston-fl": {
+    "name": "Winston",
+    "lat": 28.03169,
+    "lng": -82.01481
+  },
+  "winter-beach-fl": {
+    "name": "Winter Beach",
+    "lat": 27.7192,
+    "lng": -80.42061
+  },
+  "winter-park-fl": {
+    "name": "Winter Park",
+    "lat": 28.6,
+    "lng": -81.33924
+  },
+  "winter-springs-fl": {
+    "name": "Winter Springs",
+    "lat": 28.69889,
+    "lng": -81.30812
+  },
+  "woodlawn-beach-fl": {
+    "name": "Woodlawn Beach",
+    "lat": 30.38825,
+    "lng": -86.9908
+  },
+  "woodville-fl": {
+    "name": "Woodville",
+    "lat": 30.31409,
+    "lng": -84.2474
+  },
+  "wright-fl": {
+    "name": "Wright",
+    "lat": 30.45575,
+    "lng": -86.63829
+  },
+  "yalaha-fl": {
+    "name": "Yalaha",
+    "lat": 28.7386,
+    "lng": -81.80869
+  },
+  "youngstown-fl": {
+    "name": "Youngstown",
+    "lat": 30.36436,
+    "lng": -85.43826
+  },
+  "yulee-fl": {
+    "name": "Yulee",
+    "lat": 30.6319,
+    "lng": -81.60649
+  },
+  "zellwood-fl": {
+    "name": "Zellwood",
+    "lat": 28.73111,
+    "lng": -81.60118
+  },
+  "zephyrhills-fl": {
+    "name": "Zephyrhills",
+    "lat": 28.23362,
+    "lng": -82.18119
+  },
+  "zolfo-springs-fl": {
+    "name": "Zolfo Springs",
+    "lat": 27.49337,
+    "lng": -81.79592
+  },
+  "grant-valkaria-fl": {
+    "name": "Grant-Valkaria",
+    "lat": 27.9398,
+    "lng": -80.57104
+  },
+  "alafaya-fl": {
+    "name": "Alafaya",
+    "lat": 28.5641,
+    "lng": -81.2114
+  },
+  "boulevard-gardens-fl": {
+    "name": "Boulevard Gardens",
+    "lat": 26.12326,
+    "lng": -80.17997
+  },
+  "high-point-fl": {
+    "name": "High Point",
+    "lat": 28.54687,
+    "lng": -82.52468
+  },
+  "roosevelt-gardens-fl": {
+    "name": "Roosevelt Gardens",
+    "lat": 26.14087,
+    "lng": -80.18027
+  },
+  "saint-augustine-south-fl": {
+    "name": "Saint Augustine South",
+    "lat": 29.84249,
+    "lng": -81.31448
+  },
+  "dade-city-north-fl": {
+    "name": "Dade City North",
+    "lat": 28.38334,
+    "lng": -82.19389
+  },
+  "de-land-southwest-fl": {
+    "name": "De Land Southwest",
+    "lat": 29.0077,
+    "lng": -81.31129
+  },
+  "east-bronson-fl": {
+    "name": "East Bronson",
+    "lat": 29.45928,
+    "lng": -82.5904
+  },
+  "east-lake-orient-park-fl": {
+    "name": "East Lake-Orient Park",
+    "lat": 27.98269,
+    "lng": -82.37878
+  },
+  "eglin-air-force-base-fl": {
+    "name": "Eglin Air Force Base",
+    "lat": 30.45907,
+    "lng": -86.55026
+  },
+  "fort-pierce-north-fl": {
+    "name": "Fort Pierce North",
+    "lat": 27.47364,
+    "lng": -80.3593
+  },
+  "fort-pierce-south-fl": {
+    "name": "Fort Pierce South",
+    "lat": 27.40962,
+    "lng": -80.35483
+  },
+  "four-corners-fl": {
+    "name": "Four Corners",
+    "lat": 28.33287,
+    "lng": -81.64738
+  },
+  "greater-northdale-fl": {
+    "name": "Greater Northdale",
+    "lat": 28.10545,
+    "lng": -82.52594
+  },
+  "hutchinson-island-south-fl": {
+    "name": "Hutchinson Island South",
+    "lat": 27.29949,
+    "lng": -80.22045
+  },
+  "inverness-highlands-north-fl": {
+    "name": "Inverness Highlands North",
+    "lat": 28.8642,
+    "lng": -82.37688
+  },
+  "inverness-highlands-south-fl": {
+    "name": "Inverness Highlands South",
+    "lat": 28.80055,
+    "lng": -82.3371
+  },
+  "bellair-meadowbrook-terrace-fl": {
+    "name": "Bellair-Meadowbrook Terrace",
+    "lat": 30.17881,
+    "lng": -81.74341
+  },
+  "cocoa-west-fl": {
+    "name": "Cocoa West",
+    "lat": 28.35942,
+    "lng": -80.77109
+  },
+  "samsula-spruce-creek-fl": {
+    "name": "Samsula-Spruce Creek",
+    "lat": 29.04932,
+    "lng": -81.06192
+  },
+  "sandalfoot-cove-fl": {
+    "name": "Sandalfoot Cove",
+    "lat": 26.33863,
+    "lng": -80.1869
+  },
+  "southeast-arcadia-fl": {
+    "name": "Southeast Arcadia",
+    "lat": 27.18629,
+    "lng": -81.8521
+  },
+  "tyndall-air-force-base-fl": {
+    "name": "Tyndall Air Force Base",
+    "lat": 30.08535,
+    "lng": -85.60731
+  },
+  "university-fl": {
+    "name": "University",
+    "lat": 28.07389,
+    "lng": -82.43902
+  },
+  "vero-beach-south-fl": {
+    "name": "Vero Beach South",
+    "lat": 27.61638,
+    "lng": -80.41308
+  },
+  "zephyrhills-north-fl": {
+    "name": "Zephyrhills North",
+    "lat": 28.25172,
+    "lng": -82.16557
+  },
+  "zephyrhills-south-fl": {
+    "name": "Zephyrhills South",
+    "lat": 28.21492,
+    "lng": -82.18873
+  },
+  "zephyrhills-west-fl": {
+    "name": "Zephyrhills West",
+    "lat": 28.23081,
+    "lng": -82.20556
+  },
+  "kendall-west-fl": {
+    "name": "Kendall West",
+    "lat": 25.7065,
+    "lng": -80.4388
+  },
+  "lake-mack-forest-hills-fl": {
+    "name": "Lake Mack-Forest Hills",
+    "lat": 29.00074,
+    "lng": -81.42397
+  },
+  "nassau-village-ratliff-fl": {
+    "name": "Nassau Village-Ratliff",
+    "lat": 30.51111,
+    "lng": -81.80925
+  },
+  "new-port-richey-east-fl": {
+    "name": "New Port Richey East",
+    "lat": 28.26027,
+    "lng": -82.69261
+  },
+  "north-weeki-wachee-fl": {
+    "name": "North Weeki Wachee",
+    "lat": 28.55014,
+    "lng": -82.55888
+  },
+  "palm-river-clair-mel-fl": {
+    "name": "Palm River-Clair Mel",
+    "lat": 27.92386,
+    "lng": -82.37939
+  },
+  "connerton-fl": {
+    "name": "Connerton",
+    "lat": 28.31441,
+    "lng": -82.47539
+  },
+  "flagler-estates-fl": {
+    "name": "Flagler Estates",
+    "lat": 29.64553,
+    "lng": -81.457
+  },
+  "greenbriar-fl": {
+    "name": "Greenbriar",
+    "lat": 28.01128,
+    "lng": -82.75272
+  },
+  "heritage-pines-fl": {
+    "name": "Heritage Pines",
+    "lat": 28.42522,
+    "lng": -82.62111
+  },
+  "horizon-west-fl": {
+    "name": "Horizon West",
+    "lat": 28.43383,
+    "lng": -81.6227
+  },
+  "island-walk-fl": {
+    "name": "Island Walk",
+    "lat": 26.25099,
+    "lng": -81.71101
+  },
+  "key-vista-fl": {
+    "name": "Key Vista",
+    "lat": 28.1947,
+    "lng": -82.77038
+  },
+  "meadow-oaks-fl": {
+    "name": "Meadow Oaks",
+    "lat": 28.34619,
+    "lng": -82.60284
+  },
+  "oakleaf-plantation-fl": {
+    "name": "Oakleaf Plantation",
+    "lat": 30.17083,
+    "lng": -81.83549
+  },
+  "pasadena-hills-fl": {
+    "name": "Pasadena Hills",
+    "lat": 28.28001,
+    "lng": -82.22438
+  },
+  "quail-ridge-fl": {
+    "name": "Quail Ridge",
+    "lat": 28.34905,
+    "lng": -82.55532
+  },
+  "verona-walk-fl": {
+    "name": "Verona Walk",
+    "lat": 26.08412,
+    "lng": -81.67985
+  },
+  "viera-east-fl": {
+    "name": "Viera East",
+    "lat": 28.26234,
+    "lng": -80.71449
+  },
+  "viera-west-fl": {
+    "name": "Viera West",
+    "lat": 28.24504,
+    "lng": -80.7338
+  },
+  "the-acreage-fl": {
+    "name": "The Acreage",
+    "lat": 26.79404,
+    "lng": -80.26749
+  },
+  "northdale-fl": {
+    "name": "Northdale",
+    "lat": 28.0939,
+    "lng": -82.50561
+  },
+  "st-johns-fl": {
+    "name": "St. Johns",
+    "lat": 30.0815,
+    "lng": -81.54774
+  }
 }

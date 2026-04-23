@@ -32,16 +32,36 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   if (!content) return '';
   
   let newContent = content;
-  newContent = newContent.replace(/Bradenton’s/g, `${clean_name}'s`).replace(/Bradenton's/g, `${clean_name}'s`);
-  newContent = newContent.replace(/across Bradenton and Southwest Florida/g, `across ${clean_name} and Southwest Florida`);
-  newContent = newContent.replace(/in Bradenton home/g, `in ${clean_name} home`);
-  newContent = newContent.replace(/Favorite Cleaners in Bradenton/g, `Favorite Cleaners in ${clean_name}`);
-  newContent = newContent.replace(/Top Rated in Bradenton/g, `Top Rated in ${clean_name}`);
-  newContent = newContent.replace(/Cleaning Service in Bradenton/g, `Cleaning Service in ${clean_name}`);
-  newContent = newContent.replace(/house cleaning Bradenton/g, `house cleaning ${clean_name}`);
-  newContent = newContent.replace(/maid service Bradenton/g, `maid service ${clean_name}`);
-  newContent = newContent.replace(/Bradenton, FL/g, `${clean_name}, FL`);
-  newContent = newContent.replace(/Bradenton/g, clean_name);
+  const serviceName = currentService.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+  // Aggressively replace H1 to be the EXACT targeted keyword for top-level SEO
+  newContent = newContent.replace(
+    /(<h1[^>]*>)([\s\S]*?)(<\/h1>)/i, 
+    `$1${serviceName} in <br><span class="text-gradient">${clean_name}, FL</span>$3`
+  );
+
+  // Aggressive SEO location and service targeting
+  newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
+  newContent = newContent.replace(/across Bradenton and Southwest Florida/gi, `across ${clean_name} and Southwest Florida`);
+  newContent = newContent.replace(/in Bradenton home/gi, `in ${clean_name} home`);
+  newContent = newContent.replace(/Favorite Cleaners in Bradenton/gi, `Favorite Cleaners in ${clean_name}`);
+  newContent = newContent.replace(/Top Rated in Bradenton/gi, `Top Rated in ${clean_name}`);
+  newContent = newContent.replace(/Cleaning Service in Bradenton/gi, `${serviceName} in ${clean_name}`);
+  newContent = newContent.replace(/Cleaning Service in Florida/gi, `${serviceName} in ${clean_name}`);
+  newContent = newContent.replace(/house cleaning Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
+  newContent = newContent.replace(/maid service Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
+  newContent = newContent.replace(/House Cleaning in Florida FL/gi, `${serviceName} in ${clean_name}, FL`);
+  newContent = newContent.replace(/in House, FL/gi, `in ${clean_name}, FL`);
+  newContent = newContent.replace(/House, FL/gi, `${clean_name}, FL`);
+  newContent = newContent.replace(/Bradenton, FL/gi, `${clean_name}, FL`);
+  newContent = newContent.replace(/Bradenton/gi, clean_name);
+  
+  // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
+  newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s most trusted ${serviceName.toLowerCase()}`);
+  newContent = newContent.replace(/Professional, reliable, and friendly cleaning services for Florida and surrounding areas/gi, `Professional, reliable, and friendly ${serviceName.toLowerCase()} for ${clean_name} and surrounding areas`);
+  
+  // SEO Google Images Domination: Append target keyword to EVERY image alt tag
+  newContent = newContent.replace(/alt="([^"]*)"/gi, `alt="$1 - Top ${serviceName} in ${clean_name}, FL"`);
   
   // Navigation Links
   for (const s_slug of serviceSlugs) {
