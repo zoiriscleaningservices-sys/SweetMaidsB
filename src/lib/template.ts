@@ -14,10 +14,11 @@ export function getTemplate(templateName: string) {
 }
 
 export function extractSections(html: string) {
-  const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  const bodyStart = html.indexOf('<body class="antialiased">');
+  const bodyEnd = html.indexOf('</body>');
   
-  if (bodyMatch && bodyMatch[1]) {
-    return bodyMatch[1].trim();
+  if (bodyStart !== -1 && bodyEnd !== -1) {
+    return html.substring(bodyStart + 26, bodyEnd).trim();
   }
   
   return html;
@@ -28,127 +29,30 @@ export function exportHead(html: string) {
   return match ? match[1] : '';
 }
 
-export function localizedReplace(content: string, clean_name: string, loc_slug: string, is_sub_page = false, currentService: string = 'house-cleaning') {
+export function localizedReplace(content: string, clean_name: string, loc_slug: string, is_sub_page = false) {
   if (!content) return '';
   
   let newContent = content;
-  const serviceName = currentService.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-
-  // Aggressively replace H1 to be the EXACT targeted keyword for top-level SEO
-  newContent = newContent.replace(
-    /(<h1[^>]*>)([\s\S]*?)(<\/h1>)/i, 
-    `$1${serviceName} in <br><span class="text-gradient">${clean_name}, FL</span>$3`
-  );
-
-  // Aggressive SEO location and service targeting
-  newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
-  newContent = newContent.replace(/across Bradenton and Southwest Florida/gi, `across ${clean_name} and Southwest Florida`);
-  newContent = newContent.replace(/in Bradenton home/gi, `in ${clean_name} home`);
-  newContent = newContent.replace(/Favorite Cleaners in Bradenton/gi, `Favorite Cleaners in ${clean_name}`);
-  newContent = newContent.replace(/Top Rated in Bradenton/gi, `Top Rated in ${clean_name}`);
-  newContent = newContent.replace(/Cleaning Service in Bradenton/gi, `${serviceName} in ${clean_name}`);
-  newContent = newContent.replace(/Cleaning Service in Florida/gi, `${serviceName} in ${clean_name}`);
-  newContent = newContent.replace(/house cleaning Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
-  newContent = newContent.replace(/maid service Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
-  newContent = newContent.replace(/House Cleaning in Florida FL/gi, `${serviceName} in ${clean_name}, FL`);
-  newContent = newContent.replace(/in House, FL/gi, `in ${clean_name}, FL`);
-  newContent = newContent.replace(/House, FL/gi, `${clean_name}, FL`);
-  newContent = newContent.replace(/Bradenton, FL/gi, `${clean_name}, FL`);
-  newContent = newContent.replace(/Bradenton/gi, clean_name);
+  newContent = newContent.replace(/Bradenton’s/g, `${clean_name}'s`).replace(/Bradenton's/g, `${clean_name}'s`);
+  newContent = newContent.replace(/across Bradenton and Southwest Florida/g, `across ${clean_name} and Southwest Florida`);
+  newContent = newContent.replace(/in Bradenton home/g, `in ${clean_name} home`);
+  newContent = newContent.replace(/Favorite Cleaners in Bradenton/g, `Favorite Cleaners in ${clean_name}`);
+  newContent = newContent.replace(/Top Rated in Bradenton/g, `Top Rated in ${clean_name}`);
+  newContent = newContent.replace(/Cleaning Service in Bradenton/g, `Cleaning Service in ${clean_name}`);
+  newContent = newContent.replace(/house cleaning Bradenton/g, `house cleaning ${clean_name}`);
+  newContent = newContent.replace(/maid service Bradenton/g, `maid service ${clean_name}`);
+  newContent = newContent.replace(/Bradenton, FL/g, `${clean_name}, FL`);
+  newContent = newContent.replace(/Bradenton/g, clean_name);
   
-  // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
-  newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s most trusted ${serviceName.toLowerCase()}`);
-  newContent = newContent.replace(/Professional, reliable, and friendly cleaning services for Florida and surrounding areas/gi, `Professional, reliable, and friendly ${serviceName.toLowerCase()} for ${clean_name} and surrounding areas`);
-  
-  // SEO Google Images Domination: Append target keyword to EVERY image alt tag
-  newContent = newContent.replace(/alt="([^"]*)"/gi, `alt="$1 - Top ${serviceName} in ${clean_name}, FL"`);
-
   // Navigation Links
   for (const s_slug of serviceSlugs) {
-    newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
     newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
     newContent = newContent.replace(new RegExp(`href="https://sweetmaidcleaning.com/${s_slug}/"`, 'g'), `href="https://sweetmaidcleaning.com/${loc_slug}/${s_slug}/"`);
   }
   
-  newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, `href="/${loc_slug}/about/"`);
-  newContent = newContent.replace(/href="\/about\/"/g, `href="/${loc_slug}/about/"`);
-  
-  newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
-  newContent = newContent.replace(/href="\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
-
-  // Explicitly fix corrupted Home links and logos
-  newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/${loc_slug}/"$1>Home</a>`);
-  newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, `<a href="/${loc_slug}/"$1class="flex items-center group">`);
-  
   newContent = newContent.replace(/href="\/home\/"/g, `href="/${loc_slug}/"`);
-
-  // Fix Cross-City Location Links (e.g. href="/anna-maria-cleaning/")
-  newContent = newContent.replace(/href="\/([a-z0-9-]+)-cleaning\/"/g, `href="/$1-fl/${currentService}/"`);
-
-  // Strip native inline onclick to let React ClientInteractions intercept it perfectly
-  newContent = newContent.replace(/onclick="this\.parentElement\.classList\.toggle\('accordion-active'\)"/gi, "");
-
-  // Eliminate ONLY the pink button locations grid from the Service Areas section while preserving the Map
-  newContent = newContent.replace(/<div class="grid grid-cols-2 md:grid-cols-4 gap-3">[\s\S]*?<\/div>/g, '');
-
-  // Eliminate the "Let Our Team Contact You" floating horizontal form (string block removal)
-  const formStartStr = '<!-- Let Us Contact You Form -->';
-  const formEndStr = '<div class="grid lg:grid-cols-2 gap-12';
-  if (newContent.includes(formStartStr)) {
-    const parts = newContent.split(formStartStr);
-    newContent = parts[0] + parts.slice(1).map(part => {
-      const idx = part.indexOf(formEndStr);
-      return idx !== -1 ? part.substring(idx) : part;
-    }).join('');
-  }
-
-  // Eliminate the GLOBAL SEARCH BAR SECTION
-  const searchKey = 'GLOBAL SEARCH BAR SECTION';
-  const searchStartIdx = newContent.indexOf(searchKey);
-  if (searchStartIdx !== -1) {
-    const commentStartIdx = newContent.lastIndexOf('<!--', searchStartIdx);
-    const sectionEndIdx = newContent.indexOf('</section>', searchStartIdx);
-    if (commentStartIdx !== -1 && sectionEndIdx !== -1) {
-      newContent = newContent.substring(0, commentStartIdx) + newContent.substring(sectionEndIdx + '</section>'.length);
-    }
-  }
-
-  // Hide the Locations We Serve footer grid so it remains in the DOM for React to scrape, but is invisible to the user.
-  newContent = newContent.replace(
-    /(<div class="lg:col-span-2">)(\s*<h4[^>]*>\s*<span[^>]*><\/span>Locations We Serve)/,
-    '<div class="lg:col-span-2 hidden" style="display: none!important;">$2'
-  );
-
-  // Re-organize and re-balance the Footer Layout to compensate for the hidden locations block.
-  // 1. Shift master grid from 5 columns to 4 columns
-  newContent = newContent.replace(/<div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">/g, '<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">');
-  
-  // 2. Expand "Our Services" to take up the 2 completely vacant grid columns, and split its UL into a 2-column layout.
-  newContent = newContent.replace(
-    /<div>(\s*<h4[^>]*>\s*<span[^>]*><\/span>Our Services\s*<\/h4>\s*<div[^>]*>\s*<ul class=")([^"]+)(")/i,
-    '<div class="lg:col-span-2">$1$2 sm:columns-2 gap-x-8$3'
-  );
-
-  // Upgrade Eco-Friendly block flat icon with the Premium CSS-animated Earth Globe
-  const GLOBE_HTML = `<style>
-        @keyframes earthRotate { 0% { background-position: 0 0; } 100% { background-position: 400px 0; } }
-        @keyframes twinkling { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
-        @keyframes twinkling-slow { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
-        @keyframes twinkling-long { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
-        @keyframes twinkling-fast { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
-      </style>
-      <div class="flex items-center justify-center mb-8">
-        <div class="relative w-[200px] h-[200px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.2),-5px_0_8px_#c3f4ff_inset,15px_2px_25px_#000_inset,-24px_-2px_34px_#c3f4ff99_inset,200px_0_44px_#00000066_inset,100px_0_38px_#000000aa_inset]" style="background-image: url('https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/globe.jpeg'); background-size: cover; background-position: left; animation: earthRotate 30s linear infinite;">
-          <div class="absolute left-[-20px] w-1 h-1 bg-white rounded-full" style="animation: twinkling 3s infinite"></div>
-          <div class="absolute left-[-40px] top-[30px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-slow 2s infinite"></div>
-          <div class="absolute left-[150px] top-[90px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
-          <div class="absolute left-[100px] top-[180px] w-1 h-1 bg-white rounded-full" style="animation: twinkling 3s infinite"></div>
-          <div class="absolute left-[50px] top-[150px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-fast 1.5s infinite"></div>
-          <div class="absolute left-[180px] top-[20px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
-          <div class="absolute left-[90px] top-[60px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-slow 2s infinite"></div>
-        </div>
-      </div>`;
-  newContent = newContent.replace(/<i class="fa-solid fa-earth-americas[^>]*><\/i>/gi, GLOBE_HTML);
+  newContent = newContent.replace(/href="\/about\/"/g, `href="/${loc_slug}/about/"`);
+  newContent = newContent.replace(/href="\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
 
   // Image Paths
   if (is_sub_page) {
