@@ -93,6 +93,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Eliminate ONLY the pink button locations grid from the Service Areas section while preserving the Map
   newContent = newContent.replace(/<div class="grid grid-cols-2 md:grid-cols-4 gap-3">[\s\S]*?<\/div>/g, '');
 
+  // Remove Login Buttons from all navigation menus
+  newContent = newContent.replace(/<a[^>]*href="\/login\/"[^>]*>[\s\S]*?<\/a>/gi, '');
+
   // Eliminate the "Let Our Team Contact You" floating horizontal form (string block removal)
   const formStartStr = '<!-- Let Us Contact You Form -->';
   const formEndStr = '<div class="grid lg:grid-cols-2 gap-12';
