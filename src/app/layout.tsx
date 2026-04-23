@@ -6,10 +6,6 @@ export const metadata: Metadata = {
   title: "Cleaning Services in Bradenton, FL | Sweet Maid Cleaning",
   description: "Looking for the best cleaning service in Bradenton, FL? Sweet Maid offers top-rated house cleaning, deep cleaning, and move-out services. Licensed, insured, and 100% satisfaction guaranteed. Book your sparkle today!",
   keywords: "cleaning service Bradenton, house cleaning Lakewood Ranch, maid service Palmetto, deep cleaning Parrish, move out cleaning Bradenton, residential cleaning Manatee County, eco-friendly cleaning",
-  icons: {
-    icon: '/images/favicon.png?v=3',
-    apple: '/images/favicon.png?v=3',
-  },
 };
 
 import ClientInteractions from "@/components/ClientInteractions";
@@ -31,8 +27,6 @@ export default function RootLayout({
         />
         <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-        <link rel="icon" type="image/png" href="/images/favicon.png?v=3" />
-        <link rel="apple-touch-icon" href="/images/favicon.png?v=3" />
       </head>
       <body className="antialiased">
         {children}
