@@ -2,19 +2,6 @@ import { Metadata } from 'next';
 import { serviceSlugs, getLocationData, formatName } from '@/lib/data';
 import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 
-export async function generateStaticParams() {
-  const data = getLocationData();
-  const slugs = Object.keys(data);
-  const params: { slug: string; service: string }[] = [];
-
-  slugs.forEach((slug) => {
-    serviceSlugs.forEach((service) => {
-      params.push({ slug, service });
-    });
-  });
-
-  return params;
-}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, service: string }> }): Promise<Metadata> {
   const { slug, service } = await params;

@@ -2,12 +2,6 @@ import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 import { getLocationData, formatName } from '@/lib/data';
 import { Metadata } from 'next';
 
-export async function generateStaticParams() {
-  const data = getLocationData();
-  return Object.keys(data).map((loc) => ({
-    slug: loc,
-  }));
-}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
