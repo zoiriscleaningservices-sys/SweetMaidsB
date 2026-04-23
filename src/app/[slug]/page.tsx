@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!locData) return {};
 
     const cleanName = formatName(locData.name);
-    const title = `Best Cleaning Services in ${cleanName}, FL | Top Rated Local Cleaners`;
+    const title = `Cleaning Services in ${cleanName}, FL | Sweet Maid`;
     const desc = `Looking for the best cleaning services in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable maid services specifically for the ${cleanName} area. 100% Satisfaction Guaranteed.`;
     const keywords = [
       `cleaning services ${cleanName} FL`,
@@ -70,7 +70,7 @@ export default async function LocationOrServicePage({ params }: { params: Promis
     if (!rawHtml) return <div>Service template missing</div>;
 
     const bodyContent = extractSections(rawHtml);
-    const localizedHtml = localizedReplace(bodyContent, 'Bradenton', slug, false);
+    const localizedHtml = localizedReplace(bodyContent, 'Bradenton', slug, false, slug);
     return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
   } else {
     const data = getLocationData();
@@ -82,7 +82,7 @@ export default async function LocationOrServicePage({ params }: { params: Promis
     if (!rawHtml) return <div>Template missing</div>;
 
     const bodyContent = extractSections(rawHtml);
-    const localizedHtml = localizedReplace(bodyContent, cleanName, slug, false);
+    const localizedHtml = localizedReplace(bodyContent, cleanName, slug, false, 'cleaning');
     
     const schemaStr = JSON.stringify([
       {

@@ -28,7 +28,7 @@ export function exportHead(html: string) {
   return match ? match[1] : '';
 }
 
-export function localizedReplace(content: string, clean_name: string, loc_slug: string, is_sub_page = false, currentService: string = 'house-cleaning') {
+export function localizedReplace(content: string, clean_name: string, loc_slug: string, is_sub_page = false, currentService: string = 'cleaning') {
   if (!content) return '';
   
   let newContent = content;

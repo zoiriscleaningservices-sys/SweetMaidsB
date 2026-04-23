@@ -11,8 +11,7 @@ export default function HomePage() {
 
   const bodyContent = extractSections(rawHtml);
   // Pass is_sub_page as false to keep the `/images/` path correctly referenced 
-  // actually wait, our template.ts replace fixes all image paths to be absolute root `/images/`!
-  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, false);
+  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, false, 'cleaning');
 
   return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
 }
