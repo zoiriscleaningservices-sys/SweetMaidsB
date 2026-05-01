@@ -98,8 +98,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Eliminate ONLY the pink button locations grid from the Service Areas section while preserving the Map
   newContent = newContent.replace(/<div class="grid grid-cols-2 md:grid-cols-4 gap-3">[\s\S]*?<\/div>/g, '');
 
-  // Remove Login Buttons from all navigation menus
-  newContent = newContent.replace(/<a[^>]*href="\/login\/"[^>]*>[\s\S]*?<\/a>/gi, '');
 
   // Replace Unsplash placeholders with unique ultra-realistic AI images
   newContent = newContent.replace('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&amp;fit=crop&amp;q=80', '../../../images/carpet-cleaning.jpeg');
