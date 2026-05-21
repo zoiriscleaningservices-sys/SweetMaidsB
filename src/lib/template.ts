@@ -89,6 +89,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   
   newContent = newContent.replace(/href="\/home\/"/g, `href="/${loc_slug}/"`);
 
+  // Replace Logo with the new uploaded brand logo
+  newContent = newContent.replace(/https:\/\/i\.ibb\.co\/PzPDfC1N\/Whats-App-Image-2026-02-09-at-4-52-59-PM-Picsart-Background-Remover\.png/g, '/images/logo.png');
+
   // Fix Cross-City Location Links (e.g. href="/anna-maria-cleaning/")
   newContent = newContent.replace(/href="\/([a-z0-9-]+)-cleaning\/"/g, `href="/$1-fl/${currentService}/"`);
 
