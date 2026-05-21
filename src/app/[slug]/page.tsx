@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     // Competitor Beating Strategy: Mimic Molly Maid's #1 ranking metadata for Miami, but with Sweet Maid branding
     let title = `Cleaning Services in ${cleanName}, FL | Sweet Maid`;
     let desc = `Looking for the best cleaning services in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable maid services specifically for the ${cleanName} area. 100% Satisfaction Guaranteed.`;
-    let keywords = [
+    let keywords: string | undefined = [
       `cleaning services ${cleanName} FL`,
       `best house cleaning in ${cleanName}`,
       `${cleanName} maid service`,
@@ -55,16 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (slug === 'miami-fl') {
       title = `House Cleaning Services in Miami, Florida | Sweet Maid`;
       desc = `Sweet Maid Offers Customized House Cleaning Services in Miami, Florida. Call (941) 222-2080 Today for a Free Estimate by Trusted & Insured Pros!`;
-      keywords = [
-        `house cleaning services miami florida`,
-        `miami house cleaning`,
-        `maid service miami fl`,
-        `miami cleaning services`,
-        `cleaning services in miami fl`,
-        `residential cleaning miami`,
-        `professional cleaners miami`,
-        `sweet maid miami`
-      ].join(', ');
+      keywords = undefined;
     }
 
     return {

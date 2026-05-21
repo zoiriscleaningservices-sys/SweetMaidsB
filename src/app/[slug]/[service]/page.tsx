@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   let title = `Top ${serviceName} in ${cleanName}, FL | Sweet Maid`;
   let desc = `Looking for the best ${serviceName.toLowerCase()} in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable ${serviceName.toLowerCase()} specifically for the ${cleanName} area. Hire professional local cleaners today!`;
-  let keywords = [
+  let keywords: string | undefined = [
     `${serviceName.toLowerCase()} ${cleanName} FL`,
     `best ${serviceName.toLowerCase()} in ${cleanName}`,
     `${cleanName} ${serviceName.toLowerCase()}`,
@@ -32,14 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (slug === 'miami-fl') {
     title = `${serviceName} in Miami, Florida | Sweet Maid`;
     desc = `Sweet Maid Offers Customized ${serviceName} in Miami, Florida. Call (941) 222-2080 Today for a Free Estimate by Trusted & Insured Pros!`;
-    keywords = [
-      `${serviceName.toLowerCase()} miami florida`,
-      `miami ${serviceName.toLowerCase()}`,
-      `best ${serviceName.toLowerCase()} in miami`,
-      `professional ${serviceName.toLowerCase()} miami`,
-      `residential cleaning services miami`,
-      `sweet maid miami`
-    ].join(', ');
+    keywords = undefined;
   }
 
   return {
