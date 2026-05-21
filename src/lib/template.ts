@@ -39,31 +39,31 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Service to H1 mapping using top-converting transactional SEO search terms
   const serviceH1Map: Record<string, string> = {
-    "house-cleaning": "#1 Top-Rated House Cleaning & Maid Services in",
-    "deep-cleaning": "#1 Top Rated Deep House Cleaning Services in",
-    "move-in-out-cleaning": "#1 Best Move-In & Move-Out Cleaning Services in",
-    "airbnb-cleaning": "#1 Top-Rated Airbnb & Vacation Rental Cleaning in",
-    "commercial-cleaning": "#1 Professional Commercial & Office Cleaning Services in",
-    "post-construction-cleaning": "#1 Expert Post-Construction Cleaning Services in",
-    "carpet-cleaning": "#1 Best Professional Carpet & Rug Cleaning Services in",
-    "pressure-washing": "#1 Elite Pressure Washing & Exterior House Washing in",
-    "window-cleaning": "#1 Top-Rated Professional Window Cleaning Services in",
-    "home-watch-services": "#1 Trusted Home Watch & Property Care Services in",
-    "office-janitorial-services": "#1 Reliable Office Cleaning & Janitorial Services in",
-    "janitorial-cleaning-services": "#1 Trusted Janitorial & Commercial Cleaning Services in",
-    "medical-dental-facility-cleaning": "#1 Certified Medical & Dental Facility Cleaning in",
-    "industrial-warehouse-cleaning": "#1 Premium Industrial & Warehouse Cleaning Services in",
-    "floor-stripping-waxing": "#1 Professional Floor Stripping & Waxing Services in",
-    "gym-fitness-center-cleaning": "#1 Professional Gym & Fitness Center Cleaning in",
-    "school-daycare-cleaning": "#1 Safe School & Daycare Cleaning Services in",
-    "church-worship-center-cleaning": "#1 Respectful Church & Worship Center Cleaning in",
-    "property-management-janitorial": "#1 Property Management Janitorial & Cleaning Services in",
-    "luxury-estate-cleaning": "#1 Elite Luxury Estate & Mansion Cleaning Services in",
-    "solar-panel-cleaning": "#1 Professional Solar Panel Cleaning & Washing in",
-    "gutter-cleaning": "#1 Premium Gutter Cleaning & Downspout Services in",
-    "property-maintenance": "#1 Premium Property Maintenance & Handyman Services in",
-    "airbnb-vacation-rental-management": "#1 Premier Airbnb & Vacation Rental Property Management in",
-    "luxury-estate-management": "#1 Elite Luxury Estate & Property Management in"
+    "house-cleaning": "#1 Top-Rated House Cleaning & Professional Maid Services in",
+    "deep-cleaning": "#1 Best Deep House Cleaning & Professional Sanitizing in",
+    "move-in-out-cleaning": "#1 Top-Rated Move-In & Move-Out House Cleaning Services in",
+    "airbnb-cleaning": "#1 Best Airbnb & Vacation Rental Cleaning Services in",
+    "commercial-cleaning": "#1 Top-Rated Commercial & Office Cleaning Services in",
+    "post-construction-cleaning": "#1 Professional Post-Construction Cleanup Services in",
+    "carpet-cleaning": "#1 Top-Rated Professional Carpet & Rug Cleaning Services in",
+    "pressure-washing": "#1 Top-Rated Pressure Washing & Exterior House Washing in",
+    "window-cleaning": "#1 Best Professional Window Cleaning Services in",
+    "home-watch-services": "#1 Top-Rated Home Watch & Property Care Services in",
+    "office-janitorial-services": "#1 Best Office Cleaning & Professional Janitorial Services in",
+    "janitorial-cleaning-services": "#1 Top-Rated Janitorial & Commercial Cleaning Services in",
+    "medical-dental-facility-cleaning": "#1 Best Medical & Dental Facility Cleaning Services in",
+    "industrial-warehouse-cleaning": "#1 Top-Rated Industrial & Warehouse Cleaning Services in",
+    "floor-stripping-waxing": "#1 Best Floor Stripping & Waxing Services in",
+    "gym-fitness-center-cleaning": "#1 Top-Rated Gym & Fitness Center Cleaning Services in",
+    "school-daycare-cleaning": "#1 Best School & Daycare Cleaning Services in",
+    "church-worship-center-cleaning": "#1 Premium Church & Worship Center Cleaning Services in",
+    "property-management-janitorial": "#1 Best Property Management Janitorial & Cleaning Services in",
+    "luxury-estate-cleaning": "#1 Top-Rated Luxury Estate & Mansion Cleaning Services in",
+    "solar-panel-cleaning": "#1 Best Solar Panel Cleaning & Professional Washing in",
+    "gutter-cleaning": "#1 Top-Rated Gutter Cleaning & Downspout Services in",
+    "property-maintenance": "#1 Best Property Maintenance & Handyman Services in",
+    "airbnb-vacation-rental-management": "#1 Top-Rated Airbnb & Vacation Rental Property Management in",
+    "luxury-estate-management": "#1 Best Luxury Estate & Property Management Services in"
   };
 
 
@@ -129,6 +129,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   
   newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
   newContent = newContent.replace(/href="\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
+
+  newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, `href="/${loc_slug}/blog/"`);
+  newContent = newContent.replace(/href="\/blog\/"/g, `href="/${loc_slug}/blog/"`);
 
   // Explicitly fix corrupted Home links and logos
   newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/${loc_slug}/"$1>Home</a>`);
@@ -404,18 +407,18 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // 2. High-converting H1 Domination Injection
   let customH1Inner = '';
   if (pageType === 'about') {
-    customH1Inner = `#1 Top Rated House Cleaning Team in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `#1 Top-Rated House Cleaning & Maid Service Team in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'gallery') {
-    customH1Inner = `#1 Rated Cleaning Results & Service Gallery in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `#1 Best Cleaning Results & Professional Service Gallery in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'blog') {
-    customH1Inner = `#1 Cleaning Tips & Professional Home Advice Blog - <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `#1 Best Cleaning Tips & Professional Home Care Blog in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'login') {
-    customH1Inner = `Welcome Back to Sweet Maid Cleaning - <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `Welcome Back to Sweet Maid - #1 Rated Cleaning Portal in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
   } else {
     // service_or_home
     const isService = serviceSlugs.includes(currentService);
     if (isService) {
-      const targetH1Prefix = serviceH1Map[currentService] || "#1 Professional House Cleaning & Maid Services in";
+      const targetH1Prefix = serviceH1Map[currentService] || "#1 Top-Rated House Cleaning & Professional Maid Services in";
       customH1Inner = `${targetH1Prefix} <br class="hidden sm:block"> <span class="text-pink-300 drop-shadow-md">${clean_name}, FL</span>`;
     } else {
       // Home / Location Homepage
