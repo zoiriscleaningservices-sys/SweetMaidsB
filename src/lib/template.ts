@@ -37,6 +37,53 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     serviceName += ' Services';
   }
 
+  // Service to H1 mapping using top-converting transactional SEO search terms
+  const serviceH1Map: Record<string, string> = {
+    "house-cleaning": "#1 Top-Rated House Cleaning & Maid Services in",
+    "deep-cleaning": "#1 Top Rated Deep House Cleaning Services in",
+    "move-in-out-cleaning": "#1 Best Move-In & Move-Out Cleaning Services in",
+    "airbnb-cleaning": "#1 Top-Rated Airbnb & Vacation Rental Cleaning in",
+    "commercial-cleaning": "#1 Professional Commercial & Office Cleaning Services in",
+    "post-construction-cleaning": "#1 Expert Post-Construction Cleaning Services in",
+    "carpet-cleaning": "#1 Best Professional Carpet & Rug Cleaning Services in",
+    "pressure-washing": "#1 Elite Pressure Washing & Exterior House Washing in",
+    "window-cleaning": "#1 Top-Rated Professional Window Cleaning Services in",
+    "home-watch-services": "#1 Trusted Home Watch & Property Care Services in",
+    "office-janitorial-services": "#1 Reliable Office Cleaning & Janitorial Services in",
+    "janitorial-cleaning-services": "#1 Trusted Janitorial & Commercial Cleaning Services in",
+    "medical-dental-facility-cleaning": "#1 Certified Medical & Dental Facility Cleaning in",
+    "industrial-warehouse-cleaning": "#1 Premium Industrial & Warehouse Cleaning Services in",
+    "floor-stripping-waxing": "#1 Professional Floor Stripping & Waxing Services in",
+    "gym-fitness-center-cleaning": "#1 Professional Gym & Fitness Center Cleaning in",
+    "school-daycare-cleaning": "#1 Safe School & Daycare Cleaning Services in",
+    "church-worship-center-cleaning": "#1 Respectful Church & Worship Center Cleaning in",
+    "property-management-janitorial": "#1 Property Management Janitorial & Cleaning Services in",
+    "luxury-estate-cleaning": "#1 Elite Luxury Estate & Mansion Cleaning Services in",
+    "solar-panel-cleaning": "#1 Professional Solar Panel Cleaning & Washing in",
+    "gutter-cleaning": "#1 Premium Gutter Cleaning & Downspout Services in",
+    "property-maintenance": "#1 Premium Property Maintenance & Handyman Services in",
+    "airbnb-vacation-rental-management": "#1 Premier Airbnb & Vacation Rental Property Management in",
+    "luxury-estate-management": "#1 Elite Luxury Estate & Property Management in"
+  };
+
+
+  // 1. Detect page type based on original H1 or content signatures before general replacements
+  const originalH1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  let pageType = 'service_or_home';
+  
+  if (originalH1Match) {
+    const innerH1 = originalH1Match[1].trim();
+    if (innerH1.includes('About Sweet Maid Cleaning') || innerH1.includes('About Sweet Maid')) {
+      pageType = 'about';
+    } else if (innerH1.includes('Our Cleaning Results') || innerH1.includes('Service Gallery')) {
+      pageType = 'gallery';
+    } else if (innerH1.includes('Sweet Maid Cleaning Blog') || innerH1.includes('truewebx-blog-heading')) {
+      pageType = 'blog';
+    } else if (innerH1.includes('Welcome Back') || innerH1.includes('login')) {
+      pageType = 'login';
+    }
+  }
+
   // Safe Text Replacements for H1 without destroying HTML tags
   newContent = newContent.replace(/Best Cleaning Services in/gi, `${serviceName} in`);
   newContent = newContent.replace(/House Cleaning Services in/gi, `${serviceName} in`);
@@ -101,7 +148,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Eliminate ONLY the pink button locations grid from the Service Areas section while preserving the Map
   newContent = newContent.replace(/<div class="grid grid-cols-2 md:grid-cols-4 gap-3">[\s\S]*?<\/div>/g, '');
 
-
   // Replace Unsplash placeholders with unique ultra-realistic AI images
   newContent = newContent.replace('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&amp;fit=crop&amp;q=80', '../../../images/carpet-cleaning.jpeg');
   newContent = newContent.replace('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&amp;fit=crop&amp;q=80', '../../../images/window-cleaning.jpeg');
@@ -159,7 +205,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
           <div class="absolute left-[150px] top-[90px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
           <div class="absolute left-[100px] top-[180px] w-1 h-1 bg-white rounded-full" style="animation: twinkling 3s infinite"></div>
           <div class="absolute left-[50px] top-[150px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-fast 1.5s infinite"></div>
-          <div class="absolute left-[180px] top-[20px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
+          <div class="absolute left-[180px] top-[20px]. w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
           <div class="absolute left-[90px] top-[60px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-slow 2s infinite"></div>
         </div>
       </div>`;
@@ -354,6 +400,38 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Swap out the static generic FAQ accordion block with the SEO-maximized dynamic block
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
   newContent = newContent.replace(staticFaqBlockRegex, dynamicFaqHtml);
+
+  // 2. High-converting H1 Domination Injection
+  let customH1Inner = '';
+  if (pageType === 'about') {
+    customH1Inner = `#1 Top Rated House Cleaning Team in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+  } else if (pageType === 'gallery') {
+    customH1Inner = `#1 Rated Cleaning Results & Service Gallery in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+  } else if (pageType === 'blog') {
+    customH1Inner = `#1 Cleaning Tips & Professional Home Advice Blog - <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+  } else if (pageType === 'login') {
+    customH1Inner = `Welcome Back to Sweet Maid Cleaning - <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+  } else {
+    // service_or_home
+    const isService = serviceSlugs.includes(currentService);
+    if (isService) {
+      const targetH1Prefix = serviceH1Map[currentService] || "#1 Professional House Cleaning & Maid Services in";
+      customH1Inner = `${targetH1Prefix} <br class="hidden sm:block"> <span class="text-pink-300 drop-shadow-md">${clean_name}, FL</span>`;
+    } else {
+      // Home / Location Homepage
+      customH1Inner = `#1 Rated House Cleaning & Professional Maid Services in <br class="hidden sm:block"> <span class="text-pink-300 drop-shadow-md">${clean_name}, FL</span>`;
+    }
+  }
+
+  if (customH1Inner && originalH1Match) {
+    newContent = newContent.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, (match) => {
+      const openingTagMatch = match.match(/^(<h1[^>]*>)/i);
+      if (openingTagMatch) {
+        return `${openingTagMatch[1]}${customH1Inner}</h1>`;
+      }
+      return match;
+    });
+  }
 
   return newContent;
 }
