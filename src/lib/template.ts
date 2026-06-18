@@ -429,6 +429,169 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       </div>`;
   newContent = newContent.replace(trustIndexRegex, realTimeReviewsHtml);
 
+  // Swap out the static truncated reviews carousel with full, untruncated reviews and working links
+  const reviewsCarouselRegex = /<!-- Reviews Carousel -->[\s\S]*?(?=<!-- Trustindex Badge -->|<!-- Trustindex & Google Reviews Action Links -->)/gi;
+  const fullReviewsCarouselHtml = `<!-- Reviews Carousel -->
+      <div class="relative mt-16">
+        <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide" id="reviews-carousel">
+
+          <!-- Review Card 1 -->
+          <div
+            class="min-w-[320px] md:min-w-[380px] bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100 snap-start flex flex-col justify-between">
+            <div>
+              <div class="flex items-start gap-4 mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-pink-300 flex items-center justify-center text-gray-800 font-bold text-xl flex-shrink-0">
+                  J
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-bold text-gray-900">Justin Fyffe</h4>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
+                      class="w-6 h-6">
+                  </div>
+                  <div class="text-sm text-gray-500 mb-2">2025-08-24</div>
+                  <div class="flex text-yellow-400 gap-0.5 mb-3">
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-circle-check text-pink-200 text-xs ml-1"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                I hired Sweet Maid Cleaning Service in Lakewood Ranch for post-construction cleaning and they did an amazing job! If you want a spotless home, they are the ones to call.
+              </p>
+            </div>
+            <div class="mt-4">
+              <a href="https://search.google.com/local/reviews?placeid=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:text-pink-600 text-sm font-semibold inline-block">Read on Google</a>
+            </div>
+          </div>
+
+          <!-- Review Card 2 -->
+          <div
+            class="min-w-[320px] md:min-w-[380px] bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100 snap-start flex flex-col justify-between">
+            <div>
+              <div class="flex items-start gap-4 mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-pink-200 flex items-center justify-center text-gray-800 font-bold text-xl flex-shrink-0">
+                  <img loading="lazy" src="https://ui-avatars.com/api/?name=Luis+Jasa&background=3b82f6&color=fff&size=48"
+                    alt="Luis Jasa" class="w-full h-full rounded-full">
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-bold text-gray-900">Luis Jasa</h4>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
+                      class="w-6 h-6">
+                  </div>
+                  <div class="text-sm text-gray-500 mb-2">2025-08-08</div>
+                  <div class="flex text-yellow-400 gap-0.5 mb-3">
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-circle-check text-pink-200 text-xs ml-1"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                Friendly hardworking employees. Listens to all suggestions.
+              </p>
+            </div>
+            <div class="mt-4">
+              <a href="https://search.google.com/local/reviews?placeid=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:text-pink-600 text-sm font-semibold inline-block">Read on Google</a>
+            </div>
+          </div>
+
+          <!-- Review Card 3 -->
+          <div
+            class="min-w-[320px] md:min-w-[380px] bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100 snap-start flex flex-col justify-between">
+            <div>
+              <div class="flex items-start gap-4 mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-gray-800 font-bold text-xl flex-shrink-0">
+                  G
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-bold text-gray-900">Gustavo Delgado</h4>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
+                      class="w-6 h-6">
+                  </div>
+                  <div class="text-sm text-gray-500 mb-2">2025-07-28</div>
+                  <div class="flex text-yellow-400 gap-0.5 mb-3">
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-circle-check text-pink-200 text-xs ml-1"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                Very good cleaning service in Lakewood Ranch. I will hire them again in the future, the ladies were amazing!
+              </p>
+            </div>
+            <div class="mt-4">
+              <a href="https://search.google.com/local/reviews?placeid=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:text-pink-600 text-sm font-semibold inline-block">Read on Google</a>
+            </div>
+          </div>
+
+          <!-- Review Card 4 -->
+          <div
+            class="min-w-[320px] md:min-w-[380px] bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100 snap-start flex flex-col justify-between">
+            <div>
+              <div class="flex items-start gap-4 mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-pink-300 flex items-center justify-center text-gray-800 font-bold text-xl flex-shrink-0">
+                  D
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-bold text-gray-900">Dayra Delgado</h4>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
+                      class="w-6 h-6">
+                  </div>
+                  <div class="text-sm text-gray-500 mb-2">2025-07-25</div>
+                  <div class="flex text-yellow-400 gap-0.5 mb-3">
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <i class="fa-solid fa-circle-check text-pink-200 text-xs ml-1"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                Sweet Maid Cleaning Service did an incredible job cleaning our home in Sarasota. They were professional, reliable, and thorough. Highly recommend!
+              </p>
+            </div>
+            <div class="mt-4">
+              <a href="https://search.google.com/local/reviews?placeid=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:text-pink-600 text-sm font-semibold inline-block">Read on Google</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button onclick="document.getElementById('reviews-carousel').scrollBy({left: -400, behavior: 'smooth'})"
+          class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition">
+          <i class="fa-solid fa-chevron-left text-gray-600"></i>
+        </button>
+        <button onclick="document.getElementById('reviews-carousel').scrollBy({left: 400, behavior: 'smooth'})"
+          class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition">
+          <i class="fa-solid fa-chevron-right text-gray-600"></i>
+        </button>
+      </div>
+      
+      `;
+  newContent = newContent.replace(reviewsCarouselRegex, fullReviewsCarouselHtml);
+
   // 2. High-converting H1 Domination Injection
   let customH1Inner = '';
   if (pageType === 'about') {
