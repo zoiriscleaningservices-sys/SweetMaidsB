@@ -3,13 +3,13 @@ import { formatName } from '@/lib/data';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '#1 Cleaning Tips & Professional Home Care Blog | Sweet Maid',
+  title: '#1 Best Cleaning Tips & Professional Home Care Blog in Bradenton, FL',
   description: 'Get expert cleaning tips, home organization hacks, and professional maid advice from the team at Sweet Maid.',
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/blog/',
   },
   openGraph: {
-    title: '#1 Cleaning Tips & Professional Home Care Blog | Sweet Maid',
+    title: '#1 Best Cleaning Tips & Professional Home Care Blog in Bradenton, FL',
     description: 'Get expert cleaning tips, home organization hacks, and professional maid advice from the team at Sweet Maid.',
     url: 'https://sweetmaidcleaning.com/blog/',
   }

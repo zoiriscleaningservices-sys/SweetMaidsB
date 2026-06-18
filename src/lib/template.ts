@@ -2,6 +2,36 @@ import fs from 'fs';
 import path from 'path';
 import { serviceSlugs, formatName } from './data';
 
+// Service to H1 mapping using top-converting transactional SEO search terms
+export const serviceH1Map: Record<string, string> = {
+  "house-cleaning": "#1 Top-Rated House Cleaning & Professional Maid Services in",
+  "deep-cleaning": "#1 Best Deep House Cleaning & Professional Sanitizing in",
+  "move-in-out-cleaning": "#1 Top-Rated Move-In & Move-Out House Cleaning Services in",
+  "airbnb-cleaning": "#1 Best Airbnb & Vacation Rental Cleaning Services in",
+  "commercial-cleaning": "#1 Top-Rated Commercial & Office Cleaning Services in",
+  "post-construction-cleaning": "#1 Professional Post-Construction Cleanup Services in",
+  "carpet-cleaning": "#1 Top-Rated Professional Carpet & Rug Cleaning Services in",
+  "pressure-washing": "#1 Top-Rated Pressure Washing & Exterior House Washing in",
+  "window-cleaning": "#1 Best Professional Window Cleaning Services in",
+  "home-watch-services": "#1 Top-Rated Home Watch & Property Care Services in",
+  "office-janitorial-services": "#1 Best Office Cleaning & Professional Janitorial Services in",
+  "janitorial-cleaning-services": "#1 Top-Rated Janitorial & Commercial Cleaning Services in",
+  "medical-dental-facility-cleaning": "#1 Best Medical & Dental Facility Cleaning Services in",
+  "industrial-warehouse-cleaning": "#1 Top-Rated Industrial & Warehouse Cleaning Services in",
+  "floor-stripping-waxing": "#1 Best Floor Stripping & Waxing Services in",
+  "gym-fitness-center-cleaning": "#1 Top-Rated Gym & Fitness Center Cleaning Services in",
+  "school-daycare-cleaning": "#1 Best School & Daycare Cleaning Services in",
+  "church-worship-center-cleaning": "#1 Premium Church & Worship Center Cleaning Services in",
+  "property-management-janitorial": "#1 Best Property Management Janitorial & Cleaning Services in",
+  "luxury-estate-cleaning": "#1 Top-Rated Luxury Estate & Mansion Cleaning Services in",
+  "solar-panel-cleaning": "#1 Best Solar Panel Cleaning & Professional Washing in",
+  "gutter-cleaning": "#1 Top-Rated Gutter Cleaning & Downspout Services in",
+  "property-maintenance": "#1 Best Property Maintenance & Handyman Services in",
+  "airbnb-vacation-rental-management": "#1 Top-Rated Airbnb & Vacation Rental Property Management in",
+  "luxury-estate-management": "#1 Best Luxury Estate & Property Management Services in"
+};
+
+
 export function getTemplate(templateName: string) {
   try {
     const isService = serviceSlugs.includes(templateName);
@@ -36,35 +66,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   if (!serviceName.toLowerCase().endsWith('services')) {
     serviceName += ' Services';
   }
-
-  // Service to H1 mapping using top-converting transactional SEO search terms
-  const serviceH1Map: Record<string, string> = {
-    "house-cleaning": "#1 Top-Rated House Cleaning & Professional Maid Services in",
-    "deep-cleaning": "#1 Best Deep House Cleaning & Professional Sanitizing in",
-    "move-in-out-cleaning": "#1 Top-Rated Move-In & Move-Out House Cleaning Services in",
-    "airbnb-cleaning": "#1 Best Airbnb & Vacation Rental Cleaning Services in",
-    "commercial-cleaning": "#1 Top-Rated Commercial & Office Cleaning Services in",
-    "post-construction-cleaning": "#1 Professional Post-Construction Cleanup Services in",
-    "carpet-cleaning": "#1 Top-Rated Professional Carpet & Rug Cleaning Services in",
-    "pressure-washing": "#1 Top-Rated Pressure Washing & Exterior House Washing in",
-    "window-cleaning": "#1 Best Professional Window Cleaning Services in",
-    "home-watch-services": "#1 Top-Rated Home Watch & Property Care Services in",
-    "office-janitorial-services": "#1 Best Office Cleaning & Professional Janitorial Services in",
-    "janitorial-cleaning-services": "#1 Top-Rated Janitorial & Commercial Cleaning Services in",
-    "medical-dental-facility-cleaning": "#1 Best Medical & Dental Facility Cleaning Services in",
-    "industrial-warehouse-cleaning": "#1 Top-Rated Industrial & Warehouse Cleaning Services in",
-    "floor-stripping-waxing": "#1 Best Floor Stripping & Waxing Services in",
-    "gym-fitness-center-cleaning": "#1 Top-Rated Gym & Fitness Center Cleaning Services in",
-    "school-daycare-cleaning": "#1 Best School & Daycare Cleaning Services in",
-    "church-worship-center-cleaning": "#1 Premium Church & Worship Center Cleaning Services in",
-    "property-management-janitorial": "#1 Best Property Management Janitorial & Cleaning Services in",
-    "luxury-estate-cleaning": "#1 Top-Rated Luxury Estate & Mansion Cleaning Services in",
-    "solar-panel-cleaning": "#1 Best Solar Panel Cleaning & Professional Washing in",
-    "gutter-cleaning": "#1 Top-Rated Gutter Cleaning & Downspout Services in",
-    "property-maintenance": "#1 Best Property Maintenance & Handyman Services in",
-    "airbnb-vacation-rental-management": "#1 Top-Rated Airbnb & Vacation Rental Property Management in",
-    "luxury-estate-management": "#1 Best Luxury Estate & Property Management Services in"
-  };
 
 
   // 1. Detect page type based on original H1 or content signatures before general replacements

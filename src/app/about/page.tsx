@@ -3,13 +3,13 @@ import { formatName } from '@/lib/data';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Sweet Maid Cleaning Service | Trusted House Cleaners',
+  title: '#1 Top-Rated House Cleaning & Maid Service Team in Bradenton, FL',
   description: 'Learn more about Sweet Maid, the leading provider of residential and commercial cleaning services. We are committed to your total satisfaction.',
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/about/',
   },
   openGraph: {
-    title: 'About Sweet Maid Cleaning Service | Trusted House Cleaners',
+    title: '#1 Top-Rated House Cleaning & Maid Service Team in Bradenton, FL',
     description: 'Learn more about Sweet Maid, the leading provider of residential and commercial cleaning services. We are committed to your total satisfaction.',
     url: 'https://sweetmaidcleaning.com/about/',
   }

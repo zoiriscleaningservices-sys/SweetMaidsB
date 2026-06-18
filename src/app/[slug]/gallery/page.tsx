@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
-  const title = `Cleaning Gallery in ${cleanName}, FL | Sweet Maid Before & After`;
+  const title = `#1 Best Cleaning Results & Professional Service Gallery in ${cleanName}, FL`;
   const desc = `View our spotless results in ${cleanName}, FL! See before and after photos of our professional house cleaning and maid services.`;
 
   return {

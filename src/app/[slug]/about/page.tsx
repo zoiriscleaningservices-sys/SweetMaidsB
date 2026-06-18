@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
-  const title = `About Sweet Maid in ${cleanName}, FL | Trusted House Cleaners`;
+  const title = `#1 Top-Rated House Cleaning & Maid Service Team in ${cleanName}, FL`;
   const desc = `Learn more about Sweet Maid, the leading provider of residential and commercial cleaning services in ${cleanName}, FL. We are committed to your total satisfaction.`;
 
   return {

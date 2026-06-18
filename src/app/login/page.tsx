@@ -1,5 +1,19 @@
 import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 import { formatName } from '@/lib/data';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Welcome Back to Sweet Maid - #1 Rated Cleaning Portal in Bradenton, FL',
+  description: 'Login to your Sweet Maid Cleaning account to manage bookings, view schedules, and update your billing details.',
+  alternates: {
+    canonical: 'https://sweetmaidcleaning.com/login/',
+  },
+  openGraph: {
+    title: 'Welcome Back to Sweet Maid - #1 Rated Cleaning Portal in Bradenton, FL',
+    description: 'Login to your Sweet Maid Cleaning account to manage bookings, view schedules, and update your billing details.',
+    url: 'https://sweetmaidcleaning.com/login/',
+  }
+};
 
 export default function LoginRoot() {
   const cleanName = formatName('Bradenton');

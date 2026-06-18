@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { serviceSlugs, getLocationData, formatName } from '@/lib/data';
-import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
+import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -12,7 +12,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!serviceName.toLowerCase().endsWith('services')) {
       serviceName += ' Services';
     }
-    const title = `Top ${serviceName} in Bradenton, FL | Sweet Maid`;
+    const targetH1Prefix = serviceH1Map[slug] || "#1 Top-Rated House Cleaning & Professional Maid Services in";
+    const title = `${targetH1Prefix} Bradenton, FL`;
     const desc = `Looking for the best ${serviceName.toLowerCase()} in Bradenton, FL? Sweet Maid provides top-rated, reliable, and affordable cleaners specifically in Bradenton. Get your free quote today!`;
     const keywords = [
       `${serviceName.toLowerCase()} Bradenton FL`,
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const cleanName = formatName(locData.name);
     
     // Competitor Beating Strategy: Mimic Molly Maid's #1 ranking metadata for Miami, but with Sweet Maid branding
-    let title = `Cleaning Services in ${cleanName}, FL | Sweet Maid`;
+    const title = `#1 Rated House Cleaning & Professional Maid Services in ${cleanName}, FL`;
     let desc = `Looking for the best cleaning services in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable maid services specifically for the ${cleanName} area. 100% Satisfaction Guaranteed.`;
     let keywords: string | undefined = [
       `cleaning services ${cleanName} FL`,
@@ -53,7 +54,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ].join(', ');
 
     if (slug === 'miami-fl') {
-      title = `House Cleaning Services in Miami, Florida | Sweet Maid`;
       desc = `Sweet Maid Offers Customized House Cleaning Services in Miami, Florida. Call (941) 222-2080 Today for a Free Estimate by Trusted & Insured Pros!`;
       keywords = undefined;
     }

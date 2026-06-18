@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { serviceSlugs, getLocationData, formatName } from '@/lib/data';
-import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
+import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, service: string }> }): Promise<Metadata> {
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     serviceName += ' Services';
   }
   
-  let title = `Top ${serviceName} in ${cleanName}, FL | Sweet Maid`;
+  const targetH1Prefix = serviceH1Map[service] || "#1 Top-Rated House Cleaning & Professional Maid Services in";
+  const title = `${targetH1Prefix} ${cleanName}, FL`;
   let desc = `Looking for the best ${serviceName.toLowerCase()} in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable ${serviceName.toLowerCase()} specifically for the ${cleanName} area. Hire professional local cleaners today!`;
   let keywords: string | undefined = [
     `${serviceName.toLowerCase()} ${cleanName} FL`,
@@ -30,7 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   ].join(', ');
 
   if (slug === 'miami-fl') {
-    title = `${serviceName} in Miami, Florida | Sweet Maid`;
     desc = `Sweet Maid Offers Customized ${serviceName} in Miami, Florida. Call (941) 222-2080 Today for a Free Estimate by Trusted & Insured Pros!`;
     keywords = undefined;
   }
