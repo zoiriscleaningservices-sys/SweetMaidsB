@@ -36,6 +36,7 @@ export default function RootLayout({
         <ClientInteractions />
         <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js" strategy="beforeInteractive" />
         <Script src="/js/navigation-dynamic.js" strategy="afterInteractive" />
+        <Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" />
       </body>
     </html>
   );
