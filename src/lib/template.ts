@@ -405,6 +405,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
   newContent = newContent.replace(staticFaqBlockRegex, dynamicFaqHtml);
   const isBradenton = loc_slug === 'bradenton-fl';
+  const showLiveElfsight = true;
 
   // Swap out the static truncated reviews carousel with full, untruncated reviews and working links (or Elfsight widget for Bradenton)
   const reviewsCarouselRegex = /<!-- Reviews Carousel -->[\s\S]*?(?=<!-- Trustindex Badge -->|<!-- Trustindex & Google Reviews Action Links -->)/gi;
@@ -414,7 +415,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       </div>
       
       `;
-  const fullReviewsCarouselHtml = isBradenton ? bradentonElfsightHtml : `<!-- Reviews Carousel -->
+  const fullReviewsCarouselHtml = showLiveElfsight ? bradentonElfsightHtml : `<!-- Reviews Carousel -->
       <div class="relative mt-16">
         <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide" id="reviews-carousel">
 
@@ -577,7 +578,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Swap out the Trustindex Badge block with real-time links to Google Business Profile reviews (or empty for Bradenton Elfsight widget)
   const trustIndexRegex = /<!-- Trustindex Badge -->\s*<div[^>]*>\s*<div[^>]*>[\s\S]*?<\/div>\s*<\/div>/gi;
-  const realTimeReviewsHtml = isBradenton ? `<!-- Elfsight Google Reviews Widget Loaded -->` : `<!-- Trustindex & Google Reviews Action Links -->
+  const realTimeReviewsHtml = showLiveElfsight ? `<!-- Elfsight Google Reviews Widget Loaded -->` : `<!-- Trustindex & Google Reviews Action Links -->
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mt-12 border-t border-pink-100/50 pt-8">
         <div
           class="inline-flex items-center gap-2 bg-pink-50 text-pink-600 border border-pink-100 px-4 py-2 rounded-lg text-sm font-medium shadow-sm">
