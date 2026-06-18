@@ -405,6 +405,30 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
   newContent = newContent.replace(staticFaqBlockRegex, dynamicFaqHtml);
 
+  // Swap out the Trustindex Badge block with real-time links to Google Business Profile reviews
+  const trustIndexRegex = /<!-- Trustindex Badge -->\s*<div[^>]*>\s*<div[^>]*>[\s\S]*?<\/div>\s*<\/div>/gi;
+  const realTimeReviewsHtml = `<!-- Trustindex & Google Reviews Action Links -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mt-12 border-t border-pink-100/50 pt-8">
+        <div
+          class="inline-flex items-center gap-2 bg-pink-50 text-pink-600 border border-pink-100 px-4 py-2 rounded-lg text-sm font-medium shadow-sm">
+          <i class="fa-solid fa-shield-halved"></i>
+          Verified by Trustindex
+        </div>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a href="https://search.google.com/local/reviews?placeid=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 px-6 py-2.5 rounded-full text-sm font-bold shadow-sm transition hover:scale-[1.02] active:scale-[0.98]">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-4 h-4">
+            View Live Reviews
+          </a>
+          <a href="https://g.page/r/CcF-dDstjsBwEBM/review" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition hover:scale-[1.02] active:scale-[0.98]">
+            <i class="fa-solid fa-pen-to-square"></i>
+            Leave a Review
+          </a>
+        </div>
+      </div>`;
+  newContent = newContent.replace(trustIndexRegex, realTimeReviewsHtml);
+
   // 2. High-converting H1 Domination Injection
   let customH1Inner = '';
   if (pageType === 'about') {
