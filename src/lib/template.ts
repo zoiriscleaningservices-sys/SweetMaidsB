@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { serviceSlugs, formatName } from './data';
+import { miamiBrowardSlugs } from './miami_broward_slugs';
 
 // Service to H1 mapping using top-converting transactional SEO search terms
 export const serviceH1Map: Record<string, string> = {
@@ -630,6 +631,16 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       }
       return match;
     });
+  }
+
+  if (miamiBrowardSlugs.includes(loc_slug)) {
+    // Replace telephone links
+    newContent = newContent.replace(/tel:1?9412222080/gi, 'tel:13058516959');
+    newContent = newContent.replace(/tel:941-222-2080/gi, 'tel:305-851-6959');
+    
+    // Replace telephone display text
+    newContent = newContent.replace(/\(?941\)?\s*222\s*-\s*2080/g, '(305) 851-6959');
+    newContent = newContent.replace(/9412222080/g, '3058516959');
   }
 
   return newContent;

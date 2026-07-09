@@ -1,10 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { miamiBrowardSlugs } from "@/lib/miami_broward_slugs";
 
 export default function FloatingBookingButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
+  const pathname = usePathname();
+  const slug = pathname ? pathname.split('/').filter(Boolean)[0] : '';
+  const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);
+  const phoneNumber = isMiamiOrBroward ? "3058516959" : "9412222080";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +36,7 @@ export default function FloatingBookingButton() {
       >
         {/* Instant Call Button */}
         <a
-          href="tel:9412222080"
+          href={`tel:${phoneNumber}`}
           className="group relative flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-pink-500 px-6 py-2.5 rounded-[2rem] shadow-[0_5px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(236,72,153,0.3)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-100"
         >
           <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-pink-50">
