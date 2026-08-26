@@ -4,8 +4,8 @@ export async function GET() {
   const baseUrl = "https://sweetmaidcleaning.com";
   const now = new Date().toISOString();
 
-  // 25 Dynamic Shards representing the 1,000,000+ Florida SEO Network
-  const totalShards = 25;
+  // 50 Dynamic Shards representing the 1,000,000+ Florida SEO Network
+  const totalShards = 50;
   let sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 

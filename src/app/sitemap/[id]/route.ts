@@ -10,13 +10,12 @@ export async function GET(
   const baseUrl = 'https://sweetmaidcleaning.com';
   const now = new Date().toISOString().split('T')[0];
 
-  if (isNaN(shardNum) || shardNum < 1 || shardNum > 25) {
+  if (isNaN(shardNum) || shardNum < 1 || shardNum > 50) {
     return new NextResponse('Sitemap shard not found', { status: 404 });
   }
 
   const urls: string[] = [];
 
-  // Helper to append URL
   function addUrl(loc: string, priority: string = '0.8', changefreq: string = 'weekly') {
     urls.push(`
   <url>
@@ -46,7 +45,7 @@ export async function GET(
       addUrl(`/${service}/`, '0.9', 'weekly');
     });
 
-    // First 400 Cities × Primary 25 Services
+    // First 400 Cities × 25 Services
     const slice = cities.slice(0, 400);
     slice.forEach(citySlug => {
       addUrl(`/${citySlug}/`, '0.9', 'weekly');
@@ -69,10 +68,10 @@ export async function GET(
         addUrl(`/${citySlug}/${service}/`, '0.8', 'weekly');
       });
     });
-  } else if (shardNum >= 3 && shardNum <= 10) {
-    // Zip Code Shards (745+ Florida Zip Codes × 50 Services)
+  } else if (shardNum >= 3 && shardNum <= 20) {
+    // Zip Code Shards (2,388 Florida Zip Codes distributed across 18 shards)
     const zipIndex = shardNum - 3;
-    const chunkSize = Math.ceil(zipCodes.length / 8);
+    const chunkSize = Math.ceil(zipCodes.length / 18);
     const slice = zipCodes.slice(zipIndex * chunkSize, (zipIndex + 1) * chunkSize);
 
     slice.forEach(zip => {
@@ -81,10 +80,10 @@ export async function GET(
         addUrl(`/${zip}/${service}/`, '0.7', 'weekly');
       });
     });
-  } else if (shardNum >= 11 && shardNum <= 20) {
-    // Neighborhoods & Luxury Developments (4,000+ communities × 50 Services)
-    const nIndex = shardNum - 11;
-    const chunkSize = Math.ceil(neighborhoods.length / 10);
+  } else if (shardNum >= 21 && shardNum <= 40) {
+    // Neighborhoods & Luxury Developments (3,100 communities distributed across 20 shards)
+    const nIndex = shardNum - 21;
+    const chunkSize = Math.ceil(neighborhoods.length / 20);
     const slice = neighborhoods.slice(nIndex * chunkSize, (nIndex + 1) * chunkSize);
 
     slice.forEach(nSlug => {
@@ -93,10 +92,10 @@ export async function GET(
         addUrl(`/${nSlug}/${service}/`, '0.7', 'weekly');
       });
     });
-  } else if (shardNum >= 21 && shardNum <= 25) {
-    // Counties (67 Counties × 50 Services) + Cost/Pricing Estimator URLs
-    const cIndex = shardNum - 21;
-    const chunkSize = Math.ceil(counties.length / 5);
+  } else if (shardNum >= 41 && shardNum <= 50) {
+    // Counties & Pricing / Cost Estimator URLs (distributed across 10 shards)
+    const cIndex = shardNum - 41;
+    const chunkSize = Math.ceil(counties.length / 10);
     const slice = counties.slice(cIndex * chunkSize, (cIndex + 1) * chunkSize);
 
     slice.forEach(cSlug => {
@@ -106,10 +105,11 @@ export async function GET(
       });
     });
 
-    // Add sample Pricing & Cost Estimator URLs
-    const targetCities = cities.slice(cIndex * 150, (cIndex + 1) * 150);
+    // Add Pricing & Cost Estimator URLs
+    const cityChunkSize = Math.ceil(cities.length / 10);
+    const targetCities = cities.slice(cIndex * cityChunkSize, (cIndex + 1) * cityChunkSize);
     targetCities.forEach(city => {
-      serviceSlugs.slice(0, 10).forEach(service => {
+      serviceSlugs.slice(0, 15).forEach(service => {
         addUrl(`/cost/${city}/${service}/`, '0.7', 'monthly');
       });
     });
