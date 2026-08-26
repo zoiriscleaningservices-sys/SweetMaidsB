@@ -13,19 +13,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const cleanName = formatName(locData.name);
   const seoPack = generateSeoContentPack(cleanName, slug, service, service);
 
-  const title = `${seoPack.h1} | Sweet Maid Cleaners`;
-  const desc = seoPack.heroSub;
-  const keywords = [
-    `${service.replace(/-/g, ' ')} ${cleanName} FL`,
-    `best ${service.replace(/-/g, ' ')} in ${cleanName}`,
-    `${cleanName} ${service.replace(/-/g, ' ')}`,
-    `maid service ${cleanName} FL`,
-    `professional cleaners ${cleanName}`,
-    `local housekeepers ${cleanName}`,
-    `trusted cleaning company ${cleanName}`,
-    `affordable ${service.replace(/-/g, ' ')} near me`,
-    `top rated cleaners in ${cleanName} FL`
-  ].join(', ');
+  const title = seoPack.metaTitle;
+  const desc = seoPack.heroSub.replace(/<[^>]+>/g, '');
+  const keywords = seoPack.dailySearchKeywords.join(', ');
 
   return {
     title,

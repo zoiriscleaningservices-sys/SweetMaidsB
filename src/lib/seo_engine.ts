@@ -13,6 +13,7 @@ function hashCode(str: string): number {
 
 export interface SeoContentPack {
   h1: string;
+  metaTitle: string;
   heroSub: string;
   badge: string;
   dailySearchHeading: string;
@@ -40,6 +41,75 @@ export function generateSeoContentPack(
   if (!cleanSrv.toLowerCase().endsWith('services')) {
     cleanSrv += ' Services';
   }
+
+  // High-Intent Daily Search Title Tags per Specific Service
+  const serviceTitleMap: Record<string, string[]> = {
+    'house-cleaning': [
+      `#1 House Cleaning Near Me in ${cleanLoc}, FL | Best Maid Service`,
+      `Best House Cleaning in ${cleanLoc}, FL | Top Rated Home Cleaners`,
+      `House Cleaning & Maid Service in ${cleanLoc}, FL | Sweet Maid`,
+      `Top Rated House Cleaners in ${cleanLoc}, Florida | Trusted Maids`
+    ],
+    'deep-cleaning': [
+      `#1 Deep Cleaning Services in ${cleanLoc}, FL | Home Cleaners Near Me`,
+      `Best Deep House Cleaning in ${cleanLoc}, FL | Top Sanitization Maids`,
+      `Deep Cleaning Services in ${cleanLoc}, Florida | Detailed Sanitizing`,
+      `Top Rated Deep Cleaners in ${cleanLoc}, FL | Sweet Maid`
+    ],
+    'move-in-out-cleaning': [
+      `Move-In & Move-Out Cleaning in ${cleanLoc}, FL | Turnover Cleaners`,
+      `Best Move Out Cleaning Near Me in ${cleanLoc}, FL | Fast Maid Service`,
+      `Move-In / Move-Out House Cleaning in ${cleanLoc}, FL | Sweet Maid`,
+      `Top Rated Move-Out Cleaning in ${cleanLoc}, Florida | Guaranteed Deposit`
+    ],
+    'airbnb-cleaning': [
+      `#1 Airbnb Cleaning in ${cleanLoc}, FL | Vacation Rental Cleaners Near Me`,
+      `Best Airbnb & Vacation Rental Turnover Cleaning in ${cleanLoc}, FL`,
+      `Airbnb Cleaning Service in ${cleanLoc}, Florida | Same-Day Turnaround`,
+      `Top Rated Vacation Rental Maids in ${cleanLoc}, FL | Sweet Maid`
+    ],
+    'commercial-cleaning': [
+      `Commercial Cleaning & Janitorial in ${cleanLoc}, FL | Office Cleaners`,
+      `Best Commercial Cleaners in ${cleanLoc}, FL | Office Janitorial Services`,
+      `Commercial Office Cleaning in ${cleanLoc}, Florida | Sweet Maid`,
+      `Top Rated Business & Janitorial Cleaning in ${cleanLoc}, FL`
+    ],
+    'carpet-cleaning': [
+      `Professional Carpet Cleaning in ${cleanLoc}, FL | Steam Cleaners Near Me`,
+      `Best Carpet & Rug Cleaning in ${cleanLoc}, FL | Deep Steam Extraction`,
+      `Top Rated Carpet Cleaning in ${cleanLoc}, Florida | Sweet Maid`
+    ],
+    'pressure-washing': [
+      `Pressure Washing & Exterior Cleaning in ${cleanLoc}, FL | Power Washers`,
+      `Best Pressure Washing Services in ${cleanLoc}, FL | Driveway & Siding`,
+      `Top Rated Pressure Washing in ${cleanLoc}, Florida | Sweet Maid`
+    ],
+    'window-cleaning': [
+      `Professional Window Cleaning in ${cleanLoc}, FL | Window Washers Near Me`,
+      `Best Window Cleaning Services in ${cleanLoc}, FL | Streak-Free Glass`,
+      `Top Rated Window Cleaners in ${cleanLoc}, Florida | Sweet Maid`
+    ],
+    'post-construction-cleaning': [
+      `Post-Construction Cleaning in ${cleanLoc}, FL | Dust & Debris Removal`,
+      `Best Post-Construction Cleanup Near Me in ${cleanLoc}, FL | Sweet Maid`,
+      `Top Rated Construction Cleaners in ${cleanLoc}, Florida`
+    ],
+    'luxury-estate-cleaning': [
+      `Luxury Estate & Mansion Cleaning in ${cleanLoc}, FL | Elite Housekeepers`,
+      `Best Luxury Home Cleaners in ${cleanLoc}, FL | Detailed Estate Care`,
+      `Top Rated Luxury Estate Cleaning in ${cleanLoc}, Florida | Sweet Maid`
+    ]
+  };
+
+  const defaultTitles = [
+    `#1 ${cleanSrv} in ${cleanLoc}, FL | Best Cleaners Near Me`,
+    `Best ${cleanSrv} in ${cleanLoc}, FL | Trusted Local Cleaners`,
+    `Top-Rated ${cleanSrv} in ${cleanLoc}, Florida | Sweet Maid`,
+    `Affordable ${cleanSrv} in ${cleanLoc}, FL | 5-Star Cleaners Near You`
+  ];
+
+  const titlePool = serviceTitleMap[serviceSlug] || defaultTitles;
+  const metaTitle = titlePool[seed % titlePool.length];
 
   // 1. High-Volume Daily Search Term Clusters (Real Google user daily search queries)
   const dailyKeywordPools = [
@@ -288,6 +358,7 @@ export function generateSeoContentPack(
 
   return {
     h1,
+    metaTitle,
     heroSub,
     badge,
     dailySearchHeading,

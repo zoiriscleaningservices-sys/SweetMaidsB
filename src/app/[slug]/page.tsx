@@ -11,15 +11,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (isService) {
     const seoPack = generateSeoContentPack('Florida', 'fl', slug, slug);
-    const title = `${seoPack.h1} | Sweet Maid Cleaners`;
-    const desc = seoPack.heroSub;
-    const keywords = [
-      `${slug.replace(/-/g, ' ')} Florida`,
-      `best ${slug.replace(/-/g, ' ')} in Florida`,
-      `Florida ${slug.replace(/-/g, ' ')}`,
-      `maid service Florida`,
-      `professional cleaners Florida`
-    ].join(', ');
+    const title = seoPack.metaTitle;
+    const desc = seoPack.heroSub.replace(/<[^>]+>/g, '');
+    const keywords = seoPack.dailySearchKeywords.join(', ');
 
     return {
       title,
@@ -35,16 +29,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const cleanName = formatName(locData.name);
     const seoPack = generateSeoContentPack(cleanName, slug, 'House Cleaning', 'house-cleaning');
-    const title = `${seoPack.h1} | Sweet Maid Cleaners`;
-    const desc = seoPack.heroSub;
-    const keywords = [
-      `cleaning services ${cleanName} FL`,
-      `best house cleaning in ${cleanName}`,
-      `${cleanName} maid service`,
-      `professional cleaners ${cleanName}`,
-      `local housekeepers ${cleanName}`,
-      `trusted cleaning company ${cleanName}`
-    ].join(', ');
+    const title = seoPack.metaTitle;
+    const desc = seoPack.heroSub.replace(/<[^>]+>/g, '');
+    const keywords = seoPack.dailySearchKeywords.join(', ');
 
     return {
       title,
