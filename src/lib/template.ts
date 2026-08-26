@@ -205,27 +205,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&amp;fit=crop&amp;q=80', '../../../images/carpet-cleaning.jpeg');
   newContent = newContent.replace('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&amp;fit=crop&amp;q=80', '../../../images/window-cleaning.jpeg');
 
-  // Eliminate the "Let Our Team Contact You" floating horizontal form (string block removal)
-  const formStartStr = '<!-- Let Us Contact You Form -->';
-  const formEndStr = '<div class="grid lg:grid-cols-2 gap-12';
-  if (newContent.includes(formStartStr)) {
-    const parts = newContent.split(formStartStr);
-    newContent = parts[0] + parts.slice(1).map(part => {
-      const idx = part.indexOf(formEndStr);
-      return idx !== -1 ? part.substring(idx) : part;
-    }).join('');
-  }
-
-  // Eliminate the GLOBAL SEARCH BAR SECTION
-  const searchKey = 'GLOBAL SEARCH BAR SECTION';
-  const searchStartIdx = newContent.indexOf(searchKey);
-  if (searchStartIdx !== -1) {
-    const commentStartIdx = newContent.lastIndexOf('<!--', searchStartIdx);
-    const sectionEndIdx = newContent.indexOf('</section>', searchStartIdx);
-    if (commentStartIdx !== -1 && sectionEndIdx !== -1) {
-      newContent = newContent.substring(0, commentStartIdx) + newContent.substring(sectionEndIdx + '</section>'.length);
-    }
-  }
+  // Safely remove redundant search bar section without affecting the Hero section
+  newContent = newContent.replace(/<!--\s*=+\s*GLOBAL SEARCH BAR SECTION[\s\S]*?<\/section>/gi, '');
+  newContent = newContent.replace(/<!--\s*Let Us Contact You Form\s*-->[\s\S]*?<\/form>\s*<\/div>\s*<\/div>/gi, '');
 
   // Hide the Locations We Serve footer grid so it remains in the DOM for React to scrape, but is invisible to the user.
   newContent = newContent.replace(
