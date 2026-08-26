@@ -157,16 +157,16 @@ export function generateSeoContentPack(
 
   const dailySearchKeywords = dailyKeywordPools[seed % dailyKeywordPools.length];
 
-  // 2. High-Converting H1 Variations (0 Duplication across entire Florida network)
+  // 2. High-Converting H1 Variations (Zero "#1", Natural Daily Search Keywords)
   const h1Templates = [
-    `#1 Top-Rated ${cleanSrv} in ${cleanLoc}, FL`,
-    `Premier 5-Star ${cleanSrv} in ${cleanLoc}, Florida`,
-    `Best Local ${cleanSrv} & Professional Cleaners in ${cleanLoc}, FL`,
-    `Award-Winning ${cleanSrv} & Maid Service in ${cleanLoc}, FL`,
+    `${cleanSrv} Near You in ${cleanLoc}, FL`,
+    `Best Local ${cleanSrv} & Maid Service in ${cleanLoc}, FL`,
+    `Top-Rated ${cleanSrv} & Professional Cleaners in ${cleanLoc}, Florida`,
+    `Affordable ${cleanSrv} & House Cleaning in ${cleanLoc}, FL`,
     `Trusted, Licensed & Insured ${cleanSrv} in ${cleanLoc}, Florida`,
-    `Meticulous & Affordable ${cleanSrv} in ${cleanLoc}, FL`,
-    `Top Choice for ${cleanSrv} & Housekeeping in ${cleanLoc}, FL`,
-    `#1 Rated Maid Service & ${cleanSrv} in ${cleanLoc}, Florida`
+    `Premier 5-Star ${cleanSrv} & Housekeeping in ${cleanLoc}, FL`,
+    `Same-Day & Recurring ${cleanSrv} in ${cleanLoc}, Florida`,
+    `Award-Winning Local ${cleanSrv} in ${cleanLoc}, FL`
   ];
   const h1 = h1Templates[seed % h1Templates.length];
 
