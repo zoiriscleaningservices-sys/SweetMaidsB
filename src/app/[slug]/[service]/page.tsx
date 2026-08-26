@@ -98,15 +98,23 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": `Serving ${cleanName} & Surrounding Florida Areas`,
         "addressLocality": cleanName,
         "addressRegion": "FL",
         "addressCountry": "US"
       },
-      "geo": isMiami ? {
+      "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 25.7617,
-        "longitude": -80.1918
-      } : undefined,
+        "latitude": locData.lat,
+        "longitude": locData.lng
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "284",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "areaServed": isMiami ? [
         { "@type": "AdministrativeArea", "name": "Miami" },
         { "@type": "AdministrativeArea", "name": "Miami-Dade County" },

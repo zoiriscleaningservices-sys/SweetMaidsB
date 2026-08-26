@@ -256,17 +256,15 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       </div>`;
   newContent = newContent.replace(/<i class="fa-solid fa-earth-americas[^>]*><\/i>/gi, GLOBE_HTML);
 
-  // Image Paths
-  if (is_sub_page) {
-    newContent = newContent.replace(/src="\/images\//g, 'src="/images/').replace(/url\("\/images\//g, 'url("/images/').replace(/url\('\/images\//g, "url('/images/");
-    newContent = newContent.replace(/src="images\//g, 'src="/images/').replace(/url\("images\//g, 'url("/images/').replace(/url\('images\//g, "url('/images/");
-    newContent = newContent.replace(/src="\.\.\/images\//g, 'src="/images/').replace(/url\("\.\.\/images\//g, 'url("/images/').replace(/url\('\.\.\/images\//g, "url('/images/");
-    newContent = newContent.replace(/src="\.\.\/\.\.\/images\//g, 'src="/images/'); // ensure correct absolute path
-  } else {
-    newContent = newContent.replace(/src="\/images\//g, 'src="/images/').replace(/url\("\/images\//g, 'url("/images/').replace(/url\('\/images\//g, "url('/images/");
-    newContent = newContent.replace(/src="images\//g, 'src="/images/').replace(/url\("images\//g, 'url("/images/').replace(/url\('images\//g, "url('/images/");
-    newContent = newContent.replace(/src="\.\.\/images\//g, 'src="/images/').replace(/url\("\.\.\/images\//g, 'url("/images/').replace(/url\('\.\.\/images\//g, "url('/images/");
-  }
+  // Image Paths & Performance Optimizations
+  newContent = newContent.replace(/src="(?:\.\.\/)+images\//g, 'src="/images/').replace(/url\("(?:\.\.\/)+images\//g, 'url("/images/');
+  newContent = newContent.replace(/src="images\//g, 'src="/images/').replace(/url\("images\//g, 'url("/images/');
+
+  // Strip redundant client-side Tailwind script from templates (Next.js compiles Tailwind natively)
+  newContent = newContent.replace(/<script[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
+
+  // Auto-apply loading="lazy" and decoding="async" to all <img> tags missing it
+  newContent = newContent.replace(/<img\s+(?![^>]*\bloading=)([^>]+)>/gi, '<img loading="lazy" decoding="async" $1>');
 
   // Fix Map Headings and Pin Labels
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
