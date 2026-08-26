@@ -52,8 +52,27 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
+          media="print"
+          // @ts-ignore
+          onLoad="this.media='all'"
         />
-        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+            crossOrigin="anonymous"
+          />
+        </noscript>
+        <link
+          href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+          rel="stylesheet"
+          media="print"
+          // @ts-ignore
+          onLoad="this.media='all'"
+        />
+        <noscript>
+          <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+        </noscript>
       </head>
       <body className="antialiased font-sans">
         {children}
