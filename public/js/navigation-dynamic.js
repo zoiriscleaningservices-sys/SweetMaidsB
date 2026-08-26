@@ -209,6 +209,11 @@
                 cleanHref.match(/\.(png|jpg|jpeg|gif|svg|webp|css|js|pdf)$/i)) return;
 
             var linkText = (link.textContent || '').trim().toLowerCase();
+            if (cleanHref === '/locations/' || cleanHref === '/locations' || linkText.includes('view all locations') || linkText.includes('locations directory')) {
+                link.setAttribute('href', '/locations/');
+                return;
+            }
+
             if (cleanHref === '/' || cleanHref === '/index.html' ||
                 cleanHref === '/home/' || linkText === 'home') {
                 if (cleanHref !== '/' + locationSlug + '/') {

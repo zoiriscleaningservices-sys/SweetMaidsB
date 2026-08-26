@@ -165,10 +165,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>\n              <div class="border-t`
   );
 
-  // Direct "View All Locations" in dropdown to /locations/
+  // Direct ANY "View All Locations" link to /locations/
   newContent = newContent.replace(
-    /href="https:\/\/sweetmaidcleaning\.com\/"(\s*class="[^"]*">[\s\S]*?View All Locations)/gi,
-    'href="/locations/"$1'
+    /<a\s+[^>]*href="[^"]*"([^>]*>[\s\S]*?View All Locations[\s\S]*?<\/a>)/gi,
+    '<a href="/locations/"$1'
   );
 
   newContent = newContent.replace(
