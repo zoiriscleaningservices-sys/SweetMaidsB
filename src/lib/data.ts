@@ -77,3 +77,22 @@ export function getNearestLocations(currentSlug: string, count: number = 8): Nea
   distances.sort((a, b) => a.dist - b.dist);
   return distances.slice(0, count);
 }
+
+export interface LocationDirectoryItem {
+  slug: string;
+  name: string;
+  lat: number;
+  lng: number;
+}
+
+export function getAllLocations(): LocationDirectoryItem[] {
+  const data = getLocationData();
+  const list: LocationDirectoryItem[] = Object.entries(data).map(([slug, item]) => ({
+    slug,
+    name: item.name,
+    lat: item.lat,
+    lng: item.lng
+  }));
+  list.sort((a, b) => a.name.localeCompare(b.name));
+  return list;
+}

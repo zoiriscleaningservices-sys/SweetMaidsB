@@ -165,6 +165,12 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>\n              <div class="border-t`
   );
 
+  // Direct "View All Locations" in dropdown to /locations/
+  newContent = newContent.replace(
+    /href="https:\/\/sweetmaidcleaning\.com\/"(\s*class="[^"]*">[\s\S]*?View All Locations)/gi,
+    'href="/locations/"$1'
+  );
+
   newContent = newContent.replace(
     /(<div id="mobile-nearby-list"[^>]*>)[\s\S]*?(<\/div>\s*<\/div>\s*<\/div>\s*\n?\s*<a href="[^"]*blog\/)/i,
     `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${mobileNearbyHtml}\n</div>\n          </div>\n        </div>\n\n        <a href="/blog/`
