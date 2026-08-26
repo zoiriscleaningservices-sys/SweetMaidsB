@@ -270,6 +270,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<button([^>]*>\s*Locations\s*<i)/gi, '<button aria-label="Locations Dropdown Menu"$1');
   newContent = newContent.replace(/<button([^>]*class="[^"]*accordion[^"]*"[^>]*)>/gi, '<button aria-label="Toggle section details"$1>');
   newContent = newContent.replace(/<button([^>]*class="[^"]*rounded-2xl[^"]*"[^>]*)>/gi, '<button aria-label="Toggle menu section"$1>');
+  newContent = newContent.replace(/<button([^>]*class="[^"]*w-2\.5[^"]*"[^>]*)>/gi, '<button aria-label="Service carousel slide"$1>');
   newContent = newContent.replace(/<button([^>]*>\s*<i class="fa-solid fa-xmark)/gi, '<button aria-label="Clear search input"$1');
 
   // Defer third-party lead generation scripts
@@ -277,16 +278,20 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>/gi, '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>');
 
   // 2. Accessibility: Icon-Only Links & Social Links
+  newContent = newContent.replace(/<a([^>]*class="[^"]*lg:hidden[^"]*"[^>]*)>/gi, '<a aria-label="Call Sweet Maid at (941) 222-2080"$1>');
   newContent = newContent.replace(/<a\s+href="tel:([^"]+)"(?![^>]*aria-label)([^>]*)>/gi, `<a href="tel:$1" aria-label="Call Sweet Maid at $1"$2>`);
   newContent = newContent.replace(/<a\s+href="([^"]*facebook[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Facebook" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*instagram[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Instagram" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*tiktok[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on TikTok" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*youtube[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on YouTube" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="#"[^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Service Details"$1>');
 
   // 3. Accessibility: Form Inputs & Controls
   newContent = newContent.replace(/<input\s+type="text"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="text" aria-label="$2"$1>');
   newContent = newContent.replace(/<input\s+type="email"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="email" aria-label="$2"$1>');
   newContent = newContent.replace(/<input\s+type="tel"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="tel" aria-label="$2"$1>');
+  newContent = newContent.replace(/<input(?![^>]*aria-label)([^>]*name="([^"]+)"[^>]*)>/gi, '<input aria-label="$2"$1>');
+  newContent = newContent.replace(/<input(?![^>]*aria-label)([^>]*type="([^"]+)"[^>]*)>/gi, '<input aria-label="$2 input field"$1>');
   newContent = newContent.replace(/<select(?![^>]*aria-label)([^>]*)>/gi, '<select aria-label="Select Cleaning Service"$1>');
   newContent = newContent.replace(/<textarea(?![^>]*aria-label)([^>]*)>/gi, '<textarea aria-label="Cleaning instructions or message"$1>');
 
@@ -297,9 +302,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<img\s+(?![^>]*\balt=)([^>]+)>/gi, `<img alt="Sweet Maid Professional Cleaning Service in ${clean_name}, Florida" $1>`);
   newContent = newContent.replace(/alt=""/gi, `alt="Sweet Maid Cleaning Service in ${clean_name}, FL"`);
 
-  // 6. Image Paths & Performance Optimizations
+  // 6. Image Paths & WebP Next-Gen Format Upgrade
   newContent = newContent.replace(/src="(?:\.\.\/)+images\//g, 'src="/images/').replace(/url\("(?:\.\.\/)+images\//g, 'url("/images/');
   newContent = newContent.replace(/src="images\//g, 'src="/images/').replace(/url\("images\//g, 'url("/images/');
+  newContent = newContent.replace(/src="\/images\/([^"]+)\.jpeg"/gi, 'src="/images/$1.webp"');
+  newContent = newContent.replace(/url\(["']?\/images\/([^"')]+)\.jpeg["']?\)/gi, 'url("/images/$1.webp")');
 
   // Strip redundant client-side Tailwind script from templates (Next.js compiles Tailwind natively)
   newContent = newContent.replace(/<script[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
