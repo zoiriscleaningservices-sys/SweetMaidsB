@@ -347,13 +347,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // 4. Accessibility: Iframes (Google Maps & Widgets)
   newContent = newContent.replace(/<iframe(?![^>]*title)([^>]*)>/gi, `<iframe title="Sweet Maid Service Map in ${clean_name}, Florida"$1>`);
 
-  // 5. Accessibility: Color Contrast Enhancements
-  newContent = newContent.replace(/text-pink-300/gi, 'text-pink-700');
-  newContent = newContent.replace(/text-pink-400/gi, 'text-pink-700');
-  newContent = newContent.replace(/text-gray-400/gi, 'text-gray-700');
-  newContent = newContent.replace(/text-gray-300/gi, 'text-gray-600');
-
-  // 6. Best Practices: Security rel="noopener noreferrer" for all target="_blank"
+  // 5. Best Practices: Security rel="noopener noreferrer" for all target="_blank"
   newContent = newContent.replace(/<a\s+([^>]*target="_blank"(?![^>]*rel=)[^>]*)>/gi, '<a $1 rel="noopener noreferrer">');
 
   // 7. Image Alt Text: Ensure every <img> has descriptive alt
