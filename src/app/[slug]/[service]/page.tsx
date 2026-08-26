@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
 import { miamiBrowardSlugs } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
+import { generateSeoContentPack } from '@/lib/seo_engine';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, service: string }> }): Promise<Metadata> {
@@ -10,31 +11,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
-  let serviceName = formatName(service.replace(/-/g, ' '));
-  if (!serviceName.toLowerCase().endsWith('services')) {
-    serviceName += ' Services';
-  }
-  
-  const targetH1Prefix = serviceH1Map[service] || "#1 Top-Rated House Cleaning & Professional Maid Services in";
-  const title = `${targetH1Prefix} ${cleanName}, FL`;
-  let desc = `Looking for the best ${serviceName.toLowerCase()} in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable ${serviceName.toLowerCase()} specifically for the ${cleanName} area. Hire professional local cleaners today!`;
-  let keywords: string | undefined = [
-    `${serviceName.toLowerCase()} ${cleanName} FL`,
-    `best ${serviceName.toLowerCase()} in ${cleanName}`,
-    `${cleanName} ${serviceName.toLowerCase()}`,
+  const seoPack = generateSeoContentPack(cleanName, slug, service, service);
+
+  const title = `${seoPack.h1} | Sweet Maid Cleaners`;
+  const desc = seoPack.heroSub;
+  const keywords = [
+    `${service.replace(/-/g, ' ')} ${cleanName} FL`,
+    `best ${service.replace(/-/g, ' ')} in ${cleanName}`,
+    `${cleanName} ${service.replace(/-/g, ' ')}`,
     `maid service ${cleanName} FL`,
     `professional cleaners ${cleanName}`,
     `local housekeepers ${cleanName}`,
     `trusted cleaning company ${cleanName}`,
-    `affordable ${serviceName.toLowerCase()} near me`,
+    `affordable ${service.replace(/-/g, ' ')} near me`,
     `top rated cleaners in ${cleanName} FL`
   ].join(', ');
-
-  const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);
-  if (isMiamiOrBroward) {
-    desc = `Sweet Maid Offers Customized ${serviceName} in ${cleanName}, Florida. Call (305) 851-6959 Today for a Free Estimate by Trusted & Insured Pros!`;
-    keywords = undefined;
-  }
 
   return {
     title,

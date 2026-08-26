@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
 import { miamiBrowardSlugs } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
+import { generateSeoContentPack } from '@/lib/seo_engine';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -9,22 +10,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const isService = serviceSlugs.includes(slug);
 
   if (isService) {
-    let serviceName = formatName(slug.replace(/-/g, ' '));
-    if (!serviceName.toLowerCase().endsWith('services')) {
-      serviceName += ' Services';
-    }
-    const targetH1Prefix = serviceH1Map[slug] || "#1 Top-Rated House Cleaning & Professional Maid Services in";
-    const title = `${targetH1Prefix} Bradenton, FL`;
-    const desc = `Looking for the best ${serviceName.toLowerCase()} in Bradenton, FL? Sweet Maid provides top-rated, reliable, and affordable cleaners specifically in Bradenton. Get your free quote today!`;
+    const seoPack = generateSeoContentPack('Florida', 'fl', slug, slug);
+    const title = `${seoPack.h1} | Sweet Maid Cleaners`;
+    const desc = seoPack.heroSub;
     const keywords = [
-      `${serviceName.toLowerCase()} Bradenton FL`,
-      `best ${serviceName.toLowerCase()} in Bradenton`,
-      `Bradenton ${serviceName.toLowerCase()}`,
-      `maid service Bradenton FL`,
-      `professional cleaners Bradenton`,
-      `local housekeepers Bradenton`,
-      `trusted cleaning company Bradenton`
+      `${slug.replace(/-/g, ' ')} Florida`,
+      `best ${slug.replace(/-/g, ' ')} in Florida`,
+      `Florida ${slug.replace(/-/g, ' ')}`,
+      `maid service Florida`,
+      `professional cleaners Florida`
     ].join(', ');
+
     return {
       title,
       description: desc,
@@ -38,26 +34,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!locData) return {};
 
     const cleanName = formatName(locData.name);
-    
-    // Competitor Beating Strategy: Mimic Molly Maid's #1 ranking metadata for Miami, but with Sweet Maid branding
-    const title = `#1 Rated House Cleaning & Professional Maid Services in ${cleanName}, FL`;
-    let desc = `Looking for the best cleaning services in ${cleanName}, FL? Sweet Maid provides top-rated, reliable, and affordable maid services specifically for the ${cleanName} area. 100% Satisfaction Guaranteed.`;
-    let keywords: string | undefined = [
+    const seoPack = generateSeoContentPack(cleanName, slug, 'House Cleaning', 'house-cleaning');
+    const title = `${seoPack.h1} | Sweet Maid Cleaners`;
+    const desc = seoPack.heroSub;
+    const keywords = [
       `cleaning services ${cleanName} FL`,
       `best house cleaning in ${cleanName}`,
       `${cleanName} maid service`,
       `professional cleaners ${cleanName}`,
       `local housekeepers ${cleanName}`,
-      `trusted cleaning company ${cleanName}`,
-      `affordable cleaning near me`,
-      `top rated cleaners in ${cleanName} FL`
+      `trusted cleaning company ${cleanName}`
     ].join(', ');
-
-    const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);
-    if (isMiamiOrBroward) {
-      desc = `Sweet Maid Offers Customized House Cleaning Services in ${cleanName}, Florida. Call (305) 851-6959 Today for a Free Estimate by Trusted & Insured Pros!`;
-      keywords = undefined;
-    }
 
     return {
       title,

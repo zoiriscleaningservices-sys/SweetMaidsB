@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { serviceSlugs, formatName, getNearestLocations } from './data';
 import { miamiBrowardSlugs } from './miami_broward_slugs';
+import { generateSeoContentPack } from './seo_engine';
 
 // Service to H1 mapping using top-converting transactional SEO search terms
 export const serviceH1Map: Record<string, string> = {
@@ -86,7 +87,16 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     }
   }
 
-  // Safe Text Replacements for H1 without destroying HTML tags
+  // Generate 100% Unique, Zero-Duplicate SEO Content Pack
+  const seoPack = generateSeoContentPack(clean_name, loc_slug, serviceName, currentService);
+
+  // Dynamic H1 with zero duplicate probability
+  newContent = newContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6 font-serif">${seoPack.h1}</h1>`);
+
+  // Dynamic Hero Subtitle
+  newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${seoPack.heroSub}$2`);
+
+  // Dynamic Safe Text Replacements for H1 without destroying HTML tags
   newContent = newContent.replace(/Best Cleaning Services in/gi, `${serviceName} in`);
   newContent = newContent.replace(/House Cleaning Services in/gi, `${serviceName} in`);
   newContent = newContent.replace(/House Cleaning in/gi, `${serviceName} in`);
@@ -427,136 +437,53 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Dynamic SEO-Maximized FAQs tailored specifically to the Service and Location
   const dynamicFaqHtml = `<div class="space-y-4">
-        <!-- Q1 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            Who provides the best ${serviceName.toLowerCase()} in ${clean_name}, FL?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Sweet Maid is widely recognized as the #1 top-rated provider for <strong>${serviceName.toLowerCase()} in ${clean_name}, Florida</strong>. Our expert team delivers highly affordable, meticulous, and professional ${serviceName.toLowerCase()} perfectly tailored for both residential and commercial properties in ${clean_name}. We stand by our work with a 100% satisfaction guarantee.
-          </p>
-        </details>
+    ${seoPack.faqs.map(faq => `
+      <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
+        <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
+          ${faq.q}
+          <span class="transition duration-300 group-open:-rotate-180">
+            <i class="fa-solid fa-chevron-down text-pink-300"></i>
+          </span>
+        </summary>
+        <p class="mt-4 text-gray-600 leading-relaxed">
+          ${faq.a}
+        </p>
+      </details>
+    `).join('\n')}
+  </div>`;
 
-        <!-- Q2 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            How much does professional ${serviceName.toLowerCase()} cost near me in ${clean_name}?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            The cost for affordable ${serviceName.toLowerCase()} in ${clean_name} varies depending on your specific needs, the size of your property, and the frequency of the service. Sweet Maid offers highly competitive and transparent pricing for expert ${serviceName.toLowerCase()} in ${clean_name}, FL. Contact us today for a fast, free local estimate!
-          </p>
-        </details>
+  const climateSectionHtml = `
+  <section class="py-14 bg-gradient-to-b from-pink-50/60 to-white border-y border-pink-100/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mb-8">
+        <div class="inline-flex items-center gap-2 bg-pink-100/80 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+          <span>🌴 Local Climate & Property Protection</span>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 font-serif mb-4">${seoPack.climateTitle}</h3>
+        <p class="text-gray-700 leading-relaxed text-base md:text-lg">${seoPack.climateBody}</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        ${seoPack.whyChoosePoints.map(p => `
+          <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center mb-4 text-lg">
+              <i class="fa-solid ${p.icon}"></i>
+            </div>
+            <h4 class="font-bold text-gray-900 mb-2">${p.title}</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">${p.desc}</p>
+          </div>
+        `).join('\n')}
+      </div>
+    </div>
+  </section>
+  `;
 
-        <!-- Q3 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            Are there reliable ${serviceName.toLowerCase()} experts in ${clean_name}?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Yes! Sweet Maid employs the most reliable and highly-trained local experts for ${serviceName.toLowerCase()} in the ${clean_name} area. We specialize in comprehensive, eco-friendly ${serviceName.toLowerCase()} solutions tailored specifically for homes and businesses in ${clean_name}, Florida. All of our cleaners are fully vetted, insured, and bonded.
-          </p>
-        </details>
-        
-        <!-- Q4 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            What is included in your ${serviceName.toLowerCase()} in ${clean_name}?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Our premium ${serviceName.toLowerCase()} in ${clean_name} includes a comprehensive, top-to-bottom approach. Depending on the exact package you choose, we cover everything from deep scrubbing and sanitization to dusting and polishing. Sweet Maid ensures every corner of your ${clean_name} property receives the highest standard of care.
-          </p>
-        </details>
+  // Inject Climate Section above Footer
+  if (newContent.includes('<footer')) {
+    newContent = newContent.replace(/<footer/i, climateSectionHtml + '\n<footer');
+  }
 
-        <!-- Q5 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            Do you use eco-friendly products for ${serviceName.toLowerCase()} in ${clean_name}, FL?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Absolutely. Sweet Maid prioritizes your health and safety by using premium, eco-friendly, and pet-safe cleaning products for all our ${serviceName.toLowerCase()} across ${clean_name}, Florida. We deliver a spotless shine without the use of harsh or dangerous chemicals.
-          </p>
-        </details>
-
-        <!-- Q6 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            Can I schedule recurring ${serviceName.toLowerCase()} in ${clean_name}?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Yes, we offer highly flexible scheduling for ${serviceName.toLowerCase()} in ${clean_name}. Whether you need weekly, bi-weekly, or monthly maintenance, Sweet Maid can customize a recurring schedule that perfectly fits your lifestyle and ensures your ${clean_name} home or office stays impeccably clean.
-          </p>
-        </details>
-
-        <!-- Q7 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            Do I need to provide supplies for my ${serviceName.toLowerCase()} in ${clean_name}?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            No, you do not need to lift a finger! The Sweet Maid team arrives at your ${clean_name} property fully equipped with industry-leading tools and professional-grade supplies necessary to complete your ${serviceName.toLowerCase()} to absolute perfection.
-          </p>
-        </details>
-
-        <!-- Q8 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            How do I book ${serviceName.toLowerCase()} in ${clean_name}, Florida?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Booking your ${serviceName.toLowerCase()} in ${clean_name} is incredibly easy. You can call our local ${clean_name} office directly, or use our instant online booking platform to secure your preferred date and time for premium ${serviceName.toLowerCase()}.
-          </p>
-        </details>
-
-        <!-- Q9 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            Is Sweet Maid insured and bonded for ${serviceName.toLowerCase()} in ${clean_name}?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Yes, providing peace of mind is our top priority. Sweet Maid is fully licensed, insured, and bonded to perform ${serviceName.toLowerCase()} throughout ${clean_name}, FL. Your property is entirely protected while our specialists are on-site.
-          </p>
-        </details>
-
-        <!-- Q10 -->
-        <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:bg-pink-50 transition">
-          <summary class="flex items-center justify-between font-semibold text-lg text-gray-900">
-            Why choose Sweet Maid for ${serviceName.toLowerCase()} in ${clean_name} over competitors?
-            <span class="transition duration-300 group-open:-rotate-180">
-              <i class="fa-solid fa-chevron-down text-pink-300"></i>
-            </span>
-          </summary>
-          <p class="mt-4 text-gray-600 leading-relaxed">
-            Sweet Maid outshines the competition by offering unmatched reliability, crystal-clear communication, and elite-level ${serviceName.toLowerCase()} in ${clean_name}. Our dedication to perfection, localized expertise in Florida, and strictly vetted staff make us the undisputed choice for ${serviceName.toLowerCase()}.
-          </p>
-        </details>
-      </div>`;
+  // Inject Structured JSON-LD Schema
+  newContent += `\n<script type="application/ld+json">${seoPack.schemaJson}</script>`;
 
   // Swap out the static generic FAQ accordion block with the SEO-maximized dynamic block
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
