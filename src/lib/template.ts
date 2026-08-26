@@ -284,7 +284,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<a\s+href="([^"]*instagram[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Instagram" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*tiktok[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on TikTok" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*youtube[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on YouTube" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse all Florida cleaning locations"$1>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/booknow\/?"[^>]*)>/gi, '<a aria-label="Book a professional cleaning service now"$1>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company"$1>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog"$1>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery"$1>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/login\/?"[^>]*)>/gi, '<a aria-label="Customer portal login"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="#"[^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Service Details"$1>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Services Florida"$1>');
 
   // 3. Accessibility: Form Inputs & Controls
   newContent = newContent.replace(/<input\s+type="text"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="text" aria-label="$2"$1>');
@@ -295,14 +302,22 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<select(?![^>]*aria-label)([^>]*)>/gi, '<select aria-label="Select Cleaning Service"$1>');
   newContent = newContent.replace(/<textarea(?![^>]*aria-label)([^>]*)>/gi, '<textarea aria-label="Cleaning instructions or message"$1>');
 
-  // 4. Best Practices: Security rel="noopener noreferrer" for all target="_blank"
+  // 4. Accessibility: Iframes (Google Maps & Widgets)
+  newContent = newContent.replace(/<iframe(?![^>]*title)([^>]*)>/gi, `<iframe title="Sweet Maid Service Map in ${clean_name}, Florida"$1>`);
+
+  // 5. Accessibility: Color Contrast Enhancements
+  newContent = newContent.replace(/text-pink-300/gi, 'text-pink-600');
+  newContent = newContent.replace(/text-gray-400/gi, 'text-gray-600');
+  newContent = newContent.replace(/text-gray-300/gi, 'text-gray-500');
+
+  // 6. Best Practices: Security rel="noopener noreferrer" for all target="_blank"
   newContent = newContent.replace(/<a\s+([^>]*target="_blank"(?![^>]*rel=)[^>]*)>/gi, '<a $1 rel="noopener noreferrer">');
 
-  // 5. Image Alt Text: Ensure every <img> has descriptive alt
+  // 7. Image Alt Text: Ensure every <img> has descriptive alt
   newContent = newContent.replace(/<img\s+(?![^>]*\balt=)([^>]+)>/gi, `<img alt="Sweet Maid Professional Cleaning Service in ${clean_name}, Florida" $1>`);
   newContent = newContent.replace(/alt=""/gi, `alt="Sweet Maid Cleaning Service in ${clean_name}, FL"`);
 
-  // 6. Image Paths & WebP Next-Gen Format Upgrade
+  // 8. Image Paths, Dimensions & WebP Next-Gen Format Upgrade
   newContent = newContent.replace(/src="(?:\.\.\/)+images\//g, 'src="/images/').replace(/url\("(?:\.\.\/)+images\//g, 'url("/images/');
   newContent = newContent.replace(/src="images\//g, 'src="/images/').replace(/url\("images\//g, 'url("/images/');
   newContent = newContent.replace(/src="\/images\/([^"]+)\.jpeg"/gi, 'src="/images/$1.webp"');
@@ -311,17 +326,21 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Strip redundant client-side Tailwind script from templates (Next.js compiles Tailwind natively)
   newContent = newContent.replace(/<script[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
 
-  // Prioritize hero image for fast LCP, lazy-load remaining images
+  // Prioritize hero image for fast LCP, add explicit dimensions, lazy-load remaining images
   let heroImageHandled = false;
   newContent = newContent.replace(/<img\s+([^>]+)>/gi, (match, attrs) => {
-    if (!heroImageHandled && (attrs.includes('hero') || attrs.includes('banner') || attrs.includes('logo'))) {
+    let cleanAttrs = attrs;
+    if (!cleanAttrs.includes('width=') && !cleanAttrs.includes('height=')) {
+      cleanAttrs += ' width="800" height="600"';
+    }
+    if (!heroImageHandled && (cleanAttrs.includes('hero') || cleanAttrs.includes('banner') || cleanAttrs.includes('logo'))) {
       heroImageHandled = true;
-      return `<img fetchpriority="high" decoding="async" ${attrs.replace(/\s*loading=["']lazy["']/gi, '')}>`;
+      return `<img fetchpriority="high" decoding="async" ${cleanAttrs.replace(/\s*loading=["']lazy["']/gi, '')}>`;
     }
-    if (!attrs.includes('loading=')) {
-      return `<img loading="lazy" decoding="async" ${attrs}>`;
+    if (!cleanAttrs.includes('loading=')) {
+      return `<img loading="lazy" decoding="async" ${cleanAttrs}>`;
     }
-    return match;
+    return `<img ${cleanAttrs}>`;
   });
 
   // Fix Map Headings and Pin Labels
