@@ -343,6 +343,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     return `<img ${cleanAttrs}>`;
   });
 
+  // 9. Accessibility: Sequential Heading Hierarchy (H1 -> H2 -> H3 -> H4)
+  newContent = newContent.replace(/<h3 class="text-2xl font-bold text-center text-gray-800 mb-6 drop-shadow-sm">Find Services In Your City<\/h3>/gi, '<h2 class="text-2xl font-bold text-center text-gray-800 mb-6 drop-shadow-sm">Find Services In Your City</h2>');
+  newContent = newContent.replace(/<h4 class="font-bold text-lg mb-1">/gi, '<h3 class="font-bold text-lg mb-1">');
+  newContent = newContent.replace(/<h4 class="text-3xl font-bold mb-4 text-gray-900">100% Eco-Friendly Options<\/h4>/gi, '<h3 class="text-3xl font-bold mb-4 text-gray-900">100% Eco-Friendly Options</h3>');
+  newContent = newContent.replace(/<h4 class="font-bold text-gray-900">([^<]+)<\/h4>/gi, '<h3 class="font-bold text-gray-900">$1</h3>');
+  newContent = newContent.replace(/<h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Explore Nearby Cleaning Services<\/h4>/gi, '<h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Explore Nearby Cleaning Services</h3>');
+  newContent = newContent.replace(/<h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">/gi, '<h3 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">');
+
   // Fix Map Headings and Pin Labels
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
   newContent = newContent.replace(/Servicing Florida and surrounding areas/gi, `Servicing ${clean_name} and surrounding areas`);
