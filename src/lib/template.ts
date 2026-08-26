@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { serviceSlugs, formatName } from './data';
+import { serviceSlugs, formatName, getNearestLocations } from './data';
 import { miamiBrowardSlugs } from './miami_broward_slugs';
 
 // Service to H1 mapping using top-converting transactional SEO search terms
@@ -146,6 +146,40 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Fix Cross-City Location Links (e.g. href="/anna-maria-cleaning/")
   newContent = newContent.replace(/href="\/([a-z0-9-]+)-cleaning\/"/g, `href="/$1-fl/${currentService}/"`);
+
+  // Dynamically compute and inject the 100% geographically nearest locations
+  const nearestLocations = getNearestLocations(loc_slug, 8);
+  const isSpecificService = serviceSlugs.includes(currentService);
+  const targetServiceSuffix = isSpecificService ? `${currentService}/` : '';
+
+  const desktopNearbyHtml = nearestLocations.map(c => 
+    `<a href="/${c.slug}/${targetServiceSuffix}" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">${c.name}</a>`
+  ).join('\n');
+
+  const mobileNearbyHtml = nearestLocations.map(c => 
+    `<a href="/${c.slug}/${targetServiceSuffix}" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-location-dot text-pink-300 w-5"></i><span>${c.name}</span></a>`
+  ).join('\n');
+
+  newContent = newContent.replace(
+    /<div id="nearby-locations-list"[^>]*>[\s\S]*?<\/div>/i,
+    `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>`
+  );
+
+  newContent = newContent.replace(
+    /<div id="mobile-nearby-list"[^>]*>[\s\S]*?<\/div>/i,
+    `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${mobileNearbyHtml}\n</div>`
+  );
+
+  // Also update footer "Locations We Serve" grid with the top 28 closest neighboring locations
+  const nearestFooterLocations = getNearestLocations(loc_slug, 28);
+  const footerGridHtml = nearestFooterLocations.map(c => 
+    `<a href="/${c.slug}/${targetServiceSuffix}" class="hover:text-pink-400 transition-colors">${c.name}</a>`
+  ).join('\n');
+
+  newContent = newContent.replace(
+    /(<div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">)[\s\S]*?(<\/div>)/i,
+    `$1\n${footerGridHtml}\n$2`
+  );
 
   // Strip native inline onclick to let React ClientInteractions intercept it perfectly
   newContent = newContent.replace(/onclick="this\.parentElement\.classList\.toggle\('accordion-active'\)"/gi, "");

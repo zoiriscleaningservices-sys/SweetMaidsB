@@ -234,6 +234,11 @@
 
         if (!desktopList && !mobileList) return;
 
+        // If already server-rendered with valid links, keep the server-rendered links
+        if (desktopList && desktopList.querySelectorAll('a').length > 0) {
+            return;
+        }
+
         var nearest = getNearestCities(locationSlug, 8);
 
         if (desktopList) {

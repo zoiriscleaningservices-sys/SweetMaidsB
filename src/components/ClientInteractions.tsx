@@ -216,37 +216,6 @@ export default function ClientInteractions() {
       cleanups.push(() => btn.removeEventListener('click', toggleAcc));
     });
 
-    // 6. Populate Locations Dropdowns dynamically using the Footer Grid
-    const desktopNearbyList = document.getElementById('nearby-locations-list');
-    const mobileNearbyList = document.getElementById('mobile-nearby-list');
-    
-    if (desktopNearbyList || mobileNearbyList) {
-      const h4s = Array.from(document.querySelectorAll('h4'));
-      const locHeader = h4s.find(h => h.textContent?.includes('Locations We Serve'));
-      if (locHeader && locHeader.nextElementSibling) {
-        const grid = locHeader.nextElementSibling;
-        const links = Array.from(grid.querySelectorAll('a')).slice(1, 9); // Skip Florida, take Next 8
-        
-        if (desktopNearbyList) {
-          desktopNearbyList.innerHTML = '';
-          links.forEach(l => {
-            const clone = l.cloneNode(true) as HTMLAnchorElement;
-            clone.className = "block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition";
-            desktopNearbyList.appendChild(clone);
-          });
-        }
-        
-        if (mobileNearbyList) {
-          mobileNearbyList.innerHTML = '';
-          links.forEach(l => {
-            const clone = l.cloneNode(true) as HTMLAnchorElement;
-            clone.className = "mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all";
-            mobileNearbyList.appendChild(clone);
-          });
-        }
-      }
-    }
-
     // Run cleanup automatically when unmounting or navigating
     return () => {
       cleanups.forEach(fn => fn());
