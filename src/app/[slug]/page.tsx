@@ -76,7 +76,7 @@ export default async function LocationOrServicePage({ params }: { params: Promis
     if (!rawHtml) return <div>Template missing</div>;
 
     const bodyContent = extractSections(rawHtml);
-    const localizedHtml = localizedReplace(bodyContent, cleanName, slug, false, 'cleaning');
+    const localizedHtml = localizedReplace(bodyContent, cleanName, slug, false, 'house-cleaning');
     
     // Competitor Beating Strategy: Custom LocalBusiness and FAQ JSON-LD schemas targeting Miami neighborhoods
     const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);

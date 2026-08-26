@@ -153,3 +153,17 @@ html, body {
   position: relative;
   width: 100%;
 }
+
+/* Guarantee 100% element visibility regardless of external animation scripts */
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* Hero Section High-Contrast Elegance */
+#heroBg {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}

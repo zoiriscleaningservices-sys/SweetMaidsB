@@ -90,13 +90,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Generate 100% Unique, Zero-Duplicate SEO Content Pack
   const seoPack = generateSeoContentPack(clean_name, loc_slug, serviceName, currentService);
 
-  // Dynamic H1 in pure White with zero duplicate probability
-  newContent = newContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 font-serif drop-shadow-md">${seoPack.h1}</h1>`);
+  // Strip all data-aos animation attributes to guarantee 100% visibility of all sections
+  newContent = newContent.replace(/\s*data-aos(?:-[a-z0-9-]+)?="[^"]*"/gi, '');
+  newContent = newContent.replace(/AOS\.init\([^)]*\);?/gi, "if(typeof AOS!=='undefined'){AOS.init();}");
 
-  // Dynamic Hero Subtitle
-  newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${seoPack.heroSub}$2`);
-
-  // Dynamic Safe Text Replacements for H1 without destroying HTML tags
+  // Dynamic Safe Text Replacements for body without destroying HTML tags
   newContent = newContent.replace(/Best Cleaning Services in/gi, `${serviceName} in`);
   newContent = newContent.replace(/House Cleaning Services in/gi, `${serviceName} in`);
   newContent = newContent.replace(/House Cleaning in/gi, `${serviceName} in`);
@@ -383,10 +381,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/alt=""/gi, `alt="Sweet Maid Cleaning Service in ${clean_name}, FL"`);
 
   // 8. Image Paths, Dimensions & WebP Next-Gen Format Upgrade
-  newContent = newContent.replace(/src="(?:\.\.\/)+images\//g, 'src="/images/').replace(/url\("(?:\.\.\/)+images\//g, 'url("/images/');
-  newContent = newContent.replace(/src="images\//g, 'src="/images/').replace(/url\("images\//g, 'url("/images/');
-  newContent = newContent.replace(/src="\/images\/([^"]+)\.jpeg"/gi, 'src="/images/$1.webp"');
-  newContent = newContent.replace(/url\(["']?\/images\/([^"')]+)\.jpeg["']?\)/gi, 'url("/images/$1.webp")');
+  newContent = newContent.replace(/src=["'](?:\.\.\/)+images\//gi, 'src="/images/');
+  newContent = newContent.replace(/src=["']images\//gi, 'src="/images/');
+  newContent = newContent.replace(/url\(['"]?(?:\.\.\/)+images\//gi, "url('/images/");
+  newContent = newContent.replace(/url\(['"]?images\//gi, "url('/images/");
+  newContent = newContent.replace(/\/images\/([^"')]+)\.jpeg/gi, '/images/$1.webp');
 
   // Strip redundant client-side Tailwind script from templates (Next.js compiles Tailwind natively)
   newContent = newContent.replace(/<script[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
@@ -712,7 +711,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   }
 
   if (customH1Inner) {
-    newContent = newContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>/gi, `<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 font-serif drop-shadow-md">${customH1Inner}</h1>`);
+    newContent = newContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 font-serif drop-shadow-md">${customH1Inner}</h1>`);
+    if (pageType === 'service_or_home') {
+      newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${seoPack.heroSub}$2`);
+    }
   }
 
   if (miamiBrowardSlugs.includes(loc_slug)) {

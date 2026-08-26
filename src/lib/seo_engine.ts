@@ -311,7 +311,7 @@ export function generateSeoContentPack(
     {
       title: "100% Background-Checked Staff",
       desc: `Every cleaner dispatched to your ${cleanLoc} property is rigorously vetted, trained, and insured for your total peace of mind.`,
-      icon: "fa-shield-check"
+      icon: "fa-shield-halved"
     },
     {
       title: "Customized Cleaning Checklists",

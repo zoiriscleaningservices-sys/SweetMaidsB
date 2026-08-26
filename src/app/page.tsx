@@ -27,7 +27,7 @@ export default function HomePage() {
 
   const bodyContent = extractSections(rawHtml);
   // Pass is_sub_page as false to keep the `/images/` path correctly referenced 
-  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, false, 'cleaning');
+  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, false, 'house-cleaning');
 
   const homeSchemas = [
     {
