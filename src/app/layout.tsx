@@ -42,37 +42,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://unpkg.com" />
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
-        <link
-          rel="preload"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-          as="style"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-          media="print"
-          // @ts-ignore
-          onLoad="this.media='all'"
-        />
-        <noscript>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-            crossOrigin="anonymous"
-          />
-        </noscript>
-        <link
-          href="https://unpkg.com/aos@2.3.4/dist/aos.css"
-          rel="stylesheet"
-          media="print"
-          // @ts-ignore
-          onLoad="this.media='all'"
-        />
-        <noscript>
-          <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-        </noscript>
       </head>
       <body className="antialiased font-sans">
         {children}

@@ -9,6 +9,23 @@ export default function ClientInteractions() {
   useEffect(() => {
     const cleanups: (() => void)[] = [];
 
+    // 0. Load FontAwesome & AOS asynchronously to eliminate render-blocking CSS
+    if (!document.getElementById('font-awesome-css')) {
+      const link = document.createElement('link');
+      link.id = 'font-awesome-css';
+      link.rel = 'stylesheet';
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    }
+    if (!document.getElementById('aos-css')) {
+      const link = document.createElement('link');
+      link.id = 'aos-css';
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
+      document.head.appendChild(link);
+    }
+
     // 1. Initialize AOS robustly across Next.js asynchronous loads
     let checks = 0;
     const checkAOS = setInterval(() => {
