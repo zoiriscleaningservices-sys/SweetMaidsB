@@ -161,13 +161,13 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   ).join('\n');
 
   newContent = newContent.replace(
-    /<div id="nearby-locations-list"[^>]*>[\s\S]*?<\/div>/i,
-    `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>`
+    /(<div id="nearby-locations-list"[^>]*>)[\s\S]*?(<\/div>\s*<div class="border-t)/i,
+    `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>\n              <div class="border-t`
   );
 
   newContent = newContent.replace(
-    /<div id="mobile-nearby-list"[^>]*>[\s\S]*?<\/div>/i,
-    `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${mobileNearbyHtml}\n</div>`
+    /(<div id="mobile-nearby-list"[^>]*>)[\s\S]*?(<\/div>\s*<\/div>\s*<\/div>\s*\n?\s*<a href="[^"]*blog\/)/i,
+    `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${mobileNearbyHtml}\n</div>\n          </div>\n        </div>\n\n        <a href="/blog/`
   );
 
   // Also update footer "Locations We Serve" grid with the top 28 closest neighboring locations
