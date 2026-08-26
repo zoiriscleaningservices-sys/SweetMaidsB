@@ -668,36 +668,23 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       </div>`;
   newContent = newContent.replace(trustIndexRegex, realTimeReviewsHtml);
 
-  // 2. High-converting H1 Domination Injection
+  // 2. High-converting H1 Domination Injection (Pure White, Zero "#1", 100% Daily Search Phrasing)
   let customH1Inner = '';
   if (pageType === 'about') {
-    customH1Inner = `#1 Top-Rated House Cleaning & Maid Service Team in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `Top-Rated House Cleaning & Maid Service Team in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'gallery') {
-    customH1Inner = `#1 Best Cleaning Results & Professional Service Gallery in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `Best Cleaning Results & Professional Service Gallery in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'blog') {
-    customH1Inner = `#1 Best Cleaning Tips & Professional Home Care Blog in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `Best Cleaning Tips & Professional Home Care Blog in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'login') {
-    customH1Inner = `Welcome Back to Sweet Maid - #1 Rated Cleaning Portal in <span class="text-pink-500 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `Welcome Back to Sweet Maid Portal in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
   } else {
-    // service_or_home
-    const isService = serviceSlugs.includes(currentService);
-    if (isService) {
-      const targetH1Prefix = serviceH1Map[currentService] || "#1 Top-Rated House Cleaning & Professional Maid Services in";
-      customH1Inner = `${targetH1Prefix} <br class="hidden sm:block"> <span class="text-pink-300 drop-shadow-md">${clean_name}, FL</span>`;
-    } else {
-      // Home / Location Homepage
-      customH1Inner = `#1 Rated House Cleaning & Professional Maid Services in <br class="hidden sm:block"> <span class="text-pink-300 drop-shadow-md">${clean_name}, FL</span>`;
-    }
+    // service_or_home: Use dynamic zero-duplicate SEO pack H1
+    customH1Inner = `${seoPack.h1}`;
   }
 
-  if (customH1Inner && originalH1Match) {
-    newContent = newContent.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, (match) => {
-      const openingTagMatch = match.match(/^(<h1[^>]*>)/i);
-      if (openingTagMatch) {
-        return `${openingTagMatch[1]}${customH1Inner}</h1>`;
-      }
-      return match;
-    });
+  if (customH1Inner) {
+    newContent = newContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>/gi, `<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 font-serif drop-shadow-md">${customH1Inner}</h1>`);
   }
 
   if (miamiBrowardSlugs.includes(loc_slug)) {
