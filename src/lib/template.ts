@@ -267,6 +267,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<button\s+id="prev-service"(?![^>]*aria-label)([^>]*)>/gi, '<button id="prev-service" aria-label="Previous service slide"$1>');
   newContent = newContent.replace(/<button\s+id="next-service"(?![^>]*aria-label)([^>]*)>/gi, '<button id="next-service" aria-label="Next service slide"$1>');
   newContent = newContent.replace(/<button\s+class="([^"]*accordion[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<button class="$1" aria-label="Toggle section details"$2>');
+  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*class="[^"]*rounded-2xl[^"]*")>/gi, '<button aria-label="Toggle menu section"$1>');
+  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*>\s*Services\s*<i)/gi, '<button aria-label="Services Dropdown Menu"$1');
+  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*>\s*Locations\s*<i)/gi, '<button aria-label="Locations Dropdown Menu"$1');
+  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*>\s*<i class="fa-solid fa-xmark)/gi, '<button aria-label="Clear search input"$1');
+
+  // Defer third-party lead generation scripts
+  newContent = newContent.replace(/<script\s+src="https:\/\/widgets\.leadconnectorhq\.com\/loader\.js"[^>]*><\/script>/gi, '<script src="https://widgets.leadconnectorhq.com/loader.js" defer></script>');
+  newContent = newContent.replace(/<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>/gi, '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>');
 
   // 2. Accessibility: Icon-Only Links & Social Links
   newContent = newContent.replace(/<a\s+href="tel:([^"]+)"(?![^>]*aria-label)([^>]*)>/gi, `<a href="tel:$1" aria-label="Call Sweet Maid at $1"$2>`);

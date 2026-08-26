@@ -37,6 +37,7 @@ export default function FloatingBookingButton() {
         {/* Instant Call Button */}
         <a
           href={`tel:${phoneNumber}`}
+          aria-label="Call Sweet Maid instantly"
           className="group relative flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-pink-500 px-6 py-2.5 rounded-[2rem] shadow-[0_5px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(236,72,153,0.3)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-100"
         >
           <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-pink-50">
@@ -47,6 +48,7 @@ export default function FloatingBookingButton() {
 
         {/* Instant Booking Button */}
         <button
+          aria-label="Book a cleaning service instantly"
           onClick={() => {
             setHasClicked(true);
             const quoteSection = document.getElementById("quote");

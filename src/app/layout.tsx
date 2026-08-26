@@ -40,20 +40,20 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://unpkg.com" />
-        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
       </head>
       <body className="antialiased font-sans">
         {children}
         <FloatingBookingButton />
         <ClientInteractions />
-        <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js" strategy="afterInteractive" />
-        <Script src="/js/navigation-dynamic.js" strategy="afterInteractive" />
+        <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js" strategy="lazyOnload" />
+        <Script src="/js/navigation-dynamic.js" strategy="lazyOnload" />
         <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
       </body>
     </html>
