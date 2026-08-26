@@ -40,6 +40,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://unpkg.com" />
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+        <link
+          rel="preload"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          as="style"
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -54,7 +61,16 @@ export default function RootLayout({
         <ClientInteractions />
         <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js" strategy="lazyOnload" />
         <Script src="/js/navigation-dynamic.js" strategy="lazyOnload" />
-        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        <Script id="elfsight-loader" strategy="lazyOnload">
+          {`
+            if (document.querySelector('.elfsight-app')) {
+              var s = document.createElement('script');
+              s.src = "https://elfsightcdn.com/platform.js";
+              s.async = true;
+              document.body.appendChild(s);
+            }
+          `}
+        </Script>
       </body>
     </html>
   );
