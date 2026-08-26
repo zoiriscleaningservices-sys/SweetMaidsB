@@ -155,6 +155,9 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
               <Link href="/gallery/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 Gallery
               </Link>
+              <Link href="/book-online/" className="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors">
+                Book Online
+              </Link>
               <Link href="/login/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 Login
               </Link>
@@ -166,21 +169,29 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
                 <i className="fa-solid fa-phone"></i> (941) 222-2080
               </a>
               <Link
-                href="/#quote"
-                className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-sm px-6 py-2.5 rounded-full font-bold shadow-md hover:shadow-lg hover:scale-105 transition-all"
+                href="/book-online/"
+                className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-sm px-6 py-2.5 rounded-full font-bold shadow-md hover:shadow-lg hover:scale-105 transition-all flex items-center gap-2"
               >
-                Get Free Quote
+                <i className="fa-solid fa-calendar-check text-white"></i> Book Online
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-2xl text-gray-800 p-2"
-              aria-label="Toggle Navigation"
-            >
-              <i className={mobileMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}></i>
-            </button>
+            {/* Mobile Header Quick Actions */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <Link
+                href="/book-online/"
+                className="bg-gradient-to-r from-pink-400 to-pink-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1 active:scale-95 transition-all"
+              >
+                <i className="fa-solid fa-calendar-check text-[10px]"></i> Book Online
+              </Link>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-2xl text-gray-800 p-2"
+                aria-label="Toggle Navigation"
+              >
+                <i className={mobileMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}></i>
+              </button>
+            </div>
           </div>
         </div>
       </header>
