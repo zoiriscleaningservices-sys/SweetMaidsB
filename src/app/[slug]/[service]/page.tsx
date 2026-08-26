@@ -1,13 +1,12 @@
 import { Metadata } from 'next';
-import { serviceSlugs, getLocationData, formatName } from '@/lib/data';
+import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
 import { miamiBrowardSlugs } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, service: string }> }): Promise<Metadata> {
   const { slug, service } = await params;
-  const data = getLocationData();
-  const locData = data[slug];
+  const locData = resolveAnyLocation(slug);
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
@@ -63,9 +62,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ServicePage({ params }: { params: Promise<{ slug: string, service: string }> }) {
   const { slug, service } = await params;
   
-  const data = getLocationData();
-  const locData = data[slug];
-  if (!locData) return <div>Location not found</div>;
+  const locData = resolveAnyLocation(slug);
+  if (!locData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6 text-center">
+        <div className="max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Location Not Found</h1>
+          <p className="text-gray-600 mb-6">We couldn't find the location you're looking for.</p>
+          <a href="/" className="inline-block bg-pink-400 hover:bg-pink-500 text-white font-bold px-6 py-3 rounded-full transition-colors">
+            Return Home
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   const cleanName = formatName(locData.name);
 
