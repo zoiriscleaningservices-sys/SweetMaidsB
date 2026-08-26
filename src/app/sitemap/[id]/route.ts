@@ -40,6 +40,7 @@ export async function GET(
     addUrl('/blog/', '0.8', 'weekly');
     addUrl('/gallery/', '0.8', 'monthly');
     addUrl('/booknow/', '0.9', 'daily');
+    addUrl('/book-online/', '1.0', 'daily');
 
     serviceSlugs.forEach(service => {
       addUrl(`/${service}/`, '0.9', 'weekly');

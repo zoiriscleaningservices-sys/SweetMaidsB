@@ -328,7 +328,20 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<a\s+href="([^"]*youtube[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on YouTube" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse all Florida cleaning locations"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/booknow\/?"[^>]*)>/gi, '<a aria-label="Book a professional cleaning service now"$1>');
+  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/book-online\/?"[^>]*)>/gi, '<a aria-label="Book your cleaning service online"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company"$1>');
+
+  // Header Navigation: Inject "Book Online" into desktop & mobile navs
+  if (!newContent.includes('href="/book-online/"')) {
+    newContent = newContent.replace(
+      /<a([^>]*href="\/gallery\/?"[^>]*)>Gallery<\/a>/gi,
+      `<a$1>Gallery</a>\n          <a href="/book-online/" class="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors">Book Online</a>`
+    );
+    newContent = newContent.replace(
+      /(<a[^>]*href="\/about\/?"[^>]*>[\s\S]*?<\/a>)/i,
+      `$1\n        <a href="/book-online/" class="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all"><span class="font-bold text-gray-800">Book Online</span><i class="fa-solid fa-calendar-check text-pink-300"></i></a>`
+    );
+  }
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/login\/?"[^>]*)>/gi, '<a aria-label="Customer portal login"$1>');
