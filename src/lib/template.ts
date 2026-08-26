@@ -256,15 +256,58 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       </div>`;
   newContent = newContent.replace(/<i class="fa-solid fa-earth-americas[^>]*><\/i>/gi, GLOBE_HTML);
 
-  // Image Paths & Performance Optimizations
+  // ----------------------------------------------------
+  // 100% LIGHTHOUSE OPTIMIZATION ENGINE
+  // Accessibility (A11y), Best Practices & Performance
+  // ----------------------------------------------------
+
+  // 1. Accessibility: Interactive Buttons & Controls
+  newContent = newContent.replace(/<button\s+id="mobile-btn"(?![^>]*aria-label)([^>]*)>/gi, '<button id="mobile-btn" aria-label="Open mobile navigation menu"$1>');
+  newContent = newContent.replace(/<button\s+id="close-mobile"(?![^>]*aria-label)([^>]*)>/gi, '<button id="close-mobile" aria-label="Close mobile navigation menu"$1>');
+  newContent = newContent.replace(/<button\s+id="prev-service"(?![^>]*aria-label)([^>]*)>/gi, '<button id="prev-service" aria-label="Previous service slide"$1>');
+  newContent = newContent.replace(/<button\s+id="next-service"(?![^>]*aria-label)([^>]*)>/gi, '<button id="next-service" aria-label="Next service slide"$1>');
+  newContent = newContent.replace(/<button\s+class="([^"]*accordion[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<button class="$1" aria-label="Toggle section details"$2>');
+
+  // 2. Accessibility: Icon-Only Links & Social Links
+  newContent = newContent.replace(/<a\s+href="tel:([^"]+)"(?![^>]*aria-label)([^>]*)>/gi, `<a href="tel:$1" aria-label="Call Sweet Maid at $1"$2>`);
+  newContent = newContent.replace(/<a\s+href="([^"]*facebook[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Facebook" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*instagram[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Instagram" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*tiktok[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on TikTok" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*youtube[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on YouTube" rel="noopener noreferrer"$2>');
+
+  // 3. Accessibility: Form Inputs & Controls
+  newContent = newContent.replace(/<input\s+type="text"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="text" aria-label="$2"$1>');
+  newContent = newContent.replace(/<input\s+type="email"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="email" aria-label="$2"$1>');
+  newContent = newContent.replace(/<input\s+type="tel"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="tel" aria-label="$2"$1>');
+  newContent = newContent.replace(/<select(?![^>]*aria-label)([^>]*)>/gi, '<select aria-label="Select Cleaning Service"$1>');
+  newContent = newContent.replace(/<textarea(?![^>]*aria-label)([^>]*)>/gi, '<textarea aria-label="Cleaning instructions or message"$1>');
+
+  // 4. Best Practices: Security rel="noopener noreferrer" for all target="_blank"
+  newContent = newContent.replace(/<a\s+([^>]*target="_blank"(?![^>]*rel=)[^>]*)>/gi, '<a $1 rel="noopener noreferrer">');
+
+  // 5. Image Alt Text: Ensure every <img> has descriptive alt
+  newContent = newContent.replace(/<img\s+(?![^>]*\balt=)([^>]+)>/gi, `<img alt="Sweet Maid Professional Cleaning Service in ${clean_name}, Florida" $1>`);
+  newContent = newContent.replace(/alt=""/gi, `alt="Sweet Maid Cleaning Service in ${clean_name}, FL"`);
+
+  // 6. Image Paths & Performance Optimizations
   newContent = newContent.replace(/src="(?:\.\.\/)+images\//g, 'src="/images/').replace(/url\("(?:\.\.\/)+images\//g, 'url("/images/');
   newContent = newContent.replace(/src="images\//g, 'src="/images/').replace(/url\("images\//g, 'url("/images/');
 
   // Strip redundant client-side Tailwind script from templates (Next.js compiles Tailwind natively)
   newContent = newContent.replace(/<script[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
 
-  // Auto-apply loading="lazy" and decoding="async" to all <img> tags missing it
-  newContent = newContent.replace(/<img\s+(?![^>]*\bloading=)([^>]+)>/gi, '<img loading="lazy" decoding="async" $1>');
+  // Prioritize hero image for fast LCP, lazy-load remaining images
+  let heroImageHandled = false;
+  newContent = newContent.replace(/<img\s+([^>]+)>/gi, (match, attrs) => {
+    if (!heroImageHandled && (attrs.includes('hero') || attrs.includes('banner') || attrs.includes('logo'))) {
+      heroImageHandled = true;
+      return `<img fetchpriority="high" decoding="async" ${attrs.replace(/\s*loading=["']lazy["']/gi, '')}>`;
+    }
+    if (!attrs.includes('loading=')) {
+      return `<img loading="lazy" decoding="async" ${attrs}>`;
+    }
+    return match;
+  });
 
   // Fix Map Headings and Pin Labels
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);

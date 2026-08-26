@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: var(--font-poppins), 'Poppins', system-ui, sans-serif;
   color: var(--text-dark);
   background: linear-gradient(135deg, #fffafc 0%, #fff5f9 50%, #ffe8f4 100%);
   background-attachment: fixed;
@@ -23,7 +23,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
   letter-spacing: -0.01em;
 }
 
