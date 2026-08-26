@@ -331,7 +331,12 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/book-online\/?"[^>]*)>/gi, '<a aria-label="Book your cleaning service online"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company"$1>');
 
-  // Header Navigation: Inject "Book Online" into desktop & mobile navs
+  // Header Navigation: Inject "Book Online" into desktop & mobile navs and Header CTA
+  newContent = newContent.replace(
+    /<a\s+href="#quote"([^>]*)>[\s\S]*?Get Free Quote[\s\S]*?<\/a>/gi,
+    `<a href="/book-online/" class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-7 py-3 rounded-full font-bold shadow-xl shadow-pink-300/50 hover:shadow-2xl hover:shadow-pink-400/60 hover:scale-105 transition-all flex items-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
+  );
+
   if (!newContent.includes('href="/book-online/"')) {
     newContent = newContent.replace(
       /<a([^>]*href="\/gallery\/?"[^>]*)>Gallery<\/a>/gi,
@@ -342,6 +347,12 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       `$1\n        <a href="/book-online/" class="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all"><span class="font-bold text-gray-800">Book Online</span><i class="fa-solid fa-calendar-check text-pink-300"></i></a>`
     );
   }
+
+  // Mobile Header Book Online Quick Button
+  newContent = newContent.replace(
+    /(<button id="mobile-btn"[^>]*>)/i,
+    `<a href="/book-online/" class="lg:hidden bg-gradient-to-r from-pink-400 to-pink-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md mr-2 flex items-center gap-1.5 active:scale-95 transition-all"><i class="fa-solid fa-calendar-check text-[11px]"></i> Book Online</a>\n        $1`
+  );
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/login\/?"[^>]*)>/gi, '<a aria-label="Customer portal login"$1>');
