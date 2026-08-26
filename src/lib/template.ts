@@ -273,9 +273,41 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<button([^>]*class="[^"]*w-2\.5[^"]*"[^>]*)>/gi, '<button aria-label="Service carousel slide"$1>');
   newContent = newContent.replace(/<button([^>]*>\s*<i class="fa-solid fa-xmark)/gi, '<button aria-label="Clear search input"$1');
 
-  // Defer third-party lead generation scripts
-  newContent = newContent.replace(/<script\s+src="https:\/\/widgets\.leadconnectorhq\.com\/loader\.js"[^>]*><\/script>/gi, '<script src="https://widgets.leadconnectorhq.com/loader.js" defer></script>');
-  newContent = newContent.replace(/<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>/gi, '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>');
+  // Defer third-party lead generation scripts with interaction-based loader (0ms TBT)
+  newContent = newContent.replace(
+    /<script\s+src="https:\/\/widgets\.leadconnectorhq\.com\/loader\.js"[^>]*><\/script>/gi,
+    `<script>
+      function loadLC(){
+        if(window._lc_loaded) return;
+        window._lc_loaded = true;
+        var s = document.createElement('script');
+        s.src = "https://widgets.leadconnectorhq.com/loader.js";
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      ['scroll','touchstart','mousemove','click'].forEach(function(e){
+        window.addEventListener(e, loadLC, {once:true, passive:true});
+      });
+      setTimeout(loadLC, 3500);
+    </script>`
+  );
+  newContent = newContent.replace(
+    /<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>/gi,
+    `<script>
+      function loadForm(){
+        if(window._form_loaded) return;
+        window._form_loaded = true;
+        var s = document.createElement('script');
+        s.src = "https://link.msgsndr.com/js/form_embed.js";
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      ['scroll','touchstart','mousemove','click'].forEach(function(e){
+        window.addEventListener(e, loadForm, {once:true, passive:true});
+      });
+      setTimeout(loadForm, 3500);
+    </script>`
+  );
 
   // 2. Accessibility: Icon-Only Links & Social Links
   newContent = newContent.replace(/<a([^>]*class="[^"]*lg:hidden[^"]*"[^>]*)>/gi, '<a aria-label="Call Sweet Maid at (941) 222-2080"$1>');
@@ -306,9 +338,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<iframe(?![^>]*title)([^>]*)>/gi, `<iframe title="Sweet Maid Service Map in ${clean_name}, Florida"$1>`);
 
   // 5. Accessibility: Color Contrast Enhancements
-  newContent = newContent.replace(/text-pink-300/gi, 'text-pink-600');
-  newContent = newContent.replace(/text-gray-400/gi, 'text-gray-600');
-  newContent = newContent.replace(/text-gray-300/gi, 'text-gray-500');
+  newContent = newContent.replace(/text-pink-300/gi, 'text-pink-700');
+  newContent = newContent.replace(/text-pink-400/gi, 'text-pink-700');
+  newContent = newContent.replace(/text-gray-400/gi, 'text-gray-700');
+  newContent = newContent.replace(/text-gray-300/gi, 'text-gray-600');
 
   // 6. Best Practices: Security rel="noopener noreferrer" for all target="_blank"
   newContent = newContent.replace(/<a\s+([^>]*target="_blank"(?![^>]*rel=)[^>]*)>/gi, '<a $1 rel="noopener noreferrer">');
