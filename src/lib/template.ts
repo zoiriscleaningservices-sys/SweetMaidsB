@@ -262,15 +262,15 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // ----------------------------------------------------
 
   // 1. Accessibility: Interactive Buttons & Controls
-  newContent = newContent.replace(/<button\s+id="mobile-btn"(?![^>]*aria-label)([^>]*)>/gi, '<button id="mobile-btn" aria-label="Open mobile navigation menu"$1>');
-  newContent = newContent.replace(/<button\s+id="close-mobile"(?![^>]*aria-label)([^>]*)>/gi, '<button id="close-mobile" aria-label="Close mobile navigation menu"$1>');
-  newContent = newContent.replace(/<button\s+id="prev-service"(?![^>]*aria-label)([^>]*)>/gi, '<button id="prev-service" aria-label="Previous service slide"$1>');
-  newContent = newContent.replace(/<button\s+id="next-service"(?![^>]*aria-label)([^>]*)>/gi, '<button id="next-service" aria-label="Next service slide"$1>');
-  newContent = newContent.replace(/<button\s+class="([^"]*accordion[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<button class="$1" aria-label="Toggle section details"$2>');
-  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*class="[^"]*rounded-2xl[^"]*")>/gi, '<button aria-label="Toggle menu section"$1>');
-  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*>\s*Services\s*<i)/gi, '<button aria-label="Services Dropdown Menu"$1');
-  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*>\s*Locations\s*<i)/gi, '<button aria-label="Locations Dropdown Menu"$1');
-  newContent = newContent.replace(/<button(?![^>]*aria-label)([^>]*>\s*<i class="fa-solid fa-xmark)/gi, '<button aria-label="Clear search input"$1');
+  newContent = newContent.replace(/<button([^>]*id="mobile-btn"[^>]*)>/gi, '<button aria-label="Open mobile navigation menu"$1>');
+  newContent = newContent.replace(/<button([^>]*id="close-mobile"[^>]*)>/gi, '<button aria-label="Close mobile navigation menu"$1>');
+  newContent = newContent.replace(/<button([^>]*id="prev-service"[^>]*)>/gi, '<button aria-label="Previous service slide"$1>');
+  newContent = newContent.replace(/<button([^>]*id="next-service"[^>]*)>/gi, '<button aria-label="Next service slide"$1>');
+  newContent = newContent.replace(/<button([^>]*>\s*Services\s*<i)/gi, '<button aria-label="Services Dropdown Menu"$1');
+  newContent = newContent.replace(/<button([^>]*>\s*Locations\s*<i)/gi, '<button aria-label="Locations Dropdown Menu"$1');
+  newContent = newContent.replace(/<button([^>]*class="[^"]*accordion[^"]*"[^>]*)>/gi, '<button aria-label="Toggle section details"$1>');
+  newContent = newContent.replace(/<button([^>]*class="[^"]*rounded-2xl[^"]*"[^>]*)>/gi, '<button aria-label="Toggle menu section"$1>');
+  newContent = newContent.replace(/<button([^>]*>\s*<i class="fa-solid fa-xmark)/gi, '<button aria-label="Clear search input"$1');
 
   // Defer third-party lead generation scripts
   newContent = newContent.replace(/<script\s+src="https:\/\/widgets\.leadconnectorhq\.com\/loader\.js"[^>]*><\/script>/gi, '<script src="https://widgets.leadconnectorhq.com/loader.js" defer></script>');
