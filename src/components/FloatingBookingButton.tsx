@@ -12,6 +12,17 @@ export default function FloatingBookingButton() {
   const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);
   const phoneNumber = isMiamiOrBroward ? "3058516959" : "9412222080";
 
+  // Hide floating action button completely on booking and checkout pages so it never blocks the pricing summary or payment inputs
+  if (
+    pathname?.startsWith("/book-online") ||
+    pathname?.startsWith("/booknow") ||
+    pathname?.startsWith("/login") ||
+    slug === "book-online" ||
+    slug === "booknow"
+  ) {
+    return null;
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       // The hero section is roughly 500-700px.
