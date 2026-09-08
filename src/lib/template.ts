@@ -321,21 +321,28 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     `<a href="/book-online/" class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-7 py-3 rounded-full font-bold shadow-xl shadow-pink-300/50 hover:shadow-2xl hover:shadow-pink-400/60 hover:scale-105 transition-all flex items-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
   );
 
-  if (!newContent.includes('href="/book-online/"')) {
-    newContent = newContent.replace(
-      /<a([^>]*href="\/gallery\/?"[^>]*)>Gallery<\/a>/gi,
-      `<a$1>Gallery</a>\n          <a href="/book-online/" class="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors">Book Online</a>`
-    );
-    newContent = newContent.replace(
-      /(<a[^>]*href="\/about\/?"[^>]*>[\s\S]*?<\/a>)/i,
-      `$1\n        <a href="/book-online/" class="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all"><span class="font-bold text-gray-800">Book Online</span><i class="fa-solid fa-calendar-check text-pink-300"></i></a>`
-    );
-  }
+  // 1. Desktop Navigation: Inject "Book Online" into desktop nav bar
+  newContent = newContent.replace(
+    /(<a[^>]*href="\/gallery\/?"[^>]*>Gallery<\/a>)/i,
+    `$1\n          <a href="/book-online/" class="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors" aria-label="Book your cleaning service online">Book Online</a>`
+  );
 
-  // Mobile Header Book Online Quick Button
+  // 2. Mobile Header Top Bar: Quick "Book Online" button next to mobile hamburger icon
   newContent = newContent.replace(
     /(<button id="mobile-btn"[^>]*>)/i,
-    `<a href="/book-online/" class="lg:hidden bg-gradient-to-r from-pink-400 to-pink-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md mr-2 flex items-center gap-1.5 active:scale-95 transition-all"><i class="fa-solid fa-calendar-check text-[11px]"></i> Book Online</a>\n        $1`
+    `<a href="/book-online/" class="lg:hidden bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md mr-2 flex items-center gap-1.5 active:scale-95 transition-all whitespace-nowrap" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-[11px]"></i> Book Online</a>\n        $1`
+  );
+
+  // 3. Mobile Slide-Out Drawer: Inject "Book Online" navigation item at top of mobile menu
+  newContent = newContent.replace(
+    /(<nav class="flex flex-col gap-4">)/i,
+    `$1\n        <a href="/book-online/" class="menu-item delay-1 flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-md shadow-pink-200 font-bold transition-all" aria-label="Book your cleaning service online"><span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</span><i class="fa-solid fa-arrow-right text-white text-sm"></i></a>`
+  );
+
+  // 4. Mobile Slide-Out Drawer: Convert bottom CTA button to "Book Online"
+  newContent = newContent.replace(
+    /<a\s+[^>]*onclick="closeMenu\(\)"[^>]*>[\s\S]*?<\/a>/gi,
+    `<a href="/book-online/" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
   );
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery"$1>');

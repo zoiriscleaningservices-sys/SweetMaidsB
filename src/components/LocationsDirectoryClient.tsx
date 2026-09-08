@@ -199,6 +199,10 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-pink-100 px-6 py-6 space-y-4 shadow-xl animate-fadeIn">
+          <Link href="/book-online/" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between p-3.5 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-xl font-bold shadow-md shadow-pink-200">
+            <span className="flex items-center gap-2"><i className="fa-solid fa-calendar-check"></i> Book Online</span>
+            <i className="fa-solid fa-arrow-right text-sm"></i>
+          </Link>
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-gray-800">
             Home
           </Link>
@@ -222,11 +226,11 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
           </Link>
           <div className="pt-4 border-t border-pink-100 flex flex-col gap-3">
             <Link
-              href="/#quote"
+              href="/book-online/"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full bg-gradient-to-r from-pink-400 to-pink-500 text-white text-center py-3 rounded-xl font-bold shadow-md"
+              className="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white text-center py-3.5 rounded-xl font-bold shadow-md flex items-center justify-center gap-2"
             >
-              Get Free Quote
+              <i className="fa-solid fa-calendar-check"></i> Book Online
             </Link>
             <a
               href="tel:19412222080"

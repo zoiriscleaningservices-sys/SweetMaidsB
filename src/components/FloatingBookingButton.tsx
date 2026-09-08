@@ -49,14 +49,14 @@ export default function FloatingBookingButton() {
         {/* Instant Booking Button */}
         <a
           href="/book-online/"
-          aria-label="Book a cleaning service online"
-          className="group relative flex items-center gap-3 bg-gradient-to-br from-pink-400 via-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-8 py-4 rounded-[2rem] shadow-[0_10px_35px_rgba(236,72,153,0.5)] hover:shadow-[0_15px_45px_rgba(236,72,153,0.7)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-200/50"
+          aria-label="Book your cleaning service online"
+          className="group relative flex items-center gap-3 bg-gradient-to-br from-pink-500 via-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 rounded-[2rem] shadow-[0_10px_35px_rgba(236,72,153,0.5)] hover:shadow-[0_15px_45px_rgba(236,72,153,0.7)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-200/50"
         >
           <span className="absolute -inset-0.5 bg-gradient-to-r from-pink-200 to-white opacity-30 blur-sm rounded-full group-hover:opacity-50 transition-opacity"></span>
           <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/20 shadow-inner">
-            <i className="fa-solid fa-bolt text-yellow-300 text-sm drop-shadow-md"></i>
+            <i className="fa-solid fa-calendar-check text-white text-sm drop-shadow-md"></i>
           </div>
-          <span className="relative font-bold text-[1.1rem] tracking-tight whitespace-nowrap">Instant Booking</span>
+          <span className="relative font-bold text-[1.1rem] tracking-tight whitespace-nowrap">Book Online</span>
         </a>
       </div>
 
