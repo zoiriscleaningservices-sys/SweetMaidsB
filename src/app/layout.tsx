@@ -51,7 +51,7 @@ export default function RootLayout({
         <Script src="/js/navigation-dynamic.js" strategy="lazyOnload" />
         <Script id="elfsight-loader" strategy="lazyOnload">
           {`
-            if (document.querySelector('.elfsight-app')) {
+            if (document.querySelector('[class*="elfsight-app"]')) {
               var s = document.createElement('script');
               s.src = "https://elfsightcdn.com/platform.js";
               s.async = true;

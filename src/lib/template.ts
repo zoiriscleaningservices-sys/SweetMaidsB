@@ -410,7 +410,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
 
   // Maps - Google Business Profile ONLY for Bradenton HQ vs Dynamic City Query for all other pages
-  const isBradenton = clean_name.toLowerCase() === 'bradenton' || loc_slug === 'bradenton-fl';
+  const isBradenton = (clean_name.toLowerCase() === 'bradenton' || loc_slug === 'bradenton-fl') && !serviceSlugs.includes(loc_slug);
 
   if (isBradenton) {
     const loc_query = encodeURIComponent('Sweet Maid Cleaning Service, 14651 Westbrook Cir Apt 312, Bradenton, FL 34211');
@@ -512,12 +512,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Swap out the static generic FAQ accordion block with the SEO-maximized dynamic block
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
   newContent = newContent.replace(staticFaqBlockRegex, dynamicFaqHtml);
-  const showLiveElfsight = true;
+  const showLiveElfsight = isBradenton;
 
   // Swap out the static truncated reviews carousel with full, untruncated reviews and working links (or Elfsight widget for Bradenton)
   const reviewsCarouselRegex = /<!-- Reviews Carousel -->[\s\S]*?(?=<!-- Trustindex Badge -->|<!-- Trustindex & Google Reviews Action Links -->)/gi;
   const bradentonElfsightHtml = `<!-- Reviews Carousel -->
       <div class="mt-16">
+        <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+        <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-155f35e3-448d-4bc2-b8c4-fc9011f6424c" data-elfsight-app-lazy></div>
       </div>
       
