@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { serviceSlugs, formatName, getNearestLocations } from './data';
 import { miamiBrowardSlugs } from './miami_broward_slugs';
+import { isManateeCounty } from './manatee';
 import { generateSeoContentPack } from './seo_engine';
 
 // Service to H1 mapping using top-converting transactional SEO search terms
@@ -409,10 +410,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Fix Map Headings and Pin Labels
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
 
-  // Maps - Google Business Profile ONLY for Bradenton HQ vs Dynamic City Query for all other pages
-  const isBradenton = (clean_name.toLowerCase() === 'bradenton' || loc_slug === 'bradenton-fl') && !serviceSlugs.includes(loc_slug);
+  // Maps - Google Business Profile ONLY for Bradenton HQ & all Manatee County locations vs Dynamic City Query for all other pages
+  const isManatee = isManateeCounty(loc_slug, clean_name) && !serviceSlugs.includes(loc_slug);
 
-  if (isBradenton) {
+  if (isManatee) {
     const loc_query = encodeURIComponent('Sweet Maid Cleaning Service, 14651 Westbrook Cir Apt 312, Bradenton, FL 34211');
     const map_url = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${loc_query}+()&t=&z=15&ie=UTF8&iwloc=B&output=embed`;
     const gbpBadgeHtml = `<a href="https://www.google.com/maps/search/?api=1&query=Sweet+Maid+Cleaning+Service+Bradenton+FL&query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer" class="absolute bottom-4 left-4 bg-white/95 backdrop-blur px-4 py-2.5 rounded-xl text-xs font-semibold shadow-md hover:bg-white hover:text-pink-600 transition-all flex items-center gap-2 text-gray-900 border border-gray-100 group z-10">
@@ -512,9 +513,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Swap out the static generic FAQ accordion block with the SEO-maximized dynamic block
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
   newContent = newContent.replace(staticFaqBlockRegex, dynamicFaqHtml);
-  const showLiveElfsight = isBradenton;
+  const showLiveElfsight = isManatee;
 
-  // Swap out the static truncated reviews carousel with full, untruncated reviews and working links (or Elfsight widget for Bradenton)
+  // Swap out the static truncated reviews carousel with full, untruncated reviews and working links (or Elfsight widget for Manatee County)
   const reviewsCarouselRegex = /<!-- Reviews Carousel -->[\s\S]*?(?=<!-- Trustindex Badge -->|<!-- Trustindex & Google Reviews Action Links -->)/gi;
   const bradentonElfsightHtml = `<!-- Reviews Carousel -->
       <div class="mt-16">
