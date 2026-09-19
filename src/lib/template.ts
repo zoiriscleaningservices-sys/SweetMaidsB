@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { serviceSlugs, formatName, getNearestLocations } from './data';
 import { miamiBrowardSlugs } from './miami_broward_slugs';
-import { isManateeCounty } from './manatee';
+import { isManateeCounty, manateeKeyHubs } from './manatee';
 import { generateSeoContentPack } from './seo_engine';
 
 // Service to H1 mapping using top-converting transactional SEO search terms
@@ -441,17 +441,153 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/Servicing entire 34205, 34209, 34208, 34210 areas/g, `Servicing ${clean_name} and surrounding areas`);
   }
 
-  // Aggressive SEO Daily Search Query Matrix
+  // Strip raw unlocalized static HYPER-LOCAL SEO BLOCK from source templates
+  newContent = newContent.replace(/<!--\s*HYPER-LOCAL SEO BLOCK\s*-->[\s\S]*?<!--\s*END HYPER-LOCAL SEO BLOCK\s*-->/gi, '');
+
+  const serviceDisplayName = formatName(currentService.replace(/-/g, ' '));
+  const targetServiceSlug = isSpecificService ? currentService : 'house-cleaning';
+
+  // Smart URL mapper for daily search keywords to create rich internal links
+  const getKeywordTargetUrl = (kw: string) => {
+    const k = kw.toLowerCase();
+    if (k.includes('deep')) return `/${loc_slug}/deep-cleaning/`;
+    if (k.includes('move')) return `/${loc_slug}/move-in-out-cleaning/`;
+    if (k.includes('airbnb') || k.includes('vacation')) return `/${loc_slug}/airbnb-cleaning/`;
+    if (k.includes('commercial') || k.includes('janitorial') || k.includes('office')) return `/${loc_slug}/commercial-cleaning/`;
+    if (k.includes('construction') || k.includes('renovation')) return `/${loc_slug}/post-construction-cleaning/`;
+    if (k.includes('carpet') || k.includes('rug')) return `/${loc_slug}/carpet-cleaning/`;
+    if (k.includes('pressure') || k.includes('wash')) return `/${loc_slug}/pressure-washing/`;
+    if (k.includes('window')) return `/${loc_slug}/window-cleaning/`;
+    return `/${loc_slug}/house-cleaning/`;
+  };
+
+  // Internal Location Linking for Manatee County or Regional nearest locations
+  const internalLocationLinksHtml = isManatee
+    ? manateeKeyHubs.map(hub => {
+        const isCurrent = hub.slug === loc_slug;
+        if (isCurrent) {
+          return `<span class="px-3.5 py-2 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2 shadow-2xs"><i class="fa-solid fa-location-dot text-xs text-pink-600"></i><span>${hub.name}</span></span>`;
+        }
+        return `<a href="/${hub.slug}/${targetServiceSlug}/" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${hub.name}</span></a>`;
+      }).join('\n')
+    : nearestLocations.map(c => {
+        return `<a href="/${c.slug}/${targetServiceSuffix}" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${c.name}</span></a>`;
+      }).join('\n');
+
+  // Internal Service Linking for the current location
+  const keyLocalServices = [
+    { name: `House Cleaning in ${clean_name}`, slug: 'house-cleaning', icon: 'fa-house' },
+    { name: `Deep Cleaning in ${clean_name}`, slug: 'deep-cleaning', icon: 'fa-soap' },
+    { name: `Move-In & Move-Out Cleaning`, slug: 'move-in-out-cleaning', icon: 'fa-boxes-packing' },
+    { name: `Airbnb & Vacation Rental Cleaning`, slug: 'airbnb-cleaning', icon: 'fa-key' },
+    { name: `Commercial & Office Cleaning`, slug: 'commercial-cleaning', icon: 'fa-building' },
+    { name: `Post-Construction Cleaning`, slug: 'post-construction-cleaning', icon: 'fa-hammer' },
+    { name: `Professional Carpet Cleaning`, slug: 'carpet-cleaning', icon: 'fa-rug' },
+    { name: `Pressure Washing & Soft Wash`, slug: 'pressure-washing', icon: 'fa-water' },
+    { name: `Window Cleaning Services`, slug: 'window-cleaning', icon: 'fa-table-cells-large' },
+    { name: `Recurring Maid Service`, slug: 'recurring-maid-service', icon: 'fa-calendar-check' },
+  ];
+
+  const localServicesLinksHtml = keyLocalServices.map(srv => {
+    const isCurrent = srv.slug === currentService;
+    if (isCurrent) {
+      return `<span class="px-3.5 py-2.5 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2.5 shadow-2xs"><i class="fa-solid ${srv.icon} text-xs text-pink-600"></i><span>${srv.name}</span></span>`;
+    }
+    return `<a href="/${loc_slug}/${srv.slug}/" class="px-3.5 py-2.5 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2.5 group"><i class="fa-solid ${srv.icon} text-xs text-pink-400 group-hover:scale-110 transition-transform"></i><span>${srv.name}</span></a>`;
+  }).join('\n');
+
+  // Aggressive SEO Daily Search Query Matrix & Manatee County Internal Linking Network
   const seoSection = `
-  <section class="py-12 bg-white border-t border-pink-50">
+  <section class="py-16 bg-white border-t border-pink-100/70">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-8 max-w-3xl mx-auto">
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 font-serif">${seoPack.dailySearchHeading}</h3>
-        <p class="text-gray-600 mt-3 text-sm md:text-base leading-relaxed">${seoPack.searchContextParagraph}</p>
+      
+      <!-- Hyper-Local Authority Content Block -->
+      <div class="max-w-4xl mx-auto text-center mb-14">
+        <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
+          <i class="fa-solid fa-award"></i>
+          <span>${isManatee ? 'Manatee County Local Service Authority' : 'Local Cleaning Service Authority'}</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif">Providing Top-Tier ${serviceDisplayName} in ${clean_name}, FL</h2>
+        <p class="text-gray-700 leading-relaxed text-base md:text-lg mb-4">
+          As the leading provider of professional <strong>${serviceDisplayName} in ${clean_name}, FL</strong>${isManatee ? ' and across Manatee County' : ' and the surrounding areas'}, Sweet Maid is dedicated to maintaining the highest cleanliness standards for your property. Whether you are looking for top-rated <strong>${serviceDisplayName} in ${clean_name}</strong>, scheduled recurring visits, or intensive turnover cleaning, our licensed, bonded, and insured team is always nearby and ready to deliver spotless perfection.
+        </p>
+        <p class="text-gray-600 leading-relaxed text-sm md:text-base mb-6">
+          Don't settle for less when it comes to the hygiene, freshness, and appearance of your space in ${clean_name}, FL. Join countless satisfied locals who rely on our trusted professional cleaners.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/${loc_slug}/${currentService}/#quote" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 text-sm md:text-base">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>Get Your Free ${clean_name} ${serviceDisplayName} Quote</span>
+          </a>
+          <a href="tel:9412222080" class="inline-flex items-center gap-2 bg-white text-gray-800 border border-gray-200 hover:bg-gray-50 font-bold px-6 py-3 rounded-full shadow-xs transition-all hover:scale-105 text-sm md:text-base">
+            <i class="fa-solid fa-phone text-pink-500"></i>
+            <span>(941) 222-2080</span>
+          </a>
+        </div>
       </div>
-      <div class="flex flex-wrap justify-center gap-3">
-        ${seoPack.dailySearchKeywords.map(tag => '<span class="bg-pink-50 text-pink-600 border border-pink-100 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:bg-pink-100 hover:text-pink-700 transition-colors cursor-default">' + tag + '</span>').join('')}
+
+      <!-- Popular Daily Searches Matrix (with Clickable Internal Anchor Links) -->
+      <div class="bg-gradient-to-b from-pink-50/50 via-white to-pink-50/30 rounded-3xl p-8 md:p-12 border border-pink-100/80 mb-14">
+        <div class="text-center mb-8 max-w-3xl mx-auto">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 font-serif">${seoPack.dailySearchHeading}</h3>
+          <p class="text-gray-600 mt-3 text-sm md:text-base leading-relaxed">${seoPack.searchContextParagraph}</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3">
+          ${seoPack.dailySearchKeywords.map(tag => `
+            <a href="${getKeywordTargetUrl(tag)}" class="inline-flex items-center gap-2 bg-white text-pink-700 border border-pink-200/90 px-4 py-2.5 rounded-full text-sm font-medium shadow-2xs hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all hover:scale-105 active:scale-95">
+              <i class="fa-solid fa-magnifying-glass text-xs opacity-60"></i>
+              <span>${tag}</span>
+            </a>
+          `).join('')}
+        </div>
       </div>
+
+      <!-- Comprehensive County & Service Internal Linking Hub -->
+      <div class="pt-6">
+        <div class="text-center mb-10 max-w-3xl mx-auto">
+          <div class="inline-flex items-center gap-2 bg-pink-100/90 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+            <i class="fa-solid fa-network-wired"></i>
+            <span>${isManatee ? 'Manatee County Service Network' : 'Regional Cleaning Network'}</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 font-serif">${isManatee ? 'Explore Sweet Maid Across Manatee County' : `Explore Nearby Service Locations Around ${clean_name}`}</h3>
+          <p class="text-gray-600 mt-2 text-sm md:text-base">${isManatee ? 'Sweet Maid proudly provides licensed and insured maid services across all communities in Manatee County, Florida.' : `Connecting top-rated home cleaning services across ${clean_name} and neighboring areas.`}</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Manatee County Locations Linking -->
+          <div class="bg-white p-6 md:p-8 rounded-2xl border border-pink-100 shadow-xs">
+            <div class="flex items-center gap-3 mb-5 pb-3 border-b border-pink-50">
+              <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 text-lg">${isManatee ? 'Manatee County Cities & Areas' : 'Nearby Communities'}</h4>
+                <p class="text-xs text-gray-500">Find ${serviceDisplayName} in neighboring towns</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+              ${internalLocationLinksHtml}
+            </div>
+          </div>
+
+          <!-- Key Services in Current Location Linking -->
+          <div class="bg-white p-6 md:p-8 rounded-2xl border border-pink-100 shadow-xs">
+            <div class="flex items-center gap-3 mb-5 pb-3 border-b border-pink-50">
+              <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-broom"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 text-lg">Popular Cleaning Services in ${clean_name}</h4>
+                <p class="text-xs text-gray-500">Comprehensive cleaning solutions for every need</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+              ${localServicesLinksHtml}
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
   `;

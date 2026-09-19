@@ -364,3 +364,27 @@ export function isManateeCounty(loc_slug: string, clean_name: string = ''): bool
 
   return false;
 }
+
+export interface ManateeHub {
+  name: string;
+  slug: string;
+}
+
+export const manateeKeyHubs: ManateeHub[] = [
+  { name: 'Bradenton', slug: 'bradenton-fl' },
+  { name: 'Lakewood Ranch', slug: 'lakewood-ranch-fl' },
+  { name: 'Palmetto', slug: 'palmetto-fl' },
+  { name: 'Parrish', slug: 'parrish-fl' },
+  { name: 'Ellenton', slug: 'ellenton-fl' },
+  { name: 'Anna Maria', slug: 'anna-maria-fl' },
+  { name: 'Holmes Beach', slug: 'holmes-beach-fl' },
+  { name: 'Bradenton Beach', slug: 'bradenton-beach-fl' },
+  { name: 'Longboat Key', slug: 'longboat-key-fl' },
+  { name: 'Bayshore Gardens', slug: 'bayshore-gardens-fl' },
+  { name: 'Cortez', slug: 'cortez-fl' },
+  { name: 'Myakka City', slug: 'myakka-city-fl' },
+  { name: 'South Bradenton', slug: 'south-bradenton-fl' },
+  { name: 'West Bradenton', slug: 'west-bradenton-fl' },
+  { name: 'Samoset', slug: 'samoset-fl' },
+  { name: 'Whitfield', slug: 'whitfield-fl' },
+];
