@@ -503,7 +503,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Swap out the static generic FAQ accordion block with the SEO-maximized dynamic block
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
   newContent = newContent.replace(staticFaqBlockRegex, dynamicFaqHtml);
-  const isBradenton = loc_slug === 'bradenton-fl';
   const showLiveElfsight = true;
 
   // Swap out the static truncated reviews carousel with full, untruncated reviews and working links (or Elfsight widget for Bradenton)
