@@ -20,8 +20,8 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sweetmaidcleaning.com"),
   title: "House Cleaning & Maid Services in Bradenton, FL | Sweet Maid",
-  description: "Looking for the best cleaning service in Bradenton, FL? Sweet Maid offers top-rated house cleaning, deep cleaning, and move-out services. Licensed, insured, and 100% satisfaction guaranteed. Book your sparkle today!",
-  keywords: "cleaning service Bradenton, house cleaning Lakewood Ranch, maid service Palmetto, deep cleaning Parrish, move out cleaning Bradenton, residential cleaning Manatee County, eco-friendly cleaning",
+  description: "Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers top-rated maid services, deep cleaning & move-out cleans. Get your free estimate today!",
+  keywords: "house cleaning Bradenton FL, maid service Bradenton, deep cleaning services Bradenton, move out cleaning Bradenton, cleaning service Lakewood Ranch, residential cleaning Manatee County, home cleaners Sarasota FL, Sweet Maid cleaning",
   alternates: {
     canonical: "/",
   },

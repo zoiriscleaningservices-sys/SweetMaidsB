@@ -4,14 +4,14 @@ import { formatName } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
-  description: 'Looking for top-rated, reliable, and insured house cleaning services in Florida? Sweet Maid offers professional deep cleaning, move-out cleaning, and recurring maid services with 100% satisfaction guaranteed. Get your free quote today!',
-  keywords: 'cleaning services Florida, house cleaning Bradenton, maid service Tampa, deep cleaning Miami, Orlando cleaning company, Sarasota house cleaning',
+  description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers top-rated maid services, deep cleaning & move-out cleans. Get your free estimate today!',
+  keywords: 'house cleaning Bradenton FL, maid service Bradenton, deep cleaning services Bradenton, move out cleaning Bradenton, cleaning service Lakewood Ranch, residential cleaning Manatee County, home cleaners Sarasota FL, Sweet Maid cleaning',
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/',
   },
   openGraph: {
     title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
-    description: 'Looking for top-rated, reliable, and insured house cleaning services in Florida? Sweet Maid offers professional deep cleaning, move-out cleaning, and recurring maid services.',
+    description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers top-rated maid services, deep cleaning & move-out cleans. Get your free estimate today!',
     url: 'https://sweetmaidcleaning.com/',
     type: 'website',
     images: ['https://i.ibb.co/QSD3Ydt/image.jpg'],
