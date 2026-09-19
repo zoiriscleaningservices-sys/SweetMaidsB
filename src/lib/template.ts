@@ -121,6 +121,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/Bradenton/gi, clean_name);
   
   // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
+  newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why ${clean_name} Trusts Us`);
+  newContent = newContent.replace(/Why Locals Trust Us/gi, `Why ${clean_name} Trusts Us`);
   newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s most trusted ${serviceName.toLowerCase()}`);
   newContent = newContent.replace(/Professional, reliable, and friendly cleaning services for Florida and surrounding areas/gi, `Professional, reliable, and friendly ${serviceName.toLowerCase()} for ${clean_name} and surrounding areas`);
   
