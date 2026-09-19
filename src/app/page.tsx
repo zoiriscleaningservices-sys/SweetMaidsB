@@ -3,14 +3,14 @@ import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 import { formatName } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: '#1 Rated House Cleaning & Maid Services in Florida | Sweet Maid',
+  title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
   description: 'Looking for top-rated, reliable, and insured house cleaning services in Florida? Sweet Maid offers professional deep cleaning, move-out cleaning, and recurring maid services with 100% satisfaction guaranteed. Get your free quote today!',
   keywords: 'cleaning services Florida, house cleaning Bradenton, maid service Tampa, deep cleaning Miami, Orlando cleaning company, Sarasota house cleaning',
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/',
   },
   openGraph: {
-    title: '#1 Rated House Cleaning & Maid Services in Florida | Sweet Maid',
+    title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
     description: 'Looking for top-rated, reliable, and insured house cleaning services in Florida? Sweet Maid offers professional deep cleaning, move-out cleaning, and recurring maid services.',
     url: 'https://sweetmaidcleaning.com/',
     type: 'website',
