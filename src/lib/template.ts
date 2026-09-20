@@ -101,7 +101,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   }
 
   // Generate 100% Unique, Zero-Duplicate SEO Content Pack
-  const seoPack = generateSeoContentPack(clean_name, loc_slug, serviceName, currentService);
+  const effectiveServiceSlug = (pageType === 'about' || currentService === 'about') ? 'house-cleaning' : currentService;
+  const effectiveServiceName = (pageType === 'about' || currentService === 'about') ? 'House Cleaning' : serviceName;
+  const seoPack = generateSeoContentPack(clean_name, loc_slug, effectiveServiceName, effectiveServiceSlug);
 
   // Strip all data-aos animation attributes to guarantee 100% visibility of all sections
   newContent = newContent.replace(/\s*data-aos(?:-[a-z0-9-]+)?="[^"]*"/gi, '');
@@ -858,7 +860,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Strip raw unlocalized static HYPER-LOCAL SEO BLOCK from source templates
   newContent = newContent.replace(/<!--\s*HYPER-LOCAL SEO BLOCK\s*-->[\s\S]*?<!--\s*END HYPER-LOCAL SEO BLOCK\s*-->/gi, '');
 
-  const serviceDisplayName = formatName(currentService.replace(/-/g, ' '));
+  const serviceDisplayName = (pageType === 'about' || currentService === 'about')
+    ? 'House Cleaning & Maid Service'
+    : (currentService === 'gallery' ? 'Cleaning Services' : formatName(currentService.replace(/-/g, ' ')));
   const targetServiceSlug = isSpecificService ? currentService : 'house-cleaning';
 
   // Smart URL mapper for daily search keywords to create rich internal links
@@ -1122,7 +1126,47 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   }
 
   // Inject Structured JSON-LD Schema
-  if (pageType !== 'login') {
+  if (pageType === 'about') {
+    const aboutSchema = [
+      {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "CleaningService", "Organization"],
+        "name": `Sweet Maid Cleaning Service - ${clean_name}`,
+        "description": `Family-owned cleaning company serving ${clean_name}, FL. Over 5,000 houses, corporate offices, move-out cleans, and post-construction jobs completed with 5-star care.`,
+        "url": `https://sweetmaidcleaning.com/${loc_slug}/about/`,
+        "telephone": is305Area(loc_slug, clean_name) ? "(305) 851-6959" : "(941) 222-2080",
+        "image": "https://sweetmaidcleaning.com/images/logo.png",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": `Serving ${clean_name} & Greater Florida`,
+          "addressLocality": clean_name,
+          "addressRegion": "FL",
+          "addressCountry": "US"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "284",
+          "bestRating": "5"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": clean_name
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sweetmaidcleaning.com/" },
+          { "@type": "ListItem", "position": 2, "name": clean_name, "item": `https://sweetmaidcleaning.com/${loc_slug}/` },
+          { "@type": "ListItem", "position": 3, "name": "About Us", "item": `https://sweetmaidcleaning.com/${loc_slug}/about/` }
+        ]
+      }
+    ];
+    newContent += `\n<script type="application/ld+json">${JSON.stringify(aboutSchema)}</script>`;
+  } else if (pageType !== 'login') {
     newContent += `\n<script type="application/ld+json">${seoPack.schemaJson}</script>`;
   } else {
     const loginSchema = {
