@@ -83,7 +83,12 @@ export function getLocationSlugs(): string[] {
  */
 export function resolveAnyLocation(slug: string): GeoEntity | null {
   const cleanSlug = slug.toLowerCase().trim();
-  const systemRoutes = ['about', 'blog', 'gallery', 'locations', 'login', 'booknow', 'book-online', 'cost', 'privacy-policy', 'terms-and-conditions', 'privacy', 'terms', 'robots.txt', 'sitemap.xml', 'icon.png'];
+  const systemRoutes = [
+    'about', 'blog', 'gallery', 'locations', 'login', 'booknow', 'book-online', 'cost',
+    'privacy-policy', 'terms-and-conditions', 'privacy', 'terms', 'robots.txt', 'sitemap.xml',
+    'icon.png', 'templates', '_next', 'static', 'api', 'florida-cleaning', 'florida-beach-cleaning',
+    'florida', ...serviceSlugs
+  ];
   if (systemRoutes.includes(cleanSlug)) {
     return null;
   }
@@ -154,15 +159,8 @@ export function resolveAnyLocation(slug: string): GeoEntity | null {
     };
   }
 
-  // Fallback: format slug cleanly as city/area
-  const formatted = cleanSlug.replace(/-fl$/, '').replace(/-/g, ' ');
-  return {
-    name: formatName(formatted),
-    slug: cleanSlug,
-    lat: 27.4989,
-    lng: -82.5748,
-    type: 'city'
-  };
+  // Not a valid Florida location
+  return null;
 }
 
 export function formatName(name: string): string {

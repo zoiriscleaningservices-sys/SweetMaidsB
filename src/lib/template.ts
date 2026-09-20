@@ -679,11 +679,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Navigation Links
   for (const s_slug of serviceSlugs) {
     if (pageType !== 'login' && loc_slug) {
-      newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
+      newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
       newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
-      newContent = newContent.replace(new RegExp(`href="https://sweetmaidcleaning.com/${s_slug}/"`, 'g'), `href="https://sweetmaidcleaning.com/${loc_slug}/${s_slug}/"`);
+      newContent = newContent.replace(new RegExp(`href="https://sweetmaidcleaning.com/(?:[a-z0-9-]+/)*${s_slug}/"`, 'g'), `href="https://sweetmaidcleaning.com/${loc_slug}/${s_slug}/"`);
     } else {
-      newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${s_slug}/"`);
+      newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${s_slug}/"`);
     }
   }
   
@@ -715,9 +715,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Replace Logo with the new uploaded brand logo
   newContent = newContent.replace(/https:\/\/i\.ibb\.co\/PzPDfC1N\/Whats-App-Image-2026-02-09-at-4-52-59-PM-Picsart-Background-Remover\.png/g, '/images/logo.png');
-
-  // Fix Cross-City Location Links (e.g. href="/anna-maria-cleaning/")
-  newContent = newContent.replace(/href="\/([a-z0-9-]+)-cleaning\/"/g, `href="/$1-fl/${currentService}/"`);
 
   const isSpecificService = serviceSlugs.includes(currentService);
   const targetServiceSuffix = (is_sub_page && isSpecificService) ? `${currentService}/` : '';
@@ -1505,6 +1502,33 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Final Master Image Processor: Local SEO ALT texts (strictly zero duplicates), decoding="async", remove lazy loading for smooth responsive images across the whole page
   newContent = processPageImages(newContent, clean_name, loc_slug, serviceName, pageType);
+
+  // Global URL Safety Sanitization: Eliminate nested services, Florida-cleaning fallbacks, and malformed hrefs
+  const isCityLocation = !!(loc_slug && loc_slug !== 'home' && !serviceSlugs.includes(loc_slug));
+  newContent = newContent.replace(/href="\/[^"]*?florida-beach-cleaning\/"/gi, 'href="/locations/"');
+  newContent = newContent.replace(/href="\/[^"]*?florida-cleaning\/([a-z0-9-]+)\/"/gi, (match, srv) => {
+    return isCityLocation ? `href="/${loc_slug}/${srv}/"` : `href="/${srv}/"`;
+  });
+  newContent = newContent.replace(/href="\/florida-cleaning\/"/gi, 'href="/locations/"');
+
+  // Collapse any stacked services: [prefix]/[service1]/[service2]/ -> [prefix]/[service2]/ or /[service2]/
+  const serviceRegexGroup = serviceSlugs.join('|');
+  const cityStackedRegex = new RegExp(`href="(\\/[^"\\/\\s]+)\\/(?:${serviceRegexGroup})\\/(${serviceRegexGroup})\\/"`, 'g');
+  newContent = newContent.replace(cityStackedRegex, (match, prefix, targetService) => {
+    const cleanPrefix = prefix.replace(/^\//, '');
+    if (serviceSlugs.includes(cleanPrefix)) {
+      return `href="/${targetService}/"`;
+    }
+    return `href="${prefix}/${targetService}/"`;
+  });
+
+  const standaloneStackedRegex = new RegExp(`href="\\/(?:${serviceRegexGroup})\\/(${serviceRegexGroup})\\/"`, 'g');
+  newContent = newContent.replace(standaloneStackedRegex, (match, targetService) => {
+    return isCityLocation ? `href="/${loc_slug}/${targetService}/"` : `href="/${targetService}/"`;
+  });
+
+  // Clean any accidental duplicate slashes
+  newContent = newContent.replace(/href="\/+/g, 'href="/');
 
   return newContent;
 }

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /templates/
+Disallow: /_next/static/
 
 Sitemap: https://sweetmaidcleaning.com/sitemap.xml

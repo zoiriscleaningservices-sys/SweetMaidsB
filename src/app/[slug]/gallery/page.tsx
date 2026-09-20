@@ -1,12 +1,12 @@
 import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
-import { getLocationData, formatName } from '@/lib/data';
+import { resolveAnyLocation, formatName } from '@/lib/data';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const data = getLocationData();
-  const locData = data[slug];
+  const locData = resolveAnyLocation(slug);
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
@@ -36,17 +36,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function GalleryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const data = getLocationData();
-  const locData = data[slug];
+  const locData = resolveAnyLocation(slug);
 
   if (!locData) {
-    return <div>Location not found</div>;
+    notFound();
   }
 
   const cleanName = formatName(locData.name);
   
   const rawHtml = getTemplate('gallery');
-  if (!rawHtml) return <div>Gallery template missing</div>;
+  if (!rawHtml) notFound();
 
   const bodyContent = extractSections(rawHtml);
   const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true);

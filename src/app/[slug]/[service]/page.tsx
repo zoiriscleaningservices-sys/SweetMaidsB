@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
 import { miamiBrowardSlugs, is305Area } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map, generatePageImageSchema } from '@/lib/template';
@@ -7,6 +8,8 @@ import { generateSeoContentPack } from '@/lib/seo_engine';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, service: string }> }): Promise<Metadata> {
   const { slug, service } = await params;
+  if (!serviceSlugs.includes(service)) return {};
+
   const locData = resolveAnyLocation(slug);
   if (!locData) return {};
 
@@ -42,26 +45,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string, service: string }> }) {
   const { slug, service } = await params;
+
+  if (!serviceSlugs.includes(service)) {
+    notFound();
+  }
   
   const locData = resolveAnyLocation(slug);
   if (!locData) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6 text-center">
-        <div className="max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Location Not Found</h1>
-          <p className="text-gray-600 mb-6">We couldn't find the location you're looking for.</p>
-          <a href="/" className="inline-block bg-pink-400 hover:bg-pink-500 text-white font-bold px-6 py-3 rounded-full transition-colors">
-            Return Home
-          </a>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   const cleanName = formatName(locData.name);
 
   const rawHtml = getTemplate(service);
-  if (!rawHtml) return <div>Service template missing</div>;
+  if (!rawHtml) {
+    notFound();
+  }
 
   const bodyContent = extractSections(rawHtml);
   const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true, service);
