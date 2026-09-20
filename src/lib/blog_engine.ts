@@ -25,7 +25,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
   <!-- ============================================================
        LOCAL BLOG ARTICLE & DIRECT SERVICE AUTHORITY: ${cleanName}, FL
        ============================================================ -->
-  <article class="py-12 sm:py-16 bg-white border-b border-pink-100" id="local-guide-${slug}">
+  <article class="pt-32 pb-16 sm:pt-40 sm:pb-20 bg-white border-b border-pink-100" id="local-guide-${slug}" style="padding-top: clamp(120px, 14vh, 160px);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Article Header & Breadcrumb Meta -->
@@ -41,6 +41,10 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
         <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-500 pb-6 border-b border-gray-100">
           <span class="flex items-center gap-1.5 font-medium text-gray-800">
             <i class="fa-solid fa-shield-halved text-pink-500"></i> By Sweet Maid Cleaning Experts
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="text-yellow-500 font-bold flex items-center gap-1">
+            <i class="fa-solid fa-star"></i> 5.0 5-Star Rated
           </span>
           <span class="text-gray-300">•</span>
           <span class="flex items-center gap-1.5">
@@ -60,21 +64,21 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
       <!-- Featured Hero Photography -->
       <div class="relative w-full h-64 sm:h-80 md:h-[400px] rounded-3xl overflow-hidden shadow-xl mb-12 border border-pink-100/80 group">
         <img
-          src="/images/whatsapp-image-2026-02-10-at-3.46.50-pm.webp"
+          src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp"
           alt="Spotless luxury interior house cleaning in ${cleanName}, FL"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           loading="eager"
           width="1200"
           height="800"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
-        <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 right-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-white">
-          <div class="flex items-center gap-2">
-            <span class="bg-pink-500 text-white font-bold px-3 py-1 rounded-full text-xs shadow-md">Featured Cleaning Guide</span>
-            <span class="text-xs sm:text-sm font-medium drop-shadow-md">Pristine Living Across ${cleanName}, FL</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-900/30 to-transparent"></div>
+        <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 right-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-white">
+          <div class="flex flex-wrap items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20">
+            <span class="bg-pink-500 text-white font-bold px-2.5 py-0.5 rounded-full text-xs shadow-md">Featured Local Guide</span>
+            <span class="text-xs sm:text-sm font-semibold text-white drop-shadow">Pristine Living Across ${cleanName}, FL</span>
           </div>
-          <a href="#quote" class="inline-flex items-center gap-1.5 bg-white/95 hover:bg-white text-gray-900 font-bold px-4 py-2 rounded-full text-xs shadow-md transition hover:scale-105">
-            <i class="fa-solid fa-sparkles text-pink-500"></i> Book in ${cleanName}
+          <a href="#quote" class="inline-flex items-center gap-1.5 bg-pink-500 hover:bg-pink-600 text-white font-bold px-5 py-2.5 rounded-full text-xs shadow-lg transition hover:scale-105 border border-pink-300/40">
+            <i class="fa-solid fa-sparkles"></i> Book in ${cleanName}
           </a>
         </div>
       </div>
@@ -82,8 +86,8 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
       <!-- Trust Metrics Bar -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12">
         <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100/80 text-center">
-          <div class="text-xl sm:text-2xl font-bold text-gray-900">4.9 ★</div>
-          <div class="text-xs text-gray-600 mt-0.5">280+ 5-Star Reviews</div>
+          <div class="text-xl sm:text-2xl font-bold text-pink-600">5.0 ★★★★★</div>
+          <div class="text-xs text-gray-700 font-semibold mt-0.5">Top 5-Star Rated Cleaners</div>
         </div>
         <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100/80 text-center">
           <div class="text-xl sm:text-2xl font-bold text-gray-900">100%</div>
@@ -197,7 +201,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
           </div>
         </section>
 
-        <!-- Section 3: Room-by-Room Blueprint with Visual Thumbnails -->
+        <!-- Section 3: Room-by-Room Blueprint with Visual Thumbnails & Local Service Links -->
         <section>
           <h2 class="text-2xl sm:text-3xl font-bold font-serif text-gray-900 mb-4 tracking-tight">
             3. Room-by-Room Cleaning Blueprint Tailored for ${cleanName} Properties
@@ -205,16 +209,24 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
           <p class="mb-6">
             To achieve a hotel-grade shine, follow our field-tested room sequencing with specialized treatments for Florida finishes:
           </p>
-          <div class="grid sm:grid-cols-2 gap-5 my-6">
+          <div class="grid sm:grid-cols-2 gap-6 my-6">
             
-            <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm flex flex-col justify-between">
+            <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="h-36 rounded-xl overflow-hidden mb-4 relative">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp" alt="Kitchen cleaning in ${cleanName}" class="w-full h-full object-cover" loading="lazy" />
-                  <span class="absolute bottom-2 left-2 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Kitchen Detail</span>
+                <a href="/${slug}/deep-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp" alt="Kitchen cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
+                    <i class="fa-solid fa-utensils text-pink-400"></i> Kitchen Detail
+                  </span>
+                </a>
+                <div class="mb-2">
+                  <a href="/${slug}/deep-cleaning/" class="text-xs font-bold text-pink-600 hover:text-pink-700 flex items-center gap-1.5 transition-colors">
+                    <span>Deep Cleaning in ${cleanName}, FL</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </a>
                 </div>
-                <h3 class="font-bold text-gray-900 mb-1.5 flex items-center gap-2">
-                  <i class="fa-solid fa-utensils text-pink-500"></i> The Chef's Kitchen
+                <h3 class="font-bold text-gray-900 text-lg mb-2 flex items-center gap-2">
+                  The Chef's Kitchen
                 </h3>
                 <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
                   Degrease range hoods, hand-wipe appliance exteriors along the stainless grain, scrub sinks, and sanitize quartz countertops with neutral pH formulas.
@@ -222,14 +234,22 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
               </div>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm flex flex-col justify-between">
+            <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="h-36 rounded-xl overflow-hidden mb-4 relative">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp" alt="Bathroom sanitation in ${cleanName}" class="w-full h-full object-cover" loading="lazy" />
-                  <span class="absolute bottom-2 left-2 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Bathroom Sanitization</span>
+                <a href="/${slug}/house-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp" alt="Bathroom sanitation in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
+                    <i class="fa-solid fa-shower text-pink-400"></i> Bathroom Sanitization
+                  </span>
+                </a>
+                <div class="mb-2">
+                  <a href="/${slug}/house-cleaning/" class="text-xs font-bold text-pink-600 hover:text-pink-700 flex items-center gap-1.5 transition-colors">
+                    <span>House Cleaning in ${cleanName}, FL</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </a>
                 </div>
-                <h3 class="font-bold text-gray-900 mb-1.5 flex items-center gap-2">
-                  <i class="fa-solid fa-shower text-pink-500"></i> Spa-Level Bathrooms
+                <h3 class="font-bold text-gray-900 text-lg mb-2 flex items-center gap-2">
+                  Spa-Level Bathrooms
                 </h3>
                 <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
                   Dissolve Florida hard water mineral scale from frameless glass shower doors, hand-scrub grout lines, and sanitize fixtures for spotless reflection.
@@ -237,14 +257,22 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
               </div>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm flex flex-col justify-between">
+            <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="h-36 rounded-xl overflow-hidden mb-4 relative">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp" alt="Bedroom cleaning in ${cleanName}" class="w-full h-full object-cover" loading="lazy" />
-                  <span class="absolute bottom-2 left-2 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Bedroom Haven</span>
+                <a href="/${slug}/carpet-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp" alt="Bedroom cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
+                    <i class="fa-solid fa-bed text-pink-400"></i> Bedroom Haven
+                  </span>
+                </a>
+                <div class="mb-2">
+                  <a href="/${slug}/carpet-cleaning/" class="text-xs font-bold text-pink-600 hover:text-pink-700 flex items-center gap-1.5 transition-colors">
+                    <span>Carpet & Floor Care in ${cleanName}, FL</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </a>
                 </div>
-                <h3 class="font-bold text-gray-900 mb-1.5 flex items-center gap-2">
-                  <i class="fa-solid fa-bed text-pink-500"></i> Restful Bedrooms
+                <h3 class="font-bold text-gray-900 text-lg mb-2 flex items-center gap-2">
+                  Restful Bedrooms
                 </h3>
                 <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
                   Vacuum under bed frames with low-profile nozzles, damp-dust plantation shutters, freshen linens, and treat rugs with <a href="/${slug}/carpet-cleaning/" class="text-pink-600 underline font-medium">carpet steam cleaning</a>.
@@ -252,14 +280,22 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
               </div>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm flex flex-col justify-between">
+            <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="h-36 rounded-xl overflow-hidden mb-4 relative">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.17.58-pm.webp" alt="Patio and window cleaning in ${cleanName}" class="w-full h-full object-cover" loading="lazy" />
-                  <span class="absolute bottom-2 left-2 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Lanai & Glass</span>
+                <a href="/${slug}/window-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.17.58-pm.webp" alt="Patio and window cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
+                    <i class="fa-solid fa-sun text-pink-400"></i> Lanai & Glass
+                  </span>
+                </a>
+                <div class="mb-2">
+                  <a href="/${slug}/window-cleaning/" class="text-xs font-bold text-pink-600 hover:text-pink-700 flex items-center gap-1.5 transition-colors">
+                    <span>Window Washing in ${cleanName}, FL</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </a>
                 </div>
-                <h3 class="font-bold text-gray-900 mb-1.5 flex items-center gap-2">
-                  <i class="fa-solid fa-sun text-pink-500"></i> Lanai & Sliding Doors
+                <h3 class="font-bold text-gray-900 text-lg mb-2 flex items-center gap-2">
+                  Lanai & Sliding Doors
                 </h3>
                 <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
                   Vacuum sliding door track channels to prevent grit from grinding rollers, remove salt film with <a href="/${slug}/window-cleaning/" class="text-pink-600 underline font-medium">window washing</a>, and sweep covered patio tile.

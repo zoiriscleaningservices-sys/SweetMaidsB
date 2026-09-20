@@ -130,10 +130,19 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     });
   } else if (pageType === 'blog') {
     // Florida Regional Blog Hub: Preserve authentic regional titles, cities, and internal linking
-    newContent = newContent.replace(/#1 Rated Cleaning Service in Bradenton/gi, 'Top-Rated Cleaning & Maid Services in Florida');
+    const blogTopBanner = (loc_slug && loc_slug !== 'home' && is_sub_page)
+      ? `5-Star Rated Cleaning Service in ${clean_name}, FL`
+      : `5-Star Rated Cleaning Service in Florida`;
+    newContent = newContent.replace(/(?:#1\s+Rated\s+Cleaning\s+Service\s+in\s+Bradenton|5-Star Rated Cleaning Service in Florida|Top-Rated Cleaning & Maid Services in Florida)/gi, blogTopBanner);
     newContent = newContent.replace(/Bradenton's most trusted cleaning service/gi, "Florida's most trusted cleaning service");
     newContent = newContent.replace(/Why Locals Trust Us/gi, `Why Florida Homeowners Trust Us`);
     newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why Florida Homeowners Trust Us`);
+
+    // Dedicated phone routing for South Florida & Florida Keys
+    if (is305Area(loc_slug, clean_name)) {
+      newContent = newContent.replace(/\(941\)\s*222-2080/g, '(305) 851-6959');
+      newContent = newContent.replace(/tel:1?9412222080/g, 'tel:13058516959');
+    }
 
     // If viewing a localized city blog page (is_sub_page and loc_slug), inject the dedicated local blog article & local Google map
     if (loc_slug && loc_slug !== 'home' && is_sub_page) {
@@ -145,6 +154,26 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       } else {
         newContent = localBlogHtml + '\n' + newContent;
       }
+
+      // Localize bottom Services Carousel and local authority links to this specific city
+      newContent = newContent.replace(
+        /href="\/([a-z0-9-]+-cleaning|recurring-maid-service|pressure-washing|office-janitorial-services|janitorial-cleaning-services|medical-dental-facility-cleaning|industrial-warehouse-cleaning|gym-fitness-center-cleaning|school-daycare-cleaning|church-worship-center-cleaning|property-management-janitorial|floor-stripping-waxing|solar-panel-cleaning|gutter-cleaning|property-maintenance|home-watch-services)\/"/g,
+        `href="/${loc_slug}/$1/"`
+      );
+
+      // Localize bottom hyper-local SEO block
+      newContent = newContent.replace(/House Cleaning in Bradenton\s*fl/gi, `House Cleaning in ${clean_name}, FL`);
+      newContent = newContent.replace(/Bradenton\s*House Cleaning/gi, `${clean_name} House Cleaning`);
+      newContent = newContent.replace(/Providing Top-Tier House Cleaning in\s+Bradenton\s*FL/gi, `Providing Top-Tier House Cleaning in ${clean_name}, FL`);
+      newContent = newContent.replace(/space in Bradenton,\s*FL/gi, `space in ${clean_name}, FL`);
+      newContent = newContent.replace(/Bradenton residents/gi, `${clean_name} residents`);
+      newContent = newContent.replace(/free Bradenton House Cleaning quote/gi, `free ${clean_name} House Cleaning quote`);
+    } else {
+      // On statewide /blog/ hub, ensure adequate top clearance below fixed header
+      newContent = newContent.replace(
+        /(<section[^>]*id="sweet-maid-blog-hub"[^>]*class="[^"]*)"/i,
+        '$1" style="padding-top: clamp(120px, 14vh, 160px);"'
+      );
     }
   } else {
     // Aggressive SEO location and service targeting
@@ -177,8 +206,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   }
   
   // Purge any references to non-working / decommissioned service pages from header, mobile menu, and footer
-  newContent = newContent.replace(/<li[^>]*>\s*<a[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>\s*<\/li>/gi, '');
-  newContent = newContent.replace(/<a[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>/gi, '');
+  newContent = newContent.replace(/<li[^>]*>\s*<a\s+[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>\s*<\/li>/gi, '');
+  newContent = newContent.replace(/<a\s+[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>/gi, '');
 
   // Clean, 8-8-8 Aligned Header Services Mega Menu
   const alignedMegaMenuHtml = `<!-- Services Dropdown (Mega Menu) -->
@@ -599,7 +628,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   );
 
   // 2. Accessibility & Social Links Enhancements
-  newContent = newContent.replace(/<a([^>]*class="[^"]*lg:hidden[^"]*"[^>]*)>/gi, '<a aria-label="Call Sweet Maid at (941) 222-2080"$1>');
+  newContent = newContent.replace(/<a\s+([^>]*class="[^"]*lg:hidden[^"]*"[^>]*)>/gi, '<a aria-label="Call Sweet Maid at (941) 222-2080" $1>');
   newContent = newContent.replace(/<a\s+href="tel:([^"]+)"(?![^>]*aria-label)([^>]*)>/gi, `<a href="tel:$1" aria-label="Call Sweet Maid at $1"$2>`);
   newContent = newContent.replace(/<a\s+href="([^"]*facebook[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Facebook" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*instagram[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Instagram" rel="noopener noreferrer"$2>');
@@ -610,10 +639,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<a\s+href="([^"]*(?:x\.com|twitter\.com)[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on X" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*yelp\.com[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Find Sweet Maid on Yelp" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*wa\.me[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Chat with Sweet Maid on WhatsApp" rel="noopener noreferrer"$2>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse all Florida cleaning locations"$1>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/booknow\/?"[^>]*)>/gi, '<a aria-label="Book a professional cleaning service now"$1>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/book-online\/?"[^>]*)>/gi, '<a aria-label="Book your cleaning service online"$1>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse all Florida cleaning locations"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/booknow\/?"[^>]*)>/gi, '<a aria-label="Book a professional cleaning service now"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/book-online\/?"[^>]*)>/gi, '<a aria-label="Book your cleaning service online"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company"$1>');
 
   // Dynamic Full Social Links Bar Upgrade for All Templates
   const fullFooterSocialBar = `<div class="flex flex-wrap items-center gap-2.5">
@@ -696,11 +725,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     `$1<a href="/privacy-policy/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Privacy Policy">Privacy Policy</a>\n          <a href="/terms-and-conditions/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Terms and Conditions">Terms & Conditions</a>\n          $2`
   );
 
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog"$1>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery"$1>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/login\/?"[^>]*)>/gi, '<a aria-label="Customer portal login"$1>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="#"[^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Service Details"$1>');
-  newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Services Florida"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/login\/?"[^>]*)>/gi, '<a aria-label="Customer portal login"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="#"[^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Service Details"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Services Florida"$1>');
 
   // 3. Accessibility: Form Inputs & Controls
   newContent = newContent.replace(/<input\s+type="text"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="text" aria-label="$2"$1>');
@@ -770,7 +799,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/src="https:\/\/maps\.google\.com\/maps[^"]*"/gi, `src="${map_url}"`);
     newContent = newContent.replace(/src="https:\/\/www\.google\.com\/maps\/embed[^"]*"/gi, `src="${map_url}"`);
     newContent = newContent.replace(/<div class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, gbpBadgeHtml);
-    newContent = newContent.replace(/<a[^>]+query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, gbpBadgeHtml);
+    newContent = newContent.replace(/<a\s+[^>]*query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, gbpBadgeHtml);
   } else if (pageType !== 'login' && pageType !== 'blog') {
     // All other cities: Miami, Tampa, Orlando, Sarasota, Jacksonville, etc.
     const loc_query = encodeURIComponent(`${clean_name}, Florida`);
@@ -781,7 +810,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
     newContent = newContent.replace(/src="https:\/\/maps\.google\.com\/maps[^"]*"/gi, `src="${map_url}"`);
     newContent = newContent.replace(/src="https:\/\/www\.google\.com\/maps\/embed[^"]*"/gi, `src="${map_url}"`);
-    newContent = newContent.replace(/<a[^>]+query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, cityBadgeHtml);
+    newContent = newContent.replace(/<a\s+[^>]*query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, cityBadgeHtml);
     newContent = newContent.replace(/<div class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, cityBadgeHtml);
     newContent = newContent.replace(/Servicing Florida and surrounding areas/gi, `Servicing ${clean_name} and surrounding areas`);
     newContent = newContent.replace(/Servicing entire 34205, 34209, 34208, 34210 areas/g, `Servicing ${clean_name} and surrounding areas`);
