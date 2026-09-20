@@ -79,11 +79,13 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       pageType = 'about';
     } else if (innerH1.includes('Our Cleaning Results') || innerH1.includes('Service Gallery')) {
       pageType = 'gallery';
-    } else if (innerH1.includes('Sweet Maid Cleaning Blog') || innerH1.includes('truewebx-blog-heading')) {
-      pageType = 'blog';
-    } else if (innerH1.includes('Welcome Back') || innerH1.includes('login')) {
+    } else if (innerH1.includes('Welcome Back') || innerH1.includes('login') || innerH1.includes('Client Portal') || innerH1.includes('Cleaning Portal') || innerH1.includes('shining home') || content.includes('bookingkoala.com/login')) {
       pageType = 'login';
     }
+  }
+
+  if (content.includes('bookingkoala.com/login')) {
+    pageType = 'login';
   }
 
   // Generate 100% Unique, Zero-Duplicate SEO Content Pack
@@ -103,33 +105,49 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<link rel="apple-touch-icon"[^>]*>/gi, '');
   newContent = newContent.replace(/<link rel="shortcut icon"[^>]*>/gi, '');
   
-  // Aggressive SEO location and service targeting
-  newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
-  newContent = newContent.replace(/across Bradenton and Southwest Florida/gi, `across ${clean_name} and Southwest Florida`);
-  newContent = newContent.replace(/in Bradenton home/gi, `in ${clean_name} home`);
-  newContent = newContent.replace(/Favorite Cleaners in Bradenton/gi, `Favorite Cleaners in ${clean_name}`);
-  newContent = newContent.replace(/Top Rated in Bradenton/gi, `Top Rated in ${clean_name}`);
-  newContent = newContent.replace(/Cleaning Service in Bradenton/gi, `${serviceName} in ${clean_name}`);
-  newContent = newContent.replace(/Cleaning Service in Florida/gi, `${serviceName} in ${clean_name}`);
-  newContent = newContent.replace(/house cleaning Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
-  newContent = newContent.replace(/maid service Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
-  newContent = newContent.replace(/House Cleaning in Florida FL/gi, `${serviceName} in ${clean_name}, FL`);
-  newContent = newContent.replace(/in House, FL/gi, `in ${clean_name}, FL`);
-  newContent = newContent.replace(/House, FL/gi, `${clean_name}, FL`);
-  newContent = newContent.replace(/Bradenton, FL/gi, `${clean_name}, FL`);
-  newContent = newContent.replace(/Bradenton/gi, clean_name);
-  
-  // Restore static external URLs that contain "bradenton"
-  newContent = newContent.replace(/https:\/\/www\.yelp\.com\/biz\/sweet-maid-cleaning-service-[^/"]+-3/gi, 'https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3');
-  
-  // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
-  newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why ${clean_name} Trusts Us`);
-  newContent = newContent.replace(/Why Locals Trust Us/gi, `Why ${clean_name} Trusts Us`);
-  newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s most trusted ${serviceName.toLowerCase()}`);
-  newContent = newContent.replace(/Professional, reliable, and friendly cleaning services for Florida and surrounding areas/gi, `Professional, reliable, and friendly ${serviceName.toLowerCase()} for ${clean_name} and surrounding areas`);
-  
-  // SEO Google Images Domination: Append target keyword to EVERY image alt tag
-  newContent = newContent.replace(/alt="([^"]*)"/gi, `alt="$1 - Top ${serviceName} in ${clean_name}, FL"`);
+  if (pageType === 'login') {
+    // Zero-City Policy for Login Page: Pure cleaning services keywords only
+    newContent = newContent.replace(/#1 Rated Cleaning Service in Bradenton/gi, '#1 Rated Professional Maid & Cleaning Services');
+    newContent = newContent.replace(/#1 Rated Cleaning Service in [^<|]+/gi, '#1 Rated Professional Maid & Cleaning Services ');
+    newContent = newContent.replace(/Bradenton's most trusted cleaning service/gi, 'Your trusted professional cleaning company');
+    newContent = newContent.replace(/Bradenton, FL/gi, '');
+    newContent = newContent.replace(/in Bradenton/gi, '');
+    newContent = newContent.replace(/Bradenton/gi, '');
+    newContent = newContent.replace(/Trusted by Florida/gi, 'Trusted Professional Cleaners');
+    // Ensure image alt tags focus on cleaning services without city tagging
+    newContent = newContent.replace(/alt="([^"]*)"/gi, (match, p1) => {
+      const cleanAlt = p1.replace(/\s*-\s*Bradenton,?\s*FL/gi, '').replace(/\s*-\s*Top.*$/gi, '');
+      return `alt="${cleanAlt.trim()}"`;
+    });
+  } else {
+    // Aggressive SEO location and service targeting
+    newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
+    newContent = newContent.replace(/across Bradenton and Southwest Florida/gi, `across ${clean_name} and Southwest Florida`);
+    newContent = newContent.replace(/in Bradenton home/gi, `in ${clean_name} home`);
+    newContent = newContent.replace(/Favorite Cleaners in Bradenton/gi, `Favorite Cleaners in ${clean_name}`);
+    newContent = newContent.replace(/Top Rated in Bradenton/gi, `Top Rated in ${clean_name}`);
+    newContent = newContent.replace(/Cleaning Service in Bradenton/gi, `${serviceName} in ${clean_name}`);
+    newContent = newContent.replace(/Cleaning Service in Florida/gi, `${serviceName} in ${clean_name}`);
+    newContent = newContent.replace(/house cleaning Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
+    newContent = newContent.replace(/maid service Bradenton/gi, `${serviceName.toLowerCase()} ${clean_name}`);
+    newContent = newContent.replace(/House Cleaning in Florida FL/gi, `${serviceName} in ${clean_name}, FL`);
+    newContent = newContent.replace(/in House, FL/gi, `in ${clean_name}, FL`);
+    newContent = newContent.replace(/House, FL/gi, `${clean_name}, FL`);
+    newContent = newContent.replace(/Bradenton, FL/gi, `${clean_name}, FL`);
+    newContent = newContent.replace(/Bradenton/gi, clean_name);
+    
+    // Restore static external URLs that contain "bradenton"
+    newContent = newContent.replace(/https:\/\/www\.yelp\.com\/biz\/sweet-maid-cleaning-service-[^/"]+-3/gi, 'https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3');
+    
+    // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
+    newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why ${clean_name} Trusts Us`);
+    newContent = newContent.replace(/Why Locals Trust Us/gi, `Why ${clean_name} Trusts Us`);
+    newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s most trusted ${serviceName.toLowerCase()}`);
+    newContent = newContent.replace(/Professional, reliable, and friendly cleaning services for Florida and surrounding areas/gi, `Professional, reliable, and friendly ${serviceName.toLowerCase()} for ${clean_name} and surrounding areas`);
+    
+    // SEO Google Images Domination: Append target keyword to EVERY image alt tag
+    newContent = newContent.replace(/alt="([^"]*)"/gi, `alt="$1 - Top ${serviceName} in ${clean_name}, FL"`);
+  }
   
   // Purge any references to non-working / decommissioned service pages from header, mobile menu, and footer
   newContent = newContent.replace(/<li[^>]*>\s*<a[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>\s*<\/li>/gi, '');
@@ -137,25 +155,40 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Navigation Links
   for (const s_slug of serviceSlugs) {
-    newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
-    newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
-    newContent = newContent.replace(new RegExp(`href="https://sweetmaidcleaning.com/${s_slug}/"`, 'g'), `href="https://sweetmaidcleaning.com/${loc_slug}/${s_slug}/"`);
+    if (pageType !== 'login' && loc_slug) {
+      newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
+      newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
+      newContent = newContent.replace(new RegExp(`href="https://sweetmaidcleaning.com/${s_slug}/"`, 'g'), `href="https://sweetmaidcleaning.com/${loc_slug}/${s_slug}/"`);
+    } else {
+      newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${s_slug}/"`);
+    }
   }
   
-  newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, `href="/${loc_slug}/about/"`);
-  newContent = newContent.replace(/href="\/about\/"/g, `href="/${loc_slug}/about/"`);
-  
-  newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
-  newContent = newContent.replace(/href="\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
+  if (pageType !== 'login' && loc_slug) {
+    newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, `href="/${loc_slug}/about/"`);
+    newContent = newContent.replace(/href="\/about\/"/g, `href="/${loc_slug}/about/"`);
+    
+    newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
+    newContent = newContent.replace(/href="\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
 
-  newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, `href="/${loc_slug}/blog/"`);
-  newContent = newContent.replace(/href="\/blog\/"/g, `href="/${loc_slug}/blog/"`);
+    newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, `href="/${loc_slug}/blog/"`);
+    newContent = newContent.replace(/href="\/blog\/"/g, `href="/${loc_slug}/blog/"`);
+  } else {
+    newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, `href="/about/"`);
+    newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/gallery/"`);
+    newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, `href="/blog/"`);
+  }
 
   // Explicitly fix corrupted Home links and logos
-  newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/${loc_slug}/"$1>Home</a>`);
-  newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, `<a href="/${loc_slug}/"$1class="flex items-center group">`);
-  
-  newContent = newContent.replace(/href="\/home\/"/g, `href="/${loc_slug}/"`);
+  if (pageType !== 'login' && loc_slug) {
+    newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/${loc_slug}/"$1>Home</a>`);
+    newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, `<a href="/${loc_slug}/"$1class="flex items-center group">`);
+    newContent = newContent.replace(/href="\/home\/"/g, `href="/${loc_slug}/"`);
+  } else {
+    newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/"$1>Home</a>`);
+    newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, `<a href="/"$1class="flex items-center group">`);
+    newContent = newContent.replace(/href="\/home\/"/g, `href="/"`);
+  }
 
   // Replace Logo with the new uploaded brand logo
   newContent = newContent.replace(/https:\/\/i\.ibb\.co\/PzPDfC1N\/Whats-App-Image-2026-02-09-at-4-52-59-PM-Picsart-Background-Remover\.png/g, '/images/logo.png');
@@ -163,45 +196,75 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Fix Cross-City Location Links (e.g. href="/anna-maria-cleaning/")
   newContent = newContent.replace(/href="\/([a-z0-9-]+)-cleaning\/"/g, `href="/$1-fl/${currentService}/"`);
 
-  // Dynamically compute and inject the 100% geographically nearest locations
-  const nearestLocations = getNearestLocations(loc_slug, 8);
   const isSpecificService = serviceSlugs.includes(currentService);
   const targetServiceSuffix = isSpecificService ? `${currentService}/` : '';
+  const nearestLocations = getNearestLocations(loc_slug, 8);
 
-  const desktopNearbyHtml = nearestLocations.map(c => 
-    `<a href="/${c.slug}/${targetServiceSuffix}" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">${c.name}</a>`
-  ).join('\n');
+  if (pageType !== 'login') {
+    // Dynamically compute and inject the 100% geographically nearest locations
+    const desktopNearbyHtml = nearestLocations.map(c => 
+      `<a href="/${c.slug}/${targetServiceSuffix}" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">${c.name}</a>`
+    ).join('\n');
 
-  const mobileNearbyHtml = nearestLocations.map(c => 
-    `<a href="/${c.slug}/${targetServiceSuffix}" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-location-dot text-pink-300 w-5"></i><span>${c.name}</span></a>`
-  ).join('\n');
+    const mobileNearbyHtml = nearestLocations.map(c => 
+      `<a href="/${c.slug}/${targetServiceSuffix}" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-location-dot text-pink-300 w-5"></i><span>${c.name}</span></a>`
+    ).join('\n');
 
-  newContent = newContent.replace(
-    /(<div id="nearby-locations-list"[^>]*>)[\s\S]*?(<\/div>\s*<div class="border-t)/i,
-    `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>\n              <div class="border-t`
-  );
+    newContent = newContent.replace(
+      /(<div id="nearby-locations-list"[^>]*>)[\s\S]*?(<\/div>\s*<div class="border-t)/i,
+      `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>\n              <div class="border-t`
+    );
 
-  // Direct ANY "View All Locations" link to /locations/
-  newContent = newContent.replace(
-    /<a\s+[^>]*href="[^"]*"([^>]*>[\s\S]*?View All Locations[\s\S]*?<\/a>)/gi,
-    '<a href="/locations/"$1'
-  );
+    // Direct ANY "View All Locations" link to /locations/
+    newContent = newContent.replace(
+      /<a\s+[^>]*href="[^"]*"([^>]*>[\s\S]*?View All Locations[\s\S]*?<\/a>)/gi,
+      '<a href="/locations/"$1'
+    );
 
-  newContent = newContent.replace(
-    /(<div id="mobile-nearby-list"[^>]*>)[\s\S]*?(<\/div>\s*<\/div>\s*<\/div>\s*\n?\s*<a href="[^"]*blog\/)/i,
-    `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${mobileNearbyHtml}\n</div>\n          </div>\n        </div>\n\n        <a href="/blog/`
-  );
+    newContent = newContent.replace(
+      /(<div id="mobile-nearby-list"[^>]*>)[\s\S]*?(<\/div>\s*<\/div>\s*<\/div>\s*\n?\s*<a href="[^"]*blog\/)/i,
+      `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${mobileNearbyHtml}\n</div>\n          </div>\n        </div>\n\n        <a href="/blog/`
+    );
 
-  // Also update footer "Locations We Serve" grid with the top 28 closest neighboring locations
-  const nearestFooterLocations = getNearestLocations(loc_slug, 28);
-  const footerGridHtml = nearestFooterLocations.map(c => 
-    `<a href="/${c.slug}/${targetServiceSuffix}" class="hover:text-pink-400 transition-colors">${c.name}</a>`
-  ).join('\n');
+    // Also update footer "Locations We Serve" grid with the top 28 closest neighboring locations
+    const nearestFooterLocations = getNearestLocations(loc_slug, 28);
+    const footerGridHtml = nearestFooterLocations.map(c => 
+      `<a href="/${c.slug}/${targetServiceSuffix}" class="hover:text-pink-400 transition-colors">${c.name}</a>`
+    ).join('\n');
 
-  newContent = newContent.replace(
-    /(<div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">)[\s\S]*?(<\/div>)/i,
-    `$1\n${footerGridHtml}\n$2`
-  );
+    newContent = newContent.replace(
+      /(<div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">)[\s\S]*?(<\/div>)/i,
+      `$1\n${footerGridHtml}\n$2`
+    );
+  } else {
+    // Zero-City Navigation for Login Page: Pure cleaning services keywords only
+    const loginDesktopNearbyHtml = `
+      <a href="/locations/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition flex items-center justify-between"><span>Florida Service Areas</span> <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      <a href="/house-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">House Cleaning Services</a>
+      <a href="/deep-cleaning/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Deep Cleaning Services</a>
+      <a href="/recurring-maid-service/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Recurring Maid Services</a>
+    `;
+    const loginMobileNearbyHtml = `
+      <a href="/locations/" class="mobile-link flex items-center justify-between p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><span>View All Service Areas</span><i class="fa-solid fa-arrow-right text-xs text-pink-400"></i></a>
+      <a href="/house-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-broom text-pink-300 w-5"></i><span>House Cleaning</span></a>
+      <a href="/deep-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-sparkles text-pink-300 w-5"></i><span>Deep Cleaning</span></a>
+    `;
+
+    newContent = newContent.replace(
+      /(<div id="nearby-locations-list"[^>]*>)[\s\S]*?(<\/div>\s*<div class="border-t)/i,
+      `<div id="nearby-locations-list" class="space-y-1">\n${loginDesktopNearbyHtml}\n</div>\n              <div class="border-t`
+    );
+
+    newContent = newContent.replace(
+      /<a\s+[^>]*href="[^"]*"([^>]*>[\s\S]*?View All Locations[\s\S]*?<\/a>)/gi,
+      '<a href="/locations/"$1'
+    );
+
+    newContent = newContent.replace(
+      /(<div id="mobile-nearby-list"[^>]*>)[\s\S]*?(<\/div>\s*<\/div>\s*<\/div>\s*\n?\s*<a href="[^"]*blog\/)/i,
+      `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${loginMobileNearbyHtml}\n</div>\n          </div>\n        </div>\n\n        <a href="/blog/`
+    );
+  }
 
   // Strip native inline onclick to let React ClientInteractions intercept it perfectly
   newContent = newContent.replace(/onclick="this\.parentElement\.classList\.toggle\('accordion-active'\)"/gi, "");
@@ -471,7 +534,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/src="https:\/\/www\.google\.com\/maps\/embed[^"]*"/gi, `src="${map_url}"`);
     newContent = newContent.replace(/<div class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, gbpBadgeHtml);
     newContent = newContent.replace(/<a[^>]+query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, gbpBadgeHtml);
-  } else {
+  } else if (pageType !== 'login') {
     // All other cities: Miami, Tampa, Orlando, Sarasota, Jacksonville, etc.
     const loc_query = encodeURIComponent(`${clean_name}, Florida`);
     const map_url = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${loc_query}+()&t=&z=13&ie=UTF8&iwloc=B&output=embed`;
@@ -638,7 +701,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   </section>
   `;
 
-  if (newContent.includes('<footer')) {
+  if (pageType !== 'login' && newContent.includes('<footer')) {
     newContent = newContent.replace(/<footer/i, seoSection + '\n<footer');
   }
 
@@ -685,12 +748,40 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   `;
 
   // Inject Climate Section above Footer
-  if (newContent.includes('<footer')) {
+  if (pageType !== 'login' && newContent.includes('<footer')) {
     newContent = newContent.replace(/<footer/i, climateSectionHtml + '\n<footer');
   }
 
   // Inject Structured JSON-LD Schema
-  newContent += `\n<script type="application/ld+json">${seoPack.schemaJson}</script>`;
+  if (pageType !== 'login') {
+    newContent += `\n<script type="application/ld+json">${seoPack.schemaJson}</script>`;
+  } else {
+    const loginSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Customer Portal & Account Login | Sweet Maid Cleaning Services",
+      "description": "Log in to your Sweet Maid Cleaning customer portal. Easily schedule recurring maid services, book deep home cleanings, manage appointments, and view invoices.",
+      "url": "https://sweetmaidcleaning.com/login/",
+      "provider": {
+        "@type": "CleaningService",
+        "name": "Sweet Maid Cleaning Service",
+        "url": "https://sweetmaidcleaning.com/",
+        "telephone": "+1-941-222-2080",
+        "email": "sweetmaidcleaning@gmail.com",
+        "sameAs": [
+          "https://www.facebook.com/SweetMaidCleaningService/",
+          "https://www.instagram.com/sweetmaidcleaningservice/",
+          "https://www.tiktok.com/@sweetmaidcleaningservice",
+          "https://www.youtube.com/@sweetmaidcleaning",
+          "https://www.linkedin.com/company/sweet-maid-cleaning-service/",
+          "https://www.pinterest.com/sweetmaidcleaning/",
+          "https://x.com/sweetmaidclean",
+          "https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3"
+        ]
+      }
+    };
+    newContent += `\n<script type="application/ld+json">${JSON.stringify(loginSchema)}</script>`;
+  }
 
   // Swap out the static generic FAQ accordion block with the SEO-maximized dynamic block
   const staticFaqBlockRegex = /<div class="space-y-4">\s*<!-- Q1 -->[\s\S]*?protect you and your home\.\s*<\/p>\s*<\/details>\s*<\/div>/i;
@@ -901,7 +992,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   } else if (pageType === 'blog') {
     customH1Inner = `Best Cleaning Tips & Professional Home Care Blog in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'login') {
-    customH1Inner = `Welcome Back to Sweet Maid Portal in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = '';
   } else {
     // service_or_home: Use dynamic zero-duplicate SEO pack H1
     customH1Inner = `${seoPack.h1}`;
