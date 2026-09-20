@@ -83,7 +83,7 @@ export function getLocationSlugs(): string[] {
  */
 export function resolveAnyLocation(slug: string): GeoEntity | null {
   const cleanSlug = slug.toLowerCase().trim();
-  const systemRoutes = ['about', 'blog', 'gallery', 'locations', 'login', 'booknow', 'book-online', 'cost', 'robots.txt', 'sitemap.xml', 'icon.png'];
+  const systemRoutes = ['about', 'blog', 'gallery', 'locations', 'login', 'booknow', 'book-online', 'cost', 'privacy-policy', 'terms-and-conditions', 'privacy', 'terms', 'robots.txt', 'sitemap.xml', 'icon.png'];
   if (systemRoutes.includes(cleanSlug)) {
     return null;
   }

@@ -196,8 +196,13 @@ export default function BookOnlinePage() {
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto pt-6 border-t border-pink-50 text-center text-xs text-gray-400">
-          &copy; 2026 Sweet Maid Cleaning Service. All rights reserved.
+        <div className="max-w-7xl mx-auto pt-6 border-t border-pink-50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+          <div>&copy; 2026 Sweet Maid Cleaning Service. All rights reserved.</div>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy-policy/" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
+            <Link href="/terms-and-conditions/" className="hover:text-pink-500 transition-colors">Terms &amp; Conditions</Link>
+            <a href="/sitemap.xml" className="hover:text-pink-500 transition-colors">Sitemap</a>
+          </div>
         </div>
       </footer>
     </div>

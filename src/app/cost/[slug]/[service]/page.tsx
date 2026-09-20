@@ -184,7 +184,11 @@ export default async function CostEstimatorPage({ params }: Props) {
 
       {/* Footer */}
       <footer className="border-t border-pink-100 py-8 bg-white text-center text-xs text-gray-500">
-        <p>© 2026 Sweet Maid Cleaning Services. Serving {locationName} and all 799+ Florida communities.</p>
+        <p className="mb-2">© 2026 Sweet Maid Cleaning Services. Serving {locationName} and all 799+ Florida communities.</p>
+        <div className="flex justify-center gap-6">
+          <Link href="/privacy-policy/" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
+          <Link href="/terms-and-conditions/" className="hover:text-pink-500 transition-colors">Terms &amp; Conditions</Link>
+        </div>
       </footer>
     </div>
   );

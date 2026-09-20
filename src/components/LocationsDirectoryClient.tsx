@@ -456,6 +456,8 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
             <Link href="/locations/" className="hover:text-pink-500 transition-colors">Locations</Link>
             <Link href="/blog/" className="hover:text-pink-500 transition-colors">Blog</Link>
             <Link href="/gallery/" className="hover:text-pink-500 transition-colors">Gallery</Link>
+            <Link href="/privacy-policy/" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
+            <Link href="/terms-and-conditions/" className="hover:text-pink-500 transition-colors">Terms &amp; Conditions</Link>
           </div>
           <div className="text-xs text-gray-400">
             &copy; {new Date().getFullYear()} Sweet Maid Cleaning Service. All rights reserved.
