@@ -183,7 +183,6 @@
             '/school-daycare-cleaning/', '/church-worship-center-cleaning/',
             '/property-management-janitorial/', '/luxury-estate-cleaning/',
             '/solar-panel-cleaning/', '/gutter-cleaning/', '/property-maintenance/',
-            '/airbnb-vacation-rental-management/', '/luxury-estate-management/',
             '/about/', '/gallery/', '/blog/'
         ];
 

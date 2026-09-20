@@ -29,9 +29,7 @@ export const serviceH1Map: Record<string, string> = {
   "luxury-estate-cleaning": "Top-Rated Luxury Estate & Mansion Cleaning Services in",
   "solar-panel-cleaning": "Best Solar Panel Cleaning & Professional Washing in",
   "gutter-cleaning": "Top-Rated Gutter Cleaning & Downspout Services in",
-  "property-maintenance": "Best Property Maintenance & Handyman Services in",
-  "airbnb-vacation-rental-management": "Top-Rated Airbnb & Vacation Rental Property Management in",
-  "luxury-estate-management": "Best Luxury Estate & Property Management Services in"
+  "property-maintenance": "Best Property Maintenance & Handyman Services in"
 };
 
 
@@ -130,6 +128,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // SEO Google Images Domination: Append target keyword to EVERY image alt tag
   newContent = newContent.replace(/alt="([^"]*)"/gi, `alt="$1 - Top ${serviceName} in ${clean_name}, FL"`);
   
+  // Purge any references to non-working / decommissioned service pages from header, mobile menu, and footer
+  newContent = newContent.replace(/<li[^>]*>\s*<a[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>\s*<\/li>/gi, '');
+  newContent = newContent.replace(/<a[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>/gi, '');
+
   // Navigation Links
   for (const s_slug of serviceSlugs) {
     newContent = newContent.replace(new RegExp(`href="/[^/]+/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
