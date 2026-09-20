@@ -627,8 +627,17 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     </script>`
   );
 
-  // 2. Accessibility & Social Links Enhancements
-  newContent = newContent.replace(/<a\s+([^>]*class="[^"]*lg:hidden[^"]*"[^>]*)>/gi, '<a aria-label="Call Sweet Maid at (941) 222-2080" $1>');
+  // 2. Mobile Call Button on Header Left: Guarantee it calls Sweet Maid directly
+  const isSouthFlorida305 = is305Area(loc_slug, clean_name);
+  const mobilePhoneHref = isSouthFlorida305 ? 'tel:13058516959' : 'tel:19412222080';
+  const mobilePhoneDisplay = isSouthFlorida305 ? '(305) 851-6959' : '(941) 222-2080';
+
+  newContent = newContent.replace(
+    /<a\s+[^>]*class=["'][^"']*lg:hidden[^"']*["'][^>]*>(?:(?!<\/a>)[\s\S])*?<i\s+class=["'][^"']*fa-phone[^"']*["'][\s\S]*?<\/a>/gi,
+    `<a href="${mobilePhoneHref}" class="lg:hidden w-11 h-11 flex items-center justify-center bg-pink-50 text-pink-400 hover:bg-pink-100 rounded-full border border-pink-100 shadow-sm active:scale-95 transition-all" aria-label="Call Sweet Maid at ${mobilePhoneDisplay}"><i class="fa-solid fa-phone text-[1.1rem]"></i></a>`
+  );
+
+  // Accessibility & Social Links Enhancements
   newContent = newContent.replace(/<a\s+href="tel:([^"]+)"(?![^>]*aria-label)([^>]*)>/gi, `<a href="tel:$1" aria-label="Call Sweet Maid at $1"$2>`);
   newContent = newContent.replace(/<a\s+href="([^"]*facebook[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Facebook" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*instagram[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Instagram" rel="noopener noreferrer"$2>');

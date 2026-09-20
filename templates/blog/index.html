@@ -454,10 +454,15 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex items-center justify-between h-24 md:h-28">
+      <div class="flex items-center justify-between h-24 md:h-28 relative">
+
+        <!-- Mobile Call Icon (Left) -->
+        <a href="tel:19412222080" class="lg:hidden w-11 h-11 flex items-center justify-center bg-pink-50 text-pink-400 hover:bg-pink-100 rounded-full border border-pink-100 shadow-sm active:scale-95 transition-all" aria-label="Call Sweet Maid at (941) 222-2080">
+          <i class="fa-solid fa-phone text-[1.1rem]"></i>
+        </a>
 
         <!-- Logo -->
-        <a href="/locations/" class="flex items-center group">
+        <a href="/" class="flex items-center group absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
           <img loading="lazy"
             src="/images/logo.png"
             alt="Sweet Maid Cleaning Service - Bradenton, FL"
