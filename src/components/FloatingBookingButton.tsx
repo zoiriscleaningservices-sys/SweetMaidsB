@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { miamiBrowardSlugs, is305Area } from "@/lib/miami_broward_slugs";
-import { isManateeCounty } from "@/lib/manatee";
+import { is305Area } from "@/lib/miami_broward_slugs";
 
 export default function FloatingBookingButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,9 +14,6 @@ export default function FloatingBookingButton() {
   const phoneNumber = is305 ? "3058516959" : "9412222080";
   const phoneDisplay = is305 ? "(305) 851-6959" : "(941) 222-2080";
 
-  // Gate "Book Online" exclusively to Manatee County pages
-  const isExcludedPage = ["about", "blog", "gallery", "locations", "login", "privacy-policy", "terms-and-conditions", "privacy", "terms"].includes(slug);
-  const isManatee = pathname === "/" || (!isExcludedPage && isManateeCounty(slug));
   const hasLocalQuote = !["locations", "privacy-policy", "terms-and-conditions", "privacy", "terms"].includes(slug);
   const quoteHref = hasLocalQuote ? "#quote" : "/#quote";
 
@@ -66,32 +62,22 @@ export default function FloatingBookingButton() {
           <span className="font-bold text-[0.95rem] tracking-tight whitespace-nowrap">{phoneDisplay}</span>
         </a>
 
-        {/* Action Button: Book Online for Manatee County, Get Free Quote for everywhere else */}
-        {isManatee ? (
-          <a
-            href="/book-online/"
-            aria-label="Book your cleaning service online"
-            className="group relative flex items-center gap-3 bg-gradient-to-br from-pink-500 via-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 rounded-[2rem] shadow-[0_10px_35px_rgba(236,72,153,0.5)] hover:shadow-[0_15px_45px_rgba(236,72,153,0.7)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-200/50"
-          >
-            <span className="absolute -inset-0.5 bg-gradient-to-r from-pink-200 to-white opacity-30 blur-sm rounded-full group-hover:opacity-50 transition-opacity"></span>
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/20 shadow-inner">
-              <i className="fa-solid fa-calendar-check text-white text-sm drop-shadow-md"></i>
-            </div>
-            <span className="relative font-bold text-[1.1rem] tracking-tight whitespace-nowrap">Book Online</span>
-          </a>
-        ) : (
-          <a
-            href={quoteHref}
-            aria-label="Get a free cleaning estimate"
-            className="group relative flex items-center gap-3 bg-gradient-to-br from-pink-500 via-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 rounded-[2rem] shadow-[0_10px_35px_rgba(236,72,153,0.5)] hover:shadow-[0_15px_45px_rgba(236,72,153,0.7)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-200/50"
-          >
-            <span className="absolute -inset-0.5 bg-gradient-to-r from-pink-200 to-white opacity-30 blur-sm rounded-full group-hover:opacity-50 transition-opacity"></span>
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/20 shadow-inner">
-              <i className="fa-solid fa-file-invoice-dollar text-white text-sm drop-shadow-md"></i>
-            </div>
-            <span className="relative font-bold text-[1.1rem] tracking-tight whitespace-nowrap">Get Free Quote</span>
-          </a>
-        )}
+        {/* Action Button: Get Your Free Quote on desktop and mobile */}
+        <a
+          href={quoteHref}
+          onClick={() => {
+            setHasClicked(true);
+            setTimeout(() => setHasClicked(false), 3000);
+          }}
+          aria-label="Get your free cleaning quote"
+          className="group relative flex items-center gap-2.5 sm:gap-3 bg-gradient-to-br from-pink-500 via-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-[2rem] shadow-[0_10px_35px_rgba(236,72,153,0.5)] hover:shadow-[0_15px_45px_rgba(236,72,153,0.7)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-200/50"
+        >
+          <span className="absolute -inset-0.5 bg-gradient-to-r from-pink-200 to-white opacity-30 blur-sm rounded-full group-hover:opacity-50 transition-opacity"></span>
+          <div className="relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 shadow-inner">
+            <i className="fa-solid fa-file-invoice-dollar text-white text-xs sm:text-sm drop-shadow-md"></i>
+          </div>
+          <span className="relative font-bold text-[1rem] sm:text-[1.1rem] tracking-tight whitespace-nowrap">Get Your Free Quote</span>
+        </a>
       </div>
 
       {/* Back to Top Button - Bottom Right (above chat widget) */}

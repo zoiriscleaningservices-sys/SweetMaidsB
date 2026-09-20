@@ -713,10 +713,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       `$1\n        <a href="/book-online/" class="menu-item delay-1 flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-md shadow-pink-200 font-bold transition-all" aria-label="Book your cleaning service online"><span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</span><i class="fa-solid fa-arrow-right text-white text-sm"></i></a>`
     );
 
-    // 4. Mobile Slide-Out Drawer: Convert bottom CTA button to "Book Online"
+    // 4. Mobile Slide-Out Drawer: Ensure bottom CTA button is "Get Your Free Quote"
     newContent = newContent.replace(
       /<a\s+[^>]*onclick="closeMenu\(\)"[^>]*>[\s\S]*?<\/a>/gi,
-      `<a href="/book-online/" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
+      `<a href="#quote" onclick="closeMenu()" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Get your free cleaning quote"><i class="fa-solid fa-file-invoice-dollar text-white"></i> Get Your Free Quote</a>`
     );
   }
   // 5. Footer Links: Add Privacy Policy & Terms and Conditions (Footer Only)
