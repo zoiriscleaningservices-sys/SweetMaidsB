@@ -53,7 +53,7 @@ export default async function LocationOrServicePage({ params }: { params: Promis
     if (!rawHtml) return <div>Service template missing</div>;
 
     const bodyContent = extractSections(rawHtml);
-    const localizedHtml = localizedReplace(bodyContent, 'Bradenton', slug, false, slug);
+    const localizedHtml = localizedReplace(bodyContent, 'Florida', slug, false, slug);
     return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
   } else {
     const locData = resolveAnyLocation(slug);

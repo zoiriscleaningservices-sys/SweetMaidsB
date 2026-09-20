@@ -821,10 +821,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // 9. Accessibility: Sequential Heading Hierarchy (H1 -> H2 -> H3 -> H4)
   newContent = newContent.replace(/<h3 class="text-2xl font-bold text-center text-gray-800 mb-6 drop-shadow-sm">Find Services In Your City<\/h3>/gi, '<h2 class="text-2xl font-bold text-center text-gray-800 mb-6 drop-shadow-sm">Find Services In Your City</h2>');
-  newContent = newContent.replace(/<h4 class="font-bold text-lg mb-1">/gi, '<h3 class="font-bold text-lg mb-1">');
+  newContent = newContent.replace(/<h4 class="font-bold text-lg mb-1">([\s\S]*?)<\/h4>/gi, '<h3 class="font-bold text-lg mb-1">$1</h3>');
   newContent = newContent.replace(/<h4 class="text-3xl font-bold mb-4 text-gray-900">100% Eco-Friendly Options<\/h4>/gi, '<h3 class="text-3xl font-bold mb-4 text-gray-900">100% Eco-Friendly Options</h3>');
   newContent = newContent.replace(/<h4 class="font-bold text-gray-900">([^<]+)<\/h4>/gi, '<h3 class="font-bold text-gray-900">$1</h3>');
-  newContent = newContent.replace(/<h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">/gi, '<h3 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">');
+  newContent = newContent.replace(/<h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">([\s\S]*?)<\/h4>/gi, '<h3 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">$1</h3>');
 
   // Fix Map Headings and Pin Labels
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
@@ -942,14 +942,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <div class="max-w-4xl mx-auto text-center mb-14">
         <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
           <i class="fa-solid fa-award"></i>
-          <span>${isManatee ? 'Manatee County Local Service Authority' : isMonroe ? 'Florida Keys & Monroe County Local Service Authority' : 'Local Cleaning Service Authority'}</span>
+          <span>${clean_name.toLowerCase() === 'florida' || serviceSlugs.includes(loc_slug) ? 'Florida Statewide Service Authority' : isManatee ? 'Manatee County Local Service Authority' : isMonroe ? 'Florida Keys & Monroe County Local Service Authority' : 'Local Cleaning Service Authority'}</span>
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif">Providing Top-Tier ${serviceDisplayName} in ${clean_name}, FL</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif">${clean_name.toLowerCase() === 'florida' || serviceSlugs.includes(loc_slug) ? `Providing Top-Tier ${serviceDisplayName} Across Florida` : `Providing Top-Tier ${serviceDisplayName} in ${clean_name}, FL`}</h2>
         <p class="text-gray-700 leading-relaxed text-base md:text-lg mb-4">
-          As the leading provider of professional <strong>${serviceDisplayName} in ${clean_name}, FL</strong>${isManatee ? ' and across Manatee County' : isMonroe ? ' and throughout the Florida Keys' : ' and the surrounding areas'}, Sweet Maid is dedicated to maintaining the highest cleanliness standards for your property. Whether you are looking for top-rated <strong>${serviceDisplayName} in ${clean_name}</strong>, scheduled recurring visits, or intensive turnover cleaning, our licensed, bonded, and insured team is always nearby and ready to deliver spotless perfection.
+          ${clean_name.toLowerCase() === 'florida' || serviceSlugs.includes(loc_slug) ? `As the premier statewide provider of professional <strong>${serviceDisplayName} across Florida</strong>, Sweet Maid is dedicated to maintaining the highest cleanliness standards for your home or business. Whether you need scheduled recurring visits, deep seasonal cleans, or urgent move-out sanitizing, our licensed, bonded, and insured teams serve all 799+ Florida cities with 5-star perfection.` : `As the leading provider of professional <strong>${serviceDisplayName} in ${clean_name}, FL</strong>${isManatee ? ' and across Manatee County' : isMonroe ? ' and throughout the Florida Keys' : ' and the surrounding areas'}, Sweet Maid is dedicated to maintaining the highest cleanliness standards for your property. Whether you are looking for top-rated <strong>${serviceDisplayName} in ${clean_name}</strong>, scheduled recurring visits, or intensive turnover cleaning, our licensed, bonded, and insured team is always nearby and ready to deliver spotless perfection.`}
         </p>
         <p class="text-gray-600 leading-relaxed text-sm md:text-base mb-6">
-          Don't settle for less when it comes to the hygiene, freshness, and appearance of your space in ${clean_name}, FL. Join countless satisfied locals who rely on our trusted professional cleaners.
+          ${clean_name.toLowerCase() === 'florida' || serviceSlugs.includes(loc_slug) ? `Don't settle for less when it comes to the hygiene, freshness, and appearance of your Florida property. Join countless satisfied homeowners and business clients statewide.` : `Don't settle for less when it comes to the hygiene, freshness, and appearance of your space in ${clean_name}, FL. Join countless satisfied locals who rely on our trusted professional cleaners.`}
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="/${loc_slug}/${currentService}/#quote" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 text-sm md:text-base">

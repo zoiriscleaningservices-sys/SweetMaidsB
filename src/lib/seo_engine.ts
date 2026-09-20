@@ -1,4 +1,4 @@
-import { formatName } from './data';
+import { formatName, serviceSlugs } from './data';
 import { is305Area } from './miami_broward_slugs';
 
 // Deterministic string hashing for consistent but unique variation per page
@@ -212,8 +212,14 @@ export function generateSeoContentPack(
     `Award-Winning Local ${cleanSrv} in ${cleanLoc}, FL`
   ];
 
+  const isStatewide = cleanLoc.toLowerCase() === 'florida' || serviceSlugs.includes(locSlug);
+
   const h1Pool = serviceH1MapUnique[serviceSlug] || defaultH1s;
-  const h1 = h1Pool[seed % h1Pool.length];
+  let h1 = h1Pool[seed % h1Pool.length];
+  if (isStatewide) {
+    h1 = h1.replace(/\s+in\s+Florida,\s*(?:Florida|FL\b)/gi, ' Across Florida');
+    h1 = h1.replace(/\s+in\s+Florida$/gi, ' Across Florida');
+  }
 
   // 3. High-Volume Daily Search Term Clusters (Real Google user daily search queries)
   const dailyKeywordPools = [
@@ -262,7 +268,13 @@ export function generateSeoContentPack(
   const dailySearchKeywords = dailyKeywordPools[seed % dailyKeywordPools.length];
 
   // 4. Badges
-  const badges = [
+  const badges = isStatewide ? [
+    `📍 Serving All 799+ Florida Cities & Communities`,
+    `✨ 100% Satisfaction Guaranteed Across Florida`,
+    `🏆 Top Rated Cleaning Specialists Across Florida`,
+    `🛡️ Fully Licensed, Bonded & Insured Statewide`,
+    `🌿 Eco-Friendly & Hospital-Grade Cleaners in Florida`,
+  ] : [
     `📍 Serving All of ${cleanLoc} & Surrounding Florida Areas`,
     `✨ 100% Satisfaction Guaranteed in ${cleanLoc}, FL`,
     `🏆 Top Rated Cleaning Specialists in ${cleanLoc}, Florida`,
@@ -272,7 +284,12 @@ export function generateSeoContentPack(
   const badge = badges[seed % badges.length];
 
   // 5. Hero Subtitle naturally weaving in primary user intent
-  const heroSubs = [
+  const heroSubs = isStatewide ? [
+    `Searching for trusted <strong>house cleaning near you</strong> across Florida? Sweet Maid delivers customized, detail-obsessed ${cleanSrv.toLowerCase()} throughout Florida with background-checked specialists, hospital-grade non-toxic supplies, and a 100% satisfaction guarantee.`,
+    `Looking for the best <strong>maid service across Florida</strong>? Sweet Maid provides elite-tier home sanitization, recurring weekly maintenance, and move-out detailing tailored specifically to your property's needs.`,
+    `Transform your space with Florida's premier <strong>professional cleaners</strong>. Sweet Maid combines hospital-grade HEPA sanitization, pet-safe formulas, and vetted specialists for unmatched ${cleanSrv.toLowerCase()} across Florida.`,
+    `Get 5-star <strong>residential and commercial cleaning in Florida</strong>. Our licensed and insured cleaning teams handle everything from deep sanitizing to recurring housekeeping with transparent, flat-rate pricing.`
+  ] : [
     `Searching for trusted <strong>house cleaning near me</strong> in ${cleanLoc}? Sweet Maid delivers customized, detail-obsessed ${cleanSrv.toLowerCase()} throughout ${cleanLoc} with background-checked specialists, hospital-grade non-toxic supplies, and a 100% satisfaction guarantee.`,
     `Looking for the best <strong>maid service in ${cleanLoc}, FL</strong>? Sweet Maid provides elite-tier home sanitization, recurring weekly maintenance, and move-out detailing tailored specifically to your property's needs.`,
     `Transform your space with ${cleanLoc}'s premier <strong>professional cleaners</strong>. Sweet Maid combines hospital-grade HEPA sanitization, pet-safe formulas, and vetted specialists for unmatched ${cleanSrv.toLowerCase()} across ${cleanLoc}, Florida.`,
@@ -281,14 +298,18 @@ export function generateSeoContentPack(
   const heroSub = heroSubs[(seed >> 2) % heroSubs.length];
 
   // 6. Natural High-Volume Search Context Paragraph (Natural Language Keyword Weaving)
-  const searchContextParagraph = `Whether you are searching for <em>"house cleaning near me in ${cleanLoc}"</em>, <em>"same-day deep cleaning service"</em>, or <em>"reliable recurring maid service in ${cleanLoc}, FL"</em>, Sweet Maid is the trusted local authority. We serve single-family homes, luxury condominiums, apartments, vacation rentals, and commercial offices across ${cleanLoc} with hospital-grade sanitization and EPA-certified eco-friendly products.`;
+  const searchContextParagraph = isStatewide
+    ? `Whether you are searching for <em>"house cleaning near me in Florida"</em>, <em>"same-day deep cleaning service"</em>, or <em>"reliable recurring maid service in Florida"</em>, Sweet Maid is the trusted statewide authority. We serve single-family homes, luxury condominiums, apartments, vacation rentals, and commercial offices across Florida with hospital-grade sanitization and EPA-certified eco-friendly products.`
+    : `Whether you are searching for <em>"house cleaning near me in ${cleanLoc}"</em>, <em>"same-day deep cleaning service"</em>, or <em>"reliable recurring maid service in ${cleanLoc}, FL"</em>, Sweet Maid is the trusted local authority. We serve single-family homes, luxury condominiums, apartments, vacation rentals, and commercial offices across ${cleanLoc} with hospital-grade sanitization and EPA-certified eco-friendly products.`;
 
-  const dailySearchHeading = `Popular Daily Cleaning Searches in ${cleanLoc}, FL`;
+  const dailySearchHeading = isStatewide ? `Popular Daily Cleaning Searches Across Florida` : `Popular Daily Cleaning Searches in ${cleanLoc}, FL`;
 
   // 7. Dynamic Florida Climate & Environmental Strategy
   const isCoastal = locSlug.includes('beach') || locSlug.includes('key') || locSlug.includes('isles') || locSlug.includes('shores') || locSlug.includes('miami') || locSlug.includes('sarasota') || locSlug.includes('tampa') || locSlug.includes('naples');
   
-  const climateTitle = isCoastal
+  const climateTitle = isStatewide
+    ? `Florida High-Humidity & Air Quality Defense Statewide`
+    : isCoastal
     ? `Coastal Environmental & Moisture Defense in ${cleanLoc}, FL`
     : `Florida High-Humidity & Air Quality Defense in ${cleanLoc}, FL`;
 
@@ -297,11 +318,17 @@ export function generateSeoContentPack(
     : `Inland Florida climate brings heavy seasonal pollen, intense heat-humidity cycles, and airborne dust that settles deep into upholstery, carpets, and air returns throughout ${cleanLoc}. Our professional ${cleanSrv.toLowerCase()} uses multi-stage micro-allergen filtration and anti-microbial treatments to safeguard your indoor air quality and keep your ${cleanLoc} home spotless and fresh year-round.`;
 
   // 8. Eco-Friendly Section
-  const ecoTitle = `Safe For Your Family, Pets & The ${cleanLoc} Ecosystem`;
-  const ecoBody = `We strictly use non-toxic, biodegradable, and EPA Safer Choice certified cleaning solutions for all ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL. Our zero-residue formulas eliminate 99.9% of bacteria and viral pathogens without releasing harsh VOCs or chemical fumes into your living space, protecting children, pets, and Florida's delicate waterways.`;
+  const ecoTitle = isStatewide
+    ? `Safe For Your Family, Pets & The Florida Ecosystem`
+    : `Safe For Your Family, Pets & The ${cleanLoc} Ecosystem`;
+  const ecoBody = isStatewide
+    ? `We strictly use non-toxic, biodegradable, and EPA Safer Choice certified cleaning solutions for all ${cleanSrv.toLowerCase()} across Florida. Our zero-residue formulas eliminate 99.9% of bacteria and viral pathogens without releasing harsh VOCs or chemical fumes into your living space, protecting children, pets, and Florida's delicate waterways.`
+    : `We strictly use non-toxic, biodegradable, and EPA Safer Choice certified cleaning solutions for all ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL. Our zero-residue formulas eliminate 99.9% of bacteria and viral pathogens without releasing harsh VOCs or chemical fumes into your living space, protecting children, pets, and Florida's delicate waterways.`;
 
   // 9. Why Choose Points
-  const whyChooseTitle = `Why ${cleanLoc} Residents & Businesses Choose Sweet Maid for ${cleanSrv}`;
+  const whyChooseTitle = isStatewide
+    ? `Why Florida Residents & Businesses Choose Sweet Maid for ${cleanSrv}`
+    : `Why ${cleanLoc} Residents & Businesses Choose Sweet Maid for ${cleanSrv}`;
   const whyChoosePoints = [
     {
       title: "100% Background-Checked Staff",
