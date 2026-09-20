@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { miamiBrowardSlugs, is305Area } from "@/lib/miami_broward_slugs";
 import { isManateeCounty } from "@/lib/manatee";
-import { serviceSlugs } from "@/lib/data";
 
 export default function FloatingBookingButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,10 +16,8 @@ export default function FloatingBookingButton() {
   const phoneDisplay = is305 ? "(305) 851-6959" : "(941) 222-2080";
 
   // Gate "Book Online" exclusively to Manatee County pages
-  const isGeneralPage =
-    ["about", "blog", "gallery", "locations", "login", "privacy-policy", "terms-and-conditions", "privacy", "terms"].includes(slug) ||
-    serviceSlugs.includes(slug);
-  const isManatee = pathname === "/" || (!isGeneralPage && isManateeCounty(slug));
+  const isExcludedPage = ["about", "blog", "gallery", "locations", "login", "privacy-policy", "terms-and-conditions", "privacy", "terms"].includes(slug);
+  const isManatee = pathname === "/" || (!isExcludedPage && isManateeCounty(slug));
   const hasLocalQuote = !["locations", "privacy-policy", "terms-and-conditions", "privacy", "terms"].includes(slug);
   const quoteHref = hasLocalQuote ? "#quote" : "/#quote";
 
