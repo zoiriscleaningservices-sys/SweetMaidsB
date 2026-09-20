@@ -9,12 +9,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
-  const title = `#1 Best Cleaning Tips & Professional Home Care Blog in ${cleanName}, FL`;
-  const desc = `Get expert cleaning tips, home organization hacks, and professional maid advice for your home in ${cleanName}, FL from the team at Sweet Maid.`;
+  const title = `${cleanName}, FL Cleaning Blog & Regional Florida Home Care Guides | Sweet Maid`;
+  const desc = `Expert cleaning tips, vacation rental turnover checklists, and coastal home maintenance guides for ${cleanName}, FL and major Florida regions including Tampa Bay, Miami, Orlando, Sarasota, and the Keys.`;
 
   return {
     title,
     description: desc,
+    keywords: [
+      `${cleanName} cleaning blog`,
+      `${cleanName} house cleaning tips`,
+      `maid service advice ${cleanName} FL`,
+      'Florida cleaning blog',
+      'vacation rental turnover checklist',
+      'coastal Florida home care'
+    ],
     alternates: {
       canonical: `https://sweetmaidcleaning.com/${slug}/blog/`,
     },
@@ -22,6 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title,
       description: desc,
       url: `https://sweetmaidcleaning.com/${slug}/blog/`,
+      siteName: 'Sweet Maid Cleaning Services',
+      type: 'website',
     }
   };
 }

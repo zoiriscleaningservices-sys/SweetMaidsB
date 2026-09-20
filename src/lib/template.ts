@@ -82,6 +82,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       pageType = 'gallery';
     } else if (innerH1.includes('Welcome Back') || innerH1.includes('login') || innerH1.includes('Client Portal') || innerH1.includes('Cleaning Portal') || innerH1.includes('shining home') || content.includes('bookingkoala.com/login')) {
       pageType = 'login';
+    } else if (innerH1.includes('Blog') || innerH1.includes('Cleaning Guides') || content.includes('Florida Cleaning Blog') || content.includes('sweet-maid-blog-hub')) {
+      pageType = 'blog';
     }
   }
 
@@ -120,6 +122,12 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       const cleanAlt = p1.replace(/\s*-\s*Bradenton,?\s*FL/gi, '').replace(/\s*-\s*Top.*$/gi, '');
       return `alt="${cleanAlt.trim()}"`;
     });
+  } else if (pageType === 'blog') {
+    // Florida Regional Blog Hub: Preserve authentic regional titles, cities, and internal linking
+    newContent = newContent.replace(/#1 Rated Cleaning Service in Bradenton/gi, 'Top-Rated Cleaning & Maid Services in Florida');
+    newContent = newContent.replace(/Bradenton's most trusted cleaning service/gi, "Florida's most trusted cleaning service");
+    newContent = newContent.replace(/Why Locals Trust Us/gi, `Why Florida Homeowners Trust Us`);
+    newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why Florida Homeowners Trust Us`);
   } else {
     // Aggressive SEO location and service targeting
     newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);

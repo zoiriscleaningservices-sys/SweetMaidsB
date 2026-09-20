@@ -817,546 +817,708 @@
   <!-- ================================================
        MINI HERO (blog.html)
     ================================================ -->
-  <!-- ==== Sweet Maid Cleaning Services Blog Embed (Florida FL - Fully SEO Optimized) ==== -->
-  <section overflow-hidden class="truewebx-blog-section" aria-labelledby="truewebx-blog-heading">
-    <style>
-      :root {
-        --coral: #ff6b6b;
-        --turquoise: #0d9488;
-      }
+  <!-- ==== Florida Regional Blog Hub (Tampa, Miami, Orlando, Sarasota/Bradenton, Jacksonville, Florida Keys) ==== -->
+  <section overflow-hidden id="sweet-maid-blog-hub" class="py-16 md:py-24 bg-gradient-to-b from-[#fffafc] via-[#fff5f9] to-[#fff0f6] text-[#2d1b2e] relative overflow-hidden" aria-labelledby="truewebx-blog-heading">
+    <!-- Ambient Background Blobs -->
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-pink-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-rose-200/30 rounded-full blur-3xl pointer-events-none"></div>
 
-      .truewebx-blog-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 8px;
-      }
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center max-w-4xl mx-auto mb-12 md:mb-16">
+        <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-700 border border-pink-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
+          <i class="fa-solid fa-sparkles text-pink-500"></i> Florida Living & Home Care Blog
+        </div>
+        <h1 id="truewebx-blog-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold font-serif text-gray-900 tracking-tight leading-tight mb-5">
+          Florida Cleaning Guides, Local Tips & Regional Home Care Insights
+        </h1>
+        <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+          From coastal salt-air descaling and Gulf beach sand defense to Orlando Airbnb turnovers and South Florida high-rise care—explore proven cleaning strategies tailored to Florida's distinctive microclimates and premier metro communities.
+        </p>
+      </div>
 
-      .truewebx-blog-heading {
-        font-size: clamp(2.2rem, 7vw, 4rem);
-        font-weight: 900;
-        text-align: center;
-        margin-bottom: 50px;
-        background: linear-gradient(45deg, #fff, #ff8fa3);
-        -webkit-background-clip: text;
-        color: transparent;
-      }
+      <!-- Regional Filter Navigation Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12 md:mb-16" id="blogFilterBar" role="tablist">
+        <button type="button" class="blog-filter-btn active bg-pink-500 text-white shadow-md shadow-pink-200 hover:bg-pink-600 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-2" data-filter="all">
+          <span>✨ All Florida Guides</span>
+        </button>
+        <button type="button" class="blog-filter-btn bg-white text-gray-700 hover:text-pink-600 hover:bg-pink-50 border border-pink-100 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2" data-filter="tampa-bay">
+          <span>🏖️ Tampa Bay & St. Pete</span>
+        </button>
+        <button type="button" class="blog-filter-btn bg-white text-gray-700 hover:text-pink-600 hover:bg-pink-50 border border-pink-100 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2" data-filter="south-florida">
+          <span>🌴 Miami & South Florida</span>
+        </button>
+        <button type="button" class="blog-filter-btn bg-white text-gray-700 hover:text-pink-600 hover:bg-pink-50 border border-pink-100 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2" data-filter="central-florida">
+          <span>🏰 Orlando & Central FL</span>
+        </button>
+        <button type="button" class="blog-filter-btn bg-white text-gray-700 hover:text-pink-600 hover:bg-pink-50 border border-pink-100 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2" data-filter="swfl">
+          <span>☀️ Sarasota, Bradenton & SWFL</span>
+        </button>
+        <button type="button" class="blog-filter-btn bg-white text-gray-700 hover:text-pink-600 hover:bg-pink-50 border border-pink-100 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2" data-filter="north-florida">
+          <span>🌊 Jacksonville & North FL</span>
+        </button>
+        <button type="button" class="blog-filter-btn bg-white text-gray-700 hover:text-pink-600 hover:bg-pink-50 border border-pink-100 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2" data-filter="florida-keys">
+          <span>🏝️ Florida Keys</span>
+        </button>
+      </div>
 
-      /* Blog Grid & Cards */
-      .truewebx-blog-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
+      <!-- Blog Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogGridContainer">
 
-      .truewebx-blog-card {
-        background: rgba(255, 255, 255, 0.22);
-        backdrop-filter: blur(20px);
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
+        <!-- ARTICLE 1: 🏖️ Tampa Bay & St. Pete -->
+        <article class="blog-card flex flex-col bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-pink-100/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 group" data-region="tampa-bay">
+          <div class="relative h-60 overflow-hidden bg-pink-100">
+            <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-2.webp" alt="House Cleaning & Home Care in Tampa Bay, St. Petersburg & Clearwater" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/95 backdrop-blur-md text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-pink-100 flex items-center gap-1.5">
+                🏖️ Tampa Bay & St. Pete
+              </span>
+            </div>
+            <div class="absolute bottom-3 right-4">
+              <span class="bg-gray-900/80 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-[10px]"></i> 7 min read
+              </span>
+            </div>
+          </div>
 
-      .truewebx-blog-card:hover {
-        transform: translateY(-10px);
-      }
+          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-2">
+                <span><i class="fa-regular fa-calendar text-pink-400"></i> September 2026</span>
+                <span>•</span>
+                <span>Coastal Home Care</span>
+              </div>
+              <h2 class="text-xl font-bold font-serif text-gray-900 group-hover:text-pink-600 transition-colors leading-snug mb-3">
+                The Ultimate Tampa Bay & St. Pete Cleaning Guide: Defeating Coastal Humidity, Gulf Sand & AC Spores
+              </h2>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                Living around Tampa Bay, St. Petersburg, and Clearwater means world-class beaches—and constant battles against abrasive quartz sand in wood flooring, high humidity AC mildew, and salt-crusted windows.
+              </p>
 
-      .truewebx-blog-card img.featured {
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-        object-position: center;
-      }
+              <!-- Highlights -->
+              <div class="bg-pink-50/50 rounded-2xl p-3.5 mb-5 border border-pink-100/50 space-y-1.5 text-xs text-gray-700">
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Non-abrasive micro-dusting for sand extraction
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Bi-weekly HVAC vent sanitization protocols
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Gulf Coast patio & lanai wash techniques
+                </div>
+              </div>
 
-      .truewebx-blog-card .content {
-        padding: 24px;
-        text-align: left;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
+              <!-- Internal Links Cluster -->
+              <div class="mb-5">
+                <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Featured Service Areas:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <a href="/tampa-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Tampa</a>
+                  <a href="/st-petersburg-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">St. Petersburg</a>
+                  <a href="/clearwater-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Clearwater</a>
+                  <a href="/brandon-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Brandon</a>
+                  <a href="/riverview-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Riverview</a>
+                </div>
+              </div>
+            </div>
 
-      .truewebx-blog-card .date {
-        font-size: 0.9rem;
-        opacity: 0.8;
-        margin-bottom: 8px;
-      }
+            <div class="pt-4 border-t border-pink-100/60 flex items-center justify-between">
+              <button type="button" class="open-guide-btn text-sm font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1.5 group-hover:gap-2 transition-all" data-article="article-tampa">
+                Read Full Local Guide <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              <a href="/house-cleaning/" class="text-xs text-gray-400 hover:text-pink-500 font-medium transition-colors">House Cleaning →</a>
+            </div>
+          </div>
+        </article>
 
-      .truewebx-blog-card h2 {
-        font-size: clamp(1.4rem, 4vw, 1.8rem);
-        margin: 0 0 12px 0;
-        line-height: 1.3;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
+        <!-- ARTICLE 2: 🌴 Miami & South Florida -->
+        <article class="blog-card flex flex-col bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-pink-100/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 group" data-region="south-florida">
+          <div class="relative h-60 overflow-hidden bg-pink-100">
+            <img src="/images/whatsapp-image-2026-02-10-at-11.18.07-pm.webp" alt="Luxury High-Rise Condo Cleaning in Miami, Fort Lauderdale & Coral Gables" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/95 backdrop-blur-md text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-pink-100 flex items-center gap-1.5">
+                🌴 Miami & South Florida
+              </span>
+            </div>
+            <div class="absolute bottom-3 right-4">
+              <span class="bg-gray-900/80 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-[10px]"></i> 8 min read
+              </span>
+            </div>
+          </div>
 
-      .truewebx-blog-card .excerpt {
-        font-size: clamp(0.95rem, 2.5vw, 1rem);
-        line-height: 1.6;
-        opacity: 0.95;
-        margin-bottom: 20px;
-        flex-grow: 1;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
+          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-2">
+                <span><i class="fa-regular fa-calendar text-pink-400"></i> September 2026</span>
+                <span>•</span>
+                <span>Luxury Condo Care</span>
+              </div>
+              <h2 class="text-xl font-bold font-serif text-gray-900 group-hover:text-pink-600 transition-colors leading-snug mb-3">
+                South Florida Luxury Living: Deep Cleaning High-Rises & Defending Against Subtropical Mold in Miami & Fort Lauderdale
+              </h2>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                Oceanfront living in Brickell, Sunny Isles, and Fort Lauderdale requires specialized care for floor-to-ceiling glass, Italian marble preservation, and mold spore defense during rainy summer afternoons.
+              </p>
 
-      .truewebx-blog-card .read-more {
-        display: inline-block;
-        align-self: flex-start;
-        padding: 10px 28px;
-        background: var(--coral);
-        color: white;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 0.95rem;
-        transition: background 0.3s;
-        margin-top: auto;
-      }
+              <!-- Highlights -->
+              <div class="bg-pink-50/50 rounded-2xl p-3.5 mb-5 border border-pink-100/50 space-y-1.5 text-xs text-gray-700">
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> pH-neutral cleaning for marble & travertine floors
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Floor-to-ceiling glass salt film removal
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Hospital-grade bathroom sanitizing & spore defense
+                </div>
+              </div>
 
-      .truewebx-blog-card .read-more:hover {
-        background: #ff8787;
-      }
+              <!-- Internal Links Cluster -->
+              <div class="mb-5">
+                <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Featured Service Areas:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <a href="/miami-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Miami</a>
+                  <a href="/fort-lauderdale-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Fort Lauderdale</a>
+                  <a href="/coral-gables-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Coral Gables</a>
+                  <a href="/hollywood-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Hollywood</a>
+                  <a href="/boca-raton-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Boca Raton</a>
+                </div>
+              </div>
+            </div>
 
-      /* Single Post */
-      .truewebx-single-post {
-        max-width: 900px;
-        width: 100%;
-        margin: 0 auto;
-        background: rgba(255, 255, 255, 0.18);
-        backdrop-filter: blur(20px);
-        border-radius: 32px;
-        padding: clamp(24px, 5vw, 50px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-        box-sizing: border-box;
-      }
+            <div class="pt-4 border-t border-pink-100/60 flex items-center justify-between">
+              <button type="button" class="open-guide-btn text-sm font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1.5 group-hover:gap-2 transition-all" data-article="article-miami">
+                Read Full Local Guide <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              <a href="/deep-cleaning/" class="text-xs text-gray-400 hover:text-pink-500 font-medium transition-colors">Deep Cleaning →</a>
+            </div>
+          </div>
+        </article>
 
-      .truewebx-single-post img.featured {
-        width: 100%;
-        height: auto;
-        max-height: 60vh;
-        object-fit: cover;
-        border-radius: 24px;
-        margin: 24px 0;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-      }
+        <!-- ARTICLE 3: 🏰 Orlando & Central FL -->
+        <article class="blog-card flex flex-col bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-pink-100/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 group" data-region="central-florida">
+          <div class="relative h-60 overflow-hidden bg-pink-100">
+            <img src="/images/whatsapp-image-2026-02-10-at-11.18.06-pm.webp" alt="Vacation Rental & Airbnb Cleaning in Orlando, Kissimmee & Winter Park" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/95 backdrop-blur-md text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-pink-100 flex items-center gap-1.5">
+                🏰 Orlando & Central FL
+              </span>
+            </div>
+            <div class="absolute bottom-3 right-4">
+              <span class="bg-gray-900/80 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-[10px]"></i> 9 min read
+              </span>
+            </div>
+          </div>
 
-      .truewebx-single-post .meta {
-        font-size: clamp(0.9rem, 2.5vw, 1rem);
-        opacity: 0.8;
-        margin: 20px 0 30px;
-        text-align: center;
-      }
+          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-2">
+                <span><i class="fa-regular fa-calendar text-pink-400"></i> September 2026</span>
+                <span>•</span>
+                <span>Airbnb & Vacation Turnover</span>
+              </div>
+              <h2 class="text-xl font-bold font-serif text-gray-900 group-hover:text-pink-600 transition-colors leading-snug mb-3">
+                Central Florida Vacation Rental & Airbnb Turnover Masterclass: 5-Star Cleanliness Standards in Orlando & Kissimmee
+              </h2>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                With millions of vacationing guests visiting Disney World and Universal, short-term rentals in Orlando, Kissimmee, and Davenport require strict same-day turnover checklists, linen laundering, and deep patio sanitizing.
+              </p>
 
-      .truewebx-single-post h2 {
-        font-size: clamp(2rem, 7vw, 3rem);
-        text-align: center;
-        margin: 20px 0 30px;
-        line-height: 1.3;
-        word-wrap: break-word;
-      }
+              <!-- Highlights -->
+              <div class="bg-pink-50/50 rounded-2xl p-3.5 mb-5 border border-pink-100/50 space-y-1.5 text-xs text-gray-700">
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> 3-hour rapid turnover protocol for Airbnb Superhosts
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Themed room and bunk bed sanitization checklists
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Residue-free pool patio, game room, and kitchen reset
+                </div>
+              </div>
 
-      /* Enhanced Content */
-      .truewebx-single-post .content {
-        font-size: clamp(1.05rem, 3.5vw, 1.25rem);
-        line-height: 1.9;
-        max-width: 800px;
-        margin: 0 auto 50px;
-        word-wrap: break-word;
-        white-space: pre-wrap;
-      }
+              <!-- Internal Links Cluster -->
+              <div class="mb-5">
+                <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Featured Service Areas:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <a href="/orlando-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Orlando</a>
+                  <a href="/kissimmee-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Kissimmee</a>
+                  <a href="/winter-park-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Winter Park</a>
+                  <a href="/sanford-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Sanford</a>
+                  <a href="/clermont-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Clermont</a>
+                </div>
+              </div>
+            </div>
 
-      .truewebx-single-post .content strong {
-        color: #ffeb3b;
-        font-weight: 800;
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 3px;
-      }
+            <div class="pt-4 border-t border-pink-100/60 flex items-center justify-between">
+              <button type="button" class="open-guide-btn text-sm font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1.5 group-hover:gap-2 transition-all" data-article="article-orlando">
+                Read Full Local Guide <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              <a href="/airbnb-cleaning/" class="text-xs text-gray-400 hover:text-pink-500 font-medium transition-colors">Airbnb Cleaning →</a>
+            </div>
+          </div>
+        </article>
 
-      .truewebx-single-post .content a {
-        color: #ffeb3b;
-        text-decoration: underline;
-        font-weight: bold;
-      }
+        <!-- ARTICLE 4: ☀️ Sarasota, Bradenton & SWFL -->
+        <article class="blog-card flex flex-col bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-pink-100/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 group" data-region="swfl">
+          <div class="relative h-60 overflow-hidden bg-pink-100">
+            <img src="/images/whatsapp-image-2026-02-10-at-11.17.58-pm.webp" alt="Residential Cleaning in Bradenton, Sarasota, Lakewood Ranch & Venice" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/95 backdrop-blur-md text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-pink-100 flex items-center gap-1.5">
+                ☀️ Sarasota, Bradenton & SWFL
+              </span>
+            </div>
+            <div class="absolute bottom-3 right-4">
+              <span class="bg-gray-900/80 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-[10px]"></i> 8 min read
+              </span>
+            </div>
+          </div>
 
-      .truewebx-single-post .content a:hover {
-        color: white;
-      }
+          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-2">
+                <span><i class="fa-regular fa-calendar text-pink-400"></i> September 2026</span>
+                <span>•</span>
+                <span>Suburban & Island Care</span>
+              </div>
+              <h2 class="text-xl font-bold font-serif text-gray-900 group-hover:text-pink-600 transition-colors leading-snug mb-3">
+                Sarasota, Bradenton & Lakewood Ranch Home Care: Lanai Maintenance, Salt Mist & Seasonal Resident Openings
+              </h2>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                From luxury golf estates in Lakewood Ranch and waterfront villas on Anna Maria Island to historic downtown bungalows, Southwest Florida properties need routine pool cage washing and seasonal snowbird turnover cleans.
+              </p>
 
-      /* Gallery */
-      .gallery-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 900px;
-        margin: 50px auto;
-        overflow: hidden;
-        border-radius: 24px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-      }
+              <!-- Highlights -->
+              <div class="bg-pink-50/50 rounded-2xl p-3.5 mb-5 border border-pink-100/50 space-y-1.5 text-xs text-gray-700">
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Screened lanai, pool cage & outdoor furniture maintenance
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Sliding glass door track de-gunking & lubrication
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Snowbird opening & departure deep sanitization
+                </div>
+              </div>
 
-      .gallery-slider {
-        display: flex;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+              <!-- Internal Links Cluster -->
+              <div class="mb-5">
+                <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Featured Service Areas:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <a href="/bradenton-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Bradenton</a>
+                  <a href="/lakewood-ranch-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Lakewood Ranch</a>
+                  <a href="/sarasota-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Sarasota</a>
+                  <a href="/palmetto-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Palmetto</a>
+                  <a href="/venice-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Venice</a>
+                </div>
+              </div>
+            </div>
 
-      .gallery-slider img {
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-        flex-shrink: 0;
-      }
+            <div class="pt-4 border-t border-pink-100/60 flex items-center justify-between">
+              <button type="button" class="open-guide-btn text-sm font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1.5 group-hover:gap-2 transition-all" data-article="article-swfl">
+                Read Full Local Guide <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              <a href="/recurring-maid-service/" class="text-xs text-gray-400 hover:text-pink-500 font-medium transition-colors">Recurring Maids →</a>
+            </div>
+          </div>
+        </article>
 
-      .gallery-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font-size: 1.8rem;
-        cursor: pointer;
-        z-index: 10;
-        opacity: 0.8;
-        transition: all 0.3s;
-      }
+        <!-- ARTICLE 5: 🌊 Jacksonville & North FL -->
+        <article class="blog-card flex flex-col bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-pink-100/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 group" data-region="north-florida">
+          <div class="relative h-60 overflow-hidden bg-pink-100">
+            <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-4.webp" alt="Residential Cleaning in Jacksonville, St. Augustine & Ponte Vedra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/95 backdrop-blur-md text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-pink-100 flex items-center gap-1.5">
+                🌊 Jacksonville & North FL
+              </span>
+            </div>
+            <div class="absolute bottom-3 right-4">
+              <span class="bg-gray-900/80 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-[10px]"></i> 7 min read
+              </span>
+            </div>
+          </div>
 
-      .gallery-arrow:hover {
-        opacity: 1;
-        background: rgba(0, 0, 0, 0.7);
-        transform: translateY(-50%) scale(1.1);
-      }
+          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-2">
+                <span><i class="fa-regular fa-calendar text-pink-400"></i> September 2026</span>
+                <span>•</span>
+                <span>Seasonal North FL Care</span>
+              </div>
+              <h2 class="text-xl font-bold font-serif text-gray-900 group-hover:text-pink-600 transition-colors leading-snug mb-3">
+                First Coast Seasonal Cleaning Guide: Battling Pine Pollen, Atlantic Sea Mist & Red Clay in Jacksonville & St. Augustine
+              </h2>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                North Florida homes face unique seasonal shifts, from heavy yellow pine pollen coating entryways in spring to Atlantic coastal winds and humid river breezes along the St. Johns River.
+              </p>
 
-      .gallery-arrow.prev {
-        left: 20px;
-      }
+              <!-- Highlights -->
+              <div class="bg-pink-50/50 rounded-2xl p-3.5 mb-5 border border-pink-100/50 space-y-1.5 text-xs text-gray-700">
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Spring pine pollen remediation for porches & window frames
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Atlantic coastline salt mist exterior glass treatments
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Deep carpet shampooing to eliminate tracked red soil
+                </div>
+              </div>
 
-      .gallery-arrow.next {
-        right: 20px;
-      }
+              <!-- Internal Links Cluster -->
+              <div class="mb-5">
+                <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Featured Service Areas:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <a href="/jacksonville-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Jacksonville</a>
+                  <a href="/st-augustine-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">St. Augustine</a>
+                  <a href="/jacksonville-beach-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Jax Beach</a>
+                  <a href="/ponte-vedra-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Ponte Vedra</a>
+                  <a href="/orange-park-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Orange Park</a>
+                </div>
+              </div>
+            </div>
 
-      @media (max-width: 768px) {
-        .gallery-arrow {
-          display: none;
-        }
-      }
+            <div class="pt-4 border-t border-pink-100/60 flex items-center justify-between">
+              <button type="button" class="open-guide-btn text-sm font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1.5 group-hover:gap-2 transition-all" data-article="article-jax">
+                Read Full Local Guide <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              <a href="/move-in-out-cleaning/" class="text-xs text-gray-400 hover:text-pink-500 font-medium transition-colors">Move In/Out →</a>
+            </div>
+          </div>
+        </article>
 
-      .back-btn {
-        display: block;
-        width: fit-content;
-        margin: 50px auto 0;
-        padding: 12px 36px;
-        background: var(--coral);
-        color: white;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: clamp(1rem, 3vw, 1.2rem);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      }
+        <!-- ARTICLE 6: 🏝️ Florida Keys -->
+        <article class="blog-card flex flex-col bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-pink-100/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 group" data-region="florida-keys">
+          <div class="relative h-60 overflow-hidden bg-pink-100">
+            <img src="/images/whatsapp-image-2026-02-10-at-11.18.09-pm-2.webp" alt="Island Home & Vacation Rental Cleaning in Key West, Marathon & Key Largo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/95 backdrop-blur-md text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-pink-100 flex items-center gap-1.5">
+                🏝️ Florida Keys
+              </span>
+            </div>
+            <div class="absolute bottom-3 right-4">
+              <span class="bg-gray-900/80 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-[10px]"></i> 8 min read
+              </span>
+            </div>
+          </div>
 
-      .truewebx-footer-link {
-        text-align: center;
-        margin-top: 70px;
-        font-size: clamp(0.9rem, 2.5vw, 1rem);
-      }
+          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-2">
+                <span><i class="fa-regular fa-calendar text-pink-400"></i> September 2026</span>
+                <span>•</span>
+                <span>Island & Marine Defense</span>
+              </div>
+              <h2 class="text-xl font-bold font-serif text-gray-900 group-hover:text-pink-600 transition-colors leading-snug mb-3">
+                Living in Paradise: Florida Keys Island Home Maintenance & Salt Air Defense Playbook
+              </h2>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                Island living in Key West, Marathon, and Key Largo presents non-stop exposure to intense saltwater mist, heavy UV radiation, and island turnover deadlines for sportfishing lodges and vacation rentals.
+              </p>
 
-      @media (min-width: 640px) {
-        .truewebx-blog-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 36px;
-        }
+              <!-- Highlights -->
+              <div class="bg-pink-50/50 rounded-2xl p-3.5 mb-5 border border-pink-100/50 space-y-1.5 text-xs text-gray-700">
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Marine-grade descaling for stainless steel & brass fixtures
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Outdoor kitchen, dock & fish-cleaning station sanitization
+                </div>
+                <div class="flex items-center gap-2 font-medium">
+                  <i class="fa-solid fa-check-circle text-pink-500 text-xs"></i> Key West vacation rental fast-turnover sanitizing
+                </div>
+              </div>
 
-        .truewebx-blog-card img.featured {
-          height: 260px;
-        }
-      }
+              <!-- Internal Links Cluster -->
+              <div class="mb-5">
+                <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Featured Service Areas:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <a href="/key-west-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Key West</a>
+                  <a href="/key-largo-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Key Largo</a>
+                  <a href="/marathon-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Marathon</a>
+                  <a href="/islamorada-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Islamorada</a>
+                  <a href="/tavernier-fl/" class="text-xs bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold px-2.5 py-1 rounded-lg border border-pink-200 transition-colors">Tavernier</a>
+                </div>
+              </div>
+            </div>
 
-      @media (min-width: 1024px) {
-        .truewebx-blog-grid {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
-        }
+            <div class="pt-4 border-t border-pink-100/60 flex items-center justify-between">
+              <button type="button" class="open-guide-btn text-sm font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1.5 group-hover:gap-2 transition-all" data-article="article-keys">
+                Read Full Local Guide <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              <a href="/airbnb-cleaning/" class="text-xs text-gray-400 hover:text-pink-500 font-medium transition-colors">Keys Airbnb Cleaning →</a>
+            </div>
+          </div>
+        </article>
 
-        .truewebx-blog-card img.featured {
-          height: 280px;
-        }
-
-        .truewebx-single-post {
-          padding: 60px;
-        }
-      }
-    </style>
-
-    <div class="truewebx-blog-container">
-      <h1 id="truewebx-blog-heading" class="truewebx-blog-heading">Sweet Maid Cleaning Blog - Expert Cleaning Tips</h1>
-
-      <!-- Blog Grid View -->
-      <div id="blogGrid" class="truewebx-blog-grid"></div>
-
-      <!-- Single Blog Post View -->
-      <article id="singlePost" class="truewebx-single-post" style="display:none;"></article>
-
-      <div class="truewebx-footer-link">
-        Powered by <a href="https://truewebx.site" target="_blank">TrueWebX</a>
       </div>
     </div>
 
-    <!-- Dependencies -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Interactive In-Page Article Reader Modal -->
+    <div id="articleModal" class="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true">
+      <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-pink-100 transform scale-95 transition-transform duration-300" id="articleModalDialog">
+        <!-- Modal Top Bar -->
+        <div class="p-6 border-b border-pink-100 flex items-center justify-between bg-gradient-to-r from-pink-50 via-white to-pink-50">
+          <div class="flex items-center gap-2.5" id="modalRegionBadge">
+            <span class="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Florida Guide</span>
+          </div>
+          <button type="button" id="closeArticleModal" class="w-10 h-10 rounded-full bg-white text-gray-400 hover:text-gray-700 hover:bg-pink-100 flex items-center justify-center transition-colors shadow-sm" aria-label="Close article">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
 
+        <!-- Modal Body Content (Dynamic) -->
+        <div class="p-6 sm:p-10 overflow-y-auto space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base" id="modalArticleBody">
+          <!-- Dynamic Content Injected Here -->
+        </div>
+
+        <!-- Modal Footer CTA -->
+        <div class="p-6 border-t border-pink-100 bg-gray-50 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-xs text-gray-500 text-center sm:text-left">
+            Ready for a pristine, 100% sparkling clean? We cover homes and rentals across Florida.
+          </div>
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <a href="#quote" id="modalQuoteBtn" class="flex-1 sm:flex-none text-center bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-6 py-3 rounded-full text-sm shadow-md transition-all">
+              Get an Instant Free Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden Raw In-Depth Article Data Store -->
+    <div id="hiddenArticleData" class="hidden" aria-hidden="true">
+      <!-- ARTICLE TAMPA -->
+      <div id="data-article-tampa">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-4">The Ultimate Tampa Bay & St. Pete Cleaning Guide: Defeating Coastal Humidity, Gulf Sand & AC Spores</h2>
+        <p class="text-gray-600 italic mb-6">Published by Sweet Maid Field Specialists • Comprehensive Guide for Tampa, St. Petersburg, Clearwater & Surrounding Communities</p>
+        
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">1. The Quartz Sand Challenge on Gulf Coast Floors</h3>
+        <p class="mb-4">From Clearwater Beach and St. Pete Beach to Davis Islands in Tampa, Gulf Coast residents constantly track in fine, high-quartz beach sand. Standard broom sweeping causes sand particles to act like micro-sandpaper, dulling the finish of luxury hardwood, vinyl plank, and tile glaze. Professional cleaners recommend commercial-grade dual-motor HEPA filtration vacuums with soft rubberized rollers to extract quartz sand from plank seams and tile grout lines before any wet mopping begins.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">2. HVAC Return Vent Maintenance & Humidity Control</h3>
+        <p class="mb-4">Tampa Bay's 80%+ summer humidity creates condensation inside air conditioning vents, return air grilles, and ceiling corners. In homes in Brandon and Riverview, dust particles trapped on vent louvers absorb moisture and form black mildew spore clusters. We recommend monthly sanitization of air intake grilles using eco-friendly, quaternary disinfectant solutions that neutralize spores without contaminating indoor air quality.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">3. Salt-Mist Window & Screen Restoration</h3>
+        <p class="mb-4">Properties within 5 miles of Old Tampa Bay or the Gulf of Mexico experience persistent sodium chloride aerosol drift. This salt mist leaves a cloudy, corrosive film on exterior window panes, sliding glass door tracks, and pool enclosure screens. A quarterly descaling wash protects glass clarity and extends the operational lifespan of heavy sliding door rollers.</p>
+
+        <div class="my-6 p-5 bg-pink-50 rounded-2xl border border-pink-200">
+          <h4 class="font-bold text-pink-700 text-base mb-2">🌴 Local Tampa Bay Cleaning Pro Tip:</h4>
+          <p class="text-sm text-gray-700">Place coarse coir coconut fiber mats outside all entryways, paired with indoor microfiber capture runners. This two-stage barrier traps over 85% of Gulf beach sand before it ever reaches your living room floors.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Schedule Top-Rated Cleaning Across Tampa Bay</h3>
+        <p class="mb-4">Sweet Maid proudly delivers 5-star recurring maid service, move-out turnovers, and deep cleaning for homes across <a href="/tampa-fl/" class="text-pink-600 font-bold hover:underline">Tampa</a>, <a href="/st-petersburg-fl/" class="text-pink-600 font-bold hover:underline">St. Petersburg</a>, <a href="/clearwater-fl/" class="text-pink-600 font-bold hover:underline">Clearwater</a>, <a href="/brandon-fl/" class="text-pink-600 font-bold hover:underline">Brandon</a>, and <a href="/riverview-fl/" class="text-pink-600 font-bold hover:underline">Riverview</a>.</p>
+      </div>
+
+      <!-- ARTICLE MIAMI -->
+      <div id="data-article-miami">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-4">South Florida Luxury Living: Deep Cleaning High-Rises & Defending Against Subtropical Mold in Miami & Fort Lauderdale</h2>
+        <p class="text-gray-600 italic mb-6">Published by Sweet Maid Field Specialists • Comprehensive Guide for Miami, Fort Lauderdale, Coral Gables & Boca Raton</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">1. Preserving Italian Marble, Travertine & Luxury Stone</h3>
+        <p class="mb-4">High-end condominium residences in Brickell, Sunny Isles Beach, and Las Olas Fort Lauderdale heavily feature expansive polished marble, quartz waterfall islands, and imported travertine floors. Acidic commercial cleaners and citrus-based solutions cause irreversible chemical etching on natural calcium carbonate stone. Our trained cleaning teams exclusively utilize pH-neutral stone conditioners and color-coded microfiber pads to restore radiant gloss without etching.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">2. Floor-to-Ceiling Coastal Glass & Balcony Salt Encrustation</h3>
+        <p class="mb-4">Living 30 stories above Biscayne Bay or the Atlantic Ocean provides breathtaking views—and intense marine mist accumulation. Ocean spray combined with vehicle exhaust along Biscayne Blvd forms an oily, mineralized glaze on balcony railings and exterior sliding glass doors. Regular pure-water squeegee cleaning prevents calcium crystallization from permanently bonding to high-impact glass panels.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">3. Subtropical Rainy Season Mold Prevention</h3>
+        <p class="mb-4">From June through October, South Florida's torrential daily thunderstorms push indoor relative humidity levels to dangerous mold germination points if AC systems are turned off or set above 76°F. In Coral Gables and Hollywood residences, our deep clean checklist targets bathroom grout joints, under-sink plumbing enclosures, and window sill condensation channels with hospital-grade, plant-derived antimicrobials.</p>
+
+        <div class="my-6 p-5 bg-pink-50 rounded-2xl border border-pink-200">
+          <h4 class="font-bold text-pink-700 text-base mb-2">🌴 South Florida Condo Care Pro Tip:</h4>
+          <p class="text-sm text-gray-700">Never leave balcony sliding glass doors open while air conditioning units are running. The sudden collision of warm humid Atlantic air with chilled interior surfaces causes rapid wall sweating and hidden spore growth behind artwork and baseboards.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Trusted House Cleaning Across South Florida</h3>
+        <p class="mb-4">Sweet Maid provides white-glove residential cleaning, deep sanitization, and turnover services across <a href="/miami-fl/" class="text-pink-600 font-bold hover:underline">Miami</a>, <a href="/fort-lauderdale-fl/" class="text-pink-600 font-bold hover:underline">Fort Lauderdale</a>, <a href="/coral-gables-fl/" class="text-pink-600 font-bold hover:underline">Coral Gables</a>, <a href="/hollywood-fl/" class="text-pink-600 font-bold hover:underline">Hollywood</a>, and <a href="/boca-raton-fl/" class="text-pink-600 font-bold hover:underline">Boca Raton</a>.</p>
+      </div>
+
+      <!-- ARTICLE ORLANDO -->
+      <div id="data-article-orlando">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-4">Central Florida Vacation Rental & Airbnb Turnover Masterclass: 5-Star Cleanliness Standards in Orlando & Kissimmee</h2>
+        <p class="text-gray-600 italic mb-6">Published by Sweet Maid Field Specialists • Comprehensive Guide for Orlando, Kissimmee, Winter Park & Central Florida</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">1. The 10:00 AM to 4:00 PM Rapid Turnover Window</h3>
+        <p class="mb-4">Managing short-term rentals near Walt Disney World and Universal Epic Universe in Kissimmee, Davenport, and Lake Buena Vista requires lightning-fast precision. When a family of 8 checks out at 10 AM and the next arriving guests land at MCO for a 4 PM check-in, cleaning teams must execute an synchronized multi-zone system: immediate linen stripping and high-temp sanitization, kitchen deep grease degreasing, bathroom re-stocking, and game room sanitization.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">2. Themed Bedrooms, Bunk Beds & Game Room Detailing</h3>
+        <p class="mb-4">Orlando vacation homes are famous for themed pirate and princess suites, arcade machines, and private pool patios. These high-touch zones accumulate stubborn fingerprints, sugary drink residues, and snack crumbs. Our specialized checklist includes sanitizing game controllers, inspecting mattress encasements for full hygiene compliance, and washing private pool patio loungers.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">3. Year-Round Suburban Living in Winter Park & Lake Nona</h3>
+        <p class="mb-4">Beyond tourism, Orlando's residential neighborhoods in Winter Park, Lake Nona, and Clermont demand consistent maid service to counter heavy lake humidity, live oak leaf litter, and summer mud. Regular weekly and bi-weekly cleans keep baseboards, ceilings, and open-concept kitchens spotless.</p>
+
+        <div class="my-6 p-5 bg-pink-50 rounded-2xl border border-pink-200">
+          <h4 class="font-bold text-pink-700 text-base mb-2">🏰 Orlando Host Pro Tip:</h4>
+          <p class="text-sm text-gray-700">Utilize commercial 100% white cotton hotel-grade linens and towels. White linens allow high-temperature sanitizing washes and non-chlorine brightening without fading, guaranteeing that crisp 5-star hotel appearance that wins positive guest reviews.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Premium Cleaning Throughout Central Florida</h3>
+        <p class="mb-4">Sweet Maid provides turnkey Airbnb turnover services, residential maid maintenance, and move-in/out cleans across <a href="/orlando-fl/" class="text-pink-600 font-bold hover:underline">Orlando</a>, <a href="/kissimmee-fl/" class="text-pink-600 font-bold hover:underline">Kissimmee</a>, <a href="/winter-park-fl/" class="text-pink-600 font-bold hover:underline">Winter Park</a>, <a href="/sanford-fl/" class="text-pink-600 font-bold hover:underline">Sanford</a>, and <a href="/clermont-fl/" class="text-pink-600 font-bold hover:underline">Clermont</a>.</p>
+      </div>
+
+      <!-- ARTICLE SWFL -->
+      <div id="data-article-swfl">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-4">Sarasota, Bradenton & Lakewood Ranch Home Care: Lanai Maintenance, Salt Mist & Seasonal Resident Openings</h2>
+        <p class="text-gray-600 italic mb-6">Published by Sweet Maid Field Specialists • Comprehensive Guide for Bradenton, Lakewood Ranch, Sarasota, Venice & Palmetto</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">1. Screened Lanais & Pool Cage Algae Eradication</h3>
+        <p class="mb-4">In Southwest Florida communities like Lakewood Ranch, Palmer Ranch, and Palmetto, outdoor living centers around the screened lanai and pool enclosure. Constant exposure to rain, irrigation overspray, and humid Gulf breezes promotes green and black algae accumulation on cage aluminum framing and paver decking. Gentle pressure washing and antimicrobial patio washing keep outdoor living areas spotless and safe.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">2. Sliding Glass Pocket Door Track Care</h3>
+        <p class="mb-4">Most modern homes in Sarasota and Bradenton feature multi-panel sliding pocket doors connecting the living room to the patio. Sand, dead insects, and windblown pollen accumulate in track grooves, grinding down brass roller assemblies. Routine vacuuming and silicone dry-lubricant application prevent sticking and corrosion.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">3. The Seasonal Snowbird Opening & Closing Protocol</h3>
+        <p class="mb-4">Many homeowners in Venice, Longboat Key, and Anna Maria Island spend summers up north and return for Florida's magnificent winters. Our seasonal opening deep clean revitalizes closed homes: running water fixtures to clear P-traps, washing dust from ceiling fan blades, vacuuming upholstered furniture, and inspecting window seals for complete peace of mind.</p>
+
+        <div class="my-6 p-5 bg-pink-50 rounded-2xl border border-pink-200">
+          <h4 class="font-bold text-pink-700 text-base mb-2">☀️ Southwest Florida Pro Tip:</h4>
+          <p class="text-sm text-gray-700">When leaving your Florida home vacant for seasonal travel, keep your air conditioner running between 74°F and 77°F with the humidistat set at 55% or lower. Place ceiling fans on low and close bedroom interior doors to ensure even air circulation.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Dedicated Cleaning Care Across Southwest Florida</h3>
+        <p class="mb-4">Sweet Maid offers top-rated residential cleaning, deep scrubbing, and seasonal home watch sanitization across <a href="/bradenton-fl/" class="text-pink-600 font-bold hover:underline">Bradenton</a>, <a href="/lakewood-ranch-fl/" class="text-pink-600 font-bold hover:underline">Lakewood Ranch</a>, <a href="/sarasota-fl/" class="text-pink-600 font-bold hover:underline">Sarasota</a>, <a href="/palmetto-fl/" class="text-pink-600 font-bold hover:underline">Palmetto</a>, and <a href="/venice-fl/" class="text-pink-600 font-bold hover:underline">Venice</a>.</p>
+      </div>
+
+      <!-- ARTICLE JAX -->
+      <div id="data-article-jax">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-4">First Coast Seasonal Cleaning Guide: Battling Pine Pollen, Atlantic Sea Mist & Red Clay in Jacksonville & St. Augustine</h2>
+        <p class="text-gray-600 italic mb-6">Published by Sweet Maid Field Specialists • Comprehensive Guide for Jacksonville, St. Augustine, Ponte Vedra & Orange Park</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">1. The Annual Spring Yellow Pine Pollen Tsunami</h3>
+        <p class="mb-4">Unlike South Florida, Northeast Florida is densely populated with slash pine and longleaf pine forests. Every spring, a thick yellow blanket of pine pollen covers front porches, carports, window screens, and entryway rugs in Jacksonville and Orange Park. Wiping pollen with a dry cloth scratches finishes and pushes micro-allergens into the air. Professional cleaners utilize electrostatic microfiber damp-dusting and HEPA filtration to safely lift and capture pollen grains without smearing.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">2. Atlantic Coastal Winds vs. River Humidity</h3>
+        <p class="mb-4">From beachfront properties in Jacksonville Beach and Ponte Vedra to riverside homes along the St. Johns River in San Marco and Mandarin, moisture and airborne sea salts cause corrosion on metal door hardware, ceiling fan brackets, and window tracks. Scheduled bi-weekly surface wiping with protective conditioning agents prevents oxidation.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">3. Red Clay & Soil Staining Prevention in Carpets</h3>
+        <p class="mb-4">Active families and pets in St. Johns County and Clay County frequently track in heavy red clay soil. If not addressed immediately, iron oxide minerals in the clay permanently stain light-colored carpeting and tile grout lines. Commercial hot-water extraction and pH-balanced stain spotters protect your flooring investment.</p>
+
+        <div class="my-6 p-5 bg-pink-50 rounded-2xl border border-pink-200">
+          <h4 class="font-bold text-pink-700 text-base mb-2">🌊 First Coast Cleaning Pro Tip:</h4>
+          <p class="text-sm text-gray-700">During peak March and April pine pollen weeks, clean or replace HVAC filters every 30 days instead of every 90 days, and keep windows firmly closed on windy afternoons to prevent pollen penetration into bedrooms.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Top-Rated Cleaning Across the First Coast</h3>
+        <p class="mb-4">Sweet Maid serves residential homes, executive estates, and rental turnovers across <a href="/jacksonville-fl/" class="text-pink-600 font-bold hover:underline">Jacksonville</a>, <a href="/st-augustine-fl/" class="text-pink-600 font-bold hover:underline">St. Augustine</a>, <a href="/jacksonville-beach-fl/" class="text-pink-600 font-bold hover:underline">Jacksonville Beach</a>, <a href="/ponte-vedra-fl/" class="text-pink-600 font-bold hover:underline">Ponte Vedra</a>, and <a href="/orange-park-fl/" class="text-pink-600 font-bold hover:underline">Orange Park</a>.</p>
+      </div>
+
+      <!-- ARTICLE KEYS -->
+      <div id="data-article-keys">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-4">Living in Paradise: Florida Keys Island Home Maintenance & Salt Air Defense Playbook</h2>
+        <p class="text-gray-600 italic mb-6">Published by Sweet Maid Field Specialists • Comprehensive Guide for Key West, Key Largo, Marathon & Islamorada</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">1. Defending Against Extreme Marine Atmospheric Corrosion</h3>
+        <p class="mb-4">With the Atlantic Ocean on one side and the Florida Bay/Gulf of Mexico on the other, island homes in Key West, Marathon, and Key Largo experience the highest salt aerosol concentrations in the continental United States. Airborne sea salts attack stainless steel appliances, outdoor kitchen grills, door hinges, and lighting fixtures. Specialized marine-safe descaling and protective mineral barrier coatings prevent unsightly surface pitting and rust bloom.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">2. Island Vacation Rental & Sportfishing Lodge Turnovers</h3>
+        <p class="mb-4">Properties catering to anglers and diving enthusiasts in Islamorada and Key Largo require intensive deep cleaning between guest stays. Outdoor fish-cleaning stations, tackle storage areas, and patio dining pavilions demand hospital-grade degreasing and deodorization to ensure pristine conditions for arriving visitors.</p>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">3. Island Dust, Conch Shell Lime & Humidity Management</h3>
+        <p class="mb-4">Crushed coral rock driveways and tropical trade winds carry fine calcium dust into homes. Combined with 85%+ tropical humidity, this dust can quickly bind to window sills and ceiling fans. Our Florida Keys cleaning crews use damp electrostatic microfiber systems that lock in dust rather than dispersing it into the island air.</p>
+
+        <div class="my-6 p-5 bg-pink-50 rounded-2xl border border-pink-200">
+          <h4 class="font-bold text-pink-700 text-base mb-2">🏝️ Florida Keys Island Pro Tip:</h4>
+          <p class="text-sm text-gray-700">Wipe all exterior stainless steel and brass hardware with fresh warm water and a microfiber cloth weekly to wash away dried salt crust before it chemically reacts with protective metal coatings.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">5-Star Island Maid Services Throughout the Keys</h3>
+        <p class="mb-4">Sweet Maid offers dedicated vacation rental turnover, deep seasonal cleans, and residential maid services across <a href="/key-west-fl/" class="text-pink-600 font-bold hover:underline">Key West</a>, <a href="/key-largo-fl/" class="text-pink-600 font-bold hover:underline">Key Largo</a>, <a href="/marathon-fl/" class="text-pink-600 font-bold hover:underline">Marathon</a>, <a href="/islamorada-fl/" class="text-pink-600 font-bold hover:underline">Islamorada</a>, and <a href="/tavernier-fl/" class="text-pink-600 font-bold hover:underline">Tavernier</a>.</p>
+      </div>
+    </div>
+
+    <!-- Script for Regional Filter Tabs & Reader Modal -->
     <script>
-      // === Supabase Configuration ===
-      const supabaseUrl = 'https://yyhkdjuafavcnepiknxx.supabase.co';
-      const supabaseAnonKey = 'sb_publishable_hHT5Gx1XxPR7uoYSvmTYAQ_x3NtLmTS';  // This appears to be a custom/public key  ensure it's the correct anon/public key for your project
+      (function() {
+        // 1. Regional Filter Tabs
+        const filterButtons = document.querySelectorAll('.blog-filter-btn');
+        const cards = document.querySelectorAll('.blog-card');
 
-      const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
+        filterButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterButtons.forEach(b => {
+              b.classList.remove('active', 'bg-pink-500', 'text-white', 'shadow-md', 'shadow-pink-200');
+              b.classList.add('bg-white', 'text-gray-700');
+            });
+            btn.classList.add('active', 'bg-pink-500', 'text-white', 'shadow-md', 'shadow-pink-200');
+            btn.classList.remove('bg-white', 'text-gray-700');
 
-      let allBlogs = [];
-      const BASE_PATH = '/blog'; // Change if your blog is at a different URL (e.g., '/' or '/cleaning-tips')
-
-      async function loadBlogs() {
-        const { data: blogs, error } = await supabaseClient
-          .from('services')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error || !blogs || blogs.length === 0) {
-          document.getElementById('blogGrid').innerHTML =
-            '<p style="grid-column:1/-1; text-align:center; font-size:1.4rem; opacity:0.9; padding:60px;">No blog posts yet. Check back soon for cleaning tips from Sweet Maid in Florida!</p>';
-          return;
-        }
-
-        allBlogs = blogs;
-        checkPathAndRender();
-      }
-
-      function setMetaTags(blog) {
-        document.title = `${blog.name} | House Cleaning Florida FL | Sweet Maid Cleaning (941) 222-2080`;
-
-        const metaDescription = `Expert house cleaning tips in Florida from Sweet Maid Cleaning Services. Professional maid service, deep cleaning, move-in/move-out cleaning in Florida and surrounding areas. Call (941) 222-2080 or email Info@sweetmaidcleaning.com`;
-
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (!metaDesc) {
-          metaDesc = document.createElement('meta');
-          metaDesc.name = "description";
-          document.head.appendChild(metaDesc);
-        }
-        metaDesc.content = metaDescription;
-
-        let canonical = document.querySelector('link[rel="canonical"]');
-        if (!canonical) {
-          canonical = document.createElement('link');
-          canonical.rel = "canonical";
-          document.head.appendChild(canonical);
-        }
-        canonical.href = location.origin + BASE_PATH + '/' + blog.slug;
-      }
-
-      function resetMetaTags() {
-        document.title = 'Sweet Maid Cleaning Blog | Best House Cleaning in Florida FL';
-        const defaultDesc = 'Professional cleaning tips and insights from Sweet Maid Cleaning Services  your trusted maid service in Floridaorida. Expert house cleaning, deep cleaning, and move-in/move-out services. Call (941) 222-2080 today!';
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.content = defaultDesc;
-
-        let canonical = document.querySelector('link[rel="canonical"]');
-        if (canonical) canonical.href = location.origin + BASE_PATH + '/';
-      }
-
-      function renderBlogGrid() {
-        resetMetaTags();
-
-        const container = document.getElementById('blogGrid');
-        container.innerHTML = allBlogs.map(b => `
-                <div class="truewebx-blog-card">
-                    ${b.profile ? `<img src="${b.profile}" alt="${b.name} - House Cleaning Florida FL | Sweet Maid Cleaning" class="featured" loading="lazy">` : ''}
-                    <div class="content">
-                        <div class="date">
-                            ${new Date(b.created_at).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
-                        </div>
-                        <h2>${b.name}</h2>
-                        <p class="excerpt">${b.description ? b.description.substring(0, 150) + '...' : 'Expert cleaning advice from Sweet Maid Cleaning Services in Florida.'}</p>
-                        <a href="${BASE_PATH}/${b.slug}" class="read-more" onclick="showSinglePost('${b.slug}'); return false;">
-                            Read Post ?
-                        </a>
-                    </div>
-                </div>
-            `).join('');
-
-        document.getElementById('blogGrid').style.display = 'grid';
-        document.getElementById('singlePost').style.display = 'none';
-      }
-
-      function processContent(text) {
-        if (!text) return '';
-
-        let html = text
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/__([^_]+?)__/g, '<strong>$1</strong>')
-          .replace(/(wa\.me\/|api\.whatsapp\.com\/send\/?\?phone=)1?9412222080/g, '$119412222080')
-          .replace(/(1?\(941\)\s?222-2080|1?9412222080|941-222-2080)/g, '<a href="tel:19412222080"><strong>(941) 222-2080</strong></a>')
-          .replace(/Info@sweetmaidcleaning\.com/gi, '<a href="mailto:Info@sweetmaidcleaning.com"><strong>Info@sweetmaidcleaning.com</strong></a>')
-          .replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, '<a href="mailto:$1">$1</a>')
-          .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank">$1</a>')
-          .replace(/\n/g, '<br>');
-
-        return html;
-      }
-
-      function showSinglePost(slug) {
-        const blog = allBlogs.find(b => b.slug === slug);
-        if (!blog) {
-          renderBlogGrid();
-          history.replaceState({}, '', BASE_PATH + '/');
-          return;
-        }
-
-        setMetaTags(blog);
-
-        let galleryHTML = '';
-        if (Array.isArray(blog.photos) && blog.photos.length > 0) {
-          const images = blog.photos.map(p => `<img src="${p}" alt="Sweet Maid Cleaning Services - Florida FL Before & After" loading="lazy">`).join('');
-          galleryHTML = `
-                <div class="gallery-wrapper" id="galleryWrapper">
-                    <div class="gallery-slider" id="gallerySlider">
-                        ${images}
-                    </div>
-                    <div class="gallery-arrow prev" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
-                    <div class="gallery-arrow next" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
-                </div>`;
-        }
-
-        document.getElementById('singlePost').innerHTML = `
-                ${blog.profile ? `<img src="${blog.profile}" alt="${blog.name} - Professional Cleaning Florida FL | Sweet Maid" class="featured" loading="lazy">` : ''}
-
-                <div class="meta">
-                    Published on ${new Date(blog.created_at).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
-                </div>
-
-                <h2>${blog.name}</h2>
-
-                <div class="content">
-                    ${processContent(blog.description)}
-                    <p style="margin-top:40px; font-size:1.2rem; text-align:center; background:#fff2cc; padding:20px; border-radius:12px;">
-                        Ready for the <strong>best house cleaning in Florida</strong>?<br>
-                        Trust Sweet Maid Cleaning Services!<br><br>
-                        <strong><a href="tel:19412222080">(941) 222-2080</a></strong> | 
-                        <a href="mailto:Info@sweetmaidcleaning.com">Info@sweetmaidcleaning.com</a><br>
-                        <a href="https://sweetmaidcleaning.com/" style="color:#ff6b6b; font-weight:bold;">sweetmaidcleaning.com</a>
-                    </p>
-                </div>
-
-                ${galleryHTML}
-
-                <a href="${BASE_PATH}/" class="back-btn" onclick="renderBlogGrid(); history.pushState({}, '', '${BASE_PATH}/'); return false;">
-                    ? Back to All Posts
-                </a>
-            `;
-
-        document.getElementById('blogGrid').style.display = 'none';
-        document.getElementById('singlePost').style.display = 'block';
-
-        history.replaceState({ slug: slug }, '', `${BASE_PATH}/${slug}`);
-        window.scrollTo(0, 0);
-
-        if (blog.photos && blog.photos.length > 1) {
-          initGallery(blog.photos.length);
-        }
-      }
-
-      function initGallery(count) {
-        const wrapper = document.getElementById('galleryWrapper');
-        const slider = document.getElementById('gallerySlider');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        let currentIndex = 0;
-        let autoTimer;
-
-        function updateSlide() {
-          slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        function nextSlide() {
-          currentIndex = (currentIndex + 1) % count;
-          updateSlide();
-        }
-
-        function prevSlide() {
-          currentIndex = (currentIndex - 1 + count) % count;
-          updateSlide();
-        }
-
-        function startAutoSwipe() {
-          if (window.innerWidth > 768) {
-            autoTimer = setInterval(nextSlide, 8000);
-          }
-        }
-
-        function stopAutoSwipe() {
-          clearInterval(autoTimer);
-        }
-
-        nextBtn.onclick = () => { stopAutoSwipe(); nextSlide(); startAutoSwipe(); };
-        prevBtn.onclick = () => { stopAutoSwipe(); prevSlide(); startAutoSwipe(); };
-
-        let touchStartX = 0;
-        wrapper.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; stopAutoSwipe(); }, { passive: true });
-        wrapper.addEventListener('touchend', e => {
-          const diff = touchStartX - e.changedTouches[0].clientX;
-          if (Math.abs(diff) > 50) {
-            diff > 0 ? nextSlide() : prevSlide();
-          }
-          startAutoSwipe();
+            const filter = btn.getAttribute('data-filter');
+            cards.forEach(card => {
+              if (filter === 'all' || card.getAttribute('data-region') === filter) {
+                card.style.display = 'flex';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
         });
 
-        window.addEventListener('resize', () => { updateSlide(); stopAutoSwipe(); startAutoSwipe(); });
-        startAutoSwipe();
-      }
+        // 2. Interactive Article Reader Modal
+        const modal = document.getElementById('articleModal');
+        const modalDialog = document.getElementById('articleModalDialog');
+        const modalBody = document.getElementById('modalArticleBody');
+        const modalBadge = document.getElementById('modalRegionBadge');
+        const closeBtn = document.getElementById('closeArticleModal');
+        const modalQuoteBtn = document.getElementById('modalQuoteBtn');
+        const openButtons = document.querySelectorAll('.open-guide-btn');
 
-      function getCurrentSlug() {
-        const path = window.location.pathname;
-        if (!path.startsWith(BASE_PATH + '/')) return null;
-        const slug = path.slice(BASE_PATH.length + 1).replace(/\/$/, '');
-        return slug || null;
-      }
+        function openModal(articleId) {
+          const source = document.getElementById('data-' + articleId);
+          if (!source) return;
 
-      function checkPathAndRender() {
-        const slug = getCurrentSlug();
-        if (slug) {
-          showSinglePost(slug);
-        } else {
-          renderBlogGrid();
+          modalBody.innerHTML = source.innerHTML;
+
+          let badgeText = 'Florida Cleaning Guide';
+          if (articleId === 'article-tampa') badgeText = '🏖️ Tampa Bay & St. Pete Guide';
+          else if (articleId === 'article-miami') badgeText = '🌴 Miami & South Florida Guide';
+          else if (articleId === 'article-orlando') badgeText = '🏰 Orlando & Central FL Guide';
+          else if (articleId === 'article-swfl') badgeText = '☀️ Sarasota, Bradenton & SWFL Guide';
+          else if (articleId === 'article-jax') badgeText = '🌊 Jacksonville & North FL Guide';
+          else if (articleId === 'article-keys') badgeText = '🏝️ Florida Keys Island Guide';
+
+          modalBadge.innerHTML = '<span class="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">' + badgeText + '</span>';
+
+          modal.classList.remove('opacity-0', 'pointer-events-none');
+          modal.classList.add('opacity-100', 'pointer-events-auto');
+          modalDialog.classList.remove('scale-95');
+          modalDialog.classList.add('scale-100');
+          document.body.style.overflow = 'hidden';
         }
-      }
 
-      window.addEventListener('popstate', checkPathAndRender);
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const slug = getCurrentSlug();
-        if (slug) {
-          history.replaceState({ slug: slug }, '', location.pathname);
+        function closeModal() {
+          modal.classList.add('opacity-0', 'pointer-events-none');
+          modal.classList.remove('opacity-100', 'pointer-events-auto');
+          modalDialog.classList.add('scale-95');
+          modalDialog.classList.remove('scale-100');
+          document.body.style.overflow = '';
         }
-        loadBlogs();
-      });
+
+        openButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const articleId = btn.getAttribute('data-article');
+            openModal(articleId);
+          });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (modalQuoteBtn) modalQuoteBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeModal();
+        });
+      })();
     </script>
   </section>
-  <!-- ==== End Sweet Maid Cleaning Blog Embed ==== -->
+  <!-- ==== End Florida Regional Blog Hub ==== -->
   <!-- ================================================
      SERVICES CAROUSEL
 =============================================== -->

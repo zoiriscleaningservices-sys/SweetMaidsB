@@ -3,15 +3,28 @@ import { formatName } from '@/lib/data';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '#1 Best Cleaning Tips & Professional Home Care Blog in Bradenton, FL',
-  description: 'Get expert cleaning tips, home organization hacks, and professional maid advice from the team at Sweet Maid.',
+  title: 'Florida Cleaning Blog & Home Care Guides | Tampa, Miami, Orlando, Sarasota, Jax & Keys',
+  description: 'Expert Florida house cleaning tips, vacation rental turnover checklists, and coastal home care guides for Tampa Bay, Miami, Orlando, Sarasota, Bradenton, Jacksonville & the Florida Keys.',
+  keywords: [
+    'Florida cleaning blog',
+    'house cleaning tips Florida',
+    'Tampa Bay cleaning guides',
+    'Miami vacation rental turnover',
+    'Orlando Airbnb cleaning checklist',
+    'Sarasota Bradenton maid service tips',
+    'Jacksonville home cleaning',
+    'Florida Keys coastal home care',
+    'deep cleaning tips Florida'
+  ],
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/blog/',
   },
   openGraph: {
-    title: '#1 Best Cleaning Tips & Professional Home Care Blog in Bradenton, FL',
-    description: 'Get expert cleaning tips, home organization hacks, and professional maid advice from the team at Sweet Maid.',
+    title: 'Florida Cleaning Blog & Home Care Guides | Sweet Maid',
+    description: 'Expert Florida house cleaning tips, vacation rental turnover checklists, and coastal home care guides across Tampa Bay, Miami, Orlando, Sarasota, Jacksonville & the Florida Keys.',
     url: 'https://sweetmaidcleaning.com/blog/',
+    siteName: 'Sweet Maid Cleaning Services',
+    type: 'website',
   }
 };
 
