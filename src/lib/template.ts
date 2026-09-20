@@ -4,6 +4,7 @@ import { serviceSlugs, formatName, getNearestLocations } from './data';
 import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs } from './miami_broward_slugs';
 import { isManateeCounty, manateeKeyHubs } from './manatee';
 import { generateSeoContentPack } from './seo_engine';
+import { generateLocalBlogContent } from './blog_engine';
 
 // Service to H1 mapping using top-converting transactional SEO search terms
 export const serviceH1Map: Record<string, string> = {
@@ -133,6 +134,18 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/Bradenton's most trusted cleaning service/gi, "Florida's most trusted cleaning service");
     newContent = newContent.replace(/Why Locals Trust Us/gi, `Why Florida Homeowners Trust Us`);
     newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why Florida Homeowners Trust Us`);
+
+    // If viewing a localized city blog page (is_sub_page and loc_slug), inject the dedicated local blog article & local Google map
+    if (loc_slug && loc_slug !== 'home' && is_sub_page) {
+      const localBlogHtml = generateLocalBlogContent(clean_name, loc_slug);
+      // Demote regional hub heading to h2 on local pages for semantic SEO hierarchy
+      newContent = newContent.replace(/<h1 id="truewebx-blog-heading"([^>]*)>([\s\S]*?)<\/h1>/i, '<h2 id="truewebx-blog-heading"$1>Explore Statewide Florida Regional Guides</h2>');
+      if (newContent.includes('id="sweet-maid-blog-hub"')) {
+        newContent = newContent.replace(/<section[^>]*id="sweet-maid-blog-hub"/i, localBlogHtml + '\n<section id="sweet-maid-blog-hub"');
+      } else {
+        newContent = localBlogHtml + '\n' + newContent;
+      }
+    }
   } else {
     // Aggressive SEO location and service targeting
     newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
