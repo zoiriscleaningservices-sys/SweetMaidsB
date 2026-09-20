@@ -12,12 +12,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   // Calibrated to target ~65 characters for optimal Google SERP snippet display
   let title: string;
-  if (cleanName.length <= 10) {
-    title = `${cleanName}, FL Cleaning Blog & Local Home Care Guides | Sweet Maid`;
-  } else if (cleanName.length <= 16) {
+  if (cleanName.length <= 12) {
     title = `${cleanName}, FL Cleaning Blog & Home Care Guides | Sweet Maid`;
+  } else if (cleanName.length <= 18) {
+    title = `${cleanName}, FL Cleaning Blog & Maid Guides | Sweet Maid`;
   } else {
-    title = `${cleanName}, FL Cleaning Blog & Home Guides | Sweet Maid`;
+    title = `${cleanName}, FL Cleaning Blog | Sweet Maid`;
   }
   
   const desc = `Expert cleaning tips, vacation rental turnover checklists, and coastal home maintenance guides for ${cleanName}, FL and major Florida regions including Tampa Bay, Miami, Orlando, Sarasota, and the Keys.`;

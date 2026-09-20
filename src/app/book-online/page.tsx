@@ -3,13 +3,13 @@ import Script from 'next/script';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Book Online | Instant House Cleaning & Maid Service Booking | Sweet Maid',
+  title: 'Book House Cleaning Online | Instant Maid Booking | Sweet Maid',
   description: 'Book your house cleaning, deep cleaning, or maid service online in under 60 seconds with Sweet Maid. Transparent flat-rate pricing, vetted cleaners, 100% satisfaction guaranteed.',
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/book-online/',
   },
   openGraph: {
-    title: 'Book Online | Sweet Maid Cleaning Services',
+    title: 'Book House Cleaning Online | Instant Maid Booking | Sweet Maid',
     description: 'Instant online booking for top-rated house cleaning and maid services across Florida.',
     url: 'https://sweetmaidcleaning.com/book-online/',
     type: 'website',

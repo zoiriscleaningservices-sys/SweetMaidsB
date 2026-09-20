@@ -13,7 +13,46 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locationName = locData ? formatName(locData.name) : formatName(slug.replace(/-/g, ' '));
   const serviceName = formatName(service.replace(/-/g, ' '));
 
-  const title = `2026 ${serviceName} Cost in ${locationName}, FL | Price Calculator & Rates`;
+  const shortServiceMap: Record<string, string> = {
+    'medical-dental-facility-cleaning': 'Medical & Dental Cleaning',
+    'industrial-warehouse-cleaning': 'Warehouse Janitorial',
+    'church-worship-center-cleaning': 'Church Cleaning',
+    'property-management-janitorial': 'Property Janitorial',
+    'law-firm-office-cleaning': 'Law Firm Cleaning',
+    'restaurant-kitchen-cleaning': 'Kitchen Cleaning',
+    'gym-fitness-center-cleaning': 'Gym Cleaning',
+    'oven-appliance-deep-cleaning': 'Oven Cleaning',
+    'eviction-cleanout-service': 'Eviction Cleanout',
+    'hoarder-cleaning-service': 'Hoarding Cleanout',
+    'exterior-soft-washing': 'Soft Washing',
+    'tile-and-grout-cleaning': 'Tile & Grout Cleaning',
+    'pet-hair-removal-cleaning': 'Pet Hair Cleaning',
+    'post-construction-cleaning': 'Post-Construction Cleaning',
+    'post-renovation-cleaning': 'Post-Renovation Cleaning',
+    'luxury-penthouse-cleaning': 'Penthouse Cleaning',
+    'luxury-estate-cleaning': 'Luxury Estate Cleaning',
+    'vacation-rental-cleaning': 'Vacation Rental Cleaning',
+    'janitorial-cleaning-services': 'Janitorial Cleaning',
+    'office-janitorial-services': 'Office Janitorial',
+    'school-daycare-cleaning': 'Daycare Cleaning'
+  };
+  const displaySrv = shortServiceMap[service] || serviceName;
+
+  let title: string;
+  const candidate1 = `2026 ${displaySrv} Cost in ${locationName}, FL | Sweet Maid Rates`;
+  const candidate2 = `2026 ${displaySrv} Cost in ${locationName}, FL | Price Guide`;
+  const candidate3 = `${displaySrv} Cost in ${locationName}, FL | Sweet Maid`;
+
+  if (candidate1.length <= 65 && candidate1.length >= 52) {
+    title = candidate1;
+  } else if (candidate2.length <= 65 && candidate2.length >= 50) {
+    title = candidate2;
+  } else if (candidate3.length <= 65) {
+    title = candidate3;
+  } else {
+    title = `${displaySrv} Cost in ${locationName}, FL`;
+  }
+
   const description = `Find out how much ${serviceName.toLowerCase()} costs in ${locationName}, Florida. View average hourly rates, square footage pricing, and instant free quotes from Sweet Maid.`;
 
   return {

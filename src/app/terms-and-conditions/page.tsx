@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | Sweet Maid Cleaning Services',
+  title: 'Terms & Conditions & Service Agreement | Sweet Maid Cleaning',
   description: 'Read the Terms and Conditions for Sweet Maid Cleaning Services, including booking policies, cancellation guidelines, satisfaction guarantees, and service standards in Florida.',
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/terms-and-conditions/',
   },
   openGraph: {
-    title: 'Terms & Conditions | Sweet Maid Cleaning Services',
+    title: 'Terms & Conditions & Service Agreement | Sweet Maid Cleaning',
     description: 'Service agreement, booking terms, and satisfaction guarantee policies of Sweet Maid Cleaning Service.',
     url: 'https://sweetmaidcleaning.com/terms-and-conditions/',
     type: 'website',

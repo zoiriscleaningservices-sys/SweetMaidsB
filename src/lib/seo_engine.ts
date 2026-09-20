@@ -30,6 +30,85 @@ export interface SeoContentPack {
   schemaJson: string;
 }
 
+export function getCalibratedMetaTitle(
+  locationName: string,
+  locSlug: string,
+  serviceSlug: string,
+  seed: number
+): string {
+  const isStatewide = locationName.toLowerCase() === 'florida' || locSlug === 'fl';
+  
+  let cleanSrv = formatName(serviceSlug.replace(/-/g, ' '));
+  const shortServiceMap: Record<string, string> = {
+    'medical-dental-facility-cleaning': 'Medical & Dental Cleaning',
+    'industrial-warehouse-cleaning': 'Warehouse Janitorial',
+    'church-worship-center-cleaning': 'Church & Worship Cleaning',
+    'property-management-janitorial': 'Property Janitorial',
+    'law-firm-office-cleaning': 'Law Firm Cleaning',
+    'restaurant-kitchen-cleaning': 'Commercial Kitchen Cleaning',
+    'gym-fitness-center-cleaning': 'Gym & Fitness Cleaning',
+    'oven-appliance-deep-cleaning': 'Oven & Appliance Cleaning',
+    'eviction-cleanout-service': 'Eviction Cleanout Service',
+    'hoarder-cleaning-service': 'Hoarding Cleanout Service',
+    'exterior-soft-washing': 'Exterior Soft Washing',
+    'tile-and-grout-cleaning': 'Tile & Grout Cleaning',
+    'pet-hair-removal-cleaning': 'Pet Hair Deep Cleaning',
+    'post-construction-cleaning': 'Post-Construction Cleaning',
+    'post-renovation-cleaning': 'Post-Renovation Cleaning',
+    'luxury-penthouse-cleaning': 'Penthouse Maid Service',
+    'luxury-estate-cleaning': 'Luxury Estate Cleaning',
+    'vacation-rental-cleaning': 'Vacation Rental Cleaning',
+    'janitorial-cleaning-services': 'Janitorial Cleaning',
+    'office-janitorial-services': 'Office Janitorial Services',
+    'school-daycare-cleaning': 'Daycare & School Cleaning'
+  };
+
+  const displaySrv = shortServiceMap[serviceSlug] || cleanSrv;
+
+  if (isStatewide) {
+    const statewideTemplates = [
+      `Top-Rated ${displaySrv} in Florida | Sweet Maid`,
+      `${displaySrv} Across Florida | Sweet Maid Cleaners`,
+      `Professional ${displaySrv} Across Florida | Sweet Maid`,
+      `Best ${displaySrv} in Florida | 5-Star Maid Service`
+    ];
+    const valid = statewideTemplates.filter(t => t.length <= 65 && t.length >= 50);
+    return valid.length > 0 ? valid[seed % valid.length] : `${displaySrv} Across Florida | Sweet Maid`;
+  }
+
+  const cleanLoc = formatName(locationName);
+
+  // Template pool ordered by richness and target 52-65 char sweet spot
+  const candidateTemplates = [
+    `Top-Rated ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`,
+    `Professional ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`,
+    `${cleanLoc}, FL ${displaySrv} | Sweet Maid Cleaners`,
+    `Best ${displaySrv} in ${cleanLoc}, FL | Sweet Maid Service`,
+    `${displaySrv} in ${cleanLoc}, FL | Top Maid Service`,
+    `Affordable ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`,
+    `${cleanLoc}, FL ${displaySrv} & Cleaning | Sweet Maid`,
+    `${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaners`,
+    `Best ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`
+  ];
+
+  // Pick candidates strictly between 52 and 65 chars
+  const ideal = candidateTemplates.filter(t => t.length <= 65 && t.length >= 52);
+  if (ideal.length > 0) {
+    return ideal[seed % ideal.length];
+  }
+
+  const acceptable = candidateTemplates.filter(t => t.length <= 65 && t.length >= 48);
+  if (acceptable.length > 0) {
+    return acceptable[seed % acceptable.length];
+  }
+
+  let fallback = `${displaySrv} in ${cleanLoc}, FL | Sweet Maid`;
+  if (fallback.length > 65) {
+    fallback = `${displaySrv} in ${cleanLoc}, FL`;
+  }
+  return fallback;
+}
+
 export function generateSeoContentPack(
   locationName: string,
   locSlug: string,
@@ -39,96 +118,11 @@ export function generateSeoContentPack(
   const seed = hashCode(`${locSlug}-${serviceSlug}`);
   const cleanLoc = formatName(locationName);
   let cleanSrv = formatName(serviceName.replace(/-/g, ' '));
-  if (!cleanSrv.toLowerCase().endsWith('services')) {
+  if (!cleanSrv.toLowerCase().endsWith('services') && !cleanSrv.toLowerCase().endsWith('service')) {
     cleanSrv += ' Services';
   }
 
-  // 1. Service-Specific High-Intent Daily Search Title Dictionary (Zero "#1", 100% Unique per location & service)
-  const serviceTitleMap: Record<string, string[]> = {
-    'house-cleaning': [
-      `House Cleaning Near Me in ${cleanLoc}, FL | Best Maid Service`,
-      `Best House Cleaning in ${cleanLoc}, FL | Top Rated Home Cleaners`,
-      `House Cleaning & Maid Service in ${cleanLoc}, FL | Sweet Maid`,
-      `Top Rated House Cleaners in ${cleanLoc}, Florida | Trusted Maids`,
-      `Affordable House Cleaning Services in ${cleanLoc}, FL | Free Quote`
-    ],
-    'deep-cleaning': [
-      `Deep Cleaning Services in ${cleanLoc}, FL | Home Cleaners Near Me`,
-      `Best Deep House Cleaning in ${cleanLoc}, FL | Top Sanitization Maids`,
-      `Deep Cleaning Services in ${cleanLoc}, Florida | Detailed Sanitizing`,
-      `Top Rated Deep Cleaners in ${cleanLoc}, FL | Sweet Maid`,
-      `Intensive Deep Cleaning & Sanitization in ${cleanLoc}, Florida`
-    ],
-    'move-in-out-cleaning': [
-      `Move-In & Move-Out Cleaning in ${cleanLoc}, FL | Turnover Cleaners`,
-      `Best Move Out Cleaning Near Me in ${cleanLoc}, FL | Fast Maid Service`,
-      `Move-In / Move-Out House Cleaning in ${cleanLoc}, FL | Sweet Maid`,
-      `Top Rated Move-Out Cleaning in ${cleanLoc}, Florida | Guaranteed Deposit`
-    ],
-    'airbnb-cleaning': [
-      `Airbnb Cleaning in ${cleanLoc}, FL | Vacation Rental Cleaners Near Me`,
-      `Best Airbnb & Vacation Rental Turnover Cleaning in ${cleanLoc}, FL`,
-      `Airbnb Cleaning Service in ${cleanLoc}, Florida | Same-Day Turnaround`,
-      `Top Rated Vacation Rental Maids in ${cleanLoc}, FL | Sweet Maid`
-    ],
-    'commercial-cleaning': [
-      `Commercial Cleaning & Janitorial in ${cleanLoc}, FL | Office Cleaners`,
-      `Best Commercial Cleaners in ${cleanLoc}, FL | Office Janitorial Services`,
-      `Commercial Office Cleaning in ${cleanLoc}, Florida | Sweet Maid`,
-      `Top Rated Business & Janitorial Cleaning in ${cleanLoc}, FL`
-    ],
-    'carpet-cleaning': [
-      `Professional Carpet Cleaning in ${cleanLoc}, FL | Steam Cleaners Near Me`,
-      `Best Carpet & Rug Cleaning in ${cleanLoc}, FL | Deep Steam Extraction`,
-      `Top Rated Carpet Cleaning in ${cleanLoc}, Florida | Sweet Maid`
-    ],
-    'pressure-washing': [
-      `Pressure Washing & Exterior Cleaning in ${cleanLoc}, FL | Power Washers`,
-      `Best Pressure Washing Services in ${cleanLoc}, FL | Driveway & Siding`,
-      `Top Rated Pressure Washing in ${cleanLoc}, Florida | Sweet Maid`
-    ],
-    'window-cleaning': [
-      `Professional Window Cleaning in ${cleanLoc}, FL | Window Washers Near Me`,
-      `Best Window Cleaning Services in ${cleanLoc}, FL | Streak-Free Glass`,
-      `Top Rated Window Cleaners in ${cleanLoc}, Florida | Sweet Maid`
-    ],
-    'post-construction-cleaning': [
-      `Post-Construction Cleaning in ${cleanLoc}, FL | Dust & Debris Removal`,
-      `Best Post-Construction Cleanup Near Me in ${cleanLoc}, FL | Sweet Maid`,
-      `Top Rated Construction Cleaners in ${cleanLoc}, Florida`
-    ],
-    'luxury-estate-cleaning': [
-      `Luxury Estate & Mansion Cleaning in ${cleanLoc}, FL | Elite Housekeepers`,
-      `Best Luxury Home Cleaners in ${cleanLoc}, FL | Detailed Estate Care`,
-      `Top Rated Luxury Estate Cleaning in ${cleanLoc}, Florida | Sweet Maid`
-    ],
-    'medical-dental-facility-cleaning': [
-      `Medical & Dental Facility Cleaning in ${cleanLoc}, FL | Clinic Sanitizing`,
-      `Best Healthcare & Dental Cleaners in ${cleanLoc}, Florida | Sterilized Care`
-    ],
-    'gym-fitness-center-cleaning': [
-      `Gym & Fitness Center Cleaning in ${cleanLoc}, FL | Sanitized Workout Care`,
-      `Best Gym Cleaners in ${cleanLoc}, FL | Disinfected Equipment & Locker Rooms`
-    ],
-    'solar-panel-cleaning': [
-      `Solar Panel Cleaning in ${cleanLoc}, FL | Maximize Energy Efficiency`,
-      `Best Solar Panel Washers in ${cleanLoc}, FL | Streak-Free Solar Care`
-    ],
-    'gutter-cleaning': [
-      `Gutter Cleaning & Downspout Services in ${cleanLoc}, FL | Fast Service`,
-      `Best Gutter Cleaners in ${cleanLoc}, FL | Prevent Florida Water Damage`
-    ]
-  };
-
-  const defaultTitles = [
-    `${cleanSrv} Near You in ${cleanLoc}, FL | Best Cleaners Near Me`,
-    `Best ${cleanSrv} in ${cleanLoc}, FL | Trusted Local Cleaners`,
-    `Top-Rated ${cleanSrv} in ${cleanLoc}, Florida | Sweet Maid`,
-    `Affordable ${cleanSrv} in ${cleanLoc}, FL | 5-Star Cleaners Near You`
-  ];
-
-  const titlePool = serviceTitleMap[serviceSlug] || defaultTitles;
-  const metaTitle = titlePool[seed % titlePool.length];
+  const metaTitle = getCalibratedMetaTitle(locationName, locSlug, serviceSlug, seed);
 
   // 2. Service-Specific High-Intent Daily Search H1 Dictionary (Zero "#1", 100% Unique per location & service)
   const serviceH1MapUnique: Record<string, string[]> = {

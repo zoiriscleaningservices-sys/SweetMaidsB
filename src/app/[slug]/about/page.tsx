@@ -15,10 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   let title: string;
   if (cleanName.length <= 8) {
     title = `About Sweet Maid: Top Cleaners & Maid Service in ${cleanName}, FL`;
-  } else if (cleanName.length <= 14) {
+  } else if (cleanName.length <= 13) {
     title = `${cleanName}, FL Maid Service & House Cleaning Team | Sweet Maid`;
-  } else {
+  } else if (cleanName.length <= 18) {
     title = `${cleanName}, FL House Cleaners & Maid Service | Sweet Maid`;
+  } else {
+    title = `${cleanName}, FL Maid & Cleaning Team | Sweet Maid`;
   }
 
   const desc = `Family-owned cleaning company in ${cleanName}, FL. Over 5,000 houses, corporate offices, move-out cleans, and post-construction jobs completed with 5-star care.`;

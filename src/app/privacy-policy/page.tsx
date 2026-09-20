@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Sweet Maid Cleaning Services',
+  title: 'Privacy Policy & Customer Data Security | Sweet Maid Cleaning',
   description: 'Learn how Sweet Maid Cleaning Service collects, uses, and safeguards your personal data, booking information, and online privacy.',
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/privacy-policy/',
   },
   openGraph: {
-    title: 'Privacy Policy | Sweet Maid Cleaning Services',
+    title: 'Privacy Policy & Customer Data Security | Sweet Maid Cleaning',
     description: 'Privacy Policy and data practices of Sweet Maid Cleaning Service in Florida.',
     url: 'https://sweetmaidcleaning.com/privacy-policy/',
     type: 'website',
