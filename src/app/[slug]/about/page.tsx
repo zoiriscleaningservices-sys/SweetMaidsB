@@ -10,12 +10,30 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
-  const title = `#1 Top-Rated House Cleaning & Maid Service Team in ${cleanName}, FL`;
-  const desc = `Learn more about Sweet Maid, the leading provider of residential and commercial cleaning services in ${cleanName}, FL. We are committed to your total satisfaction.`;
+  
+  // Calibrated to target ~65 characters for optimal Google SERP display
+  let title: string;
+  if (cleanName.length <= 8) {
+    title = `About Sweet Maid: Top Cleaners & Maid Service in ${cleanName}, FL`;
+  } else if (cleanName.length <= 14) {
+    title = `${cleanName}, FL Maid Service & House Cleaning Team | Sweet Maid`;
+  } else {
+    title = `${cleanName}, FL House Cleaners & Maid Service | Sweet Maid`;
+  }
+
+  const desc = `Family-owned cleaning company in ${cleanName}, FL. Over 5,000 houses, corporate offices, move-out cleans, and post-construction jobs completed with 5-star care.`;
 
   return {
     title,
     description: desc,
+    keywords: [
+      `about Sweet Maid ${cleanName}`,
+      `maid service ${cleanName} FL`,
+      `house cleaning company ${cleanName}`,
+      `family owned cleaners ${cleanName} FL`,
+      `post construction cleaning ${cleanName}`,
+      `move out cleaning ${cleanName}`
+    ],
     alternates: {
       canonical: `https://sweetmaidcleaning.com/${slug}/about/`,
     },
@@ -23,6 +41,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title,
       description: desc,
       url: `https://sweetmaidcleaning.com/${slug}/about/`,
+      siteName: 'Sweet Maid Cleaning Services',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
     }
   };
 }
@@ -42,7 +67,7 @@ export default async function AboutPage({ params }: { params: Promise<{ slug: st
   if (!rawHtml) return <div>About template missing</div>;
 
   const bodyContent = extractSections(rawHtml);
-  const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true);
+  const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true, 'about');
 
   return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
 }

@@ -5,6 +5,7 @@ import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs } from './m
 import { isManateeCounty, manateeKeyHubs } from './manatee';
 import { generateSeoContentPack } from './seo_engine';
 import { generateLocalBlogContent } from './blog_engine';
+import { generateLocalAboutContent } from './about_engine';
 
 // Service to H1 mapping using top-converting transactional SEO search terms
 export const serviceH1Map: Record<string, string> = {
@@ -76,6 +77,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   let pageType = 'service_or_home';
   if (currentService === 'blog') {
     pageType = 'blog';
+  } else if (currentService === 'about') {
+    pageType = 'about';
   }
   
   if (originalH1Match) {
@@ -175,6 +178,33 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         '$1" style="padding-top: clamp(120px, 14vh, 160px);"'
       );
     }
+  } else if (pageType === 'about') {
+    // Dedicated phone routing for South Florida & Florida Keys
+    if (is305Area(loc_slug, clean_name)) {
+      newContent = newContent.replace(/\(941\)\s*222-2080/g, '(305) 851-6959');
+      newContent = newContent.replace(/tel:1?9412222080/g, 'tel:13058516959');
+    }
+
+    const localAboutHtml = generateLocalAboutContent(clean_name, loc_slug);
+
+    // Replace the legacy mini hero and generic text with our rich local authority article
+    const aboutHeroRegex = /<!--\s*={10,}\s*MINI HERO \(about\.html\)[\s\S]*?<!--\s*={10,}\s*SERVICES CAROUSEL/i;
+    if (aboutHeroRegex.test(newContent)) {
+      newContent = newContent.replace(aboutHeroRegex, localAboutHtml + '\n<!-- SERVICES CAROUSEL');
+    } else {
+      newContent = newContent.replace(/<section[^>]*class="[^"]*bg-pink-50[\s\S]*?<section[^>]*id="services"/i, localAboutHtml + '\n<section overflow-hidden id="services"');
+    }
+
+    // Localize bottom Services Carousel and local authority links to this specific city
+    newContent = newContent.replace(
+      /href="\/([a-z0-9-]+-cleaning|recurring-maid-service|pressure-washing|office-janitorial-services|janitorial-cleaning-services|medical-dental-facility-cleaning|industrial-warehouse-cleaning|gym-fitness-center-cleaning|school-daycare-cleaning|church-worship-center-cleaning|property-management-janitorial|floor-stripping-waxing|solar-panel-cleaning|gutter-cleaning|property-maintenance|home-watch-services)\/"/g,
+      `href="/${loc_slug}/$1/"`
+    );
+
+    // Aggressive SEO location targeting for any residual text
+    newContent = newContent.replace(/Bradenton's/gi, `${clean_name}'s`).replace(/Bradenton’s/gi, `${clean_name}'s`);
+    newContent = newContent.replace(/Bradenton, FL/gi, `${clean_name}, FL`);
+    newContent = newContent.replace(/Bradenton/gi, clean_name);
   } else {
     // Aggressive SEO location and service targeting
     newContent = newContent.replace(/Bradenton’s/gi, `${clean_name}'s`).replace(/Bradenton's/gi, `${clean_name}'s`);
@@ -1325,7 +1355,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // 2. High-converting H1 Domination Injection (Pure White, Zero "#1", 100% Daily Search Phrasing)
   let customH1Inner = '';
   if (pageType === 'about') {
-    customH1Inner = `Top-Rated House Cleaning & Maid Service Team in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = '';
   } else if (pageType === 'gallery') {
     customH1Inner = `Best Cleaning Results & Professional Service Gallery in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'blog') {

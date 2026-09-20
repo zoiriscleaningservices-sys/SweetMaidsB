@@ -2,16 +2,34 @@ import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 import { formatName } from '@/lib/data';
 import { Metadata } from 'next';
 
+const title = 'About Sweet Maid: Trusted Florida House Cleaning & Maid Service';
+const desc = 'Built on family-owned values, Sweet Maid has cleaned over 5,000 houses, offices, move-out cleans, and post-construction jobs across Florida with 5-star care.';
+
 export const metadata: Metadata = {
-  title: '#1 Top-Rated House Cleaning & Maid Service Team in Bradenton, FL',
-  description: 'Learn more about Sweet Maid, the leading provider of residential and commercial cleaning services. We are committed to your total satisfaction.',
+  title,
+  description: desc,
+  keywords: [
+    'about Sweet Maid',
+    'Florida house cleaning company',
+    'family owned maid service Florida',
+    'office cleaning Florida',
+    'post construction cleaning Florida',
+    'move out cleaners Florida'
+  ],
   alternates: {
     canonical: 'https://sweetmaidcleaning.com/about/',
   },
   openGraph: {
-    title: '#1 Top-Rated House Cleaning & Maid Service Team in Bradenton, FL',
-    description: 'Learn more about Sweet Maid, the leading provider of residential and commercial cleaning services. We are committed to your total satisfaction.',
+    title,
+    description: desc,
     url: 'https://sweetmaidcleaning.com/about/',
+    siteName: 'Sweet Maid Cleaning Services',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description: desc,
   }
 };
 
@@ -23,7 +41,7 @@ export default function AboutRoot() {
   if (!rawHtml) return <div>About template missing</div>;
 
   const bodyContent = extractSections(rawHtml);
-  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, true);
+  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, true, 'about');
 
   return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
 }
