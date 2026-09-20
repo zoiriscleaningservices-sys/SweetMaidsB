@@ -189,8 +189,8 @@ export default function BookOnlinePage() {
           <div>
             <h2 className="font-bold text-gray-900 text-sm mb-4">Contact Dispatch</h2>
             <ul className="space-y-2 text-xs text-gray-600">
-              <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:19412222080" className="hover:text-pink-400">(941) 222-2080</a> (Bradenton/Sarasota/Tampa)</li>
-              <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:13058516959" className="hover:text-pink-400">(305) 851-6959</a> (Miami/Broward)</li>
+              <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:19412222080" className="hover:text-pink-400">(941) 222-2080</a> (Bradenton / Manatee County / Sarasota / Tampa)</li>
+              <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:13058516959" className="hover:text-pink-400">(305) 851-6959</a> (Florida Keys / Monroe County / Miami-Dade / Broward)</li>
               <li><i className="fa-solid fa-envelope text-pink-400 mr-2"></i> info@sweetmaidcleaning.com</li>
               <li><i className="fa-solid fa-shield-check text-pink-400 mr-2"></i> Licensed, Bonded & Insured</li>
             </ul>

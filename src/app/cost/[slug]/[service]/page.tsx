@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { resolveAnyLocation, formatName, serviceSlugs } from '@/lib/data';
+import { is305Area } from '@/lib/miami_broward_slugs';
 import Link from 'next/link';
 
 interface Props {
@@ -35,6 +36,10 @@ export default async function CostEstimatorPage({ params }: Props) {
   const locData = resolveAnyLocation(slug);
   const locationName = locData ? formatName(locData.name) : formatName(slug.replace(/-/g, ' '));
   const serviceName = formatName(service.replace(/-/g, ' '));
+
+  const is305 = is305Area(slug, locationName);
+  const phoneFormatted = is305 ? "(305) 851-6959" : "(941) 222-2080";
+  const phoneTel = is305 ? "tel:13058516959" : "tel:19412222080";
 
   // Dynamic realistic rates based on service type
   let basePrice = 149;
@@ -74,11 +79,11 @@ export default async function CostEstimatorPage({ params }: Props) {
               View Service Details
             </Link>
             <a
-              href="tel:19412222080"
+              href={phoneTel}
               className="bg-pink-500 hover:bg-pink-600 text-white text-sm font-bold px-4 py-2 rounded-full transition-colors"
               aria-label="Call Sweet Maid for Quote"
             >
-              (941) 222-2080
+              {phoneFormatted}
             </a>
           </div>
         </div>
@@ -167,11 +172,11 @@ export default async function CostEstimatorPage({ params }: Props) {
               Book {serviceName} Now
             </Link>
             <a
-              href="tel:19412222080"
+              href={phoneTel}
               className="bg-pink-700/60 hover:bg-pink-700/80 text-white font-bold px-8 py-4 rounded-full border border-pink-300/40 transition-colors"
               aria-label="Call for Instant Estimate"
             >
-              Call (941) 222-2080
+              Call {phoneFormatted}
             </a>
           </div>
         </section>

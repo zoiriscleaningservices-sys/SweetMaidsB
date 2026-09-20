@@ -357,7 +357,7 @@ export function isManateeCounty(loc_slug: string, clean_name: string = ''): bool
       return true;
     }
     const dashed = city.replace(/ /g, '-');
-    if (s === dashed + '-fl' || s.endsWith('-' + dashed + '-fl') || s.startsWith(dashed + '-')) {
+    if (s === dashed || s === dashed + '-fl' || s.endsWith('-' + dashed + '-fl') || s.startsWith(dashed + '-')) {
       return true;
     }
   }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
-import { miamiBrowardSlugs } from '@/lib/miami_broward_slugs';
+import { miamiBrowardSlugs, is305Area } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
 import { generateSeoContentPack } from '@/lib/seo_engine';
 
@@ -78,8 +78,8 @@ export default async function LocationOrServicePage({ params }: { params: Promis
     const bodyContent = extractSections(rawHtml);
     const localizedHtml = localizedReplace(bodyContent, cleanName, slug, false, 'house-cleaning');
     
-    // Competitor Beating Strategy: Custom LocalBusiness and FAQ JSON-LD schemas targeting Miami neighborhoods
-    const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);
+    // Regional LocalBusiness and FAQ JSON-LD schemas targeting South Florida (Miami-Dade, Broward, Monroe / Florida Keys)
+    const isMiamiOrBroward = is305Area(slug, cleanName);
     const isMiami = slug === 'miami-fl';
     const schemaStr = JSON.stringify([
       {

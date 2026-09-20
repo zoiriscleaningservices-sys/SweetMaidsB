@@ -1,4 +1,5 @@
 import { formatName } from './data';
+import { is305Area } from './miami_broward_slugs';
 
 // Deterministic string hashing for consistent but unique variation per page
 function hashCode(str: string): number {
@@ -382,7 +383,7 @@ export function generateSeoContentPack(
       "name": `Sweet Maid - ${cleanSrv} ${cleanLoc}`,
       "description": heroSub.replace(/<[^>]+>/g, ''),
       "url": `https://sweetmaidcleaning.com/${locSlug}/${serviceSlug}/`,
-      "telephone": "(941) 222-2080",
+      "telephone": is305Area(locSlug, cleanLoc) ? "(305) 851-6959" : "(941) 222-2080",
       "image": "https://sweetmaidcleaning.com/images/logo.png",
       "priceRange": "$$",
       "keywords": dailySearchKeywords.join(', '),

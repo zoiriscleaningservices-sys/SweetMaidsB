@@ -2,15 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { miamiBrowardSlugs } from "@/lib/miami_broward_slugs";
+import { miamiBrowardSlugs, is305Area } from "@/lib/miami_broward_slugs";
 
 export default function FloatingBookingButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
   const pathname = usePathname();
-  const slug = pathname ? pathname.split('/').filter(Boolean)[0] : '';
-  const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);
-  const phoneNumber = isMiamiOrBroward ? "3058516959" : "9412222080";
+  const pathSegments = pathname ? pathname.split('/').filter(Boolean) : [];
+  const slug = pathSegments[0] || '';
+  const is305 = pathSegments.some((seg) => is305Area(seg));
+  const phoneNumber = is305 ? "3058516959" : "9412222080";
+  const phoneDisplay = is305 ? "(305) 851-6959" : "(941) 222-2080";
 
   // Hide floating action button completely on booking and checkout pages so it never blocks the pricing summary or payment inputs
   if (
@@ -48,13 +50,13 @@ export default function FloatingBookingButton() {
         {/* Instant Call Button */}
         <a
           href={`tel:${phoneNumber}`}
-          aria-label="Call Sweet Maid instantly"
+          aria-label={`Call Sweet Maid at ${phoneDisplay}`}
           className="group relative flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-pink-500 px-6 py-2.5 rounded-[2rem] shadow-[0_5px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(236,72,153,0.3)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-100"
         >
           <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-pink-50">
             <i className="fa-solid fa-phone text-pink-400 text-xs"></i>
           </div>
-          <span className="font-bold text-[0.95rem] tracking-tight whitespace-nowrap">Instant Call</span>
+          <span className="font-bold text-[0.95rem] tracking-tight whitespace-nowrap">{phoneDisplay}</span>
         </a>
 
         {/* Instant Booking Button */}

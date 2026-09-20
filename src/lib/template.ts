@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { serviceSlugs, formatName, getNearestLocations } from './data';
-import { miamiBrowardSlugs } from './miami_broward_slugs';
+import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs } from './miami_broward_slugs';
 import { isManateeCounty, manateeKeyHubs } from './manatee';
 import { generateSeoContentPack } from './seo_engine';
 
@@ -29,7 +29,8 @@ export const serviceH1Map: Record<string, string> = {
   "luxury-estate-cleaning": "Top-Rated Luxury Estate & Mansion Cleaning Services in",
   "solar-panel-cleaning": "Best Solar Panel Cleaning & Professional Washing in",
   "gutter-cleaning": "Top-Rated Gutter Cleaning & Downspout Services in",
-  "property-maintenance": "Best Property Maintenance & Handyman Services in"
+  "property-maintenance": "Best Property Maintenance & Handyman Services in",
+  "recurring-maid-service": "Top-Rated Recurring Maid Service & Scheduled House Cleaning in"
 };
 
 
@@ -152,6 +153,207 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Purge any references to non-working / decommissioned service pages from header, mobile menu, and footer
   newContent = newContent.replace(/<li[^>]*>\s*<a[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>\s*<\/li>/gi, '');
   newContent = newContent.replace(/<a[^>]*href="[^"]*(?:airbnb-vacation-rental-management|luxury-estate-management)[^"]*"[^>]*>[\s\S]*?<\/a>/gi, '');
+
+  // Clean, 8-8-8 Aligned Header Services Mega Menu
+  const alignedMegaMenuHtml = `<!-- Services Dropdown (Mega Menu) -->
+          <div class="nav-dropdown">
+            <button
+              class="flex items-center gap-1.5 text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors py-8">
+              Services <i class="fa-solid fa-chevron-down text-xs"></i>
+            </button>
+            <div
+              class="dropdown-menu -left-32 w-[800px] bg-white rounded-3xl shadow-2xl border border-pink-100 p-8 mt-0">
+              <div class="grid grid-cols-3 gap-8">
+                <!-- Residential Column -->
+                <div>
+                  <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-4 px-2">Residential &
+                    Management</div>
+                  <div class="space-y-1">
+                    <a href="/house-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">House
+                      Cleaning</a>
+                    <a href="/deep-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Deep
+                      Cleaning</a>
+                    <a href="/recurring-maid-service/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Recurring
+                      Maid Service</a>
+                    <a href="/move-in-out-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Move
+                      In/Out Cleaning</a>
+                    <a href="/airbnb-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Airbnb
+                      Cleaning</a>
+                    <a href="/home-watch-services/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Home
+                      Watch Services</a>
+                    <a href="/luxury-estate-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Luxury
+                      Estate Cleaning</a>
+                    <a href="/property-management-janitorial/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Property
+                      Management Janitorial</a>
+                  </div>
+                </div>
+                <!-- Commercial Column -->
+                <div>
+                  <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-4 px-2">Commercial &
+                    Janitorial</div>
+                  <div class="space-y-1">
+                    <a href="/commercial-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Commercial
+                      Cleaning</a>
+                    <a href="/office-janitorial-services/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Office
+                      Janitorial Services</a>
+                    <a href="/janitorial-cleaning-services/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Janitorial
+                      Cleaning Services</a>
+                    <a href="/medical-dental-facility-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Medical
+                      & Dental Cleaning</a>
+                    <a href="/industrial-warehouse-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Industrial
+                      & Warehouse</a>
+                    <a href="/gym-fitness-center-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Gym
+                      & Fitness Center</a>
+                    <a href="/school-daycare-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">School
+                      & Daycare Cleaning</a>
+                    <a href="/church-worship-center-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Church
+                      & Worship Center</a>
+                  </div>
+                </div>
+                <!-- Specialized Column -->
+                <div>
+                  <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-4 px-2">Specialized &
+                    Maintenance</div>
+                  <div class="space-y-1">
+                    <a href="/post-construction-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Post-Construction</a>
+                    <a href="/pressure-washing/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Pressure
+                      Washing</a>
+                    <a href="/carpet-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Carpet
+                      Cleaning</a>
+                    <a href="/window-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Window
+                      Cleaning</a>
+                    <a href="/floor-stripping-waxing/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Floor
+                      Stripping & Waxing</a>
+                    <a href="/solar-panel-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Solar
+                      Panel Cleaning</a>
+                    <a href="/gutter-cleaning/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Gutter
+                      Cleaning</a>
+                    <a href="/property-maintenance/"
+                      class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Property
+                      Maintenance</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>\n          `;
+
+  const alignedMobileServicesHtml = `<!-- Residential & Management -->
+              <div class="text-[10px] font-bold text-pink-300 uppercase tracking-widest px-3 mt-2 mb-1">Residential &
+                Management</div>
+              <a href="/house-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-house text-pink-300 w-5"></i> House Cleaning</a>
+              <a href="/deep-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-sparkles text-pink-300 w-5"></i> Deep Cleaning</a>
+              <a href="/recurring-maid-service/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-calendar-check text-pink-300 w-5"></i> Recurring Maid Service</a>
+              <a href="/move-in-out-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-truck-ramp-box text-pink-300 w-5"></i> Move In/Out</a>
+              <a href="/airbnb-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-key text-pink-300 w-5"></i> Airbnb Cleaning</a>
+              <a href="/home-watch-services/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-eye text-pink-300 w-5"></i> Home Watch Services</a>
+              <a href="/luxury-estate-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-gem text-pink-300 w-5"></i> Luxury Estate Cleaning</a>
+              <a href="/property-management-janitorial/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-city text-pink-300 w-5"></i> Property Mgmt Janitorial</a>
+
+              <!-- Commercial & Janitorial -->
+              <div class="text-[10px] font-bold text-pink-300 uppercase tracking-widest px-3 mt-4 mb-1">Commercial &
+                Janitorial</div>
+              <a href="/commercial-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-building text-pink-300 w-5"></i> Commercial Cleaning</a>
+              <a href="/office-janitorial-services/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-briefcase text-pink-300 w-5"></i> Office Janitorial</a>
+              <a href="/janitorial-cleaning-services/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-soap text-pink-300 w-5"></i> Janitorial Cleaning</a>
+              <a href="/medical-dental-facility-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-hospital text-pink-300 w-5"></i> Medical & Dental</a>
+              <a href="/industrial-warehouse-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-warehouse text-pink-300 w-5"></i> Industrial & Warehouse</a>
+              <a href="/gym-fitness-center-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-dumbbell text-pink-300 w-5"></i> Gym & Fitness Center</a>
+              <a href="/school-daycare-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-school text-pink-300 w-5"></i> School & Daycare</a>
+              <a href="/church-worship-center-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-church text-pink-300 w-5"></i> Church & Worship</a>
+
+              <!-- Specialized & Maintenance -->
+              <div class="text-[10px] font-bold text-pink-300 uppercase tracking-widest px-3 mt-4 mb-1">Specialized &
+                Maintenance</div>
+              <a href="/post-construction-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-trowel-bricks text-pink-300 w-5"></i> Post-Construction</a>
+              <a href="/pressure-washing/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-water text-pink-300 w-5"></i> Pressure Washing</a>
+              <a href="/carpet-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-rug text-pink-300 w-5"></i> Carpet Cleaning</a>
+              <a href="/window-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-window-maximize text-pink-300 w-5"></i> Window Cleaning</a>
+              <a href="/floor-stripping-waxing/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-broom-ball text-pink-300 w-5"></i> Floor Strip & Wax</a>
+              <a href="/solar-panel-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-sun text-pink-300 w-5"></i> Solar Panel Cleaning</a>
+              <a href="/gutter-cleaning/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-house-flood-water text-pink-300 w-5"></i> Gutter Cleaning</a>
+              <a href="/property-maintenance/"
+                class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
+                  class="fa-solid fa-wrench text-pink-300 w-5"></i> Property Maintenance</a>
+              `;
+
+  newContent = newContent.replace(
+    /<!--\s*Services Dropdown\s*\(Mega Menu\)\s*-->[\s\S]*?(?=<div class="nav-dropdown">\s*<button[^>]*>\s*Locations)/gi,
+    alignedMegaMenuHtml
+  );
+
+  newContent = newContent.replace(
+    /<!--\s*Residential & Management\s*-->[\s\S]*?(?=\s*<\/div>\s*<\/div>\s*<\/div>\s*<div[^>]*class="[^"]*accordion-group)/gi,
+    alignedMobileServicesHtml
+  );
 
   // Navigation Links
   for (const s_slug of serviceSlugs) {
@@ -570,9 +772,23 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     return `/${loc_slug}/house-cleaning/`;
   };
 
-  // Internal Location Linking for Manatee County or Regional nearest locations
+  // Determine local regional authorities
+  const isMonroe = isMonroeCounty(loc_slug, clean_name) && !serviceSlugs.includes(loc_slug);
+  const is305 = is305Area(loc_slug, clean_name);
+  const localPhoneDisplay = is305 ? '(305) 851-6959' : '(941) 222-2080';
+  const localPhoneHref = is305 ? 'tel:13058516959' : 'tel:9412222080';
+
+  // Internal Location Linking for Manatee County, Florida Keys / Monroe County, or Regional nearest locations
   const internalLocationLinksHtml = isManatee
     ? manateeKeyHubs.map(hub => {
+        const isCurrent = hub.slug === loc_slug;
+        if (isCurrent) {
+          return `<span class="px-3.5 py-2 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2 shadow-2xs"><i class="fa-solid fa-location-dot text-xs text-pink-600"></i><span>${hub.name}</span></span>`;
+        }
+        return `<a href="/${hub.slug}/${targetServiceSlug}/" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${hub.name}</span></a>`;
+      }).join('\n')
+    : isMonroe
+    ? monroeKeyHubs.map(hub => {
         const isCurrent = hub.slug === loc_slug;
         if (isCurrent) {
           return `<span class="px-3.5 py-2 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2 shadow-2xs"><i class="fa-solid fa-location-dot text-xs text-pink-600"></i><span>${hub.name}</span></span>`;
@@ -605,7 +821,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     return `<a href="/${loc_slug}/${srv.slug}/" class="px-3.5 py-2.5 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2.5 group"><i class="fa-solid ${srv.icon} text-xs text-pink-400 group-hover:scale-110 transition-transform"></i><span>${srv.name}</span></a>`;
   }).join('\n');
 
-  // Aggressive SEO Daily Search Query Matrix & Manatee County Internal Linking Network
+  // Aggressive SEO Daily Search Query Matrix & Regional Authority Internal Linking Network
   const seoSection = `
   <section class="py-16 bg-white border-t border-pink-100/70">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -614,11 +830,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <div class="max-w-4xl mx-auto text-center mb-14">
         <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
           <i class="fa-solid fa-award"></i>
-          <span>${isManatee ? 'Manatee County Local Service Authority' : 'Local Cleaning Service Authority'}</span>
+          <span>${isManatee ? 'Manatee County Local Service Authority' : isMonroe ? 'Florida Keys & Monroe County Local Service Authority' : 'Local Cleaning Service Authority'}</span>
         </div>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif">Providing Top-Tier ${serviceDisplayName} in ${clean_name}, FL</h2>
         <p class="text-gray-700 leading-relaxed text-base md:text-lg mb-4">
-          As the leading provider of professional <strong>${serviceDisplayName} in ${clean_name}, FL</strong>${isManatee ? ' and across Manatee County' : ' and the surrounding areas'}, Sweet Maid is dedicated to maintaining the highest cleanliness standards for your property. Whether you are looking for top-rated <strong>${serviceDisplayName} in ${clean_name}</strong>, scheduled recurring visits, or intensive turnover cleaning, our licensed, bonded, and insured team is always nearby and ready to deliver spotless perfection.
+          As the leading provider of professional <strong>${serviceDisplayName} in ${clean_name}, FL</strong>${isManatee ? ' and across Manatee County' : isMonroe ? ' and throughout the Florida Keys' : ' and the surrounding areas'}, Sweet Maid is dedicated to maintaining the highest cleanliness standards for your property. Whether you are looking for top-rated <strong>${serviceDisplayName} in ${clean_name}</strong>, scheduled recurring visits, or intensive turnover cleaning, our licensed, bonded, and insured team is always nearby and ready to deliver spotless perfection.
         </p>
         <p class="text-gray-600 leading-relaxed text-sm md:text-base mb-6">
           Don't settle for less when it comes to the hygiene, freshness, and appearance of your space in ${clean_name}, FL. Join countless satisfied locals who rely on our trusted professional cleaners.
@@ -628,9 +844,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
             <i class="fa-solid fa-sparkles"></i>
             <span>Get Your Free ${clean_name} ${serviceDisplayName} Quote</span>
           </a>
-          <a href="tel:9412222080" class="inline-flex items-center gap-2 bg-white text-gray-800 border border-gray-200 hover:bg-gray-50 font-bold px-6 py-3 rounded-full shadow-xs transition-all hover:scale-105 text-sm md:text-base">
+          <a href="${localPhoneHref}" class="inline-flex items-center gap-2 bg-white text-gray-800 border border-gray-200 hover:bg-gray-50 font-bold px-6 py-3 rounded-full shadow-xs transition-all hover:scale-105 text-sm md:text-base">
             <i class="fa-solid fa-phone text-pink-500"></i>
-            <span>(941) 222-2080</span>
+            <span>${localPhoneDisplay}</span>
           </a>
         </div>
       </div>
@@ -656,21 +872,21 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         <div class="text-center mb-10 max-w-3xl mx-auto">
           <div class="inline-flex items-center gap-2 bg-pink-100/90 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
             <i class="fa-solid fa-network-wired"></i>
-            <span>${isManatee ? 'Manatee County Service Network' : 'Regional Cleaning Network'}</span>
+            <span>${isManatee ? 'Manatee County Service Network' : isMonroe ? 'Florida Keys Service Network' : 'Regional Cleaning Network'}</span>
           </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 font-serif">${isManatee ? 'Explore Sweet Maid Across Manatee County' : `Explore Nearby Service Locations Around ${clean_name}`}</h3>
-          <p class="text-gray-600 mt-2 text-sm md:text-base">${isManatee ? 'Sweet Maid proudly provides licensed and insured maid services across all communities in Manatee County, Florida.' : `Connecting top-rated home cleaning services across ${clean_name} and neighboring areas.`}</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 font-serif">${isManatee ? 'Explore Sweet Maid Across Manatee County' : isMonroe ? 'Explore Sweet Maid Across the Florida Keys' : `Explore Nearby Service Locations Around ${clean_name}`}</h3>
+          <p class="text-gray-600 mt-2 text-sm md:text-base">${isManatee ? 'Sweet Maid proudly provides licensed and insured maid services across all communities in Manatee County, Florida.' : isMonroe ? 'Sweet Maid proudly provides licensed and insured maid services across all island communities in the Florida Keys & Monroe County.' : `Connecting top-rated home cleaning services across ${clean_name} and neighboring areas.`}</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <!-- Manatee County Locations Linking -->
+          <!-- Regional Locations Linking -->
           <div class="bg-white p-6 md:p-8 rounded-2xl border border-pink-100 shadow-xs">
             <div class="flex items-center gap-3 mb-5 pb-3 border-b border-pink-50">
               <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-lg">
                 <i class="fa-solid fa-map-location-dot"></i>
               </div>
               <div>
-                <h4 class="font-bold text-gray-900 text-lg">${isManatee ? 'Manatee County Cities & Areas' : 'Nearby Communities'}</h4>
+                <h4 class="font-bold text-gray-900 text-lg">${isManatee ? 'Manatee County Cities & Areas' : isMonroe ? 'Florida Keys Islands & Towns' : 'Nearby Communities'}</h4>
                 <p class="text-xs text-gray-500">Find ${serviceDisplayName} in neighboring towns</p>
               </div>
             </div>
@@ -1005,14 +1221,23 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     }
   }
 
-  if (miamiBrowardSlugs.includes(loc_slug)) {
+  if (is305Area(loc_slug, clean_name)) {
     // Replace telephone links
-    newContent = newContent.replace(/tel:1?9412222080/gi, 'tel:13058516959');
+    newContent = newContent.replace(/tel:\+?1?[-.]?941[-.]?222[-.]?2080/gi, 'tel:13058516959');
     newContent = newContent.replace(/tel:941-222-2080/gi, 'tel:305-851-6959');
     
     // Replace telephone display text
-    newContent = newContent.replace(/\(?941\)?\s*222\s*-\s*2080/g, '(305) 851-6959');
+    newContent = newContent.replace(/(?:\+?1[-.\s]?)?\(?941\)?[-.\s]*222[-.\s]*2080/g, '(305) 851-6959');
     newContent = newContent.replace(/9412222080/g, '3058516959');
+
+    // Replace aria-labels
+    newContent = newContent.replace(/aria-label="Call Sweet Maid at [^"]*"/gi, 'aria-label="Call Sweet Maid at (305) 851-6959"');
+
+    // Fix blog script regex replacement if present in blog templates
+    newContent = newContent.replace(
+      /\.replace\(\/\(1\?\\\(941\\\)\\s\?222-2080\|1\?9412222080\|941-222-2080\)\/g,[\s\S]*?\)/gi,
+      `.replace(/(1?\\(941\\)\\s?222-2080|1?9412222080|941-222-2080|1?\\(305\\)\\s?851-6959|1?3058516959|305-851-6959)/g, '<a href="tel:13058516959"><strong>(305) 851-6959</strong></a>')`
+    );
   }
 
   return newContent;

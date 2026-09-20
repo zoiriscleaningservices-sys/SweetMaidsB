@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
-import { miamiBrowardSlugs } from '@/lib/miami_broward_slugs';
+import { miamiBrowardSlugs, is305Area } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
 import { generateSeoContentPack } from '@/lib/seo_engine';
 
@@ -72,7 +72,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   }
 
   // Dynamically generate the localized JSON-LD schema with FAQ
-  const isMiamiOrBroward = miamiBrowardSlugs.includes(slug);
+  const isMiamiOrBroward = is305Area(slug, cleanName);
   const isMiami = slug === 'miami-fl';
 
   const schemaStr = JSON.stringify([
