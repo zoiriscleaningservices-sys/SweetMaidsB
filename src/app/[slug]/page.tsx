@@ -92,6 +92,16 @@ export default async function LocationOrServicePage({ params }: { params: Promis
         "url": `https://sweetmaidcleaning.com/${slug}/`,
         "telephone": isMiamiOrBroward ? "(305) 851-6959" : "(941) 222-2080",
         "image": "https://i.ibb.co/QSD3Ydt/image.jpg",
+        "sameAs": [
+          "https://www.facebook.com/SweetMaidCleaningService/",
+          "https://www.instagram.com/sweetmaidcleaningservice/",
+          "https://www.linkedin.com/company/sweet-maid-cleaning-service/",
+          "https://www.pinterest.com/sweetmaidcleaning/",
+          "https://www.tiktok.com/@sweetmaidcleaningservice",
+          "https://x.com/sweetmaidclean",
+          "https://www.youtube.com/@sweetmaidcleaning",
+          "https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3"
+        ],
         "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",

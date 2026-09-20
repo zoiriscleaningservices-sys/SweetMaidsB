@@ -119,6 +119,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/Bradenton, FL/gi, `${clean_name}, FL`);
   newContent = newContent.replace(/Bradenton/gi, clean_name);
   
+  // Restore static external URLs that contain "bradenton"
+  newContent = newContent.replace(/https:\/\/www\.yelp\.com\/biz\/sweet-maid-cleaning-service-[^/"]+-3/gi, 'https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3');
+  
   // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
   newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why ${clean_name} Trusts Us`);
   newContent = newContent.replace(/Why Locals Trust Us/gi, `Why ${clean_name} Trusts Us`);
@@ -304,17 +307,58 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     </script>`
   );
 
-  // 2. Accessibility: Icon-Only Links & Social Links
+  // 2. Accessibility & Social Links Enhancements
   newContent = newContent.replace(/<a([^>]*class="[^"]*lg:hidden[^"]*"[^>]*)>/gi, '<a aria-label="Call Sweet Maid at (941) 222-2080"$1>');
   newContent = newContent.replace(/<a\s+href="tel:([^"]+)"(?![^>]*aria-label)([^>]*)>/gi, `<a href="tel:$1" aria-label="Call Sweet Maid at $1"$2>`);
   newContent = newContent.replace(/<a\s+href="([^"]*facebook[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Facebook" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*instagram[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Instagram" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*tiktok[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on TikTok" rel="noopener noreferrer"$2>');
-  newContent = newContent.replace(/<a\s+href="([^"]*youtube[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on YouTube" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*youtube[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Subscribe to Sweet Maid on YouTube" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*linkedin[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Connect with Sweet Maid on LinkedIn" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*pinterest[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on Pinterest" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*(?:x\.com|twitter\.com)[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on X" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*yelp\.com[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Find Sweet Maid on Yelp" rel="noopener noreferrer"$2>');
+  newContent = newContent.replace(/<a\s+href="([^"]*wa\.me[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Chat with Sweet Maid on WhatsApp" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse all Florida cleaning locations"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/booknow\/?"[^>]*)>/gi, '<a aria-label="Book a professional cleaning service now"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/book-online\/?"[^>]*)>/gi, '<a aria-label="Book your cleaning service online"$1>');
   newContent = newContent.replace(/<a(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company"$1>');
+
+  // Dynamic Full Social Links Bar Upgrade for All Templates
+  const fullFooterSocialBar = `<div class="flex flex-wrap items-center gap-2.5">
+            <a href="https://www.facebook.com/SweetMaidCleaningService/" target="_blank" rel="noopener noreferrer" aria-label="Follow Sweet Maid on Facebook"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-facebook-f text-base"></i></a>
+            <a href="https://www.instagram.com/sweetmaidcleaningservice/" target="_blank" rel="noopener noreferrer" aria-label="Follow Sweet Maid on Instagram"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:border-[#dc2743] hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-instagram text-base"></i></a>
+            <a href="https://www.tiktok.com/@sweetmaidcleaningservice" target="_blank" rel="noopener noreferrer" aria-label="Follow Sweet Maid on TikTok"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-black hover:border-black hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-tiktok text-base"></i></a>
+            <a href="https://www.youtube.com/@sweetmaidcleaning" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to Sweet Maid on YouTube"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#FF0000] hover:border-[#FF0000] hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-youtube text-base"></i></a>
+            <a href="https://www.linkedin.com/company/sweet-maid-cleaning-service/" target="_blank" rel="noopener noreferrer" aria-label="Connect with Sweet Maid on LinkedIn"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-linkedin-in text-base"></i></a>
+            <a href="https://www.pinterest.com/sweetmaidcleaning/" target="_blank" rel="noopener noreferrer" aria-label="Follow Sweet Maid on Pinterest"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#E60023] hover:border-[#E60023] hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-pinterest-p text-base"></i></a>
+            <a href="https://x.com/sweetmaidclean" target="_blank" rel="noopener noreferrer" aria-label="Follow Sweet Maid on X"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-black hover:border-black hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-x-twitter text-base"></i></a>
+            <a href="https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3" target="_blank" rel="noopener noreferrer" aria-label="Find Sweet Maid on Yelp"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#d32323] hover:border-[#d32323] hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-yelp text-base"></i></a>
+            <a href="https://wa.me/16452176738" target="_blank" rel="noopener noreferrer" aria-label="Chat with Sweet Maid on WhatsApp"
+              class="w-10 h-10 rounded-xl bg-white/70 shadow-sm border border-pink-100 flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#25D366] hover:border-[#25D366] hover:scale-110 transition-all duration-200"><i
+                class="fa-brands fa-whatsapp text-base"></i></a>
+          </div>`;
+
+  newContent = newContent.replace(
+    /<div class="flex flex-wrap gap-3">\s*<a href="https:\/\/www\.facebook\.com\/SweetMaidCleaningService\/"[\s\S]*?<\/div>/gi,
+    fullFooterSocialBar
+  );
 
   // Header Navigation: Inject "Book Online" into desktop & mobile navs and Header CTA
   newContent = newContent.replace(
