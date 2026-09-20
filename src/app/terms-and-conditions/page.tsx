@@ -56,10 +56,10 @@ export default function TermsAndConditionsPage() {
 
             <div className="flex items-center gap-4">
               <Link
-                href="/book-online/"
+                href="/#quote"
                 className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all text-sm"
               >
-                Book Online
+                Get Free Quote
               </Link>
             </div>
           </div>

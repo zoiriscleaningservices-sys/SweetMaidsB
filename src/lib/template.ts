@@ -625,39 +625,45 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     fullFooterSocialBar
   );
 
-  // Header Navigation: Inject "Book Online" into desktop & mobile navs and Header CTA
-  newContent = newContent.replace(
-    /<a\s+[^>]*href=["'](?:#quote|#lead-form|#contact|https:\/\/sweetmaidcleaning\.com\/#quote|\/#quote)["'][^>]*>(?:(?!<\/a>)[\s\S])*?(?:Get Free Quote|Get a Free Quote|Request a Quote|Free Estimate|Book Now|Instant Booking)(?:(?!<\/a>)[\s\S])*?<\/a>/gi,
-    `<a href="/book-online/" class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-7 py-3 rounded-full font-bold shadow-xl shadow-pink-300/50 hover:shadow-2xl hover:shadow-pink-400/60 hover:scale-105 transition-all flex items-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
-  );
-  newContent = newContent.replace(
-    /<a\s+href="#quote"([^>]*)>(?:(?!<\/a>)[\s\S])*?Get Free Quote(?:(?!<\/a>)[\s\S])*?<\/a>/gi,
-    `<a href="/book-online/" class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-7 py-3 rounded-full font-bold shadow-xl shadow-pink-300/50 hover:shadow-2xl hover:shadow-pink-400/60 hover:scale-105 transition-all flex items-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
-  );
+  // Gate "Book Online" links & buttons exclusively to Manatee County pages only
+  const isGeneralPage = pageType === 'about' || pageType === 'gallery' || pageType === 'login' || (originalH1Match && (originalH1Match[1].includes('Blog') || originalH1Match[1].includes('Cleaning Tips'))) || serviceSlugs.includes(loc_slug);
+  const isManatee = !isGeneralPage && (isManateeCounty(loc_slug, clean_name) || loc_slug === 'bradenton-fl' || loc_slug === 'home');
 
-  // 1. Desktop Navigation: Inject "Book Online" into desktop nav bar
-  newContent = newContent.replace(
-    /(<a[^>]*href="\/gallery\/?"[^>]*>Gallery<\/a>)/i,
-    `$1\n          <a href="/book-online/" class="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors" aria-label="Book your cleaning service online">Book Online</a>`
-  );
+  if (isManatee) {
+    // Header Navigation: Inject "Book Online" into desktop & mobile navs and Header CTA
+    newContent = newContent.replace(
+      /<a\s+[^>]*href=["'](?:#quote|#lead-form|#contact|https:\/\/sweetmaidcleaning\.com\/#quote|\/#quote)["'][^>]*>(?:(?!<\/a>)[\s\S])*?(?:Get Free Quote|Get a Free Quote|Request a Quote|Free Estimate|Book Now|Instant Booking)(?:(?!<\/a>)[\s\S])*?<\/a>/gi,
+      `<a href="/book-online/" class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-7 py-3 rounded-full font-bold shadow-xl shadow-pink-300/50 hover:shadow-2xl hover:shadow-pink-400/60 hover:scale-105 transition-all flex items-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
+    );
+    newContent = newContent.replace(
+      /<a\s+href="#quote"([^>]*)>(?:(?!<\/a>)[\s\S])*?Get Free Quote(?:(?!<\/a>)[\s\S])*?<\/a>/gi,
+      `<a href="/book-online/" class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-7 py-3 rounded-full font-bold shadow-xl shadow-pink-300/50 hover:shadow-2xl hover:shadow-pink-400/60 hover:scale-105 transition-all flex items-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
+    );
 
-  // 2. Mobile Header Top Bar: Quick "Book Online" button next to mobile hamburger icon
-  newContent = newContent.replace(
-    /(<button id="mobile-btn"[^>]*>)/i,
-    `<a href="/book-online/" class="lg:hidden bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md mr-2 flex items-center gap-1.5 active:scale-95 transition-all whitespace-nowrap" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-[11px]"></i> Book Online</a>\n        $1`
-  );
+    // 1. Desktop Navigation: Inject "Book Online" into desktop nav bar
+    newContent = newContent.replace(
+      /(<a[^>]*href="\/gallery\/?"[^>]*>Gallery<\/a>)/i,
+      `$1\n          <a href="/book-online/" class="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors" aria-label="Book your cleaning service online">Book Online</a>`
+    );
 
-  // 3. Mobile Slide-Out Drawer: Inject "Book Online" navigation item at top of mobile menu
-  newContent = newContent.replace(
-    /(<nav class="flex flex-col gap-4">)/i,
-    `$1\n        <a href="/book-online/" class="menu-item delay-1 flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-md shadow-pink-200 font-bold transition-all" aria-label="Book your cleaning service online"><span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</span><i class="fa-solid fa-arrow-right text-white text-sm"></i></a>`
-  );
+    // 2. Mobile Header Top Bar: Quick "Book Online" button next to mobile hamburger icon
+    newContent = newContent.replace(
+      /(<button id="mobile-btn"[^>]*>)/i,
+      `<a href="/book-online/" class="lg:hidden bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md mr-2 flex items-center gap-1.5 active:scale-95 transition-all whitespace-nowrap" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-[11px]"></i> Book Online</a>\n        $1`
+    );
 
-  // 4. Mobile Slide-Out Drawer: Convert bottom CTA button to "Book Online"
-  newContent = newContent.replace(
-    /<a\s+[^>]*onclick="closeMenu\(\)"[^>]*>[\s\S]*?<\/a>/gi,
-    `<a href="/book-online/" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
-  );
+    // 3. Mobile Slide-Out Drawer: Inject "Book Online" navigation item at top of mobile menu
+    newContent = newContent.replace(
+      /(<nav class="flex flex-col gap-4">)/i,
+      `$1\n        <a href="/book-online/" class="menu-item delay-1 flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-md shadow-pink-200 font-bold transition-all" aria-label="Book your cleaning service online"><span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</span><i class="fa-solid fa-arrow-right text-white text-sm"></i></a>`
+    );
+
+    // 4. Mobile Slide-Out Drawer: Convert bottom CTA button to "Book Online"
+    newContent = newContent.replace(
+      /<a\s+[^>]*onclick="closeMenu\(\)"[^>]*>[\s\S]*?<\/a>/gi,
+      `<a href="/book-online/" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Book your cleaning service online"><i class="fa-solid fa-calendar-check text-white"></i> Book Online</a>`
+    );
+  }
   // 5. Footer Links: Add Privacy Policy & Terms and Conditions (Footer Only)
   newContent = newContent.replace(
     /(<footer[\s\S]*?)(<a\s+[^>]*href="\/sitemap\.xml"[^>]*>Sitemap<\/a>)/i,
@@ -727,8 +733,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
 
   // Maps - Google Business Profile ONLY for Bradenton HQ & all Manatee County locations vs Dynamic City Query for all other pages
-  const isManatee = isManateeCounty(loc_slug, clean_name) && !serviceSlugs.includes(loc_slug);
-
   if (isManatee) {
     const loc_query = encodeURIComponent('Sweet Maid Cleaning Service, 14651 Westbrook Cir Apt 312, Bradenton, FL 34211');
     const map_url = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${loc_query}+()&t=&z=15&ie=UTF8&iwloc=B&output=embed`;

@@ -155,9 +155,6 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
               <Link href="/gallery/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 Gallery
               </Link>
-              <Link href="/book-online/" className="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors">
-                Book Online
-              </Link>
               <Link href="/login/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 Login
               </Link>
@@ -169,20 +166,20 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
                 <i className="fa-solid fa-phone"></i> (941) 222-2080
               </a>
               <Link
-                href="/book-online/"
+                href="/#quote"
                 className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-sm px-6 py-2.5 rounded-full font-bold shadow-md hover:shadow-lg hover:scale-105 transition-all flex items-center gap-2"
               >
-                <i className="fa-solid fa-calendar-check text-white"></i> Book Online
+                <i className="fa-solid fa-file-invoice-dollar text-white"></i> Get Free Quote
               </Link>
             </div>
 
             {/* Mobile Header Quick Actions */}
             <div className="flex items-center gap-2 lg:hidden">
               <Link
-                href="/book-online/"
+                href="/#quote"
                 className="bg-gradient-to-r from-pink-400 to-pink-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1 active:scale-95 transition-all"
               >
-                <i className="fa-solid fa-calendar-check text-[10px]"></i> Book Online
+                <i className="fa-solid fa-file-invoice-dollar text-[10px]"></i> Get Quote
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -199,10 +196,6 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-pink-100 px-6 py-6 space-y-4 shadow-xl animate-fadeIn">
-          <Link href="/book-online/" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between p-3.5 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-xl font-bold shadow-md shadow-pink-200">
-            <span className="flex items-center gap-2"><i className="fa-solid fa-calendar-check"></i> Book Online</span>
-            <i className="fa-solid fa-arrow-right text-sm"></i>
-          </Link>
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-gray-800">
             Home
           </Link>
@@ -226,11 +219,11 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
           </Link>
           <div className="pt-4 border-t border-pink-100 flex flex-col gap-3">
             <Link
-              href="/book-online/"
+              href="/#quote"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white text-center py-3.5 rounded-xl font-bold shadow-md flex items-center justify-center gap-2"
             >
-              <i className="fa-solid fa-calendar-check"></i> Book Online
+              <i className="fa-solid fa-file-invoice-dollar"></i> Get Free Quote
             </Link>
             <a
               href="tel:19412222080"

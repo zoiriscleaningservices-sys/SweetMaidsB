@@ -50,7 +50,7 @@ export function generateSeoContentPack(
       `Best House Cleaning in ${cleanLoc}, FL | Top Rated Home Cleaners`,
       `House Cleaning & Maid Service in ${cleanLoc}, FL | Sweet Maid`,
       `Top Rated House Cleaners in ${cleanLoc}, Florida | Trusted Maids`,
-      `Affordable House Cleaning Services in ${cleanLoc}, FL | Book Online`
+      `Affordable House Cleaning Services in ${cleanLoc}, FL | Free Quote`
     ],
     'deep-cleaning': [
       `Deep Cleaning Services in ${cleanLoc}, FL | Home Cleaners Near Me`,
