@@ -9,7 +9,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!locData) return {};
 
   const cleanName = formatName(locData.name);
-  const title = `${cleanName}, FL Cleaning Blog & Regional Florida Home Care Guides | Sweet Maid`;
+  
+  // Calibrated to target ~65 characters for optimal Google SERP snippet display
+  let title: string;
+  if (cleanName.length <= 10) {
+    title = `${cleanName}, FL Cleaning Blog & Local Home Care Guides | Sweet Maid`;
+  } else if (cleanName.length <= 16) {
+    title = `${cleanName}, FL Cleaning Blog & Home Care Guides | Sweet Maid`;
+  } else {
+    title = `${cleanName}, FL Cleaning Blog & Home Guides | Sweet Maid`;
+  }
+  
   const desc = `Expert cleaning tips, vacation rental turnover checklists, and coastal home maintenance guides for ${cleanName}, FL and major Florida regions including Tampa Bay, Miami, Orlando, Sarasota, and the Keys.`;
 
   return {
@@ -32,6 +42,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `https://sweetmaidcleaning.com/${slug}/blog/`,
       siteName: 'Sweet Maid Cleaning Services',
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
     }
   };
 }

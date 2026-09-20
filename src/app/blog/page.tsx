@@ -2,9 +2,12 @@ import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 import { formatName } from '@/lib/data';
 import { Metadata } from 'next';
 
+const title = 'Florida Cleaning Blog & Statewide Home Care Guides | Sweet Maid';
+const desc = 'Expert Florida house cleaning tips, vacation rental turnover checklists, and coastal home care guides for Tampa Bay, Miami, Orlando, Sarasota, Bradenton, Jacksonville & the Florida Keys.';
+
 export const metadata: Metadata = {
-  title: 'Florida Cleaning Blog & Home Care Guides | Tampa, Miami, Orlando, Sarasota, Jax & Keys',
-  description: 'Expert Florida house cleaning tips, vacation rental turnover checklists, and coastal home care guides for Tampa Bay, Miami, Orlando, Sarasota, Bradenton, Jacksonville & the Florida Keys.',
+  title,
+  description: desc,
   keywords: [
     'Florida cleaning blog',
     'house cleaning tips Florida',
@@ -20,11 +23,16 @@ export const metadata: Metadata = {
     canonical: 'https://sweetmaidcleaning.com/blog/',
   },
   openGraph: {
-    title: 'Florida Cleaning Blog & Home Care Guides | Sweet Maid',
-    description: 'Expert Florida house cleaning tips, vacation rental turnover checklists, and coastal home care guides across Tampa Bay, Miami, Orlando, Sarasota, Jacksonville & the Florida Keys.',
+    title,
+    description: desc,
     url: 'https://sweetmaidcleaning.com/blog/',
     siteName: 'Sweet Maid Cleaning Services',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description: desc,
   }
 };
 
