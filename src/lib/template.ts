@@ -159,11 +159,28 @@ export function processPageImages(
     let attrs = rawAttrs;
 
     const srcMatch = attrs.match(/src=["']([^"']+)["']/i);
-    const src = srcMatch ? srcMatch[1] : '';
-    const srcLower = src.toLowerCase();
+    let src = srcMatch ? srcMatch[1] : '';
+    let srcLower = src.toLowerCase();
 
-    // Strip any loading="lazy" or loading="eager" attributes to eliminate scroll pop-in lag
-    attrs = attrs.replace(/\s*loading=["'][^"']*["']/gi, '');
+    // 1. Eliminate external Unsplash hotlinks and map to local WebP assets
+    if (srcLower.includes('images.unsplash.com')) {
+      if (srcLower.includes('1628177142898') || srcLower.includes('carpet')) {
+        src = '/images/carpet-cleaning.webp';
+      } else if (srcLower.includes('1527515637462') || srcLower.includes('window')) {
+        src = '/images/window-cleaning.webp';
+      } else {
+        src = '/images/carpet-cleaning.webp';
+      }
+      attrs = attrs.replace(/src=["'][^"']+["']/i, `src="${src}"`);
+      srcLower = src.toLowerCase();
+    } else if (src.startsWith('/images/') || src.startsWith('../../images/')) {
+      // Convert .jpeg, .jpg, .png to .webp
+      if (srcLower.endsWith('.jpeg') || srcLower.endsWith('.jpg') || srcLower.endsWith('.png')) {
+        src = src.replace(/\.(jpeg|jpg|png)$/i, '.webp');
+        attrs = attrs.replace(/src=["'][^"']+["']/i, `src="${src}"`);
+        srcLower = src.toLowerCase();
+      }
+    }
 
     // Add decoding="async" for non-blocking main-thread decoding
     if (!attrs.includes('decoding=')) {
@@ -181,11 +198,20 @@ export function processPageImages(
       }
     }
 
-    // Prioritize hero image / header logo for instant LCP
-    if (!heroImageHandled && (attrs.includes('hero') || attrs.includes('banner') || (srcLower.includes('logo') && !srcLower.includes('google')))) {
+    // Intelligent loading strategy:
+    // Only the first above-the-fold hero image or header logo gets fetchpriority="high" and eager loading.
+    // ALL other below-the-fold images get loading="lazy" to eliminate mobile network congestion and drop mobile LCP.
+    const isCriticalLcp = !heroImageHandled && (attrs.includes('hero') || attrs.includes('banner') || (srcLower.includes('logo') && !srcLower.includes('google')));
+    if (isCriticalLcp) {
       heroImageHandled = true;
+      attrs = attrs.replace(/\s*loading=["'][^"']*["']/gi, '');
       if (!attrs.includes('fetchpriority=')) {
         attrs += ' fetchpriority="high"';
+      }
+    } else {
+      attrs = attrs.replace(/\s*fetchpriority=["'][^"']*["']/gi, '');
+      if (!attrs.includes('loading=')) {
+        attrs += ' loading="lazy"';
       }
     }
 
@@ -487,7 +513,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
               <div class="grid grid-cols-3 gap-8">
                 <!-- Residential Column -->
                 <div>
-                  <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-4 px-2">Residential &
+                  <div class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-4 px-2">Residential &
                     Management</div>
                   <div class="space-y-1">
                     <a href="/house-cleaning/"
@@ -518,7 +544,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
                 </div>
                 <!-- Commercial Column -->
                 <div>
-                  <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-4 px-2">Commercial &
+                  <div class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-4 px-2">Commercial &
                     Janitorial</div>
                   <div class="space-y-1">
                     <a href="/commercial-cleaning/"
@@ -549,7 +575,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
                 </div>
                 <!-- Specialized Column -->
                 <div>
-                  <div class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-4 px-2">Specialized &
+                  <div class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-4 px-2">Specialized &
                     Maintenance</div>
                   <div class="space-y-1">
                     <a href="/post-construction-cleaning/"
@@ -582,7 +608,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
           </div>\n          `;
 
   const alignedMobileServicesHtml = `<!-- Residential & Management -->
-              <div class="text-[10px] font-bold text-pink-300 uppercase tracking-widest px-3 mt-2 mb-1">Residential &
+              <div class="text-[10px] font-bold text-pink-600 uppercase tracking-widest px-3 mt-2 mb-1">Residential &
                 Management</div>
               <a href="/house-cleaning/"
                 class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
@@ -610,7 +636,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
                   class="fa-solid fa-city text-pink-300 w-5"></i> Property Mgmt Janitorial</a>
 
               <!-- Commercial & Janitorial -->
-              <div class="text-[10px] font-bold text-pink-300 uppercase tracking-widest px-3 mt-4 mb-1">Commercial &
+              <div class="text-[10px] font-bold text-pink-600 uppercase tracking-widest px-3 mt-4 mb-1">Commercial &
                 Janitorial</div>
               <a href="/commercial-cleaning/"
                 class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
@@ -638,7 +664,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
                   class="fa-solid fa-church text-pink-300 w-5"></i> Church & Worship</a>
 
               <!-- Specialized & Maintenance -->
-              <div class="text-[10px] font-bold text-pink-300 uppercase tracking-widest px-3 mt-4 mb-1">Specialized &
+              <div class="text-[10px] font-bold text-pink-600 uppercase tracking-widest px-3 mt-4 mb-1">Specialized &
                 Maintenance</div>
               <a href="/post-construction-cleaning/"
                 class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
@@ -816,23 +842,24 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     '<div class="lg:col-span-2">$1$2 sm:columns-2 gap-x-8$3'
   );
 
-  // Upgrade Eco-Friendly block flat icon with the Premium CSS-animated Earth Globe
+  // Upgrade Eco-Friendly block flat icon with the Premium CSS-animated Earth Globe using GPU-accelerated transform
   const GLOBE_HTML = `<style>
-        @keyframes earthRotate { 0% { background-position: 0 0; } 100% { background-position: 400px 0; } }
+        @keyframes earthRotate { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
         @keyframes twinkling { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
         @keyframes twinkling-slow { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
         @keyframes twinkling-long { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
         @keyframes twinkling-fast { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
       </style>
       <div class="flex items-center justify-center mb-8">
-        <div class="relative w-[200px] h-[200px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.2),-5px_0_8px_#c3f4ff_inset,15px_2px_25px_#000_inset,-24px_-2px_34px_#c3f4ff99_inset,200px_0_44px_#00000066_inset,100px_0_38px_#000000aa_inset]" style="background-image: url('https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/globe.jpeg'); background-size: cover; background-position: left; animation: earthRotate 30s linear infinite;">
-          <div class="absolute left-[-20px] w-1 h-1 bg-white rounded-full" style="animation: twinkling 3s infinite"></div>
-          <div class="absolute left-[-40px] top-[30px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-slow 2s infinite"></div>
-          <div class="absolute left-[150px] top-[90px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
-          <div class="absolute left-[100px] top-[180px] w-1 h-1 bg-white rounded-full" style="animation: twinkling 3s infinite"></div>
-          <div class="absolute left-[50px] top-[150px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-fast 1.5s infinite"></div>
-          <div class="absolute left-[180px] top-[20px]. w-1 h-1 bg-white rounded-full" style="animation: twinkling-long 4s infinite"></div>
-          <div class="absolute left-[90px] top-[60px] w-1 h-1 bg-white rounded-full" style="animation: twinkling-slow 2s infinite"></div>
+        <div class="relative w-[200px] h-[200px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.2),-5px_0_8px_#c3f4ff_inset,15px_2px_25px_#000_inset,-24px_-2px_34px_#c3f4ff99_inset,200px_0_44px_#00000066_inset,100px_0_38px_#000000aa_inset]">
+          <div class="absolute inset-0 w-[200%] h-full flex pointer-events-none" style="background-image: url('https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/globe.jpeg'); background-size: 50% 100%; background-repeat: repeat-x; will-change: transform; animation: earthRotate 30s linear infinite;"></div>
+          <div class="absolute left-[-20px] w-1 h-1 bg-white rounded-full pointer-events-none" style="animation: twinkling 3s infinite"></div>
+          <div class="absolute left-[-40px] top-[30px] w-1 h-1 bg-white rounded-full pointer-events-none" style="animation: twinkling-slow 2s infinite"></div>
+          <div class="absolute left-[150px] top-[90px] w-1 h-1 bg-white rounded-full pointer-events-none" style="animation: twinkling-long 4s infinite"></div>
+          <div class="absolute left-[100px] top-[180px] w-1 h-1 bg-white rounded-full pointer-events-none" style="animation: twinkling 3s infinite"></div>
+          <div class="absolute left-[50px] top-[150px] w-1 h-1 bg-white rounded-full pointer-events-none" style="animation: twinkling-fast 1.5s infinite"></div>
+          <div class="absolute left-[180px] top-[20px] w-1 h-1 bg-white rounded-full pointer-events-none" style="animation: twinkling-long 4s infinite"></div>
+          <div class="absolute left-[90px] top-[60px] w-1 h-1 bg-white rounded-full pointer-events-none" style="animation: twinkling-slow 2s infinite"></div>
         </div>
       </div>`;
   newContent = newContent.replace(/<i class="fa-solid fa-earth-americas[^>]*><\/i>/gi, GLOBE_HTML);
@@ -854,40 +881,91 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<button([^>]*class="[^"]*w-2\.5[^"]*"[^>]*)>/gi, '<button aria-label="Service carousel slide"$1>');
   newContent = newContent.replace(/<button([^>]*>\s*<i class="fa-solid fa-xmark)/gi, '<button aria-label="Clear search input"$1');
 
-  // Defer third-party lead generation scripts with interaction-based loader (0ms TBT)
+  // Strip unused runtime scripts & styles to eliminate main-thread blocking
+  newContent = newContent.replace(/<script\b[^>]*cdn\.tailwindcss\.com[^>]*><\/script>\s*/gi, '');
+  newContent = newContent.replace(/<script\b[^>]*unpkg\.com\/aos[^>]*><\/script>\s*/gi, '');
+  newContent = newContent.replace(/<link\b[^>]*unpkg\.com\/aos[^>]*>\s*/gi, '');
+  newContent = newContent.replace(/<script\b[^>]*navigation-dynamic\.js[^>]*><\/script>\s*/gi, '');
+
+  // Lazy-load LeadConnector quote form iframe so it doesn't block initial mobile page load or paint
   newContent = newContent.replace(
-    /<script\s+src="https:\/\/widgets\.leadconnectorhq\.com\/loader\.js"[^>]*><\/script>/gi,
-    `<script>
-      function loadLC(){
-        if(window._lc_loaded) return;
-        window._lc_loaded = true;
-        var s = document.createElement('script');
-        s.src = "https://widgets.leadconnectorhq.com/loader.js";
-        s.async = true;
-        document.body.appendChild(s);
-      }
-      ['scroll','touchstart','mousemove','click'].forEach(function(e){
-        window.addEventListener(e, loadLC, {once:true, passive:true});
-      });
-      setTimeout(loadLC, 3500);
-    </script>`
+    /<iframe\s+([^>]*?)src=["'](https:\/\/api\.leadconnectorhq\.com\/widget\/form\/[^"']+)["']([^>]*?)>/gi,
+    '<iframe $1data-src="$2" loading="lazy"$3>'
   );
+
+  // Strip redundant chat widget script tag to eliminate duplicate /_preview/88yz5isz.js download
+  newContent = newContent.replace(/<script\b[^>]*widgets\.leadconnectorhq\.com\/loader\.js[^>]*>[\s\S]*?<\/script>\s*/gi, '');
+
+  // Defer GHL form embed and Turnstile CAPTCHA until actual interaction with #quote
   newContent = newContent.replace(
     /<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>/gi,
     `<script>
-      function loadForm(){
-        if(window._form_loaded) return;
-        window._form_loaded = true;
+      function loadGHLForm(){
+        if(window._ghl_form_loaded) return;
+        window._ghl_form_loaded = true;
+        var iframes = document.querySelectorAll('iframe[data-src*="leadconnectorhq.com"]');
+        iframes.forEach(function(f){
+          if(!f.src && f.dataset.src){
+            f.src = f.dataset.src;
+          }
+        });
         var s = document.createElement('script');
         s.src = "https://link.msgsndr.com/js/form_embed.js";
         s.async = true;
         document.body.appendChild(s);
       }
-      ['scroll','touchstart','mousemove','click'].forEach(function(e){
-        window.addEventListener(e, loadForm, {once:true, passive:true});
-      });
-      setTimeout(loadForm, 3500);
+      if (typeof window !== 'undefined') {
+        if ('IntersectionObserver' in window) {
+          var ghlObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                loadGHLForm();
+                ghlObserver.disconnect();
+              }
+            });
+          }, { rootMargin: '100px 0px', threshold: 0.05 });
+          var targetSection = document.getElementById('quote') || document.querySelector('iframe[data-src*="leadconnectorhq.com"]');
+          if (targetSection) {
+            ghlObserver.observe(targetSection);
+          }
+        }
+        // Also load immediately if user clicks any CTA anchor pointing to #quote or booking
+        document.addEventListener('click', function(e) {
+          var el = e.target && e.target.closest ? e.target.closest('a[href*="#quote"], button, [id*="quote"]') : null;
+          if (el) {
+            loadGHLForm();
+          }
+        }, { passive: true });
+      }
     </script>`
+  );
+
+  // Guarantee descriptive destination labels on all carousel links
+  const serviceFriendlyNames: Record<string, string> = {
+    'deep-cleaning': 'Deep Cleaning',
+    'house-cleaning': 'Home Cleaning',
+    'move-in-out-cleaning': 'Move-In & Move-Out Cleaning',
+    'commercial-cleaning': 'Commercial Cleaning',
+    'post-construction-cleaning': 'Post-Construction Cleaning',
+    'airbnb-cleaning': 'Airbnb Cleaning',
+    'carpet-cleaning': 'Carpet Cleaning',
+    'pressure-washing': 'Pressure Washing',
+    'window-cleaning': 'Window Cleaning',
+    'office-janitorial-services': 'Office Janitorial Services',
+    'medical-dental-facility-cleaning': 'Medical Facility Cleaning',
+    'luxury-estate-cleaning': 'Luxury Estate Cleaning'
+  };
+
+  newContent = newContent.replace(
+    /(<a\s+[^>]*href="\/([a-z0-9-]+)\/?"[^>]*>)([\s\S]*?<span[^>]*class="[^"]*group-hover\/btn:translate-x-1[^"]*"[^>]*>)\s*Learn\s*\n?\s*More\s*(<\/span>[\s\S]*?<\/a>)/gi,
+    (match, aTag, sSlug, beforeSpan, afterSpan) => {
+      const label = serviceFriendlyNames[sSlug] || `${formatName(sSlug)} Cleaning`;
+      let newATag = aTag;
+      if (!newATag.includes('aria-label=')) {
+        newATag = newATag.replace('<a ', `<a aria-label="Learn more about ${label} in ${clean_name}" `);
+      }
+      return `${newATag}${beforeSpan}Explore ${label}${afterSpan}`;
+    }
   );
 
   // 2. Mobile Call Button on Header Left: Guarantee it calls Sweet Maid directly

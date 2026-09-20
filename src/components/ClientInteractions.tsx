@@ -9,34 +9,31 @@ export default function ClientInteractions() {
   useEffect(() => {
     const cleanups: (() => void)[] = [];
 
-    // 0. Load FontAwesome & AOS asynchronously to eliminate render-blocking CSS
-    if (!document.getElementById('font-awesome-css')) {
+    // 0. Defer FontAwesome loading until after page is interactive or first user intent
+    const loadFA = () => {
+      if (document.getElementById('font-awesome-css')) return;
       const link = document.createElement('link');
       link.id = 'font-awesome-css';
       link.rel = 'stylesheet';
+      link.media = 'print';
       link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
       link.crossOrigin = 'anonymous';
+      link.onload = () => {
+        link.media = 'all';
+      };
       document.head.appendChild(link);
-    }
-    if (!document.getElementById('aos-css')) {
-      const link = document.createElement('link');
-      link.id = 'aos-css';
-      link.rel = 'stylesheet';
-      link.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
-      document.head.appendChild(link);
-    }
+    };
 
-    // 1. Initialize AOS robustly across Next.js asynchronous loads
-    let checks = 0;
-    const checkAOS = setInterval(() => {
-      if (typeof window !== 'undefined' && (window as any).AOS) {
-        (window as any).AOS.init({ duration: 800, once: true, offset: 50 });
-        (window as any).AOS.refresh();
-        clearInterval(checkAOS);
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(loadFA, { timeout: 5000 });
+      } else {
+        setTimeout(loadFA, 3500);
       }
-      if (++checks > 50) clearInterval(checkAOS);
-    }, 100);
-    cleanups.push(() => clearInterval(checkAOS));
+      ['scroll', 'touchstart', 'click'].forEach(evt => {
+        window.addEventListener(evt, loadFA, { once: true, passive: true });
+      });
+    }
 
     // 2. Services Carousel Logic
     const track = document.getElementById('services-track');
@@ -82,6 +79,7 @@ export default function ClientInteractions() {
         for (let i = 0; i < numDots; i++) {
           const dot = document.createElement('button');
           dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-pink-200' : 'bg-gray-600'}`;
+          dot.setAttribute('aria-label', `View services carousel slide ${i + 1}`);
           dot.addEventListener('click', () => {
             currentIndex = i;
             updateCarousel();
