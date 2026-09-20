@@ -399,8 +399,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/href="\/([a-z0-9-]+)-cleaning\/"/g, `href="/$1-fl/${currentService}/"`);
 
   const isSpecificService = serviceSlugs.includes(currentService);
-  const targetServiceSuffix = isSpecificService ? `${currentService}/` : '';
-  const nearestLocations = getNearestLocations(loc_slug, 8);
+  const targetServiceSuffix = (is_sub_page && isSpecificService) ? `${currentService}/` : '';
+  const nearestLocations = getNearestLocations(loc_slug, 12);
 
   if (pageType !== 'login') {
     // Dynamically compute and inject the 100% geographically nearest locations
@@ -721,7 +721,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<h4 class="font-bold text-lg mb-1">/gi, '<h3 class="font-bold text-lg mb-1">');
   newContent = newContent.replace(/<h4 class="text-3xl font-bold mb-4 text-gray-900">100% Eco-Friendly Options<\/h4>/gi, '<h3 class="text-3xl font-bold mb-4 text-gray-900">100% Eco-Friendly Options</h3>');
   newContent = newContent.replace(/<h4 class="font-bold text-gray-900">([^<]+)<\/h4>/gi, '<h3 class="font-bold text-gray-900">$1</h3>');
-  newContent = newContent.replace(/<h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Explore Nearby Cleaning Services<\/h4>/gi, '<h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Explore Nearby Cleaning Services</h3>');
   newContent = newContent.replace(/<h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">/gi, '<h3 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">');
 
   // Fix Map Headings and Pin Labels
@@ -784,6 +783,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   const localPhoneDisplay = is305 ? '(305) 851-6959' : '(941) 222-2080';
   const localPhoneHref = is305 ? 'tel:13058516959' : 'tel:9412222080';
 
+  const getNearbyTargetUrl = (targetSlug: string) => {
+    return (is_sub_page && isSpecificService) ? `/${targetSlug}/${currentService}/` : `/${targetSlug}/`;
+  };
+
   // Internal Location Linking for Manatee County, Florida Keys / Monroe County, or Regional nearest locations
   const internalLocationLinksHtml = isManatee
     ? manateeKeyHubs.map(hub => {
@@ -791,7 +794,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         if (isCurrent) {
           return `<span class="px-3.5 py-2 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2 shadow-2xs"><i class="fa-solid fa-location-dot text-xs text-pink-600"></i><span>${hub.name}</span></span>`;
         }
-        return `<a href="/${hub.slug}/${targetServiceSlug}/" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${hub.name}</span></a>`;
+        return `<a href="${getNearbyTargetUrl(hub.slug)}" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group" aria-label="Sweet Maid Cleaning Services in ${hub.name}, FL"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${hub.name}</span></a>`;
       }).join('\n')
     : isMonroe
     ? monroeKeyHubs.map(hub => {
@@ -799,10 +802,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         if (isCurrent) {
           return `<span class="px-3.5 py-2 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2 shadow-2xs"><i class="fa-solid fa-location-dot text-xs text-pink-600"></i><span>${hub.name}</span></span>`;
         }
-        return `<a href="/${hub.slug}/${targetServiceSlug}/" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${hub.name}</span></a>`;
+        return `<a href="${getNearbyTargetUrl(hub.slug)}" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group" aria-label="Sweet Maid Cleaning Services in ${hub.name}, FL"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${hub.name}</span></a>`;
       }).join('\n')
     : nearestLocations.map(c => {
-        return `<a href="/${c.slug}/${targetServiceSuffix}" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${c.name}</span></a>`;
+        return `<a href="${getNearbyTargetUrl(c.slug)}" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group" aria-label="Sweet Maid Cleaning Services in ${c.name}, FL"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${c.name}</span></a>`;
       }).join('\n');
 
   // Internal Service Linking for the current location
@@ -922,6 +925,42 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     </div>
   </section>
   `;
+
+  // Dynamic 100% Geographically Nearby Locations for Lateral SEO Cross-Links Bar
+  const lateralNearbyList = nearestLocations.filter(c => c.slug !== loc_slug).slice(0, 10);
+
+  const lateralNearbyLinksHtml = lateralNearbyList.map((item, idx) => `
+    <a href="/${item.slug}/" class="text-gray-600 hover:text-pink-600 font-medium text-sm transition-colors" aria-label="Explore Sweet Maid cleaning services in ${item.name}, FL">${item.name}</a>${idx < lateralNearbyList.length - 1 ? '<span class="text-pink-300 mx-2.5 select-none">•</span>' : ''}
+  `).join('');
+
+  const lateralBarHtml = `
+  <!-- LATERAL SEO CROSS-LINKS -->
+  <section class="bg-gray-50/90 py-8 border-t border-pink-100/70" aria-label="Explore Nearby Cleaning Service Areas">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3.5">
+        Explore Nearby Cleaning Service Areas Around ${clean_name}
+      </h3>
+      <div class="flex flex-wrap justify-center items-center gap-y-2 text-sm">
+        ${lateralNearbyLinksHtml}
+      </div>
+    </div>
+  </section>
+  <!-- END LATERAL SEO CROSS-LINKS -->
+  `;
+
+  if (/<!--\s*LATERAL SEO CROSS-LINKS\s*-->[\s\S]*?<!--\s*END LATERAL SEO CROSS-LINKS\s*-->/i.test(newContent)) {
+    newContent = newContent.replace(
+      /<!--\s*LATERAL SEO CROSS-LINKS\s*-->[\s\S]*?<!--\s*END LATERAL SEO CROSS-LINKS\s*-->/gi,
+      lateralBarHtml
+    );
+  } else if (/Explore Nearby Cleaning Service Areas[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i.test(newContent)) {
+    newContent = newContent.replace(
+      /<div[^>]*class="[^"]*bg-gray-50[^"]*"[^>]*>[\s\S]*?Explore Nearby Cleaning Service Areas[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/gi,
+      lateralBarHtml
+    );
+  } else if (pageType !== 'login' && newContent.includes('<footer')) {
+    newContent = newContent.replace(/<footer/i, lateralBarHtml + '\n<footer');
+  }
 
   if (pageType !== 'login' && newContent.includes('<footer')) {
     newContent = newContent.replace(/<footer/i, seoSection + '\n<footer');

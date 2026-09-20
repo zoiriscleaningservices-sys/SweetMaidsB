@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { resolveAnyLocation, formatName, serviceSlugs } from '@/lib/data';
+import { resolveAnyLocation, formatName, serviceSlugs, getNearestLocations } from '@/lib/data';
 import { is305Area } from '@/lib/miami_broward_slugs';
 import Link from 'next/link';
 
@@ -40,6 +40,7 @@ export default async function CostEstimatorPage({ params }: Props) {
   const is305 = is305Area(slug, locationName);
   const phoneFormatted = is305 ? "(305) 851-6959" : "(941) 222-2080";
   const phoneTel = is305 ? "tel:13058516959" : "tel:19412222080";
+  const nearestLocations = getNearestLocations(slug, 10);
 
   // Dynamic realistic rates based on service type
   let basePrice = 149;
@@ -178,6 +179,36 @@ export default async function CostEstimatorPage({ params }: Props) {
             >
               Call {phoneFormatted}
             </a>
+          </div>
+        </section>
+
+        {/* Explore Nearby Cleaning Service Areas */}
+        <section className="mt-14 bg-white rounded-3xl p-8 border border-pink-100/80 text-center shadow-xs" aria-label="Explore Nearby Cleaning Service Areas">
+          <div className="inline-flex items-center gap-2 bg-pink-100/80 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+            <i className="fa-solid fa-map-pin"></i>
+            <span>Local Florida Service Network</span>
+          </div>
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 font-serif mb-2">
+            Explore Nearby Cleaning Service Areas Around {locationName}
+          </h3>
+          <p className="text-xs md:text-sm text-gray-500 mb-6 max-w-2xl mx-auto">
+            Sweet Maid delivers top-rated professional cleaning services across {locationName} and neighboring communities:
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-y-2.5 text-sm">
+            {nearestLocations.map((item, idx) => (
+              <span key={item.slug} className="inline-flex items-center">
+                <Link
+                  href={`/${item.slug}/`}
+                  className="text-gray-600 hover:text-pink-600 font-medium transition-colors"
+                  aria-label={`Explore Sweet Maid cleaning services in ${item.name}, FL`}
+                >
+                  {item.name}
+                </Link>
+                {idx < nearestLocations.length - 1 && (
+                  <span className="text-pink-300 mx-2.5 select-none">•</span>
+                )}
+              </span>
+            ))}
           </div>
         </section>
       </main>
