@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
 import { miamiBrowardSlugs, is305Area } from '@/lib/miami_broward_slugs';
-import { getTemplate, extractSections, localizedReplace, serviceH1Map } from '@/lib/template';
+import { getTemplate, extractSections, localizedReplace, serviceH1Map, generatePageImageSchema } from '@/lib/template';
 import { generateSeoContentPack } from '@/lib/seo_engine';
 
 
@@ -91,7 +91,7 @@ export default async function LocationOrServicePage({ params }: { params: Promis
           : `Looking for the best cleaning services in ${cleanName}, FL? Sweet Maid provides top-rated, reliable maid services directly to your location in ${cleanName}.`,
         "url": `https://sweetmaidcleaning.com/${slug}/`,
         "telephone": isMiamiOrBroward ? "(305) 851-6959" : "(941) 222-2080",
-        "image": "https://i.ibb.co/QSD3Ydt/image.jpg",
+        "image": generatePageImageSchema(cleanName, 'House Cleaning'),
         "sameAs": [
           "https://www.facebook.com/SweetMaidCleaningService/",
           "https://www.instagram.com/sweetmaidcleaningservice/",

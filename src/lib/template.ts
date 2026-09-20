@@ -36,6 +36,242 @@ export const serviceH1Map: Record<string, string> = {
   "recurring-maid-service": "Top-Rated Recurring Maid Service & Scheduled House Cleaning in"
 };
 
+export function generatePageImageSchema(cleanName: string, serviceName: string = 'House Cleaning') {
+  return [
+    {
+      "@type": "ImageObject",
+      "url": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp",
+      "name": `Spotless Modern Kitchen Cleaning in ${cleanName}`,
+      "caption": `Professional residential kitchen cleaning and sanitization in ${cleanName}, FL`,
+      "description": `Sweet Maid professional cleaning crew detailing and polishing kitchen countertops and stainless steel appliances in ${cleanName}, Florida.`,
+      "contentUrl": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp",
+      "name": `Sanitized Luxury Master Bathroom Deep Cleaning in ${cleanName}`,
+      "caption": `Pristine sanitized bathroom tile, shower glass, and vanity in ${cleanName}, FL`,
+      "description": `Comprehensive bathroom sanitizing, tile grout scrubbing, and fixture polishing by Sweet Maid in ${cleanName}, Florida.`,
+      "contentUrl": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp",
+      "name": `Pristine Hardwood Living Room Move-In Cleaning in ${cleanName}`,
+      "caption": `Pristine hardwood floor detailing and move-in deep cleaning in ${cleanName}, FL`,
+      "description": `Move-in and move-out turnover deep clean with HEPA vacuuming and wood floor detailing in ${cleanName}, Florida.`,
+      "contentUrl": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-3.46.50-pm.webp",
+      "name": `Commercial Office Suite and Janitorial Cleaning in ${cleanName}`,
+      "caption": `Spotless commercial workspace and executive suite cleaning in ${cleanName}, FL`,
+      "description": `Professional commercial office cleaning, workspace sanitation, and janitorial services for ${cleanName} businesses.`,
+      "contentUrl": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-3.46.50-pm.webp"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-11-at-12.07.26-pm.webp",
+      "name": `Post-Construction Dust Extraction Cleaning in ${cleanName}`,
+      "caption": `Detailed post-construction debris and dust removal in ${cleanName}, FL`,
+      "description": `Contractor turnover and post-construction fine dust HEPA extraction for ${cleanName}, Florida properties.`,
+      "contentUrl": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-11-at-12.07.26-pm.webp"
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.17.59-pm.webp",
+      "name": `Airbnb and Vacation Rental Turnover Cleaning in ${cleanName}`,
+      "caption": `5-star guest turnover cleaning and sanitization in ${cleanName}, FL`,
+      "description": `Rapid Airbnb turnover cleaning, guest amenity staging, and bathroom sanitization in ${cleanName}, Florida.`,
+      "contentUrl": "https://sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.17.59-pm.webp"
+    }
+  ];
+}
+
+export function processPageImages(
+  html: string,
+  clean_name: string,
+  loc_slug: string,
+  serviceName: string,
+  pageType: string
+): string {
+  const isLogin = pageType === 'login';
+  const usedAlts = new Set<string>();
+  let heroImageHandled = false;
+  let googleReviewCounter = 0;
+  let logoCounter = 0;
+
+  const imageLocalSeoMap: Record<string, (c: string, s: string) => string> = {
+    'whatsapp-image-2026-02-10-at-11.18.07-pm-1': (c, s) =>
+      isLogin ? 'Deep Cleaning Sanitized Master Bathroom & Tile Grout' : `Sanitized Luxury Master Bathroom and Tile Grout Cleaning in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.07-pm': (c, s) =>
+      isLogin ? 'Luxury High-Rise Condo Deep Cleaning & Disinfection' : `Luxury High-Rise Condo Deep Cleaning and Disinfection in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.08-pm-1': (c, s) =>
+      isLogin ? 'Pristine Living Room Move-In Cleaning Service' : `Pristine Hardwood Living Room Move-In Cleaning in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.08-pm-2': (c, s) =>
+      isLogin ? 'Sparkling Clean Walk-in Glass Shower & Descaled Tile' : `Sparkling Clean Walk-in Glass Shower and Descaled Tile in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.08-pm-3': (c, s) =>
+      isLogin ? 'Complete Move-Out Vacancy Turnover Cleaning' : `Move-Out Vacancy Turnover Deep Cleaning Inspection in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.08-pm-4': (c, s) =>
+      isLogin ? 'Luxury Soaking Tub & Spa Vanity Sanitization' : `Luxury Soaking Tub and Spa Vanity Deep Sanitization in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.08-pm': (c, s) =>
+      isLogin ? 'Spotless Modern Kitchen Sanitization & Detailing' : `Spotless Modern Kitchen Sanitization and Appliance Detailing in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.09-pm-1': (c, s) =>
+      isLogin ? 'Vacation Rental Bedroom Staging & Linen Setup' : `Vacation Rental Bedroom Staging and Fresh Linen Setup in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.09-pm-2': (c, s) =>
+      isLogin ? 'Living Room Micro-Dusting & Furniture Polishing' : `Detailed Living Room Micro-Dusting and Furniture Polishing in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.09-pm-3': (c, s) =>
+      isLogin ? 'Custom Cabinetry & Countertop Detailing' : `Custom Cabinetry and Marble Countertop Detailing in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.09-pm': (c, s) =>
+      isLogin ? 'Modern Island Kitchen Scrubbing & Polishing' : `Modern Island Kitchen Deep Scrubbing and Polishing in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.18.06-pm': (c, s) =>
+      isLogin ? 'Gourmet Kitchen Stove Degreasing & Detailing' : `Gourmet Kitchen Stove Degreasing and Countertop Detailing in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-3.46.50-pm': (c, s) =>
+      isLogin ? 'Commercial Office Suite Janitorial Cleaning' : `Commercial Office Suite and Professional Janitorial Cleaning in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-3.47.15-pm': (c, s) =>
+      isLogin ? 'Waterfront Condo Living Room HEPA Detailing' : `Waterfront Condo Living Room HEPA Vacuuming and Detailing in ${c}, FL`,
+    'whatsapp-image-2026-02-11-at-12.07.26-pm': (c, s) =>
+      isLogin ? 'Post-Construction Fine Dust Extraction Cleaning' : `Post-Construction Fine Dust Extraction and Renovation Cleanup in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.17.59-pm': (c, s) =>
+      isLogin ? 'Airbnb Vacation Rental Bathroom Turnover Cleaning' : `Airbnb Vacation Rental Turnover Cleaning and Bathroom Staging in ${c}, FL`,
+    'whatsapp-image-2026-02-10-at-11.17.58-pm': (c, s) =>
+      isLogin ? 'Exterior Pressure Washing & Surface Soft Wash' : `Exterior Pressure Washing and Lanai Pool Deck Soft Wash in ${c}, FL`,
+    'carpet-cleaning': (c, s) =>
+      isLogin ? 'Deep Steam Extraction Carpet Cleaning' : `Deep Steam Extraction Carpet and Area Rug Cleaning in ${c}, FL`,
+    'window-cleaning': (c, s) =>
+      isLogin ? 'Interior & Exterior Streak-Free Window Cleaning' : `Interior and Exterior Streak-Free Window Cleaning in ${c}, FL`,
+  };
+
+  const sortedKeys = Object.keys(imageLocalSeoMap).sort((a, b) => b.length - a.length);
+
+  const googleBadges: ((c: string) => string)[] = [
+    c => isLogin ? 'Google Verified 5-Star Customer Rating' : `Google Verified 5-Star Rating - Sweet Maid ${c}`,
+    c => isLogin ? 'Google Customer Review Rating Badge' : `Google Customer Review Rating Badge - ${c}, FL`,
+    c => isLogin ? 'Google Verified Maid Service Review' : `Google Verified Maid Service Review - ${c}`,
+    c => isLogin ? 'Google Verified Cleaning Testimonial' : `Google Verified Cleaning Testimonial - ${c}, FL`,
+    c => isLogin ? 'Google Top-Rated Cleaning Service Feedback' : `Google Top Rated Cleaning Service Rating - ${c}`,
+    c => isLogin ? 'Google 5-Star House Cleaning Feedback' : `Google Verified House Cleaning Review - ${c}, FL`,
+    c => isLogin ? 'Google Business Verified Review Rating' : `Google Business Verified Rating - Sweet Maid ${c}`,
+  ];
+
+  return html.replace(/<img\s+([^>]+)>/gi, (fullMatch, rawAttrs) => {
+    let attrs = rawAttrs;
+
+    const srcMatch = attrs.match(/src=["']([^"']+)["']/i);
+    const src = srcMatch ? srcMatch[1] : '';
+    const srcLower = src.toLowerCase();
+
+    // Strip any loading="lazy" or loading="eager" attributes to eliminate scroll pop-in lag
+    attrs = attrs.replace(/\s*loading=["'][^"']*["']/gi, '');
+
+    // Add decoding="async" for non-blocking main-thread decoding
+    if (!attrs.includes('decoding=')) {
+      attrs += ' decoding="async"';
+    }
+
+    // Ensure explicit dimensions to prevent CLS
+    if (!attrs.includes('width=') && !attrs.includes('height=')) {
+      if (srcLower.includes('google') || srcLower.includes('ui-avatars')) {
+        attrs += ' width="48" height="48"';
+      } else if (srcLower.includes('logo')) {
+        attrs += ' width="200" height="60"';
+      } else {
+        attrs += ' width="800" height="600"';
+      }
+    }
+
+    // Prioritize hero image / header logo for instant LCP
+    if (!heroImageHandled && (attrs.includes('hero') || attrs.includes('banner') || (srcLower.includes('logo') && !srcLower.includes('google')))) {
+      heroImageHandled = true;
+      if (!attrs.includes('fetchpriority=')) {
+        attrs += ' fetchpriority="high"';
+      }
+    }
+
+    let targetAlt = '';
+
+    if (srcLower.includes('google') || srcLower.includes('wikipedia.org/wikipedia/commons/c/c1/google')) {
+      const badgeFn = googleBadges[googleReviewCounter % googleBadges.length];
+      targetAlt = badgeFn(clean_name);
+      googleReviewCounter++;
+    } else if (srcLower.includes('ui-avatars.com')) {
+      const nameMatch = src.match(/name=([^&"']+)/i);
+      const reviewerName = nameMatch ? decodeURIComponent(nameMatch[1]).replace(/\+/g, ' ') : 'Verified Client';
+      targetAlt = isLogin
+        ? `Verified Customer Review by ${reviewerName}`
+        : `Verified Customer Review by ${reviewerName} - Sweet Maid ${clean_name}`;
+    } else if (srcLower.includes('logo')) {
+      logoCounter++;
+      if (logoCounter === 1) {
+        targetAlt = isLogin
+          ? 'Sweet Maid Professional Cleaning Service'
+          : `Sweet Maid Cleaning Service - Professional Cleaning Company in ${clean_name}, FL`;
+      } else if (logoCounter === 2) {
+        targetAlt = isLogin
+          ? 'Sweet Maid Cleaning Service Portal Navigation'
+          : `Sweet Maid Cleaning Service Mobile Navigation - ${clean_name}, FL`;
+      } else {
+        targetAlt = isLogin
+          ? 'Sweet Maid Licensed and Insured Cleaning Services'
+          : `Sweet Maid Cleaning Service - Licensed and Insured Cleaners in ${clean_name}, Florida`;
+      }
+    } else {
+      let matchedKey = '';
+      for (const key of sortedKeys) {
+        if (srcLower.includes(key)) {
+          matchedKey = key;
+          break;
+        }
+      }
+
+      if (!matchedKey) {
+        if (srcLower.includes('photo-1628177142898') || srcLower.includes('carpet')) {
+          matchedKey = 'carpet-cleaning';
+        } else if (srcLower.includes('photo-1527515637462') || srcLower.includes('window')) {
+          matchedKey = 'window-cleaning';
+        }
+      }
+
+      if (matchedKey && imageLocalSeoMap[matchedKey]) {
+        targetAlt = imageLocalSeoMap[matchedKey](clean_name, serviceName);
+      } else {
+        const existingAltMatch = attrs.match(/alt=["']([^"']*)["']/i);
+        let existing = existingAltMatch ? existingAltMatch[1] : '';
+        existing = existing
+          .replace(/\s*-\s*Bradenton,?\s*FL/gi, '')
+          .replace(/\s*-\s*Top.*$/gi, '')
+          .replace(/Bradenton/gi, clean_name)
+          .trim();
+
+        if (existing && existing !== 'Google' && !existing.toLowerCase().includes('logo')) {
+          targetAlt = isLogin ? existing : `${existing} in ${clean_name}, FL`;
+        } else {
+          targetAlt = isLogin
+            ? `${serviceName} Professional Service`
+            : `${serviceName} by Sweet Maid in ${clean_name}, FL`;
+        }
+      }
+    }
+
+    // Guarantee 100% uniqueness: Zero duplicated alt texts on the same page
+    let finalAlt = targetAlt;
+    let duplicateIndex = 2;
+    while (usedAlts.has(finalAlt)) {
+      finalAlt = `${targetAlt} - View ${duplicateIndex}`;
+      duplicateIndex++;
+    }
+    usedAlts.add(finalAlt);
+
+    if (attrs.includes('alt=')) {
+      attrs = attrs.replace(/alt=["'][^"']*["']/i, `alt="${finalAlt}"`);
+    } else {
+      attrs += ` alt="${finalAlt}"`;
+    }
+
+    return `<img ${attrs.trim().replace(/\s{2,}/g, ' ')}>`;
+  });
+}
 
 export function getTemplate(templateName: string) {
   try {
@@ -233,9 +469,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/Why Locals Trust Us/gi, `Why ${clean_name} Trusts Us`);
     newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s most trusted ${serviceName.toLowerCase()}`);
     newContent = newContent.replace(/Professional, reliable, and friendly cleaning services for Florida and surrounding areas/gi, `Professional, reliable, and friendly ${serviceName.toLowerCase()} for ${clean_name} and surrounding areas`);
-    
-    // SEO Google Images Domination: Append target keyword to EVERY image alt tag
-    newContent = newContent.replace(/alt="([^"]*)"/gi, `alt="$1 - Top ${serviceName} in ${clean_name}, FL"`);
   }
   
   // Purge any references to non-working / decommissioned service pages from header, mobile menu, and footer
@@ -788,10 +1021,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // 5. Best Practices: Security rel="noopener noreferrer" for all target="_blank"
   newContent = newContent.replace(/<a\s+([^>]*target="_blank"(?![^>]*rel=)[^>]*)>/gi, '<a $1 rel="noopener noreferrer">');
 
-  // 7. Image Alt Text: Ensure every <img> has descriptive alt
-  newContent = newContent.replace(/<img\s+(?![^>]*\balt=)([^>]+)>/gi, `<img alt="Sweet Maid Professional Cleaning Service in ${clean_name}, Florida" $1>`);
-  newContent = newContent.replace(/alt=""/gi, `alt="Sweet Maid Cleaning Service in ${clean_name}, FL"`);
-
   // 8. Image Paths, Dimensions & WebP Next-Gen Format Upgrade
   newContent = newContent.replace(/src=["'](?:\.\.\/)+images\//gi, 'src="/images/');
   newContent = newContent.replace(/src=["']images\//gi, 'src="/images/');
@@ -801,23 +1030,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Strip redundant client-side Tailwind script from templates (Next.js compiles Tailwind natively)
   newContent = newContent.replace(/<script[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
-
-  // Prioritize hero image for fast LCP, add explicit dimensions, lazy-load remaining images
-  let heroImageHandled = false;
-  newContent = newContent.replace(/<img\s+([^>]+)>/gi, (match, attrs) => {
-    let cleanAttrs = attrs;
-    if (!cleanAttrs.includes('width=') && !cleanAttrs.includes('height=')) {
-      cleanAttrs += ' width="800" height="600"';
-    }
-    if (!heroImageHandled && (cleanAttrs.includes('hero') || cleanAttrs.includes('banner') || cleanAttrs.includes('logo'))) {
-      heroImageHandled = true;
-      return `<img fetchpriority="high" decoding="async" ${cleanAttrs.replace(/\s*loading=["']lazy["']/gi, '')}>`;
-    }
-    if (!cleanAttrs.includes('loading=')) {
-      return `<img loading="lazy" decoding="async" ${cleanAttrs}>`;
-    }
-    return `<img ${cleanAttrs}>`;
-  });
 
   // 9. Accessibility: Sequential Heading Hierarchy (H1 -> H2 -> H3 -> H4)
   newContent = newContent.replace(/<h3 class="text-2xl font-bold text-center text-gray-800 mb-6 drop-shadow-sm">Find Services In Your City<\/h3>/gi, '<h2 class="text-2xl font-bold text-center text-gray-800 mb-6 drop-shadow-sm">Find Services In Your City</h2>');
@@ -1290,6 +1502,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       `.replace(/(1?\\(941\\)\\s?222-2080|1?9412222080|941-222-2080|1?\\(305\\)\\s?851-6959|1?3058516959|305-851-6959)/g, '<a href="tel:13058516959"><strong>(305) 851-6959</strong></a>')`
     );
   }
+
+  // Final Master Image Processor: Local SEO ALT texts (strictly zero duplicates), decoding="async", remove lazy loading for smooth responsive images across the whole page
+  newContent = processPageImages(newContent, clean_name, loc_slug, serviceName, pageType);
 
   return newContent;
 }

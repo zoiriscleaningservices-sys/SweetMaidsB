@@ -37,7 +37,7 @@ export function generateLocalSeoReviewsHtml(
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between gap-2 mb-1">
                     <h4 class="font-bold text-gray-900 truncate text-base">${rev.name}</h4>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-5 h-5 flex-shrink-0" loading="lazy">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-5 h-5 flex-shrink-0" decoding="async" width="20" height="20">
                   </div>
                   <div class="text-xs text-gray-500 mb-1.5 flex items-center gap-1.5">
                     <span>${rev.date}</span>

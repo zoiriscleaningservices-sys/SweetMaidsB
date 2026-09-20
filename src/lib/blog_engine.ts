@@ -67,7 +67,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
           src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp"
           alt="Spotless luxury interior house cleaning in ${cleanName}, FL"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          loading="eager"
+          decoding="async"
           width="1200"
           height="800"
         />
@@ -214,7 +214,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
                 <a href="/${slug}/deep-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp" alt="Kitchen cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp" alt="Kitchen cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" decoding="async" width="600" height="400" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
                     <i class="fa-solid fa-utensils text-pink-400"></i> Kitchen Detail
@@ -237,7 +237,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
                 <a href="/${slug}/house-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp" alt="Bathroom sanitation in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp" alt="Bathroom sanitation in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" decoding="async" width="600" height="400" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
                     <i class="fa-solid fa-shower text-pink-400"></i> Bathroom Sanitization
@@ -260,7 +260,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
                 <a href="/${slug}/carpet-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp" alt="Bedroom cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp" alt="Bedroom cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" decoding="async" width="600" height="400" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
                     <i class="fa-solid fa-bed text-pink-400"></i> Bedroom Haven
@@ -283,7 +283,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div>
                 <a href="/${slug}/window-cleaning/" class="block h-44 rounded-2xl overflow-hidden mb-4 relative group/img border border-pink-100/60 shadow-inner">
-                  <img src="/images/whatsapp-image-2026-02-10-at-11.17.58-pm.webp" alt="Patio and window cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img src="/images/whatsapp-image-2026-02-10-at-11.17.58-pm.webp" alt="Patio and window cleaning in ${cleanName}, FL" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" decoding="async" width="600" height="400" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <span class="absolute bottom-2.5 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
                     <i class="fa-solid fa-sun text-pink-400"></i> Lanai & Glass

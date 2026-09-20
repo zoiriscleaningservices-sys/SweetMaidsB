@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
+import { getTemplate, extractSections, localizedReplace, generatePageImageSchema } from '@/lib/template';
 import { formatName } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default function HomePage() {
       "description": "Florida's #1 premier residential and commercial cleaning service provider. Trusted, insured, and 100% satisfaction guaranteed across all Florida cities.",
       "url": "https://sweetmaidcleaning.com/",
       "logo": "https://sweetmaidcleaning.com/images/logo.png",
-      "image": "https://i.ibb.co/QSD3Ydt/image.jpg",
+      "image": generatePageImageSchema(cleanName, "House Cleaning"),
       "telephone": "(941) 222-2080",
       "priceRange": "$$",
       "address": {
