@@ -51,7 +51,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   if (!rawHtml) return <div>Blog template missing</div>;
 
   const bodyContent = extractSections(rawHtml);
-  const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true);
+  const localizedHtml = localizedReplace(bodyContent, cleanName, slug, true, 'blog');
 
   return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
 }

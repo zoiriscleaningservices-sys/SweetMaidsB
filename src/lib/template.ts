@@ -73,6 +73,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // 1. Detect page type based on original H1 or content signatures before general replacements
   const originalH1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   let pageType = 'service_or_home';
+  if (currentService === 'blog') {
+    pageType = 'blog';
+  }
   
   if (originalH1Match) {
     const innerH1 = originalH1Match[1].trim();
@@ -82,13 +85,15 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       pageType = 'gallery';
     } else if (innerH1.includes('Welcome Back') || innerH1.includes('login') || innerH1.includes('Client Portal') || innerH1.includes('Cleaning Portal') || innerH1.includes('shining home') || content.includes('bookingkoala.com/login')) {
       pageType = 'login';
-    } else if (innerH1.includes('Blog') || innerH1.includes('Cleaning Guides') || content.includes('Florida Cleaning Blog') || content.includes('sweet-maid-blog-hub')) {
+    } else if (innerH1.includes('Blog') || innerH1.includes('Cleaning Guides') || content.includes('Florida Cleaning Blog') || content.includes('sweet-maid-blog-hub') || content.includes('truewebx-blog-heading')) {
       pageType = 'blog';
     }
   }
 
   if (content.includes('bookingkoala.com/login')) {
     pageType = 'login';
+  } else if (content.includes('sweet-maid-blog-hub') || content.includes('truewebx-blog-heading') || content.includes('data-filter="florida-keys"') || content.includes('Florida Cleaning Blog')) {
+    pageType = 'blog';
   }
 
   // Generate 100% Unique, Zero-Duplicate SEO Content Pack
@@ -634,7 +639,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   );
 
   // Gate "Book Online" links & buttons exclusively to Manatee County pages only
-  const isGeneralPage = pageType === 'about' || pageType === 'gallery' || pageType === 'login' || (originalH1Match && (originalH1Match[1].includes('Blog') || originalH1Match[1].includes('Cleaning Tips'))) || serviceSlugs.includes(loc_slug);
+  const isGeneralPage = pageType === 'about' || pageType === 'gallery' || pageType === 'login' || pageType === 'blog' || (originalH1Match && (originalH1Match[1].includes('Blog') || originalH1Match[1].includes('Cleaning Tips'))) || serviceSlugs.includes(loc_slug);
   const isManatee = !isGeneralPage && (isManateeCounty(loc_slug, clean_name) || loc_slug === 'bradenton-fl' || loc_slug === 'home');
 
   if (isManatee) {
@@ -753,7 +758,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/src="https:\/\/www\.google\.com\/maps\/embed[^"]*"/gi, `src="${map_url}"`);
     newContent = newContent.replace(/<div class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, gbpBadgeHtml);
     newContent = newContent.replace(/<a[^>]+query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, gbpBadgeHtml);
-  } else if (pageType !== 'login') {
+  } else if (pageType !== 'login' && pageType !== 'blog') {
     // All other cities: Miami, Tampa, Orlando, Sarasota, Jacksonville, etc.
     const loc_query = encodeURIComponent(`${clean_name}, Florida`);
     const map_url = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${loc_query}+()&t=&z=13&ie=UTF8&iwloc=B&output=embed`;
@@ -960,21 +965,31 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   <!-- END LATERAL SEO CROSS-LINKS -->
   `;
 
-  if (/<!--\s*LATERAL SEO CROSS-LINKS\s*-->[\s\S]*?<!--\s*END LATERAL SEO CROSS-LINKS\s*-->/i.test(newContent)) {
-    newContent = newContent.replace(
-      /<!--\s*LATERAL SEO CROSS-LINKS\s*-->[\s\S]*?<!--\s*END LATERAL SEO CROSS-LINKS\s*-->/gi,
-      lateralBarHtml
-    );
-  } else if (/Explore Nearby Cleaning Service Areas[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i.test(newContent)) {
-    newContent = newContent.replace(
-      /<div[^>]*class="[^"]*bg-gray-50[^"]*"[^>]*>[\s\S]*?Explore Nearby Cleaning Service Areas[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/gi,
-      lateralBarHtml
-    );
-  } else if (pageType !== 'login' && newContent.includes('<footer')) {
-    newContent = newContent.replace(/<footer/i, lateralBarHtml + '\n<footer');
+  if (pageType !== 'blog') {
+    if (/<!--\s*LATERAL SEO CROSS-LINKS\s*-->[\s\S]*?<!--\s*END LATERAL SEO CROSS-LINKS\s*-->/i.test(newContent)) {
+      newContent = newContent.replace(
+        /<!--\s*LATERAL SEO CROSS-LINKS\s*-->[\s\S]*?<!--\s*END LATERAL SEO CROSS-LINKS\s*-->/gi,
+        lateralBarHtml
+      );
+    } else if (/Explore Nearby Cleaning Service Areas[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i.test(newContent)) {
+      newContent = newContent.replace(
+        /<div[^>]*class="[^"]*bg-gray-50[^"]*"[^>]*>[\s\S]*?Explore Nearby Cleaning Service Areas[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/gi,
+        lateralBarHtml
+      );
+    } else if (pageType !== 'login' && newContent.includes('<footer')) {
+      newContent = newContent.replace(/<footer/i, lateralBarHtml + '\n<footer');
+    }
+  } else {
+    // Strip lateral bar, areas map, and FAQ if present on blog pages
+    newContent = newContent.replace(/<!--\s*LATERAL SEO CROSS-LINKS\s*-->[\s\S]*?<!--\s*END LATERAL SEO CROSS-LINKS\s*-->/gi, '');
+    newContent = newContent.replace(/<section[^>]*aria-label="Explore Nearby Cleaning Service Areas"[\s\S]*?<\/section>/gi, '');
+    newContent = newContent.replace(/<!--\s*AREAS\s*&\s*MAP\s*-->[\s\S]*?<\/section>/gi, '');
+    newContent = newContent.replace(/<section[^>]*id="areas"[\s\S]*?<\/section>/gi, '');
+    newContent = newContent.replace(/<!--\s*FAQ\s*-->[\s\S]*?<\/section>/gi, '');
+    newContent = newContent.replace(/<section[^>]*Frequently Asked Questions[\s\S]*?<\/section>/gi, '');
   }
 
-  if (pageType !== 'login' && newContent.includes('<footer')) {
+  if (pageType !== 'login' && pageType !== 'blog' && newContent.includes('<footer')) {
     newContent = newContent.replace(/<footer/i, seoSection + '\n<footer');
   }
 
@@ -1021,7 +1036,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   `;
 
   // Inject Climate Section above Footer
-  if (pageType !== 'login' && newContent.includes('<footer')) {
+  if (pageType !== 'login' && pageType !== 'blog' && newContent.includes('<footer')) {
     newContent = newContent.replace(/<footer/i, climateSectionHtml + '\n<footer');
   }
 
@@ -1263,7 +1278,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   } else if (pageType === 'gallery') {
     customH1Inner = `Best Cleaning Results & Professional Service Gallery in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
   } else if (pageType === 'blog') {
-    customH1Inner = `Best Cleaning Tips & Professional Home Care Blog in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = '';
   } else if (pageType === 'login') {
     customH1Inner = '';
   } else {

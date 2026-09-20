@@ -36,7 +36,7 @@ export default function BlogRoot() {
   if (!rawHtml) return <div>Blog template missing</div>;
 
   const bodyContent = extractSections(rawHtml);
-  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, true);
+  const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, true, 'blog');
 
   return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
 }
