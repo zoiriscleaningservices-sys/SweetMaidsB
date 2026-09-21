@@ -887,58 +887,25 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<link\b[^>]*unpkg\.com\/aos[^>]*>\s*/gi, '');
   newContent = newContent.replace(/<script\b[^>]*navigation-dynamic\.js[^>]*><\/script>\s*/gi, '');
 
-  // Lazy-load LeadConnector quote form iframe so it doesn't block initial mobile page load or paint
+  // Ensure LeadConnector quote form iframe has valid src, native lazy loading, and robust min-height
   newContent = newContent.replace(
-    /<iframe\s+([^>]*?)src=["'](https:\/\/api\.leadconnectorhq\.com\/widget\/form\/[^"']+)["']([^>]*?)>/gi,
-    '<iframe $1data-src="$2" loading="lazy"$3>'
+    /<iframe\s+([^>]*?)(?:src|data-src)=["'](https:\/\/api\.leadconnectorhq\.com\/widget\/form\/[^"']+)["']([^>]*?)>/gi,
+    '<iframe $1src="$2" loading="lazy" style="width:100%;min-height:814px;border:none;border-radius:0px"$3>'
   );
 
   // Strip redundant chat widget script tag to eliminate duplicate /_preview/88yz5isz.js download
   newContent = newContent.replace(/<script\b[^>]*widgets\.leadconnectorhq\.com\/loader\.js[^>]*>[\s\S]*?<\/script>\s*/gi, '');
 
-  // Defer GHL form embed and Turnstile CAPTCHA until actual interaction with #quote
+  // Strip static form_embed.js script tag from templates since Next.js layout loads it properly via Script
   newContent = newContent.replace(
     /<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>/gi,
-    `<script>
-      function loadGHLForm(){
-        if(window._ghl_form_loaded) return;
-        window._ghl_form_loaded = true;
-        var iframes = document.querySelectorAll('iframe[data-src*="leadconnectorhq.com"]');
-        iframes.forEach(function(f){
-          if(!f.src && f.dataset.src){
-            f.src = f.dataset.src;
-          }
-        });
-        var s = document.createElement('script');
-        s.src = "https://link.msgsndr.com/js/form_embed.js";
-        s.async = true;
-        document.body.appendChild(s);
-      }
-      if (typeof window !== 'undefined') {
-        if ('IntersectionObserver' in window) {
-          var ghlObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                loadGHLForm();
-                ghlObserver.disconnect();
-              }
-            });
-          }, { rootMargin: '100px 0px', threshold: 0.05 });
-          var targetSection = document.getElementById('quote') || document.querySelector('iframe[data-src*="leadconnectorhq.com"]');
-          if (targetSection) {
-            ghlObserver.observe(targetSection);
-          }
-        }
-        // Also load immediately if user clicks any CTA anchor pointing to #quote or booking
-        document.addEventListener('click', function(e) {
-          var el = e.target && e.target.closest ? e.target.closest('a[href*="#quote"], button, [id*="quote"]') : null;
-          if (el) {
-            loadGHLForm();
-          }
-        }, { passive: true });
-      }
-    </script>`
+    ''
   );
+
+  // For login page which does not have a local #quote form, route quote links to home page /#quote
+  if (pageType === 'login' || loc_slug === 'login') {
+    newContent = newContent.replace(/href=["']#quote["']/gi, 'href="/#quote"');
+  }
 
   // Guarantee descriptive destination labels on all carousel links
   const serviceFriendlyNames: Record<string, string> = {

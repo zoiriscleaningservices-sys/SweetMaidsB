@@ -38,6 +38,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${poppins.variable}`}>
       <head>
+        <link rel="preconnect" href="https://api.leadconnectorhq.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://link.msgsndr.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://widgets.leadconnectorhq.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://services.leadconnectorhq.com" crossOrigin="anonymous" />
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
@@ -47,6 +49,10 @@ export default function RootLayout({
         {children}
         <FloatingBookingButton />
         <ClientInteractions />
+        <Script
+          src="https://link.msgsndr.com/js/form_embed.js"
+          strategy="afterInteractive"
+        />
         <Script id="elfsight-loader" strategy="lazyOnload">
           {`
             if (document.querySelector('[class*="elfsight-app"]')) {

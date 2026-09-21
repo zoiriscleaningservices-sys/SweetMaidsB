@@ -2,12 +2,12 @@ import type { NextConfig } from "next";
 
 const cspDirectives = [
   "default-src 'self' https:",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.leadconnectorhq.com https://link.msgsndr.com https://elfsightcdn.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.leadconnectorhq.com https://link.msgsndr.com https://challenges.cloudflare.com https://elfsightcdn.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com",
   "img-src 'self' data: blob: https://*.leadconnectorhq.com https://ui-avatars.com https://upload.wikimedia.org https://elfsightcdn.com",
   "font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com",
-  "frame-src 'self' https://api.leadconnectorhq.com https://link.msgsndr.com https://www.google.com https://www.google.com/maps/",
-  "connect-src 'self' https://*.leadconnectorhq.com https://*.msgsndr.com https://services.leadconnectorhq.com https://elfsightcdn.com https://www.google-analytics.com",
+  "frame-src 'self' https://api.leadconnectorhq.com https://link.msgsndr.com https://challenges.cloudflare.com https://www.google.com https://www.google.com/maps/",
+  "connect-src 'self' https://*.leadconnectorhq.com https://*.msgsndr.com https://services.leadconnectorhq.com https://challenges.cloudflare.com https://elfsightcdn.com https://www.google-analytics.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self' https://*.leadconnectorhq.com https://services.leadconnectorhq.com",

@@ -7,35 +7,35 @@ interface Props {
   params: Promise<{ slug: string; service: string }>;
 }
 
+const shortServiceMap: Record<string, string> = {
+  'medical-dental-facility-cleaning': 'Medical & Dental Cleaning',
+  'industrial-warehouse-cleaning': 'Warehouse Janitorial',
+  'church-worship-center-cleaning': 'Church Cleaning',
+  'property-management-janitorial': 'Property Janitorial',
+  'law-firm-office-cleaning': 'Law Firm Cleaning',
+  'restaurant-kitchen-cleaning': 'Kitchen Cleaning',
+  'gym-fitness-center-cleaning': 'Gym Cleaning',
+  'oven-appliance-deep-cleaning': 'Oven Cleaning',
+  'eviction-cleanout-service': 'Eviction Cleanout',
+  'hoarder-cleaning-service': 'Hoarding Cleanout',
+  'exterior-soft-washing': 'Soft Washing',
+  'tile-and-grout-cleaning': 'Tile & Grout Cleaning',
+  'pet-hair-removal-cleaning': 'Pet Hair Cleaning',
+  'post-construction-cleaning': 'Post-Construction Cleaning',
+  'post-renovation-cleaning': 'Post-Renovation Cleaning',
+  'luxury-penthouse-cleaning': 'Penthouse Cleaning',
+  'luxury-estate-cleaning': 'Luxury Estate Cleaning',
+  'vacation-rental-cleaning': 'Vacation Rental Cleaning',
+  'janitorial-cleaning-services': 'Janitorial Cleaning',
+  'office-janitorial-services': 'Office Janitorial',
+  'school-daycare-cleaning': 'Daycare Cleaning'
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, service } = await params;
   const locData = resolveAnyLocation(slug);
   const locationName = locData ? formatName(locData.name) : formatName(slug.replace(/-/g, ' '));
   const serviceName = formatName(service.replace(/-/g, ' '));
-
-  const shortServiceMap: Record<string, string> = {
-    'medical-dental-facility-cleaning': 'Medical & Dental Cleaning',
-    'industrial-warehouse-cleaning': 'Warehouse Janitorial',
-    'church-worship-center-cleaning': 'Church Cleaning',
-    'property-management-janitorial': 'Property Janitorial',
-    'law-firm-office-cleaning': 'Law Firm Cleaning',
-    'restaurant-kitchen-cleaning': 'Kitchen Cleaning',
-    'gym-fitness-center-cleaning': 'Gym Cleaning',
-    'oven-appliance-deep-cleaning': 'Oven Cleaning',
-    'eviction-cleanout-service': 'Eviction Cleanout',
-    'hoarder-cleaning-service': 'Hoarding Cleanout',
-    'exterior-soft-washing': 'Soft Washing',
-    'tile-and-grout-cleaning': 'Tile & Grout Cleaning',
-    'pet-hair-removal-cleaning': 'Pet Hair Cleaning',
-    'post-construction-cleaning': 'Post-Construction Cleaning',
-    'post-renovation-cleaning': 'Post-Renovation Cleaning',
-    'luxury-penthouse-cleaning': 'Penthouse Cleaning',
-    'luxury-estate-cleaning': 'Luxury Estate Cleaning',
-    'vacation-rental-cleaning': 'Vacation Rental Cleaning',
-    'janitorial-cleaning-services': 'Janitorial Cleaning',
-    'office-janitorial-services': 'Office Janitorial',
-    'school-daycare-cleaning': 'Daycare Cleaning'
-  };
   const displaySrv = shortServiceMap[service] || serviceName;
 
   let title: string;
@@ -58,6 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    keywords: `${serviceName} cost ${locationName} FL, cleaning prices ${locationName}, maid rates ${locationName} Florida, cleaning service estimate`,
     alternates: {
       canonical: `https://sweetmaidcleaning.com/cost/${slug}/${service}/`,
     },
@@ -75,6 +76,7 @@ export default async function CostEstimatorPage({ params }: Props) {
   const locData = resolveAnyLocation(slug);
   const locationName = locData ? formatName(locData.name) : formatName(slug.replace(/-/g, ' '));
   const serviceName = formatName(service.replace(/-/g, ' '));
+  const displaySrv = shortServiceMap[service] || serviceName;
 
   const is305 = is305Area(slug, locationName);
   const phoneFormatted = is305 ? "(305) 851-6959" : "(941) 222-2080";
@@ -112,15 +114,15 @@ export default async function CostEstimatorPage({ params }: Props) {
           </Link>
           <div className="flex items-center gap-4">
             <Link
-              href={`/${slug}/${service}/`}
-              className="text-sm font-semibold text-gray-600 hover:text-pink-600 transition-colors"
-              aria-label={`View ${serviceName} in ${locationName}`}
+              href="#quote"
+              className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white text-sm font-bold px-5 py-2 rounded-full shadow-md transition-all flex items-center gap-1.5"
+              aria-label="Get Free Quote"
             >
-              View Service Details
+              <i className="fa-solid fa-file-invoice-dollar text-xs"></i> Get Free Quote
             </Link>
             <a
               href={phoneTel}
-              className="bg-pink-500 hover:bg-pink-600 text-white text-sm font-bold px-4 py-2 rounded-full transition-colors"
+              className="hidden sm:inline-flex bg-pink-50 hover:bg-pink-100 text-pink-600 text-sm font-bold px-4 py-2 rounded-full border border-pink-200 transition-colors"
               aria-label="Call Sweet Maid for Quote"
             >
               {phoneFormatted}
@@ -138,60 +140,73 @@ export default async function CostEstimatorPage({ params }: Props) {
             <span>Updated 2026</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 font-serif leading-tight">
-            How Much Does <span className="text-pink-600">{serviceName}</span> Cost in {locationName}, FL?
+            2026 {displaySrv} Cost in {locationName}, FL
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            The average cost for professional {serviceName.toLowerCase()} in {locationName}, Florida ranges from <strong>${basePrice} to ${basePrice + 160}</strong> depending on home size, condition, and frequency.
+          <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
+            Comprehensive pricing guide and average rates for professional {serviceName.toLowerCase()} throughout {locationName}, Florida.
           </p>
         </div>
 
-        {/* Pricing Estimator Table */}
-        <section className="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-pink-100 mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 font-serif">
-            Estimated {serviceName} Rates in {locationName}
+        {/* Pricing Table Section */}
+        <section className="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-pink-100/80 mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 font-serif">
+            Average {displaySrv} Rates in {locationName}
           </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            Estimated costs based on property size, required labor hours, and local market averages.
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b-2 border-pink-100 text-pink-700 text-sm md:text-base">
-                  <th className="py-4 px-4 font-bold">Property Size</th>
-                  <th className="py-4 px-4 font-bold">Est. Cleaning Time</th>
-                  <th className="py-4 px-4 font-bold">Average Price Range</th>
+                <tr className="border-b border-pink-100 text-pink-900 text-sm">
+                  <th className="py-3 px-4 font-bold">Home Size</th>
+                  <th className="py-3 px-4 font-bold">Est. Cleaning Time</th>
+                  <th className="py-3 px-4 font-bold">Price Range (Est.)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-pink-50 text-gray-700 text-sm md:text-base">
+              <tbody className="divide-y divide-pink-50 text-sm">
                 {pricingTiers.map((tier, idx) => (
                   <tr key={idx} className="hover:bg-pink-50/40 transition-colors">
-                    <td className="py-4 px-4 font-medium">{tier.size}</td>
-                    <td className="py-4 px-4 text-gray-500">{tier.estHours}</td>
-                    <td className="py-4 px-4 font-bold text-gray-900">{tier.estCost}</td>
+                    <td className="py-4 px-4 font-semibold text-gray-800">{tier.size}</td>
+                    <td className="py-4 px-4 text-gray-600">{tier.estHours}</td>
+                    <td className="py-4 px-4 font-bold text-pink-600">{tier.estCost}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="mt-6 p-4 rounded-2xl bg-pink-50 text-xs md:text-sm text-gray-600 flex items-center gap-3">
-            <span className="text-lg">💡</span>
-            <span><strong>Pro-Tip:</strong> Booking recurring service (weekly or bi-weekly) saves up to <strong>20%</strong> on every clean in {locationName}.</span>
-          </div>
         </section>
 
-        {/* Cost Factors */}
-        <section className="grid md:grid-cols-3 gap-6 mb-12">
+        {/* Cost Factors Grid */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-            <div className="text-2xl mb-3">📐</div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Square Footage & Bedrooms</h3>
-            <p className="text-sm text-gray-600">Larger layouts and multiple bathrooms require additional crew hours and specialized sanitization products.</p>
+            <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 text-xl mb-4">
+              <i className="fa-solid fa-ruler-combined"></i>
+            </div>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Home Square Footage</h3>
+            <p className="text-gray-600 text-sm">
+              Larger floor plans and multiple floors require additional cleaning staff and specialized floor care equipment.
+            </p>
           </div>
+
           <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-            <div className="text-2xl mb-3">✨</div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Deep Clean vs. Maintenance</h3>
-            <p className="text-sm text-gray-600">First-time cleans and move-outs require deep baseboard scrub, interior oven/fridge detailing, and grime extraction.</p>
+            <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 text-xl mb-4">
+              <i className="fa-solid fa-sparkles"></i>
+            </div>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Service Frequency</h3>
+            <p className="text-gray-600 text-sm">
+              Recurring weekly or bi-weekly maid services receive up to 20% discount compared to one-time deep cleaning.
+            </p>
           </div>
+
           <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-            <div className="text-2xl mb-3">🌴</div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Florida Climate Factors</h3>
-            <p className="text-sm text-gray-600">Humidity, salt air, and pet hair in {locationName} require specialized HEPA filtration and moisture-safe cleaners.</p>
+            <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 text-xl mb-4">
+              <i className="fa-solid fa-paw"></i>
+            </div>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Pets &amp; Add-ons</h3>
+            <p className="text-gray-600 text-sm">
+              Intensive pet hair removal, inside oven, inside fridge, and interior window tracks can be added for a small flat fee.
+            </p>
           </div>
         </section>
 
@@ -205,11 +220,18 @@ export default async function CostEstimatorPage({ params }: Props) {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
+              href="#quote"
+              className="bg-white hover:bg-pink-50 text-pink-600 font-bold px-8 py-4 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center gap-2"
+              aria-label={`Get Free Quote for ${serviceName} in ${locationName}`}
+            >
+              <i className="fa-solid fa-file-invoice-dollar"></i> Get a Free Quote
+            </Link>
+            <Link
               href={`/${slug}/${service}/`}
-              className="bg-white hover:bg-pink-50 text-pink-600 font-bold px-8 py-4 rounded-full shadow-lg transition-transform hover:scale-105"
+              className="bg-pink-700/60 hover:bg-pink-700/80 text-white font-bold px-8 py-4 rounded-full border border-pink-300/40 transition-colors"
               aria-label={`Book ${serviceName} in ${locationName}`}
             >
-              Book {serviceName} Now
+              View Service Details
             </Link>
             <a
               href={phoneTel}
@@ -218,6 +240,89 @@ export default async function CostEstimatorPage({ params }: Props) {
             >
               Call {phoneFormatted}
             </a>
+          </div>
+        </section>
+
+        {/* Contact Form Section */}
+        <section id="quote" className="mt-14 bg-white rounded-3xl shadow-xl p-6 md:p-10 border border-pink-100 scroll-mt-28">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-pink-100/80 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                <i className="fa-solid fa-file-invoice-dollar"></i>
+                <span>Fast &amp; Free Estimate</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 font-serif">
+                Get a Free Quote in {locationName}
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Fill out the form below and we will get back to you within 24 hours with a personalized, transparent quote for {serviceName.toLowerCase()} in {locationName}.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 shrink-0">
+                    <i className="fas fa-phone text-lg"></i>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Direct Phone</p>
+                    <a href={phoneTel} className="text-pink-600 font-bold hover:underline">{phoneFormatted}</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 shrink-0">
+                    <i className="fas fa-envelope text-lg"></i>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Email Support</p>
+                    <a href="mailto:info@sweetmaidcleaning.com" className="text-gray-600 hover:text-pink-600 transition-colors">
+                      info@sweetmaidcleaning.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 shrink-0">
+                    <i className="fas fa-clock text-lg"></i>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Hours</p>
+                    <p className="text-gray-600">Mon-Sat: 8AM - 6PM</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 shrink-0">
+                    <i className="fas fa-shield-alt text-lg"></i>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Sweet Maid Guarantee</p>
+                    <p className="text-gray-600">100% Satisfaction &amp; Sparkle Guarantee</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-50 p-2 sm:p-4 rounded-2xl border border-pink-100">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/rCltJipBikEEsl6LRrcp"
+                style={{ width: '100%', minHeight: '814px', border: 'none', borderRadius: '0px' }}
+                id="inline-rCltJipBikEEsl6LRrcp"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Sweet Maid Website Form"
+                data-height="814"
+                data-layout-iframe-id="inline-rCltJipBikEEsl6LRrcp"
+                data-form-id="rCltJipBikEEsl6LRrcp"
+                title={`Sweet Maid ${serviceName} Quote Form - ${locationName}`}
+                loading="lazy"
+              />
+            </div>
           </div>
         </section>
 

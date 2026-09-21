@@ -191,34 +191,58 @@ export default function ClientInteractions() {
       });
     }
 
-    // 4. Hero Contact Form Handler (LeadConnector GHL)
-    const heroForm = document.getElementById("heroContactForm") as HTMLFormElement;
-    const heroSuccess = document.getElementById("heroFormSuccess");
-    const heroError = document.getElementById("heroFormError");
-
-    if (heroForm) {
-      const onSubmit = async function (e: Event) {
-        e.preventDefault();
-        const data = new FormData(heroForm);
-        try {
-          const ghl = await fetch("https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/acaff8c7-b7ea-47e8-90d5-adfe581d1517", { method: "POST", body: data });
-          if (ghl.ok && heroSuccess && heroError) {
-            heroForm.style.display = "none";
-            heroError.classList.add("hidden");
-            heroSuccess.classList.remove("hidden");
-          } else {
-            throw new Error();
-          }
-        } catch {
-          if (heroSuccess && heroError) {
-            heroSuccess.classList.add("hidden");
-            heroError.classList.remove("hidden");
-          }
+    // 4. Quote Form Resilience & Smooth Hash Scrolling
+    const ensureQuoteForm = () => {
+      const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe[src*="leadconnectorhq.com"], iframe[data-src*="leadconnectorhq.com"]');
+      iframes.forEach((iframe) => {
+        if (!iframe.src && iframe.dataset.src) {
+          iframe.src = iframe.dataset.src;
         }
-      };
-      heroForm.addEventListener("submit", onSubmit);
-      cleanups.push(() => heroForm.removeEventListener("submit", onSubmit));
-    }
+        if (!iframe.style.minHeight) {
+          iframe.style.minHeight = '814px';
+        }
+      });
+
+      // Ensure form_embed.js is loaded if not already present
+      if (!document.querySelector('script[src*="form_embed.js"]')) {
+        const s = document.createElement('script');
+        s.src = 'https://link.msgsndr.com/js/form_embed.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+    };
+    ensureQuoteForm();
+
+    // Smooth scroll to #quote if hash is present in URL
+    const scrollToQuoteIfPresent = () => {
+      if (typeof window !== 'undefined' && window.location.hash === '#quote') {
+        setTimeout(() => {
+          const quoteEl = document.getElementById('quote');
+          if (quoteEl) {
+            quoteEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 350);
+      }
+    };
+    scrollToQuoteIfPresent();
+
+    // Intercept in-page clicks to #quote for smooth scrolling
+    const onAnchorClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest('a') as HTMLAnchorElement | null;
+      if (!target) return;
+      const href = target.getAttribute('href');
+      if (href === '#quote') {
+        const quoteSection = document.getElementById('quote');
+        if (quoteSection) {
+          e.preventDefault();
+          ensureQuoteForm();
+          quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, '', '#quote');
+        }
+      }
+    };
+    document.addEventListener('click', onAnchorClick);
+    cleanups.push(() => document.removeEventListener('click', onAnchorClick));
 
     // 5. Mobile Accordions Handler
     const accordions = document.querySelectorAll('.accordion-group > button');

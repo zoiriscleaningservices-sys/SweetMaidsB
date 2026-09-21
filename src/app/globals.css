@@ -10,6 +10,11 @@
   --text-gray: #8b5a7d;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 body {
   font-family: var(--font-poppins), 'Poppins', system-ui, sans-serif;
   scroll-behavior: smooth;
