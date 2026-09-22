@@ -749,25 +749,43 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   const targetServiceSuffix = (is_sub_page && isSpecificService) ? `${currentService}/` : '';
   const nearestLocations = getNearestLocations(loc_slug, 12);
 
+  // 1. Transform Desktop Header "Locations" dropdown trigger into an active clickable link to /locations/
+  newContent = newContent.replace(
+    /<button\b([^>]*?)>\s*Locations\s*<i class="fa-solid fa-chevron-down[^"]*"><\/i>\s*<\/button>/gi,
+    '<a href="/locations/" $1 aria-label="Florida Service Locations Directory">Locations <i class="fa-solid fa-chevron-down text-xs"></i></a>'
+  );
+
+  // 2. Direct ALL "View All Locations" links cleanly and reliably to /locations/
+  newContent = newContent.replace(
+    /<a\b(?:(?!<\/a>)[\s\S])*?View All Locations(?:(?!<\/a>)[\s\S])*?<\/a>/gi,
+    '<a href="/locations/" class="text-xs font-bold text-pink-500 hover:text-pink-700 uppercase tracking-widest transition flex items-center justify-between py-1 group"><span>View All Locations</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>'
+  );
+
   if (pageType !== 'login') {
     // Dynamically compute and inject the 100% geographically nearest locations
     const desktopNearbyHtml = nearestLocations.map(c => 
       `<a href="/${c.slug}/${targetServiceSuffix}" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">${c.name}</a>`
     ).join('\n');
 
-    const mobileNearbyHtml = nearestLocations.map(c => 
-      `<a href="/${c.slug}/${targetServiceSuffix}" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-location-dot text-pink-300 w-5"></i><span>${c.name}</span></a>`
-    ).join('\n');
+    const mobileNearbyHtml = `
+      <a href="/locations/" class="mobile-link flex items-center justify-between p-3.5 mb-1.5 rounded-xl bg-gradient-to-r from-pink-400 to-pink-500 text-white font-bold text-sm shadow-md shadow-pink-200 active:scale-95 transition-all">
+        <span class="flex items-center gap-2.5">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>View All Florida Locations</span>
+        </span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+      ${nearestLocations.map(c => 
+        `<a href="/${c.slug}/${targetServiceSuffix}" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-location-dot text-pink-300 w-5"></i><span>${c.name}</span></a>`
+      ).join('\n')}
+      <a href="/locations/" class="mobile-link flex items-center justify-center p-2.5 mt-1 rounded-xl bg-white hover:bg-pink-50 text-pink-600 font-bold text-xs uppercase tracking-wider border border-pink-200 transition-all">
+        <span>Browse All 799+ Florida Cities</span> <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+      </a>
+    `;
 
     newContent = newContent.replace(
       /(<div id="nearby-locations-list"[^>]*>)[\s\S]*?(<\/div>\s*<div class="border-t)/i,
       `<div id="nearby-locations-list" class="space-y-1">\n${desktopNearbyHtml}\n</div>\n              <div class="border-t`
-    );
-
-    // Direct ANY "View All Locations" link to /locations/
-    newContent = newContent.replace(
-      /<a\s+[^>]*href="[^"]*"([^>]*>[\s\S]*?View All Locations[\s\S]*?<\/a>)/gi,
-      '<a href="/locations/"$1'
     );
 
     newContent = newContent.replace(
@@ -794,19 +812,21 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <a href="/recurring-maid-service/" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">Recurring Maid Services</a>
     `;
     const loginMobileNearbyHtml = `
-      <a href="/locations/" class="mobile-link flex items-center justify-between p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><span>View All Service Areas</span><i class="fa-solid fa-arrow-right text-xs text-pink-400"></i></a>
+      <a href="/locations/" class="mobile-link flex items-center justify-between p-3.5 mb-1.5 rounded-xl bg-gradient-to-r from-pink-400 to-pink-500 text-white font-bold text-sm shadow-md shadow-pink-200 active:scale-95 transition-all">
+        <span class="flex items-center gap-2.5">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>View All Florida Locations</span>
+        </span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
       <a href="/house-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-broom text-pink-300 w-5"></i><span>House Cleaning</span></a>
       <a href="/deep-cleaning/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-sparkles text-pink-300 w-5"></i><span>Deep Cleaning</span></a>
+      <a href="/recurring-maid-service/" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-calendar-check text-pink-300 w-5"></i><span>Recurring Maid Services</span></a>
     `;
 
     newContent = newContent.replace(
       /(<div id="nearby-locations-list"[^>]*>)[\s\S]*?(<\/div>\s*<div class="border-t)/i,
       `<div id="nearby-locations-list" class="space-y-1">\n${loginDesktopNearbyHtml}\n</div>\n              <div class="border-t`
-    );
-
-    newContent = newContent.replace(
-      /<a\s+[^>]*href="[^"]*"([^>]*>[\s\S]*?View All Locations[\s\S]*?<\/a>)/gi,
-      '<a href="/locations/"$1'
     );
 
     newContent = newContent.replace(
@@ -1072,10 +1092,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<a\s+href="([^"]*(?:x\.com|twitter\.com)[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Follow Sweet Maid on X" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*yelp\.com[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Find Sweet Maid on Yelp" rel="noopener noreferrer"$2>');
   newContent = newContent.replace(/<a\s+href="([^"]*wa\.me[^"]*)"(?![^>]*aria-label)([^>]*)>/gi, '<a href="$1" aria-label="Chat with Sweet Maid on WhatsApp" rel="noopener noreferrer"$2>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse all Florida cleaning locations"$1>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/booknow\/?"[^>]*)>/gi, '<a aria-label="Book a professional cleaning service now"$1>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/book-online\/?"[^>]*)>/gi, '<a aria-label="Book your cleaning service online"$1>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse all Florida cleaning locations" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/booknow\/?"[^>]*)>/gi, '<a aria-label="Book a professional cleaning service now" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/book-online\/?"[^>]*)>/gi, '<a aria-label="Book your cleaning service online" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/about\/?"[^>]*)>/gi, '<a aria-label="About Sweet Maid cleaning company" $1>');
 
   // Dynamic Full Social Links Bar Upgrade for All Templates
   const fullFooterSocialBar = `<div class="flex flex-wrap items-center gap-2.5">
@@ -1158,11 +1178,12 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     `$1<a href="/privacy-policy/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Privacy Policy">Privacy Policy</a>\n          <a href="/terms-and-conditions/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Terms and Conditions">Terms & Conditions</a>\n          $2`
   );
 
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog"$1>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery"$1>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/login\/?"[^>]*)>/gi, '<a aria-label="Customer portal login"$1>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="#"[^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Service Details"$1>');
-  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Services Florida"$1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse Florida Cleaning Service Locations Directory" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/login\/?"[^>]*)>/gi, '<a aria-label="Customer portal login" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="#"[^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Service Details" $1>');
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*)>/gi, '<a aria-label="Sweet Maid Cleaning Services Florida" $1>');
 
   // 3. Accessibility: Form Inputs & Controls
   newContent = newContent.replace(/<input\s+type="text"([^>]*placeholder="([^"]+)"(?![^>]*aria-label)[^>]*)>/gi, '<input type="text" aria-label="$2"$1>');
