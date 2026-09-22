@@ -5,36 +5,53 @@ export const MIAMI_DADE_GBP_URL = "https://www.google.com/maps/place/Sweet+Maid+
 export const BRADENTON_GBP_URL = "https://www.google.com/maps/search/?api=1&query=Sweet+Maid+Cleaning+Service+Bradenton+FL&query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA";
 
 /**
- * Generates a high-reliability, responsive OpenStreetMap embed URL
- * centered on the exact latitude & longitude of the city, zip code, or county,
- * featuring an exact location marker pin and calibrated zoom bounding box.
+ * Derives the optimal Google Maps search query and zoom level
+ * for each individual local zip code, city, neighborhood, or county.
  */
-export function generateLocalMapUrl(locSlug: string, cleanName: string, isManatee: boolean): string {
-  let lat = 27.4989;
-  let lng = -82.5748;
+export function getLocalMapQuery(locSlug: string, cleanName: string): { query: string; zoom: number } {
+  const s = (locSlug || '').toLowerCase().trim();
 
-  if (isManatee || locSlug === 'bradenton-fl' || locSlug === 'home') {
-    lat = 27.4989;
-    lng = -82.5748;
-  } else {
-    const entity = resolveAnyLocation(locSlug);
-    if (entity && typeof entity.lat === 'number' && typeof entity.lng === 'number') {
-      lat = entity.lat;
-      lng = entity.lng;
+  // 1. If 5-digit zip code (e.g. 33139, 34211, 33602...)
+  if (/^\d{5}$/.test(s)) {
+    const entity = resolveAnyLocation(s);
+    if (entity?.parentCity) {
+      return { query: `${s}, ${entity.parentCity}, FL`, zoom: 14 };
     }
+    return { query: `${s}, FL`, zoom: 14 };
   }
 
-  // Calculate high-resolution city bounding box (~10-12km coverage)
-  const deltaLng = 0.08;
-  const deltaLat = 0.05;
-  const minLng = (lng - deltaLng).toFixed(4);
-  const minLat = (lat - deltaLat).toFixed(4);
-  const maxLng = (lng + deltaLng).toFixed(4);
-  const maxLat = (lat + deltaLat).toFixed(4);
-  const markerLat = lat.toFixed(4);
-  const markerLng = lng.toFixed(4);
+  // 2. If Bradenton HQ or home page
+  if (s === 'bradenton-fl' || s === 'home') {
+    return { query: 'Sweet Maid Cleaning Service, 14651 Westbrook Cir Apt 312, Bradenton, FL 34211', zoom: 14 };
+  }
 
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${minLng}%2C${minLat}%2C${maxLng}%2C${maxLat}&layer=mapnik&marker=${markerLat}%2C${markerLng}`;
+  // 3. If specific resolved city, neighborhood, or county
+  const entity = resolveAnyLocation(s);
+  if (entity) {
+    if (entity.type === 'county') {
+      return { query: `${entity.name}, FL`, zoom: 11 };
+    }
+    if (entity.type === 'neighborhood' && entity.parentCity) {
+      return { query: `${entity.name}, ${entity.parentCity}, FL`, zoom: 14 };
+    }
+    return { query: `${entity.name}, FL`, zoom: 13 };
+  }
+
+  // 4. Statewide / general service pages (e.g. house-cleaning, deep-cleaning)
+  if (!cleanName || cleanName.toLowerCase() === 'florida') {
+    return { query: 'Sweet Maid Cleaning Service, 14651 Westbrook Cir Apt 312, Bradenton, FL 34211', zoom: 14 };
+  }
+
+  return { query: `${cleanName}, FL`, zoom: 13 };
+}
+
+/**
+ * Generates an official Google Map embed URL tailored specifically
+ * to each individual zip code, city, neighborhood, or headquarters location.
+ */
+export function generateLocalMapUrl(locSlug: string, cleanName: string, isManatee?: boolean): string {
+  const { query, zoom } = getLocalMapQuery(locSlug, cleanName);
+  return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&t=&z=${zoom}&ie=UTF8&iwloc=&output=embed`;
 }
 
 /**
