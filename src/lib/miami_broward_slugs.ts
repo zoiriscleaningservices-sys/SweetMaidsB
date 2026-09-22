@@ -503,3 +503,111 @@ export function is305Area(slug: string, clean_name: string = ''): boolean {
   const c = (clean_name || '').toLowerCase().trim();
   return miamiBrowardSlugs.includes(s) || isMonroeCounty(s, c);
 }
+
+export const miamiDadeMunicipalities = new Set([
+  "miami", "miami-fl",
+  "miami-beach", "miami-beach-fl",
+  "coral-gables", "coral-gables-fl",
+  "hialeah", "hialeah-fl",
+  "hialeah-gardens", "hialeah-gardens-fl",
+  "doral", "doral-fl",
+  "aventura", "aventura-fl",
+  "bal-harbour", "bal-harbour-fl",
+  "bay-harbor-islands", "bay-harbor-islands-fl",
+  "biscayne-park", "biscayne-park-fl",
+  "brickell", "brickell-fl", "north-brickell-fl", "south-brickell-fl", "east-brickell-fl", "west-brickell-fl",
+  "coconut-grove", "coconut-grove-fl",
+  "cutler-bay", "cutler-bay-fl", "cutler", "cutler-fl", "cutler-ridge", "cutler-ridge-fl",
+  "el-portal", "el-portal-fl",
+  "florida-city", "florida-city-fl",
+  "golden-beach", "golden-beach-fl",
+  "homestead", "homestead-fl",
+  "key-biscayne", "key-biscayne-fl",
+  "medley", "medley-fl",
+  "miami-gardens", "miami-gardens-fl",
+  "miami-lakes", "miami-lakes-fl",
+  "miami-shores", "miami-shores-fl",
+  "miami-springs", "miami-springs-fl",
+  "north-bay-village", "north-bay-village-fl",
+  "north-miami", "north-miami-fl",
+  "north-miami-beach", "north-miami-beach-fl",
+  "opa-locka", "opa-locka-fl",
+  "palmetto-bay", "palmetto-bay-fl",
+  "pinecrest", "pinecrest-fl",
+  "south-miami", "south-miami-fl",
+  "sunny-isles-beach", "sunny-isles-beach-fl",
+  "surfside", "surfside-fl",
+  "sweetwater", "sweetwater-fl",
+  "virginia-gardens", "virginia-gardens-fl",
+  "west-miami", "west-miami-fl",
+  "wynwood", "wynwood-fl",
+  "allapattah", "allapattah-fl",
+  "little-havana", "little-havana-fl",
+  "little-haiti", "little-haiti-fl",
+  "design-district", "design-district-fl",
+  "edgewater", "edgewater-fl", "edgewater-miami-fl",
+  "midtown-miami", "midtown-miami-fl",
+  "downtown-miami", "downtown-miami-fl",
+  "kendall", "kendall-fl", "kendall-west", "kendall-west-fl", "kendale-lakes", "kendale-lakes-fl",
+  "westchester", "westchester-fl",
+  "tamiami", "tamiami-fl",
+  "fountainebleau", "fountainebleau-fl", "fontainebleau", "fontainebleau-fl",
+  "the-hammocks", "the-hammocks-fl", "hammocks", "hammocks-fl",
+  "the-crossings", "the-crossings-fl", "crossings", "crossings-fl",
+  "country-club", "country-club-fl",
+  "carol-city", "carol-city-fl",
+  "norland", "norland-fl",
+  "ojus", "ojus-fl",
+  "ives-estates", "ives-estates-fl",
+  "west-little-river", "west-little-river-fl",
+  "gladeview", "gladeview-fl",
+  "brownsville", "brownsville-fl",
+  "pinewood", "pinewood-fl",
+  "westview", "westview-fl",
+  "sunset", "sunset-fl",
+  "olympia-heights", "olympia-heights-fl",
+  "glenvar-heights", "glenvar-heights-fl",
+  "south-miami-heights", "south-miami-heights-fl",
+  "richmond-heights", "richmond-heights-fl",
+  "richmond-west", "richmond-west-fl",
+  "palmetto-estates", "palmetto-estates-fl",
+  "goulds", "goulds-fl",
+  "princeton", "princeton-fl",
+  "naranja", "naranja-fl",
+  "leisure-city", "leisure-city-fl",
+  "golden-glades", "golden-glades-fl",
+  "three-lakes", "three-lakes-fl",
+  "westwood-lake", "westwood-lake-fl", "westwood-lakes", "westwood-lakes-fl",
+  "country-walk", "country-walk-fl",
+  "lakes-by-the-bay", "lakes-by-the-bay-fl",
+  "east-perrine", "east-perrine-fl", "west-perrine", "west-perrine-fl", "perrine", "perrine-fl",
+  "andover", "andover-fl",
+  "bunche-park", "bunche-park-fl",
+  "coral-terrace", "coral-terrace-fl",
+  "flagami", "flagami-fl",
+  "isle-of-normandy", "isle-of-normandy-fl",
+  "scott-lake", "scott-lake-fl",
+  "miami-dade", "miami-dade-fl", "miami-dade-county", "miami-dade-county-fl", "dade-county", "dade-county-fl"
+]);
+
+// Checks if a slug or location name belongs strictly to Miami-Dade County
+export function isMiamiDadeCounty(slug: string, clean_name: string = ''): boolean {
+  if (!slug && !clean_name) return false;
+  const s = (slug || '').toLowerCase().trim();
+  const c = (clean_name || '').toLowerCase().trim();
+
+  if (miamiDadeMunicipalities.has(s)) return true;
+  if (s.startsWith('miami-') || s.startsWith('miami') || s.includes('dade')) return true;
+  if (c === 'miami' || c.startsWith('miami ') || c.includes('miami-dade') || c.includes('dade')) return true;
+
+  // 3-digit prefix for Miami-Dade zip codes (331xx, 332xx, 33010-33018, 33030-33035, 33054-33056)
+  if (/^331\d{2}$/.test(s) || /^332\d{2}$/.test(s)) return true;
+  const zipNum = parseInt(s, 10);
+  if (!isNaN(zipNum)) {
+    if ((zipNum >= 33010 && zipNum <= 33018) || (zipNum >= 33030 && zipNum <= 33035) || (zipNum >= 33054 && zipNum <= 33056)) {
+      return true;
+    }
+  }
+
+  return false;
+}

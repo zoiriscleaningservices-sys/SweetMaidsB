@@ -1,4 +1,4 @@
-import { is305Area } from './miami_broward_slugs';
+import { is305Area, isMiamiDadeCounty } from './miami_broward_slugs';
 import { isManateeCounty } from './manatee';
 import { generateLocalMapUrl, getGoogleMapsUrl } from './map_engine';
 
@@ -14,12 +14,13 @@ export interface LocalBlogOptions {
 export function generateLocalBlogContent(cleanName: string, slug: string): string {
   const is305 = is305Area(slug, cleanName);
   const isManatee = isManateeCounty(slug, cleanName) || slug === 'bradenton-fl';
+  const isDade = isMiamiDadeCounty(slug, cleanName);
   const phoneDisplay = is305 ? '(305) 851-6959' : '(941) 222-2080';
   const phoneHref = is305 ? 'tel:13058516959' : 'tel:19412222080';
 
   // Map URL
   const mapUrl = generateLocalMapUrl(slug, cleanName, isManatee);
-  const gmapsLink = getGoogleMapsUrl(slug, cleanName, isManatee);
+  const gmapsLink = getGoogleMapsUrl(slug, cleanName, isManatee, isDade);
 
   return `
   <!-- ============================================================
@@ -381,12 +382,12 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
               <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="text-center sm:text-left">
-              <p class="font-bold text-gray-900 text-xs sm:text-sm">Serving ${cleanName}, FL &amp; Surrounding Neighborhoods</p>
-              <p class="text-[11px] sm:text-xs text-gray-500">${isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : 'Licensed & Insured Local Maid Crews'}</p>
+              <p class="font-bold text-gray-900 text-xs sm:text-sm">${isDade ? `Sweet Maid Cleaning Service • ${cleanName}, Miami-Dade` : `Serving ${cleanName}, FL &amp; Surrounding Neighborhoods`}</p>
+              <p class="text-[11px] sm:text-xs text-gray-500">${isDade ? 'Official Google Business Profile' : isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : 'Licensed & Insured Local Maid Crews'}</p>
             </div>
             <div class="flex items-center gap-2">
               <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-full text-xs shadow-sm transition hover:scale-105">
-                <span>Google Maps</span>
+                <span>${isDade ? 'Google Business Profile' : 'Google Maps'}</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
               <a href="${phoneHref}" class="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-3.5 py-2 rounded-full text-xs shadow-sm transition hover:scale-105">

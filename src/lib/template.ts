@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { serviceSlugs, formatName, getNearestLocations, resolveAnyLocation } from './data';
-import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs } from './miami_broward_slugs';
+import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs, isMiamiDadeCounty } from './miami_broward_slugs';
 import { isManateeCounty, manateeKeyHubs } from './manatee';
 import { generateSeoContentPack } from './seo_engine';
 import { generateLocalBlogContent } from './blog_engine';
@@ -1201,10 +1201,27 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Localized Map Engine: High-reliability OpenStreetMap embed + Google Maps Direction/Place Action
   if (pageType !== 'login') {
+    const isDade = isMiamiDadeCounty(loc_slug, clean_name);
     const mapUrl = generateLocalMapUrl(loc_slug, clean_name, isManatee);
-    const gmapsLink = getGoogleMapsUrl(loc_slug, clean_name, isManatee);
+    const gmapsLink = getGoogleMapsUrl(loc_slug, clean_name, isManatee, isDade);
 
-    const mapOverlayHtml = isManatee
+    const mapOverlayHtml = isDade
+      ? `<div id="local-map-badge" class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-pink-100 flex flex-col sm:flex-row items-start sm:items-center gap-3 z-10">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 text-sm">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-gray-900">Sweet Maid Cleaning Service • Miami-Dade</div>
+              <div class="text-[11px] text-gray-600">Official Google Business Profile • Serving ${clean_name}, FL</div>
+            </div>
+          </div>
+          <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all shrink-0">
+            <span>View Google Business Profile</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>`
+      : isManatee
       ? `<div id="local-map-badge" class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-pink-100 flex flex-col sm:flex-row items-start sm:items-center gap-3 z-10">
           <div class="flex items-center gap-2.5">
             <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 text-sm">

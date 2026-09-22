@@ -1,4 +1,8 @@
 import { resolveAnyLocation } from './data';
+import { isMiamiDadeCounty } from './miami_broward_slugs';
+
+export const MIAMI_DADE_GBP_URL = "https://www.google.com/maps/place/Sweet+Maid+Cleaning+Service/data=!4m2!3m1!1s0x0:0x8d09667425e8c230?sa=X&ved=1t:2428&hl=en&ictx=111";
+export const BRADENTON_GBP_URL = "https://www.google.com/maps/search/?api=1&query=Sweet+Maid+Cleaning+Service+Bradenton+FL&query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA";
 
 /**
  * Generates a high-reliability, responsive OpenStreetMap embed URL
@@ -35,12 +39,17 @@ export function generateLocalMapUrl(locSlug: string, cleanName: string, isManate
 
 /**
  * Generates an authentic direct Google Maps link for the specific location:
+ * - Miami-Dade County: official Google Business Profile
  * - Bradenton HQ: official Google Place ID
  * - Other locations: direct Google Maps business search for the local area
  */
-export function getGoogleMapsUrl(locSlug: string, cleanName: string, isManatee: boolean): string {
+export function getGoogleMapsUrl(locSlug: string, cleanName: string, isManatee: boolean, isMiamiDade?: boolean): string {
+  const isDade = isMiamiDade ?? isMiamiDadeCounty(locSlug, cleanName);
+  if (isDade) {
+    return MIAMI_DADE_GBP_URL;
+  }
   if (isManatee || locSlug === 'bradenton-fl' || locSlug === 'home') {
-    return 'https://www.google.com/maps/search/?api=1&query=Sweet+Maid+Cleaning+Service+Bradenton+FL&query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA';
+    return BRADENTON_GBP_URL;
   }
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Sweet Maid Cleaning Service ${cleanName} FL`)}`;
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { resolveAnyLocation, formatName, serviceSlugs, getNearestLocations } from '@/lib/data';
-import { is305Area } from '@/lib/miami_broward_slugs';
+import { is305Area, isMiamiDadeCounty } from '@/lib/miami_broward_slugs';
 import { isManateeCounty } from '@/lib/manatee';
 import { generateLocalMapUrl, getGoogleMapsUrl } from '@/lib/map_engine';
 import Link from 'next/link';
@@ -82,11 +82,12 @@ export default async function CostEstimatorPage({ params }: Props) {
 
   const is305 = is305Area(slug, locationName);
   const isManatee = isManateeCounty(slug, locationName) || slug === 'bradenton-fl';
+  const isDade = isMiamiDadeCounty(slug, locationName);
   const phoneFormatted = is305 ? "(305) 851-6959" : "(941) 222-2080";
   const phoneTel = is305 ? "tel:13058516959" : "tel:19412222080";
   const nearestLocations = getNearestLocations(slug, 10);
   const mapEmbedUrl = generateLocalMapUrl(slug, locationName, isManatee);
-  const googleMapsUrl = getGoogleMapsUrl(slug, locationName, isManatee);
+  const googleMapsUrl = getGoogleMapsUrl(slug, locationName, isManatee, isDade);
 
   // Dynamic realistic rates based on service type
   let basePrice = 149;
@@ -427,7 +428,7 @@ export default async function CostEstimatorPage({ params }: Props) {
               className="inline-flex items-center gap-2 px-4 py-2.5 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all self-start md:self-auto shrink-0"
             >
               <i className="fa-solid fa-location-dot"></i>
-              <span>View on Google Maps</span>
+              <span>{isDade ? 'Google Business Profile' : 'View on Google Maps'}</span>
               <i className="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
             </a>
           </div>
@@ -447,8 +448,8 @@ export default async function CostEstimatorPage({ params }: Props) {
                 <i className="fa-solid fa-shield-halved"></i>
               </div>
               <div>
-                <div className="text-xs font-bold text-gray-900">Sweet Maid • {locationName}, FL</div>
-                <div className="text-[11px] text-gray-600">{isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : `Dedicated Local Teams Serving ${locationName}, FL`}</div>
+                <div className="text-xs font-bold text-gray-900">{isDade ? `Sweet Maid • ${locationName}, Miami-Dade` : `Sweet Maid • ${locationName}, FL`}</div>
+                <div className="text-[11px] text-gray-600">{isDade ? 'Official Google Business Profile' : isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : `Dedicated Local Teams Serving ${locationName}, FL`}</div>
               </div>
             </div>
           </div>
