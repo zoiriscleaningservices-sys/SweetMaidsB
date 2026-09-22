@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { serviceSlugs, formatName, getNearestLocations } from './data';
+import { serviceSlugs, formatName, getNearestLocations, resolveAnyLocation } from './data';
 import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs } from './miami_broward_slugs';
 import { isManateeCounty, manateeKeyHubs } from './manatee';
 import { generateSeoContentPack } from './seo_engine';
@@ -35,6 +35,9 @@ export const serviceH1Map: Record<string, string> = {
   "property-maintenance": "Best Property Maintenance & Handyman Services in",
   "recurring-maid-service": "Top-Rated Recurring Maid Service & Scheduled House Cleaning in"
 };
+
+import { generateLocalMapUrl, getGoogleMapsUrl } from './map_engine';
+export { generateLocalMapUrl, getGoogleMapsUrl };
 
 export function generatePageImageSchema(cleanName: string, serviceName: string = 'House Cleaning') {
   return [
@@ -1196,31 +1199,47 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Fix Map Headings and Pin Labels
   newContent = newContent.replace(/<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving.*?<\/h2>/gi, `<h2 class="text-4xl font-bold mt-3 mb-6">Proudly Serving ${clean_name}</h2>`);
 
-  // Maps - Google Business Profile ONLY for Bradenton HQ & all Manatee County locations vs Dynamic City Query for all other pages
-  if (isManatee) {
-    const loc_query = encodeURIComponent('Sweet Maid Cleaning Service, 14651 Westbrook Cir Apt 312, Bradenton, FL 34211');
-    const map_url = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${loc_query}+()&t=&z=15&ie=UTF8&iwloc=B&output=embed`;
-    const gbpBadgeHtml = `<a href="https://www.google.com/maps/search/?api=1&query=Sweet+Maid+Cleaning+Service+Bradenton+FL&query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer" class="absolute bottom-4 left-4 bg-white/95 backdrop-blur px-4 py-2.5 rounded-xl text-xs font-semibold shadow-md hover:bg-white hover:text-pink-600 transition-all flex items-center gap-2 text-gray-900 border border-gray-100 group z-10">
-            <i class="fa-solid fa-location-dot text-pink-400 group-hover:scale-110 transition-transform"></i>
-            <span><strong>Sweet Maid Cleaning Service</strong> • 14651 Westbrook Cir Apt 312, Bradenton, FL</span>
-          </a>`;
+  // Localized Map Engine: High-reliability OpenStreetMap embed + Google Maps Direction/Place Action
+  if (pageType !== 'login') {
+    const mapUrl = generateLocalMapUrl(loc_slug, clean_name, isManatee);
+    const gmapsLink = getGoogleMapsUrl(loc_slug, clean_name, isManatee);
 
-    newContent = newContent.replace(/src="https:\/\/maps\.google\.com\/maps[^"]*"/gi, `src="${map_url}"`);
-    newContent = newContent.replace(/src="https:\/\/www\.google\.com\/maps\/embed[^"]*"/gi, `src="${map_url}"`);
-    newContent = newContent.replace(/<div class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, gbpBadgeHtml);
-    newContent = newContent.replace(/<a\s+[^>]*query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, gbpBadgeHtml);
-  } else if (pageType !== 'login' && pageType !== 'blog') {
-    // All other cities: Miami, Tampa, Orlando, Sarasota, Jacksonville, etc.
-    const loc_query = encodeURIComponent(`${clean_name}, Florida`);
-    const map_url = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${loc_query}+()&t=&z=13&ie=UTF8&iwloc=B&output=embed`;
-    const cityBadgeHtml = `<div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-xs font-semibold shadow-sm">
-            📍 Servicing ${clean_name} and surrounding areas
-          </div>`;
+    const mapOverlayHtml = isManatee
+      ? `<div id="local-map-badge" class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-pink-100 flex flex-col sm:flex-row items-start sm:items-center gap-3 z-10">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 text-sm">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-gray-900">Sweet Maid Cleaning Service HQ</div>
+              <div class="text-[11px] text-gray-600">14651 Westbrook Cir Apt 312, Bradenton, FL 34211</div>
+            </div>
+          </div>
+          <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all shrink-0">
+            <span>View on Google Maps</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>`
+      : `<div id="local-map-badge" class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-pink-100 flex flex-col sm:flex-row items-start sm:items-center gap-3 z-10">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 text-sm">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-gray-900">Active Service Area: ${clean_name}, FL</div>
+              <div class="text-[11px] text-gray-600">Servicing ${clean_name} &amp; surrounding Florida neighborhoods</div>
+            </div>
+          </div>
+          <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all shrink-0">
+            <span>Open in Google Maps</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>`;
 
-    newContent = newContent.replace(/src="https:\/\/maps\.google\.com\/maps[^"]*"/gi, `src="${map_url}"`);
-    newContent = newContent.replace(/src="https:\/\/www\.google\.com\/maps\/embed[^"]*"/gi, `src="${map_url}"`);
-    newContent = newContent.replace(/<a\s+[^>]*query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, cityBadgeHtml);
-    newContent = newContent.replace(/<div class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, cityBadgeHtml);
+    newContent = newContent.replace(/src="https:\/\/(?:maps\.google\.com\/maps|www\.google\.com\/maps\/embed|www\.openstreetmap\.org\/export\/embed\.html)[^"]*"/gi, `src="${mapUrl}"`);
+    newContent = newContent.replace(/<a\s+[^>]*query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, mapOverlayHtml);
+    newContent = newContent.replace(/<div\s+class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, mapOverlayHtml);
+    newContent = newContent.replace(/<div\s+id="local-map-badge"[^>]*>[\s\S]*?<\/div>/gi, mapOverlayHtml);
     newContent = newContent.replace(/Servicing Florida and surrounding areas/gi, `Servicing ${clean_name} and surrounding areas`);
     newContent = newContent.replace(/Servicing entire 34205, 34209, 34208, 34210 areas/g, `Servicing ${clean_name} and surrounding areas`);
   }

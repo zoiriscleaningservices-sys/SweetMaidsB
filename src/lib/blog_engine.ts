@@ -1,5 +1,6 @@
 import { is305Area } from './miami_broward_slugs';
 import { isManateeCounty } from './manatee';
+import { generateLocalMapUrl, getGoogleMapsUrl } from './map_engine';
 
 export interface LocalBlogOptions {
   cleanName: string;
@@ -17,9 +18,8 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
   const phoneHref = is305 ? 'tel:13058516959' : 'tel:19412222080';
 
   // Map URL
-  const mapUrl = isManatee && slug === 'bradenton-fl'
-    ? 'https://maps.google.com/maps?width=100%25&height=450&hl=en&q=Sweet%20Maid%20Cleaning%20Service%2C%2014651%20Westbrook%20Cir%20Apt%20312%2C%20Bradenton%2C%20FL%2034211&t=&z=14&ie=UTF8&iwloc=B&output=embed'
-    : `https://maps.google.com/maps?width=100%25&height=450&hl=en&q=${encodeURIComponent(cleanName + ', Florida')}+()&t=&z=13&ie=UTF8&iwloc=B&output=embed`;
+  const mapUrl = generateLocalMapUrl(slug, cleanName, isManatee);
+  const gmapsLink = getGoogleMapsUrl(slug, cleanName, isManatee);
 
   return `
   <!-- ============================================================
@@ -363,7 +363,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
           </p>
         </div>
 
-        <!-- Embedded Google Map Frame with Clean Mobile-Friendly Badge -->
+        <!-- Embedded Local Service Area Map Frame with Clean Mobile-Friendly Badge -->
         <div class="relative w-full h-80 sm:h-96 md:h-[450px] rounded-3xl overflow-hidden shadow-lg border border-pink-100">
           <iframe
             src="${mapUrl}"
@@ -376,18 +376,24 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             title="Sweet Maid Cleaning Service Area Map in ${cleanName}, FL">
           </iframe>
           <!-- Floating Map Details Badge -->
-          <div class="absolute bottom-3 left-3 right-3 sm:right-auto sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl shadow-lg border border-pink-100 flex flex-col sm:flex-row items-center gap-3">
+          <div class="absolute bottom-3 left-3 right-3 sm:right-auto sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl shadow-lg border border-pink-100 flex flex-col sm:flex-row items-center gap-3 z-10">
             <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-lg flex-shrink-0">
               <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="text-center sm:text-left">
-              <p class="font-bold text-gray-900 text-xs sm:text-sm">Serving ${cleanName}, FL & Surrounding Neighborhoods</p>
-              <p class="text-[11px] sm:text-xs text-gray-500">Same-Day & Scheduled Maid Service Available</p>
+              <p class="font-bold text-gray-900 text-xs sm:text-sm">Serving ${cleanName}, FL &amp; Surrounding Neighborhoods</p>
+              <p class="text-[11px] sm:text-xs text-gray-500">${isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : 'Licensed & Insured Local Maid Crews'}</p>
             </div>
-            <a href="${phoneHref}" class="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-4 py-2 rounded-full text-xs shadow-sm transition hover:scale-105">
-              <i class="fa-solid fa-phone text-xs"></i>
-              <span>${phoneDisplay}</span>
-            </a>
+            <div class="flex items-center gap-2">
+              <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-full text-xs shadow-sm transition hover:scale-105">
+                <span>Google Maps</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+              <a href="${phoneHref}" class="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-3.5 py-2 rounded-full text-xs shadow-sm transition hover:scale-105">
+                <i class="fa-solid fa-phone text-xs"></i>
+                <span>${phoneDisplay}</span>
+              </a>
+            </div>
           </div>
         </div>
 

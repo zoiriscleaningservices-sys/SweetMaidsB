@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { resolveAnyLocation, formatName, serviceSlugs, getNearestLocations } from '@/lib/data';
 import { is305Area } from '@/lib/miami_broward_slugs';
+import { isManateeCounty } from '@/lib/manatee';
+import { generateLocalMapUrl, getGoogleMapsUrl } from '@/lib/map_engine';
 import Link from 'next/link';
 
 interface Props {
@@ -79,9 +81,12 @@ export default async function CostEstimatorPage({ params }: Props) {
   const displaySrv = shortServiceMap[service] || serviceName;
 
   const is305 = is305Area(slug, locationName);
+  const isManatee = isManateeCounty(slug, locationName) || slug === 'bradenton-fl';
   const phoneFormatted = is305 ? "(305) 851-6959" : "(941) 222-2080";
   const phoneTel = is305 ? "tel:13058516959" : "tel:19412222080";
   const nearestLocations = getNearestLocations(slug, 10);
+  const mapEmbedUrl = generateLocalMapUrl(slug, locationName, isManatee);
+  const googleMapsUrl = getGoogleMapsUrl(slug, locationName, isManatee);
 
   // Dynamic realistic rates based on service type
   let basePrice = 149;
@@ -395,6 +400,55 @@ export default async function CostEstimatorPage({ params }: Props) {
                 <div className="call-line">
                   Questions in the meantime? Call <a href={phoneTel}>{phoneFormatted}</a>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Local Service Area Map */}
+        <section className="mt-14 bg-white rounded-3xl p-6 md:p-8 border border-pink-100/80 shadow-xs" aria-label={`Sweet Maid Service Area Map in ${locationName}, Florida`}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-pink-100/80 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-2">
+                <i className="fa-solid fa-map-location-dot"></i>
+                <span>Local Florida Service Coverage</span>
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 font-serif">
+                {displaySrv} Coverage in {locationName}, FL
+              </h3>
+              <p className="text-xs md:text-sm text-gray-500 mt-1">
+                Sweet Maid dispatches licensed, background-checked cleaning specialists across {locationName} and neighboring communities daily.
+              </p>
+            </div>
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all self-start md:self-auto shrink-0"
+            >
+              <i className="fa-solid fa-location-dot"></i>
+              <span>View on Google Maps</span>
+              <i className="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
+            </a>
+          </div>
+
+          <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden shadow-inner border border-gray-100 bg-gray-100">
+            <iframe
+              src={mapEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title={`Sweet Maid Cleaning Service Area Map in ${locationName}, Florida`}
+            />
+            <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl shadow-lg border border-pink-100 flex items-center gap-3 z-10">
+              <div className="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 text-sm">
+                <i className="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <div className="text-xs font-bold text-gray-900">Sweet Maid • {locationName}, FL</div>
+                <div className="text-[11px] text-gray-600">{isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : `Dedicated Local Teams Serving ${locationName}, FL`}</div>
               </div>
             </div>
           </div>
