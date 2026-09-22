@@ -49,10 +49,6 @@ export default function RootLayout({
         {children}
         <FloatingBookingButton />
         <ClientInteractions />
-        <Script
-          src="https://link.msgsndr.com/js/form_embed.js"
-          strategy="afterInteractive"
-        />
         <Script id="elfsight-loader" strategy="lazyOnload">
           {`
             if (document.querySelector('[class*="elfsight-app"]')) {

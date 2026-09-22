@@ -191,27 +191,64 @@ export default function ClientInteractions() {
       });
     }
 
-    // 4. Quote Form Resilience & Smooth Hash Scrolling
-    const ensureQuoteForm = () => {
-      const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe[src*="leadconnectorhq.com"], iframe[data-src*="leadconnectorhq.com"]');
-      iframes.forEach((iframe) => {
-        if (!iframe.src && iframe.dataset.src) {
-          iframe.src = iframe.dataset.src;
-        }
-        if (!iframe.style.minHeight) {
-          iframe.style.minHeight = '814px';
-        }
-      });
+    // 4. Native Quote Form Webhook Submission Handler
+    const quoteForm = document.getElementById('quoteForm') as HTMLFormElement | null;
+    const successCard = document.getElementById('successCard') as HTMLElement | null;
 
-      // Ensure form_embed.js is loaded if not already present
-      if (!document.querySelector('script[src*="form_embed.js"]')) {
-        const s = document.createElement('script');
-        s.src = 'https://link.msgsndr.com/js/form_embed.js';
-        s.async = true;
-        document.body.appendChild(s);
-      }
-    };
-    ensureQuoteForm();
+    if (quoteForm) {
+      const onSubmit = async function (e: Event) {
+        e.preventDefault();
+        const submitBtn = quoteForm.querySelector('.submit-btn') as HTMLButtonElement | null;
+        const originalBtnText = submitBtn ? submitBtn.textContent : 'Get My Free Quote →';
+
+        const serviceInput = quoteForm.querySelector<HTMLSelectElement>('[name="service"]');
+        const fullNameInput = quoteForm.querySelector<HTMLInputElement>('[name="fullName"]');
+        const phoneInput = quoteForm.querySelector<HTMLInputElement>('[name="phone"]');
+        const emailInput = quoteForm.querySelector<HTMLInputElement>('[name="email"]');
+        const addressInput = quoteForm.querySelector<HTMLInputElement>('[name="address"]');
+        const smsConsentInput = quoteForm.querySelector<HTMLInputElement>('[name="smsConsent"]');
+
+        const payload = {
+          service: serviceInput?.value || '',
+          fullName: fullNameInput?.value || '',
+          phone: phoneInput?.value || '',
+          email: emailInput?.value || '',
+          address: addressInput?.value || '',
+          smsConsent: smsConsentInput ? smsConsentInput.checked : false,
+          pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+        };
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+        }
+
+        try {
+          await fetch('https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/1a10b6de-bddd-4c0b-9532-1fca30defaad', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          quoteForm.reset();
+          quoteForm.style.display = 'none';
+          if (successCard) {
+            successCard.style.display = 'block';
+            successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } catch (err) {
+          console.error('Form submission failed:', err);
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText || 'Get My Free Quote →';
+          }
+          alert('Something went wrong submitting your request. Please call us instead.');
+        }
+      };
+
+      quoteForm.addEventListener('submit', onSubmit);
+      cleanups.push(() => quoteForm.removeEventListener('submit', onSubmit));
+    }
 
     // Smooth scroll to #quote if hash is present in URL
     const scrollToQuoteIfPresent = () => {
@@ -235,7 +272,6 @@ export default function ClientInteractions() {
         const quoteSection = document.getElementById('quote');
         if (quoteSection) {
           e.preventDefault();
-          ensureQuoteForm();
           quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           history.pushState(null, '', '#quote');
         }

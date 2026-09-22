@@ -887,16 +887,129 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<link\b[^>]*unpkg\.com\/aos[^>]*>\s*/gi, '');
   newContent = newContent.replace(/<script\b[^>]*navigation-dynamic\.js[^>]*><\/script>\s*/gi, '');
 
-  // Ensure LeadConnector quote form iframe has valid src, native lazy loading, and robust min-height
+  // Custom native "Get My Free Quote" form generator with dynamic phone and pre-selected service
+  const mapServiceToOption = (serviceSlug: string): string => {
+    if (!serviceSlug) return '';
+    const s = serviceSlug.toLowerCase();
+    if (s.includes('deep')) return 'deep-clean';
+    if (s.includes('move')) return 'move-in-out';
+    if (s.includes('commercial') || s.includes('office') || s.includes('janitorial') || s.includes('warehouse')) return 'commercial';
+    if (s.includes('airbnb') || s.includes('vacation')) return 'airbnb';
+    if (s.includes('construction') || s.includes('renovation')) return 'post-construction';
+    if (s.includes('recurring') || s.includes('maid')) return 'recurring';
+    if (s.includes('house') || s.includes('residential')) return 'residential';
+    return '';
+  };
+
+  const formPhoneFormatted = is305Area(loc_slug, clean_name) ? '(305) 851-6959' : '(941) 222-2080';
+  const formPhoneTel = is305Area(loc_slug, clean_name) ? 'tel:+13058516959' : 'tel:+19412222080';
+  const serviceCandidate = (currentService && currentService !== 'cleaning' && currentService !== 'about')
+    ? currentService
+    : (serviceSlugs.includes(loc_slug) ? loc_slug : pageType);
+  const activeServiceOpt = mapServiceToOption(serviceCandidate);
+  const isSelected = (val: string) => activeServiceOpt === val ? 'selected' : '';
+  const hasSelected = ['residential', 'recurring', 'commercial', 'airbnb', 'deep-clean', 'move-in-out', 'post-construction', 'other'].includes(activeServiceOpt);
+
+  const nativeQuoteFormHtml = `
+        <!-- Contact Form -->
+        <div class="w-full">
+          <form class="quote-card" id="quoteForm">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 font-serif">Get a Free Quote</h2>
+            <p class="text-gray-600 text-sm mb-6 leading-relaxed">Fill out the form below and we'll get back to you within 24 hours with a personalized quote.</p>
+
+            <div class="field">
+              <label for="service">What Are You Looking For?</label>
+              <select id="service" name="service" required>
+                <option value="" disabled ${hasSelected ? '' : 'selected'}>Choose Service</option>
+                <option value="residential" ${isSelected('residential')}>Residential Cleaning</option>
+                <option value="recurring" ${isSelected('recurring')}>Recurring Cleaning</option>
+                <option value="commercial" ${isSelected('commercial')}>Commercial Cleaning</option>
+                <option value="airbnb" ${isSelected('airbnb')}>Airbnb / Turnover Cleaning</option>
+                <option value="deep-clean" ${isSelected('deep-clean')}>Deep Cleaning</option>
+                <option value="move-in-out" ${isSelected('move-in-out')}>Move In / Move Out Cleaning</option>
+                <option value="post-construction" ${isSelected('post-construction')}>Post Construction Cleaning</option>
+                <option value="other" ${isSelected('other')}>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="(941) 000-0000">
+              </div>
+              <div class="field">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="name@example.com">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" placeholder="Start typing your address...">
+              <small style="display:block; margin-top:6px; font-size:13px; color:#9aa2ad;">Optional</small>
+            </div>
+
+            <button type="submit" class="submit-btn">Get My Free Quote →</button>
+
+            <div class="field consent-field">
+              <label class="consent-label">
+                <input type="checkbox" id="smsConsent" name="smsConsent" required>
+                <span>I consent to receive SMS notifications and alerts from Sweet Maid Cleaning Service.</span>
+              </label>
+              <div class="consent-links">
+                <a href="/terms-and-conditions/" target="_blank" rel="noopener">Terms and Conditions</a>
+                <span>·</span>
+                <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
+              </div>
+            </div>
+
+            <div class="trust-row">
+              <span class="stars">★★★★★</span>
+              <span>5 Star Rated</span>
+              <span>•</span>
+              <span>Insured &amp; Bonded</span>
+            </div>
+
+            <div class="call-line">
+              Prefer to talk? Call <a href="${formPhoneTel}">${formPhoneFormatted}</a>
+            </div>
+          </form>
+
+          <div class="success-card" id="successCard">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 13l4 4L19 7" stroke="#1f2937" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2>Thank You for Submitting Your Request</h2>
+            <p>We've received your information and a member of our team will reach out shortly to confirm your free quote.</p>
+            <div class="call-line">
+              Questions in the meantime? Call <a href="${formPhoneTel}">${formPhoneFormatted}</a>
+            </div>
+          </div>
+        </div>`;
+
+  // Replace old iframe-based contact form block with custom native quote form
   newContent = newContent.replace(
-    /<iframe\s+([^>]*?)(?:src|data-src)=["'](https:\/\/api\.leadconnectorhq\.com\/widget\/form\/[^"']+)["']([^>]*?)>/gi,
-    '<iframe $1src="$2" loading="lazy" style="width:100%;min-height:814px;border:none;border-radius:0px"$3>'
+    /<div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-shadow duration-300">[\s\S]*?<iframe[\s\S]*?<\/iframe>[\s\S]*?(?:<script[\s\S]*?<\/script>)?\s*<\/div>/gi,
+    nativeQuoteFormHtml
+  );
+
+  // Fallback cleanup if iframe is embedded directly without wrapper
+  newContent = newContent.replace(
+    /<iframe\s+[^>]*?leadconnectorhq\.com\/widget\/form\/[^>]*>[\s\S]*?<\/iframe>(?:\s*<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>)?/gi,
+    nativeQuoteFormHtml
   );
 
   // Strip redundant chat widget script tag to eliminate duplicate /_preview/88yz5isz.js download
   newContent = newContent.replace(/<script\b[^>]*widgets\.leadconnectorhq\.com\/loader\.js[^>]*>[\s\S]*?<\/script>\s*/gi, '');
 
-  // Strip static form_embed.js script tag from templates since Next.js layout loads it properly via Script
+  // Strip static form_embed.js script tag from templates
   newContent = newContent.replace(
     /<script\s+src="https:\/\/link\.msgsndr\.com\/js\/form_embed\.js"[^>]*><\/script>/gi,
     ''

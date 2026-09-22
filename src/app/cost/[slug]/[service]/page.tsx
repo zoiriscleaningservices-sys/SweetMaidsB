@@ -303,25 +303,99 @@ export default async function CostEstimatorPage({ params }: Props) {
               </div>
             </div>
 
-            <div className="bg-slate-50 p-2 sm:p-4 rounded-2xl border border-pink-100">
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/form/rCltJipBikEEsl6LRrcp"
-                style={{ width: '100%', minHeight: '814px', border: 'none', borderRadius: '0px' }}
-                id="inline-rCltJipBikEEsl6LRrcp"
-                data-layout="{'id':'INLINE'}"
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="Sweet Maid Website Form"
-                data-height="814"
-                data-layout-iframe-id="inline-rCltJipBikEEsl6LRrcp"
-                data-form-id="rCltJipBikEEsl6LRrcp"
-                title={`Sweet Maid ${serviceName} Quote Form - ${locationName}`}
-                loading="lazy"
-              />
+            <div className="w-full">
+              <form className="quote-card" id="quoteForm">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 font-serif">Get a Free Quote</h2>
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed">Fill out the form below and we will get back to you within 24 hours with a personalized quote.</p>
+
+                <div className="field">
+                  <label htmlFor="service">What Are You Looking For?</label>
+                  <select
+                    id="service"
+                    name="service"
+                    required
+                    defaultValue={
+                      service.includes('deep') ? 'deep-clean' :
+                      service.includes('move') ? 'move-in-out' :
+                      (service.includes('commercial') || service.includes('office') || service.includes('janitorial') || service.includes('warehouse')) ? 'commercial' :
+                      (service.includes('airbnb') || service.includes('vacation')) ? 'airbnb' :
+                      (service.includes('construction') || service.includes('renovation')) ? 'post-construction' :
+                      (service.includes('recurring') || service.includes('maid')) ? 'recurring' :
+                      'residential'
+                    }
+                  >
+                    <option value="" disabled>Choose Service</option>
+                    <option value="residential">Residential Cleaning</option>
+                    <option value="recurring">Recurring Cleaning</option>
+                    <option value="commercial">Commercial Cleaning</option>
+                    <option value="airbnb">Airbnb / Turnover Cleaning</option>
+                    <option value="deep-clean">Deep Cleaning</option>
+                    <option value="move-in-out">Move In / Move Out Cleaning</option>
+                    <option value="post-construction">Post Construction Cleaning</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div className="field">
+                  <label htmlFor="fullName">Full Name</label>
+                  <input type="text" id="fullName" name="fullName" required placeholder="Your full name" />
+                </div>
+
+                <div className="field-row">
+                  <div className="field">
+                    <label htmlFor="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(941) 000-0000" />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="name@example.com" />
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label htmlFor="address">Address</label>
+                  <input type="text" id="address" name="address" placeholder="Start typing your address..." />
+                  <small style={{ display: 'block', marginTop: '6px', fontSize: '13px', color: '#9aa2ad' }}>Optional</small>
+                </div>
+
+                <button type="submit" className="submit-btn">Get My Free Quote →</button>
+
+                <div className="field consent-field">
+                  <label className="consent-label">
+                    <input type="checkbox" id="smsConsent" name="smsConsent" required />
+                    <span>I consent to receive SMS notifications and alerts from Sweet Maid Cleaning Service.</span>
+                  </label>
+                  <div className="consent-links">
+                    <Link href="/terms-and-conditions/" target="_blank" rel="noopener">Terms and Conditions</Link>
+                    <span> · </span>
+                    <Link href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</Link>
+                  </div>
+                </div>
+
+                <div className="trust-row">
+                  <span className="stars">★★★★★</span>
+                  <span>5 Star Rated</span>
+                  <span>•</span>
+                  <span>Insured &amp; Bonded</span>
+                </div>
+
+                <div className="call-line">
+                  Prefer to talk? Call <a href={phoneTel}>{phoneFormatted}</a>
+                </div>
+              </form>
+
+              <div className="success-card" id="successCard">
+                <div className="success-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 13l4 4L19 7" stroke="#1f2937" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h2>Thank You for Submitting Your Request</h2>
+                <p>We&apos;ve received your information and a member of our team will reach out shortly to confirm your free quote.</p>
+                <div className="call-line">
+                  Questions in the meantime? Call <a href={phoneTel}>{phoneFormatted}</a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

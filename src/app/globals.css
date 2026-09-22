@@ -172,3 +172,258 @@ html, body {
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
+
+/* =========================================================
+   Custom Native "Get My Free Quote" Form & Success Card Styles
+========================================================= */
+:root {
+  --teal: #5bc9d6;
+  --teal-dark: #3fb0be;
+  --pink: #f4c2d1;
+  --pink-dark: #e8a3b8;
+  --text: #1f2937;
+  --border: #d9dde3;
+  --placeholder: #9aa2ad;
+}
+
+.quote-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  padding: 32px 28px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .quote-card {
+    padding: 36px;
+  }
+}
+
+.quote-card h2 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.quote-card .field {
+  margin-bottom: 20px;
+}
+
+.quote-card .field-row {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .quote-card .field-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.quote-card .field-row .field {
+  flex: 1;
+}
+
+.quote-card label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.quote-card input,
+.quote-card select {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.quote-card input::placeholder {
+  color: var(--placeholder);
+}
+
+.quote-card input:focus,
+.quote-card select:focus {
+  border-color: var(--teal);
+}
+
+.quote-card select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' stroke='%236b7280' stroke-width='2' fill='none' fill-rule='evenodd'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+
+.quote-card .consent-field {
+  margin-bottom: 20px;
+}
+
+.quote-card .consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.quote-card .consent-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--teal-dark);
+  cursor: pointer;
+}
+
+.quote-card .consent-label a {
+  color: var(--teal-dark);
+  text-decoration: underline;
+}
+
+.quote-card .consent-label a:hover {
+  color: var(--teal);
+}
+
+.quote-card .consent-links {
+  margin-top: 8px;
+  margin-left: 28px;
+  font-size: 13px;
+  color: #9aa2ad;
+}
+
+.quote-card .consent-links a {
+  color: var(--teal-dark);
+  text-decoration: underline;
+}
+
+.quote-card .consent-links a:hover {
+  color: var(--teal);
+}
+
+.quote-card .submit-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--pink);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.quote-card .submit-btn:hover {
+  background: var(--pink-dark);
+}
+
+.quote-card .submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.quote-card .trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #4b5563;
+  flex-wrap: wrap;
+}
+
+.quote-card .stars {
+  color: #f5a623;
+  letter-spacing: 1px;
+}
+
+.quote-card .call-line {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.quote-card .call-line a {
+  color: var(--teal-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.quote-card .call-line a:hover {
+  text-decoration: underline;
+}
+
+.success-card {
+  display: none;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  padding: 48px 36px;
+  width: 100%;
+  text-align: center;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+  background: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.success-card h2 {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.success-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.success-card .call-line {
+  margin-top: 24px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.success-card .call-line a {
+  color: var(--teal-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.success-card .call-line a:hover {
+  text-decoration: underline;
+}
+
