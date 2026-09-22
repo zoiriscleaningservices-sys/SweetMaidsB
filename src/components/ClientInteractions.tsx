@@ -230,11 +230,18 @@ export default function ClientInteractions() {
             body: JSON.stringify(payload)
           });
 
+          // Dismiss mobile keyboard if open
+          if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+
           quoteForm.reset();
           quoteForm.style.display = 'none';
           if (successCard) {
             successCard.style.display = 'block';
-            successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 80);
           }
         } catch (err) {
           console.error('Form submission failed:', err);

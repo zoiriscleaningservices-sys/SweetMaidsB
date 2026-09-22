@@ -934,23 +934,23 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
             <div class="field">
               <label for="fullName">Full Name</label>
-              <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+              <input type="text" id="fullName" name="fullName" required placeholder="Your full name" autocomplete="name" autocapitalize="words">
             </div>
 
             <div class="field-row">
               <div class="field">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required placeholder="(941) 000-0000">
+                <input type="tel" id="phone" name="phone" required placeholder="${formPhoneFormatted}" autocomplete="tel" inputmode="tel">
               </div>
               <div class="field">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="name@example.com">
+                <input type="email" id="email" name="email" required placeholder="name@example.com" autocomplete="email" inputmode="email" autocapitalize="none">
               </div>
             </div>
 
             <div class="field">
               <label for="address">Address</label>
-              <input type="text" id="address" name="address" placeholder="Start typing your address...">
+              <input type="text" id="address" name="address" placeholder="Start typing your address..." autocomplete="street-address">
               <small style="display:block; margin-top:6px; font-size:13px; color:#9aa2ad;">Optional</small>
             </div>
 
