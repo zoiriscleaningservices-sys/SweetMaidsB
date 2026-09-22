@@ -24,7 +24,7 @@ export default function BookOnlinePage() {
       <div className="bg-gradient-to-r from-pink-300 via-pink-200 to-pink-300 text-gray-800 text-xs py-2.5 text-center font-semibold tracking-wide px-4">
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1">
           <span>
-            <i className="fa-solid fa-sparkles text-pink-600 mr-1"></i> Instant Online Booking & Flat-Rate Pricing
+            <i className="fa-solid fa-sparkles text-pink-600 mr-1"></i> Instant Online Booking &amp; Flat-Rate Pricing
           </span>
           <span className="hidden sm:inline">|</span>
           <span>
@@ -48,7 +48,7 @@ export default function BookOnlinePage() {
               />
             </Link>
 
-            {/* Navigation Links */}
+            {/* Navigation Links - Desktop */}
             <nav className="hidden lg:flex items-center gap-7">
               <Link href="/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 Home
@@ -76,7 +76,7 @@ export default function BookOnlinePage() {
               </Link>
             </nav>
 
-            {/* Header Call CTA */}
+            {/* Header Call CTA & Mobile Toggle */}
             <div className="flex items-center gap-3">
               <a
                 href="tel:19412222080"
@@ -84,10 +84,81 @@ export default function BookOnlinePage() {
               >
                 <i className="fa-solid fa-phone"></i> (941) 222-2080
               </a>
+
+              {/* Mobile Hamburger Controls */}
+              <div className="flex items-center gap-2 lg:hidden">
+                <a
+                  href="tel:19412222080"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-pink-50 text-pink-600 border border-pink-200"
+                  aria-label="Call Sweet Maid"
+                >
+                  <i className="fa-solid fa-phone text-sm"></i>
+                </a>
+                <button
+                  id="mobile-btn"
+                  aria-label="Open mobile navigation menu"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-pink-50 text-pink-600 border border-pink-200 hover:bg-pink-100 transition-colors"
+                >
+                  <i className="fa-solid fa-bars text-lg"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu Drawer */}
+      <div id="mobile-menu" className="fixed inset-0 z-[100] mobile-menu-glass flex flex-col invisible">
+        <div className="p-6 flex justify-between items-center border-b border-pink-100 bg-white/50">
+          <div className="flex items-center gap-2">
+            <img src="/images/logo.png" alt="Sweet Maid" className="h-10 w-auto" width="120" height="40" />
+            <span className="font-serif text-lg font-bold text-gray-900">Sweet Maid</span>
+          </div>
+          <button
+            id="close-mobile"
+            aria-label="Close mobile navigation menu"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-pink-100 text-pink-500 hover:bg-pink-200 transition-colors"
+          >
+            <i className="fa-solid fa-xmark text-xl"></i>
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto px-6 py-8">
+          <nav className="flex flex-col gap-3">
+            <Link href="/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>Home</span>
+              <i className="fa-solid fa-house text-pink-300"></i>
+            </Link>
+            <Link href="/about/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>About Us</span>
+              <i className="fa-solid fa-circle-info text-pink-300"></i>
+            </Link>
+            <Link href="/house-cleaning/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>House Cleaning</span>
+              <i className="fa-solid fa-sparkles text-pink-300"></i>
+            </Link>
+            <Link href="/locations/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>Florida Locations</span>
+              <i className="fa-solid fa-map-pin text-pink-300"></i>
+            </Link>
+            <Link href="/blog/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>Cleaning Blogs</span>
+              <i className="fa-solid fa-newspaper text-pink-300"></i>
+            </Link>
+            <Link href="/gallery/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>Before &amp; After Gallery</span>
+              <i className="fa-solid fa-images text-pink-300"></i>
+            </Link>
+            <Link href="/book-online/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-pink-500 text-white font-bold shadow-md">
+              <span>Book Online</span>
+              <i className="fa-solid fa-calendar-check"></i>
+            </Link>
+            <Link href="/login/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>Client Portal Login</span>
+              <i className="fa-solid fa-right-to-bracket text-pink-300"></i>
+            </Link>
+          </nav>
+        </div>
+      </div>
 
       {/* Main Booking Container */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -104,21 +175,92 @@ export default function BookOnlinePage() {
           </p>
         </div>
 
-        {/* Embedded BookingKoala Widget */}
-        <div className="bg-white rounded-3xl shadow-xl border border-pink-100/80 overflow-hidden p-2 sm:p-4 md:p-6 mb-12">
-          <iframe
-            src="https://sweetmaidcleaningservice.bookingkoala.com/booknow?embed=true"
-            style={{ border: 'none', minHeight: '1000px', width: '100%' }}
-            width="100%"
-            height="1000"
-            scrolling="no"
-            title="Sweet Maid Online Booking Widget"
-            className="w-full rounded-2xl"
-          />
+        {/* Booking Card & Embedded Widget */}
+        <div className="bg-white rounded-3xl shadow-xl border border-pink-100/80 overflow-hidden p-3 sm:p-6 mb-12">
+          {/* Security & Fullscreen Link Header */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-pink-50/70 border border-pink-100 rounded-2xl px-5 py-3 mb-5 text-xs text-gray-700">
+            <div className="flex items-center gap-2 font-medium">
+              <i className="fa-solid fa-shield-halved text-teal-600 text-sm"></i>
+              <span>256-Bit SSL Encrypted &amp; Instant Confirmation</span>
+            </div>
+            <a
+              href="https://sweetmaidcleaningservice.bookingkoala.com/booknow"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-pink-600 hover:text-pink-700 font-bold hover:underline transition-colors"
+            >
+              <span>Open booking portal in full window</span>
+              <i className="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+            </a>
+          </div>
+
+          {/* Iframe with dynamic auto-height & fallback scrolling */}
+          <div className="w-full relative min-h-[900px] overflow-hidden rounded-2xl bg-gray-50/50">
+            <iframe
+              id="bookingkoala-iframe"
+              src="https://sweetmaidcleaningservice.bookingkoala.com/booknow?embed=true"
+              style={{ border: 'none', width: '1px', minWidth: '100%', minHeight: '900px' }}
+              width="100%"
+              height="900"
+              scrolling="auto"
+              title="Sweet Maid Online Booking Portal"
+              className="w-full rounded-2xl"
+            />
+          </div>
+
           <Script
-            src="https://sweetmaidcleaningservice.bookingkoala.com/resources/embed.js"
-            strategy="lazyOnload"
+            src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"
+            strategy="afterInteractive"
           />
+          <Script id="bookingkoala-resizer-init" strategy="lazyOnload">
+            {`
+              (function() {
+                function initResizer() {
+                  if (typeof iFrameResize === 'function') {
+                    try {
+                      iFrameResize({
+                        log: false,
+                        checkOrigin: false,
+                        heightCalculationMethod: 'lowestElement',
+                        tolerance: 10
+                      }, '#bookingkoala-iframe');
+                    } catch (err) {
+                      console.warn('BookingKoala iframe resize note:', err);
+                    }
+                  } else {
+                    setTimeout(initResizer, 150);
+                  }
+                }
+                if (document.readyState === 'complete') {
+                  initResizer();
+                } else {
+                  window.addEventListener('load', initResizer);
+                }
+              })();
+            `}
+          </Script>
+        </div>
+
+        {/* Dispatch Phone Support Banner */}
+        <div className="bg-white rounded-2xl p-6 border border-pink-100 shadow-sm mb-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div>
+            <h3 className="font-bold text-gray-900 text-base mb-1">Prefer to book or customize over the phone?</h3>
+            <p className="text-gray-500 text-xs">Our Florida customer service team is standing by to assist with custom schedules, commercial quotes, and instant booking.</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="tel:19412222080"
+              className="inline-flex items-center gap-2 bg-pink-50 hover:bg-pink-100 text-pink-600 font-bold text-xs px-4 py-2.5 rounded-full border border-pink-200 transition-colors"
+            >
+              <i className="fa-solid fa-phone"></i> (941) 222-2080
+            </a>
+            <a
+              href="tel:13058516959"
+              className="inline-flex items-center gap-2 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold text-xs px-4 py-2.5 rounded-full border border-teal-200 transition-colors"
+            >
+              <i className="fa-solid fa-phone"></i> (305) 851-6959
+            </a>
+          </div>
         </div>
 
         {/* Booking Benefits & Guarantees */}
@@ -127,7 +269,7 @@ export default function BookOnlinePage() {
             <div className="w-12 h-12 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
               <i className="fa-solid fa-shield-heart"></i>
             </div>
-            <h2 className="font-bold text-gray-900 text-base mb-1">100% Insured & Bonded</h2>
+            <h2 className="font-bold text-gray-900 text-base mb-1">100% Insured &amp; Bonded</h2>
             <p className="text-gray-500 text-xs leading-relaxed">Your property and valuables are fully protected with multi-million dollar coverage.</p>
           </div>
 
@@ -143,7 +285,7 @@ export default function BookOnlinePage() {
             <div className="w-12 h-12 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
               <i className="fa-solid fa-leaf"></i>
             </div>
-            <h2 className="font-bold text-gray-900 text-base mb-1">Eco & Pet-Friendly</h2>
+            <h2 className="font-bold text-gray-900 text-base mb-1">Eco &amp; Pet-Friendly</h2>
             <p className="text-gray-500 text-xs leading-relaxed">Non-toxic, hospital-grade cleaning formulas safe for babies, kids, and pets.</p>
           </div>
 
@@ -192,7 +334,7 @@ export default function BookOnlinePage() {
               <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:19412222080" className="hover:text-pink-400">(941) 222-2080</a> (Bradenton / Manatee County / Sarasota / Tampa)</li>
               <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:13058516959" className="hover:text-pink-400">(305) 851-6959</a> (Florida Keys / Monroe County / Miami-Dade / Broward)</li>
               <li><i className="fa-solid fa-envelope text-pink-400 mr-2"></i> info@sweetmaidcleaning.com</li>
-              <li><i className="fa-solid fa-shield-check text-pink-400 mr-2"></i> Licensed, Bonded & Insured</li>
+              <li><i className="fa-solid fa-shield-check text-pink-400 mr-2"></i> Licensed, Bonded &amp; Insured</li>
             </ul>
           </div>
         </div>
