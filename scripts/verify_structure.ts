@@ -368,6 +368,62 @@ async function runAsyncChecks() {
     reportError('Services Page', e.message);
   }
 
+  // 10. Wave 3: Sprawl Decommissioning & Resolver Restriction
+  try {
+    const costDir = path.join(process.cwd(), 'src', 'app', 'cost');
+    if (fs.existsSync(costDir)) {
+      reportError('Wave 3 Sprawl', 'src/app/cost directory still exists');
+    } else {
+      reportPass('Wave 3 Sprawl', 'src/app/cost programmatic directory completely eradicated');
+    }
+
+    const { resolveRedirect } = require('../src/config/redirects');
+    const costRedirect = resolveRedirect('/cost/bradenton-fl/house-cleaning/');
+    if (costRedirect !== '/services/') {
+      reportError('Wave 3 Sprawl', `/cost/... expected redirect to /services/, got ${costRedirect}`);
+    } else {
+      reportPass('Wave 3 Sprawl', '/cost/... redirects to /services/');
+    }
+
+    const { resolveAnyLocation, getAllLocations } = require('../src/lib/data');
+    const testUnapproved = ['tallahassee-fl', '33139', '34205', 'orange-county-fl', 'random-town-fl'];
+    let unapprovedResolved = 0;
+    for (const u of testUnapproved) {
+      if (resolveAnyLocation(u) !== null) {
+        reportError('Wave 3 Sprawl', `Unapproved location ${u} unexpectedly resolved in resolveAnyLocation`);
+        unapprovedResolved++;
+      }
+    }
+    if (unapprovedResolved === 0) {
+      reportPass('Wave 3 Sprawl', 'Unapproved cities, zips, and counties return null in resolveAnyLocation');
+    }
+
+    const allLocations = getAllLocations();
+    if (allLocations.length !== 63) {
+      reportError('Wave 3 Sprawl', `getAllLocations expected 63 approved cities, got ${allLocations.length}`);
+    } else {
+      reportPass('Wave 3 Sprawl', 'getAllLocations strictly returns 63 approved cities');
+    }
+  } catch (e: any) {
+    reportError('Wave 3 Sprawl', e.message);
+  }
+
+  // 11. Wave 3: Orphaned Template Cleanup
+  try {
+    const srvSourceDir = path.join(process.cwd(), 'templates', 'services_source');
+    if (fs.existsSync(srvSourceDir)) {
+      const dirs = fs.readdirSync(srvSourceDir);
+      const obsolete = dirs.filter(d => !SERVICES.includes(d as any));
+      if (obsolete.length > 0) {
+        reportError('Wave 3 Templates', `Found obsolete template folders in services_source: ${obsolete.join(', ')}`);
+      } else {
+        reportPass('Wave 3 Templates', 'templates/services_source contains strictly the 24 approved services');
+      }
+    }
+  } catch (e: any) {
+    reportError('Wave 3 Templates', e.message);
+  }
+
   console.log('\n====================================================');
   if (errorCount === 0) {
     console.log('🎉 ALL AUDIT CHECKS PASSED WITH 0 VIOLATIONS!');
