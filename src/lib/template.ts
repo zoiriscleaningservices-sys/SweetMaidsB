@@ -1274,7 +1274,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
           </a>
         </div>`;
 
-    newContent = newContent.replace(/src="https:\/\/(?:maps\.google\.com\/maps|www\.google\.com\/maps\/embed|www\.openstreetmap\.org\/export\/embed\.html)[^"]*"/gi, `src="${mapUrl}"`);
+    newContent = newContent.replace(/src="https:\/\/(?:(?:maps|www)\.google\.com\/maps(?:\/embed)?|www\.openstreetmap\.org\/export\/embed\.html)[^"]*"/gi, `src="${mapUrl}"`);
     newContent = newContent.replace(/<a\s+[^>]*query_place_id=ChIJXVApokD-1woRwX50Oy2OwHA[^>]*>[\s\S]*?<\/a>/gi, mapOverlayHtml);
     newContent = newContent.replace(/<div\s+class="absolute bottom-4 left-4 bg-white\/90[^>]*>[\s\S]*?<\/div>/gi, mapOverlayHtml);
     newContent = newContent.replace(/<div\s+id="local-map-badge"[^>]*>[\s\S]*?<\/div>/gi, mapOverlayHtml);
