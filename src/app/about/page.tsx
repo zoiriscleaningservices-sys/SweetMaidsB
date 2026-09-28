@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     'move out cleaners Florida'
   ],
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/about/',
+    canonical: 'https://www.sweetmaidcleaning.com/about/',
   },
   openGraph: {
     title,
     description: desc,
-    url: 'https://sweetmaidcleaning.com/about/',
+    url: 'https://www.sweetmaidcleaning.com/about/',
     siteName: 'Sweet Maid Cleaning Services',
     type: 'website',
   },

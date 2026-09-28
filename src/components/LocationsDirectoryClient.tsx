@@ -143,7 +143,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
               <Link href="/about/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 About Us
               </Link>
-              <Link href="/house-cleaning/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
+              <Link href="/services/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 Services
               </Link>
               <Link href="/locations/" className="text-sm font-bold text-pink-500 bg-pink-50 border border-pink-100 px-3 py-1.5 rounded-full transition-colors">
@@ -445,7 +445,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
           <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-600">
             <Link href="/" className="hover:text-pink-500 transition-colors">Home</Link>
             <Link href="/about/" className="hover:text-pink-500 transition-colors">About Us</Link>
-            <Link href="/house-cleaning/" className="hover:text-pink-500 transition-colors">Services</Link>
+            <Link href="/services/" className="hover:text-pink-500 transition-colors">Services</Link>
             <Link href="/locations/" className="hover:text-pink-500 transition-colors">Locations</Link>
             <Link href="/blog/" className="hover:text-pink-500 transition-colors">Blog</Link>
             <Link href="/gallery/" className="hover:text-pink-500 transition-colors">Gallery</Link>

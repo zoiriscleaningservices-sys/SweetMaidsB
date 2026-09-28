@@ -6,12 +6,12 @@ export const metadata: Metadata = {
   title: 'Cleaning Results & Before/After Photo Gallery | Sweet Maid',
   description: 'View our spotless results in Bradenton, FL! See before and after photos of our professional house cleaning and maid services.',
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/gallery/',
+    canonical: 'https://www.sweetmaidcleaning.com/gallery/',
   },
   openGraph: {
     title: 'Cleaning Results & Before/After Photo Gallery | Sweet Maid',
     description: 'View our spotless results in Bradenton, FL! See before and after photos of our professional house cleaning and maid services.',
-    url: 'https://sweetmaidcleaning.com/gallery/',
+    url: 'https://www.sweetmaidcleaning.com/gallery/',
   }
 };
 
