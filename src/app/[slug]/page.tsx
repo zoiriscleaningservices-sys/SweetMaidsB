@@ -7,10 +7,26 @@ import { generateSeoContentPack } from '@/lib/seo_engine';
 import { getLongboatMetadata, getLongboatJsonLd, transformLongboatHtml } from '@/lib/longboat_key_renderer';
 
 
+import { resolveFlatCombo } from '@/config/site-structure';
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   if (slug === 'longboat-key-fl') {
     return getLongboatMetadata('hub');
+  }
+
+  const combo = resolveFlatCombo(slug);
+  if (combo) {
+    const seoPack = generateSeoContentPack(combo.cityName, combo.citySlug, combo.service, combo.service);
+    const title = seoPack.metaTitle;
+    const desc = seoPack.heroSub.replace(/<[^>]+>/g, '');
+    return {
+      title,
+      description: desc,
+      alternates: { canonical: `https://www.sweetmaidcleaning.com/${slug}/` },
+      openGraph: { title, description: desc, url: `https://www.sweetmaidcleaning.com/${slug}/`, type: 'website', images: ['https://i.ibb.co/QSD3Ydt/image.jpg'] },
+      twitter: { card: 'summary_large_image', title, description: desc, images: ['https://i.ibb.co/QSD3Ydt/image.jpg'] }
+    };
   }
 
   const isService = serviceSlugs.includes(slug);
@@ -64,6 +80,15 @@ export default async function LocationOrServicePage({ params }: { params: Promis
         <div dangerouslySetInnerHTML={{ __html: transformedHtml }} />
       </>
     );
+  }
+
+  const combo = resolveFlatCombo(slug);
+  if (combo) {
+    const rawHtml = getTemplate(combo.service) || getTemplate('house-cleaning');
+    if (!rawHtml) notFound();
+    const bodyContent = extractSections(rawHtml);
+    const localizedHtml = localizedReplace(bodyContent, combo.cityName, combo.citySlug, true, combo.service);
+    return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
   }
 
   const isService = serviceSlugs.includes(slug);

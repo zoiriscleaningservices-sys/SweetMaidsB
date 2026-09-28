@@ -94,7 +94,24 @@ export function resolveAnyLocation(slug: string): GeoEntity | null {
   }
   const db = getFloridaMasterDb();
 
-  // 1. Check Cities
+  // 1. Check Approved Cities from Site Structure (SSOT)
+  const { CITY_PAGES } = require('@/config/site-structure');
+  if (CITY_PAGES && CITY_PAGES[cleanSlug]) {
+    const cp = CITY_PAGES[cleanSlug];
+    const cities = getLocationData();
+    const altSlug = cleanSlug.replace(/^st-/, 'saint-');
+    const geo = cities[cleanSlug] || cities[altSlug] || { lat: 27.725, lng: -82.741 };
+    return {
+      name: cp.name,
+      slug: cleanSlug,
+      lat: geo.lat || 27.725,
+      lng: geo.lng || -82.741,
+      type: 'city',
+      parentCounty: cp.county
+    };
+  }
+
+  // 1b. Check Legacy Cities Database
   const cities = getLocationData();
   if (cities[cleanSlug]) {
     return {

@@ -208,13 +208,176 @@ try {
   reportError('Render Test', e.message);
 }
 
-console.log('\n====================================================');
-if (errorCount === 0) {
-  console.log('🎉 ALL AUDIT CHECKS PASSED WITH 0 VIOLATIONS!');
-  console.log('====================================================');
-  process.exit(0);
-} else {
-  console.error(`💥 FAILED WITH ${errorCount} VIOLATIONS!`);
-  console.log('====================================================');
-  process.exit(1);
+// 6. Wave 2: Redirect Engine Verification
+try {
+  const { resolveRedirect } = require('../src/config/redirects');
+
+  const redirectTests = [
+    { input: '/home', expected: '/' },
+    { input: '/home/', expected: '/' },
+    { input: '/booking', expected: '/book-online/' },
+    { input: '/booknow', expected: '/book-online/' },
+    { input: '/contact-us', expected: '/book-online/' },
+    { input: '/terms-conditions', expected: '/terms-and-conditions/' },
+    { input: '/privacy', expected: '/privacy-policy/' },
+    { input: '/post-construction-cleanup', expected: '/post-construction-cleaning/' },
+    { input: '/hoarder-cleaning-service', expected: '/deep-cleaning/' },
+    { input: '/weekly-maid-service', expected: '/recurring-maid-service/' },
+    { input: '/condo-cleaning', expected: '/house-cleaning/' },
+    { input: '/apartment-cleaning', expected: '/house-cleaning/' },
+    { input: '/bradenton-fl/weekly-maid-service', expected: '/recurring-maid-service-bradenton-fl/' },
+    { input: '/bradenton-fl/condo-cleaning', expected: '/house-cleaning-bradenton-fl/' },
+    { input: '/sarasota-fl/house-cleaning', expected: '/house-cleaning-sarasota-fl/' },
+    { input: '/lakewood-ranch-cleaning', expected: '/lakewood-ranch-fl/' },
+    { input: '/33139', expected: '/miami-fl/' },
+    { input: '/bradenton-fl', expected: '/' },
+    { input: '/bradenton-fl/', expected: '/' },
+    { input: '/tallahassee-fl', expected: '/locations/' },
+    { input: '/tallahassee-fl/house-cleaning', expected: '/locations/' },
+  ];
+
+  let redirectFails = 0;
+  for (const t of redirectTests) {
+    const actual = resolveRedirect(t.input);
+    if (actual !== t.expected) {
+      reportError('Redirect Engine', `${t.input} -> expected ${t.expected}, got ${actual}`);
+      redirectFails++;
+    }
+  }
+
+  if (redirectFails === 0) {
+    reportPass('Redirect Engine', `All ${redirectTests.length} redirect tests passed`);
+  }
+
+  // Non-redirecting valid URLs
+  const validUrls = [
+    '/',
+    '/services/',
+    '/about/',
+    '/locations/',
+    '/house-cleaning/',
+    '/deep-cleaning/',
+    '/lakewood-ranch-fl/',
+    '/sarasota-fl/',
+    '/house-cleaning-bradenton-fl/',
+    '/palmetto-fl/house-cleaning/'
+  ];
+
+  let loopFails = 0;
+  for (const v of validUrls) {
+    const res = resolveRedirect(v);
+    if (res !== null && res !== v) {
+      reportError('Redirect Engine Loop', `Valid URL ${v} incorrectly redirected to ${res}`);
+      loopFails++;
+    }
+  }
+  if (loopFails === 0) {
+    reportPass('Redirect Engine Loop', `All ${validUrls.length} valid 200 URLs return null (no loop)`);
+  }
+} catch (e: any) {
+  reportError('Redirect Engine', e.message);
 }
+
+async function runAsyncChecks() {
+  // 7. Wave 2: Sitemap Rebuild Verification
+  try {
+    const { GET: getSitemap } = require('../src/app/sitemap.xml/route');
+    const sitemapResponse = await getSitemap();
+    const xmlBody = await sitemapResponse.text();
+
+    if (!xmlBody.startsWith('<?xml') || !xmlBody.includes('<urlset')) {
+      reportError('Sitemap Rebuild', 'sitemap.xml output is not valid XML urlset');
+    } else {
+      reportPass('Sitemap Rebuild', 'sitemap.xml returns valid XML urlset');
+    }
+
+    // Extract all loc tags
+    const locMatches = xmlBody.match(/<loc>(.*?)<\/loc>/g) || [];
+    const urlCount = locMatches.length;
+
+    if (urlCount < 700 || urlCount > 1000) {
+      reportError('Sitemap Rebuild', `Expected URL count between 700 and 1,000, found ${urlCount}`);
+    } else {
+      reportPass('Sitemap Rebuild', `Sitemap contains ${urlCount} clean URLs (under 1,000 cap)`);
+    }
+
+    // Check all URLs start with canonical https://www.sweetmaidcleaning.com
+    let nonCanonicalCount = 0;
+    for (const loc of locMatches) {
+      const cleanUrl = loc.replace(/<\/?loc>/g, '');
+      if (!cleanUrl.startsWith('https://www.sweetmaidcleaning.com')) {
+        nonCanonicalCount++;
+      }
+    }
+    if (nonCanonicalCount > 0) {
+      reportError('Sitemap Rebuild', `Found ${nonCanonicalCount} URLs not starting with https://www.sweetmaidcleaning.com`);
+    } else {
+      reportPass('Sitemap Rebuild', 'All sitemap URLs start with https://www.sweetmaidcleaning.com');
+    }
+
+    // Verify static public/sitemap.xml does NOT exist
+    const staticSitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
+    if (fs.existsSync(staticSitemapPath)) {
+      reportError('Sitemap Rebuild', 'public/sitemap.xml still exists in public directory');
+    } else {
+      reportPass('Sitemap Rebuild', 'Static public/sitemap.xml confirmed eradicated');
+    }
+  } catch (e: any) {
+    reportError('Sitemap Rebuild', e.message);
+  }
+
+  // 8. Wave 2: Sitemap Shard Decommissioning Verification (410 Gone)
+  try {
+    const { GET: getShard } = require('../src/app/sitemap/[id]/route');
+    const shardResponse = await getShard();
+    if (shardResponse.status !== 410) {
+      reportError('Sitemap Shard 410', `Expected 410 Gone for sitemap shards, got ${shardResponse.status}`);
+    } else {
+      reportPass('Sitemap Shard 410', 'Old sitemap shards return HTTP 410 Gone');
+    }
+  } catch (e: any) {
+    reportError('Sitemap Shard 410', e.message);
+  }
+
+  // 9. Wave 2: Services Page Verification
+  try {
+    const servicesPath = path.join(process.cwd(), 'src', 'app', 'services', 'page.tsx');
+    if (!fs.existsSync(servicesPath)) {
+      reportError('Services Page', 'src/app/services/page.tsx does not exist');
+    } else {
+      const servicesContent = fs.readFileSync(servicesPath, 'utf8');
+      if (!servicesContent.includes('https://www.sweetmaidcleaning.com/services/')) {
+        reportError('Services Page', 'Services page canonical does not point to https://www.sweetmaidcleaning.com/services/');
+      } else {
+        reportPass('Services Page', 'Services page canonical is https://www.sweetmaidcleaning.com/services/');
+      }
+
+      // Verify all 24 services are linked
+      let missingServices = 0;
+      for (const svc of SERVICES) {
+        if (!servicesContent.includes(`'${svc}'`) && !servicesContent.includes(`"${svc}"`)) {
+          reportError('Services Page', `Service ${svc} not linked in /services/ page`);
+          missingServices++;
+        }
+      }
+      if (missingServices === 0) {
+        reportPass('Services Page', 'All 24 approved services are linked on /services/ page');
+      }
+    }
+  } catch (e: any) {
+    reportError('Services Page', e.message);
+  }
+
+  console.log('\n====================================================');
+  if (errorCount === 0) {
+    console.log('🎉 ALL AUDIT CHECKS PASSED WITH 0 VIOLATIONS!');
+    console.log('====================================================');
+    process.exit(0);
+  } else {
+    console.error(`💥 FAILED WITH ${errorCount} VIOLATIONS!`);
+    console.log('====================================================');
+    process.exit(1);
+  }
+}
+
+runAsyncChecks();
