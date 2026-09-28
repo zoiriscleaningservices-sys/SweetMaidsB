@@ -1,0 +1,1414 @@
+{
+  "/": {
+    "slug": "/",
+    "type": "region_hub",
+    "name": "Manatee County (Homepage / Base)",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Bradenton",
+      "Lakewood Ranch",
+      "Longboat Key",
+      "Palmetto",
+      "Ellenton",
+      "Parrish",
+      "Anna Maria",
+      "Holmes Beach",
+      "Bradenton Beach",
+      "Cortez",
+      "Bayshore Gardens",
+      "Whitfield",
+      "Terra Ceia",
+      "Tallevast",
+      "Myakka City"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Ready Region Hub"
+  },
+  "/sarasota-fl/": {
+    "slug": "/sarasota-fl/",
+    "type": "city_page",
+    "name": "Sarasota",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Sarasota"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "12 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/miami-fl/": {
+    "slug": "/miami-fl/",
+    "type": "city_page",
+    "name": "Miami",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Miami"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "0 miles (Miami Office)",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/monroe-county/": {
+    "slug": "/monroe-county/",
+    "type": "region_hub",
+    "name": "Monroe County (Florida Keys) Hub",
+    "county": "Monroe County",
+    "ready_status": "READY",
+    "places_served": [
+      "Key Largo",
+      "North Key Largo",
+      "Tavernier",
+      "Islamorada",
+      "Marathon",
+      "Key West",
+      "Big Pine Key",
+      "Duck Key",
+      "Layton",
+      "Key Colony Beach",
+      "Stock Island"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Ready Region Hub"
+  },
+  "/tampa-fl/": {
+    "slug": "/tampa-fl/",
+    "type": "city_page",
+    "name": "Tampa",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Tampa"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "Hillsborough Hub",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/st-petersburg-fl/": {
+    "slug": "/st-petersburg-fl/",
+    "type": "city_page",
+    "name": "St. Petersburg",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "St. Petersburg"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/fort-lauderdale-fl/": {
+    "slug": "/fort-lauderdale-fl/",
+    "type": "region_hub",
+    "name": "Broward County Hub",
+    "county": "Broward County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Fort Lauderdale",
+      "Hollywood",
+      "Pompano Beach",
+      "Coral Springs",
+      "Pembroke Pines",
+      "Miramar",
+      "Davie",
+      "Plantation",
+      "Sunrise",
+      "Deerfield Beach",
+      "Weston"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/west-palm-beach-fl/": {
+    "slug": "/west-palm-beach-fl/",
+    "type": "region_hub",
+    "name": "Palm Beach County Hub",
+    "county": "Palm Beach County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "West Palm Beach",
+      "Boca Raton",
+      "Boynton Beach",
+      "Delray Beach",
+      "Wellington",
+      "Jupiter",
+      "Palm Beach Gardens",
+      "Greenacres",
+      "Lake Worth Beach"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/naples-fl/": {
+    "slug": "/naples-fl/",
+    "type": "region_hub",
+    "name": "Collier County Hub",
+    "county": "Collier County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Naples",
+      "Marco Island",
+      "Immokalee",
+      "Golden Gate",
+      "Naples Park",
+      "Pelican Bay"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/fort-myers-fl/": {
+    "slug": "/fort-myers-fl/",
+    "type": "region_hub",
+    "name": "Lee County Hub",
+    "county": "Lee County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Fort Myers",
+      "Cape Coral",
+      "Bonita Springs",
+      "Estero",
+      "Lehigh Acres",
+      "Fort Myers Beach",
+      "Sanibel"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/port-charlotte-fl/": {
+    "slug": "/port-charlotte-fl/",
+    "type": "region_hub",
+    "name": "Charlotte County Hub",
+    "county": "Charlotte County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Port Charlotte",
+      "Punta Gorda",
+      "Englewood",
+      "Rotonda West",
+      "Babcock Ranch"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/pasco-county/": {
+    "slug": "/pasco-county/",
+    "type": "region_hub",
+    "name": "Pasco County Hub",
+    "county": "Pasco County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "New Port Richey",
+      "Wesley Chapel",
+      "Land O Lakes",
+      "Zephyrhills",
+      "Dade City",
+      "Odessa",
+      "Trinity"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/orlando-fl/": {
+    "slug": "/orlando-fl/",
+    "type": "region_hub",
+    "name": "Orange County Hub",
+    "county": "Orange County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Orlando",
+      "Winter Park",
+      "Ocoee",
+      "Winter Garden",
+      "Apopka",
+      "Windermere",
+      "Maitland"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/jacksonville-fl/": {
+    "slug": "/jacksonville-fl/",
+    "type": "region_hub",
+    "name": "Duval County Hub",
+    "county": "Duval County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Jacksonville",
+      "Jacksonville Beach",
+      "Atlantic Beach",
+      "Neptune Beach",
+      "Baldwin"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/gainesville-fl/": {
+    "slug": "/gainesville-fl/",
+    "type": "region_hub",
+    "name": "Alachua County Hub",
+    "county": "Alachua County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Gainesville",
+      "Alachua",
+      "High Springs",
+      "Newberry",
+      "Hawthorne"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/pensacola-fl/": {
+    "slug": "/pensacola-fl/",
+    "type": "region_hub",
+    "name": "Escambia County Hub",
+    "county": "Escambia County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Pensacola",
+      "Pensacola Beach",
+      "Perdido Key",
+      "Brent",
+      "Ensley",
+      "Ferry Pass"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/panama-city-fl/": {
+    "slug": "/panama-city-fl/",
+    "type": "region_hub",
+    "name": "Bay County Hub",
+    "county": "Bay County",
+    "ready_status": "NOT_READY",
+    "places_served": [
+      "Panama City",
+      "Panama City Beach",
+      "Lynn Haven",
+      "Callaway",
+      "Springfield"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "",
+    "notes": "Preview only draft hub"
+  },
+  "/lakewood-ranch-fl/": {
+    "slug": "/lakewood-ranch-fl/",
+    "type": "city_page",
+    "name": "Lakewood Ranch",
+    "county": "Manatee / Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Lakewood Ranch"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "0 miles (Local Office)",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/palmetto-fl/": {
+    "slug": "/palmetto-fl/",
+    "type": "city_page",
+    "name": "Palmetto",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Palmetto"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "5 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/ellenton-fl/": {
+    "slug": "/ellenton-fl/",
+    "type": "city_page",
+    "name": "Ellenton",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Ellenton"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "6 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/parrish-fl/": {
+    "slug": "/parrish-fl/",
+    "type": "city_page",
+    "name": "Parrish",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Parrish"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "12 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/anna-maria-fl/": {
+    "slug": "/anna-maria-fl/",
+    "type": "city_page",
+    "name": "Anna Maria",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Anna Maria"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/holmes-beach-fl/": {
+    "slug": "/holmes-beach-fl/",
+    "type": "city_page",
+    "name": "Holmes Beach",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Holmes Beach"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "11 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/bradenton-beach-fl/": {
+    "slug": "/bradenton-beach-fl/",
+    "type": "city_page",
+    "name": "Bradenton Beach",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Bradenton Beach"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "9 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/cortez-fl/": {
+    "slug": "/cortez-fl/",
+    "type": "city_page",
+    "name": "Cortez",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Cortez"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "7 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/bayshore-gardens-fl/": {
+    "slug": "/bayshore-gardens-fl/",
+    "type": "city_page",
+    "name": "Bayshore Gardens",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Bayshore Gardens"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "4 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/whitfield-fl/": {
+    "slug": "/whitfield-fl/",
+    "type": "city_page",
+    "name": "Whitfield",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Whitfield"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "6 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/longboat-key-fl/": {
+    "slug": "/longboat-key-fl/",
+    "type": "city_page",
+    "name": "Longboat Key",
+    "county": "Manatee / Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Longboat Key"
+    ],
+    "verified": true,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "15 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/myakka-city-fl/": {
+    "slug": "/myakka-city-fl/",
+    "type": "city_page",
+    "name": "Myakka City",
+    "county": "Manatee County",
+    "ready_status": "READY",
+    "places_served": [
+      "Myakka City"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "22 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/venice-fl/": {
+    "slug": "/venice-fl/",
+    "type": "city_page",
+    "name": "Venice (incl. South Venice)",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Venice (incl. South Venice)"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "0 miles (Venice Office)",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/north-port-fl/": {
+    "slug": "/north-port-fl/",
+    "type": "city_page",
+    "name": "North Port",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "North Port"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to Venice Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/osprey-fl/": {
+    "slug": "/osprey-fl/",
+    "type": "city_page",
+    "name": "Osprey",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Osprey"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "6 miles to Venice Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/nokomis-fl/": {
+    "slug": "/nokomis-fl/",
+    "type": "city_page",
+    "name": "Nokomis",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Nokomis"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "3 miles to Venice Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/siesta-key-fl/": {
+    "slug": "/siesta-key-fl/",
+    "type": "city_page",
+    "name": "Siesta Key",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Siesta Key"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "15 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/fruitville-fl/": {
+    "slug": "/fruitville-fl/",
+    "type": "city_page",
+    "name": "Fruitville",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Fruitville"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/lake-sarasota-fl/": {
+    "slug": "/lake-sarasota-fl/",
+    "type": "city_page",
+    "name": "Lake Sarasota",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Lake Sarasota"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "16 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/bee-ridge-fl/": {
+    "slug": "/bee-ridge-fl/",
+    "type": "city_page",
+    "name": "Bee Ridge",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Bee Ridge"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "15 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/palmer-ranch-fl/": {
+    "slug": "/palmer-ranch-fl/",
+    "type": "city_page",
+    "name": "Palmer Ranch",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Palmer Ranch"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "18 miles to Bradenton HQ",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/englewood-fl/": {
+    "slug": "/englewood-fl/",
+    "type": "city_page",
+    "name": "Englewood",
+    "county": "Sarasota County",
+    "ready_status": "READY",
+    "places_served": [
+      "Englewood"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "12 miles to Venice Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/homestead-fl/": {
+    "slug": "/homestead-fl/",
+    "type": "city_page",
+    "name": "Homestead",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Homestead"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "0 miles (Homestead Office)",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/miami-beach-fl/": {
+    "slug": "/miami-beach-fl/",
+    "type": "city_page",
+    "name": "Miami Beach",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Miami Beach"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "6 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/coral-gables-fl/": {
+    "slug": "/coral-gables-fl/",
+    "type": "city_page",
+    "name": "Coral Gables",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Coral Gables"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "4 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/doral-fl/": {
+    "slug": "/doral-fl/",
+    "type": "city_page",
+    "name": "Doral",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Doral"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "10 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/aventura-fl/": {
+    "slug": "/aventura-fl/",
+    "type": "city_page",
+    "name": "Aventura",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Aventura"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "16 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/kendall-fl/": {
+    "slug": "/kendall-fl/",
+    "type": "city_page",
+    "name": "Kendall",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Kendall"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "9 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/pinecrest-fl/": {
+    "slug": "/pinecrest-fl/",
+    "type": "city_page",
+    "name": "Pinecrest",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Pinecrest"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "11 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/key-biscayne-fl/": {
+    "slug": "/key-biscayne-fl/",
+    "type": "city_page",
+    "name": "Key Biscayne",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Key Biscayne"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "8 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/south-miami-fl/": {
+    "slug": "/south-miami-fl/",
+    "type": "city_page",
+    "name": "South Miami",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "South Miami"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "7 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/bal-harbour-fl/": {
+    "slug": "/bal-harbour-fl/",
+    "type": "city_page",
+    "name": "Bal Harbour",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Bal Harbour"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/sunny-isles-beach-fl/": {
+    "slug": "/sunny-isles-beach-fl/",
+    "type": "city_page",
+    "name": "Sunny Isles Beach",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Sunny Isles Beach"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "18 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/cutler-bay-fl/": {
+    "slug": "/cutler-bay-fl/",
+    "type": "city_page",
+    "name": "Cutler Bay",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Cutler Bay"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "16 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/palmetto-bay-fl/": {
+    "slug": "/palmetto-bay-fl/",
+    "type": "city_page",
+    "name": "Palmetto Bay",
+    "county": "Miami-Dade County",
+    "ready_status": "READY",
+    "places_served": [
+      "Palmetto Bay"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to Miami Office",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/key-largo-fl/": {
+    "slug": "/key-largo-fl/",
+    "type": "city_page",
+    "name": "Key Largo (incl. North Key Largo)",
+    "county": "Monroe County",
+    "ready_status": "READY",
+    "places_served": [
+      "Key Largo (incl. North Key Largo)"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "0 miles (Key Largo Team)",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/tavernier-fl/": {
+    "slug": "/tavernier-fl/",
+    "type": "city_page",
+    "name": "Tavernier",
+    "county": "Monroe County",
+    "ready_status": "READY",
+    "places_served": [
+      "Tavernier"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "10 miles to Key Largo Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/islamorada-fl/": {
+    "slug": "/islamorada-fl/",
+    "type": "city_page",
+    "name": "Islamorada",
+    "county": "Monroe County",
+    "ready_status": "READY",
+    "places_served": [
+      "Islamorada"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "17 miles to Key Largo Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/marathon-fl/": {
+    "slug": "/marathon-fl/",
+    "type": "city_page",
+    "name": "Marathon",
+    "county": "Monroe County",
+    "ready_status": "READY",
+    "places_served": [
+      "Marathon"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "48 miles to Key Largo Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/big-pine-key-fl/": {
+    "slug": "/big-pine-key-fl/",
+    "type": "city_page",
+    "name": "Big Pine Key",
+    "county": "Monroe County",
+    "ready_status": "READY",
+    "places_served": [
+      "Big Pine Key"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "75 miles to Key Largo Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/key-west-fl/": {
+    "slug": "/key-west-fl/",
+    "type": "city_page",
+    "name": "Key West",
+    "county": "Monroe County",
+    "ready_status": "READY",
+    "places_served": [
+      "Key West"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "98 miles to Key Largo Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/fish-hawk-fl/": {
+    "slug": "/fish-hawk-fl/",
+    "type": "city_page",
+    "name": "Fish Hawk (incl. Lithia)",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Fish Hawk (incl. Lithia)"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "Fish Hawk Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/brandon-fl/": {
+    "slug": "/brandon-fl/",
+    "type": "city_page",
+    "name": "Brandon",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Brandon"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "8 miles to Fish Hawk Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/riverview-fl/": {
+    "slug": "/riverview-fl/",
+    "type": "city_page",
+    "name": "Riverview",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Riverview"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "7 miles to Fish Hawk Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/valrico-fl/": {
+    "slug": "/valrico-fl/",
+    "type": "city_page",
+    "name": "Valrico",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Valrico"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "6 miles to Fish Hawk Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/bloomingdale-fl/": {
+    "slug": "/bloomingdale-fl/",
+    "type": "city_page",
+    "name": "Bloomingdale",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Bloomingdale"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "5 miles to Fish Hawk Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/apollo-beach-fl/": {
+    "slug": "/apollo-beach-fl/",
+    "type": "city_page",
+    "name": "Apollo Beach",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Apollo Beach"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to Fish Hawk Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/sun-city-center-fl/": {
+    "slug": "/sun-city-center-fl/",
+    "type": "city_page",
+    "name": "Sun City Center",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Sun City Center"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "18 miles to Fish Hawk Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/plant-city-fl/": {
+    "slug": "/plant-city-fl/",
+    "type": "city_page",
+    "name": "Plant City",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Plant City"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "16 miles to Fish Hawk Base",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/carrollwood-fl/": {
+    "slug": "/carrollwood-fl/",
+    "type": "city_page",
+    "name": "Carrollwood",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Carrollwood"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "8 miles to Tampa",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/westchase-fl/": {
+    "slug": "/westchase-fl/",
+    "type": "city_page",
+    "name": "Westchase",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Westchase"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "12 miles to Tampa",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/lutz-fl/": {
+    "slug": "/lutz-fl/",
+    "type": "city_page",
+    "name": "Lutz",
+    "county": "Hillsborough County",
+    "ready_status": "READY",
+    "places_served": [
+      "Lutz"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to Tampa",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/clearwater-fl/": {
+    "slug": "/clearwater-fl/",
+    "type": "city_page",
+    "name": "Clearwater",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Clearwater"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "18 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/palm-harbor-fl/": {
+    "slug": "/palm-harbor-fl/",
+    "type": "city_page",
+    "name": "Palm Harbor",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Palm Harbor"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "24 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/largo-fl/": {
+    "slug": "/largo-fl/",
+    "type": "city_page",
+    "name": "Largo",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Largo"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "14 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/dunedin-fl/": {
+    "slug": "/dunedin-fl/",
+    "type": "city_page",
+    "name": "Dunedin",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Dunedin"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "21 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/pinellas-park-fl/": {
+    "slug": "/pinellas-park-fl/",
+    "type": "city_page",
+    "name": "Pinellas Park",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Pinellas Park"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "6 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/tarpon-springs-fl/": {
+    "slug": "/tarpon-springs-fl/",
+    "type": "city_page",
+    "name": "Tarpon Springs",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Tarpon Springs"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "28 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/safety-harbor-fl/": {
+    "slug": "/safety-harbor-fl/",
+    "type": "city_page",
+    "name": "Safety Harbor",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Safety Harbor"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "16 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/seminole-fl/": {
+    "slug": "/seminole-fl/",
+    "type": "city_page",
+    "name": "Seminole",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "Seminole"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "12 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  },
+  "/st-pete-beach-fl/": {
+    "slug": "/st-pete-beach-fl/",
+    "type": "city_page",
+    "name": "St. Pete Beach",
+    "county": "Pinellas County",
+    "ready_status": "READY",
+    "places_served": [
+      "St. Pete Beach"
+    ],
+    "verified": false,
+    "housing_types": "",
+    "notable_areas": "",
+    "seasonal_pattern": "",
+    "typical_requests": "",
+    "distance_to_nearest_base": "8 miles to St. Petersburg Team",
+    "notes": "Proposed Tier 1 / Performance City Page"
+  }
+}

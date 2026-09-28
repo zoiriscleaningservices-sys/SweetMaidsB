@@ -1,5 +1,6 @@
 import { formatName, serviceSlugs } from './data';
 import { is305Area } from './miami_broward_slugs';
+import { CANONICAL_HOST, BUSINESS_INFO, PRICING_FROM } from '@/config/site-structure';
 
 // Deterministic string hashing for consistent but unique variation per page
 function hashCode(str: string): number {
@@ -41,24 +42,24 @@ export function getCalibratedMetaTitle(
   let cleanSrv = formatName(serviceSlug.replace(/-/g, ' '));
   const shortServiceMap: Record<string, string> = {
     'medical-dental-facility-cleaning': 'Medical & Dental Cleaning',
-    'industrial-warehouse-cleaning': 'Warehouse Janitorial',
+    'industrial-warehouse-cleaning': 'Warehouse Cleaning',
     'church-worship-center-cleaning': 'Church & Worship Cleaning',
     'property-management-janitorial': 'Property Janitorial',
     'law-firm-office-cleaning': 'Law Firm Cleaning',
     'restaurant-kitchen-cleaning': 'Commercial Kitchen Cleaning',
     'gym-fitness-center-cleaning': 'Gym & Fitness Cleaning',
     'oven-appliance-deep-cleaning': 'Oven & Appliance Cleaning',
-    'eviction-cleanout-service': 'Eviction Cleanout Service',
-    'hoarder-cleaning-service': 'Hoarding Cleanout Service',
+    'eviction-cleanout-service': 'Eviction Cleanout',
+    'hoarder-cleaning-service': 'Hoarding Cleanout',
     'exterior-soft-washing': 'Exterior Soft Washing',
     'tile-and-grout-cleaning': 'Tile & Grout Cleaning',
-    'pet-hair-removal-cleaning': 'Pet Hair Deep Cleaning',
+    'pet-hair-removal-cleaning': 'Pet Hair Cleaning',
     'post-construction-cleaning': 'Post-Construction Cleaning',
     'post-renovation-cleaning': 'Post-Renovation Cleaning',
-    'luxury-penthouse-cleaning': 'Penthouse Maid Service',
+    'luxury-penthouse-cleaning': 'Penthouse Cleaning',
     'luxury-estate-cleaning': 'Luxury Estate Cleaning',
     'vacation-rental-cleaning': 'Vacation Rental Cleaning',
-    'janitorial-cleaning-services': 'Janitorial Cleaning',
+    'janitorial-cleaning-services': 'Janitorial Services',
     'office-janitorial-services': 'Office Janitorial Services',
     'school-daycare-cleaning': 'Daycare & School Cleaning'
   };
@@ -67,46 +68,33 @@ export function getCalibratedMetaTitle(
 
   if (isStatewide) {
     const statewideTemplates = [
-      `Top-Rated ${displaySrv} in Florida | Sweet Maid`,
-      `${displaySrv} Across Florida | Sweet Maid Cleaners`,
+      `${displaySrv} in Florida | Sweet Maid Cleaning Service`,
+      `${displaySrv} Across Florida | Sweet Maid Cleaning Service`,
       `Professional ${displaySrv} Across Florida | Sweet Maid`,
-      `Best ${displaySrv} in Florida | 5-Star Maid Service`
+      `Reliable ${displaySrv} in Florida | Sweet Maid Cleaning`
     ];
     const valid = statewideTemplates.filter(t => t.length <= 65 && t.length >= 50);
-    return valid.length > 0 ? valid[seed % valid.length] : `${displaySrv} Across Florida | Sweet Maid`;
+    return valid.length > 0 ? valid[seed % valid.length] : `${displaySrv} Across Florida | Sweet Maid Cleaning Service`;
   }
 
   const cleanLoc = formatName(locationName);
 
-  // Template pool ordered by richness and target 52-65 char sweet spot
+  // Template pool strictly adhering to clean, honest 50-60 char formatting:
+  // "[Service] in [City], FL | Sweet Maid Cleaning Service"
   const candidateTemplates = [
-    `Top-Rated ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`,
+    `${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaning Service`,
     `Professional ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`,
-    `${cleanLoc}, FL ${displaySrv} | Sweet Maid Cleaners`,
-    `Best ${displaySrv} in ${cleanLoc}, FL | Sweet Maid Service`,
-    `${displaySrv} in ${cleanLoc}, FL | Top Maid Service`,
-    `Affordable ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`,
-    `${cleanLoc}, FL ${displaySrv} & Cleaning | Sweet Maid`,
-    `${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaners`,
-    `Best ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`
+    `${cleanLoc}, FL ${displaySrv} | Sweet Maid Cleaning Service`,
+    `${displaySrv} Services in ${cleanLoc}, FL | Sweet Maid Cleaners`,
+    `Reliable ${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaning`
   ];
 
-  // Pick candidates strictly between 52 and 65 chars
-  const ideal = candidateTemplates.filter(t => t.length <= 65 && t.length >= 52);
+  const ideal = candidateTemplates.filter(t => t.length <= 65 && t.length >= 50);
   if (ideal.length > 0) {
     return ideal[seed % ideal.length];
   }
 
-  const acceptable = candidateTemplates.filter(t => t.length <= 65 && t.length >= 48);
-  if (acceptable.length > 0) {
-    return acceptable[seed % acceptable.length];
-  }
-
-  let fallback = `${displaySrv} in ${cleanLoc}, FL | Sweet Maid`;
-  if (fallback.length > 65) {
-    fallback = `${displaySrv} in ${cleanLoc}, FL`;
-  }
-  return fallback;
+  return `${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaning Service`;
 }
 
 export function generateSeoContentPack(
@@ -124,316 +112,167 @@ export function generateSeoContentPack(
 
   const metaTitle = getCalibratedMetaTitle(locationName, locSlug, serviceSlug, seed);
 
-  // 2. Service-Specific High-Intent Daily Search H1 Dictionary (Zero "#1", 100% Unique per location & service)
-  const serviceH1MapUnique: Record<string, string[]> = {
-    'house-cleaning': [
-      `Professional House Cleaning & Maid Service in ${cleanLoc}, FL`,
-      `Top-Rated Home Cleaners & Housekeeping in ${cleanLoc}, Florida`,
-      `Affordable House Cleaning Services in ${cleanLoc}, FL`,
-      `Trusted Local Housekeepers & Maid Service in ${cleanLoc}, FL`,
-      `5-Star House Cleaning & Home Sanitizing in ${cleanLoc}, Florida`
-    ],
-    'deep-cleaning': [
-      `Intensive Deep House Cleaning & Sanitizing in ${cleanLoc}, FL`,
-      `Top-Rated Deep Cleaning Services in ${cleanLoc}, Florida`,
-      `Detailed Deep Home Cleaners & Sanitization in ${cleanLoc}, FL`,
-      `Complete Deep Cleaning & House Reset in ${cleanLoc}, FL`
-    ],
-    'move-in-out-cleaning': [
-      `Move-In & Move-Out House Cleaning Services in ${cleanLoc}, FL`,
-      `Top-Rated Move-Out Cleaning & Turnover Maids in ${cleanLoc}, Florida`,
-      `Fast Move-In Deep Cleaning & Sanitizing in ${cleanLoc}, FL`,
-      `Guaranteed Move-Out Cleaning & Maid Service in ${cleanLoc}, FL`
-    ],
-    'airbnb-cleaning': [
-      `Airbnb & Vacation Rental Cleaning Services in ${cleanLoc}, FL`,
-      `Top-Rated Airbnb Turnover Cleaners in ${cleanLoc}, Florida`,
-      `Fast Vacation Rental Cleaning & Linens in ${cleanLoc}, FL`,
-      `5-Star Superhost Airbnb Cleaning in ${cleanLoc}, Florida`
-    ],
-    'commercial-cleaning': [
-      `Commercial Office Cleaning & Janitorial Services in ${cleanLoc}, FL`,
-      `Top-Rated Commercial Cleaners in ${cleanLoc}, Florida`,
-      `Professional Business & Office Sanitizing in ${cleanLoc}, FL`,
-      `Reliable Commercial Janitorial Services in ${cleanLoc}, FL`
-    ],
-    'carpet-cleaning': [
-      `Professional Carpet Cleaning & Steam Extraction in ${cleanLoc}, FL`,
-      `Top-Rated Carpet & Area Rug Cleaners in ${cleanLoc}, Florida`,
-      `Deep Carpet Steam Cleaning & Stain Removal in ${cleanLoc}, FL`,
-      `Eco-Friendly Carpet Cleaning in ${cleanLoc}, Florida`
-    ],
-    'pressure-washing': [
-      `Professional Pressure Washing & Power Washing in ${cleanLoc}, FL`,
-      `Top-Rated Exterior Pressure Cleaning in ${cleanLoc}, Florida`,
-      `Driveway, Patio & Siding Pressure Washing in ${cleanLoc}, FL`
-    ],
-    'window-cleaning': [
-      `Professional Window Cleaning & Washing in ${cleanLoc}, FL`,
-      `Top-Rated Streak-Free Window Cleaning in ${cleanLoc}, Florida`,
-      `Residential & Commercial Window Cleaning in ${cleanLoc}, FL`
-    ],
-    'post-construction-cleaning': [
-      `Post-Construction Cleanup & Dust Removal in ${cleanLoc}, FL`,
-      `Top-Rated Construction Cleaning Services in ${cleanLoc}, Florida`,
-      `Detailed Post-Remodel & Build Cleaning in ${cleanLoc}, FL`
-    ],
-    'luxury-estate-cleaning': [
-      `Luxury Estate & Mansion Cleaning Services in ${cleanLoc}, FL`,
-      `Premier Luxury Home Cleaning & Housekeeping in ${cleanLoc}, Florida`,
-      `White-Glove Estate & Villa Cleaning in ${cleanLoc}, FL`
-    ],
-    'medical-dental-facility-cleaning': [
-      `Medical & Dental Facility Sanitization Services in ${cleanLoc}, FL`,
-      `Top-Rated Healthcare & Clinic Cleaning in ${cleanLoc}, Florida`
-    ],
-    'gym-fitness-center-cleaning': [
-      `Gym & Fitness Center Disinfection & Cleaning in ${cleanLoc}, FL`,
-      `Top-Rated Fitness Center Cleaning Services in ${cleanLoc}, Florida`
-    ],
-    'solar-panel-cleaning': [
-      `Professional Solar Panel Cleaning & Washing in ${cleanLoc}, FL`,
-      `Top-Rated Solar Panel Washers in ${cleanLoc}, Florida`
-    ],
-    'gutter-cleaning': [
-      `Professional Gutter Cleaning & Downspout Clearing in ${cleanLoc}, FL`,
-      `Top-Rated Gutter Cleaners in ${cleanLoc}, Florida`
-    ]
-  };
-
-  const defaultH1s = [
-    `${cleanSrv} Near You in ${cleanLoc}, FL`,
-    `Best Local ${cleanSrv} & Maid Service in ${cleanLoc}, FL`,
-    `Top-Rated ${cleanSrv} & Professional Cleaners in ${cleanLoc}, Florida`,
-    `Affordable ${cleanSrv} & House Cleaning in ${cleanLoc}, FL`,
-    `Trusted, Licensed & Insured ${cleanSrv} in ${cleanLoc}, Florida`,
-    `Premier 5-Star ${cleanSrv} & Housekeeping in ${cleanLoc}, FL`,
-    `Same-Day & Recurring ${cleanSrv} in ${cleanLoc}, Florida`,
-    `Award-Winning Local ${cleanSrv} in ${cleanLoc}, FL`
-  ];
-
+  // Service-Specific H1 Dictionary (Zero "#1", Zero "Best ", Zero "Top-Rated")
   const isStatewide = cleanLoc.toLowerCase() === 'florida' || serviceSlugs.includes(locSlug);
 
-  const h1Pool = serviceH1MapUnique[serviceSlug] || defaultH1s;
-  let h1 = h1Pool[seed % h1Pool.length];
-  if (isStatewide) {
-    h1 = h1.replace(/\s+in\s+Florida,\s*(?:Florida|FL\b)/gi, ' Across Florida');
-    h1 = h1.replace(/\s+in\s+Florida$/gi, ' Across Florida');
-  }
+  const defaultH1s = isStatewide ? [
+    `${cleanSrv} Across Florida`,
+    `Professional ${cleanSrv} Across Florida`,
+    `Reliable ${cleanSrv} in Florida`
+  ] : [
+    `${cleanSrv} in ${cleanLoc}, FL`,
+    `Professional ${cleanSrv} in ${cleanLoc}, FL`,
+    `Reliable ${cleanSrv} in ${cleanLoc}, Florida`,
+    `Local ${cleanSrv} in ${cleanLoc}, FL`
+  ];
 
-  // 3. High-Volume Daily Search Term Clusters (Real Google user daily search queries)
+  let h1 = defaultH1s[seed % defaultH1s.length];
+
+  // Daily search keywords
   const dailyKeywordPools = [
     [
       `house cleaning near me in ${cleanLoc}`,
-      `best maid service ${cleanLoc} FL`,
+      `maid service ${cleanLoc} FL`,
       `affordable ${cleanSrv.toLowerCase()} ${cleanLoc}`,
-      `top rated house cleaners ${cleanLoc} Florida`,
-      `same day cleaning service ${cleanLoc}`,
-      `deep home sanitization ${cleanLoc}`,
-      `licensed and insured maids ${cleanLoc}`,
+      `professional house cleaners ${cleanLoc} Florida`,
+      `home sanitization ${cleanLoc}`,
+      `family-owned maids ${cleanLoc}`,
       `weekly recurring cleaning ${cleanLoc}`
     ],
     [
       `professional cleaners near me in ${cleanLoc}`,
       `maid service near me ${cleanLoc} FL`,
-      `best ${cleanSrv.toLowerCase()} company ${cleanLoc}`,
+      `${cleanSrv.toLowerCase()} company ${cleanLoc}`,
       `move out cleaning cost ${cleanLoc}`,
-      `luxury condo and home cleaners ${cleanLoc}`,
-      `pet safe house cleaning ${cleanLoc}`,
+      `condo and home cleaners ${cleanLoc}`,
       `commercial janitorial service ${cleanLoc}`,
-      `local housekeeper in ${cleanLoc} Florida`
-    ],
-    [
-      `cheap cleaning services ${cleanLoc} FL`,
-      `trusted maid company near me ${cleanLoc}`,
-      `5 star ${cleanSrv.toLowerCase()} ${cleanLoc}`,
-      `Airbnb turnover cleaning ${cleanLoc}`,
-      `post construction cleaning ${cleanLoc}`,
-      `bi weekly house cleaning rates ${cleanLoc}`,
-      `eco friendly home cleaning ${cleanLoc}`,
-      `background checked cleaners ${cleanLoc}`
-    ],
-    [
-      `top house cleaning company in ${cleanLoc} FL`,
-      `maid service quotes near me ${cleanLoc}`,
-      `emergency same day cleaners ${cleanLoc}`,
-      `deep cleaning apartment near me ${cleanLoc}`,
-      `residential maid services ${cleanLoc} Florida`,
-      `move in cleaning specials ${cleanLoc}`,
-      `reliable maid service in ${cleanLoc}`,
-      `full house deep clean ${cleanLoc}`
+      `housekeeper in ${cleanLoc} Florida`
     ]
   ];
 
   const dailySearchKeywords = dailyKeywordPools[seed % dailyKeywordPools.length];
 
-  // 4. Badges
+  // Badges (Honest, factual only)
   const badges = isStatewide ? [
-    `📍 Serving All 799+ Florida Cities & Communities`,
-    `✨ 100% Satisfaction Guaranteed Across Florida`,
-    `🏆 Top Rated Cleaning Specialists Across Florida`,
-    `🛡️ Fully Licensed, Bonded & Insured Statewide`,
-    `🌿 Eco-Friendly & Hospital-Grade Cleaners in Florida`,
+    `📍 Serving Florida Communities`,
+    `✨ Family-Owned Cleaning Service`,
+    `🧹 Professional Cleaning Specialists Across Florida`
   ] : [
-    `📍 Serving All of ${cleanLoc} & Surrounding Florida Areas`,
-    `✨ 100% Satisfaction Guaranteed in ${cleanLoc}, FL`,
-    `🏆 Top Rated Cleaning Specialists in ${cleanLoc}, Florida`,
-    `🛡️ Fully Licensed, Bonded & Insured in ${cleanLoc}`,
-    `🌿 Eco-Friendly & Hospital-Grade Cleaners in ${cleanLoc}, FL`,
+    `📍 Serving ${cleanLoc} & Nearby Areas`,
+    `✨ Family-Owned Cleaning Service`,
+    `🧹 Professional Cleaning Specialists in ${cleanLoc}`
   ];
   const badge = badges[seed % badges.length];
 
-  // 5. Hero Subtitle naturally weaving in primary user intent
+  // Hero Subtitle: GUARANTEED to mention the specific service on every page!
   const heroSubs = isStatewide ? [
-    `Searching for trusted <strong>house cleaning near you</strong> across Florida? Sweet Maid delivers customized, detail-obsessed ${cleanSrv.toLowerCase()} throughout Florida with background-checked specialists, hospital-grade non-toxic supplies, and a 100% satisfaction guarantee.`,
-    `Looking for the best <strong>maid service across Florida</strong>? Sweet Maid provides elite-tier home sanitization, recurring weekly maintenance, and move-out detailing tailored specifically to your property's needs.`,
-    `Transform your space with Florida's premier <strong>professional cleaners</strong>. Sweet Maid combines hospital-grade HEPA sanitization, pet-safe formulas, and vetted specialists for unmatched ${cleanSrv.toLowerCase()} across Florida.`,
-    `Get 5-star <strong>residential and commercial cleaning in Florida</strong>. Our licensed and insured cleaning teams handle everything from deep sanitizing to recurring housekeeping with transparent, flat-rate pricing.`
+    `Looking for trusted ${cleanSrv.toLowerCase()} across Florida? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the state.`,
+    `Sweet Maid Cleaning Service provides reliable ${cleanSrv.toLowerCase()} across Florida, with dedicated specialists and transparent flat-rate pricing.`,
+    `Schedule professional ${cleanSrv.toLowerCase()} across Florida with Sweet Maid Cleaning Service. Family-owned and committed to consistent cleanliness.`,
+    `Maintain a spotless property with ${cleanSrv.toLowerCase()} across Florida. Contact our dispatch team for a free estimate tailored to your space.`
   ] : [
-    `Searching for trusted <strong>house cleaning near me</strong> in ${cleanLoc}? Sweet Maid delivers customized, detail-obsessed ${cleanSrv.toLowerCase()} throughout ${cleanLoc} with background-checked specialists, hospital-grade non-toxic supplies, and a 100% satisfaction guarantee.`,
-    `Looking for the best <strong>maid service in ${cleanLoc}, FL</strong>? Sweet Maid provides elite-tier home sanitization, recurring weekly maintenance, and move-out detailing tailored specifically to your property's needs.`,
-    `Transform your space with ${cleanLoc}'s premier <strong>professional cleaners</strong>. Sweet Maid combines hospital-grade HEPA sanitization, pet-safe formulas, and vetted specialists for unmatched ${cleanSrv.toLowerCase()} across ${cleanLoc}, Florida.`,
-    `Get 5-star <strong>residential and commercial cleaning in ${cleanLoc}</strong>. Our licensed and insured cleaning teams handle everything from deep sanitizing to recurring housekeeping with transparent, flat-rate pricing.`
+    `Looking for trusted ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.`,
+    `Sweet Maid Cleaning Service provides reliable ${cleanSrv.toLowerCase()} in ${cleanLoc}, with dedicated specialists and transparent flat-rate pricing.`,
+    `Schedule professional ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL with Sweet Maid Cleaning Service. Family-owned and committed to consistent cleanliness.`,
+    `Maintain a spotless property with ${cleanSrv.toLowerCase()} in ${cleanLoc}. Contact our local team for a free estimate tailored to your space.`
   ];
-  const heroSub = heroSubs[(seed >> 2) % heroSubs.length];
+  const heroSub = heroSubs[seed % heroSubs.length];
 
-  // 6. Natural High-Volume Search Context Paragraph (Natural Language Keyword Weaving)
   const searchContextParagraph = isStatewide
-    ? `Whether you are searching for <em>"house cleaning near me in Florida"</em>, <em>"same-day deep cleaning service"</em>, or <em>"reliable recurring maid service in Florida"</em>, Sweet Maid is the trusted statewide authority. We serve single-family homes, luxury condominiums, apartments, vacation rentals, and commercial offices across Florida with hospital-grade sanitization and EPA-certified eco-friendly products.`
-    : `Whether you are searching for <em>"house cleaning near me in ${cleanLoc}"</em>, <em>"same-day deep cleaning service"</em>, or <em>"reliable recurring maid service in ${cleanLoc}, FL"</em>, Sweet Maid is the trusted local authority. We serve single-family homes, luxury condominiums, apartments, vacation rentals, and commercial offices across ${cleanLoc} with hospital-grade sanitization and EPA-certified eco-friendly products.`;
+    ? `Sweet Maid Cleaning Service provides scheduled visits, deep seasonal cleans, and turnover care for single-family homes, condominiums, and commercial properties across Florida.`
+    : `Sweet Maid Cleaning Service provides scheduled visits, deep seasonal cleans, and turnover care for single-family homes, condominiums, and commercial properties in ${cleanLoc} and surrounding areas.`;
 
-  const dailySearchHeading = isStatewide ? `Popular Daily Cleaning Searches Across Florida` : `Popular Daily Cleaning Searches in ${cleanLoc}, FL`;
+  const dailySearchHeading = isStatewide ? `Common Cleaning Inquiries Across Florida` : `Cleaning Services in ${cleanLoc}, FL`;
 
-  // 7. Dynamic Florida Climate & Environmental Strategy
   const isCoastal = locSlug.includes('beach') || locSlug.includes('key') || locSlug.includes('isles') || locSlug.includes('shores') || locSlug.includes('miami') || locSlug.includes('sarasota') || locSlug.includes('tampa') || locSlug.includes('naples');
   
-  const climateTitle = isStatewide
-    ? `Florida High-Humidity & Air Quality Defense Statewide`
-    : isCoastal
-    ? `Coastal Environmental & Moisture Defense in ${cleanLoc}, FL`
-    : `Florida High-Humidity & Air Quality Defense in ${cleanLoc}, FL`;
+  const climateTitle = isCoastal
+    ? `Managing Coastal Salt Air & Humidity in ${cleanLoc}`
+    : `Addressing Florida Dust & Humidity in ${cleanLoc}`;
 
   const climateBody = isCoastal
-    ? `Properties in ${cleanLoc} face unique environmental challenges: high subtropical humidity, airborne salt spray, persistent fine sand, and rapid mildew accumulation in tile grout and HVAC vents. Sweet Maid’s specialized ${cleanSrv.toLowerCase()} in ${cleanLoc} incorporates moisture-neutralizing sanitizers, sand-extracting HEPA vacuums, and streak-free salt film removers designed specifically for Florida coastal living.`
-    : `Inland Florida climate brings heavy seasonal pollen, intense heat-humidity cycles, and airborne dust that settles deep into upholstery, carpets, and air returns throughout ${cleanLoc}. Our professional ${cleanSrv.toLowerCase()} uses multi-stage micro-allergen filtration and anti-microbial treatments to safeguard your indoor air quality and keep your ${cleanLoc} home spotless and fresh year-round.`;
+    ? `Coastal Florida properties in ${cleanLoc} require focused care to address salt air residue, tracked-in beach sand, and indoor moisture. Our cleaning routines prioritize glass surfaces, ventilation grilles, and floor care.`
+    : `Florida homes in ${cleanLoc} face year-round humidity and dust accumulation. Our systematic cleaning methods focus on indoor air quality, thorough dusting, and sanitization of high-contact surfaces.`;
 
-  // 8. Eco-Friendly Section
-  const ecoTitle = isStatewide
-    ? `Safe For Your Family, Pets & The Florida Ecosystem`
-    : `Safe For Your Family, Pets & The ${cleanLoc} Ecosystem`;
-  const ecoBody = isStatewide
-    ? `We strictly use non-toxic, biodegradable, and EPA Safer Choice certified cleaning solutions for all ${cleanSrv.toLowerCase()} across Florida. Our zero-residue formulas eliminate 99.9% of bacteria and viral pathogens without releasing harsh VOCs or chemical fumes into your living space, protecting children, pets, and Florida's delicate waterways.`
-    : `We strictly use non-toxic, biodegradable, and EPA Safer Choice certified cleaning solutions for all ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL. Our zero-residue formulas eliminate 99.9% of bacteria and viral pathogens without releasing harsh VOCs or chemical fumes into your living space, protecting children, pets, and Florida's delicate waterways.`;
+  const ecoTitle = `Quality Supplies & Effective Techniques`;
+  const ecoBody = `Our cleaning specialists utilize commercial HEPA filtration vacuums and color-coded microfiber cloths to prevent cross-contamination between bathrooms, kitchens, and living spaces.`;
 
-  // 9. Why Choose Points
-  const whyChooseTitle = isStatewide
-    ? `Why Florida Residents & Businesses Choose Sweet Maid for ${cleanSrv}`
-    : `Why ${cleanLoc} Residents & Businesses Choose Sweet Maid for ${cleanSrv}`;
+  const whyChooseTitle = `Why Choose Sweet Maid Cleaning Service in ${cleanLoc}`;
   const whyChoosePoints = [
-    {
-      title: "100% Background-Checked Staff",
-      desc: `Every cleaner dispatched to your ${cleanLoc} property is rigorously vetted, trained, and insured for your total peace of mind.`,
-      icon: "fa-shield-halved"
-    },
-    {
-      title: "Customized Cleaning Checklists",
-      desc: `We don't do generic one-size-fits-all cleans. Every ${cleanLoc} booking follows a tailored checklist focusing on your exact high-priority areas.`,
-      icon: "fa-clipboard-check"
-    },
-    {
-      title: "Hospital-Grade HEPA Filtration",
-      desc: `Our commercial-grade vacuums capture 99.97% of dust mites, Florida pollen, and pet dander down to 0.3 microns throughout ${cleanLoc}.`,
-      icon: "fa-wind"
-    },
-    {
-      title: "Zero-Risk Satisfaction Guarantee",
-      desc: `If any spot in your ${cleanLoc} property isn't cleaned to absolute perfection, we return within 24 hours to re-clean it free of charge.`,
-      icon: "fa-award"
-    }
+    { title: 'Family-Owned Care', desc: 'Direct communication, consistent standards, and personal accountability on every visit.', icon: 'fa-heart' },
+    { title: 'Transparent Pricing', desc: 'Clear flat-rate estimates based on your home size and service requirements with no hidden fees.', icon: 'fa-tag' },
+    { title: 'Reliable Scheduling', desc: 'Dependable recurring appointments on weekly, bi-weekly, or monthly intervals that fit your routine.', icon: 'fa-calendar-check' },
+    { title: 'Detailed Checklist', desc: 'Thorough cleaning across kitchens, bathrooms, floors, and living spaces following a consistent scope.', icon: 'fa-list-check' }
   ];
 
-  // 10. 10 Detailed Long-Form Localized FAQs (Google People Also Ask Optimized)
+  // Realistic starting price lookup matching pricing.json exactly
+  let startingPrice = PRICING_FROM.standard_cleaning;
+  if (serviceSlug.includes('deep')) startingPrice = PRICING_FROM.deep_clean;
+  else if (serviceSlug.includes('move')) startingPrice = PRICING_FROM.move_out;
+  else if (serviceSlug.includes('airbnb')) startingPrice = PRICING_FROM.airbnb;
+  else if (serviceSlug.includes('post-construction')) startingPrice = PRICING_FROM.post_construction;
+  else if (serviceSlug.includes('commercial') || serviceSlug.includes('office') || serviceSlug.includes('janitorial')) startingPrice = PRICING_FROM.office_workplace;
+
+  // Safe service name handling to prevent duplicate deep prefix
+  const isDeepService = serviceSlug.includes('deep');
+  const deepPhrase = isDeepService ? cleanSrv.toLowerCase() : `deep ${cleanSrv.toLowerCase()}`;
+
   const faqs = [
     {
-      q: `Who provides the best ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL?`,
-      a: `Sweet Maid is recognized as the leading provider of 5-star ${cleanSrv.toLowerCase()} in ${cleanLoc}, Florida. We combine background-checked cleaners, hospital-grade equipment, transparent upfront pricing, and a 100% satisfaction guarantee to deliver the highest quality clean across all ${cleanLoc} residential neighborhoods and commercial districts.`
+      q: `What is included with ${cleanSrv.toLowerCase()} in ${cleanLoc}?`,
+      a: `Our ${cleanSrv.toLowerCase()} in ${cleanLoc} includes detailed dusting, vacuuming carpets and rugs, mopping hard floors, sanitizing kitchen counters and sinks, cleaning bathroom fixtures, and emptying wastebaskets.`
     },
     {
-      q: `How much does professional ${cleanSrv.toLowerCase()} cost in ${cleanLoc}, Florida?`,
-      a: `The cost of ${cleanSrv.toLowerCase()} in ${cleanLoc} typically ranges between $129 and $289 depending on your home's total square footage, number of bedrooms and bathrooms, and whether you require recurring maintenance or an intensive initial deep clean. We offer free, instant online quotes with zero hidden fees for all ${cleanLoc} residents.`
-    },
-    {
-      q: `Are Sweet Maid cleaners licensed, bonded, and insured in ${cleanLoc}?`,
-      a: `Yes. Sweet Maid is fully licensed, bonded, and carries comprehensive multi-million dollar liability and workers' compensation insurance covering all cleaning operations in ${cleanLoc} and throughout the State of Florida. Your property and valuables are 100% protected at all times.`
+      q: `How much does ${cleanSrv.toLowerCase()} cost in ${cleanLoc}, Florida?`,
+      a: `Pricing for ${cleanSrv.toLowerCase()} in ${cleanLoc} starts from $${startingPrice}, with final rates depending on total square footage, the number of bedrooms and bathrooms, and the condition of the property. Request a free quote online for an exact estimate.`
     },
     {
       q: `How often should I schedule ${cleanSrv.toLowerCase()} for my ${cleanLoc} home?`,
-      a: `Due to Florida's subtropical climate, humidity, and active outdoor lifestyle in ${cleanLoc}, most homeowners benefit most from bi-weekly recurring cleaning to prevent dust, mold spores, and grime buildup. We also offer weekly schedules for busy households with pets and monthly refresh cleans.`
+      a: `Most clients in ${cleanLoc} schedule bi-weekly recurring cleaning for balanced home upkeep. Weekly visits are ideal for larger households with pets, while monthly appointments work well for seasonal retreats.`
     },
     {
       q: `Do I need to be home during the ${cleanSrv.toLowerCase()} in ${cleanLoc}?`,
-      a: `No, you do not need to be present! Many of our clients in ${cleanLoc} provide a lockbox code, garage keypad, or front desk key authorization. Our trusted cleaning teams securely lock up your property upon completing your service.`
+      a: `No, you do not need to be present. Many clients in ${cleanLoc} provide a door code, lockbox key, or front desk authorization. Our team secures the property upon departure.`
     },
     {
-      q: `Do you provide all cleaning supplies and equipment in ${cleanLoc}?`,
-      a: `Yes, Sweet Maid arrives fully equipped with commercial HEPA vacuums, microfiber dusting systems, extendable pole dusters, and premium eco-friendly sanitizers. You never have to supply anything unless you have a specialized surface product you prefer us to use.`
-    },
-    {
-      q: `What is the difference between regular and deep ${cleanSrv.toLowerCase()} in ${cleanLoc}?`,
-      a: `Regular cleaning focuses on upkeep: wiping surfaces, vacuuming, mopping, bathroom sanitization, and trash removal. Deep ${cleanSrv.toLowerCase()} in ${cleanLoc} is an intensive overhaul that includes hand-scrubbing baseboards, interior oven and refrigerator detailing, door frame wipe-downs, tile grout scrubbing, and high-reach vent dusting.`
-    },
-    {
-      q: `Are your cleaning solutions safe for pets and children in ${cleanLoc}?`,
-      a: `100% safe. We strictly utilize plant-based, non-toxic, and hypoallergenic cleaning agents that leave zero toxic chemical residues on your ${cleanLoc} floors, countertops, or living areas.`
-    },
-    {
-      q: `How quickly can I book ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL?`,
-      a: `We offer convenient same-day and next-day availability for urgent ${cleanSrv.toLowerCase()} across ${cleanLoc}, as well as scheduled recurring slots. You can book instantly online in under 60 seconds or call our Florida dispatch team.`
-    },
-    {
-      q: `What if I am not completely satisfied with my clean in ${cleanLoc}?`,
-      a: `We stand firmly behind our 100% Sparkle Guarantee. If you notice any area that was missed in your ${cleanLoc} property, notify us within 24 hours and a supervisor will return to re-clean that area free of charge until you are completely delighted.`
+      q: `What is the difference between regular maintenance and ${deepPhrase} in ${cleanLoc}?`,
+      a: `Regular cleaning focuses on routine upkeep: wiping surfaces, vacuuming, mopping, and bathroom sanitizing. A deep clean includes intensive detailing of baseboards, interior cabinet surfaces, door frames, and high-reach vents.`
     }
   ];
 
-  // 11. Structured Schema with keywords and knowAbout entities
+  // Clean, compliant JSON-LD schema
+  const isPhone305 = is305Area(locSlug, cleanLoc);
+  const phone = isPhone305 ? '(305) 851-6959' : BUSINESS_INFO.phone;
+
   const schemaObj = [
     {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "CleaningService", "Organization"],
-      "name": `Sweet Maid - ${cleanSrv} ${cleanLoc}`,
+      "name": BUSINESS_INFO.name,
       "description": heroSub.replace(/<[^>]+>/g, ''),
-      "url": `https://sweetmaidcleaning.com/${locSlug}/${serviceSlug}/`,
-      "telephone": is305Area(locSlug, cleanLoc) ? "(305) 851-6959" : "(941) 222-2080",
-      "image": "https://sweetmaidcleaning.com/images/logo.png",
+      "url": `${CANONICAL_HOST}/${locSlug}/${serviceSlug}/`,
+      "telephone": phone,
+      "email": BUSINESS_INFO.email,
+      "image": `${CANONICAL_HOST}/images/logo.png`,
       "priceRange": "$$",
-      "keywords": dailySearchKeywords.join(', '),
-      "knowsAbout": [
-        "House Cleaning",
-        "Maid Service",
-        "Deep Cleaning",
-        "Move Out Cleaning",
-        "Sanitization",
-        "Residential Cleaning",
-        "Commercial Cleaning",
-        ...dailySearchKeywords
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": `Serving ${cleanLoc} & Greater Florida`,
-        "addressLocality": cleanLoc,
-        "addressRegion": "FL",
-        "addressCountry": "US"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "284",
-        "bestRating": "5"
+      "sameAs": BUSINESS_INFO.socialProfiles,
+      "areaServed": {
+        "@type": "Place",
+        "name": `${cleanLoc}, FL`
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": `${cleanSrv} in ${cleanLoc}, FL`,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": BUSINESS_INFO.name,
+        "telephone": phone
       },
       "areaServed": {
-        "@type": "AdministrativeArea",
-        "name": cleanLoc
+        "@type": "Place",
+        "name": `${cleanLoc}, FL`
       }
     },
     {
@@ -452,24 +291,9 @@ export function generateSeoContentPack(
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://sweetmaidcleaning.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": cleanLoc,
-          "item": `https://sweetmaidcleaning.com/${locSlug}/`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": cleanSrv,
-          "item": `https://sweetmaidcleaning.com/${locSlug}/${serviceSlug}/`
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${CANONICAL_HOST}/` },
+        { "@type": "ListItem", "position": 2, "name": cleanLoc, "item": `${CANONICAL_HOST}/${locSlug}/` },
+        { "@type": "ListItem", "position": 3, "name": cleanSrv, "item": `${CANONICAL_HOST}/${locSlug}/${serviceSlug}/` }
       ]
     }
   ];

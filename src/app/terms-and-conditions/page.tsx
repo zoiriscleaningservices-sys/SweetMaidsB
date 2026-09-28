@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions & Service Agreement | Sweet Maid Cleaning',
-  description: 'Read the Terms and Conditions for Sweet Maid Cleaning Services, including booking policies, cancellation guidelines, satisfaction guarantees, and service standards in Florida.',
+  description: 'Read the Terms and Conditions for Sweet Maid Cleaning Services, including booking policies, cancellation guidelines, and professional service standards in Florida.',
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/terms-and-conditions/',
+    canonical: 'https://www.sweetmaidcleaning.com/terms-and-conditions/',
   },
   openGraph: {
-    title: 'Terms & Conditions & Service Agreement | Sweet Maid Cleaning',
-    description: 'Service agreement, booking terms, and satisfaction guarantee policies of Sweet Maid Cleaning Service.',
-    url: 'https://sweetmaidcleaning.com/terms-and-conditions/',
+    title: 'Terms & Conditions & Service Agreement | Sweet Maid Cleaning Service',
+    description: 'Service agreement, booking terms, and policies of Sweet Maid Cleaning Service.',
+    url: 'https://www.sweetmaidcleaning.com/terms-and-conditions/',
     type: 'website',
   }
 };
@@ -133,16 +133,16 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 font-serif mb-3">6. 100% Sparkle Satisfaction Guarantee</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 font-serif mb-3">6. Service Satisfaction Standards</h2>
             <p>
               Your complete happiness is our priority. If any item within the agreed scope of your cleaning service was not cleaned to your total satisfaction, notify Sweet Maid within <strong>24 hours of service completion</strong>. We will promptly dispatch a supervisor or team member to re-clean the disputed area completely free of charge. Due to the labor-intensive nature of cleaning services, refunds are not issued prior to allowing our team the opportunity to perform a free reclean.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 font-serif mb-3">7. Breakage, Damage &amp; Insurance Claims</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 font-serif mb-3">7. Breakage, Damage &amp; Claims</h2>
             <p>
-              Sweet Maid is fully licensed, bonded, and insured. Our cleaners exercise exceptional care when servicing your home. In the rare event that an item is accidentally damaged or broken:
+              Our cleaners exercise exceptional care when servicing your home. In the rare event that an item is accidentally damaged or broken:
             </p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>Notify our office within 24 hours with photos and description of the damage.</li>
@@ -178,7 +178,7 @@ export default function TermsAndConditionsPage() {
             <img src="/images/logo.png" alt="Sweet Maid" className="h-12 w-auto object-contain" />
             <div>
               <div className="font-serif font-bold text-gray-900">Sweet Maid Cleaning Service</div>
-              <div className="text-xs text-gray-500">Florida's #1 Premier Cleaning Team</div>
+              <div className="text-xs text-gray-500">Professional Florida Cleaning Team</div>
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-600">

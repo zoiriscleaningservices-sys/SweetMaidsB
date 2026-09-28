@@ -87,20 +87,20 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
       <!-- Trust Metrics Bar -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12">
         <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100/80 text-center">
-          <div class="text-xl sm:text-2xl font-bold text-pink-600">5.0 ★★★★★</div>
-          <div class="text-xs text-gray-700 font-semibold mt-0.5">Top 5-Star Rated Cleaners</div>
+          <div class="text-xl sm:text-2xl font-bold text-pink-600">Family-Owned</div>
+          <div class="text-xs text-gray-700 font-semibold mt-0.5">Local Accountability</div>
         </div>
         <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100/80 text-center">
           <div class="text-xl sm:text-2xl font-bold text-gray-900">100%</div>
-          <div class="text-xs text-gray-600 mt-0.5">Sparkle Guarantee</div>
+          <div class="text-xs text-gray-600 mt-0.5">Dedicated Care</div>
         </div>
         <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100/80 text-center">
           <div class="text-xl sm:text-2xl font-bold text-gray-900">HEPA 99.9%</div>
           <div class="text-xs text-gray-600 mt-0.5">Micro-Allergen Defense</div>
         </div>
         <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100/80 text-center">
-          <div class="text-xl sm:text-2xl font-bold text-gray-900">Bonded</div>
-          <div class="text-xs text-gray-600 mt-0.5">& Fully Insured Team</div>
+          <div class="text-xl sm:text-2xl font-bold text-gray-900">Eco-Friendly</div>
+          <div class="text-xs text-gray-600 mt-0.5">Pet-Safe Cleaning Supplies</div>
         </div>
       </div>
 
@@ -313,10 +313,10 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             4. Vacation Rental Turnovers & Relocation Services in ${cleanName}
           </h2>
           <p class="mb-4">
-            ${cleanName} is a premiere destination for vacationers and new Florida residents alike. If you operate an Airbnb, VRBO, or executive rental, 5-star reviews depend on consistent, spotless turnovers between guests. Our dedicated <a href="/${slug}/airbnb-cleaning/" class="text-pink-600 font-bold underline hover:text-pink-700">Airbnb cleaning service in ${cleanName}</a> offers scheduled linen sanitization, guest amenities replenishment, and damage inspection reporting.
+            ${cleanName} is a popular destination for vacationers and new Florida residents alike. If you operate an Airbnb, VRBO, or executive rental, guest satisfaction depends on consistent, spotless turnovers between guests. Our dedicated <a href="/${slug}/airbnb-cleaning/" class="text-pink-600 font-bold underline hover:text-pink-700">Airbnb cleaning service in ${cleanName}</a> offers scheduled linen sanitization, guest amenities replenishment, and turnover inspection reporting.
           </p>
           <p class="mb-4">
-            Moving to a new home or preparing your lease for handover? Our guaranteed <a href="/${slug}/move-in-out-cleaning/" class="text-pink-600 font-bold underline hover:text-pink-700">move-in and move-out cleaning in ${cleanName}</a> ensures inside cabinets, closets, ovens, and refrigerators are meticulously detailed so you secure your complete security deposit or welcome your family into an immaculate space.
+            Moving to a new home or preparing your lease for handover? Our professional <a href="/${slug}/move-in-out-cleaning/" class="text-pink-600 font-bold underline hover:text-pink-700">move-in and move-out cleaning in ${cleanName}</a> ensures inside cabinets, closets, ovens, and refrigerators are meticulously detailed so you can welcome your family into an immaculate space.
           </p>
         </section>
 
@@ -360,7 +360,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             Sweet Maid Service Area in ${cleanName}, FL
           </h2>
           <p class="text-gray-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
-            Our background-checked, insured cleaning specialists proudly serve residential and commercial properties throughout ${cleanName} and nearby communities.
+            Our experienced cleaning specialists proudly serve residential and commercial properties throughout ${cleanName} and nearby communities.
           </p>
         </div>
 
@@ -383,7 +383,7 @@ export function generateLocalBlogContent(cleanName: string, slug: string): strin
             </div>
             <div class="text-center sm:text-left">
               <p class="font-bold text-gray-900 text-xs sm:text-sm">${isDade ? `Sweet Maid Cleaning Service • ${cleanName}, Miami-Dade` : `Serving ${cleanName}, FL &amp; Surrounding Neighborhoods`}</p>
-              <p class="text-[11px] sm:text-xs text-gray-500">${isDade ? 'Official Google Business Profile' : isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : 'Licensed & Insured Local Maid Crews'}</p>
+              <p class="text-[11px] sm:text-xs text-gray-500">${isDade ? 'Official Google Business Profile' : `Dedicated Local Teams Serving ${cleanName}, FL`}</p>
             </div>
             <div class="flex items-center gap-2">
               <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-full text-xs shadow-sm transition hover:scale-105">

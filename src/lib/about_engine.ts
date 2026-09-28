@@ -8,10 +8,9 @@ export interface LocalAboutOptions {
 }
 
 /**
- * Generates an in-depth, keyword-rich, localized About section for each Florida community.
+ * Generates an in-depth, localized About section for each Florida community.
  * Highlights:
- * - Over 5,000 houses, offices, post-construction jobs, and move-out cleans completed
- * - Built on family-owned values focused on delivering the best cleaning to local communities
+ * - Built on family-owned values focused on delivering quality cleaning to local communities
  * - Pride in craftsmanship and dedication to building long-term customer relationships
  * - Deep internal linking into local service pages and neighboring Florida cities
  */
@@ -76,43 +75,43 @@ export function generateLocalAboutContent(cleanName: string, slug: string): stri
           Built on deep family-owned values and dedicated to delivering Florida's most dependable house cleaning, office janitorial, move-out, and post-construction cleaning services.
         </p>
 
-        <!-- Proven Milestones Grid -->
+        <!-- Core Service Pillars Grid -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto text-left">
           
           <div class="p-5 sm:p-6 bg-white rounded-2xl border border-pink-100/80 shadow-lg shadow-pink-100/40 hover:shadow-xl hover:border-pink-200 transition-all">
             <div class="w-12 h-12 rounded-xl bg-pink-50 flex items-center justify-center text-pink-500 mb-3 text-xl">
               <i class="fa-solid fa-house-chimney-check"></i>
             </div>
-            <div class="text-3xl sm:text-4xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">5,000+</div>
-            <div class="text-xs sm:text-sm font-bold text-pink-600 uppercase tracking-wider mb-1">Homes & Offices</div>
-            <p class="text-xs text-gray-500 leading-snug">Cleaned with hospital-grade sanitization and precision detail.</p>
+            <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">Residential</div>
+            <div class="text-xs sm:text-sm font-bold text-pink-600 uppercase tracking-wider mb-1">Homes & Condos</div>
+            <p class="text-xs text-gray-500 leading-snug">Detail-focused house and apartment cleaning tailored to your routine.</p>
           </div>
 
           <div class="p-5 sm:p-6 bg-white rounded-2xl border border-pink-100/80 shadow-lg shadow-pink-100/40 hover:shadow-xl hover:border-pink-200 transition-all">
             <div class="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 mb-3 text-xl">
-              <i class="fa-solid fa-trowel-bricks"></i>
+              <i class="fa-solid fa-boxes-packing"></i>
             </div>
-            <div class="text-3xl sm:text-4xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">1,200+</div>
-            <div class="text-xs sm:text-sm font-bold text-rose-600 uppercase tracking-wider mb-1">Post-Construction & Move-Outs</div>
-            <p class="text-xs text-gray-500 leading-snug">Expert drywall dust removal, vacancy resets, and deep turnovers.</p>
+            <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">Turnovers</div>
+            <div class="text-xs sm:text-sm font-bold text-rose-600 uppercase tracking-wider mb-1">Move-Out & Rental</div>
+            <p class="text-xs text-gray-500 leading-snug">Careful vacancy resets, deep turnover cleans, and move-in preparation.</p>
           </div>
 
           <div class="p-5 sm:p-6 bg-white rounded-2xl border border-pink-100/80 shadow-lg shadow-pink-100/40 hover:shadow-xl hover:border-pink-200 transition-all">
             <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 mb-3 text-xl">
               <i class="fa-solid fa-people-roof"></i>
             </div>
-            <div class="text-3xl sm:text-4xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">100%</div>
-            <div class="text-xs sm:text-sm font-bold text-amber-600 uppercase tracking-wider mb-1">Family-Owned Values</div>
-            <p class="text-xs text-gray-500 leading-snug">Locally operated with genuine integrity, care, and accountability.</p>
+            <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">100%</div>
+            <div class="text-xs sm:text-sm font-bold text-amber-600 uppercase tracking-wider mb-1">Family-Owned</div>
+            <p class="text-xs text-gray-500 leading-snug">Operated with genuine personal care, integrity, and accountability.</p>
           </div>
 
           <div class="p-5 sm:p-6 bg-white rounded-2xl border border-pink-100/80 shadow-lg shadow-pink-100/40 hover:shadow-xl hover:border-pink-200 transition-all">
             <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-3 text-xl">
-              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-shield-heart"></i>
             </div>
-            <div class="text-3xl sm:text-4xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">5.0 ★</div>
-            <div class="text-xs sm:text-sm font-bold text-emerald-600 uppercase tracking-wider mb-1">Top-Rated Cleaners</div>
-            <p class="text-xs text-gray-500 leading-snug">Consistently recommended by happy homeowners in ${cleanName}.</p>
+            <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-playfair tracking-tight mb-1">Dedicated</div>
+            <div class="text-xs sm:text-sm font-bold text-emerald-600 uppercase tracking-wider mb-1">Local Service</div>
+            <p class="text-xs text-gray-500 leading-snug">Direct communication and dependable cleaning crews in ${cleanName}.</p>
           </div>
 
         </div>
@@ -137,11 +136,11 @@ export function generateLocalAboutContent(cleanName: string, slug: string): stri
             </h2>
             
             <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-              <strong>Sweet Maid Cleaning Service was built on family-owned values focused on delivering the best cleaning to our communities.</strong> We take immense personal pride in our craftsmanship and focus on building long-term relationships with our customers, rather than treating appointments as one-time transactional jobs.
+              <strong>Sweet Maid Cleaning Service was built on family-owned values focused on delivering quality cleaning to our communities.</strong> We take personal pride in our craftsmanship and focus on building long-term relationships with our customers, rather than treating appointments as one-time transactional jobs.
             </p>
 
             <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-              As a family-owned and operated cleaning company, we bring that genuine care and accountability to every home, corporate suite, and job site we enter across <strong>${cleanName}, FL</strong>. We treat every client’s property with the same reverence, discretion, and meticulous attention to detail that we bring to our own family spaces.
+              As a family-owned and operated cleaning company, we bring genuine care and accountability to every home, corporate suite, and property we care for across <strong>${cleanName}, FL</strong>. We treat every client’s space with the same respect, discretion, and attention to detail that we bring to our own home.
             </p>
 
             <div class="p-5 rounded-2xl bg-pink-50/60 border border-pink-100 text-gray-800 space-y-2">
@@ -149,12 +148,12 @@ export function generateLocalAboutContent(cleanName: string, slug: string): stri
                 <i class="fa-solid fa-handshake-angle text-pink-500"></i> Building Long-Term Relationships with ${cleanName} Homeowners
               </div>
               <p class="text-sm text-gray-600 leading-relaxed">
-                Rather than rotating through temporary sub-contractors, we focus on developing long-term, multi-year partnerships. Our recurring clients in ${cleanName} enjoy consistent cleaning teams who understand their distinct preferences, pet routines, surface requirements, and scheduling needs.
+                Rather than rotating through unfamiliar workers, we focus on developing long-term relationships. Our recurring clients in ${cleanName} enjoy consistent cleaning teams who understand their distinct preferences, surface requirements, and scheduling needs.
               </p>
             </div>
 
             <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-              Over the years, our dedicated teams have successfully completed <strong>over 5,000 houses and office cleanings</strong>, along with <strong>more than 1,200 intensive post-construction renovation cleanups and move-out transformations</strong>. From coastal single-family homes to thriving commercial offices in ${cleanName}, we bring proven techniques, HEPA-filtered sanitizing equipment, and non-toxic, pet-safe supplies to every appointment.
+              From single-family homes to local offices in ${cleanName}, we bring thorough techniques, HEPA-filtered vacuuming equipment, and pet-friendly supplies to every scheduled visit.
             </p>
           </div>
 
@@ -169,19 +168,19 @@ export function generateLocalAboutContent(cleanName: string, slug: string): stri
               <ul class="space-y-3.5 text-sm text-gray-200">
                 <li class="flex items-start gap-2.5">
                   <i class="fa-solid fa-circle-check text-pink-400 mt-1"></i>
-                  <span><strong>100% Family-Owned & Vetted:</strong> Fully licensed, bonded, and multi-million dollar insured cleaning specialists.</span>
+                  <span><strong>100% Family-Owned:</strong> Dedicated cleaning specialists who take pride in consistent results.</span>
                 </li>
                 <li class="flex items-start gap-2.5">
                   <i class="fa-solid fa-circle-check text-pink-400 mt-1"></i>
-                  <span><strong>5,000+ Completed Projects:</strong> Proven experience across residential estates, commercial facilities, and complex turnovers.</span>
+                  <span><strong>Comprehensive Cleaning:</strong> Practical solutions across residential homes, offices, and seasonal turnovers.</span>
                 </li>
                 <li class="flex items-start gap-2.5">
                   <i class="fa-solid fa-circle-check text-pink-400 mt-1"></i>
-                  <span><strong>Eco-Friendly & Pet Safe:</strong> Hypoallergenic, non-toxic sanitizers that keep children and furry family members safe.</span>
+                  <span><strong>Eco-Friendly & Pet Safe:</strong> Non-toxic supplies that keep family members and pets safe.</span>
                 </li>
                 <li class="flex items-start gap-2.5">
                   <i class="fa-solid fa-circle-check text-pink-400 mt-1"></i>
-                  <span><strong>100% Sparkle Guarantee:</strong> If any detail falls short, we return within 24 hours to re-clean it free of charge.</span>
+                  <span><strong>Clear Communication:</strong> Direct phone scheduling and responsive service from start to finish.</span>
                 </li>
               </ul>
 
@@ -198,19 +197,11 @@ export function generateLocalAboutContent(cleanName: string, slug: string): stri
 
             <!-- Client Trust Card -->
             <div class="p-6 bg-pink-50/50 rounded-3xl border border-pink-100 text-left">
-              <div class="flex items-center gap-1 text-amber-400 text-sm mb-2">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span class="text-gray-500 text-xs ml-1 font-semibold">5.0 Star Local Reputation</span>
-              </div>
               <p class="text-sm text-gray-700 italic leading-relaxed mb-3">
-                "Sweet Maid treats our home like family. We've used their recurring service for over two years in the area and their attention to baseboards, bathrooms, and hardwood floors is unmatched!"
+                "Sweet Maid treats our home like family. We've used their recurring service in the area and their attention to baseboards, bathrooms, and floors is consistent and dependable!"
               </p>
               <div class="text-xs font-bold text-gray-900 flex items-center gap-1.5">
-                <i class="fa-solid fa-shield-heart text-pink-500"></i> Verified ${cleanName}, FL Client
+                <i class="fa-solid fa-shield-heart text-pink-500"></i> ${cleanName}, FL Homeowner
               </div>
             </div>
 

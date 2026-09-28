@@ -103,7 +103,7 @@ function getReviewsForServiceAndLocation(
         initial: 'A',
         avatarBg: 'bg-pink-200',
         date: '2026-08-14',
-        text: `Booked Sweet Maid for an intensive deep clean of our home in ${cleanName} and the results were breathtaking! They hand-scrubbed the baseboards, cleaned behind appliances, detailed the grout, and left every room spotless. Best deep cleaning company in ${cleanName}!`,
+        text: `Booked Sweet Maid for an intensive deep clean of our home in ${cleanName} and the results were breathtaking! They hand-scrubbed the baseboards, cleaned behind appliances, detailed the grout, and left every room spotless in ${cleanName}!`,
         badge: 'Homeowner',
         service: 'Deep Cleaning'
       },
@@ -242,7 +242,7 @@ function getReviewsForServiceAndLocation(
         avatarBg: 'bg-teal-200',
         date: '2026-05-18',
         text: `Sweet Maid is the secret weapon for our ${cleanName} Airbnb portfolio. Never had a single cleanliness complaint. Punctual, responsive, and always five-star quality.`,
-        badge: 'Premier Host',
+        badge: 'Superhost',
         service: 'Vacation Rental'
       }
     ];
@@ -265,7 +265,7 @@ function getReviewsForServiceAndLocation(
         initial: 'E',
         avatarBg: 'bg-blue-200',
         date: '2026-07-19',
-        text: `We hired Sweet Maid for medical facility cleaning in ${cleanName} and their sanitization protocols are top-tier. Hospital-grade disinfectants, meticulous floor sanitization, and dependable night crew. Highly recommended!`,
+        text: `We hired Sweet Maid for medical facility cleaning in ${cleanName} and their sanitization protocols are meticulous. Hospital-grade disinfectants, detailed floor sanitization, and dependable night crew. Highly recommended!`,
         badge: 'Clinic Manager',
         service: 'Facility Cleaning'
       },
@@ -292,7 +292,7 @@ function getReviewsForServiceAndLocation(
         initial: 'B',
         avatarBg: 'bg-amber-200',
         date: '2026-05-09',
-        text: `Dependable, licensed, and insured commercial cleaners in ${cleanName}, FL. Sweet Maid handles our multi-tenant commercial building with zero complaints. The best janitorial team in town.`,
+        text: `Dependable, professional commercial cleaners in ${cleanName}, FL. Sweet Maid handles our multi-tenant commercial building with zero complaints. A fantastic janitorial team in town.`,
         badge: 'Facility Manager',
         service: 'Commercial Janitorial'
       }
@@ -384,7 +384,7 @@ function getReviewsForServiceAndLocation(
       initial: 'D',
       avatarBg: 'bg-emerald-200',
       date: '2026-07-10',
-      text: `Hands down the best cleaning company in ${cleanName}. As working parents with two dogs, keeping up with hardwood floors and pet hair felt impossible. The Sweet Maid team leaves our house sparkling every single time!`,
+      text: `We love this cleaning company in ${cleanName}. As working parents with two dogs, keeping up with hardwood floors and pet hair felt impossible. The Sweet Maid team leaves our house sparkling every single time!`,
       badge: 'Recurring Client',
       service: 'Bi-Weekly Cleaning'
     },

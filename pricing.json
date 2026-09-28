@@ -1,0 +1,13 @@
+{
+  "currency": "USD",
+  "pricing_model": "from",
+  "prices": {
+    "standard_cleaning": 180,
+    "deep_clean": 250,
+    "move_out": 350,
+    "airbnb": 250,
+    "post_construction": 350,
+    "one_time": 250,
+    "office_workplace": 200
+  }
+}

@@ -11,7 +11,7 @@ export function getLongboatMetadata(key: string): Metadata {
 
   const title = page.title;
   const description = page.metaDescription;
-  const canonicalUrl = `https://sweetmaidcleaning.com${page.route}`;
+  const canonicalUrl = `https://www.sweetmaidcleaning.com${page.route}`;
 
   return {
     title,
@@ -40,7 +40,7 @@ export function getLongboatJsonLd(key: string): string {
   const page = longboatKeyPages[key];
   if (!page) return '';
 
-  const canonicalUrl = `https://sweetmaidcleaning.com${page.route}`;
+  const canonicalUrl = `https://www.sweetmaidcleaning.com${page.route}`;
 
   // 1. LocalBusiness schema (NO streetAddress, NO AggregateRating/Review)
   const localBusiness = {
@@ -51,7 +51,7 @@ export function getLongboatJsonLd(key: string): string {
     "url": canonicalUrl,
     "telephone": "(941) 222-2080",
     "email": "info@sweetmaidcleaning.com",
-    "image": "https://sweetmaidcleaning.com/images/logo.png",
+    "image": "https://www.sweetmaidcleaning.com/images/logo.png",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
@@ -121,13 +121,13 @@ export function getLongboatJsonLd(key: string): string {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://sweetmaidcleaning.com/"
+        "item": "https://www.sweetmaidcleaning.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Longboat Key",
-        "item": "https://sweetmaidcleaning.com/longboat-key-fl/"
+        "item": "https://www.sweetmaidcleaning.com/longboat-key-fl/"
       }
     ]
   };

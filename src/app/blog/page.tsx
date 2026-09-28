@@ -8,25 +8,14 @@ const desc = 'Expert Florida house cleaning tips, vacation rental turnover check
 export const metadata: Metadata = {
   title,
   description: desc,
-  keywords: [
-    'Florida cleaning blog',
-    'house cleaning tips Florida',
-    'Tampa Bay cleaning guides',
-    'Miami vacation rental turnover',
-    'Orlando Airbnb cleaning checklist',
-    'Sarasota Bradenton maid service tips',
-    'Jacksonville home cleaning',
-    'Florida Keys coastal home care',
-    'deep cleaning tips Florida'
-  ],
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/blog/',
+    canonical: 'https://www.sweetmaidcleaning.com/blog/',
   },
   openGraph: {
     title,
     description: desc,
-    url: 'https://sweetmaidcleaning.com/blog/',
-    siteName: 'Sweet Maid Cleaning Services',
+    url: 'https://www.sweetmaidcleaning.com/blog/',
+    siteName: 'Sweet Maid Cleaning Service',
     type: 'website',
   },
   twitter: {

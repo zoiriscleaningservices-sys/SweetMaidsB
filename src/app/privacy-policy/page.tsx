@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Privacy Policy & Customer Data Security | Sweet Maid Cleaning',
   description: 'Learn how Sweet Maid Cleaning Service collects, uses, and safeguards your personal data, booking information, and online privacy.',
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/privacy-policy/',
+    canonical: 'https://www.sweetmaidcleaning.com/privacy-policy/',
   },
   openGraph: {
-    title: 'Privacy Policy & Customer Data Security | Sweet Maid Cleaning',
+    title: 'Privacy Policy & Customer Data Security | Sweet Maid Cleaning Service',
     description: 'Privacy Policy and data practices of Sweet Maid Cleaning Service in Florida.',
-    url: 'https://sweetmaidcleaning.com/privacy-policy/',
+    url: 'https://www.sweetmaidcleaning.com/privacy-policy/',
     type: 'website',
   }
 };
@@ -176,7 +176,7 @@ export default function PrivacyPolicyPage() {
             <img src="/images/logo.png" alt="Sweet Maid" className="h-12 w-auto object-contain" />
             <div>
               <div className="font-serif font-bold text-gray-900">Sweet Maid Cleaning Service</div>
-              <div className="text-xs text-gray-500">Florida's #1 Premier Cleaning Team</div>
+              <div className="text-xs text-gray-500">Professional Florida Cleaning Team</div>
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-600">

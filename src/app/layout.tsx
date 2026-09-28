@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { CANONICAL_HOST } from "@/config/site-structure";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -18,10 +19,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sweetmaidcleaning.com"),
+  metadataBase: new URL(CANONICAL_HOST),
   title: "House Cleaning & Maid Services in Bradenton, FL | Sweet Maid",
-  description: "Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers top-rated maid services, deep cleaning & move-out cleans. Get your free estimate today!",
-  keywords: "house cleaning Bradenton FL, maid service Bradenton, deep cleaning services Bradenton, move out cleaning Bradenton, cleaning service Lakewood Ranch, residential cleaning Manatee County, home cleaners Sarasota FL, Sweet Maid cleaning",
+  description: "Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers maid services, deep cleaning, and move-out cleans. Request your free estimate today.",
   alternates: {
     canonical: "/",
   },

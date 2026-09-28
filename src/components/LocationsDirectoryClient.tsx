@@ -105,7 +105,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
       <div className="bg-gradient-to-r from-pink-300 via-pink-300 to-pink-300 text-gray-800 text-xs py-2.5 text-center font-semibold tracking-wide px-4 shadow-sm">
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1">
           <span>
-            <i className="fa-solid fa-star text-yellow-300 mr-1 animate-pulse"></i> #1 Top-Rated Cleaning Services Across All of Florida
+            <i className="fa-solid fa-sparkles text-pink-600 mr-1"></i> Professional Cleaning Services Across Florida
           </span>
           <span className="hidden sm:inline">|</span>
           <a href="tel:19412222080" className="hover:underline flex items-center gap-1 font-bold">
@@ -240,7 +240,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-pink-50 border border-pink-200/80 text-pink-600 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold shadow-sm mb-6">
-            <i className="fa-solid fa-map-location-dot"></i> Statewide Florida Coverage • 799+ Cities Served
+            <i className="fa-solid fa-map-location-dot"></i> Florida Coverage • Service Directory
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 font-serif leading-tight mb-4">
@@ -251,8 +251,8 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
           </h1>
 
           <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-            Search our complete directory of all 799+ cities, towns, and neighborhoods across Florida. 
-            Choose your location below to get instant local pricing and guaranteed 5-star service.
+            Search our directory of cities and communities across Florida. 
+            Choose your location below to view local services and request a quote.
           </p>
 
           {/* Interactive Live Search Bar */}
@@ -413,7 +413,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
             Ready for a Spotless Home in Florida?
           </h2>
           <p className="text-pink-100 text-sm sm:text-base max-w-xl mx-auto">
-            Book top-rated, fully insured, and vetted cleaners in minutes. 100% Satisfaction Guaranteed on every clean.
+            Book professional and vetted cleaners in minutes. Dependable family-owned care on every clean.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <Link
@@ -439,7 +439,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
             <img src="/images/logo.png" alt="Sweet Maid" className="h-12 w-auto object-contain" />
             <div>
               <div className="font-serif font-bold text-gray-900">Sweet Maid Cleaning Service</div>
-              <div className="text-xs text-gray-500">Florida's #1 Premier Cleaning Team</div>
+              <div className="text-xs text-gray-500">Professional Florida Cleaning Team</div>
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-600">

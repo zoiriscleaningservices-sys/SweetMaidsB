@@ -60,14 +60,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    keywords: `${serviceName} cost ${locationName} FL, cleaning prices ${locationName}, maid rates ${locationName} Florida, cleaning service estimate`,
     alternates: {
-      canonical: `https://sweetmaidcleaning.com/cost/${slug}/${service}/`,
+      canonical: `https://www.sweetmaidcleaning.com/cost/${slug}/${service}/`,
     },
     openGraph: {
       title,
       description,
-      url: `https://sweetmaidcleaning.com/cost/${slug}/${service}/`,
+      url: `https://www.sweetmaidcleaning.com/cost/${slug}/${service}/`,
       type: 'website',
     },
   };
@@ -89,25 +88,21 @@ export default async function CostEstimatorPage({ params }: Props) {
   const mapEmbedUrl = generateLocalMapUrl(slug, locationName, isManatee);
   const googleMapsUrl = getGoogleMapsUrl(slug, locationName, isManatee, isDade);
 
-  // Dynamic realistic rates based on service type
-  let basePrice = 149;
-  let hourlyRate = 45;
-  if (service.includes('deep') || service.includes('move')) {
-    basePrice = 219;
-    hourlyRate = 55;
-  } else if (service.includes('commercial') || service.includes('office')) {
-    basePrice = 199;
-    hourlyRate = 50;
-  } else if (service.includes('carpet') || service.includes('pressure')) {
-    basePrice = 129;
-    hourlyRate = 60;
+  // Dynamic realistic rates strictly aligned with pricing.json
+  let basePrice = 180;
+  if (service.includes('deep') || service.includes('airbnb') || service.includes('one-time')) {
+    basePrice = 250;
+  } else if (service.includes('move') || service.includes('post-construction')) {
+    basePrice = 350;
+  } else if (service.includes('commercial') || service.includes('office') || service.includes('janitorial')) {
+    basePrice = 200;
   }
 
   const pricingTiers = [
-    { size: "Studio / 1 Bedroom (< 1,000 sq ft)", estHours: "2 - 3 hrs", estCost: `$${basePrice} - $${basePrice + 50}` },
-    { size: "2 - 3 Bedroom Home (1,000 - 2,200 sq ft)", estHours: "3 - 4.5 hrs", estCost: `$${basePrice + 60} - $${basePrice + 130}` },
-    { size: "4+ Bedroom Estate (2,200 - 3,500 sq ft)", estHours: "4.5 - 6 hrs", estCost: `$${basePrice + 140} - $${basePrice + 240}` },
-    { size: "Luxury Estate (3,500+ sq ft)", estHours: "Custom Crew", estCost: `$${basePrice + 250}+ (Custom Quote)` },
+    { size: "Base Starting Rate", estHours: "Starting from", estCost: `From $${basePrice}` },
+    { size: "1 - 2 Bedroom Property", estHours: "2 - 3 hrs", estCost: `From $${basePrice}` },
+    { size: "3 - 4 Bedroom Property", estHours: "3 - 5 hrs", estCost: `Custom Quote` },
+    { size: "Large Estate / Commercial Facility", estHours: "Custom Crew", estCost: `Custom Quote` },
   ];
 
   return (
@@ -222,7 +217,7 @@ export default async function CostEstimatorPage({ params }: Props) {
             Get Your Exact Price in 60 Seconds
           </h2>
           <p className="text-pink-100 text-lg max-w-xl mx-auto mb-8">
-            No hidden fees. 100% Satisfaction Guaranteed. Licensed & Insured local cleaners in {locationName}.
+            Transparent flat-rate pricing. Professional family-owned cleaners in {locationName}.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
@@ -302,8 +297,8 @@ export default async function CostEstimatorPage({ params }: Props) {
                     <i className="fas fa-shield-alt text-lg"></i>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Sweet Maid Guarantee</p>
-                    <p className="text-gray-600">100% Satisfaction &amp; Sparkle Guarantee</p>
+                    <p className="font-semibold text-gray-900">Sweet Maid Care</p>
+                    <p className="text-gray-600">Dedicated Family-Owned Service</p>
                   </div>
                 </div>
               </div>
@@ -418,7 +413,7 @@ export default async function CostEstimatorPage({ params }: Props) {
                 {displaySrv} Coverage in {locationName}, FL
               </h3>
               <p className="text-xs md:text-sm text-gray-500 mt-1">
-                Sweet Maid dispatches licensed, background-checked cleaning specialists across {locationName} and neighboring communities daily.
+                Sweet Maid dispatches experienced cleaning specialists across {locationName} and neighboring communities.
               </p>
             </div>
             <a
@@ -449,7 +444,7 @@ export default async function CostEstimatorPage({ params }: Props) {
               </div>
               <div>
                 <div className="text-xs font-bold text-gray-900">{isDade ? `Sweet Maid • ${locationName}, Miami-Dade` : `Sweet Maid • ${locationName}, FL`}</div>
-                <div className="text-[11px] text-gray-600">{isDade ? 'Official Google Business Profile' : isManatee ? '14651 Westbrook Cir Apt 312, Bradenton, FL' : `Dedicated Local Teams Serving ${locationName}, FL`}</div>
+                <div className="text-[11px] text-gray-600">{isDade ? 'Official Google Business Profile' : `Dedicated Local Teams Serving ${locationName}, FL`}</div>
               </div>
             </div>
           </div>
@@ -465,7 +460,7 @@ export default async function CostEstimatorPage({ params }: Props) {
             Explore Nearby Cleaning Service Areas Around {locationName}
           </h3>
           <p className="text-xs md:text-sm text-gray-500 mb-6 max-w-2xl mx-auto">
-            Sweet Maid delivers top-rated professional cleaning services across {locationName} and neighboring communities:
+            Sweet Maid delivers professional cleaning services across {locationName} and neighboring communities:
           </p>
           <div className="flex flex-wrap justify-center items-center gap-y-2.5 text-sm">
             {nearestLocations.map((item, idx) => (
@@ -488,7 +483,7 @@ export default async function CostEstimatorPage({ params }: Props) {
 
       {/* Footer */}
       <footer className="border-t border-pink-100 py-8 bg-white text-center text-xs text-gray-500">
-        <p className="mb-2">© 2026 Sweet Maid Cleaning Services. Serving {locationName} and all 799+ Florida communities.</p>
+        <p className="mb-2">© 2026 Sweet Maid Cleaning Service. Serving {locationName} and nearby Florida communities.</p>
         <div className="flex justify-center gap-6">
           <Link href="/privacy-policy/" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
           <Link href="/terms-and-conditions/" className="hover:text-pink-500 transition-colors">Terms &amp; Conditions</Link>

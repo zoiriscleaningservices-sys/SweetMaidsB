@@ -3,15 +3,15 @@ import Script from 'next/script';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Book House Cleaning Online | Instant Maid Booking | Sweet Maid',
-  description: 'Book your house cleaning, deep cleaning, or maid service online in under 60 seconds with Sweet Maid. Transparent flat-rate pricing, vetted cleaners, 100% satisfaction guaranteed.',
+  title: 'Book House Cleaning Online | Sweet Maid Cleaning Service',
+  description: 'Book your house cleaning, deep cleaning, or maid service online with Sweet Maid. Transparent pricing and experienced local cleaning teams.',
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/book-online/',
+    canonical: 'https://www.sweetmaidcleaning.com/book-online/',
   },
   openGraph: {
-    title: 'Book House Cleaning Online | Instant Maid Booking | Sweet Maid',
-    description: 'Instant online booking for top-rated house cleaning and maid services across Florida.',
-    url: 'https://sweetmaidcleaning.com/book-online/',
+    title: 'Book House Cleaning Online | Sweet Maid Cleaning Service',
+    description: 'Online booking for professional house cleaning and maid services across Florida.',
+    url: 'https://www.sweetmaidcleaning.com/book-online/',
     type: 'website',
     images: ['https://i.ibb.co/QSD3Ydt/image.jpg']
   }
@@ -171,7 +171,7 @@ export default function BookOnlinePage() {
             Book Your Cleaning Online in Seconds
           </h1>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-            Select your service type, customize your cleaning checklist, and pick your preferred arrival date and time. Flat-rate pricing with 100% Sparkle Guarantee.
+            Select your service type, customize your cleaning checklist, and pick your preferred arrival date and time. Transparent flat-rate pricing with no hidden fees.
           </p>
         </div>
 
@@ -263,22 +263,22 @@ export default function BookOnlinePage() {
           </div>
         </div>
 
-        {/* Booking Benefits & Guarantees */}
+        {/* Booking Benefits & Standards */}
         <section className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <div className="bg-white p-6 rounded-2xl border border-pink-50 shadow-sm text-center">
             <div className="w-12 h-12 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
               <i className="fa-solid fa-shield-heart"></i>
             </div>
-            <h2 className="font-bold text-gray-900 text-base mb-1">100% Insured &amp; Bonded</h2>
-            <p className="text-gray-500 text-xs leading-relaxed">Your property and valuables are fully protected with multi-million dollar coverage.</p>
+            <h2 className="font-bold text-gray-900 text-base mb-1">100% Family-Owned</h2>
+            <p className="text-gray-500 text-xs leading-relaxed">Dedicated cleaning specialists focused on consistent quality and accountability.</p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-pink-50 shadow-sm text-center">
             <div className="w-12 h-12 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
               <i className="fa-solid fa-user-check"></i>
             </div>
-            <h2 className="font-bold text-gray-900 text-base mb-1">Vetted Professionals</h2>
-            <p className="text-gray-500 text-xs leading-relaxed">Rigorous background checks and multi-step training for every cleaning specialist.</p>
+            <h2 className="font-bold text-gray-900 text-base mb-1">Experienced Cleaners</h2>
+            <p className="text-gray-500 text-xs leading-relaxed">Trained cleaning specialists dedicated to thorough home care.</p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-pink-50 shadow-sm text-center">
@@ -286,15 +286,15 @@ export default function BookOnlinePage() {
               <i className="fa-solid fa-leaf"></i>
             </div>
             <h2 className="font-bold text-gray-900 text-base mb-1">Eco &amp; Pet-Friendly</h2>
-            <p className="text-gray-500 text-xs leading-relaxed">Non-toxic, hospital-grade cleaning formulas safe for babies, kids, and pets.</p>
+            <p className="text-gray-500 text-xs leading-relaxed">Non-toxic cleaning formulas safe for family members and pets.</p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-pink-50 shadow-sm text-center">
             <div className="w-12 h-12 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
               <i className="fa-solid fa-award"></i>
             </div>
-            <h2 className="font-bold text-gray-900 text-base mb-1">Sparkle Guarantee</h2>
-            <p className="text-gray-500 text-xs leading-relaxed">If anything is missed, we return within 24 hours to re-clean it free of charge.</p>
+            <h2 className="font-bold text-gray-900 text-base mb-1">Personalized Care</h2>
+            <p className="text-gray-500 text-xs leading-relaxed">Consistent attention to detail tailored to your home and routine.</p>
           </div>
         </section>
       </main>
@@ -305,7 +305,7 @@ export default function BookOnlinePage() {
           <div className="space-y-4">
             <img src="/images/logo.png" alt="Sweet Maid" className="h-16 w-auto object-contain" width="160" height="64" />
             <p className="text-gray-500 text-xs leading-relaxed">
-              Florida's premier residential and commercial cleaning company. Delivering 5-star sparkle and hospital-grade sanitization.
+              Family-owned residential and commercial cleaning service delivering thorough home care across Florida.
             </p>
           </div>
           <div>
@@ -334,7 +334,7 @@ export default function BookOnlinePage() {
               <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:19412222080" className="hover:text-pink-400">(941) 222-2080</a> (Bradenton / Manatee County / Sarasota / Tampa)</li>
               <li><i className="fa-solid fa-phone text-pink-400 mr-2"></i> <a href="tel:13058516959" className="hover:text-pink-400">(305) 851-6959</a> (Florida Keys / Monroe County / Miami-Dade / Broward)</li>
               <li><i className="fa-solid fa-envelope text-pink-400 mr-2"></i> info@sweetmaidcleaning.com</li>
-              <li><i className="fa-solid fa-shield-check text-pink-400 mr-2"></i> Licensed, Bonded &amp; Insured</li>
+              <li><i className="fa-solid fa-heart text-pink-400 mr-2"></i> Family-Owned &amp; Operated</li>
             </ul>
           </div>
         </div>

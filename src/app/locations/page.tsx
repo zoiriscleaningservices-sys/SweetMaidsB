@@ -3,23 +3,22 @@ import { getAllLocations } from '@/lib/data';
 import LocationsDirectoryClient from '@/components/LocationsDirectoryClient';
 
 export const metadata: Metadata = {
-  title: 'Florida Cleaning Service Locations (799+ Cities) | Sweet Maid',
-  description: 'Explore all 799+ cities and service areas across Florida served by Sweet Maid. Search your local city for top-rated, reliable house cleaning and maid services.',
-  keywords: 'cleaning services Florida, Florida maid service directory, house cleaning locations FL, commercial cleaning Florida cities',
+  title: 'Florida Cleaning Service Locations | Sweet Maid',
+  description: 'Explore cities and service areas across Florida served by Sweet Maid Cleaning Service. Find dependable house cleaning and maid services near you.',
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/locations/',
+    canonical: 'https://www.sweetmaidcleaning.com/locations/',
   },
   openGraph: {
-    title: 'Florida Cleaning Service Locations (799+ Cities) | Sweet Maid',
-    description: 'Explore all 799+ cities and service areas across Florida served by Sweet Maid. Search your local city for top-rated, reliable house cleaning and maid services.',
-    url: 'https://sweetmaidcleaning.com/locations/',
+    title: 'Florida Cleaning Service Locations | Sweet Maid',
+    description: 'Explore cities and service areas across Florida served by Sweet Maid Cleaning Service. Find dependable house cleaning and maid services near you.',
+    url: 'https://www.sweetmaidcleaning.com/locations/',
     type: 'website',
     images: ['https://i.ibb.co/QSD3Ydt/image.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Florida Cleaning Service Locations (799+ Cities) | Sweet Maid',
-    description: 'Explore all 799+ cities and service areas across Florida served by Sweet Maid.',
+    title: 'Florida Cleaning Service Locations | Sweet Maid',
+    description: 'Explore cities and service areas across Florida served by Sweet Maid Cleaning Service.',
     images: ['https://i.ibb.co/QSD3Ydt/image.jpg'],
   },
 };

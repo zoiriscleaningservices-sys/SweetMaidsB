@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     description: desc,
     alternates: {
-      canonical: `https://sweetmaidcleaning.com/${slug}/gallery/`,
+      canonical: `https://www.sweetmaidcleaning.com/${slug}/gallery/`,
     },
     openGraph: {
       title,
       description: desc,
-      url: `https://sweetmaidcleaning.com/${slug}/gallery/`,
+      url: `https://www.sweetmaidcleaning.com/${slug}/gallery/`,
     }
   };
 }

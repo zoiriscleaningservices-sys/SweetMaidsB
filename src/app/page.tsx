@@ -1,21 +1,27 @@
 import { Metadata } from 'next';
 import { getTemplate, extractSections, localizedReplace, generatePageImageSchema } from '@/lib/template';
 import { formatName } from '@/lib/data';
+import { BUSINESS_INFO, CANONICAL_HOST, REGIONS } from '@/config/site-structure';
 
 export const metadata: Metadata = {
   title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
-  description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers top-rated maid services, deep cleaning & move-out cleans. Get your free estimate today!',
-  keywords: 'house cleaning Bradenton FL, maid service Bradenton, deep cleaning services Bradenton, move out cleaning Bradenton, cleaning service Lakewood Ranch, residential cleaning Manatee County, home cleaners Sarasota FL, Sweet Maid cleaning',
+  description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers maid services, deep cleaning, and move-out cleans. Request a free estimate today.',
   alternates: {
-    canonical: 'https://sweetmaidcleaning.com/',
+    canonical: `${CANONICAL_HOST}/`,
   },
   openGraph: {
     title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
-    description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers top-rated maid services, deep cleaning & move-out cleans. Get your free estimate today!',
-    url: 'https://sweetmaidcleaning.com/',
+    description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers maid services, deep cleaning, and move-out cleans. Request a free estimate today.',
+    url: `${CANONICAL_HOST}/`,
     type: 'website',
-    images: ['https://i.ibb.co/QSD3Ydt/image.jpg'],
+    images: [`${CANONICAL_HOST}/images/logo.png`],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
+    description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers maid services, deep cleaning, and move-out cleans. Request a free estimate today.',
+    images: [`${CANONICAL_HOST}/images/logo.png`],
+  }
 };
 
 export default function HomePage() {
@@ -26,51 +32,34 @@ export default function HomePage() {
   if (!rawHtml) return <div>Home template missing</div>;
 
   const bodyContent = extractSections(rawHtml);
-  // Pass is_sub_page as false to keep the `/images/` path correctly referenced 
+  // Pass is_sub_page as false to keep the `/images/` path correctly referenced
   const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, false, 'house-cleaning');
+
+  const manateePlaces = REGIONS.manatee.placesServed.slice(0, 25);
 
   const homeSchemas = [
     {
       "@context": "https://schema.org",
-      "@type": ["LocalBusiness", "CleaningService", "HomeAndConstructionBusiness"],
-      "name": "Sweet Maid Cleaning Service",
-      "alternateName": "Sweet Maid Florida",
-      "description": "Florida's #1 premier residential and commercial cleaning service provider. Trusted, insured, and 100% satisfaction guaranteed across all Florida cities.",
-      "url": "https://sweetmaidcleaning.com/",
-      "logo": "https://sweetmaidcleaning.com/images/logo.png",
+      "@type": ["LocalBusiness", "CleaningService", "Organization"],
+      "name": BUSINESS_INFO.name,
+      "description": "Family-owned house cleaning and maid service serving Bradenton and surrounding Manatee County communities.",
+      "url": `${CANONICAL_HOST}/`,
+      "logo": `${CANONICAL_HOST}/images/logo.png`,
       "image": generatePageImageSchema(cleanName, "House Cleaning"),
-      "telephone": "(941) 222-2080",
+      "telephone": BUSINESS_INFO.phone,
+      "email": BUSINESS_INFO.email,
       "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Serving Bradenton, Sarasota, Tampa, Miami & All of Florida",
-        "addressLocality": "Bradenton",
-        "addressRegion": "FL",
-        "postalCode": "34205",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 27.4989,
-        "longitude": -82.5748
-      },
+      "sameAs": BUSINESS_INFO.socialProfiles,
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "07:00",
-        "closes": "20:00"
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
       },
-      "areaServed": {
-        "@type": "State",
-        "name": "Florida"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "284",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
+      "areaServed": manateePlaces.map(place => ({
+        "@type": "Place",
+        "name": `${place}, FL`
+      })),
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Cleaning Services",
@@ -78,10 +67,10 @@ export default function HomePage() {
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House Cleaning Services" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deep Cleaning Services" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Move-In & Move-Out Cleaning" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Airbnb & Vacation Rental Cleaning" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial & Office Janitorial Services" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Construction Cleaning" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pressure Washing & Window Cleaning" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Airbnb Vacation Rental Cleaning" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Cleaning & Janitorial" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Carpet Cleaning Service" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Window Cleaning Service" } }
         ]
       }
     },
@@ -91,42 +80,34 @@ export default function HomePage() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What cleaning services does Sweet Maid provide in Florida?",
+          "name": "What cleaning services does Sweet Maid provide in Bradenton?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sweet Maid provides comprehensive residential and commercial cleaning across Florida, including standard house cleaning, deep cleaning, move-in/move-out turnover, Airbnb vacation rental management, post-construction cleaning, office janitorial services, window washing, and pressure washing."
+            "text": "Sweet Maid Cleaning Service provides comprehensive residential and commercial cleaning in Bradenton, including recurring maid services, deep cleaning resets, move-in and move-out turnovers, Airbnb vacation rental cleaning, and office janitorial care."
           }
         },
         {
           "@type": "Question",
-          "name": "Are Sweet Maid cleaners licensed, background-checked, and insured?",
+          "name": "How do I request a quote or book cleaning in Bradenton?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, 100% of Sweet Maid cleaners and cleaning crews are fully licensed, insured, and thoroughly background-checked for your complete peace of mind and safety."
+            "text": "You can request a free estimate by calling our team directly at (941) 222-2080 or submitting your home details through our online quote request form."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I get a free quote or book a cleaning service in Florida?",
+          "name": "What days and hours is Sweet Maid open in Bradenton?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can get an instant free estimate by calling us directly at (941) 222-2080, filling out our online quote form, or selecting your city on our Locations directory page."
+            "text": "Our customer service and dispatch teams operate Monday through Saturday from 8:00 AM to 6:00 PM."
           }
         },
         {
           "@type": "Question",
-          "name": "Do you offer a satisfaction guarantee on cleaning services?",
+          "name": "Do I need to supply cleaning products or equipment?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes! We proudly offer a 100% Satisfaction Guarantee. If any area of your cleaning is not done to your complete satisfaction, simply notify us within 24 hours and our team will return to re-clean the area free of charge."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to provide cleaning supplies and equipment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, our professional cleaning team brings all commercial-grade, eco-friendly supplies and state-of-the-art equipment needed to make your home or business sparkle."
+            "text": "Our cleaning teams arrive equipped with vacuums, microfiber cloths, and cleaning solutions needed to service your home."
           }
         }
       ]
@@ -134,11 +115,11 @@ export default function HomePage() {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Sweet Maid Cleaning Service",
-      "url": "https://sweetmaidcleaning.com/",
+      "name": BUSINESS_INFO.name,
+      "url": `${CANONICAL_HOST}/`,
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://sweetmaidcleaning.com/locations/?q={search_term_string}",
+        "target": `${CANONICAL_HOST}/locations/?q={search_term_string}`,
         "query-input": "required name=search_term_string"
       }
     }

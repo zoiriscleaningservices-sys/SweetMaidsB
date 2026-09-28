@@ -30,22 +30,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title,
     description: desc,
-    keywords: [
-      `${cleanName} cleaning blog`,
-      `${cleanName} house cleaning tips`,
-      `maid service advice ${cleanName} FL`,
-      'Florida cleaning blog',
-      'vacation rental turnover checklist',
-      'coastal Florida home care'
-    ],
     alternates: {
-      canonical: `https://sweetmaidcleaning.com/${slug}/blog/`,
+      canonical: `https://www.sweetmaidcleaning.com/${slug}/blog/`,
     },
     openGraph: {
       title,
       description: desc,
-      url: `https://sweetmaidcleaning.com/${slug}/blog/`,
-      siteName: 'Sweet Maid Cleaning Services',
+      url: `https://www.sweetmaidcleaning.com/${slug}/blog/`,
+      siteName: 'Sweet Maid Cleaning Service',
       type: 'website',
     },
     twitter: {

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // Calibrated to target ~65 characters for optimal Google SERP display
   let title: string;
   if (cleanName.length <= 8) {
-    title = `About Sweet Maid: Top Cleaners & Maid Service in ${cleanName}, FL`;
+    title = `About Sweet Maid: Professional Cleaners & Maid Service in ${cleanName}, FL`;
   } else if (cleanName.length <= 13) {
     title = `${cleanName}, FL Maid Service & House Cleaning Team | Sweet Maid`;
   } else if (cleanName.length <= 18) {
@@ -28,27 +28,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title = `${cleanName}, FL Maid & Cleaning Team | Sweet Maid`;
   }
 
-  const desc = `Family-owned cleaning company in ${cleanName}, FL. Over 5,000 houses, corporate offices, move-out cleans, and post-construction jobs completed with 5-star care.`;
+  const desc = `Family-owned cleaning company in ${cleanName}, FL providing reliable residential and commercial cleaning services.`;
 
   return {
     title,
     description: desc,
-    keywords: [
-      `about Sweet Maid ${cleanName}`,
-      `maid service ${cleanName} FL`,
-      `house cleaning company ${cleanName}`,
-      `family owned cleaners ${cleanName} FL`,
-      `post construction cleaning ${cleanName}`,
-      `move out cleaning ${cleanName}`
-    ],
     alternates: {
-      canonical: `https://sweetmaidcleaning.com/${slug}/about/`,
+      canonical: `https://www.sweetmaidcleaning.com/${slug}/about/`,
     },
     openGraph: {
       title,
       description: desc,
-      url: `https://sweetmaidcleaning.com/${slug}/about/`,
-      siteName: 'Sweet Maid Cleaning Services',
+      url: `https://www.sweetmaidcleaning.com/${slug}/about/`,
+      siteName: 'Sweet Maid Cleaning Service',
       type: 'website',
     },
     twitter: {
