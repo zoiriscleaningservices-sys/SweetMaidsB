@@ -10,7 +10,7 @@ interface LocationsDirectoryClientProps {
 
 // Region definitions based on coordinates or city names
 const REGIONS = [
-  { id: 'all', label: 'All Florida (799)' },
+  { id: 'all', label: 'All Florida (63)' },
   { id: 'tampa', label: '🏖️ Tampa Bay & St. Pete' },
   { id: 'miami', label: '🌴 Miami & South Florida' },
   { id: 'orlando', label: '🏰 Orlando & Central FL' },

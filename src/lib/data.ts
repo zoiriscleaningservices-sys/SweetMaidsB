@@ -94,7 +94,7 @@ export function resolveAnyLocation(slug: string): GeoEntity | null {
   }
   const db = getFloridaMasterDb();
 
-  // 1. Check Approved Cities from Site Structure (SSOT)
+  // Strictly resolve approved cities from Site Structure (SSOT)
   const { CITY_PAGES } = require('@/config/site-structure');
   if (CITY_PAGES && CITY_PAGES[cleanSlug]) {
     const cp = CITY_PAGES[cleanSlug];
@@ -111,72 +111,7 @@ export function resolveAnyLocation(slug: string): GeoEntity | null {
     };
   }
 
-  // 1b. Check Legacy Cities Database
-  const cities = getLocationData();
-  if (cities[cleanSlug]) {
-    return {
-      name: cities[cleanSlug].name,
-      slug: cleanSlug,
-      lat: cities[cleanSlug].lat,
-      lng: cities[cleanSlug].lng,
-      type: 'city'
-    };
-  }
-
-  // 2. Check Zip Codes (e.g. "33139", "33602")
-  if (db?.zip_codes && db.zip_codes[cleanSlug]) {
-    const item = db.zip_codes[cleanSlug];
-    return {
-      name: item.name || `Zip Code ${cleanSlug}`,
-      slug: cleanSlug,
-      lat: item.lat,
-      lng: item.lng,
-      type: 'zip',
-      parentCity: item.city,
-      parentCounty: item.county
-    };
-  }
-
-  // Pure 5-digit zip fallback
-  if (/^\d{5}$/.test(cleanSlug)) {
-    return {
-      name: `Zip Code ${cleanSlug}`,
-      slug: cleanSlug,
-      lat: 27.5,
-      lng: -82.5,
-      type: 'zip',
-      parentCity: 'Florida'
-    };
-  }
-
-  // 3. Check Neighborhoods
-  if (db?.neighborhoods && db.neighborhoods[cleanSlug]) {
-    const item = db.neighborhoods[cleanSlug];
-    return {
-      name: item.name,
-      slug: cleanSlug,
-      lat: item.lat,
-      lng: item.lng,
-      type: 'neighborhood',
-      parentCity: item.city,
-      parentCounty: item.county
-    };
-  }
-
-  // 4. Check Counties
-  if (db?.counties && db.counties[cleanSlug]) {
-    const item = db.counties[cleanSlug];
-    return {
-      name: item.name,
-      slug: cleanSlug,
-      lat: item.lat,
-      lng: item.lng,
-      type: 'county',
-      parentCity: item.seat
-    };
-  }
-
-  // Not a valid Florida location
+  // All unapproved cities, zip codes, neighborhoods, and counties return null (404/410/redirect)
   return null;
 }
 
@@ -199,16 +134,16 @@ export function haversineDistance(lat1: number, lon1: number, lat2: number, lon2
 }
 
 export function getNearestLocations(currentSlug: string, count: number = 8): NearestCity[] {
-  const data = getLocationData();
   const current = resolveAnyLocation(currentSlug);
   if (!current) return [];
 
   const distances: NearestCity[] = [];
-  for (const [slug, city] of Object.entries(data)) {
-    if (slug === currentSlug) continue;
+  const allLocations = getAllLocations();
+  for (const city of allLocations) {
+    if (city.slug === currentSlug) continue;
     const dist = haversineDistance(current.lat, current.lng, city.lat, city.lng);
     distances.push({
-      slug,
+      slug: city.slug,
       name: city.name,
       dist: Math.round(dist * 10) / 10
     });
@@ -226,13 +161,18 @@ export interface LocationDirectoryItem {
 }
 
 export function getAllLocations(): LocationDirectoryItem[] {
-  const data = getLocationData();
-  const list: LocationDirectoryItem[] = Object.entries(data).map(([slug, item]) => ({
-    slug,
-    name: item.name,
-    lat: item.lat,
-    lng: item.lng
-  }));
+  const { CITY_PAGES } = require('@/config/site-structure');
+  const cities = getLocationData();
+  const list: LocationDirectoryItem[] = Object.entries(CITY_PAGES).map(([slug, cp]: [string, any]) => {
+    const altSlug = slug.replace(/^st-/, 'saint-');
+    const geo = cities[slug] || cities[altSlug] || { lat: 27.5, lng: -82.5 };
+    return {
+      slug,
+      name: cp.name,
+      lat: geo.lat || 27.5,
+      lng: geo.lng || -82.5
+    };
+  });
   list.sort((a, b) => a.name.localeCompare(b.name));
   return list;
 }

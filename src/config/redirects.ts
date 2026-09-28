@@ -120,6 +120,11 @@ export function resolveRedirect(pathname: string): string | null {
   const seg1 = segments[0].toLowerCase();
   const seg2 = segments[1]?.toLowerCase();
 
+  // B0. Cost estimator deprecation: redirect all /cost/... paths to /services/
+  if (seg1 === 'cost') {
+    return '/services/';
+  }
+
   // B1. Standalone decommissioned service: /{service}/
   if (segments.length === 1 && DECOMMISSIONED_SERVICES[seg1]) {
     return `/${DECOMMISSIONED_SERVICES[seg1]}/`;
@@ -164,7 +169,7 @@ export function resolveRedirect(pathname: string): string | null {
   const isApprovedService = (SERVICES as readonly string[]).includes(seg1);
   const isRegionHub = Object.values(REGIONS).some(r => r.slug === seg1);
   const isCombo = !!COMBO_PAGES[seg1];
-  const isStatic = ['about', 'services', 'locations', 'blog', 'gallery', 'book-online', 'booknow', 'login', 'terms-and-conditions', 'privacy-policy', 'cost'].includes(seg1);
+  const isStatic = ['about', 'services', 'locations', 'blog', 'gallery', 'book-online', 'booknow', 'login', 'terms-and-conditions', 'privacy-policy'].includes(seg1);
 
   if (!isApprovedCity && !isApprovedService && !isRegionHub && !isCombo && !isStatic) {
     // Try matching to a region by town name
