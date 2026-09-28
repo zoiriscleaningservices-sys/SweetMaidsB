@@ -1,4 +1,5 @@
 import { longboatKeyPages } from '../src/lib/longboat_key_content';
+import { DECOMMISSIONED_SERVICES } from '../src/config/redirects';
 
 async function run() {
   console.log('Testing all 53 Longboat Key pages on http://localhost:3000...');
@@ -9,7 +10,23 @@ async function run() {
 
   for (const [key, page] of Object.entries(longboatKeyPages)) {
     const url = `http://localhost:3000${page.route}`;
+    const decommissionedTarget = DECOMMISSIONED_SERVICES[key];
+
     try {
+      if (decommissionedTarget) {
+        // Decommissioned service: must redirect (301) to canonical equivalent
+        const redirectRes = await fetch(url, { redirect: 'manual' });
+        const expectedLoc = `/longboat-key-fl/${decommissionedTarget}/`;
+        const actualLoc = redirectRes.headers.get('location');
+        if (redirectRes.status !== 301 || actualLoc !== expectedLoc) {
+          errors.push(`[DECOMMISSIONED REDIRECT FAIL] ${url}\n  Expected: 301 to "${expectedLoc}"\n  Got:      ${redirectRes.status} to "${actualLoc}"`);
+          failed++;
+        } else {
+          passed++;
+        }
+        continue;
+      }
+
       const res = await fetch(url);
       if (res.status !== 200) {
         errors.push(`[HTTP ${res.status}] ${url}`);
@@ -41,7 +58,7 @@ async function run() {
       // 4. Check canonical
       const canonicalMatch = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
       const canonicalHref = canonicalMatch ? canonicalMatch[1] : '';
-      const expectedCanonical = `https://sweetmaidcleaning.com${page.route}`;
+      const expectedCanonical = `https://www.sweetmaidcleaning.com${page.route}`;
       if (canonicalHref !== expectedCanonical) {
         errors.push(`[CANONICAL MISMATCH] ${url}\n  Expected: "${expectedCanonical}"\n  Got:      "${canonicalHref}"`);
       }
