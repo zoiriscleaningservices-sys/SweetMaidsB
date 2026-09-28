@@ -4,10 +4,15 @@ import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
 import { miamiBrowardSlugs, is305Area } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map, generatePageImageSchema } from '@/lib/template';
 import { generateSeoContentPack } from '@/lib/seo_engine';
+import { getLongboatMetadata, getLongboatJsonLd, transformLongboatHtml } from '@/lib/longboat_key_renderer';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === 'longboat-key-fl') {
+    return getLongboatMetadata('hub');
+  }
+
   const isService = serviceSlugs.includes(slug);
 
   if (isService) {
@@ -47,6 +52,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function LocationOrServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (slug === 'longboat-key-fl') {
+    const rawHtml = getTemplate('house-cleaning');
+    if (!rawHtml) notFound();
+
+    const bodyContent = extractSections(rawHtml);
+    const localizedHtml = localizedReplace(bodyContent, 'Longboat Key', 'longboat-key-fl', false, 'house-cleaning');
+    const transformedHtml = transformLongboatHtml(localizedHtml, 'hub');
+    const schemaStr = getLongboatJsonLd('hub');
+
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaStr }} />
+        <div dangerouslySetInnerHTML={{ __html: transformedHtml }} />
+      </>
+    );
+  }
+
   const isService = serviceSlugs.includes(slug);
 
   if (isService) {

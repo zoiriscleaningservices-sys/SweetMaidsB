@@ -2,10 +2,15 @@ import { getTemplate, extractSections, localizedReplace } from '@/lib/template';
 import { resolveAnyLocation, formatName } from '@/lib/data';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getLongboatMetadata, getLongboatJsonLd, transformLongboatHtml } from '@/lib/longboat_key_renderer';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === 'longboat-key-fl') {
+    return getLongboatMetadata('gallery');
+  }
+
   const locData = resolveAnyLocation(slug);
   if (!locData) return {};
 
@@ -36,6 +41,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function GalleryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (slug === 'longboat-key-fl') {
+    const rawHtml = getTemplate('gallery');
+    if (!rawHtml) notFound();
+
+    const bodyContent = extractSections(rawHtml);
+    const localizedHtml = localizedReplace(bodyContent, 'Longboat Key', 'longboat-key-fl', true, 'gallery');
+    const transformedHtml = transformLongboatHtml(localizedHtml, 'gallery');
+    const schemaStr = getLongboatJsonLd('gallery');
+
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaStr }} />
+        <div dangerouslySetInnerHTML={{ __html: transformedHtml }} />
+      </>
+    );
+  }
+
   const locData = resolveAnyLocation(slug);
 
   if (!locData) {
