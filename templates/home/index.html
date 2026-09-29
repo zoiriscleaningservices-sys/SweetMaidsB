@@ -194,17 +194,6 @@
               <i class="fa-solid fa-chevron-down text-xs"></i>
             </button>
             <div class="dropdown-menu -left-32 w-80 bg-white rounded-3xl shadow-2xl border border-pink-100 p-5 mt-0">
-              <div class="mb-3">
-                <form method="get" action="/locations/" class="city-search-form relative" role="search" aria-label="Search Florida cities">
-                  <div class="relative flex items-center bg-gray-50 rounded-full px-3 py-1.5 border border-pink-200 focus-within:border-pink-500 transition-all">
-                    <i class="fa-solid fa-magnifying-glass text-gray-400 text-xs mr-2"></i>
-                    <input type="text" name="q" placeholder="Search city or ZIP..." class="w-full bg-transparent text-xs text-gray-800 focus:outline-none" autocomplete="off">
-                  </div>
-                  <div class="search-dropdown absolute z-50 left-0 right-0 mt-1 bg-white rounded-xl shadow-xl border border-pink-100 max-h-48 overflow-y-auto hidden text-left">
-                    <ul role="listbox" class="py-1 text-xs"></ul>
-                  </div>
-                </form>
-              </div>
               <div class="text-[11px] font-bold text-pink-600 uppercase tracking-wider mb-2 px-1">Major Regional Hubs</div>
               <div class="space-y-1 text-xs">
                 <a href="/bradenton-fl/" class="block px-2.5 py-1.5 rounded-lg hover:bg-pink-50 text-gray-700 font-medium">Bradenton / Manatee Base</a>
@@ -1148,8 +1137,7 @@
     </div>
   </footer>
 
-  <!-- City Search Script -->
-  <script src="/js/city-search.js" defer></script>
+
   <script>
     // Mobile Drawer Toggle
     const mobileBtn = document.getElementById('mobile-btn');

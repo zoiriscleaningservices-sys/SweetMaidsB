@@ -266,31 +266,7 @@ export default function LocationsDirectoryClient({ locations, initialQuery = '' 
             Choose your location below to view local services and request a quote.
           </p>
 
-          {/* Interactive Live Search Bar */}
-          <div className="relative max-w-2xl mx-auto mb-6">
-            <div className="relative flex items-center bg-white rounded-2xl shadow-xl shadow-pink-200/30 border-2 border-pink-200 focus-within:border-pink-400 focus-within:ring-4 focus-within:ring-pink-100 transition-all p-2">
-              <div className="pl-4 pr-3 text-pink-400 text-xl">
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </div>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search any Florida city (e.g., Tampa, Miami, Orlando, Naples, Brickell)..."
-                className="w-full bg-transparent text-gray-800 placeholder-gray-400 text-base sm:text-lg focus:outline-none py-2"
-                autoFocus
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition-colors mr-2"
-                  title="Clear search"
-                >
-                  <i className="fa-solid fa-xmark text-lg"></i>
-                </button>
-              )}
-            </div>
-          </div>
+
 
           {/* Region Quick Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto mb-4">

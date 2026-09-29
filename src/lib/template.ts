@@ -937,8 +937,15 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&amp;fit=crop&amp;q=80', '../../../images/carpet-cleaning.jpeg');
   newContent = newContent.replace('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&amp;fit=crop&amp;q=80', '../../../images/window-cleaning.jpeg');
 
-  // Safely remove redundant search bar section without affecting the Hero section
+  // Safely remove redundant search bar section, hero search forms, and city search scripts across all pages
   newContent = newContent.replace(/<!--\s*=+\s*GLOBAL SEARCH BAR SECTION[\s\S]*?<\/section>/gi, '');
+  newContent = newContent.replace(/<!--\s*Hero Interactive City Search Bar\s*-->[\s\S]*?<\/form>\s*<\/div>/gi, '');
+  newContent = newContent.replace(/<div[^>]*id=["']hero-search-wrapper["'][\s\S]*?<\/form>\s*<\/div>/gi, '');
+  newContent = newContent.replace(/<form[^>]*id=["']hero-city-search-form["'][\s\S]*?<\/form>/gi, '');
+  newContent = newContent.replace(/<form[^>]*class=["'][^"']*city-search-form[^"']*["'][\s\S]*?<\/form>/gi, '');
+  newContent = newContent.replace(/<!--\s*Interactive Search Script for Hero Search Bar\s*-->[\s\S]*?<\/script>/gi, '');
+  newContent = newContent.replace(/<script[^>]*src=["'][^"']*city-search\.js["'][^>]*><\/script>/gi, '');
+  newContent = newContent.replace(/<!--\s*City Search Script\s*-->\s*<script[^>]*src=["'][^"']*city-search\.js["'][^>]*><\/script>/gi, '');
   newContent = newContent.replace(/<!--\s*Let Us Contact You Form\s*-->[\s\S]*?<\/form>\s*<\/div>\s*<\/div>/gi, '');
 
   // Re-organize Footer Layout: Clean 5-column layout with Company Info (2 cols), Our Services (2 cols), and Florida Locations (1 col)
