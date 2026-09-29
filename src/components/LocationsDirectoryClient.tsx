@@ -9,10 +9,10 @@ interface LocationsDirectoryClientProps {
 }
 
 // Region definitions based on coordinates or city names
-const REGIONS = [
-  { id: 'all', label: 'All Florida (63)' },
+const REGION_DEFS = [
+  { id: 'all', label: 'All Florida' },
+  { id: 'miami', label: '🌴 Miami, Broward & Palm Beach' },
   { id: 'tampa', label: '🏖️ Tampa Bay & St. Pete' },
-  { id: 'miami', label: '🌴 Miami & South Florida' },
   { id: 'orlando', label: '🏰 Orlando & Central FL' },
   { id: 'swfl', label: '☀️ Sarasota, Bradenton & SWFL' },
   { id: 'jax', label: '🌊 Jacksonville & North FL' },
@@ -24,6 +24,13 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
   const [selectedRegion, setSelectedRegion] = useState('all');
   const [selectedLetter, setSelectedLetter] = useState('all');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const regionTabs = useMemo(() => {
+    return REGION_DEFS.map(r => ({
+      ...r,
+      label: r.id === 'all' ? `All Florida (${locations.length})` : r.label
+    }));
+  }, [locations.length]);
 
   // Filter locations based on Search, Region, and Letter
   const filteredLocations = useMemo(() => {
@@ -42,7 +49,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
         const lng = loc.lng;
         if (selectedRegion === 'miami') {
           // South Florida: Miami-Dade, Broward, Palm Beach
-          const isSouthFL = lat >= 25.4 && lat <= 26.9 && lng >= -80.6 && lng <= -80.0;
+          const isSouthFL = lat >= 25.4 && lat <= 27.15 && lng >= -80.9 && lng <= -80.0;
           if (!isSouthFL) return false;
         } else if (selectedRegion === 'tampa') {
           // Tampa Bay / Pinellas / Hillsborough
@@ -283,7 +290,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
 
           {/* Region Quick Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto mb-4">
-            {REGIONS.map((reg) => (
+            {regionTabs.map((reg) => (
               <button
                 key={reg.id}
                 onClick={() => {

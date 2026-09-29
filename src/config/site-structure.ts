@@ -192,17 +192,32 @@ export const REGIONS: Record<string, RegionConfig> = {
     slug: 'fort-lauderdale-fl',
     county: 'Broward County',
     name: 'Broward County',
-    ready: false,
+    ready: true,
     phone: '(305) 851-6959',
-    placesServed: ['Fort Lauderdale', 'Hollywood', 'Pompano Beach', 'Coral Springs', 'Pembroke Pines']
+    placesServed: [
+      'Fort Lauderdale', 'Hollywood', 'Pompano Beach', 'Coral Springs', 'Pembroke Pines',
+      'Miramar', 'Davie', 'Sunrise', 'Plantation', 'Deerfield Beach', 'Lauderhill',
+      'Weston', 'Coconut Creek', 'Tamarac', 'Margate', 'Oakland Park', 'North Lauderdale',
+      'Hallandale Beach', 'Lauderdale Lakes', 'Dania Beach', 'Cooper City', 'Parkland',
+      'Wilton Manors', 'Lighthouse Point', 'Southwest Ranches', 'Lauderdale-by-the-Sea',
+      'Pembroke Park', 'West Park', 'Hillsboro Beach', 'Sea Ranch Lakes', 'Lazy Lake'
+    ]
   },
   palm_beach: {
     slug: 'west-palm-beach-fl',
     county: 'Palm Beach County',
     name: 'Palm Beach County',
-    ready: false,
-    phone: '(941) 222-2080',
-    placesServed: ['West Palm Beach', 'Boca Raton', 'Boynton Beach', 'Delray Beach', 'Wellington', 'Jupiter']
+    ready: true,
+    phone: '(305) 851-6959',
+    placesServed: [
+      'West Palm Beach', 'Boca Raton', 'Boynton Beach', 'Delray Beach', 'Wellington',
+      'Jupiter', 'Palm Beach Gardens', 'Greenacres', 'Lake Worth Beach', 'Royal Palm Beach',
+      'Riviera Beach', 'Palm Beach', 'North Palm Beach', 'Lantana', 'Palm Springs',
+      'Belle Glade', 'South Palm Beach', 'Tequesta', 'Highland Beach', 'Juno Beach',
+      'Hypoluxo', 'Atlantis', 'Ocean Ridge', 'Lake Park', 'Haverhill', 'Pahokee',
+      'South Bay', 'Loxahatchee Groves', 'Mangonia Park', 'Gulf Stream', 'Manalapan',
+      'Jupiter Inlet Colony', 'Briny Breezes', 'Cloud Lake', 'Glen Ridge', 'Golf'
+    ]
   },
   collier: {
     slug: 'naples-fl',
@@ -362,7 +377,78 @@ export const CITY_PAGES: Record<string, CityConfig> = {
   'dunedin-fl': { slug: 'dunedin-fl', name: 'Dunedin', county: 'Pinellas County', hasOfficeOrTeam: false, nearestBaseDistance: '21 miles to St. Petersburg Base' },
   'pinellas-park-fl': { slug: 'pinellas-park-fl', name: 'Pinellas Park', county: 'Pinellas County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to St. Petersburg Base' },
   'safety-harbor-fl': { slug: 'safety-harbor-fl', name: 'Safety Harbor', county: 'Pinellas County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to St. Petersburg Base' },
-  'st-pete-beach-fl': { slug: 'st-pete-beach-fl', name: 'St. Pete Beach', county: 'Pinellas County', hasOfficeOrTeam: false, nearestBaseDistance: '8 miles to St. Petersburg Base' }
+  'st-pete-beach-fl': { slug: 'st-pete-beach-fl', name: 'St. Pete Beach', county: 'Pinellas County', hasOfficeOrTeam: false, nearestBaseDistance: '8 miles to St. Petersburg Base' },
+
+  // Broward County (All 31 Municipalities)
+  'fort-lauderdale-fl': { slug: 'fort-lauderdale-fl', name: 'Fort Lauderdale', county: 'Broward County', hasOfficeOrTeam: true, nearestBaseDistance: '0 miles (Fort Lauderdale Team)' },
+  'hollywood-fl': { slug: 'hollywood-fl', name: 'Hollywood', county: 'Broward County', hasOfficeOrTeam: true, nearestBaseDistance: '8 miles to Fort Lauderdale Base' },
+  'pompano-beach-fl': { slug: 'pompano-beach-fl', name: 'Pompano Beach', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '9 miles to Fort Lauderdale Base' },
+  'coral-springs-fl': { slug: 'coral-springs-fl', name: 'Coral Springs', county: 'Broward County', hasOfficeOrTeam: true, nearestBaseDistance: '15 miles to Fort Lauderdale Base' },
+  'pembroke-pines-fl': { slug: 'pembroke-pines-fl', name: 'Pembroke Pines', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to Fort Lauderdale Base' },
+  'miramar-fl': { slug: 'miramar-fl', name: 'Miramar', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to Fort Lauderdale Base' },
+  'davie-fl': { slug: 'davie-fl', name: 'Davie', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '8 miles to Fort Lauderdale Base' },
+  'sunrise-fl': { slug: 'sunrise-fl', name: 'Sunrise', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '11 miles to Fort Lauderdale Base' },
+  'plantation-fl': { slug: 'plantation-fl', name: 'Plantation', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to Fort Lauderdale Base' },
+  'deerfield-beach-fl': { slug: 'deerfield-beach-fl', name: 'Deerfield Beach', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to Fort Lauderdale Base' },
+  'lauderhill-fl': { slug: 'lauderhill-fl', name: 'Lauderhill', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '5 miles to Fort Lauderdale Base' },
+  'weston-fl': { slug: 'weston-fl', name: 'Weston', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '18 miles to Fort Lauderdale Base' },
+  'coconut-creek-fl': { slug: 'coconut-creek-fl', name: 'Coconut Creek', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to Fort Lauderdale Base' },
+  'tamarac-fl': { slug: 'tamarac-fl', name: 'Tamarac', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '11 miles to Fort Lauderdale Base' },
+  'margate-fl': { slug: 'margate-fl', name: 'Margate', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '13 miles to Fort Lauderdale Base' },
+  'oakland-park-fl': { slug: 'oakland-park-fl', name: 'Oakland Park', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '3 miles to Fort Lauderdale Base' },
+  'north-lauderdale-fl': { slug: 'north-lauderdale-fl', name: 'North Lauderdale', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '10 miles to Fort Lauderdale Base' },
+  'hallandale-beach-fl': { slug: 'hallandale-beach-fl', name: 'Hallandale Beach', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '12 miles to Fort Lauderdale Base' },
+  'lauderdale-lakes-fl': { slug: 'lauderdale-lakes-fl', name: 'Lauderdale Lakes', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to Fort Lauderdale Base' },
+  'dania-beach-fl': { slug: 'dania-beach-fl', name: 'Dania Beach', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '5 miles to Fort Lauderdale Base' },
+  'cooper-city-fl': { slug: 'cooper-city-fl', name: 'Cooper City', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '11 miles to Fort Lauderdale Base' },
+  'parkland-fl': { slug: 'parkland-fl', name: 'Parkland', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '19 miles to Fort Lauderdale Base' },
+  'wilton-manors-fl': { slug: 'wilton-manors-fl', name: 'Wilton Manors', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '2 miles to Fort Lauderdale Base' },
+  'lighthouse-point-fl': { slug: 'lighthouse-point-fl', name: 'Lighthouse Point', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '12 miles to Fort Lauderdale Base' },
+  'southwest-ranches-fl': { slug: 'southwest-ranches-fl', name: 'Southwest Ranches', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to Fort Lauderdale Base' },
+  'lauderdale-by-the-sea-fl': { slug: 'lauderdale-by-the-sea-fl', name: 'Lauderdale-by-the-Sea', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to Fort Lauderdale Base' },
+  'pembroke-park-fl': { slug: 'pembroke-park-fl', name: 'Pembroke Park', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '13 miles to Fort Lauderdale Base' },
+  'west-park-fl': { slug: 'west-park-fl', name: 'West Park', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '12 miles to Fort Lauderdale Base' },
+  'hillsboro-beach-fl': { slug: 'hillsboro-beach-fl', name: 'Hillsboro Beach', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to Fort Lauderdale Base' },
+  'sea-ranch-lakes-fl': { slug: 'sea-ranch-lakes-fl', name: 'Sea Ranch Lakes', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '7 miles to Fort Lauderdale Base' },
+  'lazy-lake-fl': { slug: 'lazy-lake-fl', name: 'Lazy Lake', county: 'Broward County', hasOfficeOrTeam: false, nearestBaseDistance: '3 miles to Fort Lauderdale Base' },
+
+  // Palm Beach County (All 36 Municipalities)
+  'west-palm-beach-fl': { slug: 'west-palm-beach-fl', name: 'West Palm Beach', county: 'Palm Beach County', hasOfficeOrTeam: true, nearestBaseDistance: '0 miles (West Palm Beach Team)' },
+  'boca-raton-fl': { slug: 'boca-raton-fl', name: 'Boca Raton', county: 'Palm Beach County', hasOfficeOrTeam: true, nearestBaseDistance: '24 miles to West Palm Beach Base' },
+  'boynton-beach-fl': { slug: 'boynton-beach-fl', name: 'Boynton Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '12 miles to West Palm Beach Base' },
+  'delray-beach-fl': { slug: 'delray-beach-fl', name: 'Delray Beach', county: 'Palm Beach County', hasOfficeOrTeam: true, nearestBaseDistance: '18 miles to West Palm Beach Base' },
+  'wellington-fl': { slug: 'wellington-fl', name: 'Wellington', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to West Palm Beach Base' },
+  'jupiter-fl': { slug: 'jupiter-fl', name: 'Jupiter', county: 'Palm Beach County', hasOfficeOrTeam: true, nearestBaseDistance: '16 miles to West Palm Beach Base' },
+  'palm-beach-gardens-fl': { slug: 'palm-beach-gardens-fl', name: 'Palm Beach Gardens', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '10 miles to West Palm Beach Base' },
+  'greenacres-fl': { slug: 'greenacres-fl', name: 'Greenacres', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '7 miles to West Palm Beach Base' },
+  'lake-worth-beach-fl': { slug: 'lake-worth-beach-fl', name: 'Lake Worth Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to West Palm Beach Base' },
+  'royal-palm-beach-fl': { slug: 'royal-palm-beach-fl', name: 'Royal Palm Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '10 miles to West Palm Beach Base' },
+  'riviera-beach-fl': { slug: 'riviera-beach-fl', name: 'Riviera Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '5 miles to West Palm Beach Base' },
+  'palm-beach-fl': { slug: 'palm-beach-fl', name: 'Palm Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '2 miles to West Palm Beach Base' },
+  'north-palm-beach-fl': { slug: 'north-palm-beach-fl', name: 'North Palm Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '8 miles to West Palm Beach Base' },
+  'lantana-fl': { slug: 'lantana-fl', name: 'Lantana', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '9 miles to West Palm Beach Base' },
+  'palm-springs-fl': { slug: 'palm-springs-fl', name: 'Palm Springs', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to West Palm Beach Base' },
+  'belle-glade-fl': { slug: 'belle-glade-fl', name: 'Belle Glade', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '42 miles to West Palm Beach Base' },
+  'south-palm-beach-fl': { slug: 'south-palm-beach-fl', name: 'South Palm Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '10 miles to West Palm Beach Base' },
+  'tequesta-fl': { slug: 'tequesta-fl', name: 'Tequesta', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '19 miles to West Palm Beach Base' },
+  'highland-beach-fl': { slug: 'highland-beach-fl', name: 'Highland Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '22 miles to West Palm Beach Base' },
+  'juno-beach-fl': { slug: 'juno-beach-fl', name: 'Juno Beach', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '13 miles to West Palm Beach Base' },
+  'hypoluxo-fl': { slug: 'hypoluxo-fl', name: 'Hypoluxo', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '11 miles to West Palm Beach Base' },
+  'atlantis-fl': { slug: 'atlantis-fl', name: 'Atlantis', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '9 miles to West Palm Beach Base' },
+  'ocean-ridge-fl': { slug: 'ocean-ridge-fl', name: 'Ocean Ridge', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to West Palm Beach Base' },
+  'lake-park-fl': { slug: 'lake-park-fl', name: 'Lake Park', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '7 miles to West Palm Beach Base' },
+  'haverhill-fl': { slug: 'haverhill-fl', name: 'Haverhill', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '4 miles to West Palm Beach Base' },
+  'pahokee-fl': { slug: 'pahokee-fl', name: 'Pahokee', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '40 miles to West Palm Beach Base' },
+  'south-bay-fl': { slug: 'south-bay-fl', name: 'South Bay', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '43 miles to West Palm Beach Base' },
+  'loxahatchee-groves-fl': { slug: 'loxahatchee-groves-fl', name: 'Loxahatchee Groves', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to West Palm Beach Base' },
+  'mangonia-park-fl': { slug: 'mangonia-park-fl', name: 'Mangonia Park', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '3 miles to West Palm Beach Base' },
+  'gulf-stream-fl': { slug: 'gulf-stream-fl', name: 'Gulf Stream', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to West Palm Beach Base' },
+  'manalapan-fl': { slug: 'manalapan-fl', name: 'Manalapan', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '11 miles to West Palm Beach Base' },
+  'jupiter-inlet-colony-fl': { slug: 'jupiter-inlet-colony-fl', name: 'Jupiter Inlet Colony', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '18 miles to West Palm Beach Base' },
+  'briny-breezes-fl': { slug: 'briny-breezes-fl', name: 'Briny Breezes', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to West Palm Beach Base' },
+  'cloud-lake-fl': { slug: 'cloud-lake-fl', name: 'Cloud Lake', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '3 miles to West Palm Beach Base' },
+  'glen-ridge-fl': { slug: 'glen-ridge-fl', name: 'Glen Ridge', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '3 miles to West Palm Beach Base' },
+  'golf-fl': { slug: 'golf-fl', name: 'Golf', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '17 miles to West Palm Beach Base' }
 };
 
 // 8. Flat Service-First Combo Pages (Section 9A: lookup table)
@@ -423,7 +509,28 @@ export const COMBO_PAGES: Record<string, ComboConfig> = {
   // Pinellas
   'house-cleaning-st-petersburg-fl': { slug: 'house-cleaning-st-petersburg-fl', service: 'house-cleaning', citySlug: 'st-petersburg-fl', cityName: 'St. Petersburg' },
   'house-cleaning-clearwater-fl': { slug: 'house-cleaning-clearwater-fl', service: 'house-cleaning', citySlug: 'clearwater-fl', cityName: 'Clearwater' },
-  'house-cleaning-palm-harbor-fl': { slug: 'house-cleaning-palm-harbor-fl', service: 'house-cleaning', citySlug: 'palm-harbor-fl', cityName: 'Palm Harbor' }
+  'house-cleaning-palm-harbor-fl': { slug: 'house-cleaning-palm-harbor-fl', service: 'house-cleaning', citySlug: 'palm-harbor-fl', cityName: 'Palm Harbor' },
+
+  // Broward County Combos
+  'house-cleaning-fort-lauderdale-fl': { slug: 'house-cleaning-fort-lauderdale-fl', service: 'house-cleaning', citySlug: 'fort-lauderdale-fl', cityName: 'Fort Lauderdale' },
+  'deep-cleaning-fort-lauderdale-fl': { slug: 'deep-cleaning-fort-lauderdale-fl', service: 'deep-cleaning', citySlug: 'fort-lauderdale-fl', cityName: 'Fort Lauderdale' },
+  'commercial-cleaning-fort-lauderdale-fl': { slug: 'commercial-cleaning-fort-lauderdale-fl', service: 'commercial-cleaning', citySlug: 'fort-lauderdale-fl', cityName: 'Fort Lauderdale' },
+  'house-cleaning-hollywood-fl': { slug: 'house-cleaning-hollywood-fl', service: 'house-cleaning', citySlug: 'hollywood-fl', cityName: 'Hollywood' },
+  'deep-cleaning-hollywood-fl': { slug: 'deep-cleaning-hollywood-fl', service: 'deep-cleaning', citySlug: 'hollywood-fl', cityName: 'Hollywood' },
+  'house-cleaning-pompano-beach-fl': { slug: 'house-cleaning-pompano-beach-fl', service: 'house-cleaning', citySlug: 'pompano-beach-fl', cityName: 'Pompano Beach' },
+  'house-cleaning-coral-springs-fl': { slug: 'house-cleaning-coral-springs-fl', service: 'house-cleaning', citySlug: 'coral-springs-fl', cityName: 'Coral Springs' },
+
+  // Palm Beach County Combos
+  'house-cleaning-west-palm-beach-fl': { slug: 'house-cleaning-west-palm-beach-fl', service: 'house-cleaning', citySlug: 'west-palm-beach-fl', cityName: 'West Palm Beach' },
+  'deep-cleaning-west-palm-beach-fl': { slug: 'deep-cleaning-west-palm-beach-fl', service: 'deep-cleaning', citySlug: 'west-palm-beach-fl', cityName: 'West Palm Beach' },
+  'commercial-cleaning-west-palm-beach-fl': { slug: 'commercial-cleaning-west-palm-beach-fl', service: 'commercial-cleaning', citySlug: 'west-palm-beach-fl', cityName: 'West Palm Beach' },
+  'house-cleaning-boca-raton-fl': { slug: 'house-cleaning-boca-raton-fl', service: 'house-cleaning', citySlug: 'boca-raton-fl', cityName: 'Boca Raton' },
+  'deep-cleaning-boca-raton-fl': { slug: 'deep-cleaning-boca-raton-fl', service: 'deep-cleaning', citySlug: 'boca-raton-fl', cityName: 'Boca Raton' },
+  'move-in-out-cleaning-boca-raton-fl': { slug: 'move-in-out-cleaning-boca-raton-fl', service: 'move-in-out-cleaning', citySlug: 'boca-raton-fl', cityName: 'Boca Raton' },
+  'house-cleaning-delray-beach-fl': { slug: 'house-cleaning-delray-beach-fl', service: 'house-cleaning', citySlug: 'delray-beach-fl', cityName: 'Delray Beach' },
+  'house-cleaning-boynton-beach-fl': { slug: 'house-cleaning-boynton-beach-fl', service: 'house-cleaning', citySlug: 'boynton-beach-fl', cityName: 'Boynton Beach' },
+  'house-cleaning-jupiter-fl': { slug: 'house-cleaning-jupiter-fl', service: 'house-cleaning', citySlug: 'jupiter-fl', cityName: 'Jupiter' },
+  'airbnb-cleaning-jupiter-fl': { slug: 'airbnb-cleaning-jupiter-fl', service: 'airbnb-cleaning', citySlug: 'jupiter-fl', cityName: 'Jupiter' }
 };
 
 const SERVICES_BY_LEN = [...SERVICES].sort((a, b) => b.length - a.length);

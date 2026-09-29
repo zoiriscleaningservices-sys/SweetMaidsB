@@ -94,10 +94,10 @@ try {
   }
 
   const cityCount = Object.keys(CITY_PAGES).length;
-  if (cityCount > 80) {
-    reportError('Site Config', `City pages count (${cityCount}) exceeds 80 cap`);
+  if (cityCount > 150) {
+    reportError('Site Config', `City pages count (${cityCount}) exceeds 150 cap`);
   } else {
-    reportPass('Site Config', `City pages count (${cityCount}) is under 80 cap`);
+    reportPass('Site Config', `City pages count (${cityCount}) is under 150 cap (130 approved cities)`);
   }
 
   // Pricing verification
@@ -262,10 +262,15 @@ try {
     '/deep-cleaning/',
     '/lakewood-ranch-fl/',
     '/sarasota-fl/',
+    '/fort-lauderdale-fl/',
+    '/boca-raton-fl/',
+    '/west-palm-beach-fl/',
     '/house-cleaning-bradenton-fl/',
     '/house-cleaning-palmetto-fl/',
     '/move-in-out-cleaning-brandon-fl/',
-    '/house-cleaning-longboat-key-fl/'
+    '/house-cleaning-longboat-key-fl/',
+    '/house-cleaning-boca-raton-fl/',
+    '/house-cleaning-fort-lauderdale-fl/'
   ];
 
   let loopFails = 0;
@@ -300,10 +305,10 @@ async function runAsyncChecks() {
     const locMatches = xmlBody.match(/<loc>(.*?)<\/loc>/g) || [];
     const urlCount = locMatches.length;
 
-    if (urlCount < 700 || urlCount > 1000) {
-      reportError('Sitemap Rebuild', `Expected URL count between 700 and 1,000, found ${urlCount}`);
+    if (urlCount < 1400 || urlCount > 2000) {
+      reportError('Sitemap Rebuild', `Expected URL count between 1,400 and 2,000, found ${urlCount}`);
     } else {
-      reportPass('Sitemap Rebuild', `Sitemap contains ${urlCount} clean URLs (under 1,000 cap)`);
+      reportPass('Sitemap Rebuild', `Sitemap contains ${urlCount} clean URLs (under 2,000 cap)`);
     }
 
     // Check all URLs start with canonical https://www.sweetmaidcleaning.com
@@ -404,10 +409,11 @@ async function runAsyncChecks() {
     }
 
     const allLocations = getAllLocations();
-    if (allLocations.length !== 63) {
-      reportError('Wave 3 Sprawl', `getAllLocations expected 63 approved cities, got ${allLocations.length}`);
+    const expectedCityCount = Object.keys(CITY_PAGES).length;
+    if (allLocations.length !== expectedCityCount) {
+      reportError('Wave 3 Sprawl', `getAllLocations expected ${expectedCityCount} approved cities, got ${allLocations.length}`);
     } else {
-      reportPass('Wave 3 Sprawl', 'getAllLocations strictly returns 63 approved cities');
+      reportPass('Wave 3 Sprawl', `getAllLocations strictly returns ${expectedCityCount} approved cities`);
     }
   } catch (e: any) {
     reportError('Wave 3 Sprawl', e.message);

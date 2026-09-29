@@ -3993,5 +3993,55 @@
     "name": "St. Johns",
     "lat": 30.0815,
     "lng": -81.54774
+  },
+  "lake-worth-beach-fl": {
+    "name": "Lake Worth Beach",
+    "lat": 26.6168,
+    "lng": -80.0684
+  },
+  "sea-ranch-lakes-fl": {
+    "name": "Sea Ranch Lakes",
+    "lat": 26.2023,
+    "lng": -80.0964
+  },
+  "lazy-lake-fl": {
+    "name": "Lazy Lake",
+    "lat": 26.1559,
+    "lng": -80.1462
+  },
+  "gulf-stream-fl": {
+    "name": "Gulf Stream",
+    "lat": 26.4951,
+    "lng": -80.0548
+  },
+  "manalapan-fl": {
+    "name": "Manalapan",
+    "lat": 26.5637,
+    "lng": -80.0431
+  },
+  "jupiter-inlet-colony-fl": {
+    "name": "Jupiter Inlet Colony",
+    "lat": 26.9478,
+    "lng": -80.0762
+  },
+  "briny-breezes-fl": {
+    "name": "Briny Breezes",
+    "lat": 26.509,
+    "lng": -80.0545
+  },
+  "cloud-lake-fl": {
+    "name": "Cloud Lake",
+    "lat": 26.6781,
+    "lng": -80.0734
+  },
+  "glen-ridge-fl": {
+    "name": "Glen Ridge",
+    "lat": 26.6715,
+    "lng": -80.0764
+  },
+  "golf-fl": {
+    "name": "Golf",
+    "lat": 26.5073,
+    "lng": -80.1081
   }
 }

@@ -62,6 +62,7 @@ export const miamiBrowardSlugs = [
   "lauderdale-by-the-sea-fl",
   "lauderdale-lakes-fl",
   "lauderhill-fl",
+  "lazy-lake-fl",
   "leisure-city-fl",
   "lighthouse-point-fl",
   "margate-fl",
@@ -104,6 +105,7 @@ export const miamiBrowardSlugs = [
   "rock-island-fl",
   "roosevelt-gardens-fl",
   "scott-lake-fl",
+  "sea-ranch-lakes-fl",
   "south-miami-fl",
   "south-miami-heights-fl",
   "southwest-ranches-fl",
@@ -496,12 +498,71 @@ export function isMonroeCounty(slug: string, clean_name: string = ''): boolean {
   return false;
 }
 
-// Check if slug belongs to the (305) / (786) telephone routing zone (Miami-Dade, Broward, Monroe County / Florida Keys)
+// Dedicated Palm Beach County Slug List
+export const palmBeachSlugs = [
+  "west-palm-beach-fl",
+  "boca-raton-fl",
+  "boynton-beach-fl",
+  "delray-beach-fl",
+  "wellington-fl",
+  "jupiter-fl",
+  "palm-beach-gardens-fl",
+  "greenacres-fl",
+  "lake-worth-beach-fl",
+  "lake-worth-fl",
+  "royal-palm-beach-fl",
+  "riviera-beach-fl",
+  "palm-beach-fl",
+  "north-palm-beach-fl",
+  "lantana-fl",
+  "palm-springs-fl",
+  "belle-glade-fl",
+  "south-palm-beach-fl",
+  "tequesta-fl",
+  "highland-beach-fl",
+  "juno-beach-fl",
+  "hypoluxo-fl",
+  "atlantis-fl",
+  "ocean-ridge-fl",
+  "lake-park-fl",
+  "haverhill-fl",
+  "pahokee-fl",
+  "south-bay-fl",
+  "loxahatchee-groves-fl",
+  "mangonia-park-fl",
+  "gulf-stream-fl",
+  "manalapan-fl",
+  "jupiter-inlet-colony-fl",
+  "briny-breezes-fl",
+  "cloud-lake-fl",
+  "glen-ridge-fl",
+  "golf-fl"
+];
+
+// Check if slug belongs to the (305) / (786) telephone routing zone (Miami-Dade, Broward, Palm Beach, Monroe County / Florida Keys)
 export function is305Area(slug: string, clean_name: string = ''): boolean {
   if (!slug && !clean_name) return false;
   const s = (slug || '').toLowerCase().trim();
   const c = (clean_name || '').toLowerCase().trim();
-  return miamiBrowardSlugs.includes(s) || isMonroeCounty(s, c);
+
+  if (miamiBrowardSlugs.includes(s) || palmBeachSlugs.includes(s) || isMonroeCounty(s, c)) {
+    return true;
+  }
+
+  // Also check if clean name or county mentions broward or palm beach or miami
+  if (c.includes('broward') || c.includes('palm beach') || c.includes('miami-dade') || c.includes('monroe')) {
+    return true;
+  }
+
+  // If slug has service-first prefix, e.g. house-cleaning-boca-raton-fl
+  for (const pb of palmBeachSlugs) {
+    if (s.endsWith(`-${pb}`)) return true;
+  }
+  for (const mb of miamiBrowardSlugs) {
+    if (s.endsWith(`-${mb}`)) return true;
+  }
+
+  return false;
 }
 
 export const miamiDadeMunicipalities = new Set([
