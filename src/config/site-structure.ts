@@ -106,9 +106,28 @@ export const SITE_PAGES = [
   { path: '/login/', priority: '0.1', changefreq: 'monthly', indexed: false } // noindex, not in sitemap
 ];
 
+// 5b. Approved 6 Regional Guide Blog Posts
+export interface BlogPostConfig {
+  slug: string;
+  path: string;
+  title: string;
+  priority: string;
+  changefreq: string;
+  indexed: boolean;
+}
+
+export const BLOG_POSTS: BlogPostConfig[] = [
+  { slug: 'tampa-bay-cleaning-guide', path: '/blog/tampa-bay-cleaning-guide/', title: 'The Ultimate Tampa Bay & St. Pete Cleaning Guide: Coastal Humidity, Gulf Sand & AC Spores', priority: '0.7', changefreq: 'monthly', indexed: true },
+  { slug: 'south-florida-cleaning-guide', path: '/blog/south-florida-cleaning-guide/', title: 'South Florida Luxury Living: Deep Cleaning High-Rises & Defending Against Subtropical Mold in Miami & Fort Lauderdale', priority: '0.7', changefreq: 'monthly', indexed: true },
+  { slug: 'central-florida-cleaning-guide', path: '/blog/central-florida-cleaning-guide/', title: 'Central Florida Vacation Rental & Airbnb Turnover Masterclass: Cleanliness Standards in Orlando & Kissimmee', priority: '0.7', changefreq: 'monthly', indexed: true },
+  { slug: 'southwest-florida-cleaning-guide', path: '/blog/southwest-florida-cleaning-guide/', title: 'Sarasota, Bradenton & Lakewood Ranch Home Care: Lanai Maintenance, Salt Mist & Seasonal Resident Openings', priority: '0.7', changefreq: 'monthly', indexed: true },
+  { slug: 'first-coast-cleaning-guide', path: '/blog/first-coast-cleaning-guide/', title: 'First Coast Seasonal Cleaning Guide: Battling Pine Pollen, Atlantic Sea Mist & Red Clay in Jacksonville & St. Augustine', priority: '0.7', changefreq: 'monthly', indexed: true },
+  { slug: 'florida-keys-cleaning-guide', path: '/blog/florida-keys-cleaning-guide/', title: 'Living in Paradise: Florida Keys Island Home Maintenance & Salt Air Defense Playbook', priority: '0.7', changefreq: 'monthly', indexed: true }
+];
+
 // 6. 17 Regions
 export interface RegionConfig {
-  slug: string; // e.g. '/' or 'sarasota-fl' or 'monroe-county'
+  slug: string; // e.g. 'bradenton-fl' or 'sarasota-fl' or 'monroe-county'
   county: string;
   name: string;
   ready: boolean;
@@ -118,7 +137,7 @@ export interface RegionConfig {
 
 export const REGIONS: Record<string, RegionConfig> = {
   manatee: {
-    slug: '', // targets root '/'
+    slug: 'bradenton-fl', // targets /bradenton-fl/ hub
     county: 'Manatee County',
     name: 'Manatee County (Bradenton Base)',
     ready: true,
@@ -380,7 +399,8 @@ export interface CityConfig {
 }
 
 export const CITY_PAGES: Record<string, CityConfig> = {
-  // Manatee (Bradenton is home base -> /)
+  // Manatee
+  'bradenton-fl': { slug: 'bradenton-fl', name: 'Bradenton', county: 'Manatee County', hasOfficeOrTeam: true, nearestBaseDistance: '0 miles (Bradenton Base)' },
   'lakewood-ranch-fl': { slug: 'lakewood-ranch-fl', name: 'Lakewood Ranch', county: 'Manatee / Sarasota County', hasOfficeOrTeam: true, nearestBaseDistance: '0 miles (Local Office)' },
   'palmetto-fl': { slug: 'palmetto-fl', name: 'Palmetto', county: 'Manatee County', hasOfficeOrTeam: false, nearestBaseDistance: '5 miles to Bradenton HQ' },
   'ellenton-fl': { slug: 'ellenton-fl', name: 'Ellenton', county: 'Manatee County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to Bradenton HQ' },

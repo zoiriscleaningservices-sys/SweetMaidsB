@@ -46,8 +46,8 @@ try {
   const homePath = path.join(process.cwd(), 'src', 'app', 'page.tsx');
   const homeContent = fs.readFileSync(homePath, 'utf8');
   
-  const expectedTitle = 'Professional Cleaning Services Across Florida | Sweet Maid';
-  const expectedH1 = 'Professional Cleaning Services Across Florida';
+  const expectedTitle = 'Cleaning Services in Florida | Sweet Maid Cleaning Service';
+  const expectedH1 = 'Cleaning Services Across Florida';
 
   if (!homeContent.includes(expectedTitle)) {
     reportError('Homepage Lock', `Title must be exactly: "${expectedTitle}"`);
@@ -233,8 +233,10 @@ try {
     { input: '/longboat-key-fl/house-cleaning', expected: '/house-cleaning-longboat-key-fl/' },
     { input: '/lakewood-ranch-cleaning', expected: '/lakewood-ranch-fl/' },
     { input: '/33139', expected: '/miami-fl/' },
-    { input: '/bradenton-fl', expected: '/' },
-    { input: '/bradenton-fl/', expected: '/' },
+    { input: '/bradenton-fl/about', expected: '/about/' },
+    { input: '/bradenton-fl/about/', expected: '/about/' },
+    { input: '/bradenton-fl/blog', expected: '/blog/' },
+    { input: '/bradenton-fl/blog/', expected: '/blog/' },
     { input: '/tallahassee-fl', expected: '/locations/' },
     { input: '/tallahassee-fl/house-cleaning', expected: '/locations/' },
   ];
@@ -260,6 +262,7 @@ try {
     '/locations/',
     '/house-cleaning/',
     '/deep-cleaning/',
+    '/bradenton-fl/',
     '/lakewood-ranch-fl/',
     '/sarasota-fl/',
     '/fort-lauderdale-fl/',

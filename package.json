@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "prebuild": "tsx scripts/build_city_search_index.ts",
+    "build": "tsx scripts/build_city_search_index.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "verify:structure": "tsx scripts/verify_structure.ts"

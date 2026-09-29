@@ -1783,34 +1783,22 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   } else {
     // service_or_home: Use dynamic zero-duplicate SEO pack H1, keeping homepage locked to Florida
     if (loc_slug === 'home' && !is_sub_page) {
-      customH1Inner = 'Professional Cleaning Services Across Florida';
+      customH1Inner = 'Cleaning Services Across Florida';
     } else if (loc_slug === 'bradenton-fl' && !is_sub_page) {
-      customH1Inner = 'Professional House Cleaning & Maid Service in Bradenton, FL';
+      customH1Inner = 'Cleaning Services in Bradenton, FL';
     } else {
       customH1Inner = `${seoPack.h1}`;
     }
   }
 
-
   if (customH1Inner) {
-    newContent = newContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 font-serif drop-shadow-md">${customH1Inner}</h1>`);
-    if (pageType === 'service_or_home') {
+    newContent = newContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.15] mb-4 text-white drop-shadow-lg tracking-tight px-2">${customH1Inner}</h1>`);
+    
+    // For non-homepage service/location pages, apply standard dynamic hero subhead & pill row
+    if (pageType === 'service_or_home' && loc_slug !== 'home') {
       newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${seoPack.heroSub}$2`);
 
-      // Inject nearby locations pill row directly near the H1 tag in Hero
-      const isHeroHome = loc_slug === 'home' || clean_name.toLowerCase() === 'florida';
-      const floridaPills = [
-        { name: 'Miami', slug: 'miami-fl' },
-        { name: 'Tampa', slug: 'tampa-fl' },
-        { name: 'Orlando', slug: 'orlando-fl' },
-        { name: 'Fort Lauderdale', slug: 'fort-lauderdale-fl' },
-        { name: 'Bradenton', slug: 'bradenton-fl' },
-        { name: 'Sarasota', slug: 'sarasota-fl' },
-        { name: 'Jacksonville', slug: 'jacksonville-fl' },
-        { name: 'St. Petersburg', slug: 'saint-petersburg-fl' },
-        { name: 'West Palm Beach', slug: 'west-palm-beach-fl' }
-      ];
-      const heroLocations = isHeroHome ? floridaPills : getNearestLocations(loc_slug, 7);
+      const heroLocations = getNearestLocations(loc_slug, 7);
       const heroLocationPills = heroLocations.map(c => 
         `<a href="${getNearbyUrl(c.slug)}" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">${c.name}</a>`
       ).join('\n        ');
@@ -1819,7 +1807,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <!-- Hero Nearby Service Areas Pill Row -->
       <div class="mt-3 mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto px-4" aria-label="Nearby Cleaning Service Locations">
         <span class="inline-flex items-center gap-1.5 text-xs font-bold text-pink-200 uppercase tracking-wider mr-1">
-          <i class="fa-solid fa-location-dot text-pink-400"></i> ${isHeroHome ? 'Serving Florida Communities:' : `Serving ${clean_name} &amp; Nearby:`}
+          <i class="fa-solid fa-location-dot text-pink-400"></i> Serving ${clean_name} &amp; Nearby:
         </span>
         ${heroLocationPills}
         <a href="/locations/" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-bold bg-pink-500/85 hover:bg-pink-500 text-white backdrop-blur-md border border-pink-300/40 hover:scale-105 shadow-md transition-all duration-200">

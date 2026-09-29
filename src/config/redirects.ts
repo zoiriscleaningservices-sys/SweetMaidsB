@@ -150,8 +150,14 @@ export function resolveRedirect(pathname: string): string | null {
 
   // B2. Nested combo: /{citySlug}/{service}/ -> ALWAYS redirect (301) to flat service-first /{service}-{citySlug}/
   if (segments.length === 2 && seg2) {
-    // City hub subpages like /longboat-key-fl/about/ are not service combos
-    if (['about', 'gallery', 'blog'].includes(seg2)) {
+    // Master Rule 1: Per-city /about/ and /blog/ pages 301 to site-wide /about/ and /blog/
+    if (seg2 === 'about') {
+      return '/about/';
+    }
+    if (seg2 === 'blog') {
+      return '/blog/';
+    }
+    if (seg2 === 'gallery') {
       return null;
     }
 

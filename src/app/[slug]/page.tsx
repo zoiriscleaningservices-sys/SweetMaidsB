@@ -15,6 +15,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return getLongboatMetadata('hub');
   }
 
+  if (slug === 'bradenton-fl') {
+    return {
+      title: 'Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service',
+      description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans. Get a free estimate today.',
+      alternates: { canonical: 'https://www.sweetmaidcleaning.com/bradenton-fl/' },
+      openGraph: {
+        title: 'Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service',
+        description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans.',
+        url: 'https://www.sweetmaidcleaning.com/bradenton-fl/',
+        type: 'website',
+        images: ['https://www.sweetmaidcleaning.com/images/logo.png']
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service',
+        description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans.',
+        images: ['https://www.sweetmaidcleaning.com/images/logo.png']
+      }
+    };
+  }
+
   const combo = resolveFlatCombo(slug);
   if (combo) {
     if (combo.citySlug === 'longboat-key-fl') {
@@ -119,6 +140,14 @@ export default async function LocationOrServicePage({ params }: { params: Promis
     const localizedHtml = localizedReplace(bodyContent, 'Florida', slug, false, slug);
     return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
   } else {
+    if (slug === 'bradenton-fl') {
+      const rawHtml = getTemplate('bradenton') || getTemplate('house-cleaning');
+      if (!rawHtml) notFound();
+      const bodyContent = extractSections(rawHtml);
+      const localizedHtml = localizedReplace(bodyContent, 'Bradenton', 'bradenton-fl', false, 'house-cleaning');
+      return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
+    }
+
     const locData = resolveAnyLocation(slug);
     if (!locData) {
       notFound();

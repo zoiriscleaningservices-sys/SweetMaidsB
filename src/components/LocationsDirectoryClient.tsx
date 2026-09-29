@@ -6,6 +6,7 @@ import { LocationDirectoryItem } from '@/lib/data';
 
 interface LocationsDirectoryClientProps {
   locations: LocationDirectoryItem[];
+  initialQuery?: string;
 }
 
 // Region definitions based on coordinates or city names
@@ -19,8 +20,8 @@ const REGION_DEFS = [
   { id: 'keys', label: '🏝️ Florida Keys' }
 ];
 
-export default function LocationsDirectoryClient({ locations }: LocationsDirectoryClientProps) {
-  const [searchQuery, setSearchQuery] = useState('');
+export default function LocationsDirectoryClient({ locations, initialQuery = '' }: LocationsDirectoryClientProps) {
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [selectedRegion, setSelectedRegion] = useState('all');
   const [selectedLetter, setSelectedLetter] = useState('all');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -346,32 +347,47 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
       {/* Locations Directory Grid */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-6 lg:px-8 pb-16">
         {filteredLocations.length === 0 ? (
-          /* Empty State */
-          <div className="bg-white rounded-3xl p-12 text-center border border-pink-100 shadow-md max-w-lg mx-auto my-12">
-            <div className="w-16 h-16 bg-pink-50 text-pink-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-              <i className="fa-solid fa-location-crosshairs"></i>
+          /* Empty / Custom Service Request State (Never a dead end) */
+          <div className="bg-white rounded-3xl p-8 sm:p-12 text-center border border-pink-100 shadow-xl max-w-xl mx-auto my-12">
+            <div className="w-16 h-16 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+              <i className="fa-solid fa-map-location-dot"></i>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 font-serif">No Locations Found</h3>
-            <p className="text-gray-600 text-sm mb-6">
-              We couldn't find any location matching &ldquo;{searchQuery}&rdquo;. We serve all of Florida!
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 font-serif">
+              We may be able to serve {searchQuery ? `"${searchQuery}"` : 'your city'}!
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed">
+              While we may not have an active local hub in <strong>{searchQuery || 'your area'}</strong> yet, our regional cleaning teams frequently accommodate customized residential and commercial requests throughout Florida.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <Link
+                href={`/book-online/?city=${encodeURIComponent(searchQuery || 'Florida')}`}
+                className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white rounded-full text-sm font-bold shadow-lg shadow-pink-200 transition-all hover:scale-105 flex items-center justify-center gap-2"
+              >
+                <i className="fa-solid fa-calendar-check"></i>
+                <span>Get a Free Quote {searchQuery ? `for ${searchQuery}` : ''}</span>
+              </Link>
+              <a
+                href="tel:19412222080"
+                className="w-full sm:w-auto px-6 py-3.5 bg-pink-50 hover:bg-pink-100 text-pink-600 rounded-full text-sm font-bold border border-pink-200 transition-colors flex items-center justify-center gap-2"
+              >
+                <i className="fa-solid fa-phone"></i>
+                <span>(941) 222-2080</span>
+              </a>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-pink-100/60">
               <button
+                type="button"
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedRegion('all');
                   setSelectedLetter('all');
                 }}
-                className="px-6 py-2.5 bg-pink-50 text-pink-600 rounded-full text-sm font-bold hover:bg-pink-100 transition-colors"
+                className="text-xs text-gray-500 hover:text-pink-600 font-semibold"
               >
-                Reset Search Filters
+                ← View all available Florida service areas
               </button>
-              <a
-                href="tel:19412222080"
-                className="px-6 py-2.5 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full text-sm font-bold shadow-md hover:shadow-lg transition-all"
-              >
-                Call Us for Custom Quote
-              </a>
             </div>
           </div>
         ) : (

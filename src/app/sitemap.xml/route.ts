@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { SERVICES, CORE_SERVICES, CITY_PAGES, COMBO_PAGES } from '@/config/site-structure';
+import { SERVICES, CORE_SERVICES, CITY_PAGES, COMBO_PAGES, BLOG_POSTS } from '@/config/site-structure';
 import { DECOMMISSIONED_SERVICES } from '@/config/redirects';
 import { longboatKeyPages } from '@/lib/longboat_key_content';
 
@@ -25,12 +25,19 @@ export async function GET() {
   ];
   staticPages.forEach(p => urlSet.add(p));
 
+  // 2b. Approved Regional Guide Blog Posts
+  BLOG_POSTS.forEach(post => {
+    if (post.indexed) {
+      urlSet.add(post.path);
+    }
+  });
+
   // 3. 24 Top-level service pages
   SERVICES.forEach(service => {
     urlSet.add(`/${service}/`);
   });
 
-  // 4. 63 City hub pages
+  // 4. 64 City hub pages
   Object.keys(CITY_PAGES).forEach(citySlug => {
     urlSet.add(`/${citySlug}/`);
   });
@@ -47,12 +54,12 @@ export async function GET() {
     urlSet.add(`/${combo.slug}/`);
   });
 
-  // 7. Bespoke Longboat Key pages (service-first for services, nested only for about/gallery/blog)
+  // 7. Bespoke Longboat Key pages (service-first for services; gallery only, about/blog 301 redirect to root)
   Object.keys(longboatKeyPages).forEach(slug => {
     if (slug === 'hub') return;
-    if (['about', 'gallery', 'blog'].includes(slug)) {
-      urlSet.add(`/longboat-key-fl/${slug}/`);
-    } else if (!DECOMMISSIONED_SERVICES[slug]) {
+    if (slug === 'gallery') {
+      urlSet.add(`/longboat-key-fl/gallery/`);
+    } else if (!['about', 'blog'].includes(slug) && !DECOMMISSIONED_SERVICES[slug]) {
       urlSet.add(`/${slug}-longboat-key-fl/`);
     }
   });
