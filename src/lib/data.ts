@@ -134,8 +134,16 @@ export function haversineDistance(lat1: number, lon1: number, lat2: number, lon2
 }
 
 export function getNearestLocations(currentSlug: string, count: number = 8): NearestCity[] {
-  const current = resolveAnyLocation(currentSlug);
-  if (!current) return [];
+  let current: { lat: number; lng: number } | null = null;
+  const isHomeOrBradenton = currentSlug === 'home' || currentSlug === 'bradenton-fl' || !currentSlug;
+  if (isHomeOrBradenton) {
+    current = { lat: 27.4989, lng: -82.5748 }; // Bradenton coordinates
+  } else {
+    current = resolveAnyLocation(currentSlug);
+    if (!current) {
+      current = { lat: 27.4989, lng: -82.5748 };
+    }
+  }
 
   const distances: NearestCity[] = [];
   const allLocations = getAllLocations();
