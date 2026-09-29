@@ -2,14 +2,15 @@ import { longboatKeyPages } from '../src/lib/longboat_key_content';
 import { DECOMMISSIONED_SERVICES } from '../src/config/redirects';
 
 async function run() {
-  console.log('Testing all 53 Longboat Key pages on http://localhost:3000...');
+  const host = process.argv[2] || 'https://www.sweetmaidcleaning.com';
+  console.log(`Testing all 53 Longboat Key pages on ${host}...`);
 
   let passed = 0;
   let failed = 0;
   const errors: string[] = [];
 
   for (const [key, page] of Object.entries(longboatKeyPages)) {
-    const url = `http://localhost:3000${page.route}`;
+    const url = `${host}${page.route}`;
     const decommissionedTarget = DECOMMISSIONED_SERVICES[key];
 
     try {
