@@ -314,10 +314,34 @@ export const REGIONS: Record<string, RegionConfig> = {
   duval: {
     slug: 'jacksonville-fl',
     county: 'Duval County',
-    name: 'Duval County',
-    ready: false,
+    name: 'Duval County (Jacksonville Base)',
+    ready: true,
     phone: '(941) 222-2080',
     placesServed: ['Jacksonville', 'Jacksonville Beach', 'Atlantic Beach', 'Neptune Beach', 'Baldwin']
+  },
+  st_johns: {
+    slug: 'st-augustine-fl',
+    county: 'St. Johns County',
+    name: 'St. Johns County (St. Augustine)',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['St. Augustine', 'St. Augustine Beach', 'Ponte Vedra Beach', 'Ponte Vedra', 'Nocatee', 'St. Johns', 'Fruit Cove', 'Hastings', 'Marineland']
+  },
+  clay: {
+    slug: 'orange-park-fl',
+    county: 'Clay County',
+    name: 'Clay County',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Orange Park', 'Fleming Island', 'Green Cove Springs', 'Middleburg', 'Oakleaf Plantation', 'Keystone Heights', 'Penney Farms']
+  },
+  nassau: {
+    slug: 'fernandina-beach-fl',
+    county: 'Nassau County',
+    name: 'Nassau County (Amelia Island)',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Fernandina Beach', 'Yulee', 'Amelia Island', 'Callahan', 'Hilliard']
   },
   alachua: {
     slug: 'gainesville-fl',
@@ -587,7 +611,41 @@ export const CITY_PAGES: Record<string, CityConfig> = {
   'west-melbourne-fl': { slug: 'west-melbourne-fl', name: 'West Melbourne', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '66 miles to Orlando Base' },
   'indialantic-fl': { slug: 'indialantic-fl', name: 'Indialantic', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '70 miles to Orlando Base' },
   'indian-harbour-beach-fl': { slug: 'indian-harbour-beach-fl', name: 'Indian Harbour Beach', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '66 miles to Orlando Base' },
-  'melbourne-beach-fl': { slug: 'melbourne-beach-fl', name: 'Melbourne Beach', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '72 miles to Orlando Base' }
+  'melbourne-beach-fl': { slug: 'melbourne-beach-fl', name: 'Melbourne Beach', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '72 miles to Orlando Base' },
+
+  // Duval County (Jacksonville Core & Beaches)
+  'jacksonville-fl': { slug: 'jacksonville-fl', name: 'Jacksonville', county: 'Duval County', hasOfficeOrTeam: true, nearestBaseDistance: '0 miles (Jacksonville Team)' },
+  'jacksonville-beach-fl': { slug: 'jacksonville-beach-fl', name: 'Jacksonville Beach', county: 'Duval County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to Jacksonville Base' },
+  'atlantic-beach-fl': { slug: 'atlantic-beach-fl', name: 'Atlantic Beach', county: 'Duval County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to Jacksonville Base' },
+  'neptune-beach-fl': { slug: 'neptune-beach-fl', name: 'Neptune Beach', county: 'Duval County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to Jacksonville Base' },
+  'baldwin-fl': { slug: 'baldwin-fl', name: 'Baldwin', county: 'Duval County', hasOfficeOrTeam: false, nearestBaseDistance: '20 miles to Jacksonville Base' },
+
+  // St. Johns County (St. Augustine & Northern Suburbs)
+  'st-augustine-fl': { slug: 'st-augustine-fl', name: 'St. Augustine', county: 'St. Johns County', hasOfficeOrTeam: true, nearestBaseDistance: '0 miles (St. Augustine Team)' },
+  'st-augustine-beach-fl': { slug: 'st-augustine-beach-fl', name: 'St. Augustine Beach', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '5 miles to St. Augustine Base' },
+  'ponte-vedra-beach-fl': { slug: 'ponte-vedra-beach-fl', name: 'Ponte Vedra Beach', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '25 miles to St. Augustine Base' },
+  'ponte-vedra-fl': { slug: 'ponte-vedra-fl', name: 'Ponte Vedra', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '24 miles to St. Augustine Base' },
+  'nocatee-fl': { slug: 'nocatee-fl', name: 'Nocatee', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '18 miles to St. Augustine Base' },
+  'st-johns-fl': { slug: 'st-johns-fl', name: 'St. Johns', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '20 miles to St. Augustine Base' },
+  'fruit-cove-fl': { slug: 'fruit-cove-fl', name: 'Fruit Cove', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '24 miles to St. Augustine Base' },
+  'hastings-fl': { slug: 'hastings-fl', name: 'Hastings', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to St. Augustine Base' },
+  'marineland-fl': { slug: 'marineland-fl', name: 'Marineland', county: 'St. Johns County', hasOfficeOrTeam: false, nearestBaseDistance: '18 miles to St. Augustine Base' },
+
+  // Clay County (Southwest Metro)
+  'orange-park-fl': { slug: 'orange-park-fl', name: 'Orange Park', county: 'Clay County', hasOfficeOrTeam: true, nearestBaseDistance: '14 miles to Jacksonville Base' },
+  'fleming-island-fl': { slug: 'fleming-island-fl', name: 'Fleming Island', county: 'Clay County', hasOfficeOrTeam: false, nearestBaseDistance: '20 miles to Jacksonville Base' },
+  'green-cove-springs-fl': { slug: 'green-cove-springs-fl', name: 'Green Cove Springs', county: 'Clay County', hasOfficeOrTeam: false, nearestBaseDistance: '28 miles to Jacksonville Base' },
+  'middleburg-fl': { slug: 'middleburg-fl', name: 'Middleburg', county: 'Clay County', hasOfficeOrTeam: false, nearestBaseDistance: '26 miles to Jacksonville Base' },
+  'oakleaf-plantation-fl': { slug: 'oakleaf-plantation-fl', name: 'Oakleaf Plantation', county: 'Clay County', hasOfficeOrTeam: false, nearestBaseDistance: '18 miles to Jacksonville Base' },
+  'keystone-heights-fl': { slug: 'keystone-heights-fl', name: 'Keystone Heights', county: 'Clay County', hasOfficeOrTeam: false, nearestBaseDistance: '48 miles to Jacksonville Base' },
+  'penney-farms-fl': { slug: 'penney-farms-fl', name: 'Penney Farms', county: 'Clay County', hasOfficeOrTeam: false, nearestBaseDistance: '34 miles to Jacksonville Base' },
+
+  // Nassau County (North Metro & Amelia Island)
+  'fernandina-beach-fl': { slug: 'fernandina-beach-fl', name: 'Fernandina Beach', county: 'Nassau County', hasOfficeOrTeam: true, nearestBaseDistance: '35 miles to Jacksonville Base' },
+  'yulee-fl': { slug: 'yulee-fl', name: 'Yulee', county: 'Nassau County', hasOfficeOrTeam: false, nearestBaseDistance: '24 miles to Jacksonville Base' },
+  'amelia-island-fl': { slug: 'amelia-island-fl', name: 'Amelia Island', county: 'Nassau County', hasOfficeOrTeam: false, nearestBaseDistance: '32 miles to Jacksonville Base' },
+  'callahan-fl': { slug: 'callahan-fl', name: 'Callahan', county: 'Nassau County', hasOfficeOrTeam: false, nearestBaseDistance: '20 miles to Jacksonville Base' },
+  'hilliard-fl': { slug: 'hilliard-fl', name: 'Hilliard', county: 'Nassau County', hasOfficeOrTeam: false, nearestBaseDistance: '30 miles to Jacksonville Base' }
 };
 
 // 8. Flat Service-First Combo Pages (Section 9A: lookup table)
@@ -682,7 +740,18 @@ export const COMBO_PAGES: Record<string, ComboConfig> = {
   'house-cleaning-clermont-fl': { slug: 'house-cleaning-clermont-fl', service: 'house-cleaning', citySlug: 'clermont-fl', cityName: 'Clermont' },
   'house-cleaning-lakeland-fl': { slug: 'house-cleaning-lakeland-fl', service: 'house-cleaning', citySlug: 'lakeland-fl', cityName: 'Lakeland' },
   'house-cleaning-daytona-beach-fl': { slug: 'house-cleaning-daytona-beach-fl', service: 'house-cleaning', citySlug: 'daytona-beach-fl', cityName: 'Daytona Beach' },
-  'house-cleaning-melbourne-fl': { slug: 'house-cleaning-melbourne-fl', service: 'house-cleaning', citySlug: 'melbourne-fl', cityName: 'Melbourne' }
+  'house-cleaning-melbourne-fl': { slug: 'house-cleaning-melbourne-fl', service: 'house-cleaning', citySlug: 'melbourne-fl', cityName: 'Melbourne' },
+
+  // Jacksonville & St. Augustine Combos
+  'house-cleaning-jacksonville-fl': { slug: 'house-cleaning-jacksonville-fl', service: 'house-cleaning', citySlug: 'jacksonville-fl', cityName: 'Jacksonville' },
+  'deep-cleaning-jacksonville-fl': { slug: 'deep-cleaning-jacksonville-fl', service: 'deep-cleaning', citySlug: 'jacksonville-fl', cityName: 'Jacksonville' },
+  'commercial-cleaning-jacksonville-fl': { slug: 'commercial-cleaning-jacksonville-fl', service: 'commercial-cleaning', citySlug: 'jacksonville-fl', cityName: 'Jacksonville' },
+  'house-cleaning-st-augustine-fl': { slug: 'house-cleaning-st-augustine-fl', service: 'house-cleaning', citySlug: 'st-augustine-fl', cityName: 'St. Augustine' },
+  'deep-cleaning-st-augustine-fl': { slug: 'deep-cleaning-st-augustine-fl', service: 'deep-cleaning', citySlug: 'st-augustine-fl', cityName: 'St. Augustine' },
+  'airbnb-cleaning-st-augustine-fl': { slug: 'airbnb-cleaning-st-augustine-fl', service: 'airbnb-cleaning', citySlug: 'st-augustine-fl', cityName: 'St. Augustine' },
+  'house-cleaning-ponte-vedra-beach-fl': { slug: 'house-cleaning-ponte-vedra-beach-fl', service: 'house-cleaning', citySlug: 'ponte-vedra-beach-fl', cityName: 'Ponte Vedra Beach' },
+  'house-cleaning-orange-park-fl': { slug: 'house-cleaning-orange-park-fl', service: 'house-cleaning', citySlug: 'orange-park-fl', cityName: 'Orange Park' },
+  'house-cleaning-fernandina-beach-fl': { slug: 'house-cleaning-fernandina-beach-fl', service: 'house-cleaning', citySlug: 'fernandina-beach-fl', cityName: 'Fernandina Beach' }
 };
 
 const SERVICES_BY_LEN = [...SERVICES].sort((a, b) => b.length - a.length);

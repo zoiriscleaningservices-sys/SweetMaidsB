@@ -94,10 +94,10 @@ try {
   }
 
   const cityCount = Object.keys(CITY_PAGES).length;
-  if (cityCount > 250) {
-    reportError('Site Config', `City pages count (${cityCount}) exceeds 250 cap`);
+  if (cityCount > 300) {
+    reportError('Site Config', `City pages count (${cityCount}) exceeds 300 cap`);
   } else {
-    reportPass('Site Config', `City pages count (${cityCount}) is under 250 cap (203 approved cities)`);
+    reportPass('Site Config', `City pages count (${cityCount}) is under 300 cap (229 approved cities)`);
   }
 
   // Pricing verification
@@ -268,13 +268,19 @@ try {
     '/orlando-fl/',
     '/kissimmee-fl/',
     '/lakeland-fl/',
+    '/jacksonville-fl/',
+    '/st-augustine-fl/',
+    '/ponte-vedra-beach-fl/',
+    '/orange-park-fl/',
     '/house-cleaning-bradenton-fl/',
     '/house-cleaning-palmetto-fl/',
     '/move-in-out-cleaning-brandon-fl/',
     '/house-cleaning-longboat-key-fl/',
     '/house-cleaning-boca-raton-fl/',
     '/house-cleaning-fort-lauderdale-fl/',
-    '/house-cleaning-orlando-fl/'
+    '/house-cleaning-orlando-fl/',
+    '/house-cleaning-jacksonville-fl/',
+    '/house-cleaning-st-augustine-fl/'
   ];
 
   let loopFails = 0;
@@ -309,10 +315,10 @@ async function runAsyncChecks() {
     const locMatches = xmlBody.match(/<loc>(.*?)<\/loc>/g) || [];
     const urlCount = locMatches.length;
 
-    if (urlCount < 2000 || urlCount > 3000) {
-      reportError('Sitemap Rebuild', `Expected URL count between 2,000 and 3,000, found ${urlCount}`);
+    if (urlCount < 2400 || urlCount > 3500) {
+      reportError('Sitemap Rebuild', `Expected URL count between 2,400 and 3,500, found ${urlCount}`);
     } else {
-      reportPass('Sitemap Rebuild', `Sitemap contains ${urlCount} clean URLs (under 3,000 cap)`);
+      reportPass('Sitemap Rebuild', `Sitemap contains ${urlCount} clean URLs (under 3,500 cap)`);
     }
 
     // Check all URLs start with canonical https://www.sweetmaidcleaning.com

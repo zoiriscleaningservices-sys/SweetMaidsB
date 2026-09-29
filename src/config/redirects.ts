@@ -70,7 +70,17 @@ export const EXACT_REDIRECTS: RedirectRule[] = [
   { source: '/port-charlotte-cleaning', destination: '/port-charlotte-fl/' },
   { source: '/port-charlotte-cleaning/', destination: '/port-charlotte-fl/' },
   { source: '/cleaning-service-marathon-fl', destination: '/marathon-fl/' },
-  { source: '/cleaning-service-marathon-fl/', destination: '/marathon-fl/' }
+  { source: '/cleaning-service-marathon-fl/', destination: '/marathon-fl/' },
+  { source: '/saint-augustine-fl', destination: '/st-augustine-fl/' },
+  { source: '/saint-augustine-fl/', destination: '/st-augustine-fl/' },
+  { source: '/saint-augustine-beach-fl', destination: '/st-augustine-beach-fl/' },
+  { source: '/saint-augustine-beach-fl/', destination: '/st-augustine-beach-fl/' },
+  { source: '/saint-augustine', destination: '/st-augustine-fl/' },
+  { source: '/saint-augustine/', destination: '/st-augustine-fl/' },
+  { source: '/st-augustine', destination: '/st-augustine-fl/' },
+  { source: '/st-augustine/', destination: '/st-augustine-fl/' },
+  { source: '/jacksonville', destination: '/jacksonville-fl/' },
+  { source: '/jacksonville/', destination: '/jacksonville-fl/' }
 ];
 
 // 2. Decommissioned service slug mapping

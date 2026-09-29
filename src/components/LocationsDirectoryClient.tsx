@@ -15,7 +15,7 @@ const REGION_DEFS = [
   { id: 'tampa', label: '🏖️ Tampa Bay & St. Pete' },
   { id: 'orlando', label: '🏰 Orlando & Central FL' },
   { id: 'swfl', label: '☀️ Sarasota, Bradenton & SWFL' },
-  { id: 'jax', label: '🌊 Jacksonville & North FL' },
+  { id: 'jax', label: '🌊 Jacksonville, St. Augustine & North FL' },
   { id: 'keys', label: '🏝️ Florida Keys' }
 ];
 

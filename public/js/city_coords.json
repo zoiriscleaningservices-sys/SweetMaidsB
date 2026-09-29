@@ -4068,5 +4068,40 @@
     "name": "Bay Lake",
     "lat": 28.3883,
     "lng": -81.5665
+  },
+  "st-augustine-fl": {
+    "name": "St. Augustine",
+    "lat": 29.8947,
+    "lng": -81.3145
+  },
+  "st-augustine-beach-fl": {
+    "name": "St. Augustine Beach",
+    "lat": 29.8436,
+    "lng": -81.2748
+  },
+  "ponte-vedra-fl": {
+    "name": "Ponte Vedra",
+    "lat": 30.2402,
+    "lng": -81.3854
+  },
+  "hastings-fl": {
+    "name": "Hastings",
+    "lat": 29.7155,
+    "lng": -81.5095
+  },
+  "marineland-fl": {
+    "name": "Marineland",
+    "lat": 29.6691,
+    "lng": -81.2134
+  },
+  "penney-farms-fl": {
+    "name": "Penney Farms",
+    "lat": 29.9869,
+    "lng": -81.8101
+  },
+  "amelia-island-fl": {
+    "name": "Amelia Island",
+    "lat": 30.6083,
+    "lng": -81.4468
   }
 }
