@@ -93,7 +93,7 @@ export default function AboutPage() {
         <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-pink-100 shadow-xs">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <img src="/images/logo.png" alt="Sweet Maid" className="h-14 w-auto object-contain" />
+              <img src="/images/logo.webp" alt="Sweet Maid Cleaning Service" className="h-14 w-auto object-contain" width={200} height={60} decoding="async" />
             </Link>
 
             <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">

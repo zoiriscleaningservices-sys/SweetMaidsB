@@ -37,11 +37,12 @@ export default function TermsAndConditionsPage() {
           <div className="flex items-center justify-between h-20 md:h-24">
             <Link href="/" className="flex items-center group">
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Sweet Maid Cleaning Service"
                 className="h-16 md:h-20 w-auto object-contain group-hover:scale-105 transition-transform"
-                width="200"
-                height="80"
+                width={200}
+                height={80}
+                decoding="async"
               />
             </Link>
 
@@ -175,7 +176,7 @@ export default function TermsAndConditionsPage() {
       <footer className="bg-white border-t border-pink-100 py-12 px-6 lg:px-8 mt-auto">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div className="flex items-center gap-3">
-            <img src="/images/logo.png" alt="Sweet Maid" className="h-12 w-auto object-contain" />
+            <img src="/images/logo.webp" alt="Sweet Maid Cleaning Service" className="h-12 w-auto object-contain" width={160} height={48} decoding="async" />
             <div>
               <div className="font-serif font-bold text-gray-900">Sweet Maid Cleaning Service</div>
               <div className="text-xs text-gray-500">Professional Florida Cleaning Team</div>

@@ -40,11 +40,12 @@ export default function BookOnlinePage() {
             {/* Logo */}
             <Link href="/" className="flex items-center group">
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Sweet Maid Cleaning Service"
                 className="h-16 md:h-20 w-auto object-contain group-hover:scale-105 transition-transform"
-                width="200"
-                height="80"
+                width={200}
+                height={80}
+                decoding="async"
               />
             </Link>
 
@@ -111,7 +112,7 @@ export default function BookOnlinePage() {
       <div id="mobile-menu" className="fixed inset-0 z-[100] mobile-menu-glass flex flex-col invisible">
         <div className="p-6 flex justify-between items-center border-b border-pink-100 bg-white/50">
           <div className="flex items-center gap-2">
-            <img src="/images/logo.png" alt="Sweet Maid" className="h-10 w-auto" width="120" height="40" />
+            <img src="/images/logo.webp" alt="Sweet Maid Cleaning Service" className="h-10 w-auto" width={120} height={40} decoding="async" />
             <span className="font-serif text-lg font-bold text-gray-900">Sweet Maid</span>
           </div>
           <button
@@ -303,7 +304,7 @@ export default function BookOnlinePage() {
       <footer className="bg-white border-t border-pink-100 pt-12 pb-8 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
           <div className="space-y-4">
-            <img src="/images/logo.png" alt="Sweet Maid" className="h-16 w-auto object-contain" width="160" height="64" />
+            <img src="/images/logo.webp" alt="Sweet Maid Cleaning Service" className="h-16 w-auto object-contain" width={160} height={64} decoding="async" />
             <p className="text-gray-500 text-xs leading-relaxed">
               Family-owned residential and commercial cleaning service delivering thorough home care across Florida.
             </p>

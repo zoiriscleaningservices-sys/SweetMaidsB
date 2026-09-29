@@ -274,12 +274,23 @@
     </div>
   </div>
 
-  <!-- ================================================
-       SECTION 1: HERO + CITY SEARCH
-  =============================================== -->
-  <section class="relative min-h-[85vh] flex items-center justify-center pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden bg-gradient-to-br from-pink-900 via-purple-950 to-pink-900 text-white text-center">
-    <!-- Subtle Background Glow -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-pink-500/20 via-transparent to-transparent pointer-events-none"></div>
+  <section class="relative min-h-[85vh] flex items-center justify-center pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden text-white text-center">
+    <!-- Hero Background Image (Optimized LCP) -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img
+        src="/images/whatsapp-image-2026-02-10-at-11.18.09-pm-2.webp"
+        srcset="/images/whatsapp-image-2026-02-10-at-11.18.09-pm-2.webp 600w, /images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp 1200w"
+        sizes="100vw"
+        width="1920"
+        height="1080"
+        fetchpriority="high"
+        decoding="async"
+        alt="Clean, bright living room after a professional house cleaning"
+        class="w-full h-full object-cover"
+      >
+      <div class="absolute inset-0 bg-gray-950/70 backdrop-blur-[2px]"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-pink-950/60 via-transparent to-black/30"></div>
+    </div>
 
     <div class="max-w-4xl mx-auto px-6 relative z-10 w-full flex flex-col items-center">
       
@@ -396,123 +407,213 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         <!-- 1. House Cleaning -->
-        <a href="/house-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/house-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp"
+              alt="Modern residential kitchen with clean countertops and stainless appliances"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-house"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">House Cleaning</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Complete residential cleaning for living areas, kitchens, bathrooms, and bedrooms.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">House Cleaning</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Complete residential cleaning for living areas, kitchens, bathrooms, and bedrooms.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 2. Deep Cleaning -->
-        <a href="/deep-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/deep-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp"
+              alt="Pristine tile and sanitized shower glass after a comprehensive deep cleaning"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-sparkles"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Deep Cleaning</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Intensive top-to-bottom scrub detailing baseboards, vents, appliances, and tile grout.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Deep Cleaning</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Intensive top-to-bottom scrub detailing baseboards, vents, appliances, and tile grout.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 3. Recurring Maid Service -->
-        <a href="/recurring-maid-service/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/recurring-maid-service/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-4.webp"
+              alt="Neatly arranged bedroom with detailed surfaces from recurring maid service"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-calendar-days"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Recurring Maid Service</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Weekly, bi-weekly, or monthly scheduled housekeeping to keep your home continuously fresh.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Recurring Maid Service</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Weekly, bi-weekly, or monthly scheduled housekeeping to keep your home continuously fresh.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 4. Move In/Out Cleaning -->
-        <a href="/move-in-out-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/move-in-out-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp"
+              alt="Spacious living room with gleaming hardwood floors ready for move-in"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-truck-ramp-box"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Move In/Out Cleaning</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Empty-home turnover cleaning inside cabinets, drawers, closets, and appliances.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Move In/Out Cleaning</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Empty-home turnover cleaning inside cabinets, drawers, closets, and appliances.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 5. Airbnb Cleaning -->
-        <a href="/airbnb-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/airbnb-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-10-at-11.17.59-pm.webp"
+              alt="Spotless vacation rental bathroom and vanity prepared for incoming guests"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-key"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Airbnb Cleaning</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Fast-turnaround short-term rental turnover with linen sanitization and staging.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Airbnb Cleaning</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Fast-turnaround short-term rental turnover with linen sanitization and staging.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 6. Post-Construction Cleaning -->
-        <a href="/post-construction-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/post-construction-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-11-at-12.07.26-pm.webp"
+              alt="Newly renovated residential interior cleared of construction dust and debris"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-trowel-bricks"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Post-Construction</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Drywall dust extraction, debris cleanup, and surface polishing after remodeling.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Post-Construction</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Drywall dust extraction, debris cleanup, and surface polishing after remodeling.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 7. Commercial Cleaning -->
-        <a href="/commercial-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/commercial-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-10-at-3.46.50-pm.webp"
+              alt="Sanitized commercial office workspace after professional janitorial cleaning"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-building"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Commercial Cleaning</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Professional office sanitization, conference rooms, breakrooms, and executive suites.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Commercial Cleaning</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Professional office sanitization, conference rooms, breakrooms, and executive suites.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 8. Carpet Cleaning -->
-        <a href="/carpet-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/carpet-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/carpet-cleaning.webp"
+              alt="Deep carpet cleaning extraction removing trapped soil and allergens"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-rug"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Carpet Cleaning</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Deep fiber extraction lifting beach sand, stubborn pet stains, and soil.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Carpet Cleaning</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Deep fiber extraction lifting beach sand, stubborn pet stains, and soil.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 9. Window Cleaning -->
-        <a href="/window-cleaning/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/window-cleaning/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/window-cleaning.webp"
+              alt="Streak-free glass sliding door and window panes after professional washing"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-window-maximize"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Window Cleaning</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Streak-free glass washing removing coastal sea-mist, mineral film, and pollen.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Window Cleaning</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Streak-free glass washing removing coastal sea-mist, mineral film, and pollen.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
 
         <!-- 10. Janitorial Cleaning Services -->
-        <a href="/janitorial-cleaning-services/" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+        <a href="/janitorial-cleaning-services/" class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-pink-100/70 hover:border-pink-300 transition-all hover:-translate-y-1 flex flex-col justify-between group/card">
+          <div class="relative h-44 w-full overflow-hidden bg-pink-50">
+            <img loading="lazy" src="/images/whatsapp-image-2026-02-10-at-3.47.15-pm.webp"
+              alt="Professional janitorial maintenance for Florida commercial and medical facilities"
+              width="600" height="600"
+              class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md text-pink-600 flex items-center justify-center text-base shadow-md">
               <i class="fa-solid fa-soap"></i>
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Janitorial Services</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">Customized facility cleaning contracts for businesses, schools, and medical facilities.</p>
           </div>
-          <span class="text-xs font-bold text-pink-600 flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-2 group-hover/card:text-pink-600 transition-colors">Janitorial Services</h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-4">Customized facility cleaning contracts for businesses, schools, and medical facilities.</p>
+            </div>
+            <span class="text-xs font-bold text-pink-600 flex items-center gap-1 mt-auto">Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+          </div>
         </a>
       </div>
 

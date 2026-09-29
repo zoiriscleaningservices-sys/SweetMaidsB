@@ -165,7 +165,7 @@ export function processPageImages(
   ];
 
   return html.replace(/<img\s+([^>]+)>/gi, (fullMatch, rawAttrs) => {
-    let attrs = rawAttrs;
+    let attrs = rawAttrs.replace(/\/+$/, '').trim();
 
     const srcMatch = attrs.match(/src=["']([^"']+)["']/i);
     let src = srcMatch ? srcMatch[1] : '';
@@ -182,13 +182,25 @@ export function processPageImages(
       }
       attrs = attrs.replace(/src=["'][^"']+["']/i, `src="${src}"`);
       srcLower = src.toLowerCase();
-    } else if (src.startsWith('/images/') || src.startsWith('../../images/')) {
+    } else if (src.startsWith('/images/') || src.startsWith('../../images/') || src.startsWith('../images/')) {
+      // Normalize relative paths to /images/
+      if (src.startsWith('../../images/') || src.startsWith('../images/')) {
+        src = src.replace(/^(\.\.\/)+images\//, '/images/');
+        attrs = attrs.replace(/src=["'][^"']+["']/i, `src="${src}"`);
+      }
       // Convert .jpeg, .jpg, .png to .webp
       if (srcLower.endsWith('.jpeg') || srcLower.endsWith('.jpg') || srcLower.endsWith('.png')) {
         src = src.replace(/\.(jpeg|jpg|png)$/i, '.webp');
         attrs = attrs.replace(/src=["'][^"']+["']/i, `src="${src}"`);
-        srcLower = src.toLowerCase();
       }
+      srcLower = src.toLowerCase();
+    }
+
+    // Normalize srcset relative paths if any
+    const srcsetMatch = attrs.match(/srcset=["']([^"']+)["']/i);
+    if (srcsetMatch && (srcsetMatch[1].includes('../../images/') || srcsetMatch[1].includes('../images/'))) {
+      const normalizedSrcset = srcsetMatch[1].replace(/(\.\.\/)+images\//g, '/images/');
+      attrs = attrs.replace(/srcset=["'][^"']+["']/i, `srcset="${normalizedSrcset}"`);
     }
 
     // Add decoding="async" for non-blocking main-thread decoding
@@ -207,16 +219,20 @@ export function processPageImages(
       }
     }
 
-    // Intelligent loading strategy:
-    // Only the first above-the-fold hero image or header logo gets fetchpriority="high" and eager loading.
-    // ALL other below-the-fold images get loading="lazy" to eliminate mobile network congestion and drop mobile LCP.
-    const isCriticalLcp = !heroImageHandled && (attrs.includes('hero') || attrs.includes('banner') || (srcLower.includes('logo') && !srcLower.includes('google')));
-    if (isCriticalLcp) {
+    // Loading strategy:
+    // Hero image (or explicit fetchpriority="high"): NOT lazy-loaded, fetchpriority="high"
+    // Header logo: NOT lazy-loaded, no fetchpriority="high"
+    // All other images: loading="lazy", no fetchpriority="high"
+    const isHeroImage = attrs.includes('fetchpriority="high"') || attrs.includes('hero') || attrs.includes('banner');
+    if (isHeroImage) {
       heroImageHandled = true;
       attrs = attrs.replace(/\s*loading=["'][^"']*["']/gi, '');
       if (!attrs.includes('fetchpriority=')) {
         attrs += ' fetchpriority="high"';
       }
+    } else if (srcLower.includes('logo') && !srcLower.includes('google')) {
+      attrs = attrs.replace(/\s*fetchpriority=["'][^"']*["']/gi, '');
+      attrs = attrs.replace(/\s*loading=["'][^"']*["']/gi, '');
     } else {
       attrs = attrs.replace(/\s*fetchpriority=["'][^"']*["']/gi, '');
       if (!attrs.includes('loading=')) {
@@ -226,7 +242,13 @@ export function processPageImages(
 
     let targetAlt = '';
 
-    if (srcLower.includes('google') || srcLower.includes('wikipedia.org/wikipedia/commons/c/c1/google')) {
+    const existingAltMatch = attrs.match(/alt=["']([^"']*)["']/i);
+    const existingAlt = existingAltMatch ? existingAltMatch[1].trim() : '';
+
+    if (clean_name.toLowerCase() === 'florida' && existingAlt && !existingAlt.toLowerCase().includes('google') && !existingAlt.toLowerCase().includes('logo') && existingAlt.length > 10) {
+      // Honor descriptive alt texts on Florida pages without city claiming
+      targetAlt = existingAlt;
+    } else if (srcLower.includes('google') || srcLower.includes('wikipedia.org/wikipedia/commons/c/c1/google')) {
       const badgeFn = googleBadges[googleReviewCounter % googleBadges.length];
       targetAlt = badgeFn(clean_name);
       googleReviewCounter++;

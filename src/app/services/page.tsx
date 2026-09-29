@@ -268,9 +268,12 @@ export default function ServicesDirectoryPage() {
             {/* Brand Logo */}
             <Link href="/" className="flex items-center group absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Sweet Maid Cleaning Service"
                 className="h-16 md:h-20 w-auto object-contain group-hover:scale-105 transition-transform"
+                width={200}
+                height={60}
+                decoding="async"
               />
             </Link>
 
@@ -655,7 +658,7 @@ export default function ServicesDirectoryPage() {
       <footer className="bg-white border-t border-pink-100 py-12 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div className="flex items-center gap-3">
-            <img src="/images/logo.png" alt="Sweet Maid" className="h-12 w-auto object-contain" />
+            <img src="/images/logo.webp" alt="Sweet Maid Cleaning Service" className="h-12 w-auto object-contain" width={160} height={48} decoding="async" />
             <div>
               <div className="font-serif font-bold text-gray-900">{BUSINESS_INFO.name}</div>
               <div className="text-xs text-gray-500">Family-Owned Florida Cleaning Team &bull; {BUSINESS_INFO.hours}</div>
