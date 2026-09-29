@@ -69,19 +69,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "house cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning services"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "barrier island window cleaning"
       }
     ],
@@ -92,7 +92,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "house-cleaning": {
     "slug": "house-cleaning",
-    "route": "/longboat-key-fl/house-cleaning/",
+    "route": "/house-cleaning-longboat-key-fl/",
     "oldTitle": "Best House Cleaning in Longboat Key, FL | Sweet Maid Service",
     "title": "House Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "House Cleaning in Longboat Key, FL",
@@ -129,19 +129,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep house cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/recurring-maid-service/",
+        "href": "/recurring-maid-service-longboat-key-fl/",
         "anchor": "recurring maid service visits"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "Longboat Key condo cleaning"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout cleaning"
       }
     ],
@@ -150,7 +150,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "deep-cleaning": {
     "slug": "deep-cleaning",
-    "route": "/longboat-key-fl/deep-cleaning/",
+    "route": "/deep-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Deep Cleaning & Cleaning | Sweet Maid",
     "title": "Deep Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Deep Cleaning in Longboat Key, FL",
@@ -187,19 +187,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "regular house cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/spring-cleaning/",
+        "href": "/spring-cleaning-longboat-key-fl/",
         "anchor": "spring cleaning resets"
       },
       {
-        "href": "/longboat-key-fl/oven-appliance-deep-cleaning/",
+        "href": "/oven-appliance-deep-cleaning-longboat-key-fl/",
         "anchor": "oven and appliance deep cleaning"
       },
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "coastal carpet steam cleaning"
       }
     ],
@@ -208,7 +208,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "move-in-out-cleaning": {
     "slug": "move-in-out-cleaning",
-    "route": "/longboat-key-fl/move-in-out-cleaning/",
+    "route": "/move-in-out-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Move In Out Cleaning & Cleaning | Sweet Maid",
     "title": "Move-In & Out Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Move-In & Move-Out Cleaning in Longboat Key, FL",
@@ -245,19 +245,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/move-in-cleaning/",
+        "href": "/move-in-cleaning-longboat-key-fl/",
         "anchor": "Longboat Key move-in cleaning"
       },
       {
-        "href": "/longboat-key-fl/move-out-cleaning/",
+        "href": "/move-out-cleaning-longboat-key-fl/",
         "anchor": "move-out vacancy cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning services"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "intensive deep home cleaning"
       }
     ],
@@ -268,7 +268,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "move-in-cleaning": {
     "slug": "move-in-cleaning",
-    "route": "/longboat-key-fl/move-in-cleaning/",
+    "route": "/move-in-cleaning-longboat-key-fl/",
     "oldTitle": "Best Move In Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Move-In Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Move-In Cleaning in Longboat Key, FL",
@@ -305,19 +305,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/move-in-out-cleaning/",
+        "href": "/move-in-out-cleaning-longboat-key-fl/",
         "anchor": "move-in and move-out cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/post-renovation-cleaning/",
+        "href": "/post-renovation-cleaning-longboat-key-fl/",
         "anchor": "post-renovation cleanups"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning"
       }
     ],
@@ -326,7 +326,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "move-out-cleaning": {
     "slug": "move-out-cleaning",
-    "route": "/longboat-key-fl/move-out-cleaning/",
+    "route": "/move-out-cleaning-longboat-key-fl/",
     "oldTitle": "Best Move Out Cleaning in Longboat Key, FL | Sweet Maid Service",
     "title": "Move-Out Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Move-Out Cleaning in Longboat Key, FL",
@@ -363,19 +363,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/move-in-out-cleaning/",
+        "href": "/move-in-out-cleaning-longboat-key-fl/",
         "anchor": "move-in and move-out cleaning"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "house cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/oven-appliance-deep-cleaning/",
+        "href": "/oven-appliance-deep-cleaning-longboat-key-fl/",
         "anchor": "appliance interior cleaning"
       }
     ],
@@ -384,7 +384,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "airbnb-cleaning": {
     "slug": "airbnb-cleaning",
-    "route": "/longboat-key-fl/airbnb-cleaning/",
+    "route": "/airbnb-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Airbnb Cleaning | Sweet Maid Cleaners",
     "title": "Airbnb Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Airbnb Cleaning in Longboat Key, FL",
@@ -421,19 +421,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/vacation-rental-cleaning/",
+        "href": "/vacation-rental-cleaning-longboat-key-fl/",
         "anchor": "vacation rental cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning services"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       },
       {
-        "href": "/longboat-key-fl/linen-cleaning/",
+        "href": "/linen-cleaning-longboat-key-fl/",
         "anchor": "recurring maid service visits"
       }
     ],
@@ -442,7 +442,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "vacation-rental-cleaning": {
     "slug": "vacation-rental-cleaning",
-    "route": "/longboat-key-fl/vacation-rental-cleaning/",
+    "route": "/vacation-rental-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Vacation Rental Cleaning & Cleaning | Sweet Maid",
     "title": "Vacation Rental Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Vacation Rental Cleaning in Longboat Key, FL",
@@ -479,19 +479,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/airbnb-cleaning/",
+        "href": "/airbnb-cleaning-longboat-key-fl/",
         "anchor": "Airbnb turnover cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "interior and exterior window cleaning"
       }
     ],
@@ -500,7 +500,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "apartment-cleaning": {
     "slug": "apartment-cleaning",
-    "route": "/longboat-key-fl/apartment-cleaning/",
+    "route": "/apartment-cleaning-longboat-key-fl/",
     "oldTitle": "Apartment Cleaning in Longboat Key, FL | Sweet Maid Cleaners",
     "title": "Apartment Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Apartment Cleaning in Longboat Key, FL",
@@ -537,19 +537,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "residential house cleaning"
       },
       {
-        "href": "/longboat-key-fl/recurring-maid-service/",
+        "href": "/recurring-maid-service-longboat-key-fl/",
         "anchor": "recurring maid service visits"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep apartment cleaning resets"
       }
     ],
@@ -558,7 +558,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "condo-cleaning": {
     "slug": "condo-cleaning",
-    "route": "/longboat-key-fl/condo-cleaning/",
+    "route": "/condo-cleaning-longboat-key-fl/",
     "oldTitle": "Best Condo Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Condo Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Condo Cleaning in Longboat Key, FL",
@@ -595,19 +595,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/luxury-penthouse-cleaning/",
+        "href": "/luxury-penthouse-cleaning-longboat-key-fl/",
         "anchor": "penthouse cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "residential house cleaning services"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "coastal window and slider cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       }
     ],
@@ -618,7 +618,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "luxury-estate-cleaning": {
     "slug": "luxury-estate-cleaning",
-    "route": "/longboat-key-fl/luxury-estate-cleaning/",
+    "route": "/luxury-estate-cleaning-longboat-key-fl/",
     "oldTitle": "Luxury Estate Cleaning in Longboat Key, FL | Top Maid Service",
     "title": "Luxury Estate Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Luxury Estate Cleaning in Longboat Key, FL",
@@ -655,19 +655,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/luxury-penthouse-cleaning/",
+        "href": "/luxury-penthouse-cleaning-longboat-key-fl/",
         "anchor": "penthouse cleaning services"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "thorough deep estate cleaning"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "estate window and glass cleaning"
       }
     ],
@@ -676,7 +676,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "luxury-penthouse-cleaning": {
     "slug": "luxury-penthouse-cleaning",
-    "route": "/longboat-key-fl/luxury-penthouse-cleaning/",
+    "route": "/luxury-penthouse-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Penthouse Maid Service | Sweet Maid Cleaners",
     "title": "Penthouse Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Luxury Penthouse Cleaning in Longboat Key, FL",
@@ -713,19 +713,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/luxury-estate-cleaning/",
+        "href": "/luxury-estate-cleaning-longboat-key-fl/",
         "anchor": "luxury estate cleaning services"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "streak-free window cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning"
       }
     ],
@@ -734,7 +734,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "spring-cleaning": {
     "slug": "spring-cleaning",
-    "route": "/longboat-key-fl/spring-cleaning/",
+    "route": "/spring-cleaning-longboat-key-fl/",
     "oldTitle": "Spring Cleaning in Longboat Key, FL | Top Maid Service",
     "title": "Spring Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Spring Cleaning in Longboat Key, FL",
@@ -771,19 +771,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep home cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "regular house cleaning upkeep"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout deep scrubbing"
       }
     ],
@@ -792,7 +792,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "same-day-cleaning": {
     "slug": "same-day-cleaning",
-    "route": "/longboat-key-fl/same-day-cleaning/",
+    "route": "/same-day-cleaning-longboat-key-fl/",
     "oldTitle": "Affordable Same Day Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Same-Day Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Same-Day Cleaning in Longboat Key, FL",
@@ -829,19 +829,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "house cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/airbnb-cleaning/",
+        "href": "/airbnb-cleaning-longboat-key-fl/",
         "anchor": "Airbnb turnover cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "intensive deep home cleaning"
       }
     ],
@@ -852,7 +852,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "recurring-maid-service": {
     "slug": "recurring-maid-service",
-    "route": "/longboat-key-fl/recurring-maid-service/",
+    "route": "/recurring-maid-service-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Recurring Maid Service & Cleaning | Sweet Maid",
     "title": "Recurring Maid Service in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Recurring Maid Service in Longboat Key, FL",
@@ -889,19 +889,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/weekly-maid-service/",
+        "href": "/weekly-maid-service-longboat-key-fl/",
         "anchor": "weekly maid service visits"
       },
       {
-        "href": "/longboat-key-fl/bi-weekly-maid-service/",
+        "href": "/bi-weekly-maid-service-longboat-key-fl/",
         "anchor": "bi-weekly house cleaning"
       },
       {
-        "href": "/longboat-key-fl/monthly-maid-service/",
+        "href": "/monthly-maid-service-longboat-key-fl/",
         "anchor": "monthly maid service"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "residential house cleaning on Longboat Key"
       }
     ],
@@ -910,7 +910,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "weekly-maid-service": {
     "slug": "weekly-maid-service",
-    "route": "/longboat-key-fl/weekly-maid-service/",
+    "route": "/weekly-maid-service-longboat-key-fl/",
     "oldTitle": "Best Weekly Maid Service in Longboat Key, FL | Sweet Maid Service",
     "title": "Weekly Maid Service in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Weekly Maid Service in Longboat Key, FL",
@@ -947,19 +947,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/recurring-maid-service/",
+        "href": "/recurring-maid-service-longboat-key-fl/",
         "anchor": "recurring maid service overview"
       },
       {
-        "href": "/longboat-key-fl/bi-weekly-maid-service/",
+        "href": "/bi-weekly-maid-service-longboat-key-fl/",
         "anchor": "bi-weekly cleaning options"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "house cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       }
     ],
@@ -968,7 +968,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "bi-weekly-maid-service": {
     "slug": "bi-weekly-maid-service",
-    "route": "/longboat-key-fl/bi-weekly-maid-service/",
+    "route": "/bi-weekly-maid-service-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Bi Weekly Maid Service | Sweet Maid Cleaners",
     "title": "Bi-Weekly Maid Service in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Bi-Weekly Maid Service in Longboat Key, FL",
@@ -1005,19 +1005,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/recurring-maid-service/",
+        "href": "/recurring-maid-service-longboat-key-fl/",
         "anchor": "recurring maid service plans"
       },
       {
-        "href": "/longboat-key-fl/weekly-maid-service/",
+        "href": "/weekly-maid-service-longboat-key-fl/",
         "anchor": "weekly cleaning options"
       },
       {
-        "href": "/longboat-key-fl/monthly-maid-service/",
+        "href": "/monthly-maid-service-longboat-key-fl/",
         "anchor": "monthly maid service visits"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning on Longboat Key"
       }
     ],
@@ -1026,7 +1026,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "monthly-maid-service": {
     "slug": "monthly-maid-service",
-    "route": "/longboat-key-fl/monthly-maid-service/",
+    "route": "/monthly-maid-service-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Monthly Maid Service & Cleaning | Sweet Maid",
     "title": "Monthly Maid Service in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Monthly Maid Service in Longboat Key, FL",
@@ -1063,19 +1063,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/recurring-maid-service/",
+        "href": "/recurring-maid-service-longboat-key-fl/",
         "anchor": "recurring maid service overview"
       },
       {
-        "href": "/longboat-key-fl/bi-weekly-maid-service/",
+        "href": "/bi-weekly-maid-service-longboat-key-fl/",
         "anchor": "bi-weekly house cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       }
     ],
@@ -1084,7 +1084,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "post-construction-cleaning": {
     "slug": "post-construction-cleaning",
-    "route": "/longboat-key-fl/post-construction-cleaning/",
+    "route": "/post-construction-cleaning-longboat-key-fl/",
     "oldTitle": "Best Post-Construction Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Post-Construction Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Post-Construction Cleaning in Longboat Key, FL",
@@ -1121,19 +1121,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/post-renovation-cleaning/",
+        "href": "/post-renovation-cleaning-longboat-key-fl/",
         "anchor": "post-renovation cleanups"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep home cleaning resets"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "window cleaning for new glass"
       },
       {
-        "href": "/longboat-key-fl/move-in-cleaning/",
+        "href": "/move-in-cleaning-longboat-key-fl/",
         "anchor": "move-in residential cleaning"
       }
     ],
@@ -1142,7 +1142,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "post-renovation-cleaning": {
     "slug": "post-renovation-cleaning",
-    "route": "/longboat-key-fl/post-renovation-cleaning/",
+    "route": "/post-renovation-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Post-Renovation Cleaning & Cleaning | Sweet Maid",
     "title": "Post-Renovation Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Post-Renovation Cleaning in Longboat Key, FL",
@@ -1179,19 +1179,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/post-construction-cleaning/",
+        "href": "/post-construction-cleaning-longboat-key-fl/",
         "anchor": "full post-construction cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       }
     ],
@@ -1200,7 +1200,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "carpet-cleaning": {
     "slug": "carpet-cleaning",
-    "route": "/longboat-key-fl/carpet-cleaning/",
+    "route": "/carpet-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Carpet Cleaning | Sweet Maid Cleaners",
     "title": "Carpet Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Carpet Cleaning in Longboat Key, FL",
@@ -1237,19 +1237,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/steam-cleaning/",
+        "href": "/steam-cleaning-longboat-key-fl/",
         "anchor": "steam cleaning services"
       },
       {
-        "href": "/longboat-key-fl/pet-hair-removal-cleaning/",
+        "href": "/pet-hair-removal-cleaning-longboat-key-fl/",
         "anchor": "pet hair removal cleaning"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep house cleaning"
       }
     ],
@@ -1258,7 +1258,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "steam-cleaning": {
     "slug": "steam-cleaning",
-    "route": "/longboat-key-fl/steam-cleaning/",
+    "route": "/steam-cleaning-longboat-key-fl/",
     "oldTitle": "Top-Rated Steam Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Steam Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Steam Cleaning in Longboat Key, FL",
@@ -1295,19 +1295,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "carpet cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout cleaning"
       },
       {
-        "href": "/longboat-key-fl/pet-hair-removal-cleaning/",
+        "href": "/pet-hair-removal-cleaning-longboat-key-fl/",
         "anchor": "pet hair removal cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep cleaning resets"
       }
     ],
@@ -1316,7 +1316,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "pressure-washing": {
     "slug": "pressure-washing",
-    "route": "/longboat-key-fl/pressure-washing/",
+    "route": "/pressure-washing-longboat-key-fl/",
     "oldTitle": "Top-Rated Pressure Washing in Longboat Key, FL | Sweet Maid",
     "title": "Pressure Washing in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Pressure Washing in Longboat Key, FL",
@@ -1353,19 +1353,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/exterior-soft-washing/",
+        "href": "/exterior-soft-washing-longboat-key-fl/",
         "anchor": "exterior soft washing for homes"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "exterior window cleaning"
       },
       {
-        "href": "/longboat-key-fl/gutter-cleaning/",
+        "href": "/gutter-cleaning-longboat-key-fl/",
         "anchor": "gutter and downspout cleaning"
       },
       {
-        "href": "/longboat-key-fl/property-maintenance/",
+        "href": "/property-maintenance-longboat-key-fl/",
         "anchor": "property maintenance services"
       }
     ],
@@ -1374,7 +1374,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "exterior-soft-washing": {
     "slug": "exterior-soft-washing",
-    "route": "/longboat-key-fl/exterior-soft-washing/",
+    "route": "/exterior-soft-washing-longboat-key-fl/",
     "oldTitle": "Exterior Soft Washing in Longboat Key, FL | Sweet Maid Cleaners",
     "title": "Soft Washing in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Exterior Soft Washing in Longboat Key, FL",
@@ -1411,19 +1411,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/pressure-washing/",
+        "href": "/pressure-washing-longboat-key-fl/",
         "anchor": "pressure washing for flat surfaces"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "window cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/gutter-cleaning/",
+        "href": "/gutter-cleaning-longboat-key-fl/",
         "anchor": "gutter and downspout cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       }
     ],
@@ -1432,7 +1432,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "window-cleaning": {
     "slug": "window-cleaning",
-    "route": "/longboat-key-fl/window-cleaning/",
+    "route": "/window-cleaning-longboat-key-fl/",
     "oldTitle": "Best Window Cleaning in Longboat Key, FL | Sweet Maid Service",
     "title": "Window Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Window Cleaning in Longboat Key, FL",
@@ -1469,19 +1469,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/luxury-penthouse-cleaning/",
+        "href": "/luxury-penthouse-cleaning-longboat-key-fl/",
         "anchor": "penthouse cleaning services"
       },
       {
-        "href": "/longboat-key-fl/pressure-washing/",
+        "href": "/pressure-washing-longboat-key-fl/",
         "anchor": "exterior pressure washing"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep home cleaning"
       }
     ],
@@ -1492,7 +1492,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "gutter-cleaning": {
     "slug": "gutter-cleaning",
-    "route": "/longboat-key-fl/gutter-cleaning/",
+    "route": "/gutter-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Gutter Cleaning & Cleaning | Sweet Maid",
     "title": "Gutter Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Gutter Cleaning in Longboat Key, FL",
@@ -1529,19 +1529,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/pressure-washing/",
+        "href": "/pressure-washing-longboat-key-fl/",
         "anchor": "exterior pressure washing"
       },
       {
-        "href": "/longboat-key-fl/exterior-soft-washing/",
+        "href": "/exterior-soft-washing-longboat-key-fl/",
         "anchor": "exterior soft washing for homes"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "streak-free window cleaning"
       },
       {
-        "href": "/longboat-key-fl/property-maintenance/",
+        "href": "/property-maintenance-longboat-key-fl/",
         "anchor": "property maintenance services"
       }
     ],
@@ -1550,7 +1550,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "tile-and-grout-cleaning": {
     "slug": "tile-and-grout-cleaning",
-    "route": "/longboat-key-fl/tile-and-grout-cleaning/",
+    "route": "/tile-and-grout-cleaning-longboat-key-fl/",
     "oldTitle": "Tile & Grout Cleaning in Longboat Key, FL | Top Maid Service",
     "title": "Tile & Grout Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Tile and Grout Cleaning in Longboat Key, FL",
@@ -1587,19 +1587,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/steam-cleaning/",
+        "href": "/steam-cleaning-longboat-key-fl/",
         "anchor": "high-temperature steam cleaning"
       },
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "carpet cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       }
     ],
@@ -1608,7 +1608,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "pet-hair-removal-cleaning": {
     "slug": "pet-hair-removal-cleaning",
-    "route": "/longboat-key-fl/pet-hair-removal-cleaning/",
+    "route": "/pet-hair-removal-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Pet Hair Deep Cleaning | Sweet Maid Cleaners",
     "title": "Pet Hair Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Pet Hair Removal Cleaning in Longboat Key, FL",
@@ -1645,19 +1645,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "carpet steam extraction cleaning"
       },
       {
-        "href": "/longboat-key-fl/steam-cleaning/",
+        "href": "/steam-cleaning-longboat-key-fl/",
         "anchor": "upholstery steam cleaning"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "residential house cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep home cleaning on Longboat Key"
       }
     ],
@@ -1666,7 +1666,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "oven-appliance-deep-cleaning": {
     "slug": "oven-appliance-deep-cleaning",
-    "route": "/longboat-key-fl/oven-appliance-deep-cleaning/",
+    "route": "/oven-appliance-deep-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Oven & Appliance Cleaning | Sweet Maid Cleaners",
     "title": "Appliance Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Oven and Appliance Deep Cleaning in Longboat Key, FL",
@@ -1703,19 +1703,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep kitchen and house cleaning"
       },
       {
-        "href": "/longboat-key-fl/move-in-out-cleaning/",
+        "href": "/move-in-out-cleaning-longboat-key-fl/",
         "anchor": "move-in and move-out turnovers"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "residential house cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       }
     ],
@@ -1724,7 +1724,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "eviction-cleanout-service": {
     "slug": "eviction-cleanout-service",
-    "route": "/longboat-key-fl/eviction-cleanout-service/",
+    "route": "/eviction-cleanout-service-longboat-key-fl/",
     "oldTitle": "Best Eviction Cleanout Service in Longboat Key, FL | Sweet Maid",
     "title": "Eviction Cleanout in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Eviction Cleanout Service in Longboat Key, FL",
@@ -1761,19 +1761,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/move-out-cleaning/",
+        "href": "/move-out-cleaning-longboat-key-fl/",
         "anchor": "move-out turnover cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "intensive deep home cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning services"
       },
       {
-        "href": "/longboat-key-fl/hoarder-cleaning-service/",
+        "href": "/hoarder-cleaning-service-longboat-key-fl/",
         "anchor": "hoarding cleanout services"
       }
     ],
@@ -1782,7 +1782,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "hoarder-cleaning-service": {
     "slug": "hoarder-cleaning-service",
-    "route": "/longboat-key-fl/hoarder-cleaning-service/",
+    "route": "/hoarder-cleaning-service-longboat-key-fl/",
     "oldTitle": "Best Hoarding Cleanout Service in Longboat Key, FL | Sweet Maid",
     "title": "Hoarder Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Hoarder Cleaning Service in Longboat Key, FL",
@@ -1819,19 +1819,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "deep cleaning resets"
       },
       {
-        "href": "/longboat-key-fl/eviction-cleanout-service/",
+        "href": "/eviction-cleanout-service-longboat-key-fl/",
         "anchor": "eviction cleanout services"
       },
       {
-        "href": "/longboat-key-fl/senior-home-cleaning/",
+        "href": "/senior-home-cleaning-longboat-key-fl/",
         "anchor": "senior home cleaning assistance"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "regular house cleaning upkeep"
       }
     ],
@@ -1840,7 +1840,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "senior-home-cleaning": {
     "slug": "senior-home-cleaning",
-    "route": "/longboat-key-fl/senior-home-cleaning/",
+    "route": "/senior-home-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Senior Home Cleaning & Cleaning | Sweet Maid",
     "title": "Senior Home Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Senior Home Cleaning in Longboat Key, FL",
@@ -1877,19 +1877,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "house cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/recurring-maid-service/",
+        "href": "/recurring-maid-service-longboat-key-fl/",
         "anchor": "recurring maid service visits"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       }
     ],
@@ -1898,7 +1898,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "solar-panel-cleaning": {
     "slug": "solar-panel-cleaning",
-    "route": "/longboat-key-fl/solar-panel-cleaning/",
+    "route": "/solar-panel-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Solar Panel Cleaning | Sweet Maid Cleaners",
     "title": "Solar Panel Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Solar Panel Cleaning in Longboat Key, FL",
@@ -1935,19 +1935,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "window cleaning services"
       },
       {
-        "href": "/longboat-key-fl/exterior-soft-washing/",
+        "href": "/exterior-soft-washing-longboat-key-fl/",
         "anchor": "exterior soft washing for homes"
       },
       {
-        "href": "/longboat-key-fl/gutter-cleaning/",
+        "href": "/gutter-cleaning-longboat-key-fl/",
         "anchor": "gutter and downspout cleaning"
       },
       {
-        "href": "/longboat-key-fl/pressure-washing/",
+        "href": "/pressure-washing-longboat-key-fl/",
         "anchor": "exterior pressure washing"
       }
     ],
@@ -1956,7 +1956,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "home-watch-services": {
     "slug": "home-watch-services",
-    "route": "/longboat-key-fl/home-watch-services/",
+    "route": "/home-watch-services-longboat-key-fl/",
     "oldTitle": "Top-Rated Home Watch Services in Longboat Key, FL | Sweet Maid",
     "title": "Home Watch Services in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Home Watch Services in Longboat Key, FL",
@@ -1993,19 +1993,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal arrival deep cleaning"
       },
       {
-        "href": "/longboat-key-fl/property-maintenance/",
+        "href": "/property-maintenance-longboat-key-fl/",
         "anchor": "routine property maintenance"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "residential house cleaning"
       }
     ],
@@ -2016,7 +2016,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "property-maintenance": {
     "slug": "property-maintenance",
-    "route": "/longboat-key-fl/property-maintenance/",
+    "route": "/property-maintenance-longboat-key-fl/",
     "oldTitle": "Best Property Maintenance in Longboat Key, FL | Sweet Maid",
     "title": "Property Maintenance in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Property Maintenance in Longboat Key, FL",
@@ -2053,19 +2053,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/home-watch-services/",
+        "href": "/home-watch-services-longboat-key-fl/",
         "anchor": "home watch property inspections"
       },
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "regular house cleaning upkeep"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/pressure-washing/",
+        "href": "/pressure-washing-longboat-key-fl/",
         "anchor": "exterior pressure washing"
       }
     ],
@@ -2074,7 +2074,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "commercial-cleaning": {
     "slug": "commercial-cleaning",
-    "route": "/longboat-key-fl/commercial-cleaning/",
+    "route": "/commercial-cleaning-longboat-key-fl/",
     "oldTitle": "Professional Commercial Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Commercial Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Commercial Cleaning in Longboat Key, FL",
@@ -2111,19 +2111,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/office-janitorial-services/",
+        "href": "/office-janitorial-services-longboat-key-fl/",
         "anchor": "office janitorial services"
       },
       {
-        "href": "/longboat-key-fl/janitorial-cleaning-services/",
+        "href": "/janitorial-cleaning-services-longboat-key-fl/",
         "anchor": "janitorial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "floor stripping and waxing"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "commercial window cleaning"
       }
     ],
@@ -2132,7 +2132,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "office-janitorial-services": {
     "slug": "office-janitorial-services",
-    "route": "/longboat-key-fl/office-janitorial-services/",
+    "route": "/office-janitorial-services-longboat-key-fl/",
     "oldTitle": "Best Office Janitorial Services in Longboat Key, FL | Sweet Maid",
     "title": "Office Janitorial in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Office Janitorial Services in Longboat Key, FL",
@@ -2169,19 +2169,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/janitorial-cleaning-services/",
+        "href": "/janitorial-cleaning-services-longboat-key-fl/",
         "anchor": "janitorial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "commercial carpet cleaning"
       },
       {
-        "href": "/longboat-key-fl/law-firm-office-cleaning/",
+        "href": "/law-firm-office-cleaning-longboat-key-fl/",
         "anchor": "law firm office cleaning"
       }
     ],
@@ -2190,7 +2190,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "janitorial-cleaning-services": {
     "slug": "janitorial-cleaning-services",
-    "route": "/longboat-key-fl/janitorial-cleaning-services/",
+    "route": "/janitorial-cleaning-services-longboat-key-fl/",
     "oldTitle": "Best Janitorial Cleaning in Longboat Key, FL | Sweet Maid Service",
     "title": "Janitorial Services in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Janitorial Cleaning Services in Longboat Key, FL",
@@ -2227,19 +2227,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/property-management-janitorial/",
+        "href": "/property-management-janitorial-longboat-key-fl/",
         "anchor": "property management janitorial"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "floor stripping and waxing"
       },
       {
-        "href": "/longboat-key-fl/office-janitorial-services/",
+        "href": "/office-janitorial-services-longboat-key-fl/",
         "anchor": "office janitorial services"
       }
     ],
@@ -2248,7 +2248,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "medical-dental-facility-cleaning": {
     "slug": "medical-dental-facility-cleaning",
-    "route": "/longboat-key-fl/medical-dental-facility-cleaning/",
+    "route": "/medical-dental-facility-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Medical & Dental Cleaning | Sweet Maid Cleaners",
     "title": "Medical Office Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Medical and Dental Facility Cleaning in Longboat Key, FL",
@@ -2285,19 +2285,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/office-janitorial-services/",
+        "href": "/office-janitorial-services-longboat-key-fl/",
         "anchor": "office janitorial in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "commercial floor care"
       },
       {
-        "href": "/longboat-key-fl/janitorial-cleaning-services/",
+        "href": "/janitorial-cleaning-services-longboat-key-fl/",
         "anchor": "janitorial cleaning services"
       }
     ],
@@ -2306,7 +2306,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "industrial-warehouse-cleaning": {
     "slug": "industrial-warehouse-cleaning",
-    "route": "/longboat-key-fl/industrial-warehouse-cleaning/",
+    "route": "/industrial-warehouse-cleaning-longboat-key-fl/",
     "oldTitle": "Affordable Warehouse Janitorial in Longboat Key, FL | Sweet Maid",
     "title": "Warehouse Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Industrial and Warehouse Cleaning in Longboat Key, FL",
@@ -2343,19 +2343,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "floor stripping and waxing"
       },
       {
-        "href": "/longboat-key-fl/pressure-washing/",
+        "href": "/pressure-washing-longboat-key-fl/",
         "anchor": "exterior pressure washing"
       },
       {
-        "href": "/longboat-key-fl/janitorial-cleaning-services/",
+        "href": "/janitorial-cleaning-services-longboat-key-fl/",
         "anchor": "facility janitorial services"
       }
     ],
@@ -2364,7 +2364,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "floor-stripping-waxing": {
     "slug": "floor-stripping-waxing",
-    "route": "/longboat-key-fl/floor-stripping-waxing/",
+    "route": "/floor-stripping-waxing-longboat-key-fl/",
     "oldTitle": "Floor Stripping Waxing in Longboat Key, FL | Top Maid Service",
     "title": "Floor Strip & Wax in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Floor Stripping and Waxing in Longboat Key, FL",
@@ -2401,19 +2401,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout deep cleaning"
       },
       {
-        "href": "/longboat-key-fl/janitorial-cleaning-services/",
+        "href": "/janitorial-cleaning-services-longboat-key-fl/",
         "anchor": "janitorial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/property-management-janitorial/",
+        "href": "/property-management-janitorial-longboat-key-fl/",
         "anchor": "property management janitorial"
       }
     ],
@@ -2422,7 +2422,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "gym-fitness-center-cleaning": {
     "slug": "gym-fitness-center-cleaning",
-    "route": "/longboat-key-fl/gym-fitness-center-cleaning/",
+    "route": "/gym-fitness-center-cleaning-longboat-key-fl/",
     "oldTitle": "Gym & Fitness Cleaning in Longboat Key, FL | Top Maid Service",
     "title": "Gym Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Gym and Fitness Center Cleaning in Longboat Key, FL",
@@ -2459,19 +2459,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/property-management-janitorial/",
+        "href": "/property-management-janitorial-longboat-key-fl/",
         "anchor": "condo amenity janitorial"
       },
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       }
     ],
@@ -2480,7 +2480,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "school-daycare-cleaning": {
     "slug": "school-daycare-cleaning",
-    "route": "/longboat-key-fl/school-daycare-cleaning/",
+    "route": "/school-daycare-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Daycare & School Cleaning | Sweet Maid Cleaners",
     "title": "School Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "School and Daycare Cleaning in Longboat Key, FL",
@@ -2517,19 +2517,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "carpet cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/janitorial-cleaning-services/",
+        "href": "/janitorial-cleaning-services-longboat-key-fl/",
         "anchor": "janitorial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/steam-cleaning/",
+        "href": "/steam-cleaning-longboat-key-fl/",
         "anchor": "chemical-free steam cleaning"
       }
     ],
@@ -2538,7 +2538,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "church-worship-center-cleaning": {
     "slug": "church-worship-center-cleaning",
-    "route": "/longboat-key-fl/church-worship-center-cleaning/",
+    "route": "/church-worship-center-cleaning-longboat-key-fl/",
     "oldTitle": "Church & Worship Cleaning in Longboat Key, FL | Top Maid Service",
     "title": "Church Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Church and Worship Center Cleaning in Longboat Key, FL",
@@ -2575,19 +2575,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "carpet steam extraction"
       },
       {
-        "href": "/longboat-key-fl/janitorial-cleaning-services/",
+        "href": "/janitorial-cleaning-services-longboat-key-fl/",
         "anchor": "facility janitorial services"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "streak-free window cleaning"
       }
     ],
@@ -2596,7 +2596,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "property-management-janitorial": {
     "slug": "property-management-janitorial",
-    "route": "/longboat-key-fl/property-management-janitorial/",
+    "route": "/property-management-janitorial-longboat-key-fl/",
     "oldTitle": "Best Property Janitorial in Longboat Key, FL | Sweet Maid",
     "title": "Property Mgmt Janitorial in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Property Management Janitorial in Longboat Key, FL",
@@ -2633,19 +2633,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial janitorial services"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "floor stripping and waxing"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "common area window cleaning"
       }
     ],
@@ -2654,7 +2654,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "law-firm-office-cleaning": {
     "slug": "law-firm-office-cleaning",
-    "route": "/longboat-key-fl/law-firm-office-cleaning/",
+    "route": "/law-firm-office-cleaning-longboat-key-fl/",
     "oldTitle": "Longboat Key, FL Law Firm Cleaning | Sweet Maid Cleaners",
     "title": "Law Firm Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Law Firm Office Cleaning in Longboat Key, FL",
@@ -2691,19 +2691,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/office-janitorial-services/",
+        "href": "/office-janitorial-services-longboat-key-fl/",
         "anchor": "office janitorial services"
       },
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning in Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "commercial carpet cleaning"
       },
       {
-        "href": "/longboat-key-fl/bank-cleaning-services/",
+        "href": "/bank-cleaning-services-longboat-key-fl/",
         "anchor": "financial office cleaning"
       }
     ],
@@ -2712,7 +2712,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "bank-cleaning-services": {
     "slug": "bank-cleaning-services",
-    "route": "/longboat-key-fl/bank-cleaning-services/",
+    "route": "/bank-cleaning-services-longboat-key-fl/",
     "oldTitle": "Best Bank Cleaning Services in Longboat Key, FL | Sweet Maid",
     "title": "Bank Cleaning Services in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Bank Cleaning Services in Longboat Key, FL",
@@ -2749,19 +2749,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/office-janitorial-services/",
+        "href": "/office-janitorial-services-longboat-key-fl/",
         "anchor": "office janitorial services"
       },
       {
-        "href": "/longboat-key-fl/law-firm-office-cleaning/",
+        "href": "/law-firm-office-cleaning-longboat-key-fl/",
         "anchor": "law firm office cleaning"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "floor stripping and waxing"
       }
     ],
@@ -2770,7 +2770,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "restaurant-kitchen-cleaning": {
     "slug": "restaurant-kitchen-cleaning",
-    "route": "/longboat-key-fl/restaurant-kitchen-cleaning/",
+    "route": "/restaurant-kitchen-cleaning-longboat-key-fl/",
     "oldTitle": "Best Commercial Kitchen Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Restaurant Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Restaurant Kitchen Cleaning in Longboat Key, FL",
@@ -2807,19 +2807,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/pressure-washing/",
+        "href": "/pressure-washing-longboat-key-fl/",
         "anchor": "exterior patio pressure washing"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout cleaning"
       },
       {
-        "href": "/longboat-key-fl/oven-appliance-deep-cleaning/",
+        "href": "/oven-appliance-deep-cleaning-longboat-key-fl/",
         "anchor": "commercial appliance cleaning"
       }
     ],
@@ -2828,7 +2828,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "retail-store-cleaning": {
     "slug": "retail-store-cleaning",
-    "route": "/longboat-key-fl/retail-store-cleaning/",
+    "route": "/retail-store-cleaning-longboat-key-fl/",
     "oldTitle": "Best Retail Store Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Retail Store Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Retail Store Cleaning in Longboat Key, FL",
@@ -2865,19 +2865,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/window-cleaning/",
+        "href": "/window-cleaning-longboat-key-fl/",
         "anchor": "storefront window cleaning"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "commercial floor waxing"
       },
       {
-        "href": "/longboat-key-fl/carpet-cleaning/",
+        "href": "/carpet-cleaning-longboat-key-fl/",
         "anchor": "retail carpet cleaning"
       }
     ],
@@ -2886,7 +2886,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
   },
   "salon-spa-cleaning": {
     "slug": "salon-spa-cleaning",
-    "route": "/longboat-key-fl/salon-spa-cleaning/",
+    "route": "/salon-spa-cleaning-longboat-key-fl/",
     "oldTitle": "Best Salon Spa Cleaning in Longboat Key, FL | Sweet Maid",
     "title": "Salon & Spa Cleaning in Longboat Key, FL | Sweet Maid Cleaning Service",
     "h1": "Salon and Spa Cleaning in Longboat Key, FL",
@@ -2923,19 +2923,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/commercial-cleaning/",
+        "href": "/commercial-cleaning-longboat-key-fl/",
         "anchor": "commercial cleaning services"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout cleaning"
       },
       {
-        "href": "/longboat-key-fl/steam-cleaning/",
+        "href": "/steam-cleaning-longboat-key-fl/",
         "anchor": "steam cleaning services"
       },
       {
-        "href": "/longboat-key-fl/floor-stripping-waxing/",
+        "href": "/floor-stripping-waxing-longboat-key-fl/",
         "anchor": "salon floor maintenance"
       }
     ],
@@ -2981,19 +2981,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "house cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning services"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       },
       {
-        "href": "/longboat-key-fl/recurring-maid-service/",
+        "href": "/recurring-maid-service-longboat-key-fl/",
         "anchor": "recurring maid service visits"
       }
     ],
@@ -3039,19 +3039,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "residential house cleaning"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep home cleaning"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning along Gulf of Mexico Drive"
       },
       {
-        "href": "/longboat-key-fl/tile-and-grout-cleaning/",
+        "href": "/tile-and-grout-cleaning-longboat-key-fl/",
         "anchor": "tile and grout restoration"
       }
     ],
@@ -3097,19 +3097,19 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     ],
     "internalLinks": [
       {
-        "href": "/longboat-key-fl/house-cleaning/",
+        "href": "/house-cleaning-longboat-key-fl/",
         "anchor": "house cleaning on Longboat Key"
       },
       {
-        "href": "/longboat-key-fl/condo-cleaning/",
+        "href": "/condo-cleaning-longboat-key-fl/",
         "anchor": "condo cleaning services"
       },
       {
-        "href": "/longboat-key-fl/home-watch-services/",
+        "href": "/home-watch-services-longboat-key-fl/",
         "anchor": "home watch property checks"
       },
       {
-        "href": "/longboat-key-fl/deep-cleaning/",
+        "href": "/deep-cleaning-longboat-key-fl/",
         "anchor": "seasonal deep cleaning resets"
       }
     ],

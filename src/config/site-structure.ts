@@ -426,8 +426,41 @@ export const COMBO_PAGES: Record<string, ComboConfig> = {
   'house-cleaning-palm-harbor-fl': { slug: 'house-cleaning-palm-harbor-fl', service: 'house-cleaning', citySlug: 'palm-harbor-fl', cityName: 'Palm Harbor' }
 };
 
+const SERVICES_BY_LEN = [...SERVICES].sort((a, b) => b.length - a.length);
+
 export function resolveFlatCombo(slug: string): ComboConfig | null {
-  return COMBO_PAGES[slug] || null;
+  if (COMBO_PAGES[slug]) {
+    return COMBO_PAGES[slug];
+  }
+
+  // Handle Longboat Key bespoke service pages: /{service}-longboat-key-fl
+  if (slug.endsWith('-longboat-key-fl')) {
+    const serviceSlug = slug.slice(0, -'-longboat-key-fl'.length);
+    return {
+      slug,
+      service: serviceSlug as ServiceSlug,
+      citySlug: 'longboat-key-fl',
+      cityName: 'Longboat Key'
+    };
+  }
+
+  // Match any approved service prefix
+  for (const s of SERVICES_BY_LEN) {
+    if (slug.startsWith(`${s}-`)) {
+      const citySlug = slug.slice(s.length + 1);
+      const city = CITY_PAGES[citySlug] || (citySlug === 'bradenton-fl' ? { name: 'Bradenton', county: 'Manatee County' } : null);
+      if (city) {
+        return {
+          slug,
+          service: s,
+          citySlug,
+          cityName: city.name.replace(/\s*\(.*?\)/g, '').trim()
+        };
+      }
+    }
+  }
+
+  return null;
 }
 
 export function getRegionForCity(citySlug: string): RegionConfig | null {

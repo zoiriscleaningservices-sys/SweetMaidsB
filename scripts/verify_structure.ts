@@ -228,6 +228,9 @@ try {
     { input: '/bradenton-fl/weekly-maid-service', expected: '/recurring-maid-service-bradenton-fl/' },
     { input: '/bradenton-fl/condo-cleaning', expected: '/house-cleaning-bradenton-fl/' },
     { input: '/sarasota-fl/house-cleaning', expected: '/house-cleaning-sarasota-fl/' },
+    { input: '/palmetto-fl/house-cleaning', expected: '/house-cleaning-palmetto-fl/' },
+    { input: '/brandon-fl/move-in-out-cleaning', expected: '/move-in-out-cleaning-brandon-fl/' },
+    { input: '/longboat-key-fl/house-cleaning', expected: '/house-cleaning-longboat-key-fl/' },
     { input: '/lakewood-ranch-cleaning', expected: '/lakewood-ranch-fl/' },
     { input: '/33139', expected: '/miami-fl/' },
     { input: '/bradenton-fl', expected: '/' },
@@ -249,7 +252,7 @@ try {
     reportPass('Redirect Engine', `All ${redirectTests.length} redirect tests passed`);
   }
 
-  // Non-redirecting valid URLs
+  // Non-redirecting valid URLs (flat service-first)
   const validUrls = [
     '/',
     '/services/',
@@ -260,7 +263,9 @@ try {
     '/lakewood-ranch-fl/',
     '/sarasota-fl/',
     '/house-cleaning-bradenton-fl/',
-    '/palmetto-fl/house-cleaning/'
+    '/house-cleaning-palmetto-fl/',
+    '/move-in-out-cleaning-brandon-fl/',
+    '/house-cleaning-longboat-key-fl/'
   ];
 
   let loopFails = 0;

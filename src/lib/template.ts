@@ -430,7 +430,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       // Localize bottom Services Carousel and local authority links to this specific city
       newContent = newContent.replace(
         /href="\/([a-z0-9-]+-cleaning|recurring-maid-service|pressure-washing|office-janitorial-services|janitorial-cleaning-services|medical-dental-facility-cleaning|industrial-warehouse-cleaning|gym-fitness-center-cleaning|school-daycare-cleaning|church-worship-center-cleaning|property-management-janitorial|floor-stripping-waxing|solar-panel-cleaning|gutter-cleaning|property-maintenance|home-watch-services)\/"/g,
-        `href="/${loc_slug}/$1/"`
+        `href="/$1-${loc_slug}/"`
       );
 
       // Localize bottom hyper-local SEO block
@@ -467,7 +467,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     // Localize bottom Services Carousel and local authority links to this specific city
     newContent = newContent.replace(
       /href="\/([a-z0-9-]+-cleaning|recurring-maid-service|pressure-washing|office-janitorial-services|janitorial-cleaning-services|medical-dental-facility-cleaning|industrial-warehouse-cleaning|gym-fitness-center-cleaning|school-daycare-cleaning|church-worship-center-cleaning|property-management-janitorial|floor-stripping-waxing|solar-panel-cleaning|gutter-cleaning|property-maintenance|home-watch-services)\/"/g,
-      `href="/${loc_slug}/$1/"`
+      `href="/$1-${loc_slug}/"`
     );
 
     // Aggressive SEO location targeting for any residual text
@@ -718,12 +718,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     alignedMobileServicesHtml
   );
 
-  // Navigation Links
+  // Navigation Links - always service-first
   for (const s_slug of serviceSlugs) {
     if (pageType !== 'login' && loc_slug) {
-      newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
-      newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${loc_slug}/${s_slug}/"`);
-      newContent = newContent.replace(new RegExp(`href="https://(?:www\\.)?sweetmaidcleaning\\.com/(?:[a-z0-9-]+/)*${s_slug}/"`, 'g'), `href="https://www.sweetmaidcleaning.com/${loc_slug}/${s_slug}/"`);
+      const citySuffix = (loc_slug === 'home' || loc_slug === 'bradenton-fl') ? 'bradenton-fl' : loc_slug;
+      const flatCombo = `${s_slug}-${citySuffix}`;
+      newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${flatCombo}/"`);
+      newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${flatCombo}/"`);
+      newContent = newContent.replace(new RegExp(`href="https://(?:www\\.)?sweetmaidcleaning\\.com/(?:[a-z0-9-]+/)*${s_slug}/"`, 'g'), `href="https://www.sweetmaidcleaning.com/${flatCombo}/"`);
     } else {
       newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${s_slug}/"`);
     }
@@ -1286,18 +1288,19 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     : (currentService === 'gallery' ? 'Cleaning Services' : formatName(currentService.replace(/-/g, ' ')));
   const targetServiceSlug = isSpecificService ? currentService : 'house-cleaning';
 
-  // Smart URL mapper for daily search keywords to create rich internal links
+  // Smart URL mapper for daily search keywords to create rich internal links (service-first)
   const getKeywordTargetUrl = (kw: string) => {
     const k = kw.toLowerCase();
-    if (k.includes('deep')) return `/${loc_slug}/deep-cleaning/`;
-    if (k.includes('move')) return `/${loc_slug}/move-in-out-cleaning/`;
-    if (k.includes('airbnb') || k.includes('vacation')) return `/${loc_slug}/airbnb-cleaning/`;
-    if (k.includes('commercial') || k.includes('janitorial') || k.includes('office')) return `/${loc_slug}/commercial-cleaning/`;
-    if (k.includes('construction') || k.includes('renovation')) return `/${loc_slug}/post-construction-cleaning/`;
-    if (k.includes('carpet') || k.includes('rug')) return `/${loc_slug}/carpet-cleaning/`;
-    if (k.includes('pressure') || k.includes('wash')) return `/${loc_slug}/pressure-washing/`;
-    if (k.includes('window')) return `/${loc_slug}/window-cleaning/`;
-    return `/${loc_slug}/house-cleaning/`;
+    const cityPart = (loc_slug === 'home' || !loc_slug) ? 'bradenton-fl' : loc_slug;
+    if (k.includes('deep')) return `/${cityPart ? `deep-cleaning-${cityPart}` : 'deep-cleaning'}/`;
+    if (k.includes('move')) return `/${cityPart ? `move-in-out-cleaning-${cityPart}` : 'move-in-out-cleaning'}/`;
+    if (k.includes('airbnb') || k.includes('vacation')) return `/${cityPart ? `airbnb-cleaning-${cityPart}` : 'airbnb-cleaning'}/`;
+    if (k.includes('commercial') || k.includes('janitorial') || k.includes('office')) return `/${cityPart ? `commercial-cleaning-${cityPart}` : 'commercial-cleaning'}/`;
+    if (k.includes('construction') || k.includes('renovation')) return `/${cityPart ? `post-construction-cleaning-${cityPart}` : 'post-construction-cleaning'}/`;
+    if (k.includes('carpet') || k.includes('rug')) return `/${cityPart ? `carpet-cleaning-${cityPart}` : 'carpet-cleaning'}/`;
+    if (k.includes('pressure') || k.includes('wash')) return `/${cityPart ? `pressure-washing-${cityPart}` : 'pressure-washing'}/`;
+    if (k.includes('window')) return `/${cityPart ? `window-cleaning-${cityPart}` : 'window-cleaning'}/`;
+    return `/${cityPart ? `house-cleaning-${cityPart}` : 'house-cleaning'}/`;
   };
 
   // Determine local regional authorities
@@ -1307,7 +1310,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   const localPhoneHref = is305 ? 'tel:13058516959' : 'tel:9412222080';
 
   const getNearbyTargetUrl = (targetSlug: string) => {
-    return (is_sub_page && isSpecificService) ? `/${targetSlug}/${currentService}/` : `/${targetSlug}/`;
+    return (is_sub_page && isSpecificService) ? `/${currentService}-${targetSlug}/` : `/${targetSlug}/`;
   };
 
   // Internal Location Linking for Manatee County, Florida Keys / Monroe County, or Regional nearest locations

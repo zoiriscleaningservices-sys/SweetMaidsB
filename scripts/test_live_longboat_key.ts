@@ -17,7 +17,7 @@ async function run() {
       if (decommissionedTarget) {
         // Decommissioned service: must redirect (301) to canonical equivalent
         const redirectRes = await fetch(url, { redirect: 'manual' });
-        const expectedLoc = `/longboat-key-fl/${decommissionedTarget}/`;
+        const expectedLoc = `/${decommissionedTarget}-longboat-key-fl/`;
         const actualLoc = redirectRes.headers.get('location');
         if (redirectRes.status !== 301 || actualLoc !== expectedLoc) {
           errors.push(`[DECOMMISSIONED REDIRECT FAIL] ${url}\n  Expected: 301 to "${expectedLoc}"\n  Got:      ${redirectRes.status} to "${actualLoc}"`);

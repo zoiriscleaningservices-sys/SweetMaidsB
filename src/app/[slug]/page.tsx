@@ -17,6 +17,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const combo = resolveFlatCombo(slug);
   if (combo) {
+    if (combo.citySlug === 'longboat-key-fl') {
+      return getLongboatMetadata(combo.service);
+    }
     const seoPack = generateSeoContentPack(combo.cityName, combo.citySlug, combo.service, combo.service);
     const title = seoPack.metaTitle;
     const desc = seoPack.heroSub.replace(/<[^>]+>/g, '');
@@ -84,6 +87,21 @@ export default async function LocationOrServicePage({ params }: { params: Promis
 
   const combo = resolveFlatCombo(slug);
   if (combo) {
+    if (combo.citySlug === 'longboat-key-fl') {
+      const rawHtml = getTemplate(combo.service) || getTemplate('house-cleaning');
+      if (!rawHtml) notFound();
+      const bodyContent = extractSections(rawHtml);
+      const localizedHtml = localizedReplace(bodyContent, 'Longboat Key', 'longboat-key-fl', true, combo.service);
+      const transformedHtml = transformLongboatHtml(localizedHtml, combo.service);
+      const schemaStr = getLongboatJsonLd(combo.service);
+      return (
+        <>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaStr }} />
+          <div dangerouslySetInnerHTML={{ __html: transformedHtml }} />
+        </>
+      );
+    }
+
     const rawHtml = getTemplate(combo.service) || getTemplate('house-cleaning');
     if (!rawHtml) notFound();
     const bodyContent = extractSections(rawHtml);

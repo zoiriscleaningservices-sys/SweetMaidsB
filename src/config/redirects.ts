@@ -1,4 +1,4 @@
-import { CITY_PAGES, REGIONS, SERVICES, COMBO_PAGES } from './site-structure';
+import { CITY_PAGES, REGIONS, SERVICES, COMBO_PAGES, resolveFlatCombo } from './site-structure';
 
 export interface RedirectRule {
   source: string;
@@ -125,27 +125,44 @@ export function resolveRedirect(pathname: string): string | null {
     return '/services/';
   }
 
-  // B1. Standalone decommissioned service: /{service}/
-  if (segments.length === 1 && DECOMMISSIONED_SERVICES[seg1]) {
-    return `/${DECOMMISSIONED_SERVICES[seg1]}/`;
+  // B1. Standalone decommissioned service: /{service}/ OR flat decommissioned combo: /{decommissionedService}-{city}/
+  if (segments.length === 1) {
+    if (DECOMMISSIONED_SERVICES[seg1]) {
+      return `/${DECOMMISSIONED_SERVICES[seg1]}/`;
+    }
+    for (const [decomService, canonicalService] of Object.entries(DECOMMISSIONED_SERVICES)) {
+      if (seg1.startsWith(`${decomService}-`)) {
+        const cityPart = seg1.slice(decomService.length + 1);
+        return `/${canonicalService}-${cityPart}/`;
+      }
+    }
   }
 
-  // B2. Nested combo: /{citySlug}/{service}/
+  // B2. Nested combo: /{citySlug}/{service}/ -> ALWAYS redirect (301) to flat service-first /{service}-{citySlug}/
   if (segments.length === 2 && seg2) {
-    // Check if combo maps to flat service-first URL
+    // City hub subpages like /longboat-key-fl/about/ are not service combos
+    if (['about', 'gallery', 'blog'].includes(seg2)) {
+      return null;
+    }
+
+    const canonicalService = DECOMMISSIONED_SERVICES[seg2] || seg2;
+
+    // Special case for Longboat Key: /{service}-longboat-key-fl/
+    if (seg1 === 'longboat-key-fl') {
+      return `/${canonicalService}-longboat-key-fl/`;
+    }
+
+    const isApprovedCity = !!CITY_PAGES[seg1] || seg1 === 'bradenton-fl';
+    const isApprovedService = (SERVICES as readonly string[]).includes(canonicalService);
+
+    if (isApprovedCity && isApprovedService) {
+      return `/${canonicalService}-${seg1}/`;
+    }
+
+    // Check existing NESTED_TO_FLAT_COMBOS table as fallback
     const comboKey = `${seg1}/${seg2}`;
     if (NESTED_TO_FLAT_COMBOS[comboKey]) {
       return NESTED_TO_FLAT_COMBOS[comboKey];
-    }
-
-    // Check if seg2 is a decommissioned service
-    if (DECOMMISSIONED_SERVICES[seg2]) {
-      const canonicalService = DECOMMISSIONED_SERVICES[seg2];
-      const updatedComboKey = `${seg1}/${canonicalService}`;
-      if (NESTED_TO_FLAT_COMBOS[updatedComboKey]) {
-        return NESTED_TO_FLAT_COMBOS[updatedComboKey];
-      }
-      return `/${seg1}/${canonicalService}/`;
     }
   }
 
@@ -168,7 +185,7 @@ export function resolveRedirect(pathname: string): string | null {
   const isApprovedCity = !!CITY_PAGES[seg1];
   const isApprovedService = (SERVICES as readonly string[]).includes(seg1);
   const isRegionHub = Object.values(REGIONS).some(r => r.slug === seg1);
-  const isCombo = !!COMBO_PAGES[seg1];
+  const isCombo = !!COMBO_PAGES[seg1] || resolveFlatCombo(seg1) !== null;
   const isStatic = ['about', 'services', 'locations', 'blog', 'gallery', 'book-online', 'booknow', 'login', 'terms-and-conditions', 'privacy-policy'].includes(seg1);
 
   if (!isApprovedCity && !isApprovedService && !isRegionHub && !isCombo && !isStatic) {

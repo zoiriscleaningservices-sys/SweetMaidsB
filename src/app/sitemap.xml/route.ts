@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { SERVICES, CORE_SERVICES, CITY_PAGES, COMBO_PAGES } from '@/config/site-structure';
-import { NESTED_TO_FLAT_COMBOS } from '@/config/redirects';
+import { DECOMMISSIONED_SERVICES } from '@/config/redirects';
+import { longboatKeyPages } from '@/lib/longboat_key_content';
 
 export async function GET() {
   const baseUrl = 'https://www.sweetmaidcleaning.com';
@@ -34,16 +35,10 @@ export async function GET() {
     urlSet.add(`/${citySlug}/`);
   });
 
-  // 5. City x 10 Core Services subpages
+  // 5. City x 10 Core Services subpages (ALWAYS service-first)
   Object.keys(CITY_PAGES).forEach(citySlug => {
     CORE_SERVICES.forEach(service => {
-      const nestedKey = `${citySlug}/${service}`;
-      if (NESTED_TO_FLAT_COMBOS[nestedKey]) {
-        // Flat combo is the canonical 200 URL
-        urlSet.add(NESTED_TO_FLAT_COMBOS[nestedKey]);
-      } else {
-        urlSet.add(`/${citySlug}/${service}/`);
-      }
+      urlSet.add(`/${service}-${citySlug}/`);
     });
   });
 
@@ -52,10 +47,15 @@ export async function GET() {
     urlSet.add(`/${combo.slug}/`);
   });
 
-  // 7. Bespoke Longboat Key subpages
-  urlSet.add('/longboat-key-fl/about/');
-  urlSet.add('/longboat-key-fl/gallery/');
-  urlSet.add('/longboat-key-fl/blog/');
+  // 7. Bespoke Longboat Key pages (service-first for services, nested only for about/gallery/blog)
+  Object.keys(longboatKeyPages).forEach(slug => {
+    if (slug === 'hub') return;
+    if (['about', 'gallery', 'blog'].includes(slug)) {
+      urlSet.add(`/longboat-key-fl/${slug}/`);
+    } else if (!DECOMMISSIONED_SERVICES[slug]) {
+      urlSet.add(`/${slug}-longboat-key-fl/`);
+    }
+  });
 
   // Build clean XML
   const sortedUrls = Array.from(urlSet).sort();
