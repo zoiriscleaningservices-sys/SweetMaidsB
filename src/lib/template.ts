@@ -520,10 +520,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   // Clean, 8-8-8 Aligned Header Services Mega Menu
   const alignedMegaMenuHtml = `<!-- Services Dropdown (Mega Menu) -->
           <div class="nav-dropdown">
-            <button
-              class="flex items-center gap-1.5 text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors py-8">
+            <a href="/services/"
+              class="flex items-center gap-1.5 text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors py-8"
+              aria-label="Florida Cleaning Services Directory">
               Services <i class="fa-solid fa-chevron-down text-xs"></i>
-            </button>
+            </a>
             <div
               class="dropdown-menu -left-32 w-[800px] bg-white rounded-3xl shadow-2xl border border-pink-100 p-8 mt-0">
               <div class="grid grid-cols-3 gap-8">
@@ -620,10 +621,30 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
                   </div>
                 </div>
               </div>
+              <div class="pt-5 mt-6 border-t border-pink-100 flex items-center justify-between">
+                <a href="/services/" class="text-xs font-bold text-pink-500 hover:text-pink-700 uppercase tracking-widest transition flex items-center gap-2 group" aria-label="Explore all Florida cleaning services">
+                  <span>View All 24 Professional Cleaning Services</span>
+                  <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="/locations/" class="text-xs font-bold text-gray-500 hover:text-pink-500 uppercase tracking-widest transition flex items-center gap-1.5" aria-label="Browse Florida cleaning locations directory">
+                  <i class="fa-solid fa-location-dot text-pink-400"></i>
+                  <span>Browse Florida Locations</span>
+                </a>
+              </div>
             </div>
           </div>\n          `;
 
-  const alignedMobileServicesHtml = `<!-- Residential & Management -->
+  const alignedMobileServicesHtml = `<!-- Top Quick Link to All Services -->
+              <a href="/services/"
+                class="mobile-link flex items-center justify-between p-3.5 mb-2 rounded-xl bg-gradient-to-r from-pink-400 to-pink-500 text-white font-bold text-sm shadow-md shadow-pink-200 active:scale-95 transition-all">
+                <span class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-sparkles"></i>
+                  <span>View All Cleaning Services</span>
+                </span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+
+              <!-- Residential & Management -->
               <div class="text-[10px] font-bold text-pink-600 uppercase tracking-widest px-3 mt-2 mb-1">Residential &
                 Management</div>
               <a href="/house-cleaning/"
@@ -706,10 +727,15 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
               <a href="/property-maintenance/"
                 class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i
                   class="fa-solid fa-wrench text-pink-300 w-5"></i> Property Maintenance</a>
+              
+              <a href="/services/"
+                class="mobile-link flex items-center justify-center p-2.5 mt-2 rounded-xl bg-white hover:bg-pink-50 text-pink-600 font-bold text-xs uppercase tracking-wider border border-pink-200 transition-all">
+                <span>Browse All 24 Services</span> <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+              </a>
               `;
 
   newContent = newContent.replace(
-    /<!--\s*Services Dropdown\s*\(Mega Menu\)\s*-->[\s\S]*?(?=<div class="nav-dropdown">\s*<button[^>]*>\s*Locations)/gi,
+    /<!--\s*Services Dropdown\s*\(Mega Menu\)\s*-->[\s\S]*?(?=<div class="nav-dropdown">\s*<button[^>]*>\s*Locations|<div class="nav-dropdown">\s*<a[^>]*href="\/locations)/gi,
     alignedMegaMenuHtml
   );
 
@@ -719,8 +745,17 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   );
 
   // Navigation Links - always service-first
+  // Only localize service URLs if this is an actual verified Florida city location (NOT a service slug, home, about, or blog)
+  const isActualCityLocation = Boolean(
+    loc_slug &&
+    loc_slug !== 'home' &&
+    !serviceSlugs.includes(loc_slug) &&
+    pageType === 'service_or_home' &&
+    resolveAnyLocation(loc_slug)
+  );
+
   for (const s_slug of serviceSlugs) {
-    if (pageType !== 'login' && loc_slug && loc_slug !== 'home') {
+    if (isActualCityLocation) {
       const flatCombo = `${s_slug}-${loc_slug}`;
       newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${flatCombo}/"`);
       newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${flatCombo}/"`);
@@ -759,13 +794,19 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     return (is_sub_page && isSpecificService) ? `/${currentService}-${citySlug}/` : `/${citySlug}/`;
   };
 
-  // 1. Transform Desktop Header "Locations" dropdown trigger into an active clickable link to /locations/
+  // 1. Transform Desktop Header "Services" dropdown trigger into an active clickable link to /services/
+  newContent = newContent.replace(
+    /<button\b([^>]*?)>\s*Services\s*<i class="fa-solid fa-chevron-down[^"]*"><\/i>\s*<\/button>/gi,
+    '<a href="/services/" $1 aria-label="Florida Cleaning Services Directory">Services <i class="fa-solid fa-chevron-down text-xs"></i></a>'
+  );
+
+  // 2. Transform Desktop Header "Locations" dropdown trigger into an active clickable link to /locations/
   newContent = newContent.replace(
     /<button\b([^>]*?)>\s*Locations\s*<i class="fa-solid fa-chevron-down[^"]*"><\/i>\s*<\/button>/gi,
     '<a href="/locations/" $1 aria-label="Florida Service Locations Directory">Locations <i class="fa-solid fa-chevron-down text-xs"></i></a>'
   );
 
-  // 2. Direct ALL "View All Locations" links cleanly and reliably to /locations/
+  // 3. Direct ALL "View All Locations" links cleanly and reliably to /locations/
   newContent = newContent.replace(
     /<a\b(?:(?!<\/a>)[\s\S])*?View All Locations(?:(?!<\/a>)[\s\S])*?<\/a>/gi,
     '<a href="/locations/" class="text-xs font-bold text-pink-500 hover:text-pink-700 uppercase tracking-widest transition flex items-center justify-between py-1 group"><span>View All Locations</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>'
@@ -859,20 +900,50 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<!--\s*=+\s*GLOBAL SEARCH BAR SECTION[\s\S]*?<\/section>/gi, '');
   newContent = newContent.replace(/<!--\s*Let Us Contact You Form\s*-->[\s\S]*?<\/form>\s*<\/div>\s*<\/div>/gi, '');
 
-  // Hide the Locations We Serve footer grid so it remains in the DOM for React to scrape, but is invisible to the user.
+  // Re-organize Footer Layout: Clean 5-column layout with Company Info (2 cols), Our Services (2 cols), and Florida Locations (1 col)
+  const FOOTER_LOCATIONS_COL = `<div class="lg:col-span-1">
+          <h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">
+            <span class="w-1 h-6 bg-pink-300 rounded-full"></span><a href="/locations/" class="hover:text-pink-500 transition-colors" aria-label="Browse all Florida cleaning locations">Florida Locations</a>
+          </h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="/jacksonville-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Jacksonville &amp; NE FL</a></li>
+            <li><a href="/st-augustine-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">St. Augustine</a></li>
+            <li><a href="/orlando-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Orlando &amp; Central FL</a></li>
+            <li><a href="/tampa-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Tampa &amp; St. Pete</a></li>
+            <li><a href="/sarasota-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Sarasota &amp; Bradenton</a></li>
+            <li><a href="/west-palm-beach-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">West Palm Beach</a></li>
+            <li><a href="/fort-lauderdale-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Fort Lauderdale</a></li>
+            <li><a href="/miami-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Miami &amp; South FL</a></li>
+            <li class="pt-2">
+              <a href="/locations/" class="inline-flex items-center gap-1.5 font-bold text-pink-600 hover:text-pink-700 transition-colors" aria-label="View all 229 Florida cleaning locations">
+                <span>View All 229 Cities</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </li>
+          </ul>
+        </div>`;
+
+  // Replace legacy Locations We Serve block with clean Florida Locations column
   newContent = newContent.replace(
-    /(<div class="lg:col-span-2">)(\s*<h4[^>]*>\s*<span[^>]*><\/span>Locations We Serve)/,
-    '<div class="lg:col-span-2 hidden" style="display: none!important;">$2'
+    /<div class="lg:col-span-2">\s*<h4[^>]*>\s*<span[^>]*><\/span>Locations We Serve[\s\S]*?<\/div>\s*<\/div>/i,
+    FOOTER_LOCATIONS_COL
   );
 
-  // Re-organize and re-balance the Footer Layout to compensate for the hidden locations block.
-  // 1. Shift master grid from 5 columns to 4 columns
-  newContent = newContent.replace(/<div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">/g, '<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">');
-  
-  // 2. Expand "Our Services" to take up the 2 completely vacant grid columns, and split its UL into a 2-column layout.
+  // Link "Our Services" header in footer to /services/
   newContent = newContent.replace(
-    /<div>(\s*<h4[^>]*>\s*<span[^>]*><\/span>Our Services\s*<\/h4>\s*<div[^>]*>\s*<ul class=")([^"]+)(")/i,
+    /<h4([^>]*>\s*<span[^>]*><\/span>)Our Services\s*<\/h4>/gi,
+    '<h4$1<a href="/services/" class="hover:text-pink-500 transition-colors" aria-label="Explore all Sweet Maid cleaning services">Our Services</a></h4>'
+  );
+
+  // Expand "Our Services" to take up 2 grid columns with a 2-column list + View All link
+  newContent = newContent.replace(
+    /<div>(\s*<h4[^>]*>[\s\S]*?<\/h4>\s*<div[^>]*>\s*<ul class=")([^"]+)(")/i,
     '<div class="lg:col-span-2">$1$2 sm:columns-2 gap-x-8$3'
+  );
+
+  newContent = newContent.replace(
+    /(<a href="\/property-maintenance\/"[^>]*>[\s\S]*?<\/a>\s*<\/li>)/i,
+    `$1\n              <li class="pt-2"><a href="/services/" class="font-bold text-pink-600 hover:text-pink-700 transition flex items-center gap-1" aria-label="Explore all 24 professional cleaning services"><span>View All 24 Services</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></a></li>`
   );
 
   // Upgrade Eco-Friendly block flat icon with the Premium CSS-animated Earth Globe using GPU-accelerated transform
@@ -1181,12 +1252,13 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       `<a href="#quote" onclick="closeMenu()" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Get your free cleaning quote"><i class="fa-solid fa-file-invoice-dollar text-white"></i> Get Your Free Quote</a>`
     );
   }
-  // 5. Footer Links: Add Privacy Policy & Terms and Conditions (Footer Only)
+  // 5. Footer Links: Add full canonical navigation links to footer row
   newContent = newContent.replace(
     /(<footer[\s\S]*?)(<a\s+[^>]*href="\/sitemap\.xml"[^>]*>Sitemap<\/a>)/i,
-    `$1<a href="/privacy-policy/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Privacy Policy">Privacy Policy</a>\n          <a href="/terms-and-conditions/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Terms and Conditions">Terms & Conditions</a>\n          $2`
+    `$1<a href="/" class="hover:text-pink-400 transition-colors" aria-label="Sweet Maid Homepage">Home</a>\n          <a href="/about/" class="hover:text-pink-400 transition-colors" aria-label="About Sweet Maid">About Us</a>\n          <a href="/services/" class="hover:text-pink-400 font-semibold transition-colors" aria-label="All Sweet Maid Cleaning Services">Services</a>\n          <a href="/locations/" class="hover:text-pink-400 font-semibold transition-colors" aria-label="All Florida Cleaning Locations">Locations</a>\n          <a href="/book-online/" class="hover:text-pink-400 transition-colors" aria-label="Book Cleaning Online">Book Online</a>\n          <a href="/blog/" class="hover:text-pink-400 transition-colors" aria-label="Cleaning Guides Blog">Blog</a>\n          <a href="/gallery/" class="hover:text-pink-400 transition-colors" aria-label="Before and After Cleaning Gallery">Gallery</a>\n          <a href="/privacy-policy/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Privacy Policy">Privacy Policy</a>\n          <a href="/terms-and-conditions/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Terms and Conditions">Terms & Conditions</a>\n          $2`
   );
 
+  newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/services\/?"[^>]*)>/gi, '<a aria-label="Browse Florida Cleaning Services Directory" $1>');
   newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/locations\/?"[^>]*)>/gi, '<a aria-label="Browse Florida Cleaning Service Locations Directory" $1>');
   newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/blog\/?"[^>]*)>/gi, '<a aria-label="Read cleaning tips on Sweet Maid blog" $1>');
   newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/gallery\/?"[^>]*)>/gi, '<a aria-label="View Sweet Maid before and after cleaning gallery" $1>');

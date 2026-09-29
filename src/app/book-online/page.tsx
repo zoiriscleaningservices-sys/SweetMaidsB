@@ -56,7 +56,7 @@ export default function BookOnlinePage() {
               <Link href="/about/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 About Us
               </Link>
-              <Link href="/house-cleaning/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
+              <Link href="/services/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
                 Services
               </Link>
               <Link href="/locations/" className="text-sm font-semibold text-gray-700 hover:text-pink-400 transition-colors">
@@ -132,8 +132,8 @@ export default function BookOnlinePage() {
               <span>About Us</span>
               <i className="fa-solid fa-circle-info text-pink-300"></i>
             </Link>
-            <Link href="/house-cleaning/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
-              <span>House Cleaning</span>
+            <Link href="/services/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
+              <span>Our Services</span>
               <i className="fa-solid fa-sparkles text-pink-300"></i>
             </Link>
             <Link href="/locations/" className="menu-item flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all font-bold text-gray-800">
@@ -313,6 +313,7 @@ export default function BookOnlinePage() {
             <ul className="space-y-2 text-xs text-gray-600">
               <li><Link href="/" className="hover:text-pink-400">Home</Link></li>
               <li><Link href="/about/" className="hover:text-pink-400">About Us</Link></li>
+              <li><Link href="/services/" className="hover:text-pink-400">All Services</Link></li>
               <li><Link href="/book-online/" className="hover:text-pink-400 font-bold text-pink-500">Book Online</Link></li>
               <li><Link href="/locations/" className="hover:text-pink-400">All Florida Locations</Link></li>
               <li><Link href="/login/" className="hover:text-pink-400">Customer Login</Link></li>
@@ -340,7 +341,9 @@ export default function BookOnlinePage() {
         </div>
         <div className="max-w-7xl mx-auto pt-6 border-t border-pink-50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <div>&copy; 2026 Sweet Maid Cleaning Service. All rights reserved.</div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
+            <Link href="/services/" className="hover:text-pink-500 transition-colors font-semibold">Services</Link>
+            <Link href="/locations/" className="hover:text-pink-500 transition-colors font-semibold">Locations</Link>
             <Link href="/privacy-policy/" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
             <Link href="/terms-and-conditions/" className="hover:text-pink-500 transition-colors">Terms &amp; Conditions</Link>
             <a href="/sitemap.xml" className="hover:text-pink-500 transition-colors">Sitemap</a>

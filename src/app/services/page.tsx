@@ -309,8 +309,14 @@ export default function ServicesDirectoryPage() {
               </Link>
             </div>
 
-            {/* Mobile Header Quick Action */}
+            {/* Mobile Header Quick Actions */}
             <div className="flex items-center gap-2 lg:hidden">
+              <Link
+                href="/locations/"
+                className="bg-pink-50 hover:bg-pink-100 text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full border border-pink-200 transition-all"
+              >
+                Locations
+              </Link>
               <Link
                 href="/book-online/"
                 className="bg-gradient-to-r from-pink-400 to-pink-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1 active:scale-95 transition-all"

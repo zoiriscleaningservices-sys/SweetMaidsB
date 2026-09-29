@@ -209,7 +209,7 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
           <Link href="/about/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-gray-800">
             About Us
           </Link>
-          <Link href="/house-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-gray-800">
+          <Link href="/services/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-gray-800">
             Our Services
           </Link>
           <Link href="/locations/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-pink-500">

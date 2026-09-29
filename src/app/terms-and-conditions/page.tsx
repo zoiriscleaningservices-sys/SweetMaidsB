@@ -48,7 +48,7 @@ export default function TermsAndConditionsPage() {
             <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
               <Link href="/" className="hover:text-pink-500 transition-colors">Home</Link>
               <Link href="/about/" className="hover:text-pink-500 transition-colors">About Us</Link>
-              <Link href="/house-cleaning/" className="hover:text-pink-500 transition-colors">Services</Link>
+              <Link href="/services/" className="hover:text-pink-500 transition-colors">Services</Link>
               <Link href="/locations/" className="hover:text-pink-500 transition-colors">Locations</Link>
               <Link href="/blog/" className="hover:text-pink-500 transition-colors">Blog</Link>
               <Link href="/gallery/" className="hover:text-pink-500 transition-colors">Gallery</Link>
@@ -184,7 +184,7 @@ export default function TermsAndConditionsPage() {
           <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-600">
             <Link href="/" className="hover:text-pink-500 transition-colors">Home</Link>
             <Link href="/about/" className="hover:text-pink-500 transition-colors">About Us</Link>
-            <Link href="/house-cleaning/" className="hover:text-pink-500 transition-colors">Services</Link>
+            <Link href="/services/" className="hover:text-pink-500 transition-colors">Services</Link>
             <Link href="/locations/" className="hover:text-pink-500 transition-colors">Locations</Link>
             <Link href="/privacy-policy/" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
             <Link href="/terms-and-conditions/" className="text-pink-600 font-bold transition-colors">Terms &amp; Conditions</Link>
