@@ -546,21 +546,8 @@
               </div>
             </div>
           </div>
-          <div class="nav-dropdown">
-            <a href="/locations/" 
-              class="flex items-center gap-1.5 text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors py-8" aria-label="Florida Service Locations Directory">Locations <i class="fa-solid fa-chevron-down text-xs"></i></a>
-            <div
-              class="dropdown-menu -left-32 w-[300px] bg-white rounded-3xl shadow-2xl border border-pink-100 p-6 mt-0">
-              <div class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-4 px-2">Nearby Cities</div>
-              <div id="nearby-locations-list" class="space-y-1">
-                <!-- Populated by JS -->
-                <div class="px-3 py-2 text-gray-400 text-xs italic">Detecting your location...</div>
-              </div>
-              <div class="border-t border-pink-50 mt-4 pt-4">
-                <a href="/locations/" class="text-xs font-bold text-pink-500 hover:text-pink-700 uppercase tracking-widest transition flex items-center justify-between py-1 group"><span>View All Locations</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
-              </div>
-            </div>
-          </div>
+          <a href="/locations/" 
+            class="text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors" aria-label="Florida Service Locations Directory">Locations</a>
 
           <a href="/blog/" class="text-sm font-semibold text-gray-700 hover:text-pink-300 transition-colors">Blogs</a>
           <a href="/gallery/"
@@ -708,20 +695,11 @@
             </div>
           </div>
         </div>
-        <div class="menu-item delay-5 accordion-group">
-          <button onclick="this.parentElement.classList.toggle('accordion-active')"
-            class="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
-            <span class="font-bold text-gray-800">Locations</span>
-            <i class="fa-solid fa-chevron-down accordion-icon text-pink-300"></i>
-          </button>
-          <div class="accordion-content">
-            <div id="mobile-nearby-list"
-              class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">
-              <!-- Populated by JS -->
-              <div class="p-3 text-gray-400 text-xs italic">Loading nearby cities...</div>
-            </div>
-          </div>
-        </div>
+        <a href="/locations/"
+          class="menu-item delay-5 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all" aria-label="Florida Service Locations Directory">
+          <span class="font-bold text-gray-800">Locations</span>
+          <i class="fa-solid fa-location-dot text-pink-300"></i>
+        </a>
 
         <a href="/blog/"
           class="menu-item delay-6 flex items-center justify-between p-4 rounded-2xl bg-white border border-pink-50 shadow-sm hover:border-pink-200 transition-all">
@@ -799,10 +777,59 @@
           <i class="fa-solid fa-check-circle text-pink-300 md:text-base"></i> Professional & Trained Cleaners
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.15] mb-6 lg:mb-8 text-white drop-shadow-lg tracking-tight px-2">
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.15] mb-4 lg:mb-6 text-white drop-shadow-lg tracking-tight px-2">
           Professional Cleaning Services Across <br class="hidden sm:block">
           <span class="text-pink-300 drop-shadow-md">Florida</span>
         </h1>
+
+        <!-- Hero Interactive City Search Bar -->
+        <div class="w-full max-w-2xl mx-auto my-5 sm:my-7 px-2 relative z-30" id="hero-search-wrapper">
+          <form id="hero-city-search-form" class="relative group" onsubmit="event.preventDefault(); return false;">
+            <div class="relative flex items-center bg-white/95 backdrop-blur-md rounded-full p-2 pl-5 sm:pl-6 shadow-2xl border-2 border-pink-200/80 focus-within:border-pink-500 focus-within:ring-4 focus-within:ring-pink-300/40 transition-all">
+              <i class="fa-solid fa-magnifying-glass text-pink-500 text-lg mr-2 pointer-events-none"></i>
+              <input type="text" id="global-city-search" autocomplete="off"
+                placeholder="Search your Florida city (e.g. Miami, Tampa, Orlando, Bradenton...)"
+                class="w-full bg-transparent text-gray-800 placeholder-gray-400 text-sm sm:text-base font-medium focus:outline-none py-1.5 sm:py-2">
+              <button id="clear-search" type="button"
+                class="hidden text-gray-400 hover:text-pink-600 px-2 transition-colors" aria-label="Clear search">
+                <i class="fa-solid fa-xmark text-lg"></i>
+              </button>
+              <button id="hero-search-submit" type="button"
+                class="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-bold px-5 sm:px-7 py-3 rounded-full text-xs sm:text-sm shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2 whitespace-nowrap ml-1">
+                <i class="fa-solid fa-sparkles"></i>
+                <span class="hidden sm:inline">Find Cleaners</span>
+                <span class="sm:hidden">Search</span>
+              </button>
+            </div>
+
+            <!-- Floating Autocomplete Dropdown -->
+            <div id="search-dropdown"
+              class="absolute z-50 left-0 right-0 mt-2 bg-white/98 backdrop-blur-xl border border-pink-100 rounded-2xl shadow-2xl max-h-80 overflow-y-auto hidden overscroll-contain text-left transition-all">
+              <ul id="search-results" class="py-2">
+                <!-- Javascript will populate matching cities dynamically -->
+              </ul>
+            </div>
+          </form>
+        </div>
+
+        <!-- Hero Nearby Service Areas Pill Row -->
+        <div class="mt-2 mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto px-4" aria-label="Nearby Cleaning Service Locations">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold text-pink-200 uppercase tracking-wider mr-1">
+            <i class="fa-solid fa-location-dot text-pink-400"></i> Serving Florida Communities:
+          </span>
+          <a href="/miami-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">Miami</a>
+          <a href="/tampa-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">Tampa</a>
+          <a href="/orlando-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">Orlando</a>
+          <a href="/fort-lauderdale-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">Fort Lauderdale</a>
+          <a href="/bradenton-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">Bradenton</a>
+          <a href="/sarasota-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">Sarasota</a>
+          <a href="/jacksonville-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">Jacksonville</a>
+          <a href="/saint-petersburg-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">St. Petersburg</a>
+          <a href="/west-palm-beach-fl/" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">West Palm Beach</a>
+          <a href="/locations/" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-bold bg-pink-500/85 hover:bg-pink-500 text-white backdrop-blur-md border border-pink-300/40 hover:scale-105 shadow-md transition-all duration-200">
+            <span>+ All Locations</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+          </a>
+        </div>
 
         <p class="text-lg sm:text-2xl text-pink-50 mb-10 lg:mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow px-4">
           Leading house cleaning and professional maid services across Florida. We bring the sparkle back to your home or business.
@@ -829,145 +856,369 @@
     </div>
   </section>
 
-  <!-- ================================================
-     GLOBAL SEARCH BAR SECTION
-=============================================== -->
-  <section class="py-12 bg-white relative z-20 border-b border-pink-50">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <div class="relative w-full" id="global-search-container" data-aos="fade-up" data-aos-duration="800">
-        <h3 class="text-2xl font-bold text-center text-gray-800 mb-6 drop-shadow-sm">Find Services In Your City:</h3>
-        <div class="relative group">
-          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <i
-              class="fa-solid fa-magnifying-glass text-pink-400 group-focus-within:text-pink-600 transition-colors text-xl"></i>
-          </div>
-          <input type="text" id="global-city-search" autocomplete="off"
-            placeholder="Type your city (e.g., Miami, Tampa...)"
-            class="w-full pl-14 pr-12 py-5 md:py-6 border-2 border-pink-100 rounded-3xl text-lg md:text-xl text-gray-800 focus:outline-none focus:ring-4 focus:ring-pink-200 focus:border-pink-400 shadow-xl hover:shadow-2xl transition-all font-medium placeholder:text-gray-400">
+  <!-- Interactive Search Script for Hero Search Bar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('global-city-search');
+      const searchDropdown = document.getElementById('search-dropdown');
+      const searchResults = document.getElementById('search-results');
+      const clearSearch = document.getElementById('clear-search');
+      const submitBtn = document.getElementById('hero-search-submit');
 
-          <!-- Clean Input Button -->
-          <button id="clear-search"
-            class="absolute inset-y-0 right-0 pr-6 flex items-center hidden hover:text-pink-600 text-gray-400 transition-colors">
-            <i class="fa-solid fa-xmark text-2xl"></i>
-          </button>
-        </div>
+      if (!searchInput || !searchDropdown || !searchResults) return;
 
-        <!-- Floating Autocomplete Dropdown -->
-        <div id="search-dropdown"
-          class="absolute z-50 w-full mt-3 bg-white/98 backdrop-blur-xl border border-pink-100 rounded-2xl shadow-2xl max-h-96 overflow-y-auto hidden overscroll-contain transform origin-top transition-all scale-95 opacity-0">
-          <ul id="search-results" class="py-3">
-            <!-- Javascript will populate <li> elements here dynamically -->
-          </ul>
-        </div>
+      const allCities = [
+        {"name":"Altamonte Springs","slug":"/altamonte-springs-fl/"},
+        {"name":"Amelia Island","slug":"/amelia-island-fl/"},
+        {"name":"Anna Maria","slug":"/anna-maria-fl/"},
+        {"name":"Apollo Beach","slug":"/apollo-beach-fl/"},
+        {"name":"Apopka","slug":"/apopka-fl/"},
+        {"name":"Atlantic Beach","slug":"/atlantic-beach-fl/"},
+        {"name":"Atlantis","slug":"/atlantis-fl/"},
+        {"name":"Auburndale","slug":"/auburndale-fl/"},
+        {"name":"Avalon Park","slug":"/avalon-park-fl/"},
+        {"name":"Aventura","slug":"/aventura-fl/"},
+        {"name":"Bal Harbour","slug":"/bal-harbour-fl/"},
+        {"name":"Bartow","slug":"/bartow-fl/"},
+        {"name":"Bay Harbor Islands","slug":"/bay-harbor-islands-fl/"},
+        {"name":"Bayshore Gardens","slug":"/bayshore-gardens-fl/"},
+        {"name":"Bee Ridge","slug":"/bee-ridge-fl/"},
+        {"name":"Belle Isle","slug":"/belle-isle-fl/"},
+        {"name":"Biscayne Park","slug":"/biscayne-park-fl/"},
+        {"name":"Boca Raton","slug":"/boca-raton-fl/"},
+        {"name":"Bokeelia","slug":"/bokeelia-fl/"},
+        {"name":"Bonita Springs","slug":"/bonita-springs-fl/"},
+        {"name":"Boynton Beach","slug":"/boynton-beach-fl/"},
+        {"name":"Bradenton","slug":"/house-cleaning-bradenton-fl/"},
+        {"name":"Bradenton Beach","slug":"/bradenton-beach-fl/"},
+        {"name":"Brandon","slug":"/brandon-fl/"},
+        {"name":"Briny Breezes","slug":"/briny-breezes-fl/"},
+        {"name":"Cape Canaveral","slug":"/cape-canaveral-fl/"},
+        {"name":"Cape Coral","slug":"/cape-coral-fl/"},
+        {"name":"Captiva","slug":"/captiva-fl/"},
+        {"name":"Casselberry","slug":"/casselberry-fl/"},
+        {"name":"Celebration","slug":"/celebration-fl/"},
+        {"name":"Chester","slug":"/chester-fl/"},
+        {"name":"Citrus Park","slug":"/citrus-park-fl/"},
+        {"name":"Clearwater","slug":"/clearwater-fl/"},
+        {"name":"Clearwater Beach","slug":"/clearwater-beach-fl/"},
+        {"name":"Clermont","slug":"/clermont-fl/"},
+        {"name":"Cloud Lake","slug":"/cloud-lake-fl/"},
+        {"name":"Cocoa","slug":"/cocoa-fl/"},
+        {"name":"Cocoa Beach","slug":"/cocoa-beach-fl/"},
+        {"name":"Coconut Creek","slug":"/coconut-creek-fl/"},
+        {"name":"Cooper City","slug":"/cooper-city-fl/"},
+        {"name":"Coral Gables","slug":"/coral-gables-fl/"},
+        {"name":"Coral Springs","slug":"/coral-springs-fl/"},
+        {"name":"Cortez","slug":"/cortez-fl/"},
+        {"name":"Cudjoe Key","slug":"/cudjoe-key-fl/"},
+        {"name":"Cutler Bay","slug":"/cutler-bay-fl/"},
+        {"name":"Dania Beach","slug":"/dania-beach-fl/"},
+        {"name":"Davenport","slug":"/davenport-fl/"},
+        {"name":"Davie","slug":"/davie-fl/"},
+        {"name":"Daytona Beach","slug":"/daytona-beach-fl/"},
+        {"name":"Daytona Beach Shores","slug":"/daytona-beach-shores-fl/"},
+        {"name":"Deerfield Beach","slug":"/deerfield-beach-fl/"},
+        {"name":"Delray Beach","slug":"/delray-beach-fl/"},
+        {"name":"Deltona","slug":"/deltona-fl/"},
+        {"name":"Doral","slug":"/doral-fl/"},
+        {"name":"Dunedin","slug":"/dunedin-fl/"},
+        {"name":"Duck Key","slug":"/duck-key-fl/"},
+        {"name":"El Portal","slug":"/el-portal-fl/"},
+        {"name":"Ellenton","slug":"/ellenton-fl/"},
+        {"name":"Englewood","slug":"/englewood-fl/"},
+        {"name":"Estero","slug":"/estero-fl/"},
+        {"name":"Eustis","slug":"/eustis-fl/"},
+        {"name":"Fernandina Beach","slug":"/fernandina-beach-fl/"},
+        {"name":"Fish Hawk","slug":"/fish-hawk-fl/"},
+        {"name":"Florida City","slug":"/florida-city-fl/"},
+        {"name":"Fort Lauderdale","slug":"/fort-lauderdale-fl/"},
+        {"name":"Fort Myers","slug":"/fort-myers-fl/"},
+        {"name":"Fort Myers Beach","slug":"/fort-myers-beach-fl/"},
+        {"name":"Fort Pierce","slug":"/fort-pierce-fl/"},
+        {"name":"Fruit Cove","slug":"/fruit-cove-fl/"},
+        {"name":"Fruitland Park","slug":"/fruitland-park-fl/"},
+        {"name":"Fruitville","slug":"/fruitville-fl/"},
+        {"name":"Gainesville","slug":"/gainesville-fl/"},
+        {"name":"Green Cove Springs","slug":"/green-cove-springs-fl/"},
+        {"name":"Greenacres","slug":"/greenacres-fl/"},
+        {"name":"Groveland","slug":"/groveland-fl/"},
+        {"name":"Haines City","slug":"/haines-city-fl/"},
+        {"name":"Hallandale Beach","slug":"/hallandale-beach-fl/"},
+        {"name":"Hastings","slug":"/hastings-fl/"},
+        {"name":"Hialeah","slug":"/hialeah-fl/"},
+        {"name":"Hialeah Gardens","slug":"/hialeah-gardens-fl/"},
+        {"name":"Highland Beach","slug":"/highland-beach-fl/"},
+        {"name":"Hillsboro Beach","slug":"/hillsboro-beach-fl/"},
+        {"name":"Hobe Sound","slug":"/hobe-sound-fl/"},
+        {"name":"Hollywood","slug":"/hollywood-fl/"},
+        {"name":"Holmes Beach","slug":"/holmes-beach-fl/"},
+        {"name":"Homestead","slug":"/homestead-fl/"},
+        {"name":"Horizon West","slug":"/horizon-west-fl/"},
+        {"name":"Hunters Creek","slug":"/hunters-creek-fl/"},
+        {"name":"Indialantic","slug":"/indialantic-fl/"},
+        {"name":"Indian Harbour Beach","slug":"/indian-harbour-beach-fl/"},
+        {"name":"Islamorada","slug":"/islamorada-fl/"},
+        {"name":"Jacksonville","slug":"/jacksonville-fl/"},
+        {"name":"Jacksonville Beach","slug":"/jacksonville-beach-fl/"},
+        {"name":"Juno Beach","slug":"/juno-beach-fl/"},
+        {"name":"Jupiter","slug":"/jupiter-fl/"},
+        {"name":"Kendall","slug":"/kendall-fl/"},
+        {"name":"Key Biscayne","slug":"/key-biscayne-fl/"},
+        {"name":"Key Colony Beach","slug":"/key-colony-beach-fl/"},
+        {"name":"Key Largo","slug":"/key-largo-fl/"},
+        {"name":"Key West","slug":"/key-west-fl/"},
+        {"name":"Kissimmee","slug":"/kissimmee-fl/"},
+        {"name":"Lake Alfred","slug":"/lake-alfred-fl/"},
+        {"name":"Lake Buena Vista","slug":"/lake-buena-vista-fl/"},
+        {"name":"Lake Mary","slug":"/lake-mary-fl/"},
+        {"name":"Lake Nona","slug":"/lake-nona-fl/"},
+        {"name":"Lake Park","slug":"/lake-park-fl/"},
+        {"name":"Lake Sarasota","slug":"/lake-sarasota-fl/"},
+        {"name":"Lake Wales","slug":"/lake-wales-fl/"},
+        {"name":"Lake Worth Beach","slug":"/lake-worth-beach-fl/"},
+        {"name":"Lakeland","slug":"/lakeland-fl/"},
+        {"name":"Lakewood Ranch","slug":"/lakewood-ranch-fl/"},
+        {"name":"Largo","slug":"/largo-fl/"},
+        {"name":"Lauderdale Lakes","slug":"/lauderdale-lakes-fl/"},
+        {"name":"Lauderdale-by-the-Sea","slug":"/lauderdale-by-the-sea-fl/"},
+        {"name":"Lauderhill","slug":"/lauderhill-fl/"},
+        {"name":"Leesburg","slug":"/leesburg-fl/"},
+        {"name":"Lighthouse Point","slug":"/lighthouse-point-fl/"},
+        {"name":"Longboat Key","slug":"/longboat-key-fl/"},
+        {"name":"Longwood","slug":"/longwood-fl/"},
+        {"name":"Loxahatchee Groves","slug":"/loxahatchee-groves-fl/"},
+        {"name":"Lutz","slug":"/lutz-fl/"},
+        {"name":"Maitland","slug":"/maitland-fl/"},
+        {"name":"Marathon","slug":"/marathon-fl/"},
+        {"name":"Margate","slug":"/margate-fl/"},
+        {"name":"Melbourne","slug":"/melbourne-fl/"},
+        {"name":"Melbourne Beach","slug":"/melbourne-beach-fl/"},
+        {"name":"Merritt Island","slug":"/merritt-island-fl/"},
+        {"name":"Miami","slug":"/miami-fl/"},
+        {"name":"Miami Beach","slug":"/miami-beach-fl/"},
+        {"name":"Miami Gardens","slug":"/miami-gardens-fl/"},
+        {"name":"Miami Lakes","slug":"/miami-lakes-fl/"},
+        {"name":"Miami Shores","slug":"/miami-shores-fl/"},
+        {"name":"Miami Springs","slug":"/miami-springs-fl/"},
+        {"name":"Minneola","slug":"/minneola-fl/"},
+        {"name":"Miramar","slug":"/miramar-fl/"},
+        {"name":"Mount Dora","slug":"/mount-dora-fl/"},
+        {"name":"Myakka City","slug":"/myakka-city-fl/"},
+        {"name":"Naples","slug":"/naples-fl/"},
+        {"name":"Neptune Beach","slug":"/neptune-beach-fl/"},
+        {"name":"New Port Richey","slug":"/new-port-richey-fl/"},
+        {"name":"New Smyrna Beach","slug":"/new-smyrna-beach-fl/"},
+        {"name":"Nocatee","slug":"/nocatee-fl/"},
+        {"name":"Nokomis","slug":"/nokomis-fl/"},
+        {"name":"North Bay Village","slug":"/north-bay-village-fl/"},
+        {"name":"North Lauderdale","slug":"/north-lauderdale-fl/"},
+        {"name":"North Miami","slug":"/north-miami-fl/"},
+        {"name":"North Miami Beach","slug":"/north-miami-beach-fl/"},
+        {"name":"North Palm Beach","slug":"/north-palm-beach-fl/"},
+        {"name":"North Port","slug":"/north-port-fl/"},
+        {"name":"Oakland","slug":"/oakland-fl/"},
+        {"name":"Oakland Park","slug":"/oakland-park-fl/"},
+        {"name":"Ocala","slug":"/ocala-fl/"},
+        {"name":"Ocoee","slug":"/ocoee-fl/"},
+        {"name":"Oldsmar","slug":"/oldsmar-fl/"},
+        {"name":"Opa-locka","slug":"/opa-locka-fl/"},
+        {"name":"Orange City","slug":"/orange-city-fl/"},
+        {"name":"Orange Park","slug":"/orange-park-fl/"},
+        {"name":"Orlando","slug":"/orlando-fl/"},
+        {"name":"Ormond Beach","slug":"/ormond-beach-fl/"},
+        {"name":"Osprey","slug":"/osprey-fl/"},
+        {"name":"Oviedo","slug":"/oviedo-fl/"},
+        {"name":"Palm Bay","slug":"/palm-bay-fl/"},
+        {"name":"Palm Beach","slug":"/palm-beach-fl/"},
+        {"name":"Palm Beach Gardens","slug":"/palm-beach-gardens-fl/"},
+        {"name":"Palm City","slug":"/palm-city-fl/"},
+        {"name":"Palm Coast","slug":"/palm-coast-fl/"},
+        {"name":"Palm Harbor","slug":"/palm-harbor-fl/"},
+        {"name":"Palm Springs","slug":"/palm-springs-fl/"},
+        {"name":"Palmer Ranch","slug":"/palmer-ranch-fl/"},
+        {"name":"Palmetto","slug":"/palmetto-fl/"},
+        {"name":"Palmetto Bay","slug":"/palmetto-bay-fl/"},
+        {"name":"Parkland","slug":"/parkland-fl/"},
+        {"name":"Parrish","slug":"/parrish-fl/"},
+        {"name":"Pembroke Park","slug":"/pembroke-park-fl/"},
+        {"name":"Pembroke Pines","slug":"/pembroke-pines-fl/"},
+        {"name":"Pinecrest","slug":"/pinecrest-fl/"},
+        {"name":"Pinellas Park","slug":"/pinellas-park-fl/"},
+        {"name":"Plant City","slug":"/plant-city-fl/"},
+        {"name":"Plantation","slug":"/plantation-fl/"},
+        {"name":"Poinciana","slug":"/poinciana-fl/"},
+        {"name":"Polk City","slug":"/polk-city-fl/"},
+        {"name":"Pompano Beach","slug":"/pompano-beach-fl/"},
+        {"name":"Ponte Vedra","slug":"/ponte-vedra-fl/"},
+        {"name":"Ponte Vedra Beach","slug":"/ponte-vedra-beach-fl/"},
+        {"name":"Port Charlotte","slug":"/port-charlotte-fl/"},
+        {"name":"Port Orange","slug":"/port-orange-fl/"},
+        {"name":"Port St. Lucie","slug":"/port-st-lucie-fl/"},
+        {"name":"Punta Gorda","slug":"/punta-gorda-fl/"},
+        {"name":"Riverview","slug":"/riverview-fl/"},
+        {"name":"Riviera Beach","slug":"/riviera-beach-fl/"},
+        {"name":"Rockledge","slug":"/rockledge-fl/"},
+        {"name":"Royal Palm Beach","slug":"/royal-palm-beach-fl/"},
+        {"name":"Safety Harbor","slug":"/safety-harbor-fl/"},
+        {"name":"Sanford","slug":"/sanford-fl/"},
+        {"name":"Sanibel","slug":"/sanibel-fl/"},
+        {"name":"Sarasota","slug":"/sarasota-fl/"},
+        {"name":"Satellite Beach","slug":"/satellite-beach-fl/"},
+        {"name":"Sebastian","slug":"/sebastian-fl/"},
+        {"name":"Sebring","slug":"/sebring-fl/"},
+        {"name":"Seffner","slug":"/seffner-fl/"},
+        {"name":"Seminole","slug":"/seminole-fl/"},
+        {"name":"Siesta Key","slug":"/siesta-key-fl/"},
+        {"name":"South Miami","slug":"/south-miami-fl/"},
+        {"name":"Southwest Ranches","slug":"/southwest-ranches-fl/"},
+        {"name":"Spring Hill","slug":"/spring-hill-fl/"},
+        {"name":"St. Augustine","slug":"/st-augustine-fl/"},
+        {"name":"St. Augustine Beach","slug":"/st-augustine-beach-fl/"},
+        {"name":"St. Cloud","slug":"/st-cloud-fl/"},
+        {"name":"St. Johns","slug":"/st-johns-fl/"},
+        {"name":"St. Pete Beach","slug":"/st-pete-beach-fl/"},
+        {"name":"St. Petersburg","slug":"/saint-petersburg-fl/"},
+        {"name":"Stuart","slug":"/stuart-fl/"},
+        {"name":"Sun City Center","slug":"/sun-city-center-fl/"},
+        {"name":"Sunny Isles Beach","slug":"/sunny-isles-beach-fl/"},
+        {"name":"Sunrise","slug":"/sunrise-fl/"},
+        {"name":"Surfside","slug":"/surfside-fl/"},
+        {"name":"Sweetwater","slug":"/sweetwater-fl/"},
+        {"name":"Tallahassee","slug":"/tallahassee-fl/"},
+        {"name":"Tamarac","slug":"/tamarac-fl/"},
+        {"name":"Tampa","slug":"/tampa-fl/"},
+        {"name":"Tarpon Springs","slug":"/tarpon-springs-fl/"},
+        {"name":"Tavares","slug":"/tavares-fl/"},
+        {"name":"Tavernier","slug":"/tavernier-fl/"},
+        {"name":"Temple Terrace","slug":"/temple-terrace-fl/"},
+        {"name":"Tequesta","slug":"/tequesta-fl/"},
+        {"name":"The Villages","slug":"/the-villages-fl/"},
+        {"name":"Titusville","slug":"/titusville-fl/"},
+        {"name":"Valrico","slug":"/valrico-fl/"},
+        {"name":"Venice","slug":"/venice-fl/"},
+        {"name":"Vero Beach","slug":"/vero-beach-fl/"},
+        {"name":"Virginia Gardens","slug":"/virginia-gardens-fl/"},
+        {"name":"Wellington","slug":"/wellington-fl/"},
+        {"name":"Wesley Chapel","slug":"/wesley-chapel-fl/"},
+        {"name":"West Melbourne","slug":"/west-melbourne-fl/"},
+        {"name":"West Miami","slug":"/west-miami-fl/"},
+        {"name":"West Palm Beach","slug":"/west-palm-beach-fl/"},
+        {"name":"West Park","slug":"/west-park-fl/"},
+        {"name":"Westchase","slug":"/westchase-fl/"},
+        {"name":"Weston","slug":"/weston-fl/"},
+        {"name":"Whitfield","slug":"/whitfield-fl/"},
+        {"name":"Wilton Manors","slug":"/wilton-manors-fl/"},
+        {"name":"Windermere","slug":"/windermere-fl/"},
+        {"name":"Winter Garden","slug":"/winter-garden-fl/"},
+        {"name":"Winter Haven","slug":"/winter-haven-fl/"},
+        {"name":"Winter Park","slug":"/winter-park-fl/"},
+        {"name":"Winter Springs","slug":"/winter-springs-fl/"},
+        {"name":"Yulee","slug":"/yulee-fl/"},
+        {"name":"Zephyrhills","slug":"/zephyrhills-fl/"}
+      ];
 
-        <div class="flex justify-center mt-5">
-          <p
-            class="inline-flex items-center text-sm md:text-base text-gray-600 font-medium bg-pink-50 px-5 py-2 rounded-full">
-            <i class="fa-solid fa-bolt text-yellow-400 mr-2 border border-yellow-200 rounded-full p-1 bg-white"></i>
-            Serving <span class="font-bold text-gray-900 mx-1">200+</span> cities and communities across Florida
-          </p>
-        </div>
-      </div>
+      function renderResults(matches, query) {
+        searchResults.innerHTML = '';
 
-      <!-- Interactive Search Script -->
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const searchInput = document.getElementById('global-city-search');
-          const searchDropdown = document.getElementById('search-dropdown');
-          const searchResults = document.getElementById('search-results');
-          const clearSearch = document.getElementById('clear-search');
+        if (matches.length === 0) {
+          searchResults.innerHTML = '<li class="px-5 py-3.5 text-gray-500 text-sm text-center italic">No matching cities found. <a href="/locations/" class="text-pink-600 font-bold underline ml-1">Browse all Florida locations</a></li>';
+        } else {
+          matches.forEach(city => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = city.slug;
+            
+            const regex = new RegExp('(' + query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + ')', 'gi');
+            const highlightedName = city.name.replace(regex, '<span class="text-pink-600 font-bold bg-pink-50 px-1 rounded">$1</span>');
 
-          // Load all Florida cities statically from the generator 
-          const allCities = ["Alachua", "Alford", "Altamonte Springs", "Altha", "Altoona", "Alturas", "Alva", "Anna Maria", "Anthony", "Apalachicola", "Apollo Beach", "Apopka", "Arcadia", "Archer", "Argyle", "Aripeka", "Astatula", "Astor", "Atlantic Beach", "Auburndale", "Avon Park", "Babson Park", "Bagdad", "Baker", "Balm", "Barberville", "Bartow", "Bascom", "Bay Pines", "Bell", "Belle Glade", "Belleair Beach", "Belleview", "Beverly Hills", "Big Pine Key", "Blountstown", "Boca Grande", "Boca Raton", "Bokeelia", "Bonifay", "Bonita Springs", "Bostwick", "Bowling Green", "Boynton Beach", "Bradenton", "Bradenton Beach", "Bradley", "Brandon", "Branford", "Bristol", "Bronson", "Brooker", "Brooksville", "Bryant", "Bryceville", "Bunnell", "Bushnell", "Callahan", "Campbellton", "Canal Point", "Candler", "Cantonment", "Cape Canaveral", "Cape Coral", "Captiva", "Carrabelle", "Caryville", "Cassadaga", "Casselberry", "Cedar Key", "Center Hill", "Century", "Chattahoochee", "Chiefland", "Chipley", "Chokoloskee", "Christmas", "Citra", "Clarcona", "Clarksville", "Clearwater", "Clearwater Beach", "Clermont", "Clewiston", "Cocoa", "Cocoa Beach", "Coconut Creek", "Coleman", "Copeland", "Cortez", "Cottondale", "Crawfordville", "Crescent City", "Crestview", "Cross City", "Crystal Beach", "Crystal River", "Crystal Springs", "Cypress", "Dade City", "Dania", "Davenport", "Day", "Daytona Beach", "De Leon Springs", "Debary", "Deerfield Beach", "Defuniak Springs", "Deland", "Delray Beach", "Deltona", "Destin", "Doctors Inlet", "Dover", "Dundee", "Dunedin", "Dunnellon", "Durant", "Eagle Lake", "Earleton", "East Palatka", "Eastlake Weir", "Eastpoint", "Eaton Park", "Ebro", "Edgar", "Edgewater", "Eglin Afb", "El Jobean", "Elfers", "Elkton", "Ellenton", "Englewood", "Estero", "Eustis", "Everglades City", "Evinston", "Fairfield", "Fedhaven", "Felda", "Fellsmere", "Fernandina Beach", "Ferndale", "Flagler Beach", "Fleming Island", "Florahome", "Floral City", "Fort Lauderdale", "Fort Mc Coy", "Fort Meade", "Fort Myers", "Fort Myers Beach", "Fort Ogden", "Fort Pierce", "Fort Walton Beach", "Fort White", "Fountain", "Freeport", "Frostproof", "Fruitland Park", "Gainesville", "Geneva", "Georgetown", "Gibsonton", "Glen Saint Mary", "Glenwood", "Goldenrod", "Gonzalez", "Goodland", "Gotha", "Graceville", "Graham", "Grand Island", "Grand Ridge", "Grandin", "Grant", "Green Cove Springs", "Greensboro", "Greenville", "Greenwood", "Gretna", "Groveland", "Gulf Breeze", "Gulf Hammock", "Haines City", "Hallandale", "Hampton", "Hastings", "Havana", "Hawthorne", "Hernando", "Hialeah", "High Springs", "Highland City", "Hilliard", "Hobe Sound", "Holder", "Holiday", "Hollister", "Hollywood", "Holmes Beach", "Holt", "Homeland", "Homestead", "Homosassa", "Homosassa Springs", "Horseshoe Beach", "Hosford", "Howey In The Hills", "Hudson", "Hurlburt Field", "Immokalee", "Indialantic", "Indian Lake Estates", "Indian Rocks Beach", "Indiantown", "Inglis", "Intercession City", "Interlachen", "Inverness", "Islamorada", "Island Grove", "Istachatta", "Jacksonville", "Jacksonville Beach", "Jasper", "Jay", "Jennings", "Jensen Beach", "Jupiter", "Kathleen", "Kenansville", "Key Biscayne", "Key Colony Beach", "Key Largo", "Key West", "Keystone Heights", "Killarney", "Kissimmee", "La Crosse", "Labelle", "Lacoochee", "Lady Lake", "Lake Alfred", "Lake Butler", "Lake City", "Lake Como", "Lake Geneva", "Lake Hamilton", "Lake Harbor", "Lake Helen", "Lake Mary", "Lake Monroe", "Lake Panasoffkee", "Lake Placid", "Lake Wales", "Lake Worth", "Lakeland", "Lamont", "Lanark Village", "Land O Lakes", "Largo", "Laurel", "Laurel Hill", "Lawtey", "Lecanto", "Lee", "Leesburg", "Lehigh Acres", "Lighthouse Point", "Lithia", "Live Oak", "Lloyd", "Lochloosa", "Long Key", "Longboat Key", "Longwood", "Lorida", "Loughman", "Lowell", "Loxahatchee", "Lulu", "Lutz", "Lynn Haven", "Macclenny", "Madison", "Maitland", "Malabar", "Malone", "Mango", "Marathon", "Marathon Shores", "Marco Island", "Marianna", "Mary Esther", "Mascotte", "Mayo", "Mc Alpin", "Mc David", "Mc Intosh", "Melbourne", "Melbourne Beach", "Melrose", "Merritt Island", "Mexico Beach", "Miami", "Miami Beach", "Micanopy", "Mid Florida", "Middleburg", "Midway", "Milligan", "Milton", "Mims", "Minneola", "Miramar Beach", "Molino", "Monticello", "Montverde", "Moore Haven", "Morriston", "Mossy Head", "Mount Dora", "Mulberry", "Murdock", "Myakka City", "Nalcrest", "Naples", "Navarre", "Neptune Beach", "New Port Richey", "New Smyrna Beach", "Newberry", "Niceville", "Nichols", "Nobleton", "Nocatee", "Nokomis", "Noma", "North Fort Myers", "North Miami Beach", "North Palm Beach", "North Port", "O Brien", "Oak Hill", "Oakland", "Ocala", "Ochopee", "Ocklawaha", "Ocoee", "Odessa", "Okahumpka", "Okeechobee", "Old Town", "Oldsmar", "Olustee", "Ona", "Oneco", "Opa Locka", "Orange City", "Orange Lake", "Orange Park", "Orange Springs", "Orlando", "Ormond Beach", "Osprey", "Osteen", "Otter Creek", "Oviedo", "Oxford", "Ozona", "Pahokee", "Paisley", "Palatka", "Palm Bay", "Palm Beach", "Palm Beach Gardens", "Palm City", "Palm Coast", "Palm Harbor", "Palmdale", "Palmetto", "Panacea", "Panama City", "Panama City Beach", "Parrish", "Patrick Afb", "Paxton", "Pembroke Pines", "Penney Farms", "Pensacola", "Perry", "Pierson", "Pineland", "Pinellas Park", "Pinetta", "Placida", "Plant City", "Plymouth", "Point Washington", "Polk City", "Pomona Park", "Pompano Beach", "Ponce De Leon", "Ponte Vedra", "Ponte Vedra Beach", "Port Charlotte", "Port Orange", "Port Richey", "Port Saint Joe", "Port Saint Lucie", "Port Salerno", "Punta Gorda", "Putnam Hall", "Quincy", "Raiford", "Reddick", "River Ranch", "Riverview", "Rockledge", "Roseland", "Rosemary Beach", "Rotonda West", "Ruskin", "Safety Harbor", "Saint Augustine", "Saint Cloud", "Saint James City", "Saint Johns", "Saint Leo", "Saint Marks", "Saint Petersburg", "Salem", "San Antonio", "San Mateo", "Sanderson", "Sanford", "Sanibel", "Santa Rosa Beach", "Sarasota", "Satellite Beach", "Satsuma", "Scottsmoor", "Sebastian", "Sebring", "Seffner", "Seminole", "Seville", "Shady Grove", "Shalimar", "Sharpes", "Silver Springs", "Sneads", "Sopchoppy", "Sorrento", "South Bay", "Sparr", "Spring Hill", "Starke", "Steinhatchee", "Stuart", "Sumatra", "Summerfield", "Summerland Key", "Sumterville", "Sun City", "Sun City Center", "Suwannee", "Sydney", "Tallahassee", "Tallevast", "Tampa", "Tangerine", "Tarpon Springs", "Tavares", "Tavernier", "Telogia", "Terra Ceia", "The Villages", "Thonotosassa", "Titusville", "Trenton", "Trilby", "Umatilla", "Valparaiso", "Valrico", "Vanderbilt Beach", "Venice", "Venus", "Vernon", "Vero Beach", "Wabasso", "Wacissa", "Waldo", "Wauchula", "Wausau", "Waverly", "Webster", "Weirsdale", "Welaka", "Wellborn", "Wesley Chapel", "West Palm Beach", "Westville", "Wewahitchka", "White Springs", "Wildwood", "Williston", "Wimauma", "Windermere", "Winter Beach", "Winter Garden", "Winter Haven", "Winter Park", "Winter Springs", "Woodville", "Worthington Springs", "Yalaha", "Yankeetown", "Youngstown", "Yulee", "Zellwood", "Zephyrhills", "Zolfo Springs"];
+            a.innerHTML = '<div class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-pink-400"></i><span class="font-medium text-gray-900">' + highlightedName + '</span></div><span class="text-xs font-semibold text-pink-500 group-hover:translate-x-1 transition-transform flex items-center gap-1">View Cleaners <i class="fa-solid fa-arrow-right text-[10px]"></i></span>';
+            a.className = "flex items-center justify-between px-5 py-3 hover:bg-pink-50 text-gray-800 text-sm transition-colors cursor-pointer border-b border-gray-100 last:border-0 group";
 
-          function formatSlug(cityName) {
-            return "/" + cityName.toLowerCase().replace(/\s+/g, '-') + "-fl/";
-          }
-
-          function renderResults(matches) {
-            searchResults.innerHTML = '';
-
-            if (matches.length === 0) {
-              searchResults.innerHTML = '<li class="px-6 py-4 text-gray-500 text-center italic">No cities found. Try another search.</li>';
-            } else {
-              matches.forEach(city => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = formatSlug(city);
-                // Highlight matching text logic
-                const regex = new RegExp(`(${searchInput.value})`, 'gi');
-                const highlightedCity = city.replace(regex, '<span class="text-pink-500 font-bold">$1</span>');
-
-                a.innerHTML = `<div class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-pink-300"></i> <span>${highlightedCity}</span></div> <i class="fa-solid fa-chevron-right text-gray-300 text-sm group-hover:translate-x-1 transition-transform"></i>`;
-                a.className = "flex items-center justify-between px-6 py-3 hover:bg-pink-50 text-gray-800 text-lg transition-colors cursor-pointer border-b border-gray-50 last:border-0 group";
-
-                li.appendChild(a);
-                searchResults.appendChild(li);
-              });
-            }
-
-            // Show dropdown with animation
-            searchDropdown.classList.remove('hidden');
-            // Tiny delay to allow display:block to apply before animating opacity
-            setTimeout(() => {
-              searchDropdown.classList.remove('scale-95', 'opacity-0');
-              searchDropdown.classList.add('scale-100', 'opacity-100');
-            }, 10);
-          }
-
-          searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-
-            if (query.length > 0) {
-              clearSearch.classList.remove('hidden');
-              // Filter cities that START WITH or INCLUDES the query (Prioritize starts with)
-              const startsWith = allCities.filter(city => city.toLowerCase().startsWith(query));
-              const includes = allCities.filter(city => city.toLowerCase().includes(query) && !city.toLowerCase().startsWith(query));
-
-              // Limit to top 20 results for performance
-              let matches = [...startsWith, ...includes].slice(0, 20);
-              renderResults(matches);
-            } else {
-              clearSearch.classList.add('hidden');
-              searchDropdown.classList.add('scale-95', 'opacity-0');
-              searchDropdown.classList.remove('scale-100', 'opacity-100');
-              setTimeout(() => searchDropdown.classList.add('hidden'), 200);
-            }
+            li.appendChild(a);
+            searchResults.appendChild(li);
           });
+        }
 
-          // Clear button logic
-          clearSearch.addEventListener('click', () => {
-            searchInput.value = '';
-            searchInput.focus();
-            clearSearch.classList.add('hidden');
-            searchDropdown.classList.add('scale-95', 'opacity-0');
-            searchDropdown.classList.remove('scale-100', 'opacity-100');
-            setTimeout(() => searchDropdown.classList.add('hidden'), 200);
-          });
+        searchDropdown.classList.remove('hidden');
+      }
 
-          // Close dropdown when clicking outside
-          document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
-              searchDropdown.classList.add('scale-95', 'opacity-0');
-              searchDropdown.classList.remove('scale-100', 'opacity-100');
-              setTimeout(() => searchDropdown.classList.add('hidden'), 200);
-            }
-          });
+      function handleSearchSubmit() {
+        const query = searchInput.value.toLowerCase().trim();
+        if (!query) {
+          window.location.href = '/locations/';
+          return;
+        }
 
-          // Show dropdown again if input is focused and has text
-          searchInput.addEventListener('focus', () => {
-            if (searchInput.value.trim().length > 0) {
-              searchDropdown.classList.remove('hidden');
-              setTimeout(() => {
-                searchDropdown.classList.remove('scale-95', 'opacity-0');
-                searchDropdown.classList.add('scale-100', 'opacity-100');
-              }, 10);
-            }
-          });
+        const exactMatch = allCities.find(c => c.name.toLowerCase() === query);
+        if (exactMatch) {
+          window.location.href = exactMatch.slug;
+          return;
+        }
+
+        const partialMatch = allCities.find(c => c.name.toLowerCase().startsWith(query)) || allCities.find(c => c.name.toLowerCase().includes(query));
+        if (partialMatch) {
+          window.location.href = partialMatch.slug;
+          return;
+        }
+
+        window.location.href = '/locations/?q=' + encodeURIComponent(query);
+      }
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+
+        if (query.length > 0) {
+          clearSearch.classList.remove('hidden');
+          const startsWith = allCities.filter(c => c.name.toLowerCase().startsWith(query));
+          const includes = allCities.filter(c => c.name.toLowerCase().includes(query) && !c.name.toLowerCase().startsWith(query));
+          const matches = [...startsWith, ...includes].slice(0, 15);
+          renderResults(matches, query);
+        } else {
+          clearSearch.classList.add('hidden');
+          searchDropdown.classList.add('hidden');
+        }
+      });
+
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleSearchSubmit();
+        } else if (e.key === 'Escape') {
+          searchDropdown.classList.add('hidden');
+        }
+      });
+
+      if (submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          handleSearchSubmit();
         });
-      </script>
-    </div>
-  </section>
+      }
+
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        searchInput.focus();
+        clearSearch.classList.add('hidden');
+        searchDropdown.classList.add('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+          searchDropdown.classList.add('hidden');
+        }
+      });
+
+      searchInput.addEventListener('focus', () => {
+        if (searchInput.value.trim().length > 0) {
+          const query = searchInput.value.toLowerCase().trim();
+          const startsWith = allCities.filter(c => c.name.toLowerCase().startsWith(query));
+          const includes = allCities.filter(c => c.name.toLowerCase().includes(query) && !c.name.toLowerCase().startsWith(query));
+          renderResults([...startsWith, ...includes].slice(0, 15), query);
+        }
+      });
+    });
+  </script>
 
 
   <!-- ================================================
