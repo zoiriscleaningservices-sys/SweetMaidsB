@@ -46,8 +46,8 @@ try {
   const homePath = path.join(process.cwd(), 'src', 'app', 'page.tsx');
   const homeContent = fs.readFileSync(homePath, 'utf8');
   
-  const expectedTitle = 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid';
-  const expectedH1 = 'Professional House Cleaning & Maid Service in Bradenton, FL';
+  const expectedTitle = 'Professional Cleaning Services Across Florida | Sweet Maid';
+  const expectedH1 = 'Professional Cleaning Services Across Florida';
 
   if (!homeContent.includes(expectedTitle)) {
     reportError('Homepage Lock', `Title must be exactly: "${expectedTitle}"`);
@@ -56,7 +56,7 @@ try {
   }
 
   const rawHome = fs.readFileSync(path.join(process.cwd(), 'templates', 'home', 'index.html'), 'utf8');
-  const renderedHome = localizedReplace(rawHome, 'Bradenton', 'bradenton-fl', false, 'house-cleaning');
+  const renderedHome = localizedReplace(rawHome, 'Florida', 'home', false, 'house-cleaning');
 
   if (!renderedHome.includes(expectedH1)) {
     reportError('Homepage Lock', `Rendered H1 must be exactly: "${expectedH1}"`);

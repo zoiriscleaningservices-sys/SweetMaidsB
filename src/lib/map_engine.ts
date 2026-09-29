@@ -21,8 +21,13 @@ export function getLocalMapQuery(locSlug: string, cleanName: string): { query: s
     return { query: `${s}, FL`, zoom: 14 };
   }
 
-  // 2. Bradenton home base or home page (Service area only - no street address)
-  if (s === 'bradenton-fl' || s === 'home' || !s) {
+  // 2. Statewide Florida homepage or state-level service page
+  if (s === 'home' || cleanName.toLowerCase() === 'florida') {
+    return { query: 'Florida, USA', zoom: 7 };
+  }
+
+  // 2b. Bradenton home base
+  if (s === 'bradenton-fl' || !s) {
     return { query: 'Bradenton, FL', zoom: 13 };
   }
 

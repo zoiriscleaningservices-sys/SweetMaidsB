@@ -41,36 +41,39 @@ import { generateLocalMapUrl, getGoogleMapsUrl } from './map_engine';
 export { generateLocalMapUrl, getGoogleMapsUrl };
 
 export function generatePageImageSchema(cleanName: string, serviceName: string = 'House Cleaning') {
+  const isFlorida = cleanName.toLowerCase() === 'florida';
+  const locCaption = isFlorida ? 'Florida' : `${cleanName}, FL`;
+  const locState = isFlorida ? 'Florida' : `${cleanName}, Florida`;
   return [
     {
       "@type": "ImageObject",
       "url": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp",
       "name": `Spotless Modern Kitchen Cleaning in ${cleanName}`,
-      "caption": `Professional residential kitchen cleaning and sanitization in ${cleanName}, FL`,
-      "description": `Sweet Maid professional cleaning crew detailing and polishing kitchen countertops and stainless steel appliances in ${cleanName}, Florida.`,
+      "caption": `Professional residential kitchen cleaning and sanitization in ${locCaption}`,
+      "description": `Sweet Maid professional cleaning crew detailing and polishing kitchen countertops and stainless steel appliances in ${locState}.`,
       "contentUrl": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm.webp"
     },
     {
       "@type": "ImageObject",
       "url": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp",
       "name": `Sanitized Luxury Master Bathroom Deep Cleaning in ${cleanName}`,
-      "caption": `Pristine sanitized bathroom tile, shower glass, and vanity in ${cleanName}, FL`,
-      "description": `Comprehensive bathroom sanitizing, tile grout scrubbing, and fixture polishing by Sweet Maid in ${cleanName}, Florida.`,
+      "caption": `Pristine sanitized bathroom tile, shower glass, and vanity in ${locCaption}`,
+      "description": `Comprehensive bathroom sanitizing, tile grout scrubbing, and fixture polishing by Sweet Maid in ${locState}.`,
       "contentUrl": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.07-pm-1.webp"
     },
     {
       "@type": "ImageObject",
       "url": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp",
       "name": `Pristine Hardwood Living Room Move-In Cleaning in ${cleanName}`,
-      "caption": `Pristine hardwood floor detailing and move-in deep cleaning in ${cleanName}, FL`,
-      "description": `Move-in and move-out turnover deep clean with HEPA vacuuming and wood floor detailing in ${cleanName}, Florida.`,
+      "caption": `Pristine hardwood floor detailing and move-in deep cleaning in ${locCaption}`,
+      "description": `Move-in and move-out turnover deep clean with HEPA vacuuming and wood floor detailing in ${locState}.`,
       "contentUrl": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.18.08-pm-1.webp"
     },
     {
       "@type": "ImageObject",
       "url": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-3.46.50-pm.webp",
       "name": `Commercial Office Suite and Janitorial Cleaning in ${cleanName}`,
-      "caption": `Spotless commercial workspace and executive suite cleaning in ${cleanName}, FL`,
+      "caption": `Spotless commercial workspace and executive suite cleaning in ${locCaption}`,
       "description": `Professional commercial office cleaning, workspace sanitation, and janitorial services for ${cleanName} businesses.`,
       "contentUrl": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-3.46.50-pm.webp"
     },
@@ -78,16 +81,16 @@ export function generatePageImageSchema(cleanName: string, serviceName: string =
       "@type": "ImageObject",
       "url": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-11-at-12.07.26-pm.webp",
       "name": `Post-Construction Dust Extraction Cleaning in ${cleanName}`,
-      "caption": `Detailed post-construction debris and dust removal in ${cleanName}, FL`,
-      "description": `Contractor turnover and post-construction fine dust HEPA extraction for ${cleanName}, Florida properties.`,
+      "caption": `Detailed post-construction debris and dust removal in ${locCaption}`,
+      "description": `Contractor turnover and post-construction fine dust HEPA extraction for ${locState} properties.`,
       "contentUrl": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-11-at-12.07.26-pm.webp"
     },
     {
       "@type": "ImageObject",
       "url": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.17.59-pm.webp",
       "name": `Airbnb and Vacation Rental Turnover Cleaning in ${cleanName}`,
-      "caption": `Guest turnover cleaning and sanitization in ${cleanName}, FL`,
-      "description": `Rapid Airbnb turnover cleaning, guest amenity staging, and bathroom sanitization in ${cleanName}, Florida.`,
+      "caption": `Guest turnover cleaning and sanitization in ${locCaption}`,
+      "description": `Rapid Airbnb turnover cleaning, guest amenity staging, and bathroom sanitization in ${locState}.`,
       "contentUrl": "https://www.sweetmaidcleaning.com/images/whatsapp-image-2026-02-10-at-11.17.59-pm.webp"
     }
   ];
@@ -106,45 +109,47 @@ export function processPageImages(
   let googleReviewCounter = 0;
   let logoCounter = 0;
 
+  const locStateStr = (c: string) => c.toLowerCase() === 'florida' ? 'Florida' : `${c}, FL`;
+
   const imageLocalSeoMap: Record<string, (c: string, s: string) => string> = {
     'whatsapp-image-2026-02-10-at-11.18.07-pm-1': (c, s) =>
-      isLogin ? 'Deep Cleaning Sanitized Master Bathroom & Tile Grout' : `Sanitized Luxury Master Bathroom and Tile Grout Cleaning in ${c}, FL`,
+      isLogin ? 'Deep Cleaning Sanitized Master Bathroom & Tile Grout' : `Sanitized Luxury Master Bathroom and Tile Grout Cleaning in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.07-pm': (c, s) =>
-      isLogin ? 'Luxury High-Rise Condo Deep Cleaning & Disinfection' : `Luxury High-Rise Condo Deep Cleaning and Disinfection in ${c}, FL`,
+      isLogin ? 'Luxury High-Rise Condo Deep Cleaning & Disinfection' : `Luxury High-Rise Condo Deep Cleaning and Disinfection in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.08-pm-1': (c, s) =>
-      isLogin ? 'Pristine Living Room Move-In Cleaning Service' : `Pristine Hardwood Living Room Move-In Cleaning in ${c}, FL`,
+      isLogin ? 'Pristine Living Room Move-In Cleaning Service' : `Pristine Hardwood Living Room Move-In Cleaning in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.08-pm-2': (c, s) =>
-      isLogin ? 'Sparkling Clean Walk-in Glass Shower & Descaled Tile' : `Sparkling Clean Walk-in Glass Shower and Descaled Tile in ${c}, FL`,
+      isLogin ? 'Sparkling Clean Walk-in Glass Shower & Descaled Tile' : `Sparkling Clean Walk-in Glass Shower and Descaled Tile in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.08-pm-3': (c, s) =>
-      isLogin ? 'Complete Move-Out Vacancy Turnover Cleaning' : `Move-Out Vacancy Turnover Deep Cleaning Inspection in ${c}, FL`,
+      isLogin ? 'Complete Move-Out Vacancy Turnover Cleaning' : `Move-Out Vacancy Turnover Deep Cleaning Inspection in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.08-pm-4': (c, s) =>
-      isLogin ? 'Luxury Soaking Tub & Spa Vanity Sanitization' : `Luxury Soaking Tub and Spa Vanity Deep Sanitization in ${c}, FL`,
+      isLogin ? 'Luxury Soaking Tub & Spa Vanity Sanitization' : `Luxury Soaking Tub and Spa Vanity Deep Sanitization in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.08-pm': (c, s) =>
-      isLogin ? 'Spotless Modern Kitchen Sanitization & Detailing' : `Spotless Modern Kitchen Sanitization and Appliance Detailing in ${c}, FL`,
+      isLogin ? 'Spotless Modern Kitchen Sanitization & Detailing' : `Spotless Modern Kitchen Sanitization and Appliance Detailing in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.09-pm-1': (c, s) =>
-      isLogin ? 'Vacation Rental Bedroom Staging & Linen Setup' : `Vacation Rental Bedroom Staging and Fresh Linen Setup in ${c}, FL`,
+      isLogin ? 'Vacation Rental Bedroom Staging & Linen Setup' : `Vacation Rental Bedroom Staging and Fresh Linen Setup in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.09-pm-2': (c, s) =>
-      isLogin ? 'Living Room Micro-Dusting & Furniture Polishing' : `Detailed Living Room Micro-Dusting and Furniture Polishing in ${c}, FL`,
+      isLogin ? 'Living Room Micro-Dusting & Furniture Polishing' : `Detailed Living Room Micro-Dusting and Furniture Polishing in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.09-pm-3': (c, s) =>
-      isLogin ? 'Custom Cabinetry & Countertop Detailing' : `Custom Cabinetry and Marble Countertop Detailing in ${c}, FL`,
+      isLogin ? 'Custom Cabinetry & Countertop Detailing' : `Custom Cabinetry and Marble Countertop Detailing in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.09-pm': (c, s) =>
-      isLogin ? 'Modern Island Kitchen Scrubbing & Polishing' : `Modern Island Kitchen Deep Scrubbing and Polishing in ${c}, FL`,
+      isLogin ? 'Modern Island Kitchen Scrubbing & Polishing' : `Modern Island Kitchen Deep Scrubbing and Polishing in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.18.06-pm': (c, s) =>
-      isLogin ? 'Gourmet Kitchen Stove Degreasing & Detailing' : `Gourmet Kitchen Stove Degreasing and Countertop Detailing in ${c}, FL`,
+      isLogin ? 'Gourmet Kitchen Stove Degreasing & Detailing' : `Gourmet Kitchen Stove Degreasing and Countertop Detailing in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-3.46.50-pm': (c, s) =>
-      isLogin ? 'Commercial Office Suite Janitorial Cleaning' : `Commercial Office Suite and Professional Janitorial Cleaning in ${c}, FL`,
+      isLogin ? 'Commercial Office Suite Janitorial Cleaning' : `Commercial Office Suite and Professional Janitorial Cleaning in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-3.47.15-pm': (c, s) =>
-      isLogin ? 'Waterfront Condo Living Room HEPA Detailing' : `Waterfront Condo Living Room HEPA Vacuuming and Detailing in ${c}, FL`,
+      isLogin ? 'Waterfront Condo Living Room HEPA Detailing' : `Waterfront Condo Living Room HEPA Vacuuming and Detailing in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-11-at-12.07.26-pm': (c, s) =>
-      isLogin ? 'Post-Construction Fine Dust Extraction Cleaning' : `Post-Construction Fine Dust Extraction and Renovation Cleanup in ${c}, FL`,
+      isLogin ? 'Post-Construction Fine Dust Extraction Cleaning' : `Post-Construction Fine Dust Extraction and Renovation Cleanup in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.17.59-pm': (c, s) =>
-      isLogin ? 'Airbnb Vacation Rental Bathroom Turnover Cleaning' : `Airbnb Vacation Rental Turnover Cleaning and Bathroom Staging in ${c}, FL`,
+      isLogin ? 'Airbnb Vacation Rental Bathroom Turnover Cleaning' : `Airbnb Vacation Rental Turnover Cleaning and Bathroom Staging in ${locStateStr(c)}`,
     'whatsapp-image-2026-02-10-at-11.17.58-pm': (c, s) =>
-      isLogin ? 'Exterior Pressure Washing & Surface Soft Wash' : `Exterior Pressure Washing and Lanai Pool Deck Soft Wash in ${c}, FL`,
+      isLogin ? 'Exterior Pressure Washing & Surface Soft Wash' : `Exterior Pressure Washing and Lanai Pool Deck Soft Wash in ${locStateStr(c)}`,
     'carpet-cleaning': (c, s) =>
-      isLogin ? 'Deep Steam Extraction Carpet Cleaning' : `Deep Steam Extraction Carpet and Area Rug Cleaning in ${c}, FL`,
+      isLogin ? 'Deep Steam Extraction Carpet Cleaning' : `Deep Steam Extraction Carpet and Area Rug Cleaning in ${locStateStr(c)}`,
     'window-cleaning': (c, s) =>
-      isLogin ? 'Interior & Exterior Streak-Free Window Cleaning' : `Interior and Exterior Streak-Free Window Cleaning in ${c}, FL`,
+      isLogin ? 'Interior & Exterior Streak-Free Window Cleaning' : `Interior and Exterior Streak-Free Window Cleaning in ${locStateStr(c)}`,
   };
 
   const sortedKeys = Object.keys(imageLocalSeoMap).sort((a, b) => b.length - a.length);
@@ -274,12 +279,15 @@ export function processPageImages(
           .replace(/Bradenton/gi, clean_name)
           .trim();
 
+        const isFlorida = clean_name.toLowerCase() === 'florida';
+        const locDisplay = isFlorida ? 'Florida' : `${clean_name}, FL`;
+
         if (existing && existing !== 'Google' && !existing.toLowerCase().includes('logo')) {
-          targetAlt = isLogin ? existing : `${existing} in ${clean_name}, FL`;
+          targetAlt = isLogin ? existing : `${existing} in ${locDisplay}`;
         } else {
           targetAlt = isLogin
             ? `${serviceName} Professional Service`
-            : `${serviceName} by Sweet Maid in ${clean_name}, FL`;
+            : `${serviceName} by Sweet Maid in ${locDisplay}`;
         }
       }
     }
@@ -511,6 +519,17 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/14651 Westbrook Cir(?: Apt 312)?, Bradenton, FL(?: 34211)?/gi, `Serving ${clean_name} and nearby Florida communities`);
     newContent = newContent.replace(/Westbrook/gi, '');
     newContent = newContent.replace(/\b34211\b/g, '');
+
+    if (clean_name.toLowerCase() === 'florida') {
+      newContent = newContent.replace(/Florida,\s*FL/gi, 'Florida');
+      newContent = newContent.replace(/in Florida home\b/gi, 'in Florida homes');
+      newContent = newContent.replace(/House Cleaning in Florida FL/gi, 'House Cleaning in Florida');
+      newContent = newContent.replace(/in House, FL/gi, 'in Florida');
+      newContent = newContent.replace(/across Florida and Southwest Florida/gi, 'across Florida');
+      newContent = newContent.replace(/Serving homes and businesses across Florida and nearby Florida communities/gi, 'Serving homes and businesses across Florida communities');
+      newContent = newContent.replace(/Serving Florida and nearby Florida communities/gi, 'Serving communities across Florida');
+      newContent = newContent.replace(/Serving Florida &amp; Nearby:/gi, 'Serving Florida Communities:');
+    }
   }
   
   // Purge any references to non-working / decommissioned service pages from header, mobile menu, and footer
@@ -1323,6 +1342,22 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </a>
         </div>`
+      : (loc_slug === 'home' || clean_name.toLowerCase() === 'florida')
+      ? `<div id="local-map-badge" class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-pink-100 flex flex-col sm:flex-row items-start sm:items-center gap-3 z-10">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 text-sm">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-gray-900">Active Service Area: Florida Statewide</div>
+              <div class="text-[11px] text-gray-600">Serving homeowners &amp; businesses across Florida</div>
+            </div>
+          </div>
+          <a href="/locations/" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all shrink-0">
+            <span>Explore All 200+ Locations</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>`
       : `<div id="local-map-badge" class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-pink-100 flex flex-col sm:flex-row items-start sm:items-center gap-3 z-10">
           <div class="flex items-center gap-2.5">
             <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 text-sm">
@@ -1380,8 +1415,27 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     return (is_sub_page && isSpecificService) ? `/${currentService}-${targetSlug}/` : `/${targetSlug}/`;
   };
 
+  const isFloridaHome = loc_slug === 'home' || clean_name.toLowerCase() === 'florida';
+
+  const floridaKeyCities = [
+    { name: 'Miami', slug: 'miami-fl' },
+    { name: 'Tampa', slug: 'tampa-fl' },
+    { name: 'Orlando', slug: 'orlando-fl' },
+    { name: 'Fort Lauderdale', slug: 'fort-lauderdale-fl' },
+    { name: 'Bradenton', slug: 'bradenton-fl' },
+    { name: 'Sarasota', slug: 'sarasota-fl' },
+    { name: 'Jacksonville', slug: 'jacksonville-fl' },
+    { name: 'St. Petersburg', slug: 'saint-petersburg-fl' },
+    { name: 'West Palm Beach', slug: 'west-palm-beach-fl' },
+    { name: 'Boca Raton', slug: 'boca-raton-fl' },
+    { name: 'Clearwater', slug: 'clearwater-fl' },
+    { name: 'St. Augustine', slug: 'saint-augustine-fl' }
+  ];
+
   // Internal Location Linking for Manatee County, Florida Keys / Monroe County, or Regional nearest locations
-  const internalLocationLinksHtml = isManatee
+  const internalLocationLinksHtml = isFloridaHome
+    ? floridaKeyCities.map(c => `<a href="${getNearbyTargetUrl(c.slug)}" class="px-3.5 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-600 font-medium transition flex items-center gap-2 group" aria-label="Sweet Maid Cleaning Services in ${c.name}, FL"><i class="fa-solid fa-chevron-right text-[10px] text-pink-300 group-hover:translate-x-0.5 transition-transform"></i><span>${c.name}</span></a>`).join('\n')
+    : (isManatee && loc_slug !== 'home')
     ? manateeKeyHubs.map(hub => {
         const isCurrent = hub.slug === loc_slug;
         if (isCurrent) {
@@ -1403,9 +1457,15 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Clean Breadcrumbs and Internal Linking Hub
   const parentRegion = getRegionForCity(loc_slug);
-  const siblingCities = getSiblingCities(loc_slug, 8);
+  const siblingCities = isFloridaHome ? floridaKeyCities.slice(0, 8) : getSiblingCities(loc_slug, 8);
 
-  const breadcrumbsHtml = `
+  const breadcrumbsHtml = isFloridaHome
+    ? `<nav class="flex items-center gap-2 text-sm text-gray-500 mb-8 flex-wrap" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-pink-600 transition">Home</a>
+        <span class="text-gray-300">/</span>
+        <span class="text-gray-800 font-medium">Florida</span>
+      </nav>`
+    : `
     <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8 flex-wrap" aria-label="Breadcrumb">
       <a href="/" class="hover:text-pink-600 transition">Home</a>
       ${parentRegion && parentRegion.slug ? `<span class="text-gray-300">/</span><a href="/${parentRegion.slug}/" class="hover:text-pink-600 transition">${parentRegion.name}</a>` : ''}
@@ -1456,19 +1516,19 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <div class="max-w-4xl mx-auto text-center mb-14">
         <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
           <i class="fa-solid fa-sparkles"></i>
-          <span>${clean_name} Cleaning Services</span>
+          <span>${isFloridaHome ? 'Florida Cleaning Services' : `${clean_name} Cleaning Services`}</span>
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif">${serviceDisplayName} in ${clean_name}, FL</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif">${isFloridaHome ? 'Professional Cleaning Services Across Florida' : `${serviceDisplayName} in ${clean_name}, FL`}</h2>
         <p class="text-gray-700 leading-relaxed text-base md:text-lg mb-4">
-          Sweet Maid Cleaning Service provides reliable residential and commercial cleaning throughout <strong>${clean_name}, Florida</strong>. As a family-owned cleaning company, our teams focus on dependable scheduling, thorough detail work, and tailored cleaning plans for every home and business property.
+          Sweet Maid Cleaning Service provides reliable residential and commercial cleaning throughout <strong>${isFloridaHome ? 'Florida' : `${clean_name}, Florida`}</strong>. As a family-owned cleaning company, our teams focus on dependable scheduling, thorough detail work, and tailored cleaning plans for every home and business property${isFloridaHome ? ' across the state' : ''}.
         </p>
         <p class="text-gray-600 leading-relaxed text-sm md:text-base mb-6">
-          Whether you need recurring housekeeping, a deep seasonal refresh, move-in sanitizing, or professional commercial care in ${clean_name}, our experienced cleaning teams are ready to help.
+          Whether you need recurring housekeeping, a deep seasonal refresh, move-in sanitizing, or professional commercial care in ${isFloridaHome ? 'Florida' : clean_name}, our experienced cleaning teams are ready to help.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="/${loc_slug}/${currentService}/#quote" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 text-sm md:text-base">
+          <a href="${isFloridaHome ? '/#quote' : `/${loc_slug}/${currentService}/#quote`}" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 text-sm md:text-base">
             <i class="fa-solid fa-calendar-check"></i>
-            <span>Request a Quote in ${clean_name}</span>
+            <span>${isFloridaHome ? 'Request a Free Quote in Florida' : `Request a Quote in ${clean_name}`}</span>
           </a>
           <a href="${localPhoneHref}" class="inline-flex items-center gap-2 bg-white text-gray-800 border border-gray-200 hover:bg-gray-50 font-bold px-6 py-3 rounded-full shadow-xs transition-all hover:scale-105 text-sm md:text-base">
             <i class="fa-solid fa-phone text-pink-500"></i>
@@ -1487,8 +1547,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
                 <i class="fa-solid fa-map-location-dot"></i>
               </div>
               <div>
-                <h3 class="font-bold text-gray-900 text-lg">${parentRegion ? parentRegion.name : 'Nearby Service Areas'}</h3>
-                <p class="text-xs text-gray-500">Service locations in this area</p>
+                <h3 class="font-bold text-gray-900 text-lg">${isFloridaHome ? 'Popular Service Areas Across Florida' : (parentRegion ? parentRegion.name : 'Nearby Service Areas')}</h3>
+                <p class="text-xs text-gray-500">${isFloridaHome ? 'Major cities served throughout Florida' : 'Service locations in this area'}</p>
               </div>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-2 gap-2 text-sm">
@@ -1503,7 +1563,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
                 <i class="fa-solid fa-broom"></i>
               </div>
               <div>
-                <h3 class="font-bold text-gray-900 text-lg">Cleaning Services in ${clean_name}</h3>
+                <h3 class="font-bold text-gray-900 text-lg">Cleaning Services in ${isFloridaHome ? 'Florida' : clean_name}</h3>
                 <p class="text-xs text-gray-500">Professional residential & commercial care</p>
               </div>
             </div>
@@ -1680,7 +1740,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(
     /<p class="text-lg text-gray-600 max-w-3xl mx-auto">\s*If you're looking for a reliable and affordable[\s\S]*?Sweet Maid Cleaning Service is your best choice\.\s*<\/p>/i,
     `<p class="text-lg text-gray-600 max-w-3xl mx-auto">
-      See what satisfied homeowners and business clients across <span class="font-bold text-gray-900">${clean_name}, FL</span> are saying about Sweet Maid's cleaning services.
+      See what satisfied homeowners and business clients across <span class="font-bold text-gray-900">${clean_name === 'Florida' ? 'Florida' : `${clean_name}, FL`}</span> are saying about Sweet Maid's cleaning services.
     </p>`
   );
   newContent = newContent.replace(/House Cleaning Service\s+Florida/gi, `${serviceDisplayName} in ${clean_name}`);
@@ -1692,7 +1752,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         <div
           class="inline-flex items-center gap-2 bg-pink-50 text-pink-600 border border-pink-100 px-4 py-2 rounded-lg text-sm font-medium shadow-sm">
           <i class="fa-solid fa-shield-halved"></i>
-          Verified Customer Reviews in ${clean_name}, FL
+          Verified Customer Reviews in ${clean_name === 'Florida' ? 'Florida' : `${clean_name}, FL`}
         </div>
         <div class="flex flex-wrap gap-3 justify-center">
           <a href="https://search.google.com/local/reviews?placeid=ChIJXVApokD-1woRwX50Oy2OwHA" target="_blank" rel="noopener noreferrer"
@@ -1714,15 +1774,17 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   if (pageType === 'about') {
     customH1Inner = '';
   } else if (pageType === 'gallery') {
-    customH1Inner = `Cleaning Results & Service Gallery in <span class="text-pink-300 font-bold">${clean_name}, FL</span>`;
+    customH1Inner = `Cleaning Results & Service Gallery in <span class="text-pink-300 font-bold">${clean_name === 'Florida' ? 'Florida' : `${clean_name}, FL`}</span>`;
 
   } else if (pageType === 'blog') {
     customH1Inner = '';
   } else if (pageType === 'login') {
     customH1Inner = '';
   } else {
-    // service_or_home: Use dynamic zero-duplicate SEO pack H1, keeping homepage locked
-    if ((loc_slug === 'bradenton-fl' || loc_slug === 'home') && !is_sub_page) {
+    // service_or_home: Use dynamic zero-duplicate SEO pack H1, keeping homepage locked to Florida
+    if (loc_slug === 'home' && !is_sub_page) {
+      customH1Inner = 'Professional Cleaning Services Across Florida';
+    } else if (loc_slug === 'bradenton-fl' && !is_sub_page) {
       customH1Inner = 'Professional House Cleaning & Maid Service in Bradenton, FL';
     } else {
       customH1Inner = `${seoPack.h1}`;
@@ -1736,7 +1798,19 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${seoPack.heroSub}$2`);
 
       // Inject nearby locations pill row directly near the H1 tag in Hero
-      const heroLocations = getNearestLocations(loc_slug, 7);
+      const isHeroHome = loc_slug === 'home' || clean_name.toLowerCase() === 'florida';
+      const floridaPills = [
+        { name: 'Miami', slug: 'miami-fl' },
+        { name: 'Tampa', slug: 'tampa-fl' },
+        { name: 'Orlando', slug: 'orlando-fl' },
+        { name: 'Fort Lauderdale', slug: 'fort-lauderdale-fl' },
+        { name: 'Bradenton', slug: 'bradenton-fl' },
+        { name: 'Sarasota', slug: 'sarasota-fl' },
+        { name: 'Jacksonville', slug: 'jacksonville-fl' },
+        { name: 'St. Petersburg', slug: 'saint-petersburg-fl' },
+        { name: 'West Palm Beach', slug: 'west-palm-beach-fl' }
+      ];
+      const heroLocations = isHeroHome ? floridaPills : getNearestLocations(loc_slug, 7);
       const heroLocationPills = heroLocations.map(c => 
         `<a href="${getNearbyUrl(c.slug)}" class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/20 hover:bg-white/35 text-white backdrop-blur-md border border-white/30 hover:border-pink-200 hover:scale-105 shadow-sm transition-all duration-200">${c.name}</a>`
       ).join('\n        ');
@@ -1745,7 +1819,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <!-- Hero Nearby Service Areas Pill Row -->
       <div class="mt-3 mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto px-4" aria-label="Nearby Cleaning Service Locations">
         <span class="inline-flex items-center gap-1.5 text-xs font-bold text-pink-200 uppercase tracking-wider mr-1">
-          <i class="fa-solid fa-location-dot text-pink-400"></i> Serving ${clean_name} &amp; Nearby:
+          <i class="fa-solid fa-location-dot text-pink-400"></i> ${isHeroHome ? 'Serving Florida Communities:' : `Serving ${clean_name} &amp; Nearby:`}
         </span>
         ${heroLocationPills}
         <a href="/locations/" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-bold bg-pink-500/85 hover:bg-pink-500 text-white backdrop-blur-md border border-pink-300/40 hover:scale-105 shadow-md transition-all duration-200">

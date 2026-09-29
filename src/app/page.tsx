@@ -4,28 +4,28 @@ import { formatName } from '@/lib/data';
 import { BUSINESS_INFO, CANONICAL_HOST, REGIONS } from '@/config/site-structure';
 
 export const metadata: Metadata = {
-  title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
-  description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers maid services, deep cleaning, and move-out cleans. Request a free estimate today.',
+  title: 'Professional Cleaning Services Across Florida | Sweet Maid',
+  description: 'Looking for trusted house cleaning & maid services across Florida? Sweet Maid offers professional home cleaning, deep cleaning, and turnover services statewide. Request a free estimate today.',
   alternates: {
     canonical: `${CANONICAL_HOST}/`,
   },
   openGraph: {
-    title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
-    description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers maid services, deep cleaning, and move-out cleans. Request a free estimate today.',
+    title: 'Professional Cleaning Services Across Florida | Sweet Maid',
+    description: 'Looking for trusted house cleaning & maid services across Florida? Sweet Maid offers professional home cleaning, deep cleaning, and turnover services statewide. Request a free estimate today.',
     url: `${CANONICAL_HOST}/`,
     type: 'website',
     images: [`${CANONICAL_HOST}/images/logo.png`],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'House Cleaning & Maid Services in Bradenton, FL | Sweet Maid',
-    description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers maid services, deep cleaning, and move-out cleans. Request a free estimate today.',
+    title: 'Professional Cleaning Services Across Florida | Sweet Maid',
+    description: 'Looking for trusted house cleaning & maid services across Florida? Sweet Maid offers professional home cleaning, deep cleaning, and turnover services statewide. Request a free estimate today.',
     images: [`${CANONICAL_HOST}/images/logo.png`],
   }
 };
 
 export default function HomePage() {
-  const cleanName = formatName('Bradenton');
+  const cleanName = 'Florida';
   const locationSlug = 'home';
   
   const rawHtml = getTemplate('home');
@@ -35,14 +35,18 @@ export default function HomePage() {
   // Pass is_sub_page as false to keep the `/images/` path correctly referenced
   const localizedHtml = localizedReplace(bodyContent, cleanName, locationSlug, false, 'house-cleaning');
 
-  const manateePlaces = REGIONS.manatee.placesServed.slice(0, 25);
+  const floridaPlaces = Array.from(
+    new Set(
+      Object.values(REGIONS).flatMap(r => r.placesServed)
+    )
+  ).slice(0, 45);
 
   const homeSchemas = [
     {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "CleaningService", "Organization"],
       "name": BUSINESS_INFO.name,
-      "description": "Family-owned house cleaning and maid service serving Bradenton and surrounding Manatee County communities.",
+      "description": "Family-owned house cleaning and professional maid service serving homes, condominiums, vacation rentals, and commercial spaces across Florida.",
       "url": `${CANONICAL_HOST}/`,
       "logo": `${CANONICAL_HOST}/images/logo.png`,
       "image": generatePageImageSchema(cleanName, "House Cleaning"),
@@ -56,7 +60,7 @@ export default function HomePage() {
         "opens": "08:00",
         "closes": "18:00"
       },
-      "areaServed": manateePlaces.map(place => ({
+      "areaServed": floridaPlaces.map(place => ({
         "@type": "Place",
         "name": `${place}, FL`
       })),
@@ -80,26 +84,26 @@ export default function HomePage() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What cleaning services does Sweet Maid provide in Bradenton?",
+          "name": "What cleaning services does Sweet Maid provide across Florida?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sweet Maid Cleaning Service provides comprehensive residential and commercial cleaning in Bradenton, including recurring maid services, deep cleaning resets, move-in and move-out turnovers, Airbnb vacation rental cleaning, and office janitorial care."
+            "text": "Sweet Maid Cleaning Service provides comprehensive residential and commercial cleaning throughout Florida, including recurring maid services, deep cleaning resets, move-in and move-out turnovers, Airbnb vacation rental turnovers, and office janitorial care."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I request a quote or book cleaning in Bradenton?",
+          "name": "How do I request a quote or book cleaning service in Florida?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can request a free estimate by calling our team directly at (941) 222-2080 or submitting your home details through our online quote request form."
+            "text": "You can request a free estimate anywhere in Florida by calling our dispatch team directly at (941) 222-2080 or booking online through our website."
           }
         },
         {
           "@type": "Question",
-          "name": "What days and hours is Sweet Maid open in Bradenton?",
+          "name": "What areas and cities in Florida does Sweet Maid serve?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our customer service and dispatch teams operate Monday through Saturday from 8:00 AM to 6:00 PM."
+            "text": "We proudly serve homeowners and businesses across Florida, including Bradenton, Sarasota, Tampa, St. Petersburg, Orlando, Miami, Fort Lauderdale, West Palm Beach, Jacksonville, St. Augustine, and surrounding communities."
           }
         },
         {
@@ -107,7 +111,7 @@ export default function HomePage() {
           "name": "Do I need to supply cleaning products or equipment?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our cleaning teams arrive equipped with vacuums, microfiber cloths, and cleaning solutions needed to service your home."
+            "text": "Our professional cleaning teams arrive fully equipped with commercial HEPA vacuums, microfiber cloths, and eco-friendly cleaning solutions needed to service your home."
           }
         }
       ]
