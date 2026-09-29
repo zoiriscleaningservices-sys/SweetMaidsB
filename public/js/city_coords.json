@@ -4043,5 +4043,30 @@
     "name": "Golf",
     "lat": 26.5073,
     "lng": -80.1081
+  },
+  "lake-buena-vista-fl": {
+    "name": "Lake Buena Vista",
+    "lat": 28.3772,
+    "lng": -81.5159
+  },
+  "dr-phillips-fl": {
+    "name": "Dr. Phillips",
+    "lat": 28.4528,
+    "lng": -81.4937
+  },
+  "lake-nona-fl": {
+    "name": "Lake Nona",
+    "lat": 28.3758,
+    "lng": -81.2687
+  },
+  "avalon-park-fl": {
+    "name": "Avalon Park",
+    "lat": 28.5392,
+    "lng": -81.1648
+  },
+  "bay-lake-fl": {
+    "name": "Bay Lake",
+    "lat": 28.3883,
+    "lng": -81.5665
   }
 }

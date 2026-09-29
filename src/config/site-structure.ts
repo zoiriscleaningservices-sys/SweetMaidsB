@@ -254,10 +254,62 @@ export const REGIONS: Record<string, RegionConfig> = {
   orange: {
     slug: 'orlando-fl',
     county: 'Orange County',
-    name: 'Orange County',
-    ready: false,
+    name: 'Orange County (Greater Orlando)',
+    ready: true,
     phone: '(941) 222-2080',
-    placesServed: ['Orlando', 'Winter Park', 'Ocoee', 'Winter Garden', 'Apopka', 'Windermere', 'Maitland']
+    placesServed: [
+      'Orlando', 'Winter Park', 'Winter Garden', 'Ocoee', 'Apopka', 'Windermere',
+      'Maitland', 'Lake Buena Vista', 'Belle Isle', 'Edgewood', 'Eatonville', 'Oakland',
+      'Dr. Phillips', 'Hunters Creek', 'Horizon West', 'Lake Nona', 'Avalon Park', 'Bay Lake'
+    ]
+  },
+  seminole: {
+    slug: 'sanford-fl',
+    county: 'Seminole County',
+    name: 'Seminole County',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Sanford', 'Altamonte Springs', 'Oviedo', 'Winter Springs', 'Casselberry', 'Longwood', 'Lake Mary']
+  },
+  osceola: {
+    slug: 'kissimmee-fl',
+    county: 'Osceola County',
+    name: 'Osceola County',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Kissimmee', 'St. Cloud', 'Celebration', 'Poinciana']
+  },
+  lake: {
+    slug: 'clermont-fl',
+    county: 'Lake County',
+    name: 'Lake County',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Clermont', 'Leesburg', 'Eustis', 'Mount Dora', 'Tavares', 'Minneola', 'Groveland', 'Lady Lake', 'Mascotte', 'Fruitland Park']
+  },
+  polk: {
+    slug: 'lakeland-fl',
+    county: 'Polk County',
+    name: 'Polk County',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Lakeland', 'Winter Haven', 'Haines City', 'Davenport', 'Bartow', 'Lake Wales', 'Auburndale', 'Lake Alfred', 'Polk City', 'Mulberry']
+  },
+  volusia: {
+    slug: 'daytona-beach-fl',
+    county: 'Volusia County',
+    name: 'Volusia County',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Daytona Beach', 'Deltona', 'DeLand', 'Port Orange', 'Ormond Beach', 'New Smyrna Beach', 'Orange City', 'DeBary', 'Edgewater', 'Holly Hill', 'Ponce Inlet']
+  },
+  brevard: {
+    slug: 'melbourne-fl',
+    county: 'Brevard County',
+    name: 'Brevard County (Space Coast)',
+    ready: true,
+    phone: '(941) 222-2080',
+    placesServed: ['Melbourne', 'Palm Bay', 'Titusville', 'Cocoa', 'Cocoa Beach', 'Rockledge', 'Cape Canaveral', 'Satellite Beach', 'Merritt Island', 'West Melbourne', 'Indialantic', 'Indian Harbour Beach', 'Melbourne Beach']
   },
   duval: {
     slug: 'jacksonville-fl',
@@ -448,7 +500,94 @@ export const CITY_PAGES: Record<string, CityConfig> = {
   'briny-breezes-fl': { slug: 'briny-breezes-fl', name: 'Briny Breezes', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to West Palm Beach Base' },
   'cloud-lake-fl': { slug: 'cloud-lake-fl', name: 'Cloud Lake', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '3 miles to West Palm Beach Base' },
   'glen-ridge-fl': { slug: 'glen-ridge-fl', name: 'Glen Ridge', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '3 miles to West Palm Beach Base' },
-  'golf-fl': { slug: 'golf-fl', name: 'Golf', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '17 miles to West Palm Beach Base' }
+  'golf-fl': { slug: 'golf-fl', name: 'Golf', county: 'Palm Beach County', hasOfficeOrTeam: false, nearestBaseDistance: '17 miles to West Palm Beach Base' },
+
+  // Orange County (Greater Orlando Core & Suburbs)
+  'orlando-fl': { slug: 'orlando-fl', name: 'Orlando', county: 'Orange County', hasOfficeOrTeam: true, nearestBaseDistance: '0 miles (Orlando Team)' },
+  'winter-park-fl': { slug: 'winter-park-fl', name: 'Winter Park', county: 'Orange County', hasOfficeOrTeam: true, nearestBaseDistance: '5 miles to Orlando Base' },
+  'winter-garden-fl': { slug: 'winter-garden-fl', name: 'Winter Garden', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to Orlando Base' },
+  'ocoee-fl': { slug: 'ocoee-fl', name: 'Ocoee', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '11 miles to Orlando Base' },
+  'apopka-fl': { slug: 'apopka-fl', name: 'Apopka', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to Orlando Base' },
+  'windermere-fl': { slug: 'windermere-fl', name: 'Windermere', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '12 miles to Orlando Base' },
+  'maitland-fl': { slug: 'maitland-fl', name: 'Maitland', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '8 miles to Orlando Base' },
+  'lake-buena-vista-fl': { slug: 'lake-buena-vista-fl', name: 'Lake Buena Vista', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to Orlando Base' },
+  'belle-isle-fl': { slug: 'belle-isle-fl', name: 'Belle Isle', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to Orlando Base' },
+  'edgewood-fl': { slug: 'edgewood-fl', name: 'Edgewood', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '4 miles to Orlando Base' },
+  'eatonville-fl': { slug: 'eatonville-fl', name: 'Eatonville', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '6 miles to Orlando Base' },
+  'oakland-fl': { slug: 'oakland-fl', name: 'Oakland', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to Orlando Base' },
+  'dr-phillips-fl': { slug: 'dr-phillips-fl', name: 'Dr. Phillips', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '10 miles to Orlando Base' },
+  'hunters-creek-fl': { slug: 'hunters-creek-fl', name: 'Hunters Creek', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '13 miles to Orlando Base' },
+  'horizon-west-fl': { slug: 'horizon-west-fl', name: 'Horizon West', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '17 miles to Orlando Base' },
+  'lake-nona-fl': { slug: 'lake-nona-fl', name: 'Lake Nona', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '15 miles to Orlando Base' },
+  'avalon-park-fl': { slug: 'avalon-park-fl', name: 'Avalon Park', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to Orlando Base' },
+  'bay-lake-fl': { slug: 'bay-lake-fl', name: 'Bay Lake', county: 'Orange County', hasOfficeOrTeam: false, nearestBaseDistance: '18 miles to Orlando Base' },
+
+  // Seminole County
+  'sanford-fl': { slug: 'sanford-fl', name: 'Sanford', county: 'Seminole County', hasOfficeOrTeam: true, nearestBaseDistance: '22 miles to Orlando Base' },
+  'altamonte-springs-fl': { slug: 'altamonte-springs-fl', name: 'Altamonte Springs', county: 'Seminole County', hasOfficeOrTeam: false, nearestBaseDistance: '9 miles to Orlando Base' },
+  'oviedo-fl': { slug: 'oviedo-fl', name: 'Oviedo', county: 'Seminole County', hasOfficeOrTeam: false, nearestBaseDistance: '14 miles to Orlando Base' },
+  'winter-springs-fl': { slug: 'winter-springs-fl', name: 'Winter Springs', county: 'Seminole County', hasOfficeOrTeam: false, nearestBaseDistance: '13 miles to Orlando Base' },
+  'casselberry-fl': { slug: 'casselberry-fl', name: 'Casselberry', county: 'Seminole County', hasOfficeOrTeam: false, nearestBaseDistance: '11 miles to Orlando Base' },
+  'longwood-fl': { slug: 'longwood-fl', name: 'Longwood', county: 'Seminole County', hasOfficeOrTeam: false, nearestBaseDistance: '13 miles to Orlando Base' },
+  'lake-mary-fl': { slug: 'lake-mary-fl', name: 'Lake Mary', county: 'Seminole County', hasOfficeOrTeam: false, nearestBaseDistance: '16 miles to Orlando Base' },
+
+  // Osceola County
+  'kissimmee-fl': { slug: 'kissimmee-fl', name: 'Kissimmee', county: 'Osceola County', hasOfficeOrTeam: true, nearestBaseDistance: '18 miles to Orlando Base' },
+  'st-cloud-fl': { slug: 'st-cloud-fl', name: 'St. Cloud', county: 'Osceola County', hasOfficeOrTeam: false, nearestBaseDistance: '25 miles to Orlando Base' },
+  'celebration-fl': { slug: 'celebration-fl', name: 'Celebration', county: 'Osceola County', hasOfficeOrTeam: false, nearestBaseDistance: '20 miles to Orlando Base' },
+  'poinciana-fl': { slug: 'poinciana-fl', name: 'Poinciana', county: 'Osceola County', hasOfficeOrTeam: false, nearestBaseDistance: '32 miles to Orlando Base' },
+
+  // Lake County
+  'clermont-fl': { slug: 'clermont-fl', name: 'Clermont', county: 'Lake County', hasOfficeOrTeam: true, nearestBaseDistance: '22 miles to Orlando Base' },
+  'leesburg-fl': { slug: 'leesburg-fl', name: 'Leesburg', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '42 miles to Orlando Base' },
+  'eustis-fl': { slug: 'eustis-fl', name: 'Eustis', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '35 miles to Orlando Base' },
+  'mount-dora-fl': { slug: 'mount-dora-fl', name: 'Mount Dora', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '30 miles to Orlando Base' },
+  'tavares-fl': { slug: 'tavares-fl', name: 'Tavares', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '36 miles to Orlando Base' },
+  'minneola-fl': { slug: 'minneola-fl', name: 'Minneola', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '24 miles to Orlando Base' },
+  'groveland-fl': { slug: 'groveland-fl', name: 'Groveland', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '28 miles to Orlando Base' },
+  'lady-lake-fl': { slug: 'lady-lake-fl', name: 'Lady Lake', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '50 miles to Orlando Base' },
+  'mascotte-fl': { slug: 'mascotte-fl', name: 'Mascotte', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '31 miles to Orlando Base' },
+  'fruitland-park-fl': { slug: 'fruitland-park-fl', name: 'Fruitland Park', county: 'Lake County', hasOfficeOrTeam: false, nearestBaseDistance: '46 miles to Orlando Base' },
+
+  // Polk County
+  'lakeland-fl': { slug: 'lakeland-fl', name: 'Lakeland', county: 'Polk County', hasOfficeOrTeam: true, nearestBaseDistance: '54 miles to Orlando Base' },
+  'winter-haven-fl': { slug: 'winter-haven-fl', name: 'Winter Haven', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '48 miles to Orlando Base' },
+  'haines-city-fl': { slug: 'haines-city-fl', name: 'Haines City', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '38 miles to Orlando Base' },
+  'davenport-fl': { slug: 'davenport-fl', name: 'Davenport', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '33 miles to Orlando Base' },
+  'bartow-fl': { slug: 'bartow-fl', name: 'Bartow', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '58 miles to Orlando Base' },
+  'lake-wales-fl': { slug: 'lake-wales-fl', name: 'Lake Wales', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '52 miles to Orlando Base' },
+  'auburndale-fl': { slug: 'auburndale-fl', name: 'Auburndale', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '48 miles to Orlando Base' },
+  'lake-alfred-fl': { slug: 'lake-alfred-fl', name: 'Lake Alfred', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '44 miles to Orlando Base' },
+  'polk-city-fl': { slug: 'polk-city-fl', name: 'Polk City', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '42 miles to Orlando Base' },
+  'mulberry-fl': { slug: 'mulberry-fl', name: 'Mulberry', county: 'Polk County', hasOfficeOrTeam: false, nearestBaseDistance: '62 miles to Orlando Base' },
+
+  // Volusia County
+  'daytona-beach-fl': { slug: 'daytona-beach-fl', name: 'Daytona Beach', county: 'Volusia County', hasOfficeOrTeam: true, nearestBaseDistance: '55 miles to Orlando Base' },
+  'deltona-fl': { slug: 'deltona-fl', name: 'Deltona', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '28 miles to Orlando Base' },
+  'deland-fl': { slug: 'deland-fl', name: 'DeLand', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '38 miles to Orlando Base' },
+  'port-orange-fl': { slug: 'port-orange-fl', name: 'Port Orange', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '50 miles to Orlando Base' },
+  'ormond-beach-fl': { slug: 'ormond-beach-fl', name: 'Ormond Beach', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '60 miles to Orlando Base' },
+  'new-smyrna-beach-fl': { slug: 'new-smyrna-beach-fl', name: 'New Smyrna Beach', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '52 miles to Orlando Base' },
+  'orange-city-fl': { slug: 'orange-city-fl', name: 'Orange City', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '32 miles to Orlando Base' },
+  'debary-fl': { slug: 'debary-fl', name: 'DeBary', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '26 miles to Orlando Base' },
+  'edgewater-fl': { slug: 'edgewater-fl', name: 'Edgewater', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '54 miles to Orlando Base' },
+  'holly-hill-fl': { slug: 'holly-hill-fl', name: 'Holly Hill', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '57 miles to Orlando Base' },
+  'ponce-inlet-fl': { slug: 'ponce-inlet-fl', name: 'Ponce Inlet', county: 'Volusia County', hasOfficeOrTeam: false, nearestBaseDistance: '58 miles to Orlando Base' },
+
+  // Brevard County (Space Coast)
+  'melbourne-fl': { slug: 'melbourne-fl', name: 'Melbourne', county: 'Brevard County', hasOfficeOrTeam: true, nearestBaseDistance: '68 miles to Orlando Base' },
+  'palm-bay-fl': { slug: 'palm-bay-fl', name: 'Palm Bay', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '72 miles to Orlando Base' },
+  'titusville-fl': { slug: 'titusville-fl', name: 'Titusville', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '40 miles to Orlando Base' },
+  'cocoa-fl': { slug: 'cocoa-fl', name: 'Cocoa', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '46 miles to Orlando Base' },
+  'cocoa-beach-fl': { slug: 'cocoa-beach-fl', name: 'Cocoa Beach', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '56 miles to Orlando Base' },
+  'rockledge-fl': { slug: 'rockledge-fl', name: 'Rockledge', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '50 miles to Orlando Base' },
+  'cape-canaveral-fl': { slug: 'cape-canaveral-fl', name: 'Cape Canaveral', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '54 miles to Orlando Base' },
+  'satellite-beach-fl': { slug: 'satellite-beach-fl', name: 'Satellite Beach', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '64 miles to Orlando Base' },
+  'merritt-island-fl': { slug: 'merritt-island-fl', name: 'Merritt Island', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '50 miles to Orlando Base' },
+  'west-melbourne-fl': { slug: 'west-melbourne-fl', name: 'West Melbourne', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '66 miles to Orlando Base' },
+  'indialantic-fl': { slug: 'indialantic-fl', name: 'Indialantic', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '70 miles to Orlando Base' },
+  'indian-harbour-beach-fl': { slug: 'indian-harbour-beach-fl', name: 'Indian Harbour Beach', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '66 miles to Orlando Base' },
+  'melbourne-beach-fl': { slug: 'melbourne-beach-fl', name: 'Melbourne Beach', county: 'Brevard County', hasOfficeOrTeam: false, nearestBaseDistance: '72 miles to Orlando Base' }
 };
 
 // 8. Flat Service-First Combo Pages (Section 9A: lookup table)
@@ -530,7 +669,20 @@ export const COMBO_PAGES: Record<string, ComboConfig> = {
   'house-cleaning-delray-beach-fl': { slug: 'house-cleaning-delray-beach-fl', service: 'house-cleaning', citySlug: 'delray-beach-fl', cityName: 'Delray Beach' },
   'house-cleaning-boynton-beach-fl': { slug: 'house-cleaning-boynton-beach-fl', service: 'house-cleaning', citySlug: 'boynton-beach-fl', cityName: 'Boynton Beach' },
   'house-cleaning-jupiter-fl': { slug: 'house-cleaning-jupiter-fl', service: 'house-cleaning', citySlug: 'jupiter-fl', cityName: 'Jupiter' },
-  'airbnb-cleaning-jupiter-fl': { slug: 'airbnb-cleaning-jupiter-fl', service: 'airbnb-cleaning', citySlug: 'jupiter-fl', cityName: 'Jupiter' }
+  'airbnb-cleaning-jupiter-fl': { slug: 'airbnb-cleaning-jupiter-fl', service: 'airbnb-cleaning', citySlug: 'jupiter-fl', cityName: 'Jupiter' },
+
+  // Orlando & Central Florida Combos
+  'house-cleaning-orlando-fl': { slug: 'house-cleaning-orlando-fl', service: 'house-cleaning', citySlug: 'orlando-fl', cityName: 'Orlando' },
+  'deep-cleaning-orlando-fl': { slug: 'deep-cleaning-orlando-fl', service: 'deep-cleaning', citySlug: 'orlando-fl', cityName: 'Orlando' },
+  'airbnb-cleaning-orlando-fl': { slug: 'airbnb-cleaning-orlando-fl', service: 'airbnb-cleaning', citySlug: 'orlando-fl', cityName: 'Orlando' },
+  'commercial-cleaning-orlando-fl': { slug: 'commercial-cleaning-orlando-fl', service: 'commercial-cleaning', citySlug: 'orlando-fl', cityName: 'Orlando' },
+  'house-cleaning-winter-park-fl': { slug: 'house-cleaning-winter-park-fl', service: 'house-cleaning', citySlug: 'winter-park-fl', cityName: 'Winter Park' },
+  'house-cleaning-kissimmee-fl': { slug: 'house-cleaning-kissimmee-fl', service: 'house-cleaning', citySlug: 'kissimmee-fl', cityName: 'Kissimmee' },
+  'airbnb-cleaning-kissimmee-fl': { slug: 'airbnb-cleaning-kissimmee-fl', service: 'airbnb-cleaning', citySlug: 'kissimmee-fl', cityName: 'Kissimmee' },
+  'house-cleaning-clermont-fl': { slug: 'house-cleaning-clermont-fl', service: 'house-cleaning', citySlug: 'clermont-fl', cityName: 'Clermont' },
+  'house-cleaning-lakeland-fl': { slug: 'house-cleaning-lakeland-fl', service: 'house-cleaning', citySlug: 'lakeland-fl', cityName: 'Lakeland' },
+  'house-cleaning-daytona-beach-fl': { slug: 'house-cleaning-daytona-beach-fl', service: 'house-cleaning', citySlug: 'daytona-beach-fl', cityName: 'Daytona Beach' },
+  'house-cleaning-melbourne-fl': { slug: 'house-cleaning-melbourne-fl', service: 'house-cleaning', citySlug: 'melbourne-fl', cityName: 'Melbourne' }
 };
 
 const SERVICES_BY_LEN = [...SERVICES].sort((a, b) => b.length - a.length);

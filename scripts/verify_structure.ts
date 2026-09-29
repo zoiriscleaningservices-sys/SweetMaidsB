@@ -94,10 +94,10 @@ try {
   }
 
   const cityCount = Object.keys(CITY_PAGES).length;
-  if (cityCount > 150) {
-    reportError('Site Config', `City pages count (${cityCount}) exceeds 150 cap`);
+  if (cityCount > 250) {
+    reportError('Site Config', `City pages count (${cityCount}) exceeds 250 cap`);
   } else {
-    reportPass('Site Config', `City pages count (${cityCount}) is under 150 cap (130 approved cities)`);
+    reportPass('Site Config', `City pages count (${cityCount}) is under 250 cap (203 approved cities)`);
   }
 
   // Pricing verification
@@ -265,12 +265,16 @@ try {
     '/fort-lauderdale-fl/',
     '/boca-raton-fl/',
     '/west-palm-beach-fl/',
+    '/orlando-fl/',
+    '/kissimmee-fl/',
+    '/lakeland-fl/',
     '/house-cleaning-bradenton-fl/',
     '/house-cleaning-palmetto-fl/',
     '/move-in-out-cleaning-brandon-fl/',
     '/house-cleaning-longboat-key-fl/',
     '/house-cleaning-boca-raton-fl/',
-    '/house-cleaning-fort-lauderdale-fl/'
+    '/house-cleaning-fort-lauderdale-fl/',
+    '/house-cleaning-orlando-fl/'
   ];
 
   let loopFails = 0;
@@ -305,10 +309,10 @@ async function runAsyncChecks() {
     const locMatches = xmlBody.match(/<loc>(.*?)<\/loc>/g) || [];
     const urlCount = locMatches.length;
 
-    if (urlCount < 1400 || urlCount > 2000) {
-      reportError('Sitemap Rebuild', `Expected URL count between 1,400 and 2,000, found ${urlCount}`);
+    if (urlCount < 2000 || urlCount > 3000) {
+      reportError('Sitemap Rebuild', `Expected URL count between 2,000 and 3,000, found ${urlCount}`);
     } else {
-      reportPass('Sitemap Rebuild', `Sitemap contains ${urlCount} clean URLs (under 2,000 cap)`);
+      reportPass('Sitemap Rebuild', `Sitemap contains ${urlCount} clean URLs (under 3,000 cap)`);
     }
 
     // Check all URLs start with canonical https://www.sweetmaidcleaning.com

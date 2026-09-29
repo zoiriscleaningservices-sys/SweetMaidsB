@@ -56,8 +56,8 @@ export default function LocationsDirectoryClient({ locations }: LocationsDirecto
           const isTampa = lat >= 27.6 && lat <= 28.3 && lng >= -82.9 && lng <= -82.1;
           if (!isTampa) return false;
         } else if (selectedRegion === 'orlando') {
-          // Orlando / Central Florida
-          const isOrlando = lat >= 28.1 && lat <= 29.0 && lng >= -81.9 && lng <= -80.9;
+          // Orlando / Central Florida: Orange, Seminole, Osceola, Lake, Polk, Volusia, Brevard
+          const isOrlando = lat >= 27.7 && lat <= 29.5 && lng >= -82.3 && lng <= -80.4;
           if (!isOrlando) return false;
         } else if (selectedRegion === 'swfl') {
           // Southwest Florida: Manatee, Sarasota, Charlotte, Lee, Collier
