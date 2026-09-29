@@ -720,49 +720,44 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Navigation Links - always service-first
   for (const s_slug of serviceSlugs) {
-    if (pageType !== 'login' && loc_slug) {
-      const citySuffix = (loc_slug === 'home' || loc_slug === 'bradenton-fl') ? 'bradenton-fl' : loc_slug;
-      const flatCombo = `${s_slug}-${citySuffix}`;
+    if (pageType !== 'login' && loc_slug && loc_slug !== 'home') {
+      const flatCombo = `${s_slug}-${loc_slug}`;
       newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${flatCombo}/"`);
       newContent = newContent.replace(new RegExp(`href="/${s_slug}/"`, 'g'), `href="/${flatCombo}/"`);
       newContent = newContent.replace(new RegExp(`href="https://(?:www\\.)?sweetmaidcleaning\\.com/(?:[a-z0-9-]+/)*${s_slug}/"`, 'g'), `href="https://www.sweetmaidcleaning.com/${flatCombo}/"`);
     } else {
       newContent = newContent.replace(new RegExp(`href="/(?:[a-z0-9-]+/)+${s_slug}/"`, 'g'), `href="/${s_slug}/"`);
+      newContent = newContent.replace(new RegExp(`href="https://(?:www\\.)?sweetmaidcleaning\\.com/(?:[a-z0-9-]+/)*${s_slug}/"`, 'g'), `href="/${s_slug}/"`);
     }
   }
   
-  if (pageType !== 'login' && loc_slug) {
-    newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, `href="/${loc_slug}/about/"`);
-    newContent = newContent.replace(/href="\/about\/"/g, `href="/${loc_slug}/about/"`);
-    
-    newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
-    newContent = newContent.replace(/href="\/gallery\/"/g, `href="/${loc_slug}/gallery/"`);
+  // Header Navigation: About Us, Blog, Gallery ALWAYS point cleanly to sitewide canonical pages
+  newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, 'href="/about/"');
+  newContent = newContent.replace(/href="\/about\/"/g, 'href="/about/"');
+  newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, 'href="/gallery/"');
+  newContent = newContent.replace(/href="\/gallery\/"/g, 'href="/gallery/"');
+  newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, 'href="/blog/"');
+  newContent = newContent.replace(/href="\/blog\/"/g, 'href="/blog/"');
 
-    newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, `href="/${loc_slug}/blog/"`);
-    newContent = newContent.replace(/href="\/blog\/"/g, `href="/${loc_slug}/blog/"`);
-  } else {
-    newContent = newContent.replace(/href="\/[^/]+\/about\/"/g, `href="/about/"`);
-    newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, `href="/gallery/"`);
-    newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, `href="/blog/"`);
-  }
-
-  // Explicitly fix corrupted Home links and logos
-  if (pageType !== 'login' && loc_slug) {
-    newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/${loc_slug}/"$1>Home</a>`);
-    newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, `<a href="/${loc_slug}/"$1class="flex items-center group">`);
-    newContent = newContent.replace(/href="\/home\/"/g, `href="/${loc_slug}/"`);
-  } else {
-    newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, `<a href="/"$1>Home</a>`);
-    newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, `<a href="/"$1class="flex items-center group">`);
-    newContent = newContent.replace(/href="\/home\/"/g, `href="/"`);
-  }
+  // Explicitly fix Home links and logos - ALWAYS navigate to root '/' across ALL pages
+  newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, '<a href="/"$1>Home</a>');
+  newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, '<a href="/"$1class="flex items-center group">');
+  newContent = newContent.replace(/href="\/home\/"/g, 'href="/"');
+  newContent = newContent.replace(/href="https:\/\/www\.sweetmaidcleaning\.com\/"/g, 'href="/"');
 
   // Replace Logo with the new uploaded brand logo
   newContent = newContent.replace(/https:\/\/i\.ibb\.co\/PzPDfC1N\/Whats-App-Image-2026-02-09-at-4-52-59-PM-Picsart-Background-Remover\.png/g, '/images/logo.png');
 
+  // Localize top header bar on location pages
+  if (loc_slug && loc_slug !== 'home' && clean_name) {
+    newContent = newContent.replace(/Professional Cleaning Service in\s+Bradenton/gi, `Professional Cleaning Service in ${clean_name}`);
+  }
+
   const isSpecificService = serviceSlugs.includes(currentService);
-  const targetServiceSuffix = (is_sub_page && isSpecificService) ? `${currentService}/` : '';
   const nearestLocations = getNearestLocations(loc_slug, 12);
+  const getNearbyUrl = (citySlug: string) => {
+    return (is_sub_page && isSpecificService) ? `/${currentService}-${citySlug}/` : `/${citySlug}/`;
+  };
 
   // 1. Transform Desktop Header "Locations" dropdown trigger into an active clickable link to /locations/
   newContent = newContent.replace(
@@ -779,7 +774,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   if (pageType !== 'login') {
     // Dynamically compute and inject the 100% geographically nearest locations
     const desktopNearbyHtml = nearestLocations.map(c => 
-      `<a href="/${c.slug}/${targetServiceSuffix}" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">${c.name}</a>`
+      `<a href="${getNearbyUrl(c.slug)}" class="block px-3 py-2 rounded-xl hover:bg-pink-50 text-gray-700 hover:text-pink-400 font-medium text-sm transition">${c.name}</a>`
     ).join('\n');
 
     const mobileNearbyHtml = `
@@ -791,7 +786,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         <i class="fa-solid fa-arrow-right text-xs"></i>
       </a>
       ${nearestLocations.map(c => 
-        `<a href="/${c.slug}/${targetServiceSuffix}" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-location-dot text-pink-300 w-5"></i><span>${c.name}</span></a>`
+        `<a href="${getNearbyUrl(c.slug)}" class="mobile-link flex items-center gap-3 p-3 rounded-xl hover:bg-white text-gray-700 font-medium transition-all"><i class="fa-solid fa-location-dot text-pink-300 w-5"></i><span>${c.name}</span></a>`
       ).join('\n')}
       <a href="/locations/" class="mobile-link flex items-center justify-center p-2.5 mt-1 rounded-xl bg-white hover:bg-pink-50 text-pink-600 font-bold text-xs uppercase tracking-wider border border-pink-200 transition-all">
         <span>Browse All 799+ Florida Cities</span> <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
@@ -811,7 +806,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     // Also update footer "Locations We Serve" grid with the top 28 closest neighboring locations
     const nearestFooterLocations = getNearestLocations(loc_slug, 28);
     const footerGridHtml = nearestFooterLocations.map(c => 
-      `<a href="/${c.slug}/${targetServiceSuffix}" class="hover:text-pink-400 transition-colors">${c.name}</a>`
+      `<a href="${getNearbyUrl(c.slug)}" class="hover:text-pink-400 transition-colors">${c.name}</a>`
     ).join('\n');
 
     newContent = newContent.replace(
@@ -1552,10 +1547,13 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     // Strip any raw legacy schemas from templates before injecting verified schema
     newContent = newContent.replace(/<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi, '');
     newContent += `\n<script type="application/ld+json">${JSON.stringify(aboutSchema)}</script>`;
-  } else if (pageType !== 'login') {
+  } else if (pageType !== 'login' && loc_slug !== 'home') {
     // Strip any raw legacy schemas from templates before injecting verified schema
     newContent = newContent.replace(/<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi, '');
     newContent += `\n<script type="application/ld+json">${seoPack.schemaJson}</script>`;
+  } else if (loc_slug === 'home') {
+    // Strip legacy schemas on homepage; page.tsx injects official structured data
+    newContent = newContent.replace(/<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi, '');
   } else {
     const loginSchema = {
       "@context": "https://schema.org",

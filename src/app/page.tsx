@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const cleanName = formatName('Bradenton');
-  const locationSlug = 'bradenton-fl';
+  const locationSlug = 'home';
   
   const rawHtml = getTemplate('home');
   if (!rawHtml) return <div>Home template missing</div>;
