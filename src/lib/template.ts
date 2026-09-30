@@ -525,7 +525,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     
     // Restore static external URLs that contain "bradenton"
     newContent = newContent.replace(/https:\/\/www\.yelp\.com\/biz\/sweet-maid-cleaning-service-[^/"]+-3/gi, 'https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3');
-    newContent = newContent.replace(/\/Florida-fl\//gi, '/bradenton-fl/');
+    newContent = newContent.replace(/\/florida-fl\/?/gi, '/bradenton-fl/');
+    newContent = newContent.replace(/\/Florida-fl\/?/gi, '/bradenton-fl/');
     newContent = newContent.replace(/\/Florida\//gi, '/');
     
     // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
@@ -1893,7 +1894,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <!-- Hero Nearby Service Areas Pill Row -->
       <div class="mt-3 mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto px-4" aria-label="Nearby Cleaning Service Locations">
         <span class="inline-flex items-center gap-1.5 text-xs font-bold text-pink-200 uppercase tracking-wider mr-1">
-          <i class="fa-solid fa-location-dot text-pink-400"></i> ${pilot?.badge ? pilot.badge.replace(/^📍\s*/, '') : `Serving ${clean_name} &amp; Nearby`}:
+          <i class="fa-solid fa-location-dot text-pink-400"></i> Serving ${clean_name} &amp; Nearby:
         </span>
         ${heroLocationPills}
         <a href="/locations/" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-bold bg-pink-500/85 hover:bg-pink-500 text-white backdrop-blur-md border border-pink-300/40 hover:scale-105 shadow-md transition-all duration-200">
