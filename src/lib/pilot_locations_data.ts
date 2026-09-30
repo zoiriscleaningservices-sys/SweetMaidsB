@@ -358,7 +358,9 @@ export const PILOT_LOCATIONS_DATA: Record<string, PilotLocationProfile> = {
 };
 
 import { BATCH1_LOCATIONS_DATA } from './locations_data/batch1_manatee_sarasota';
+import { BATCH2_LOCATIONS_DATA } from './locations_data/batch2_tampa_bay';
 
-Object.assign(PILOT_LOCATIONS_DATA, BATCH1_LOCATIONS_DATA);
+Object.assign(PILOT_LOCATIONS_DATA, BATCH1_LOCATIONS_DATA, BATCH2_LOCATIONS_DATA);
+
 
 

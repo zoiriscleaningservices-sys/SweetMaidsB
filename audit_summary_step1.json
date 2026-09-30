@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T17:56:38.326Z",
+  "timestamp": "2026-09-30T18:04:56.948Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
   "duplicateTitlesCount": 0,
@@ -161,9 +161,14 @@
       "length": 46
     },
     {
+      "url": "/tampa-fl/",
+      "title": "Cleaning Services in Tampa, FL | Sweet Maid",
+      "length": 43
+    },
+    {
       "url": "/fish-hawk-fl/",
-      "title": "Cleaning Services in Fish Hawk, FL | Sweet Maid",
-      "length": 47
+      "title": "Cleaning Services in FishHawk, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/brandon-fl/",
@@ -196,6 +201,11 @@
       "length": 47
     },
     {
+      "url": "/lutz-fl/",
+      "title": "Cleaning Services in Lutz, FL | Sweet Maid",
+      "length": 42
+    },
+    {
       "url": "/clearwater-fl/",
       "title": "Cleaning Services in Clearwater, FL | Sweet Maid",
       "length": 48
@@ -204,6 +214,11 @@
       "url": "/palm-harbor-fl/",
       "title": "Cleaning Services in Palm Harbor, FL | Sweet Maid",
       "length": 49
+    },
+    {
+      "url": "/largo-fl/",
+      "title": "Cleaning Services in Largo, FL | Sweet Maid",
+      "length": 43
     },
     {
       "url": "/dunedin-fl/",
