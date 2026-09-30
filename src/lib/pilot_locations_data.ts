@@ -356,3 +356,9 @@ export const PILOT_LOCATIONS_DATA: Record<string, PilotLocationProfile> = {
     ]
   }
 };
+
+import { BATCH1_LOCATIONS_DATA } from './locations_data/batch1_manatee_sarasota';
+
+Object.assign(PILOT_LOCATIONS_DATA, BATCH1_LOCATIONS_DATA);
+
+
