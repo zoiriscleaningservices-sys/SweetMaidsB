@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T18:15:47.760Z",
+  "timestamp": "2026-09-30T18:19:35.809Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
   "duplicateTitlesCount": 0,
@@ -399,6 +399,11 @@
       "url": "/glen-ridge-fl/",
       "title": "Cleaning Services in Glen Ridge, FL | Sweet Maid",
       "length": 48
+    },
+    {
+      "url": "/golf-fl/",
+      "title": "Cleaning Services in Golf, FL | Sweet Maid",
+      "length": 42
     },
     {
       "url": "/orlando-fl/",
@@ -887,11 +892,6 @@
       "url": "/oakland-park-fl/",
       "meta": "Detailed cleaning services in Oakland Park, FL. Mid-Century bungalow care, terrazzo polishing, and kitchen deep cleaning. Free quote today.",
       "length": 139
-    },
-    {
-      "url": "/jupiter-inlet-colony-fl/",
-      "meta": "Professional cleaning services in Jupiter Inlet Colony, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
-      "length": 162
     },
     {
       "url": "/indian-harbour-beach-fl/",
