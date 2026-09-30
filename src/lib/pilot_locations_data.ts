@@ -363,6 +363,7 @@ import { BATCH3_MIAMI_KEYS_DATA } from './locations_data/batch3_miami_keys';
 import { BATCH4_BROWARD_DATA } from './locations_data/batch4_broward';
 import { BATCH5_PALM_BEACH_DATA } from './locations_data/batch5_palm_beach';
 import { BATCH6_GREATER_ORLANDO_DATA } from './locations_data/batch6_greater_orlando';
+import { BATCH7_CENTRAL_INLAND_DATA } from './locations_data/batch7_central_inland';
 
 Object.assign(
   PILOT_LOCATIONS_DATA,
@@ -371,7 +372,8 @@ Object.assign(
   BATCH3_MIAMI_KEYS_DATA,
   BATCH4_BROWARD_DATA,
   BATCH5_PALM_BEACH_DATA,
-  BATCH6_GREATER_ORLANDO_DATA
+  BATCH6_GREATER_ORLANDO_DATA,
+  BATCH7_CENTRAL_INLAND_DATA
 );
 
 
