@@ -527,6 +527,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/https:\/\/www\.yelp\.com\/biz\/sweet-maid-cleaning-service-[^/"]+-3/gi, 'https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3');
     newContent = newContent.replace(/\/florida-fl\/?/gi, '/bradenton-fl/');
     newContent = newContent.replace(/\/Florida-fl\/?/gi, '/bradenton-fl/');
+    newContent = newContent.replace(/\/Bradenton-fl\/?/gi, '/bradenton-fl/');
     newContent = newContent.replace(/\/Florida\//gi, '/');
     
     // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
