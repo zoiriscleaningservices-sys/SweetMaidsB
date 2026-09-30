@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   if (slug === 'bradenton-fl') {
-    const title = formatLocationTitle('Bradenton');
-    const desc = formatLocationMeta('Bradenton');
+    const title = formatLocationTitle('Bradenton', 'bradenton-fl');
+    const desc = formatLocationMeta('Bradenton', 'bradenton-fl');
     return {
       title,
       description: desc,
@@ -75,8 +75,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!locData) return {};
 
     const cleanName = formatName(locData.name).replace(/\s*\(.*?\)/g, '').trim();
-    const title = formatLocationTitle(cleanName);
-    const desc = formatLocationMeta(cleanName);
+    const title = formatLocationTitle(cleanName, slug);
+    const desc = formatLocationMeta(cleanName, slug);
 
     return {
       title,

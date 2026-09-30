@@ -4,6 +4,7 @@ import { serviceSlugs, formatName, getNearestLocations, resolveAnyLocation } fro
 import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs, isMiamiDadeCounty } from './miami_broward_slugs';
 import { isManateeCounty, manateeKeyHubs } from './manatee';
 import { generateSeoContentPack, formatLocationH1, formatLocationMeta } from './seo_engine';
+import { PILOT_LOCATIONS_DATA } from './pilot_locations_data';
 import { generateLocalBlogContent } from './blog_engine';
 import { generateLocalAboutContent } from './about_engine';
 import { generateLocalSeoReviewsHtml } from './reviews_engine';
@@ -398,8 +399,9 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   }
 
   // Generate 100% Unique, Zero-Duplicate SEO Content Pack
-  const effectiveServiceSlug = (pageType === 'about' || currentService === 'about') ? 'house-cleaning' : currentService;
-  const effectiveServiceName = (pageType === 'about' || currentService === 'about') ? 'House Cleaning' : serviceName;
+  const isCityHub = !is_sub_page && loc_slug && loc_slug !== 'home' && !serviceSlugs.includes(loc_slug);
+  const effectiveServiceSlug = isCityHub ? 'cleaning' : ((pageType === 'about' || currentService === 'about') ? 'house-cleaning' : currentService);
+  const effectiveServiceName = isCityHub ? 'Cleaning Services' : ((pageType === 'about' || currentService === 'about') ? 'House Cleaning' : serviceName);
   const seoPack = generateSeoContentPack(clean_name, loc_slug, effectiveServiceName, effectiveServiceSlug);
 
   // Strip all data-aos animation attributes to guarantee 100% visibility of all sections
@@ -1669,6 +1671,30 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     `).join('\n')}
   </div>`;
 
+  const pilot = loc_slug ? PILOT_LOCATIONS_DATA[loc_slug] : undefined;
+  const pilotNeighborhoodsHtml = (pilot && pilot.neighborhoodsList?.length) ? `
+      <div class="mt-12 pt-10 border-t border-pink-100/80">
+        <div class="max-w-3xl mb-6">
+          <div class="inline-flex items-center gap-2 bg-pink-100/80 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+            <span>📍 Local Service Area</span>
+          </div>
+          <h4 class="text-xl md:text-2xl font-bold text-gray-900 font-serif mb-2">${pilot.neighborhoodsTitle}</h4>
+          <p class="text-gray-600 text-sm md:text-base leading-relaxed">${pilot.neighborhoodsBody}</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          ${pilot.neighborhoodsList.map(n => `
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-gray-700 border border-pink-100 shadow-xs">
+              <i class="fa-solid fa-location-dot text-pink-400 text-[10px]"></i>
+              ${n}
+            </span>
+          `).join('')}
+        </div>
+        <div class="text-xs text-gray-500">
+          <span class="font-semibold text-gray-600">Primary Zip Codes Served:</span> ${pilot.zipCodes.join(', ')}
+        </div>
+      </div>
+  ` : '';
+
   const climateSectionHtml = `
   <section class="py-14 bg-gradient-to-b from-pink-50/60 to-white border-y border-pink-100/60">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -1690,6 +1716,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
           </div>
         `).join('\n')}
       </div>
+      ${pilotNeighborhoodsHtml}
     </div>
   </section>
   `;
@@ -1841,7 +1868,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     if (loc_slug === 'home' && !is_sub_page) {
       customH1Inner = 'Cleaning Services Across Florida';
     } else if (!is_sub_page && loc_slug && !serviceSlugs.includes(loc_slug)) {
-      customH1Inner = formatLocationH1(clean_name);
+      customH1Inner = formatLocationH1(clean_name, loc_slug);
     } else {
       customH1Inner = `${seoPack.h1}`;
     }
@@ -1853,7 +1880,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     // For non-homepage service/location pages, apply standard dynamic hero subhead & pill row
     if (pageType === 'service_or_home' && loc_slug !== 'home') {
       const heroSubText = (!is_sub_page && loc_slug && !serviceSlugs.includes(loc_slug))
-        ? formatLocationMeta(clean_name)
+        ? (pilot?.heroSub || formatLocationMeta(clean_name, loc_slug))
         : seoPack.heroSub;
       newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${heroSubText}$2`);
 
@@ -1866,7 +1893,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       <!-- Hero Nearby Service Areas Pill Row -->
       <div class="mt-3 mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto px-4" aria-label="Nearby Cleaning Service Locations">
         <span class="inline-flex items-center gap-1.5 text-xs font-bold text-pink-200 uppercase tracking-wider mr-1">
-          <i class="fa-solid fa-location-dot text-pink-400"></i> Serving ${clean_name} &amp; Nearby:
+          <i class="fa-solid fa-location-dot text-pink-400"></i> ${pilot?.badge ? pilot.badge.replace(/^📍\s*/, '') : `Serving ${clean_name} &amp; Nearby`}:
         </span>
         ${heroLocationPills}
         <a href="/locations/" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-bold bg-pink-500/85 hover:bg-pink-500 text-white backdrop-blur-md border border-pink-300/40 hover:scale-105 shadow-md transition-all duration-200">

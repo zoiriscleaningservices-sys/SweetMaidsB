@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T17:28:03.142Z",
+  "timestamp": "2026-09-30T17:47:23.759Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
   "duplicateTitlesCount": 0,
@@ -1226,23 +1226,27 @@
         },
         {
           "tag": "h3",
-          "text": "Addressing Florida Dust & Humidity in Bradenton"
+          "text": "Protecting Bradenton Homes from River Moisture, Sand & Oak Pollen"
         },
         {
           "tag": "h4",
-          "text": "Family-Owned Care"
+          "text": "Local Bradenton Base"
         },
         {
           "tag": "h4",
-          "text": "Transparent Pricing"
+          "text": "River & Bay Moisture Care"
         },
         {
           "tag": "h4",
-          "text": "Reliable Scheduling"
+          "text": "Consistent Dedicated Crews"
         },
         {
           "tag": "h4",
-          "text": "Detailed Checklist"
+          "text": "Transparent Flat-Rate Pricing"
+        },
+        {
+          "tag": "h4",
+          "text": "Serving Communities Across Bradenton & Manatee County"
         },
         {
           "tag": "h3",
@@ -1253,9 +1257,9 @@
           "text": "Florida Locations"
         }
       ],
-      "meta": "Professional cleaning services in Bradenton, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
-      "metaLength": 151,
-      "wordCount": 1787,
+      "meta": "Professional cleaning services in Bradenton, FL. Family-owned recurring maid visits, deep house cleanings, and move-out turnovers. Get your free quote today.",
+      "metaLength": 157,
+      "wordCount": 1979,
       "internalLinks": [
         "/llms.txt",
         "/bradenton-fl/",
@@ -1503,23 +1507,27 @@
         },
         {
           "tag": "h3",
-          "text": "Addressing Florida Dust & Humidity in Lakewood Ranch"
+          "text": "Addressing High Ceiling Dust, Lanai Grime & Builder Dust in Lakewood Ranch"
         },
         {
           "tag": "h4",
-          "text": "Family-Owned Care"
+          "text": "High-Ceiling & Fan Care"
         },
         {
           "tag": "h4",
-          "text": "Transparent Pricing"
+          "text": "HOA-Compliant & Family-Focused"
         },
         {
           "tag": "h4",
-          "text": "Reliable Scheduling"
+          "text": "Gated Village Access Protocol"
         },
         {
           "tag": "h4",
-          "text": "Detailed Checklist"
+          "text": "Transparent Pricing Structure"
+        },
+        {
+          "tag": "h4",
+          "text": "Serving All Villages Across Lakewood Ranch, FL"
         },
         {
           "tag": "h3",
@@ -1530,9 +1538,9 @@
           "text": "Florida Locations"
         }
       ],
-      "meta": "Professional cleaning services in Lakewood Ranch, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
-      "metaLength": 156,
-      "wordCount": 1534,
+      "meta": "Reliable cleaning services in Lakewood Ranch, FL. Detailed home upkeep, lanai slider care, high-ceiling dusting, and deep resets. Request a free quote today.",
+      "metaLength": 157,
+      "wordCount": 1624,
       "internalLinks": [
         "/llms.txt",
         "/lakewood-ranch-fl/",
@@ -1814,7 +1822,7 @@
       ],
       "meta": "Professional cleaning services in Palmetto, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
       "metaLength": 150,
-      "wordCount": 1507,
+      "wordCount": 1500,
       "internalLinks": [
         "/llms.txt",
         "/palmetto-fl/",
@@ -2092,7 +2100,7 @@
       ],
       "meta": "Professional cleaning services in Ellenton, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
       "metaLength": 150,
-      "wordCount": 1506,
+      "wordCount": 1499,
       "internalLinks": [
         "/llms.txt",
         "/ellenton-fl/",
@@ -2370,7 +2378,7 @@
       ],
       "meta": "Professional cleaning services in Parrish, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
       "metaLength": 149,
-      "wordCount": 1509,
+      "wordCount": 1502,
       "internalLinks": [
         "/llms.txt",
         "/parrish-fl/",

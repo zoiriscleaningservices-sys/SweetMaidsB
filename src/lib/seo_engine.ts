@@ -1,6 +1,7 @@
 import { formatName, serviceSlugs } from './data';
 import { is305Area } from './miami_broward_slugs';
 import { CANONICAL_HOST, BUSINESS_INFO, PRICING_FROM } from '@/config/site-structure';
+import { PILOT_LOCATIONS_DATA } from './pilot_locations_data';
 
 // Deterministic string hashing for consistent but unique variation per page
 function hashCode(str: string): number {
@@ -31,7 +32,16 @@ export interface SeoContentPack {
   schemaJson: string;
 }
 
-export function formatLocationTitle(cityName: string): string {
+export function formatLocationTitle(cityName: string, locSlug?: string): string {
+  if (locSlug && PILOT_LOCATIONS_DATA[locSlug]) {
+    return PILOT_LOCATIONS_DATA[locSlug].title;
+  }
+  const matchingSlug = Object.keys(PILOT_LOCATIONS_DATA).find(
+    s => PILOT_LOCATIONS_DATA[s].name.toLowerCase() === cityName.toLowerCase()
+  );
+  if (matchingSlug) {
+    return PILOT_LOCATIONS_DATA[matchingSlug].title;
+  }
   const cleanCity = cityName.replace(/\s*\(.*?\)/g, '').trim();
   const full = `Cleaning Services in ${cleanCity}, FL | Sweet Maid Cleaning Service`;
   if (full.length <= 60) {
@@ -44,12 +54,30 @@ export function formatLocationTitle(cityName: string): string {
   return `Cleaning in ${cleanCity}, FL | Sweet Maid`;
 }
 
-export function formatLocationH1(cityName: string): string {
+export function formatLocationH1(cityName: string, locSlug?: string): string {
+  if (locSlug && PILOT_LOCATIONS_DATA[locSlug]) {
+    return PILOT_LOCATIONS_DATA[locSlug].h1;
+  }
+  const matchingSlug = Object.keys(PILOT_LOCATIONS_DATA).find(
+    s => PILOT_LOCATIONS_DATA[s].name.toLowerCase() === cityName.toLowerCase()
+  );
+  if (matchingSlug) {
+    return PILOT_LOCATIONS_DATA[matchingSlug].h1;
+  }
   const cleanCity = cityName.replace(/\s*\(.*?\)/g, '').trim();
   return `Cleaning Services in ${cleanCity}, FL`;
 }
 
-export function formatLocationMeta(cityName: string): string {
+export function formatLocationMeta(cityName: string, locSlug?: string): string {
+  if (locSlug && PILOT_LOCATIONS_DATA[locSlug]) {
+    return PILOT_LOCATIONS_DATA[locSlug].metaDescription;
+  }
+  const matchingSlug = Object.keys(PILOT_LOCATIONS_DATA).find(
+    s => PILOT_LOCATIONS_DATA[s].name.toLowerCase() === cityName.toLowerCase()
+  );
+  if (matchingSlug) {
+    return PILOT_LOCATIONS_DATA[matchingSlug].metaDescription;
+  }
   const cleanCity = cityName.replace(/\s*\(.*?\)/g, '').trim();
   return `Professional cleaning services in ${cleanCity}, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.`;
 }
@@ -126,7 +154,12 @@ export function generateSeoContentPack(
     cleanSrv += ' Services';
   }
 
-  const metaTitle = getCalibratedMetaTitle(cleanLoc, locSlug, serviceSlug, seed);
+  const pilot = PILOT_LOCATIONS_DATA[locSlug];
+  const isBaseLocation = !serviceSlug || serviceSlug === 'cleaning' || serviceSlug === locSlug;
+
+  const metaTitle = (pilot && isBaseLocation)
+    ? pilot.title
+    : getCalibratedMetaTitle(cleanLoc, locSlug, serviceSlug, seed);
 
   // Service-Specific H1 Dictionary (Zero "#1", Zero "Best ", Zero "Top-Rated")
   const isStatewide = cleanLoc.toLowerCase() === 'florida' || serviceSlugs.includes(locSlug);
@@ -142,7 +175,7 @@ export function generateSeoContentPack(
     `Local ${cleanSrv} in ${cleanLoc}, FL`
   ];
 
-  let h1 = defaultH1s[seed % defaultH1s.length];
+  let h1 = (pilot && isBaseLocation) ? pilot.h1 : defaultH1s[seed % defaultH1s.length];
 
   // Daily search keywords
   const dailyKeywordPools = [
@@ -178,7 +211,7 @@ export function generateSeoContentPack(
     `✨ Family-Owned Cleaning Service`,
     `🧹 Professional Cleaning Specialists in ${cleanLoc}`
   ];
-  const badge = badges[seed % badges.length];
+  const badge = pilot ? pilot.badge : badges[seed % badges.length];
 
   // Hero Subtitle & Meta Description: Calibrated strictly between 140-160 chars, zero banned words
   const heroSubs = isStatewide ? [
@@ -192,29 +225,31 @@ export function generateSeoContentPack(
     `Quality ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL with Sweet Maid Cleaning Service. Dependable recurring visits, deep cleans, and custom care. Get a free quote.`,
     `Looking for ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.`
   ];
-  const heroSub = heroSubs[seed % heroSubs.length];
+  const heroSub = (pilot && isBaseLocation) ? pilot.heroSub : heroSubs[seed % heroSubs.length];
 
-  const searchContextParagraph = isStatewide
-    ? `Sweet Maid Cleaning Service provides scheduled visits, deep seasonal cleans, and turnover care for single-family homes, condominiums, and commercial properties across Florida.`
-    : `Sweet Maid Cleaning Service provides scheduled visits, deep seasonal cleans, and turnover care for single-family homes, condominiums, and commercial properties in ${cleanLoc} and surrounding areas.`;
+  const searchContextParagraph = pilot
+    ? `Sweet Maid Cleaning Service provides scheduled visits, deep seasonal cleans, and turnover care for single-family homes, condominiums, and commercial properties throughout ${cleanLoc} and surrounding areas.`
+    : (isStatewide
+      ? `Sweet Maid Cleaning Service provides scheduled visits, deep seasonal cleans, and turnover care for single-family homes, condominiums, and commercial properties across Florida.`
+      : `Sweet Maid Cleaning Service provides scheduled visits, deep seasonal cleans, and turnover care for single-family homes, condominiums, and commercial properties in ${cleanLoc} and surrounding areas.`);
 
   const dailySearchHeading = isStatewide ? `Common Cleaning Inquiries Across Florida` : `Cleaning Services in ${cleanLoc}, FL`;
 
   const isCoastal = locSlug.includes('beach') || locSlug.includes('key') || locSlug.includes('isles') || locSlug.includes('shores') || locSlug.includes('miami') || locSlug.includes('sarasota') || locSlug.includes('tampa') || locSlug.includes('naples');
   
-  const climateTitle = isCoastal
+  const climateTitle = pilot ? pilot.climateTitle : (isCoastal
     ? `Managing Coastal Salt Air & Humidity in ${cleanLoc}`
-    : `Addressing Florida Dust & Humidity in ${cleanLoc}`;
+    : `Addressing Florida Dust & Humidity in ${cleanLoc}`);
 
-  const climateBody = isCoastal
+  const climateBody = pilot ? pilot.climateBody : (isCoastal
     ? `Coastal Florida properties in ${cleanLoc} require focused care to address salt air residue, tracked-in beach sand, and indoor moisture. Our cleaning routines prioritize glass surfaces, ventilation grilles, and floor care.`
-    : `Florida homes in ${cleanLoc} face year-round humidity and dust accumulation. Our systematic cleaning methods focus on indoor air quality, thorough dusting, and sanitization of high-contact surfaces.`;
+    : `Florida homes in ${cleanLoc} face year-round humidity and dust accumulation. Our systematic cleaning methods focus on indoor air quality, thorough dusting, and sanitization of high-contact surfaces.`);
 
   const ecoTitle = `Quality Supplies & Effective Techniques`;
   const ecoBody = `Our cleaning specialists utilize commercial HEPA filtration vacuums and color-coded microfiber cloths to prevent cross-contamination between bathrooms, kitchens, and living spaces.`;
 
-  const whyChooseTitle = `Why Choose Sweet Maid Cleaning Service in ${cleanLoc}`;
-  const whyChoosePoints = [
+  const whyChooseTitle = pilot ? pilot.whyChooseTitle : `Why Choose Sweet Maid Cleaning Service in ${cleanLoc}`;
+  const whyChoosePoints = pilot ? pilot.whyChoosePoints : [
     { title: 'Family-Owned Care', desc: 'Direct communication, consistent standards, and personal accountability on every visit.', icon: 'fa-heart' },
     { title: 'Transparent Pricing', desc: 'Clear flat-rate estimates based on your home size and service requirements with no hidden fees.', icon: 'fa-tag' },
     { title: 'Reliable Scheduling', desc: 'Dependable recurring appointments on weekly, bi-weekly, or monthly intervals that fit your routine.', icon: 'fa-calendar-check' },
@@ -233,7 +268,7 @@ export function generateSeoContentPack(
   const isDeepService = serviceSlug.includes('deep');
   const deepPhrase = isDeepService ? cleanSrv.toLowerCase() : `deep ${cleanSrv.toLowerCase()}`;
 
-  const faqs = [
+  const faqs = (pilot && isBaseLocation) ? pilot.faqs : [
     {
       q: `What is included with ${cleanSrv.toLowerCase()} in ${cleanLoc}?`,
       a: `Our ${cleanSrv.toLowerCase()} in ${cleanLoc} includes detailed dusting, vacuuming carpets and rugs, mopping hard floors, sanitizing kitchen counters and sinks, cleaning bathroom fixtures, and emptying wastebaskets.`
@@ -258,7 +293,7 @@ export function generateSeoContentPack(
 
   // Clean, compliant JSON-LD schema
   const isPhone305 = is305Area(locSlug, cleanLoc);
-  const phone = isPhone305 ? '(305) 851-6959' : BUSINESS_INFO.phone;
+  const phone = pilot ? pilot.phone : (isPhone305 ? '(305) 851-6959' : BUSINESS_INFO.phone);
   const pageUrl = isStatewide
     ? `${CANONICAL_HOST}/${serviceSlug}/`
     : `${CANONICAL_HOST}/${serviceSlug}-${locSlug}/`;
@@ -275,8 +310,17 @@ export function generateSeoContentPack(
       "image": `${CANONICAL_HOST}/images/logo.png`,
       "priceRange": "$$",
       "sameAs": BUSINESS_INFO.socialProfiles,
+      ...(locSlug === 'bradenton-fl' ? {
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bradenton, FL",
+          "addressLocality": "Bradenton",
+          "addressRegion": "FL",
+          "addressCountry": "US"
+        }
+      } : {}),
       "areaServed": {
-        "@type": "Place",
+        "@type": "City",
         "name": `${cleanLoc}, FL`
       }
     },
@@ -290,7 +334,7 @@ export function generateSeoContentPack(
         "telephone": phone
       },
       "areaServed": {
-        "@type": "Place",
+        "@type": "City",
         "name": `${cleanLoc}, FL`
       }
     },
