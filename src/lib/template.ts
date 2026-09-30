@@ -1263,7 +1263,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   // Gate "Book Online" links & buttons exclusively to Manatee County pages only
   const isGeneralPage = pageType === 'about' || pageType === 'gallery' || pageType === 'login' || pageType === 'blog' || (originalH1Match && (originalH1Match[1].includes('Blog') || originalH1Match[1].includes('Cleaning Tips'))) || serviceSlugs.includes(loc_slug);
-  const isManatee = !isGeneralPage && (isManateeCounty(loc_slug, clean_name) || loc_slug === 'bradenton-fl' || loc_slug === 'home');
+  const isManatee = !isGeneralPage && (isManateeCounty(loc_slug, clean_name) || loc_slug === 'bradenton-fl');
 
   if (isManatee) {
     // Header Navigation: Inject "Book Online" into desktop & mobile navs and Header CTA
