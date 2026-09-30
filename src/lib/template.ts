@@ -548,7 +548,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/\b34211\b/g, '');
 
     if (clean_name.toLowerCase() === 'florida') {
-      newContent = newContent.replace(/Florida\s*\/\s*Manatee Base/gi, 'Bradenton / Manatee Base');
       newContent = newContent.replace(/Florida,\s*FL/gi, 'Florida');
       newContent = newContent.replace(/in Florida home\b/gi, 'in Florida homes');
       newContent = newContent.replace(/House Cleaning in Florida FL/gi, 'House Cleaning in Florida');
