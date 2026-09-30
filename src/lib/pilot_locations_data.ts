@@ -360,8 +360,15 @@ export const PILOT_LOCATIONS_DATA: Record<string, PilotLocationProfile> = {
 import { BATCH1_LOCATIONS_DATA } from './locations_data/batch1_manatee_sarasota';
 import { BATCH2_LOCATIONS_DATA } from './locations_data/batch2_tampa_bay';
 import { BATCH3_MIAMI_KEYS_DATA } from './locations_data/batch3_miami_keys';
+import { BATCH4_BROWARD_DATA } from './locations_data/batch4_broward';
 
-Object.assign(PILOT_LOCATIONS_DATA, BATCH1_LOCATIONS_DATA, BATCH2_LOCATIONS_DATA, BATCH3_MIAMI_KEYS_DATA);
+Object.assign(
+  PILOT_LOCATIONS_DATA,
+  BATCH1_LOCATIONS_DATA,
+  BATCH2_LOCATIONS_DATA,
+  BATCH3_MIAMI_KEYS_DATA,
+  BATCH4_BROWARD_DATA
+);
 
 
 

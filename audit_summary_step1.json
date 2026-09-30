@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T18:09:50.009Z",
+  "timestamp": "2026-09-30T18:15:47.760Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
   "duplicateTitlesCount": 0,
@@ -239,6 +239,11 @@
       "url": "/miramar-fl/",
       "title": "Cleaning Services in Miramar, FL | Sweet Maid",
       "length": 45
+    },
+    {
+      "url": "/davie-fl/",
+      "title": "Cleaning Services in Davie, FL | Sweet Maid",
+      "length": 43
     },
     {
       "url": "/sunrise-fl/",
@@ -874,9 +879,14 @@
       "length": 139
     },
     {
-      "url": "/lauderdale-by-the-sea-fl/",
-      "meta": "Professional cleaning services in Lauderdale-by-the-sea, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
-      "length": 163
+      "url": "/plantation-fl/",
+      "meta": "Detailed cleaning services in Plantation, FL. Plantation Acres estate care, tree canopy pollen removal, and housekeeping. Free quote today.",
+      "length": 139
+    },
+    {
+      "url": "/oakland-park-fl/",
+      "meta": "Detailed cleaning services in Oakland Park, FL. Mid-Century bungalow care, terrazzo polishing, and kitchen deep cleaning. Free quote today.",
+      "length": 139
     },
     {
       "url": "/jupiter-inlet-colony-fl/",
