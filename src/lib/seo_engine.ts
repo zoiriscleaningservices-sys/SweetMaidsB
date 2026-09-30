@@ -31,13 +31,36 @@ export interface SeoContentPack {
   schemaJson: string;
 }
 
+export function formatLocationTitle(cityName: string): string {
+  const cleanCity = cityName.replace(/\s*\(.*?\)/g, '').trim();
+  const full = `Cleaning Services in ${cleanCity}, FL | Sweet Maid Cleaning Service`;
+  if (full.length <= 60) {
+    return full;
+  }
+  const short = `Cleaning Services in ${cleanCity}, FL | Sweet Maid`;
+  if (short.length <= 65) {
+    return short;
+  }
+  return `Cleaning in ${cleanCity}, FL | Sweet Maid`;
+}
+
+export function formatLocationH1(cityName: string): string {
+  const cleanCity = cityName.replace(/\s*\(.*?\)/g, '').trim();
+  return `Cleaning Services in ${cleanCity}, FL`;
+}
+
+export function formatLocationMeta(cityName: string): string {
+  const cleanCity = cityName.replace(/\s*\(.*?\)/g, '').trim();
+  return `Professional cleaning services in ${cleanCity}, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.`;
+}
+
 export function getCalibratedMetaTitle(
   locationName: string,
   locSlug: string,
   serviceSlug: string,
   seed: number
 ): string {
-  const isStatewide = locationName.toLowerCase() === 'florida' || locSlug === 'fl';
+  const isStatewide = locationName.toLowerCase() === 'florida' || locSlug === 'fl' || serviceSlugs.includes(locSlug);
   
   let cleanSrv = formatName(serviceSlug.replace(/-/g, ' '));
   const shortServiceMap: Record<string, string> = {
@@ -67,34 +90,27 @@ export function getCalibratedMetaTitle(
   const displaySrv = shortServiceMap[serviceSlug] || cleanSrv;
 
   if (isStatewide) {
-    const statewideTemplates = [
-      `${displaySrv} in Florida | Sweet Maid Cleaning Service`,
-      `${displaySrv} Across Florida | Sweet Maid Cleaning Service`,
-      `Professional ${displaySrv} Across Florida | Sweet Maid`,
-      `Reliable ${displaySrv} in Florida | Sweet Maid Cleaning`
-    ];
-    const valid = statewideTemplates.filter(t => t.length <= 65 && t.length >= 50);
-    return valid.length > 0 ? valid[seed % valid.length] : `${displaySrv} Across Florida | Sweet Maid Cleaning Service`;
+    const full = `${displaySrv} Across Florida | Sweet Maid Cleaning Service`;
+    if (full.length <= 60) return full;
+    return `${displaySrv} Across Florida | Sweet Maid`;
   }
 
-  const cleanLoc = formatName(locationName);
+  const cleanLoc = formatName(locationName).replace(/\s*\(.*?\)/g, '').trim();
 
-  // Template pool strictly adhering to clean, honest 50-60 char formatting:
-  // "[Service] in [City], FL | Sweet Maid Cleaning Service"
-  const candidateTemplates = [
-    `${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaning Service`,
-    `Professional ${displaySrv} in ${cleanLoc}, FL | Sweet Maid`,
-    `${cleanLoc}, FL ${displaySrv} | Sweet Maid Cleaning Service`,
-    `${displaySrv} Services in ${cleanLoc}, FL | Sweet Maid Cleaners`,
-    `Reliable ${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaning`
-  ];
-
-  const ideal = candidateTemplates.filter(t => t.length <= 65 && t.length >= 50);
-  if (ideal.length > 0) {
-    return ideal[seed % ideal.length];
+  const full = `${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaning Service`;
+  if (full.length <= 60) {
+    return full;
   }
-
-  return `${displaySrv} in ${cleanLoc}, FL | Sweet Maid Cleaning Service`;
+  const short = `${displaySrv} in ${cleanLoc}, FL | Sweet Maid`;
+  if (short.length <= 65) {
+    return short;
+  }
+  const ultraCompactSrv = displaySrv.replace(/\s+Cleaning$/, '').replace(/\s+Services$/, '');
+  const compact = `${ultraCompactSrv} in ${cleanLoc}, FL | Sweet Maid`;
+  if (compact.length <= 65) {
+    return compact;
+  }
+  return compact.slice(0, 62) + '...';
 }
 
 export function generateSeoContentPack(
@@ -104,13 +120,13 @@ export function generateSeoContentPack(
   serviceSlug: string
 ): SeoContentPack {
   const seed = hashCode(`${locSlug}-${serviceSlug}`);
-  const cleanLoc = formatName(locationName);
+  const cleanLoc = formatName(locationName).replace(/\s*\(.*?\)/g, '').trim();
   let cleanSrv = formatName(serviceName.replace(/-/g, ' '));
   if (!cleanSrv.toLowerCase().endsWith('services') && !cleanSrv.toLowerCase().endsWith('service')) {
     cleanSrv += ' Services';
   }
 
-  const metaTitle = getCalibratedMetaTitle(locationName, locSlug, serviceSlug, seed);
+  const metaTitle = getCalibratedMetaTitle(cleanLoc, locSlug, serviceSlug, seed);
 
   // Service-Specific H1 Dictionary (Zero "#1", Zero "Best ", Zero "Top-Rated")
   const isStatewide = cleanLoc.toLowerCase() === 'florida' || serviceSlugs.includes(locSlug);
@@ -122,7 +138,7 @@ export function generateSeoContentPack(
   ] : [
     `${cleanSrv} in ${cleanLoc}, FL`,
     `Professional ${cleanSrv} in ${cleanLoc}, FL`,
-    `Reliable ${cleanSrv} in ${cleanLoc}, Florida`,
+    `Reliable ${cleanSrv} in ${cleanLoc}, FL`,
     `Local ${cleanSrv} in ${cleanLoc}, FL`
   ];
 
@@ -164,17 +180,17 @@ export function generateSeoContentPack(
   ];
   const badge = badges[seed % badges.length];
 
-  // Hero Subtitle: GUARANTEED to mention the specific service on every page!
+  // Hero Subtitle & Meta Description: Calibrated strictly between 140-160 chars, zero banned words
   const heroSubs = isStatewide ? [
-    `Looking for trusted ${cleanSrv.toLowerCase()} across Florida? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the state.`,
-    `Sweet Maid Cleaning Service provides reliable ${cleanSrv.toLowerCase()} across Florida, with dedicated specialists and transparent flat-rate pricing.`,
-    `Schedule professional ${cleanSrv.toLowerCase()} across Florida with Sweet Maid Cleaning Service. Family-owned and committed to consistent cleanliness.`,
-    `Maintain a spotless property with ${cleanSrv.toLowerCase()} across Florida. Contact our dispatch team for a free estimate tailored to your space.`
+    `Professional ${cleanSrv.toLowerCase()} across Florida. Family-owned team with transparent flat rates, reliable scheduling, and detailed care. Request a free quote.`,
+    `Reliable ${cleanSrv.toLowerCase()} across Florida by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.`,
+    `Quality ${cleanSrv.toLowerCase()} across Florida with Sweet Maid Cleaning Service. Dependable recurring visits, deep cleans, and custom care. Get a free quote.`,
+    `Looking for ${cleanSrv.toLowerCase()} across Florida? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.`
   ] : [
-    `Looking for trusted ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.`,
-    `Sweet Maid Cleaning Service provides reliable ${cleanSrv.toLowerCase()} in ${cleanLoc}, with dedicated specialists and transparent flat-rate pricing.`,
-    `Schedule professional ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL with Sweet Maid Cleaning Service. Family-owned and committed to consistent cleanliness.`,
-    `Maintain a spotless property with ${cleanSrv.toLowerCase()} in ${cleanLoc}. Contact our local team for a free estimate tailored to your space.`
+    `Professional ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL. Family-owned team with transparent flat rates, reliable scheduling, and thorough care. Request a free quote.`,
+    `Reliable ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.`,
+    `Quality ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL with Sweet Maid Cleaning Service. Dependable recurring visits, deep cleans, and custom care. Get a free quote.`,
+    `Looking for ${cleanSrv.toLowerCase()} in ${cleanLoc}, FL? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.`
   ];
   const heroSub = heroSubs[seed % heroSubs.length];
 
@@ -243,6 +259,9 @@ export function generateSeoContentPack(
   // Clean, compliant JSON-LD schema
   const isPhone305 = is305Area(locSlug, cleanLoc);
   const phone = isPhone305 ? '(305) 851-6959' : BUSINESS_INFO.phone;
+  const pageUrl = isStatewide
+    ? `${CANONICAL_HOST}/${serviceSlug}/`
+    : `${CANONICAL_HOST}/${serviceSlug}-${locSlug}/`;
 
   const schemaObj = [
     {
@@ -250,7 +269,7 @@ export function generateSeoContentPack(
       "@type": ["LocalBusiness", "CleaningService", "Organization"],
       "name": BUSINESS_INFO.name,
       "description": heroSub.replace(/<[^>]+>/g, ''),
-      "url": `${CANONICAL_HOST}/${locSlug}/${serviceSlug}/`,
+      "url": pageUrl,
       "telephone": phone,
       "email": BUSINESS_INFO.email,
       "image": `${CANONICAL_HOST}/images/logo.png`,
@@ -290,10 +309,14 @@ export function generateSeoContentPack(
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": [
+      "itemListElement": isStatewide ? [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${CANONICAL_HOST}/` },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": `${CANONICAL_HOST}/services/` },
+        { "@type": "ListItem", "position": 3, "name": cleanSrv, "item": pageUrl }
+      ] : [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": `${CANONICAL_HOST}/` },
         { "@type": "ListItem", "position": 2, "name": cleanLoc, "item": `${CANONICAL_HOST}/${locSlug}/` },
-        { "@type": "ListItem", "position": 3, "name": cleanSrv, "item": `${CANONICAL_HOST}/${locSlug}/${serviceSlug}/` }
+        { "@type": "ListItem", "position": 3, "name": cleanSrv, "item": pageUrl }
       ]
     }
   ];

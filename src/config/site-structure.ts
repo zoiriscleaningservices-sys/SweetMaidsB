@@ -173,7 +173,7 @@ export const REGIONS: Record<string, RegionConfig> = {
     ]
   },
   monroe: {
-    slug: 'monroe-county',
+    slug: 'key-largo-fl',
     county: 'Monroe County',
     name: 'Florida Keys & Monroe County',
     ready: true,

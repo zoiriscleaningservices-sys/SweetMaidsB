@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Book House Cleaning Online | Sweet Maid Cleaning Service',
-  description: 'Book your house cleaning, deep cleaning, or maid service online with Sweet Maid. Transparent pricing and experienced local cleaning teams.',
+  description: 'Book your house cleaning, deep cleaning, or maid service online with Sweet Maid. Transparent flat rates and experienced local cleaning teams across Florida.',
   alternates: {
     canonical: 'https://www.sweetmaidcleaning.com/book-online/',
   },

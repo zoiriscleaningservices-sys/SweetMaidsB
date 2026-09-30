@@ -34,7 +34,7 @@ export const longboatKeyPages: Record<string, LongboatPageData> = {
     "slug": "hub",
     "route": "/longboat-key-fl/",
     "oldTitle": "Best House Cleaning in Longboat Key, FL | Sweet Maid Service",
-    "title": "Cleaning Services in Longboat Key, FL | Sweet Maid Cleaning Service",
+    "title": "Cleaning Services in Longboat Key, FL | Sweet Maid",
     "h1": "Cleaning Services in Longboat Key, FL",
     "metaDescription": "Reliable cleaning services in Longboat Key, FL for condos, beachfront homes, and seasonal retreats. Request your free quote from our family team today.",
     "primaryKeyword": "Cleaning Services in Longboat Key, FL",

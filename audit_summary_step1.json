@@ -1,915 +1,704 @@
 {
-  "timestamp": "2026-09-30T17:02:19.642Z",
+  "timestamp": "2026-09-30T17:28:03.142Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
-  "duplicateTitlesCount": 3,
-  "duplicateTitles": [
-    {
-      "title": "Lakewood Ranch, FL House Cleaning | Sweet Maid Cleaning Service",
-      "count": 2,
-      "sampleUrls": [
-        "/lakewood-ranch-fl/",
-        "/house-cleaning-lakewood-ranch-fl/"
-      ]
-    },
-    {
-      "title": "House Cleaning Services in Sarasota, FL | Sweet Maid Cleaners",
-      "count": 2,
-      "sampleUrls": [
-        "/sarasota-fl/",
-        "/house-cleaning-sarasota-fl/"
-      ]
-    },
-    {
-      "title": "House Cleaning Services in Miami, FL | Sweet Maid Cleaners",
-      "count": 2,
-      "sampleUrls": [
-        "/miami-fl/",
-        "/house-cleaning-miami-fl/"
-      ]
-    }
-  ],
-  "duplicateH1sCount": 3,
-  "duplicateH1s": [
-    {
-      "h1": "Professional House Cleaning Services in Lakewood Ranch, FL",
-      "count": 2,
-      "sampleUrls": [
-        "/lakewood-ranch-fl/",
-        "/house-cleaning-lakewood-ranch-fl/"
-      ]
-    },
-    {
-      "h1": "Reliable House Cleaning Services in Sarasota, Florida",
-      "count": 2,
-      "sampleUrls": [
-        "/sarasota-fl/",
-        "/house-cleaning-sarasota-fl/"
-      ]
-    },
-    {
-      "h1": "Professional House Cleaning Services in Miami, FL",
-      "count": 2,
-      "sampleUrls": [
-        "/miami-fl/",
-        "/house-cleaning-miami-fl/"
-      ]
-    }
-  ],
-  "duplicateMetasCount": 3,
-  "duplicateMetas": [
-    {
-      "meta": "Sweet Maid Cleaning Service provides reliable house cleaning services in Lakewood Ranch, with dedicated specialists and transparent flat-rate pricing.",
-      "count": 2,
-      "sampleUrls": [
-        "/lakewood-ranch-fl/",
-        "/house-cleaning-lakewood-ranch-fl/"
-      ]
-    },
-    {
-      "meta": "Schedule professional house cleaning services in Sarasota, FL with Sweet Maid Cleaning Service. Family-owned and committed to consistent cleanliness.",
-      "count": 2,
-      "sampleUrls": [
-        "/sarasota-fl/",
-        "/house-cleaning-sarasota-fl/"
-      ]
-    },
-    {
-      "meta": "Sweet Maid Cleaning Service provides reliable house cleaning services in Miami, with dedicated specialists and transparent flat-rate pricing.",
-      "count": 2,
-      "sampleUrls": [
-        "/miami-fl/",
-        "/house-cleaning-miami-fl/"
-      ]
-    }
-  ],
-  "titleLengthOutsideRange": [
-    {
-      "url": "/longboat-key-fl/",
-      "title": "Cleaning Services in Longboat Key, FL | Sweet Maid Cleaning Service",
-      "length": 67
-    },
-    {
-      "url": "/venice-fl/",
-      "title": "House Cleaning in Venice (Incl. South Venice), FL | Sweet Maid Cleaning Service",
-      "length": 79
-    },
-    {
-      "url": "/key-largo-fl/",
-      "title": "House Cleaning in Key Largo (Incl. North Key Largo), FL | Sweet Maid Cleaning Service",
-      "length": 85
-    },
-    {
-      "url": "/fish-hawk-fl/",
-      "title": "House Cleaning in Fish Hawk (Incl. Lithia), FL | Sweet Maid Cleaning Service",
-      "length": 76
-    },
-    {
-      "url": "/lauderdale-by-the-sea-fl/",
-      "title": "House Cleaning in Lauderdale-by-the-sea, FL | Sweet Maid Cleaning Service",
-      "length": 73
-    },
-    {
-      "url": "/palm-beach-gardens-fl/",
-      "title": "House Cleaning in Palm Beach Gardens, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/loxahatchee-groves-fl/",
-      "title": "House Cleaning in Loxahatchee Groves, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/jupiter-inlet-colony-fl/",
-      "title": "House Cleaning in Jupiter Inlet Colony, FL | Sweet Maid Cleaning Service",
-      "length": 72
-    },
-    {
-      "url": "/indian-harbour-beach-fl/",
-      "title": "House Cleaning in Indian Harbour Beach, FL | Sweet Maid Cleaning Service",
-      "length": 72
-    },
-    {
-      "url": "/jacksonville-beach-fl/",
-      "title": "House Cleaning in Jacksonville Beach, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/st-augustine-beach-fl/",
-      "title": "House Cleaning in St. Augustine Beach, FL | Sweet Maid Cleaning Service",
-      "length": 71
-    },
-    {
-      "url": "/green-cove-springs-fl/",
-      "title": "House Cleaning in Green Cove Springs, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/oakleaf-plantation-fl/",
-      "title": "House Cleaning in Oakleaf Plantation, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/terms-and-conditions/",
-      "title": "Terms &amp; Conditions &amp; Service Agreement | Sweet Maid Cleaning",
-      "length": 68
-    },
-    {
-      "url": "/blog/tampa-bay-cleaning-guide/",
-      "title": "Tampa Bay &amp; St. Pete Cleaning Guide: Humidity &amp; Sand | Sweet Maid",
-      "length": 73
-    },
-    {
-      "url": "/blog/south-florida-cleaning-guide/",
-      "title": "South Florida High-Rise &amp; Luxury Home Cleaning Guide | Sweet Maid",
-      "length": 69
-    },
-    {
-      "url": "/blog/central-florida-cleaning-guide/",
-      "title": "Orlando &amp; Central Florida Vacation Rental Cleaning Guide | Sweet Maid",
-      "length": 73
-    },
-    {
-      "url": "/blog/southwest-florida-cleaning-guide/",
-      "title": "Sarasota &amp; SWFL Home Care Guide: Lanais &amp; Salt Mist | Sweet Maid",
-      "length": 72
-    },
-    {
-      "url": "/blog/first-coast-cleaning-guide/",
-      "title": "First Coast Cleaning Guide: Pine Pollen &amp; Coastal Care | Sweet Maid",
-      "length": 71
-    },
-    {
-      "url": "/blog/florida-keys-cleaning-guide/",
-      "title": "Florida Keys Island Home Maintenance &amp; Cleaning Playbook | Sweet Maid",
-      "length": 73
-    },
-    {
-      "url": "/office-janitorial-services/",
-      "title": "Office Janitorial Services Across Florida | Sweet Maid Cleaning Service",
-      "length": 71
-    },
-    {
-      "url": "/medical-dental-facility-cleaning/",
-      "title": "Medical &amp; Dental Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 74
-    },
-    {
-      "url": "/gym-fitness-center-cleaning/",
-      "title": "Reliable Gym &amp; Fitness Cleaning in Florida | Sweet Maid Cleaning",
-      "length": 68
-    },
-    {
-      "url": "/school-daycare-cleaning/",
-      "title": "Daycare &amp; School Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 74
-    },
-    {
-      "url": "/church-worship-center-cleaning/",
-      "title": "Church &amp; Worship Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 74
-    },
-    {
-      "url": "/post-construction-cleaning/",
-      "title": "Post-Construction Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 71
-    },
-    {
-      "url": "/post-construction-cleaning-bradenton-fl/",
-      "title": "Post-Construction Cleaning in Bradenton, FL | Sweet Maid Cleaning Service",
-      "length": 73
-    }
-  ],
+  "duplicateTitlesCount": 0,
+  "duplicateTitles": [],
+  "duplicateH1sCount": 0,
+  "duplicateH1s": [],
+  "duplicateMetasCount": 0,
+  "duplicateMetas": [],
+  "titleLengthOutsideRange": [],
   "titleLengthOutsideOptimal": [
     {
       "url": "/bradenton-fl/",
-      "title": "Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service",
-      "length": 64
+      "title": "Cleaning Services in Bradenton, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/lakewood-ranch-fl/",
-      "title": "Lakewood Ranch, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
+      "url": "/palmetto-fl/",
+      "title": "Cleaning Services in Palmetto, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/ellenton-fl/",
-      "title": "Reliable House Cleaning in Ellenton, FL | Sweet Maid Cleaning",
-      "length": 61
+      "title": "Cleaning Services in Ellenton, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/parrish-fl/",
+      "title": "Cleaning Services in Parrish, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/anna-maria-fl/",
-      "title": "Reliable House Cleaning in Anna Maria, FL | Sweet Maid Cleaning",
-      "length": 63
+      "title": "Cleaning Services in Anna Maria, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/holmes-beach-fl/",
-      "title": "Holmes Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 61
+      "url": "/cortez-fl/",
+      "title": "Cleaning Services in Cortez, FL | Sweet Maid",
+      "length": 44
     },
     {
-      "url": "/bradenton-beach-fl/",
-      "title": "Bradenton Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 64
+      "url": "/whitfield-fl/",
+      "title": "Cleaning Services in Whitfield, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/bayshore-gardens-fl/",
-      "title": "Professional House Cleaning in Bayshore Gardens, FL | Sweet Maid",
-      "length": 64
-    },
-    {
-      "url": "/longboat-key-fl/",
-      "title": "Cleaning Services in Longboat Key, FL | Sweet Maid Cleaning Service",
-      "length": 67
+      "url": "/myakka-city-fl/",
+      "title": "Cleaning Services in Myakka City, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/sarasota-fl/",
-      "title": "House Cleaning Services in Sarasota, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Sarasota, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/venice-fl/",
-      "title": "House Cleaning in Venice (Incl. South Venice), FL | Sweet Maid Cleaning Service",
-      "length": 79
+      "title": "Cleaning Services in Venice, FL | Sweet Maid",
+      "length": 44
     },
     {
-      "url": "/lake-sarasota-fl/",
-      "title": "Professional House Cleaning in Lake Sarasota, FL | Sweet Maid",
-      "length": 61
+      "url": "/north-port-fl/",
+      "title": "Cleaning Services in North Port, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/osprey-fl/",
+      "title": "Cleaning Services in Osprey, FL | Sweet Maid",
+      "length": 44
+    },
+    {
+      "url": "/nokomis-fl/",
+      "title": "Cleaning Services in Nokomis, FL | Sweet Maid",
+      "length": 45
+    },
+    {
+      "url": "/siesta-key-fl/",
+      "title": "Cleaning Services in Siesta Key, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/fruitville-fl/",
+      "title": "Cleaning Services in Fruitville, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/bee-ridge-fl/",
-      "title": "House Cleaning in Bee Ridge, FL | Sweet Maid Cleaning Service",
-      "length": 61
-    },
-    {
-      "url": "/palmer-ranch-fl/",
-      "title": "House Cleaning in Palmer Ranch, FL | Sweet Maid Cleaning Service",
-      "length": 64
+      "title": "Cleaning Services in Bee Ridge, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/englewood-fl/",
-      "title": "House Cleaning in Englewood, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Englewood, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/homestead-fl/",
-      "title": "House Cleaning Services in Homestead, FL | Sweet Maid Cleaners",
-      "length": 62
+      "title": "Cleaning Services in Homestead, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/miami-beach-fl/",
-      "title": "Reliable House Cleaning in Miami Beach, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in Miami Beach, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/coral-gables-fl/",
-      "title": "House Cleaning Services in Coral Gables, FL | Sweet Maid Cleaners",
-      "length": 65
+      "url": "/aventura-fl/",
+      "title": "Cleaning Services in Aventura, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/kendall-fl/",
+      "title": "Cleaning Services in Kendall, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/pinecrest-fl/",
-      "title": "House Cleaning Services in Pinecrest, FL | Sweet Maid Cleaners",
-      "length": 62
-    },
-    {
-      "url": "/key-biscayne-fl/",
-      "title": "House Cleaning Services in Key Biscayne, FL | Sweet Maid Cleaners",
-      "length": 65
+      "title": "Cleaning Services in Pinecrest, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/south-miami-fl/",
-      "title": "Reliable House Cleaning in South Miami, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in South Miami, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/sunny-isles-beach-fl/",
-      "title": "Professional House Cleaning in Sunny Isles Beach, FL | Sweet Maid",
-      "length": 65
+      "url": "/bal-harbour-fl/",
+      "title": "Cleaning Services in Bal Harbour, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/palmetto-bay-fl/",
-      "title": "House Cleaning in Palmetto Bay, FL | Sweet Maid Cleaning Service",
-      "length": 64
+      "url": "/cutler-bay-fl/",
+      "title": "Cleaning Services in Cutler Bay, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/key-largo-fl/",
-      "title": "House Cleaning in Key Largo (Incl. North Key Largo), FL | Sweet Maid Cleaning Service",
-      "length": 85
+      "title": "Cleaning Services in Key Largo, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/tavernier-fl/",
-      "title": "House Cleaning in Tavernier, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Tavernier, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/big-pine-key-fl/",
-      "title": "House Cleaning in Big Pine Key, FL | Sweet Maid Cleaning Service",
-      "length": 64
+      "url": "/islamorada-fl/",
+      "title": "Cleaning Services in Islamorada, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/marathon-fl/",
+      "title": "Cleaning Services in Marathon, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/key-west-fl/",
+      "title": "Cleaning Services in Key West, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/fish-hawk-fl/",
-      "title": "House Cleaning in Fish Hawk (Incl. Lithia), FL | Sweet Maid Cleaning Service",
-      "length": 76
+      "title": "Cleaning Services in Fish Hawk, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/brandon-fl/",
+      "title": "Cleaning Services in Brandon, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/riverview-fl/",
-      "title": "House Cleaning in Riverview, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Riverview, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/bloomingdale-fl/",
-      "title": "Bloomingdale, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 61
-    },
-    {
-      "url": "/apollo-beach-fl/",
-      "title": "Apollo Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 61
-    },
-    {
-      "url": "/sun-city-center-fl/",
-      "title": "Professional House Cleaning in Sun City Center, FL | Sweet Maid",
-      "length": 63
+      "url": "/valrico-fl/",
+      "title": "Cleaning Services in Valrico, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/plant-city-fl/",
-      "title": "Reliable House Cleaning in Plant City, FL | Sweet Maid Cleaning",
-      "length": 63
+      "title": "Cleaning Services in Plant City, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/carrollwood-fl/",
-      "title": "Reliable House Cleaning in Carrollwood, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in Carrollwood, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/westchase-fl/",
-      "title": "House Cleaning in Westchase, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Westchase, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/st-petersburg-fl/",
-      "title": "St. Petersburg, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
+      "url": "/clearwater-fl/",
+      "title": "Cleaning Services in Clearwater, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/palm-harbor-fl/",
-      "title": "House Cleaning in Palm Harbor, FL | Sweet Maid Cleaning Service",
-      "length": 63
+      "title": "Cleaning Services in Palm Harbor, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/pinellas-park-fl/",
-      "title": "House Cleaning in Pinellas Park, FL | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/dunedin-fl/",
+      "title": "Cleaning Services in Dunedin, FL | Sweet Maid",
+      "length": 45
     },
     {
-      "url": "/safety-harbor-fl/",
-      "title": "House Cleaning in Safety Harbor, FL | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/hollywood-fl/",
+      "title": "Cleaning Services in Hollywood, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/st-pete-beach-fl/",
-      "title": "Professional House Cleaning in St. Pete Beach, FL | Sweet Maid",
-      "length": 62
+      "url": "/miramar-fl/",
+      "title": "Cleaning Services in Miramar, FL | Sweet Maid",
+      "length": 45
     },
     {
-      "url": "/fort-lauderdale-fl/",
-      "title": "Fort Lauderdale, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 64
-    },
-    {
-      "url": "/pompano-beach-fl/",
-      "title": "Professional House Cleaning in Pompano Beach, FL | Sweet Maid",
-      "length": 61
-    },
-    {
-      "url": "/coral-springs-fl/",
-      "title": "Professional House Cleaning in Coral Springs, FL | Sweet Maid",
-      "length": 61
-    },
-    {
-      "url": "/pembroke-pines-fl/",
-      "title": "Pembroke Pines, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
+      "url": "/sunrise-fl/",
+      "title": "Cleaning Services in Sunrise, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/plantation-fl/",
-      "title": "Reliable House Cleaning in Plantation, FL | Sweet Maid Cleaning",
-      "length": 63
-    },
-    {
-      "url": "/deerfield-beach-fl/",
-      "title": "Professional House Cleaning in Deerfield Beach, FL | Sweet Maid",
-      "length": 63
+      "title": "Cleaning Services in Plantation, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/lauderhill-fl/",
-      "title": "House Cleaning in Lauderhill, FL | Sweet Maid Cleaning Service",
-      "length": 62
+      "title": "Cleaning Services in Lauderhill, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/coconut-creek-fl/",
-      "title": "House Cleaning in Coconut Creek, FL | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/weston-fl/",
+      "title": "Cleaning Services in Weston, FL | Sweet Maid",
+      "length": 44
     },
     {
-      "url": "/oakland-park-fl/",
-      "title": "House Cleaning Services in Oakland Park, FL | Sweet Maid Cleaners",
-      "length": 65
+      "url": "/tamarac-fl/",
+      "title": "Cleaning Services in Tamarac, FL | Sweet Maid",
+      "length": 45
     },
     {
-      "url": "/north-lauderdale-fl/",
-      "title": "North Lauderdale, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 65
-    },
-    {
-      "url": "/hallandale-beach-fl/",
-      "title": "Professional House Cleaning in Hallandale Beach, FL | Sweet Maid",
-      "length": 64
-    },
-    {
-      "url": "/lauderdale-lakes-fl/",
-      "title": "Professional House Cleaning in Lauderdale Lakes, FL | Sweet Maid",
-      "length": 64
+      "url": "/margate-fl/",
+      "title": "Cleaning Services in Margate, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/dania-beach-fl/",
-      "title": "House Cleaning in Dania Beach, FL | Sweet Maid Cleaning Service",
-      "length": 63
+      "title": "Cleaning Services in Dania Beach, FL | Sweet Maid",
+      "length": 49
+    },
+    {
+      "url": "/cooper-city-fl/",
+      "title": "Cleaning Services in Cooper City, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/parkland-fl/",
-      "title": "Reliable House Cleaning in Parkland, FL | Sweet Maid Cleaning",
-      "length": 61
+      "title": "Cleaning Services in Parkland, FL | Sweet Maid",
+      "length": 46
     },
     {
-      "url": "/wilton-manors-fl/",
-      "title": "Professional House Cleaning in Wilton Manors, FL | Sweet Maid",
-      "length": 61
+      "url": "/west-park-fl/",
+      "title": "Cleaning Services in West Park, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/lighthouse-point-fl/",
-      "title": "Lighthouse Point, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/lazy-lake-fl/",
+      "title": "Cleaning Services in Lazy Lake, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/southwest-ranches-fl/",
-      "title": "Professional House Cleaning in Southwest Ranches, FL | Sweet Maid",
-      "length": 65
+      "url": "/boca-raton-fl/",
+      "title": "Cleaning Services in Boca Raton, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/lauderdale-by-the-sea-fl/",
-      "title": "House Cleaning in Lauderdale-by-the-sea, FL | Sweet Maid Cleaning Service",
-      "length": 73
+      "url": "/wellington-fl/",
+      "title": "Cleaning Services in Wellington, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/pembroke-park-fl/",
-      "title": "House Cleaning in Pembroke Park, FL | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/jupiter-fl/",
+      "title": "Cleaning Services in Jupiter, FL | Sweet Maid",
+      "length": 45
     },
     {
-      "url": "/hillsboro-beach-fl/",
-      "title": "Professional House Cleaning in Hillsboro Beach, FL | Sweet Maid",
-      "length": 63
+      "url": "/greenacres-fl/",
+      "title": "Cleaning Services in Greenacres, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/sea-ranch-lakes-fl/",
-      "title": "Sea Ranch Lakes, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 64
+      "url": "/palm-beach-fl/",
+      "title": "Cleaning Services in Palm Beach, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/west-palm-beach-fl/",
-      "title": "Professional House Cleaning in West Palm Beach, FL | Sweet Maid",
-      "length": 63
-    },
-    {
-      "url": "/boynton-beach-fl/",
-      "title": "Professional House Cleaning in Boynton Beach, FL | Sweet Maid",
-      "length": 61
-    },
-    {
-      "url": "/delray-beach-fl/",
-      "title": "House Cleaning Services in Delray Beach, FL | Sweet Maid Cleaners",
-      "length": 65
-    },
-    {
-      "url": "/palm-beach-gardens-fl/",
-      "title": "House Cleaning in Palm Beach Gardens, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/lake-worth-beach-fl/",
-      "title": "Professional House Cleaning in Lake Worth Beach, FL | Sweet Maid",
-      "length": 64
-    },
-    {
-      "url": "/royal-palm-beach-fl/",
-      "title": "Professional House Cleaning in Royal Palm Beach, FL | Sweet Maid",
-      "length": 64
-    },
-    {
-      "url": "/riviera-beach-fl/",
-      "title": "House Cleaning in Riviera Beach, FL | Sweet Maid Cleaning Service",
-      "length": 65
-    },
-    {
-      "url": "/north-palm-beach-fl/",
-      "title": "Professional House Cleaning in North Palm Beach, FL | Sweet Maid",
-      "length": 64
+      "url": "/lantana-fl/",
+      "title": "Cleaning Services in Lantana, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/belle-glade-fl/",
-      "title": "House Cleaning in Belle Glade, FL | Sweet Maid Cleaning Service",
-      "length": 63
-    },
-    {
-      "url": "/south-palm-beach-fl/",
-      "title": "Professional House Cleaning in South Palm Beach, FL | Sweet Maid",
-      "length": 64
+      "title": "Cleaning Services in Belle Glade, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/tequesta-fl/",
-      "title": "House Cleaning Services in Tequesta, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Tequesta, FL | Sweet Maid",
+      "length": 46
     },
     {
-      "url": "/highland-beach-fl/",
-      "title": "Highland Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
+      "url": "/juno-beach-fl/",
+      "title": "Cleaning Services in Juno Beach, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/hypoluxo-fl/",
-      "title": "House Cleaning Services in Hypoluxo, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Hypoluxo, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/atlantis-fl/",
+      "title": "Cleaning Services in Atlantis, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/ocean-ridge-fl/",
+      "title": "Cleaning Services in Ocean Ridge, FL | Sweet Maid",
+      "length": 49
+    },
+    {
+      "url": "/lake-park-fl/",
+      "title": "Cleaning Services in Lake Park, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/haverhill-fl/",
-      "title": "House Cleaning in Haverhill, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Haverhill, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/loxahatchee-groves-fl/",
-      "title": "House Cleaning in Loxahatchee Groves, FL | Sweet Maid Cleaning Service",
-      "length": 70
+      "url": "/pahokee-fl/",
+      "title": "Cleaning Services in Pahokee, FL | Sweet Maid",
+      "length": 45
     },
     {
-      "url": "/mangonia-park-fl/",
-      "title": "Professional House Cleaning in Mangonia Park, FL | Sweet Maid",
-      "length": 61
+      "url": "/south-bay-fl/",
+      "title": "Cleaning Services in South Bay, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/gulf-stream-fl/",
+      "title": "Cleaning Services in Gulf Stream, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/manalapan-fl/",
-      "title": "House Cleaning in Manalapan, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Manalapan, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/jupiter-inlet-colony-fl/",
-      "title": "House Cleaning in Jupiter Inlet Colony, FL | Sweet Maid Cleaning Service",
-      "length": 72
+      "url": "/cloud-lake-fl/",
+      "title": "Cleaning Services in Cloud Lake, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/briny-breezes-fl/",
-      "title": "Briny Breezes, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 62
+      "url": "/glen-ridge-fl/",
+      "title": "Cleaning Services in Glen Ridge, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/orlando-fl/",
+      "title": "Cleaning Services in Orlando, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/winter-park-fl/",
-      "title": "Reliable House Cleaning in Winter Park, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in Winter Park, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/winter-garden-fl/",
-      "title": "House Cleaning in Winter Garden, FL | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/apopka-fl/",
+      "title": "Cleaning Services in Apopka, FL | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/windermere-fl/",
-      "title": "House Cleaning Services in Windermere, FL | Sweet Maid Cleaners",
-      "length": 63
+      "title": "Cleaning Services in Windermere, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/lake-buena-vista-fl/",
-      "title": "Lake Buena Vista, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/maitland-fl/",
+      "title": "Cleaning Services in Maitland, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/belle-isle-fl/",
+      "title": "Cleaning Services in Belle Isle, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/edgewood-fl/",
+      "title": "Cleaning Services in Edgewood, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/eatonville-fl/",
-      "title": "Reliable House Cleaning in Eatonville, FL | Sweet Maid Cleaning",
-      "length": 63
+      "title": "Cleaning Services in Eatonville, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/hunters-creek-fl/",
-      "title": "Hunters Creek, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 62
+      "url": "/oakland-fl/",
+      "title": "Cleaning Services in Oakland, FL | Sweet Maid",
+      "length": 45
     },
     {
-      "url": "/horizon-west-fl/",
-      "title": "Horizon West, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 61
+      "url": "/lake-nona-fl/",
+      "title": "Cleaning Services in Lake Nona, FL | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/altamonte-springs-fl/",
-      "title": "Professional House Cleaning in Altamonte Springs, FL | Sweet Maid",
-      "length": 65
+      "url": "/avalon-park-fl/",
+      "title": "Cleaning Services in Avalon Park, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/winter-springs-fl/",
-      "title": "Professional House Cleaning in Winter Springs, FL | Sweet Maid",
-      "length": 62
+      "url": "/bay-lake-fl/",
+      "title": "Cleaning Services in Bay Lake, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/sanford-fl/",
+      "title": "Cleaning Services in Sanford, FL | Sweet Maid",
+      "length": 45
+    },
+    {
+      "url": "/oviedo-fl/",
+      "title": "Cleaning Services in Oviedo, FL | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/casselberry-fl/",
-      "title": "Reliable House Cleaning in Casselberry, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in Casselberry, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/longwood-fl/",
-      "title": "House Cleaning Services in Longwood, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Longwood, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/lake-mary-fl/",
-      "title": "House Cleaning in Lake Mary, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Lake Mary, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/kissimmee-fl/",
-      "title": "House Cleaning in Kissimmee, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Kissimmee, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/st-cloud-fl/",
+      "title": "Cleaning Services in St. Cloud, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/celebration-fl/",
+      "title": "Cleaning Services in Celebration, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/poinciana-fl/",
-      "title": "House Cleaning in Poinciana, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in Poinciana, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/clermont-fl/",
-      "title": "Reliable House Cleaning in Clermont, FL | Sweet Maid Cleaning",
-      "length": 61
+      "title": "Cleaning Services in Clermont, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/leesburg-fl/",
-      "title": "House Cleaning Services in Leesburg, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Leesburg, FL | Sweet Maid",
+      "length": 46
     },
     {
-      "url": "/fruitland-park-fl/",
-      "title": "Professional House Cleaning in Fruitland Park, FL | Sweet Maid",
-      "length": 62
+      "url": "/eustis-fl/",
+      "title": "Cleaning Services in Eustis, FL | Sweet Maid",
+      "length": 44
+    },
+    {
+      "url": "/mount-dora-fl/",
+      "title": "Cleaning Services in Mount Dora, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/tavares-fl/",
+      "title": "Cleaning Services in Tavares, FL | Sweet Maid",
+      "length": 45
+    },
+    {
+      "url": "/minneola-fl/",
+      "title": "Cleaning Services in Minneola, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/groveland-fl/",
+      "title": "Cleaning Services in Groveland, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/lady-lake-fl/",
+      "title": "Cleaning Services in Lady Lake, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/mascotte-fl/",
+      "title": "Cleaning Services in Mascotte, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/lakeland-fl/",
-      "title": "House Cleaning Services in Lakeland, FL | Sweet Maid Cleaners",
-      "length": 61
-    },
-    {
-      "url": "/winter-haven-fl/",
-      "title": "House Cleaning Services in Winter Haven, FL | Sweet Maid Cleaners",
-      "length": 65
+      "title": "Cleaning Services in Lakeland, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/haines-city-fl/",
-      "title": "House Cleaning in Haines City, FL | Sweet Maid Cleaning Service",
-      "length": 63
+      "title": "Cleaning Services in Haines City, FL | Sweet Maid",
+      "length": 49
+    },
+    {
+      "url": "/davenport-fl/",
+      "title": "Cleaning Services in Davenport, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/bartow-fl/",
+      "title": "Cleaning Services in Bartow, FL | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/lake-wales-fl/",
-      "title": "House Cleaning in Lake Wales, FL | Sweet Maid Cleaning Service",
-      "length": 62
+      "title": "Cleaning Services in Lake Wales, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/auburndale-fl/",
+      "title": "Cleaning Services in Auburndale, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/lake-alfred-fl/",
-      "title": "Reliable House Cleaning in Lake Alfred, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in Lake Alfred, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/polk-city-fl/",
-      "title": "Reliable House Cleaning in Polk City, FL | Sweet Maid Cleaning",
-      "length": 62
+      "title": "Cleaning Services in Polk City, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/mulberry-fl/",
-      "title": "House Cleaning Services in Mulberry, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Mulberry, FL | Sweet Maid",
+      "length": 46
     },
     {
-      "url": "/daytona-beach-fl/",
-      "title": "House Cleaning in Daytona Beach, FL | Sweet Maid Cleaning Service",
-      "length": 65
+      "url": "/deltona-fl/",
+      "title": "Cleaning Services in Deltona, FL | Sweet Maid",
+      "length": 45
+    },
+    {
+      "url": "/deland-fl/",
+      "title": "Cleaning Services in Deland, FL | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/port-orange-fl/",
-      "title": "House Cleaning Services in Port Orange, FL | Sweet Maid Cleaners",
-      "length": 64
-    },
-    {
-      "url": "/ormond-beach-fl/",
-      "title": "Ormond Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 61
-    },
-    {
-      "url": "/new-smyrna-beach-fl/",
-      "title": "New Smyrna Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 65
+      "title": "Cleaning Services in Port Orange, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/orange-city-fl/",
-      "title": "Reliable House Cleaning in Orange City, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in Orange City, FL | Sweet Maid",
+      "length": 49
+    },
+    {
+      "url": "/debary-fl/",
+      "title": "Cleaning Services in Debary, FL | Sweet Maid",
+      "length": 44
+    },
+    {
+      "url": "/edgewater-fl/",
+      "title": "Cleaning Services in Edgewater, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/holly-hill-fl/",
-      "title": "House Cleaning Services in Holly Hill, FL | Sweet Maid Cleaners",
-      "length": 63
+      "title": "Cleaning Services in Holly Hill, FL | Sweet Maid",
+      "length": 48
+    },
+    {
+      "url": "/ponce-inlet-fl/",
+      "title": "Cleaning Services in Ponce Inlet, FL | Sweet Maid",
+      "length": 49
+    },
+    {
+      "url": "/melbourne-fl/",
+      "title": "Cleaning Services in Melbourne, FL | Sweet Maid",
+      "length": 47
+    },
+    {
+      "url": "/palm-bay-fl/",
+      "title": "Cleaning Services in Palm Bay, FL | Sweet Maid",
+      "length": 46
+    },
+    {
+      "url": "/titusville-fl/",
+      "title": "Cleaning Services in Titusville, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/cocoa-beach-fl/",
-      "title": "Reliable House Cleaning in Cocoa Beach, FL | Sweet Maid Cleaning",
-      "length": 64
+      "title": "Cleaning Services in Cocoa Beach, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/rockledge-fl/",
-      "title": "House Cleaning Services in Rockledge, FL | Sweet Maid Cleaners",
-      "length": 62
-    },
-    {
-      "url": "/cape-canaveral-fl/",
-      "title": "Cape Canaveral, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
-    },
-    {
-      "url": "/satellite-beach-fl/",
-      "title": "Satellite Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 64
-    },
-    {
-      "url": "/merritt-island-fl/",
-      "title": "Merritt Island, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
-    },
-    {
-      "url": "/west-melbourne-fl/",
-      "title": "West Melbourne, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
+      "title": "Cleaning Services in Rockledge, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/indialantic-fl/",
-      "title": "House Cleaning Services in Indialantic, FL | Sweet Maid Cleaners",
-      "length": 64
+      "title": "Cleaning Services in Indialantic, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/indian-harbour-beach-fl/",
-      "title": "House Cleaning in Indian Harbour Beach, FL | Sweet Maid Cleaning Service",
-      "length": 72
+      "url": "/baldwin-fl/",
+      "title": "Cleaning Services in Baldwin, FL | Sweet Maid",
+      "length": 45
     },
     {
-      "url": "/melbourne-beach-fl/",
-      "title": "Melbourne Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 64
+      "url": "/ponte-vedra-fl/",
+      "title": "Cleaning Services in Ponte Vedra, FL | Sweet Maid",
+      "length": 49
     },
     {
-      "url": "/jacksonville-fl/",
-      "title": "House Cleaning Services in Jacksonville, FL | Sweet Maid Cleaners",
-      "length": 65
-    },
-    {
-      "url": "/jacksonville-beach-fl/",
-      "title": "House Cleaning in Jacksonville Beach, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/atlantic-beach-fl/",
-      "title": "Professional House Cleaning in Atlantic Beach, FL | Sweet Maid",
-      "length": 62
-    },
-    {
-      "url": "/neptune-beach-fl/",
-      "title": "Neptune Beach, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 62
-    },
-    {
-      "url": "/st-augustine-fl/",
-      "title": "St. Augustine, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 62
-    },
-    {
-      "url": "/st-augustine-beach-fl/",
-      "title": "House Cleaning in St. Augustine Beach, FL | Sweet Maid Cleaning Service",
-      "length": 71
-    },
-    {
-      "url": "/ponte-vedra-beach-fl/",
-      "title": "Professional House Cleaning in Ponte Vedra Beach, FL | Sweet Maid",
-      "length": 65
+      "url": "/nocatee-fl/",
+      "title": "Cleaning Services in Nocatee, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/st-johns-fl/",
-      "title": "House Cleaning in St. Johns, FL | Sweet Maid Cleaning Service",
-      "length": 61
+      "title": "Cleaning Services in St. Johns, FL | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/fruit-cove-fl/",
-      "title": "House Cleaning in Fruit Cove, FL | Sweet Maid Cleaning Service",
-      "length": 62
+      "title": "Cleaning Services in Fruit Cove, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/hastings-fl/",
-      "title": "House Cleaning Services in Hastings, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Hastings, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/marineland-fl/",
-      "title": "Reliable House Cleaning in Marineland, FL | Sweet Maid Cleaning",
-      "length": 63
+      "title": "Cleaning Services in Marineland, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/fleming-island-fl/",
-      "title": "Professional House Cleaning in Fleming Island, FL | Sweet Maid",
-      "length": 62
-    },
-    {
-      "url": "/green-cove-springs-fl/",
-      "title": "House Cleaning in Green Cove Springs, FL | Sweet Maid Cleaning Service",
-      "length": 70
+      "url": "/orange-park-fl/",
+      "title": "Cleaning Services in Orange Park, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/middleburg-fl/",
-      "title": "Reliable House Cleaning in Middleburg, FL | Sweet Maid Cleaning",
-      "length": 63
+      "title": "Cleaning Services in Middleburg, FL | Sweet Maid",
+      "length": 48
     },
     {
-      "url": "/oakleaf-plantation-fl/",
-      "title": "House Cleaning in Oakleaf Plantation, FL | Sweet Maid Cleaning Service",
-      "length": 70
-    },
-    {
-      "url": "/keystone-heights-fl/",
-      "title": "Keystone Heights, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 65
-    },
-    {
-      "url": "/penney-farms-fl/",
-      "title": "Penney Farms, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 61
-    },
-    {
-      "url": "/fernandina-beach-fl/",
-      "title": "Professional House Cleaning in Fernandina Beach, FL | Sweet Maid",
-      "length": 64
-    },
-    {
-      "url": "/amelia-island-fl/",
-      "title": "Professional House Cleaning in Amelia Island, FL | Sweet Maid",
-      "length": 61
+      "url": "/callahan-fl/",
+      "title": "Cleaning Services in Callahan, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/hilliard-fl/",
-      "title": "House Cleaning Services in Hilliard, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Cleaning Services in Hilliard, FL | Sweet Maid",
+      "length": 46
     },
     {
       "url": "/services/",
-      "title": "Professional Cleaning &amp; Maid Services in Florida | Sweet Maid",
-      "length": 65
+      "title": "Professional Cleaning & Maid Services in Florida | Sweet Maid",
+      "length": 61
     },
     {
       "url": "/locations/",
@@ -922,4413 +711,297 @@
       "length": 61
     },
     {
-      "url": "/blog/",
-      "title": "Florida Cleaning Tips &amp; Guides | Sweet Maid Cleaning Service",
-      "length": 64
-    },
-    {
-      "url": "/gallery/",
-      "title": "Cleaning Results &amp; Before/After Photo Gallery | Sweet Maid",
-      "length": 62
-    },
-    {
       "url": "/privacy-policy/",
-      "title": "Privacy Policy &amp; Customer Data Security | Sweet Maid Cleaning",
-      "length": 65
+      "title": "Privacy Policy & Customer Data Security | Sweet Maid Cleaning",
+      "length": 61
     },
     {
       "url": "/terms-and-conditions/",
-      "title": "Terms &amp; Conditions &amp; Service Agreement | Sweet Maid Cleaning",
-      "length": 68
+      "title": "Terms & Conditions | Sweet Maid Cleaning Service",
+      "length": 48
     },
     {
       "url": "/login/",
-      "title": "Customer Portal &amp; Account Login | Sweet Maid Cleaning Service",
-      "length": 65
+      "title": "Customer Portal & Account Login | Sweet Maid Cleaning Service",
+      "length": 61
     },
     {
       "url": "/blog/tampa-bay-cleaning-guide/",
-      "title": "Tampa Bay &amp; St. Pete Cleaning Guide: Humidity &amp; Sand | Sweet Maid",
-      "length": 73
-    },
-    {
-      "url": "/blog/south-florida-cleaning-guide/",
-      "title": "South Florida High-Rise &amp; Luxury Home Cleaning Guide | Sweet Maid",
-      "length": 69
-    },
-    {
-      "url": "/blog/central-florida-cleaning-guide/",
-      "title": "Orlando &amp; Central Florida Vacation Rental Cleaning Guide | Sweet Maid",
-      "length": 73
+      "title": "Tampa Bay & St. Pete Cleaning Guide | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/blog/southwest-florida-cleaning-guide/",
-      "title": "Sarasota &amp; SWFL Home Care Guide: Lanais &amp; Salt Mist | Sweet Maid",
-      "length": 72
+      "title": "Sarasota & SWFL Home Care Guide | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/blog/first-coast-cleaning-guide/",
-      "title": "First Coast Cleaning Guide: Pine Pollen &amp; Coastal Care | Sweet Maid",
-      "length": 71
+      "title": "First Coast Home Cleaning Guide | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/blog/florida-keys-cleaning-guide/",
-      "title": "Florida Keys Island Home Maintenance &amp; Cleaning Playbook | Sweet Maid",
-      "length": 73
-    },
-    {
-      "url": "/recurring-maid-service/",
-      "title": "Recurring Maid Service in Florida | Sweet Maid Cleaning Service",
-      "length": 63
+      "title": "Florida Keys Home Cleaning Playbook | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/move-in-out-cleaning/",
-      "title": "Move In Out Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 65
+      "title": "Move In Out Cleaning Across Florida | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/home-watch-services/",
-      "title": "Home Watch Services Across Florida | Sweet Maid Cleaning Service",
-      "length": 64
+      "title": "Home Watch Services Across Florida | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/luxury-estate-cleaning/",
-      "title": "Reliable Luxury Estate Cleaning in Florida | Sweet Maid Cleaning",
-      "length": 64
+      "url": "/property-management-janitorial/",
+      "title": "Property Janitorial Across Florida | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/commercial-cleaning/",
-      "title": "Reliable Commercial Cleaning in Florida | Sweet Maid Cleaning",
-      "length": 61
-    },
-    {
-      "url": "/office-janitorial-services/",
-      "title": "Office Janitorial Services Across Florida | Sweet Maid Cleaning Service",
-      "length": 71
+      "title": "Commercial Cleaning Across Florida | Sweet Maid",
+      "length": 47
     },
     {
       "url": "/janitorial-cleaning-services/",
-      "title": "Janitorial Services Across Florida | Sweet Maid Cleaning Service",
-      "length": 64
+      "title": "Janitorial Services Across Florida | Sweet Maid",
+      "length": 47
     },
     {
-      "url": "/medical-dental-facility-cleaning/",
-      "title": "Medical &amp; Dental Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 74
+      "url": "/industrial-warehouse-cleaning/",
+      "title": "Warehouse Cleaning Across Florida | Sweet Maid",
+      "length": 46
     },
     {
-      "url": "/gym-fitness-center-cleaning/",
-      "title": "Reliable Gym &amp; Fitness Cleaning in Florida | Sweet Maid Cleaning",
-      "length": 68
-    },
-    {
-      "url": "/school-daycare-cleaning/",
-      "title": "Daycare &amp; School Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 74
-    },
-    {
-      "url": "/church-worship-center-cleaning/",
-      "title": "Church &amp; Worship Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 74
-    },
-    {
-      "url": "/post-construction-cleaning/",
-      "title": "Post-Construction Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 71
-    },
-    {
-      "url": "/floor-stripping-waxing/",
-      "title": "Professional Floor Stripping Waxing Across Florida | Sweet Maid",
-      "length": 63
+      "url": "/pressure-washing/",
+      "title": "Pressure Washing Across Florida | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/solar-panel-cleaning/",
-      "title": "Solar Panel Cleaning Across Florida | Sweet Maid Cleaning Service",
-      "length": 65
+      "title": "Solar Panel Cleaning Across Florida | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/property-maintenance/",
-      "title": "Professional Property Maintenance Across Florida | Sweet Maid",
-      "length": 61
+      "title": "Property Maintenance Across Florida | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/house-cleaning-bradenton-fl/",
-      "title": "House Cleaning in Bradenton, FL | Sweet Maid Cleaning Service",
-      "length": 61
-    },
-    {
-      "url": "/recurring-maid-service-bradenton-fl/",
-      "title": "Professional Recurring Maid Service in Bradenton, FL | Sweet Maid",
-      "length": 65
-    },
-    {
-      "url": "/move-in-out-cleaning-bradenton-fl/",
-      "title": "Bradenton, FL Move In Out Cleaning | Sweet Maid Cleaning Service",
-      "length": 64
+      "title": "House Cleaning in Bradenton, FL | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/airbnb-cleaning-bradenton-fl/",
-      "title": "Airbnb Cleaning in Bradenton, FL | Sweet Maid Cleaning Service",
-      "length": 62
-    },
-    {
-      "url": "/post-construction-cleaning-bradenton-fl/",
-      "title": "Post-Construction Cleaning in Bradenton, FL | Sweet Maid Cleaning Service",
-      "length": 73
+      "title": "Airbnb Cleaning in Bradenton, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/commercial-cleaning-bradenton-fl/",
-      "title": "Bradenton, FL Commercial Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
+      "title": "Commercial Cleaning in Bradenton, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/carpet-cleaning-bradenton-fl/",
-      "title": "Carpet Cleaning in Bradenton, FL | Sweet Maid Cleaning Service",
-      "length": 62
+      "title": "Carpet Cleaning in Bradenton, FL | Sweet Maid",
+      "length": 45
+    },
+    {
+      "url": "/window-cleaning-bradenton-fl/",
+      "title": "Window Cleaning in Bradenton, FL | Sweet Maid",
+      "length": 45
     },
     {
       "url": "/janitorial-cleaning-services-bradenton-fl/",
-      "title": "Bradenton, FL Janitorial Services | Sweet Maid Cleaning Service",
-      "length": 63
-    },
-    {
-      "url": "/house-cleaning-sarasota-fl/",
-      "title": "House Cleaning Services in Sarasota, FL | Sweet Maid Cleaners",
-      "length": 61
+      "title": "Janitorial Services in Bradenton, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/airbnb-cleaning-sarasota-fl/",
-      "title": "Airbnb Cleaning Services in Sarasota, FL | Sweet Maid Cleaners",
-      "length": 62
+      "title": "Airbnb Cleaning in Sarasota, FL | Sweet Maid",
+      "length": 44
     },
     {
       "url": "/house-cleaning-lakewood-ranch-fl/",
-      "title": "Lakewood Ranch, FL House Cleaning | Sweet Maid Cleaning Service",
-      "length": 63
+      "title": "House Cleaning in Lakewood Ranch, FL | Sweet Maid",
+      "length": 49
     },
     {
       "url": "/deep-cleaning-lakewood-ranch-fl/",
-      "title": "Lakewood Ranch, FL Deep Cleaning | Sweet Maid Cleaning Service",
-      "length": 62
+      "title": "Deep Cleaning in Lakewood Ranch, FL | Sweet Maid",
+      "length": 48
     },
     {
       "url": "/move-in-out-cleaning-venice-fl/",
-      "title": "Reliable Move In Out Cleaning in Venice, FL | Sweet Maid Cleaning",
-      "length": 65
+      "title": "Move In Out Cleaning in Venice, FL | Sweet Maid",
+      "length": 47
     }
   ],
   "metaLengthOutsideRange": [],
   "metaLengthOutsideOptimal": [
     {
-      "url": "/bradenton-fl/",
-      "meta": "Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans. Get a free estimate today.",
-      "length": 161
-    },
-    {
-      "url": "/palmetto-fl/",
-      "meta": "Looking for trusted house cleaning services in Palmetto, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 164
-    },
-    {
-      "url": "/parrish-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Parrish. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/holmes-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in Holmes Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 168
-    },
-    {
-      "url": "/cortez-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Cortez. Contact our local team for a free estimate tailored to your space.",
-      "length": 135
-    },
-    {
-      "url": "/bayshore-gardens-fl/",
-      "meta": "Looking for trusted house cleaning services in Bayshore Gardens, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 172
-    },
-    {
-      "url": "/myakka-city-fl/",
-      "meta": "Looking for trusted house cleaning services in Myakka City, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 167
-    },
-    {
-      "url": "/venice-fl/",
-      "meta": "Looking for trusted house cleaning services in Venice (Incl. South Venice), FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 183
-    },
-    {
-      "url": "/north-port-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in North Port. Contact our local team for a free estimate tailored to your space.",
-      "length": 139
-    },
-    {
-      "url": "/siesta-key-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Siesta Key. Contact our local team for a free estimate tailored to your space.",
-      "length": 139
-    },
-    {
-      "url": "/lake-sarasota-fl/",
-      "meta": "Looking for trusted house cleaning services in Lake Sarasota, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 169
-    },
-    {
-      "url": "/bee-ridge-fl/",
-      "meta": "Looking for trusted house cleaning services in Bee Ridge, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/englewood-fl/",
-      "meta": "Looking for trusted house cleaning services in Englewood, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/homestead-fl/",
-      "meta": "Looking for trusted house cleaning services in Homestead, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/key-biscayne-fl/",
-      "meta": "Looking for trusted house cleaning services in Key Biscayne, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 168
-    },
-    {
-      "url": "/sunny-isles-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in Sunny Isles Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 173
-    },
-    {
-      "url": "/cutler-bay-fl/",
-      "meta": "Looking for trusted house cleaning services in Cutler Bay, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 166
-    },
-    {
-      "url": "/key-largo-fl/",
-      "meta": "Sweet Maid Cleaning Service provides reliable house cleaning services in Key Largo (Incl. North Key Largo), with dedicated specialists and transparent flat-rate pricing.",
-      "length": 169
-    },
-    {
-      "url": "/islamorada-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Islamorada. Contact our local team for a free estimate tailored to your space.",
-      "length": 139
-    },
-    {
-      "url": "/key-west-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Key West. Contact our local team for a free estimate tailored to your space.",
-      "length": 137
-    },
-    {
-      "url": "/fish-hawk-fl/",
-      "meta": "Schedule professional house cleaning services in Fish Hawk (Incl. Lithia), FL with Sweet Maid Cleaning Service. Family-owned and committed to consistent cleanliness.",
-      "length": 165
-    },
-    {
-      "url": "/riverview-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Riverview. Contact our local team for a free estimate tailored to your space.",
-      "length": 138
-    },
-    {
-      "url": "/valrico-fl/",
-      "meta": "Looking for trusted house cleaning services in Valrico, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 163
-    },
-    {
-      "url": "/westchase-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Westchase. Contact our local team for a free estimate tailored to your space.",
-      "length": 138
-    },
-    {
-      "url": "/lutz-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Lutz. Contact our local team for a free estimate tailored to your space.",
-      "length": 133
-    },
-    {
-      "url": "/dunedin-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Dunedin. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/st-pete-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in St. Pete Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 170
-    },
-    {
-      "url": "/miramar-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Miramar. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/davie-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Davie. Contact our local team for a free estimate tailored to your space.",
-      "length": 134
-    },
-    {
-      "url": "/sunrise-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Sunrise. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/coconut-creek-fl/",
-      "meta": "Looking for trusted house cleaning services in Coconut Creek, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 169
-    },
-    {
-      "url": "/margate-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Margate. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/west-park-fl/",
-      "meta": "Looking for trusted house cleaning services in West Park, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/lazy-lake-fl/",
-      "meta": "Looking for trusted house cleaning services in Lazy Lake, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/riviera-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in Riviera Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 169
-    },
-    {
-      "url": "/palm-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in Palm Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 166
-    },
-    {
-      "url": "/north-palm-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in North Palm Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 172
-    },
-    {
-      "url": "/south-palm-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in South Palm Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 172
-    },
-    {
-      "url": "/tequesta-fl/",
-      "meta": "Looking for trusted house cleaning services in Tequesta, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 164
-    },
-    {
-      "url": "/hypoluxo-fl/",
-      "meta": "Looking for trusted house cleaning services in Hypoluxo, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 164
-    },
-    {
-      "url": "/atlantis-fl/",
-      "meta": "Looking for trusted house cleaning services in Atlantis, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 164
-    },
-    {
-      "url": "/ocean-ridge-fl/",
-      "meta": "Looking for trusted house cleaning services in Ocean Ridge, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 167
-    },
-    {
-      "url": "/lake-park-fl/",
-      "meta": "Looking for trusted house cleaning services in Lake Park, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/pahokee-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Pahokee. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/cloud-lake-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Cloud Lake. Contact our local team for a free estimate tailored to your space.",
-      "length": 139
-    },
-    {
-      "url": "/glen-ridge-fl/",
-      "meta": "Looking for trusted house cleaning services in Glen Ridge, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 166
-    },
-    {
-      "url": "/orlando-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Orlando. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/ocoee-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Ocoee. Contact our local team for a free estimate tailored to your space.",
-      "length": 134
-    },
-    {
-      "url": "/windermere-fl/",
-      "meta": "Looking for trusted house cleaning services in Windermere, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 166
-    },
-    {
-      "url": "/oakland-fl/",
-      "meta": "Looking for trusted house cleaning services in Oakland, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 163
-    },
-    {
-      "url": "/avalon-park-fl/",
-      "meta": "Looking for trusted house cleaning services in Avalon Park, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 167
-    },
-    {
-      "url": "/sanford-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Sanford. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/longwood-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Longwood. Contact our local team for a free estimate tailored to your space.",
-      "length": 137
-    },
-    {
-      "url": "/lake-mary-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Lake Mary. Contact our local team for a free estimate tailored to your space.",
-      "length": 138
-    },
-    {
-      "url": "/st-cloud-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in St. Cloud. Contact our local team for a free estimate tailored to your space.",
-      "length": 138
-    },
-    {
-      "url": "/tavares-fl/",
-      "meta": "Looking for trusted house cleaning services in Tavares, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 163
-    },
-    {
-      "url": "/minneola-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Minneola. Contact our local team for a free estimate tailored to your space.",
-      "length": 137
-    },
-    {
-      "url": "/fruitland-park-fl/",
-      "meta": "Looking for trusted house cleaning services in Fruitland Park, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 170
-    },
-    {
-      "url": "/haines-city-fl/",
-      "meta": "Looking for trusted house cleaning services in Haines City, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 167
-    },
-    {
-      "url": "/auburndale-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Auburndale. Contact our local team for a free estimate tailored to your space.",
-      "length": 139
-    },
-    {
-      "url": "/lake-alfred-fl/",
-      "meta": "Looking for trusted house cleaning services in Lake Alfred, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 167
-    },
-    {
-      "url": "/daytona-beach-fl/",
-      "meta": "Looking for trusted house cleaning services in Daytona Beach, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 169
-    },
-    {
-      "url": "/deland-fl/",
-      "meta": "Looking for trusted house cleaning services in Deland, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 162
-    },
-    {
-      "url": "/debary-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Debary. Contact our local team for a free estimate tailored to your space.",
-      "length": 135
-    },
-    {
-      "url": "/holly-hill-fl/",
-      "meta": "Looking for trusted house cleaning services in Holly Hill, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 166
-    },
-    {
-      "url": "/palm-bay-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Palm Bay. Contact our local team for a free estimate tailored to your space.",
-      "length": 137
-    },
-    {
-      "url": "/rockledge-fl/",
-      "meta": "Looking for trusted house cleaning services in Rockledge, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/indialantic-fl/",
-      "meta": "Looking for trusted house cleaning services in Indialantic, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 167
-    },
-    {
-      "url": "/nocatee-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Nocatee. Contact our local team for a free estimate tailored to your space.",
-      "length": 136
-    },
-    {
-      "url": "/st-johns-fl/",
-      "meta": "Looking for trusted house cleaning services in St. Johns, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 165
-    },
-    {
-      "url": "/fruit-cove-fl/",
-      "meta": "Looking for trusted house cleaning services in Fruit Cove, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 166
-    },
-    {
-      "url": "/middleburg-fl/",
-      "meta": "Maintain a spotless property with house cleaning services in Middleburg. Contact our local team for a free estimate tailored to your space.",
-      "length": 139
-    },
-    {
-      "url": "/oakleaf-plantation-fl/",
-      "meta": "Looking for trusted house cleaning services in Oakleaf Plantation, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 174
-    },
-    {
-      "url": "/yulee-fl/",
-      "meta": "Looking for trusted house cleaning services in Yulee, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 161
-    },
-    {
-      "url": "/services/",
-      "meta": "Explore 24 professional cleaning and property care services by Sweet Maid Cleaning Service. Upfront pricing from $180, family-owned care, and dependable service across Florida.",
-      "length": 176
-    },
-    {
-      "url": "/gallery/",
-      "meta": "View our spotless results in Bradenton, FL! See before and after photos of our professional house cleaning and maid services.",
-      "length": 125
-    },
-    {
-      "url": "/book-online/",
-      "meta": "Book your house cleaning, deep cleaning, or maid service online with Sweet Maid. Transparent pricing and experienced local cleaning teams.",
-      "length": 138
-    },
-    {
-      "url": "/privacy-policy/",
-      "meta": "Learn how Sweet Maid Cleaning Service collects, uses, and safeguards your personal data, booking information, and online privacy.",
-      "length": 129
-    },
-    {
-      "url": "/terms-and-conditions/",
-      "meta": "Read the Terms and Conditions for Sweet Maid Cleaning Services, including booking policies, cancellation guidelines, and professional service standards in Florida.",
-      "length": 163
-    },
-    {
-      "url": "/property-management-janitorial/",
-      "meta": "Looking for trusted property management janitorial services across Florida? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the state.",
-      "length": 180
-    },
-    {
-      "url": "/medical-dental-facility-cleaning/",
-      "meta": "Maintain a spotless property with medical dental facility cleaning services across Florida. Contact our dispatch team for a free estimate tailored to your space.",
-      "length": 161
-    },
-    {
-      "url": "/industrial-warehouse-cleaning/",
-      "meta": "Looking for trusted industrial warehouse cleaning services across Florida? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the state.",
-      "length": 179
-    },
-    {
-      "url": "/church-worship-center-cleaning/",
-      "meta": "Sweet Maid Cleaning Service provides reliable church worship center cleaning services across Florida, with dedicated specialists and transparent flat-rate pricing.",
-      "length": 163
-    },
-    {
-      "url": "/carpet-cleaning/",
-      "meta": "Looking for trusted carpet cleaning services across Florida? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the state.",
-      "length": 165
-    },
-    {
-      "url": "/gutter-cleaning/",
-      "meta": "Looking for trusted gutter cleaning services across Florida? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the state.",
-      "length": 165
-    },
-    {
-      "url": "/deep-cleaning-bradenton-fl/",
-      "meta": "Maintain a spotless property with deep cleaning services in Bradenton. Contact our local team for a free estimate tailored to your space.",
-      "length": 137
-    },
-    {
-      "url": "/recurring-maid-service-bradenton-fl/",
-      "meta": "Looking for trusted recurring maid service in Bradenton, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 164
-    },
-    {
-      "url": "/window-cleaning-bradenton-fl/",
-      "meta": "Maintain a spotless property with window cleaning services in Bradenton. Contact our local team for a free estimate tailored to your space.",
-      "length": 139
-    },
-    {
-      "url": "/house-cleaning-venice-fl/",
-      "meta": "Looking for trusted house cleaning services in Venice, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 162
-    },
-    {
-      "url": "/airbnb-cleaning-venice-fl/",
-      "meta": "Looking for trusted airbnb cleaning services in Venice, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "length": 163
-    },
-    {
-      "url": "/deep-cleaning-miami-fl/",
-      "meta": "Maintain a spotless property with deep cleaning services in Miami. Contact our local team for a free estimate tailored to your space.",
-      "length": 133
-    }
-  ],
-  "pagesWithBannedPhrases": [
-    {
-      "url": "/lakewood-ranch-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palmetto-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/ellenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/parrish-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/anna-maria-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/holmes-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/bradenton-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/cortez-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/bayshore-gardens-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/whitfield-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/longboat-key-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/myakka-city-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/sarasota-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/venice-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/north-port-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/osprey-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/nokomis-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/siesta-key-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/fruitville-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-sarasota-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/bee-ridge-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palmer-ranch-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/englewood-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/miami-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/homestead-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/miami-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/coral-gables-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/doral-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/aventura-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/kendall-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/pinecrest-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/key-biscayne-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/south-miami-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/bal-harbour-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/sunny-isles-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/cutler-bay-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palmetto-bay-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/key-largo-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/tavernier-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/islamorada-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/marathon-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/big-pine-key-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/key-west-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/tampa-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/fish-hawk-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/brandon-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/riverview-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/valrico-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/bloomingdale-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/apollo-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/sun-city-center-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/plant-city-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/carrollwood-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/westchase-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lutz-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/st-petersburg-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/clearwater-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palm-harbor-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/largo-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/dunedin-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/pinellas-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/safety-harbor-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/st-pete-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/fort-lauderdale-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/hollywood-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/pompano-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/coral-springs-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/pembroke-pines-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/miramar-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/davie-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/sunrise-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/plantation-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/deerfield-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lauderhill-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/weston-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/coconut-creek-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/tamarac-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/margate-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/oakland-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/north-lauderdale-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/hallandale-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lauderdale-lakes-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/dania-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/cooper-city-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/parkland-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/wilton-manors-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lighthouse-point-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/southwest-ranches-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
       "url": "/lauderdale-by-the-sea-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/pembroke-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/west-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/hillsboro-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/sea-ranch-lakes-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lazy-lake-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/west-palm-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/boca-raton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/boynton-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/delray-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/wellington-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/jupiter-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palm-beach-gardens-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/greenacres-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-worth-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/royal-palm-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/riviera-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palm-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/north-palm-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lantana-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palm-springs-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/belle-glade-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/south-palm-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/tequesta-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/highland-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/juno-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/hypoluxo-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/atlantis-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/ocean-ridge-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/haverhill-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/pahokee-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/south-bay-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/loxahatchee-groves-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/mangonia-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/gulf-stream-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/manalapan-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
+      "meta": "Professional cleaning services in Lauderdale-by-the-sea, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "length": 163
     },
     {
       "url": "/jupiter-inlet-colony-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/briny-breezes-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/cloud-lake-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/glen-ridge-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/golf-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/orlando-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/winter-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/winter-garden-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/ocoee-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/apopka-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/windermere-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/maitland-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-buena-vista-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/belle-isle-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/edgewood-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/eatonville-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/oakland-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/dr-phillips-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/hunters-creek-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/horizon-west-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-nona-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/avalon-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/bay-lake-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/sanford-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/altamonte-springs-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/oviedo-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/winter-springs-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/casselberry-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/longwood-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-mary-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/kissimmee-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/st-cloud-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/celebration-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/poinciana-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/clermont-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/leesburg-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/eustis-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/mount-dora-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/tavares-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/minneola-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/groveland-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lady-lake-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/mascotte-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/fruitland-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lakeland-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/winter-haven-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/haines-city-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/davenport-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/bartow-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-wales-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/auburndale-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/lake-alfred-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/polk-city-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/mulberry-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/daytona-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/deltona-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/deland-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/port-orange-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/ormond-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/new-smyrna-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/orange-city-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/debary-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/edgewater-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/holly-hill-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/ponce-inlet-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/melbourne-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/palm-bay-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/titusville-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/cocoa-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/cocoa-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/rockledge-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/cape-canaveral-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/satellite-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/merritt-island-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/west-melbourne-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/indialantic-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
+      "meta": "Professional cleaning services in Jupiter Inlet Colony, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "length": 162
     },
     {
       "url": "/indian-harbour-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/melbourne-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/jacksonville-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/jacksonville-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/atlantic-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/neptune-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/baldwin-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/st-augustine-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
+      "meta": "Professional cleaning services in Indian Harbour Beach, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "length": 162
     },
     {
       "url": "/st-augustine-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/ponte-vedra-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/ponte-vedra-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/nocatee-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/st-johns-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/fruit-cove-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/hastings-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/marineland-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/orange-park-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/fleming-island-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/green-cove-springs-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/middleburg-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/oakleaf-plantation-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/keystone-heights-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/penney-farms-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/fernandina-beach-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/yulee-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/amelia-island-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/callahan-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/hilliard-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/gallery/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/blog/south-florida-cleaning-guide/",
-      "phrases": [
-        "\\bpremier\\b"
-      ]
-    },
-    {
-      "url": "/blog/central-florida-cleaning-guide/",
-      "phrases": [
-        "\\bbest\\b"
-      ]
-    },
-    {
-      "url": "/blog/southwest-florida-cleaning-guide/",
-      "phrases": [
-        "\\bpremier\\b"
-      ]
-    },
-    {
-      "url": "/house-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/deep-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/recurring-maid-service-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/move-in-out-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/airbnb-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/post-construction-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/commercial-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/carpet-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/window-cleaning-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/janitorial-cleaning-services-bradenton-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/house-cleaning-sarasota-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/deep-cleaning-sarasota-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/airbnb-cleaning-sarasota-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/house-cleaning-lakewood-ranch-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/deep-cleaning-lakewood-ranch-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/house-cleaning-venice-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/move-in-out-cleaning-venice-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/airbnb-cleaning-venice-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/house-cleaning-miami-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    },
-    {
-      "url": "/deep-cleaning-miami-fl/",
-      "phrases": [
-        "\\bmost trusted\\b"
-      ]
-    }
-  ],
-  "pagesWithTemplateErrors": [
-    {
-      "url": "/bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lakewood-ranch-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palmetto-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/ellenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/parrish-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/anna-maria-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/holmes-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/bradenton-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/cortez-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/bayshore-gardens-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/whitfield-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/longboat-key-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/myakka-city-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/sarasota-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/venice-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/north-port-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/osprey-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/nokomis-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/siesta-key-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/fruitville-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-sarasota-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/bee-ridge-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palmer-ranch-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/englewood-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/miami-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/homestead-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/miami-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/coral-gables-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/doral-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/aventura-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/kendall-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/pinecrest-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/key-biscayne-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/south-miami-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/bal-harbour-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/sunny-isles-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/cutler-bay-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palmetto-bay-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/key-largo-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/tavernier-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/islamorada-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/marathon-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/big-pine-key-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/key-west-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/tampa-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/fish-hawk-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/brandon-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/riverview-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/valrico-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/bloomingdale-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/apollo-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/sun-city-center-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/plant-city-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/carrollwood-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/westchase-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lutz-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/st-petersburg-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/clearwater-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palm-harbor-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/largo-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/dunedin-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/pinellas-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/safety-harbor-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/st-pete-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/fort-lauderdale-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/hollywood-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/pompano-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/coral-springs-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/pembroke-pines-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/miramar-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/davie-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/sunrise-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/plantation-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/deerfield-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lauderhill-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/weston-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/coconut-creek-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/tamarac-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/margate-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/oakland-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/north-lauderdale-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/hallandale-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lauderdale-lakes-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/dania-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/cooper-city-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/parkland-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/wilton-manors-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lighthouse-point-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/southwest-ranches-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lauderdale-by-the-sea-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/pembroke-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/west-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/hillsboro-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/sea-ranch-lakes-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lazy-lake-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/west-palm-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/boca-raton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/boynton-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/delray-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/wellington-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/jupiter-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palm-beach-gardens-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/greenacres-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-worth-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/royal-palm-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/riviera-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palm-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/north-palm-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lantana-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palm-springs-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/belle-glade-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/south-palm-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/tequesta-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/highland-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/juno-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/hypoluxo-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/atlantis-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/ocean-ridge-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/haverhill-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/pahokee-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/south-bay-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/loxahatchee-groves-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/mangonia-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/gulf-stream-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/manalapan-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/jupiter-inlet-colony-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/briny-breezes-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/cloud-lake-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/glen-ridge-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/golf-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/orlando-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/winter-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/winter-garden-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/ocoee-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/apopka-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/windermere-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/maitland-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-buena-vista-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/belle-isle-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/edgewood-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/eatonville-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/oakland-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/dr-phillips-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/hunters-creek-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/horizon-west-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-nona-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/avalon-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/bay-lake-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/sanford-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/altamonte-springs-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/oviedo-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/winter-springs-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/casselberry-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/longwood-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-mary-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/kissimmee-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/st-cloud-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/celebration-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/poinciana-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/clermont-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/leesburg-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/eustis-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/mount-dora-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/tavares-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/minneola-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/groveland-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lady-lake-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/mascotte-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/fruitland-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lakeland-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/winter-haven-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/haines-city-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/davenport-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/bartow-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-wales-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/auburndale-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/lake-alfred-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/polk-city-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/mulberry-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/daytona-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/deltona-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/deland-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/port-orange-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/ormond-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/new-smyrna-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/orange-city-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/debary-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/edgewater-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/holly-hill-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/ponce-inlet-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/melbourne-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/palm-bay-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/titusville-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/cocoa-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/cocoa-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/rockledge-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/cape-canaveral-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/satellite-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/merritt-island-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/west-melbourne-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/indialantic-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/indian-harbour-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/melbourne-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/jacksonville-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/jacksonville-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/atlantic-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/neptune-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/baldwin-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/st-augustine-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/st-augustine-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/ponte-vedra-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/ponte-vedra-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/nocatee-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/st-johns-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/fruit-cove-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/hastings-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/marineland-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/orange-park-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/fleming-island-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/green-cove-springs-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/middleburg-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/oakleaf-plantation-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/keystone-heights-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/penney-farms-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/fernandina-beach-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/yulee-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/amelia-island-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/callahan-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/hilliard-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/services/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/locations/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/about/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/blog/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/gallery/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/book-online/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/privacy-policy/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/terms-and-conditions/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/login/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/blog/tampa-bay-cleaning-guide/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/blog/south-florida-cleaning-guide/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/blog/central-florida-cleaning-guide/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/blog/southwest-florida-cleaning-guide/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/blog/first-coast-cleaning-guide/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/blog/florida-keys-cleaning-guide/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/house-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/deep-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/recurring-maid-service/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Professional cleaning services in St. Augustine Beach, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "length": 161
     },
     {
       "url": "/move-in-out-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/airbnb-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/home-watch-services/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable move in out cleaning services across Florida by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 164
     },
     {
       "url": "/luxury-estate-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable luxury estate cleaning services across Florida by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 166
     },
     {
       "url": "/property-management-janitorial/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Professional property management janitorial services across Florida. Family-owned team with transparent flat rates, reliable scheduling, and detailed care. Request a free quote.",
+      "length": 177
     },
     {
       "url": "/commercial-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/office-janitorial-services/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Looking for commercial cleaning services across Florida? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.",
+      "length": 163
     },
     {
       "url": "/janitorial-cleaning-services/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable janitorial cleaning services across Florida by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 163
     },
     {
       "url": "/medical-dental-facility-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Looking for medical dental facility cleaning services across Florida? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.",
+      "length": 176
     },
     {
       "url": "/industrial-warehouse-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Professional industrial warehouse cleaning services across Florida. Family-owned team with transparent flat rates, reliable scheduling, and detailed care. Request a free quote.",
+      "length": 176
     },
     {
       "url": "/gym-fitness-center-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Looking for gym fitness center cleaning services across Florida? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.",
+      "length": 171
     },
     {
       "url": "/school-daycare-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable school daycare cleaning services across Florida by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 167
     },
     {
       "url": "/church-worship-center-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable church worship center cleaning services across Florida by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 174
     },
     {
       "url": "/post-construction-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/pressure-washing/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Looking for post construction cleaning services across Florida? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.",
+      "length": 170
     },
     {
       "url": "/carpet-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/window-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Professional carpet cleaning services across Florida. Family-owned team with transparent flat rates, reliable scheduling, and detailed care. Request a free quote.",
+      "length": 162
     },
     {
       "url": "/floor-stripping-waxing/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Looking for floor stripping waxing services across Florida? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.",
+      "length": 166
     },
     {
       "url": "/solar-panel-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable solar panel cleaning services across Florida by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 164
     },
     {
       "url": "/gutter-cleaning/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Professional gutter cleaning services across Florida. Family-owned team with transparent flat rates, reliable scheduling, and detailed care. Request a free quote.",
+      "length": 162
     },
     {
       "url": "/property-maintenance/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/house-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/deep-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Quality property maintenance services across Florida with Sweet Maid Cleaning Service. Dependable recurring visits, deep cleans, and custom care. Get a free quote.",
+      "length": 163
     },
     {
       "url": "/recurring-maid-service-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Professional recurring maid service in Bradenton, FL. Family-owned team with transparent flat rates, reliable scheduling, and thorough care. Request a free quote.",
+      "length": 162
     },
     {
       "url": "/move-in-out-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable move in out cleaning services in Bradenton, FL by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 166
     },
     {
       "url": "/airbnb-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable airbnb cleaning services in Bradenton, FL by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 161
     },
     {
       "url": "/post-construction-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable post construction cleaning services in Bradenton, FL by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 172
     },
     {
       "url": "/commercial-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/carpet-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable commercial cleaning services in Bradenton, FL by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 165
     },
     {
       "url": "/window-cleaning-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Looking for window cleaning services in Bradenton, FL? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.",
+      "length": 161
     },
     {
       "url": "/janitorial-cleaning-services-bradenton-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/house-cleaning-sarasota-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/deep-cleaning-sarasota-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/airbnb-cleaning-sarasota-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable janitorial cleaning services in Bradenton, FL by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 165
     },
     {
       "url": "/house-cleaning-lakewood-ranch-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Reliable house cleaning services in Lakewood Ranch, FL by Sweet Maid. Family-owned specialists delivering detail-oriented care and upfront pricing. Get a free quote.",
+      "length": 165
     },
     {
       "url": "/deep-cleaning-lakewood-ranch-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/house-cleaning-venice-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Looking for deep cleaning services in Lakewood Ranch, FL? Sweet Maid offers family-owned residential care, transparent rates, and easy scheduling. Free quote today.",
+      "length": 164
     },
     {
       "url": "/move-in-out-cleaning-venice-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Quality move in out cleaning services in Venice, FL with Sweet Maid Cleaning Service. Dependable recurring visits, deep cleans, and custom care. Get a free quote.",
+      "length": 162
     },
     {
       "url": "/airbnb-cleaning-venice-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/house-cleaning-miami-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
-    },
-    {
-      "url": "/deep-cleaning-miami-fl/",
-      "errors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "meta": "Professional airbnb cleaning services in Venice, FL. Family-owned team with transparent flat rates, reliable scheduling, and thorough care. Request a free quote.",
+      "length": 161
     }
   ],
-  "brokenLinksSample": [
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/llms.txt"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/home-watch-services-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/luxury-estate-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/property-management-janitorial-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/office-janitorial-services-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/medical-dental-facility-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/industrial-warehouse-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/gym-fitness-center-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/school-daycare-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/church-worship-center-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/pressure-washing-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/floor-stripping-waxing-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/solar-panel-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/gutter-cleaning-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/property-maintenance-bradenton-fl/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/house-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/deep-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/recurring-maid-service/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/move-in-out-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/airbnb-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/post-construction-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/commercial-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/carpet-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/window-cleaning/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/bradenton-fl/janitorial-cleaning-services/"
-    },
-    {
-      "fromUrl": "/bradenton-fl/",
-      "toUrl": "/sitemap.xml"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/llms.txt"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/recurring-maid-service-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/move-in-out-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/airbnb-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/home-watch-services-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/luxury-estate-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/property-management-janitorial-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/commercial-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/office-janitorial-services-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/janitorial-cleaning-services-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/medical-dental-facility-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/industrial-warehouse-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/gym-fitness-center-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/school-daycare-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/church-worship-center-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/post-construction-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/pressure-washing-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/carpet-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/window-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/floor-stripping-waxing-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/solar-panel-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/gutter-cleaning-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/property-maintenance-lakewood-ranch-fl/"
-    },
-    {
-      "fromUrl": "/lakewood-ranch-fl/",
-      "toUrl": "/lakewood-ranch-fl/house-cleaning/"
-    }
-  ],
+  "pagesWithBannedPhrases": [],
+  "pagesWithTemplateErrors": [],
+  "brokenLinksSample": [],
   "sampleLocations": [
     {
       "url": "/bradenton-fl/",
@@ -5338,8 +1011,8 @@
       "county": "Manatee County",
       "region": "Manatee County (Bradenton Base)",
       "status": 200,
-      "title": "Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service",
-      "titleLength": 64,
+      "title": "Cleaning Services in Bradenton, FL | Sweet Maid",
+      "titleLength": 47,
       "h1": "Cleaning Services in Bradenton, FL",
       "h1Count": 1,
       "headings": [
@@ -5580,9 +1253,9 @@
           "text": "Florida Locations"
         }
       ],
-      "meta": "Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans. Get a free estimate today.",
-      "metaLength": 161,
-      "wordCount": 1789,
+      "meta": "Professional cleaning services in Bradenton, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "metaLength": 151,
+      "wordCount": 1787,
       "internalLinks": [
         "/llms.txt",
         "/bradenton-fl/",
@@ -5627,19 +1300,9 @@
         "/terms-and-conditions/",
         "/privacy-policy/",
         "/",
-        "/bradenton-fl/house-cleaning/",
         "/parrish-fl/",
         "/anna-maria-fl/",
         "/holmes-beach-fl/",
-        "/bradenton-fl/deep-cleaning/",
-        "/bradenton-fl/recurring-maid-service/",
-        "/bradenton-fl/move-in-out-cleaning/",
-        "/bradenton-fl/airbnb-cleaning/",
-        "/bradenton-fl/post-construction-cleaning/",
-        "/bradenton-fl/commercial-cleaning/",
-        "/bradenton-fl/carpet-cleaning/",
-        "/bradenton-fl/window-cleaning/",
-        "/bradenton-fl/janitorial-cleaning-services/",
         "/jacksonville-fl/",
         "/st-augustine-fl/",
         "/orlando-fl/",
@@ -5651,10 +1314,7 @@
         "/sitemap.xml"
       ],
       "bannedPhrases": [],
-      "templateErrors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "templateErrors": []
     },
     {
       "url": "/lakewood-ranch-fl/",
@@ -5664,14 +1324,14 @@
       "county": "Manatee / Sarasota County",
       "region": "Manatee County (Bradenton Base)",
       "status": 200,
-      "title": "Lakewood Ranch, FL House Cleaning | Sweet Maid Cleaning Service",
-      "titleLength": 63,
-      "h1": "Professional House Cleaning Services in Lakewood Ranch, FL",
+      "title": "Cleaning Services in Lakewood Ranch, FL | Sweet Maid",
+      "titleLength": 52,
+      "h1": "Cleaning Services in Lakewood Ranch, FL",
       "h1Count": 1,
       "headings": [
         {
           "tag": "h1",
-          "text": "Professional House Cleaning Services in Lakewood Ranch, FL"
+          "text": "Cleaning Services in Lakewood Ranch, FL"
         },
         {
           "tag": "h2",
@@ -5870,9 +1530,9 @@
           "text": "Florida Locations"
         }
       ],
-      "meta": "Sweet Maid Cleaning Service provides reliable house cleaning services in Lakewood Ranch, with dedicated specialists and transparent flat-rate pricing.",
-      "metaLength": 150,
-      "wordCount": 1535,
+      "meta": "Professional cleaning services in Lakewood Ranch, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "metaLength": 156,
+      "wordCount": 1534,
       "internalLinks": [
         "/llms.txt",
         "/lakewood-ranch-fl/",
@@ -5922,20 +1582,10 @@
         "/terms-and-conditions/",
         "/privacy-policy/",
         "/",
-        "/lakewood-ranch-fl/house-cleaning/",
         "/anna-maria-fl/",
         "/holmes-beach-fl/",
         "/bradenton-beach-fl/",
         "/cortez-fl/",
-        "/lakewood-ranch-fl/deep-cleaning/",
-        "/lakewood-ranch-fl/recurring-maid-service/",
-        "/lakewood-ranch-fl/move-in-out-cleaning/",
-        "/lakewood-ranch-fl/airbnb-cleaning/",
-        "/lakewood-ranch-fl/post-construction-cleaning/",
-        "/lakewood-ranch-fl/commercial-cleaning/",
-        "/lakewood-ranch-fl/carpet-cleaning/",
-        "/lakewood-ranch-fl/window-cleaning/",
-        "/lakewood-ranch-fl/janitorial-cleaning-services/",
         "/jacksonville-fl/",
         "/st-augustine-fl/",
         "/orlando-fl/",
@@ -5945,13 +1595,8 @@
         "/miami-fl/",
         "/sitemap.xml"
       ],
-      "bannedPhrases": [
-        "\\bmost trusted\\b"
-      ],
-      "templateErrors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "bannedPhrases": [],
+      "templateErrors": []
     },
     {
       "url": "/palmetto-fl/",
@@ -5961,14 +1606,14 @@
       "county": "Manatee County",
       "region": "Manatee County (Bradenton Base)",
       "status": 200,
-      "title": "House Cleaning in Palmetto, FL | Sweet Maid Cleaning Service",
-      "titleLength": 60,
-      "h1": "House Cleaning Services in Palmetto, FL",
+      "title": "Cleaning Services in Palmetto, FL | Sweet Maid",
+      "titleLength": 46,
+      "h1": "Cleaning Services in Palmetto, FL",
       "h1Count": 1,
       "headings": [
         {
           "tag": "h1",
-          "text": "House Cleaning Services in Palmetto, FL"
+          "text": "Cleaning Services in Palmetto, FL"
         },
         {
           "tag": "h2",
@@ -6167,9 +1812,9 @@
           "text": "Florida Locations"
         }
       ],
-      "meta": "Looking for trusted house cleaning services in Palmetto, FL? Sweet Maid Cleaning Service delivers detail-oriented care for homes and businesses throughout the area.",
-      "metaLength": 164,
-      "wordCount": 1513,
+      "meta": "Professional cleaning services in Palmetto, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "metaLength": 150,
+      "wordCount": 1507,
       "internalLinks": [
         "/llms.txt",
         "/palmetto-fl/",
@@ -6219,16 +1864,6 @@
         "/terms-and-conditions/",
         "/privacy-policy/",
         "/",
-        "/palmetto-fl/house-cleaning/",
-        "/palmetto-fl/deep-cleaning/",
-        "/palmetto-fl/recurring-maid-service/",
-        "/palmetto-fl/move-in-out-cleaning/",
-        "/palmetto-fl/airbnb-cleaning/",
-        "/palmetto-fl/post-construction-cleaning/",
-        "/palmetto-fl/commercial-cleaning/",
-        "/palmetto-fl/carpet-cleaning/",
-        "/palmetto-fl/window-cleaning/",
-        "/palmetto-fl/janitorial-cleaning-services/",
         "/jacksonville-fl/",
         "/st-augustine-fl/",
         "/orlando-fl/",
@@ -6238,13 +1873,8 @@
         "/miami-fl/",
         "/sitemap.xml"
       ],
-      "bannedPhrases": [
-        "\\bmost trusted\\b"
-      ],
-      "templateErrors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "bannedPhrases": [],
+      "templateErrors": []
     },
     {
       "url": "/ellenton-fl/",
@@ -6254,14 +1884,14 @@
       "county": "Manatee County",
       "region": "Manatee County (Bradenton Base)",
       "status": 200,
-      "title": "Reliable House Cleaning in Ellenton, FL | Sweet Maid Cleaning",
-      "titleLength": 61,
-      "h1": "Professional House Cleaning Services in Ellenton, FL",
+      "title": "Cleaning Services in Ellenton, FL | Sweet Maid",
+      "titleLength": 46,
+      "h1": "Cleaning Services in Ellenton, FL",
       "h1Count": 1,
       "headings": [
         {
           "tag": "h1",
-          "text": "Professional House Cleaning Services in Ellenton, FL"
+          "text": "Cleaning Services in Ellenton, FL"
         },
         {
           "tag": "h2",
@@ -6460,9 +2090,9 @@
           "text": "Florida Locations"
         }
       ],
-      "meta": "Sweet Maid Cleaning Service provides reliable house cleaning services in Ellenton, with dedicated specialists and transparent flat-rate pricing.",
-      "metaLength": 144,
-      "wordCount": 1508,
+      "meta": "Professional cleaning services in Ellenton, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "metaLength": 150,
+      "wordCount": 1506,
       "internalLinks": [
         "/llms.txt",
         "/ellenton-fl/",
@@ -6512,16 +2142,6 @@
         "/terms-and-conditions/",
         "/privacy-policy/",
         "/",
-        "/ellenton-fl/house-cleaning/",
-        "/ellenton-fl/deep-cleaning/",
-        "/ellenton-fl/recurring-maid-service/",
-        "/ellenton-fl/move-in-out-cleaning/",
-        "/ellenton-fl/airbnb-cleaning/",
-        "/ellenton-fl/post-construction-cleaning/",
-        "/ellenton-fl/commercial-cleaning/",
-        "/ellenton-fl/carpet-cleaning/",
-        "/ellenton-fl/window-cleaning/",
-        "/ellenton-fl/janitorial-cleaning-services/",
         "/jacksonville-fl/",
         "/st-augustine-fl/",
         "/orlando-fl/",
@@ -6531,13 +2151,8 @@
         "/miami-fl/",
         "/sitemap.xml"
       ],
-      "bannedPhrases": [
-        "\\bmost trusted\\b"
-      ],
-      "templateErrors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "bannedPhrases": [],
+      "templateErrors": []
     },
     {
       "url": "/parrish-fl/",
@@ -6547,14 +2162,14 @@
       "county": "Manatee County",
       "region": "Manatee County (Bradenton Base)",
       "status": 200,
-      "title": "Parrish, FL House Cleaning | Sweet Maid Cleaning Service",
-      "titleLength": 56,
-      "h1": "Local House Cleaning Services in Parrish, FL",
+      "title": "Cleaning Services in Parrish, FL | Sweet Maid",
+      "titleLength": 45,
+      "h1": "Cleaning Services in Parrish, FL",
       "h1Count": 1,
       "headings": [
         {
           "tag": "h1",
-          "text": "Local House Cleaning Services in Parrish, FL"
+          "text": "Cleaning Services in Parrish, FL"
         },
         {
           "tag": "h2",
@@ -6753,9 +2368,9 @@
           "text": "Florida Locations"
         }
       ],
-      "meta": "Maintain a spotless property with house cleaning services in Parrish. Contact our local team for a free estimate tailored to your space.",
-      "metaLength": 136,
-      "wordCount": 1514,
+      "meta": "Professional cleaning services in Parrish, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
+      "metaLength": 149,
+      "wordCount": 1509,
       "internalLinks": [
         "/llms.txt",
         "/parrish-fl/",
@@ -6805,18 +2420,8 @@
         "/terms-and-conditions/",
         "/privacy-policy/",
         "/",
-        "/parrish-fl/house-cleaning/",
         "/anna-maria-fl/",
         "/bradenton-beach-fl/",
-        "/parrish-fl/deep-cleaning/",
-        "/parrish-fl/recurring-maid-service/",
-        "/parrish-fl/move-in-out-cleaning/",
-        "/parrish-fl/airbnb-cleaning/",
-        "/parrish-fl/post-construction-cleaning/",
-        "/parrish-fl/commercial-cleaning/",
-        "/parrish-fl/carpet-cleaning/",
-        "/parrish-fl/window-cleaning/",
-        "/parrish-fl/janitorial-cleaning-services/",
         "/jacksonville-fl/",
         "/st-augustine-fl/",
         "/orlando-fl/",
@@ -6827,13 +2432,8 @@
         "/miami-fl/",
         "/sitemap.xml"
       ],
-      "bannedPhrases": [
-        "\\bmost trusted\\b"
-      ],
-      "templateErrors": [
-        "literal \"undefined\" in page",
-        "literal \"null\" in text"
-      ]
+      "bannedPhrases": [],
+      "templateErrors": []
     }
   ]
 }

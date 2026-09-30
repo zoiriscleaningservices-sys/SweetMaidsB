@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import http from 'http';
-import { CITY_PAGES, REGIONS, SERVICES, CORE_SERVICES, COMBO_PAGES, SITE_PAGES, BLOG_POSTS, getRegionForCity } from '../src/config/site-structure';
+import { CITY_PAGES, REGIONS, SERVICES, CORE_SERVICES, COMBO_PAGES, SITE_PAGES, BLOG_POSTS, getRegionForCity, resolveFlatCombo } from '../src/config/site-structure';
 
 interface PageAudit {
   url: string;
@@ -97,13 +97,26 @@ function findBannedPhrases(text: string): string[] {
   return found;
 }
 
+function decodeHtml(str: string): string {
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
 function findTemplateErrors(html: string): string[] {
   const errors: string[] = [];
-  if (html.includes('undefined')) errors.push('literal "undefined" in page');
-  if (html.includes('null')) errors.push('literal "null" in text');
-  if (html.includes('[object Object]')) errors.push('[object Object] in text');
-  if (/\b(?:the the|in in|for for|and and|of of)\b/i.test(html)) errors.push('doubled common word (e.g. "the the", "in in")');
-  if (/\{\{[^}]+\}\}/.test(html)) errors.push('unresolved handlebars template tag');
+  const visible = html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<!--[\s\S]*?-->/gi, '');
+  if (visible.includes('undefined')) errors.push('literal "undefined" in page');
+  if (/\bnull\b/.test(visible)) errors.push('literal "null" in text');
+  if (visible.includes('[object Object]')) errors.push('[object Object] in text');
+  if (/\b(?:the the|in in|for for|and and|of of)\b/i.test(visible)) errors.push('doubled common word (e.g. "the the", "in in")');
+  if (/\{\{[^}]+\}\}/.test(visible)) errors.push('unresolved handlebars template tag');
   return errors;
 }
 
@@ -131,8 +144,10 @@ async function runAudit() {
           const { h1Count, headings } = extractHeadings(html);
           const h1 = headings.find(h => h.tag === 'h1')?.text || '';
           const wordCount = extractWordCount(html);
-          const title = titleMatch ? titleMatch[1].trim() : '';
-          const meta = metaMatch ? metaMatch[1].trim() : '';
+          const titleRaw = titleMatch ? titleMatch[1].trim() : '';
+          const metaRaw = metaMatch ? metaMatch[1].trim() : '';
+          const title = decodeHtml(titleRaw);
+          const meta = decodeHtml(metaRaw);
           const banned = findBannedPhrases(html);
           const templateErrs = findTemplateErrors(html);
           const internalLinks = extractInternalLinks(html);
@@ -216,8 +231,10 @@ async function runAudit() {
       const { h1Count, headings } = extractHeadings(html);
       const h1 = headings.find(h => h.tag === 'h1')?.text || '';
       const wordCount = extractWordCount(html);
-      const title = titleMatch ? titleMatch[1].trim() : '';
-      const meta = metaMatch ? metaMatch[1].trim() : '';
+      const titleRaw = titleMatch ? titleMatch[1].trim() : '';
+      const metaRaw = metaMatch ? metaMatch[1].trim() : '';
+      const title = decodeHtml(titleRaw);
+      const meta = decodeHtml(metaRaw);
       const banned = findBannedPhrases(html);
       const templateErrs = findTemplateErrors(html);
       const internalLinks = extractInternalLinks(html);
@@ -321,7 +338,15 @@ async function runAudit() {
   const brokenLinksFound: { fromUrl: string; toUrl: string }[] = [];
   for (const a of allAudits) {
     for (const link of a.internalLinks) {
-      if (!allKnownUrls.has(link) && !allKnownUrls.has(link + '/') && !link.startsWith('/tel:') && !link.startsWith('/mailto:')) {
+      const cleanSlug = link.replace(/^\/|\/$/g, '');
+      const isKnown = allKnownUrls.has(link) ||
+        allKnownUrls.has(link + '/') ||
+        !!resolveFlatCombo(cleanSlug) ||
+        link === '/llms.txt' ||
+        link === '/sitemap.xml' ||
+        link.endsWith('.xml') ||
+        link.endsWith('.txt');
+      if (!isKnown && !link.startsWith('/tel:') && !link.startsWith('/mailto:')) {
         brokenLinksFound.push({ fromUrl: a.url, toUrl: link });
       }
     }

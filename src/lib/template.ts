@@ -3,7 +3,7 @@ import path from 'path';
 import { serviceSlugs, formatName, getNearestLocations, resolveAnyLocation } from './data';
 import { miamiBrowardSlugs, is305Area, isMonroeCounty, monroeKeyHubs, isMiamiDadeCounty } from './miami_broward_slugs';
 import { isManateeCounty, manateeKeyHubs } from './manatee';
-import { generateSeoContentPack } from './seo_engine';
+import { generateSeoContentPack, formatLocationH1, formatLocationMeta } from './seo_engine';
 import { generateLocalBlogContent } from './blog_engine';
 import { generateLocalAboutContent } from './about_engine';
 import { generateLocalSeoReviewsHtml } from './reviews_engine';
@@ -436,7 +436,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       ? `Professional Cleaning Services in ${clean_name}, FL`
       : `Professional Cleaning Services in Florida`;
     newContent = newContent.replace(/(?:#1\s+Rated\s+Cleaning\s+Service\s+in\s+Bradenton|5-Star Rated Cleaning Service in Florida|Top-Rated Cleaning & Maid Services in Florida)/gi, blogTopBanner);
-    newContent = newContent.replace(/Bradenton's most trusted cleaning service/gi, "Florida's most trusted cleaning service");
+    newContent = newContent.replace(/(?:Bradenton's|Florida's)\s*most trusted cleaning service/gi, "Florida's family-owned cleaning service");
     newContent = newContent.replace(/Why Locals Trust Us/gi, `Why Florida Homeowners Trust Us`);
     newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why Florida Homeowners Trust Us`);
 
@@ -523,11 +523,14 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     
     // Restore static external URLs that contain "bradenton"
     newContent = newContent.replace(/https:\/\/www\.yelp\.com\/biz\/sweet-maid-cleaning-service-[^/"]+-3/gi, 'https://www.yelp.com/biz/sweet-maid-cleaning-service-bradenton-3');
+    newContent = newContent.replace(/\/Florida-fl\//gi, '/bradenton-fl/');
+    newContent = newContent.replace(/\/Florida\//gi, '/');
     
     // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
     newContent = newContent.replace(/Why Florida Trusts Us/gi, `Why ${clean_name} Trusts Us`);
     newContent = newContent.replace(/Why Locals Trust Us/gi, `Why ${clean_name} Trusts Us`);
-    newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s trusted ${serviceName.toLowerCase()}`);
+    newContent = newContent.replace(/(?:Bradenton's|Florida's|[A-Za-z\s]+'s)\s*most trusted cleaning service/gi, `${clean_name}'s family-owned cleaning service`);
+    newContent = newContent.replace(/Florida's most trusted cleaning service/gi, `${clean_name}'s family-owned cleaning service`);
     newContent = newContent.replace(/Professional, reliable, and friendly cleaning services for Florida and surrounding areas/gi, `Professional, reliable, and friendly ${serviceName.toLowerCase()} for ${clean_name} and surrounding areas`);
 
     // Master Prompt v3 Template Bug Fixes
@@ -1479,11 +1482,11 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     { name: 'Bradenton', slug: 'bradenton-fl' },
     { name: 'Sarasota', slug: 'sarasota-fl' },
     { name: 'Jacksonville', slug: 'jacksonville-fl' },
-    { name: 'St. Petersburg', slug: 'saint-petersburg-fl' },
+    { name: 'St. Petersburg', slug: 'st-petersburg-fl' },
     { name: 'West Palm Beach', slug: 'west-palm-beach-fl' },
     { name: 'Boca Raton', slug: 'boca-raton-fl' },
     { name: 'Clearwater', slug: 'clearwater-fl' },
-    { name: 'St. Augustine', slug: 'saint-augustine-fl' }
+    { name: 'St. Augustine', slug: 'st-augustine-fl' }
   ];
 
   // Internal Location Linking for Manatee County, Florida Keys / Monroe County, or Regional nearest locations
@@ -1530,7 +1533,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   const siblingLinksHtml = siblingCities.map(c => {
     const isCurrent = c.slug === loc_slug;
-    const url = (is_sub_page && isSpecificService) ? `/${c.slug}/${currentService}/` : `/${c.slug}/`;
+    const url = (is_sub_page && isSpecificService) ? `/${currentService}-${c.slug}/` : `/${c.slug}/`;
     if (isCurrent) {
       return `<span class="px-3.5 py-2 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2 shadow-2xs"><i class="fa-solid fa-location-dot text-xs text-pink-600"></i><span>${c.name}</span></span>`;
     }
@@ -1553,7 +1556,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
 
   const localServicesLinksHtml = coreServicesList.map(srv => {
     const isCurrent = srv.slug === currentService;
-    const url = (loc_slug && loc_slug !== 'home' && !serviceSlugs.includes(loc_slug)) ? `/${loc_slug}/${srv.slug}/` : `/${srv.slug}/`;
+    const url = (loc_slug && loc_slug !== 'home' && !serviceSlugs.includes(loc_slug)) ? `/${srv.slug}-${loc_slug}/` : `/${srv.slug}/`;
     if (isCurrent) {
       return `<span class="px-3.5 py-2.5 rounded-xl bg-pink-100 text-pink-800 font-bold flex items-center gap-2.5 shadow-2xs"><i class="fa-solid ${srv.icon} text-xs text-pink-600"></i><span>${srv.name}</span></span>`;
     }
@@ -1580,7 +1583,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
           Whether you need recurring housekeeping, a deep seasonal refresh, move-in sanitizing, or professional commercial care in ${isFloridaHome ? 'Florida' : clean_name}, our experienced cleaning teams are ready to help.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="${isFloridaHome ? '/#quote' : `/${loc_slug}/${currentService}/#quote`}" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 text-sm md:text-base">
+          <a href="#quote" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 text-sm md:text-base">
             <i class="fa-solid fa-calendar-check"></i>
             <span>${isFloridaHome ? 'Request a Free Quote in Florida' : `Request a Quote in ${clean_name}`}</span>
           </a>
@@ -1702,22 +1705,22 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       {
         "@context": "https://schema.org",
         "@type": ["LocalBusiness", "CleaningService", "Organization"],
-        "name": `Sweet Maid Cleaning Service - ${clean_name}`,
-        "description": `Family-owned cleaning company serving ${clean_name}, FL. Providing professional house cleaning, recurring maid services, and commercial sanitizing.`,
-        "url": `https://www.sweetmaidcleaning.com/${loc_slug}/about/`,
+        "name": `Sweet Maid Cleaning Service`,
+        "description": `Family-owned cleaning company serving Florida communities. Providing professional house cleaning, recurring maid services, and commercial sanitizing.`,
+        "url": `https://www.sweetmaidcleaning.com/about/`,
         "telephone": is305Area(loc_slug, clean_name) ? "(305) 851-6959" : "(941) 222-2080",
         "image": "https://www.sweetmaidcleaning.com/images/logo.png",
         "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": clean_name === 'Bradenton' ? "Bradenton, FL" : `Serving ${clean_name} and neighboring communities`,
-          "addressLocality": clean_name,
+          "streetAddress": "Bradenton, FL",
+          "addressLocality": "Bradenton",
           "addressRegion": "FL",
           "addressCountry": "US"
         },
         "areaServed": {
           "@type": "AdministrativeArea",
-          "name": clean_name
+          "name": "Florida"
         }
       },
       {
@@ -1725,8 +1728,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sweetmaidcleaning.com/" },
-          { "@type": "ListItem", "position": 2, "name": clean_name, "item": `https://www.sweetmaidcleaning.com/${loc_slug}/` },
-          { "@type": "ListItem", "position": 3, "name": "About Us", "item": `https://www.sweetmaidcleaning.com/${loc_slug}/about/` }
+          { "@type": "ListItem", "position": 2, "name": "About Us", "item": `https://www.sweetmaidcleaning.com/about/` }
         ]
       }
     ];
@@ -1838,8 +1840,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     // service_or_home: Use dynamic zero-duplicate SEO pack H1, keeping homepage locked to Florida
     if (loc_slug === 'home' && !is_sub_page) {
       customH1Inner = 'Cleaning Services Across Florida';
-    } else if (loc_slug === 'bradenton-fl' && !is_sub_page) {
-      customH1Inner = 'Cleaning Services in Bradenton, FL';
+    } else if (!is_sub_page && loc_slug && !serviceSlugs.includes(loc_slug)) {
+      customH1Inner = formatLocationH1(clean_name);
     } else {
       customH1Inner = `${seoPack.h1}`;
     }
@@ -1850,7 +1852,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     
     // For non-homepage service/location pages, apply standard dynamic hero subhead & pill row
     if (pageType === 'service_or_home' && loc_slug !== 'home') {
-      newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${seoPack.heroSub}$2`);
+      const heroSubText = (!is_sub_page && loc_slug && !serviceSlugs.includes(loc_slug))
+        ? formatLocationMeta(clean_name)
+        : seoPack.heroSub;
+      newContent = newContent.replace(/(<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>)[\s\S]*?(<\/p>)/i, `$1${heroSubText}$2`);
 
       const heroLocations = getNearestLocations(loc_slug, 7);
       const heroLocationPills = heroLocations.map(c => 
@@ -1909,7 +1914,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   const isCityLocation = !!(loc_slug && loc_slug !== 'home' && !serviceSlugs.includes(loc_slug));
   newContent = newContent.replace(/href="\/[^"]*?florida-beach-cleaning\/"/gi, 'href="/locations/"');
   newContent = newContent.replace(/href="\/[^"]*?florida-cleaning\/([a-z0-9-]+)\/"/gi, (match, srv) => {
-    return isCityLocation ? `href="/${loc_slug}/${srv}/"` : `href="/${srv}/"`;
+    return isCityLocation ? `href="/${srv}-${loc_slug}/"` : `href="/${srv}/"`;
   });
   newContent = newContent.replace(/href="\/florida-cleaning\/"/gi, 'href="/locations/"');
 
@@ -1921,13 +1926,17 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     if (serviceSlugs.includes(cleanPrefix)) {
       return `href="/${targetService}/"`;
     }
-    return `href="${prefix}/${targetService}/"`;
+    return `href="/${targetService}-${cleanPrefix}/"`;
   });
 
   const standaloneStackedRegex = new RegExp(`href="\\/(?:${serviceRegexGroup})\\/(${serviceRegexGroup})\\/"`, 'g');
   newContent = newContent.replace(standaloneStackedRegex, (match, targetService) => {
-    return isCityLocation ? `href="/${loc_slug}/${targetService}/"` : `href="/${targetService}/"`;
+    return isCityLocation ? `href="/${targetService}-${loc_slug}/"` : `href="/${targetService}/"`;
   });
+
+  // Global banned phrase safety sanitizer
+  newContent = newContent.replace(/\bmost trusted\b/gi, 'family-owned');
+  newContent = newContent.replace(/\bleading provider\b/gi, 'family-owned provider');
 
   // Clean any accidental duplicate slashes
   newContent = newContent.replace(/href="\/+/g, 'href="/');

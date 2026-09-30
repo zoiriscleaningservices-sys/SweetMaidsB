@@ -14,7 +14,7 @@ export interface BlogPost {
 export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
   'tampa-bay-cleaning-guide': {
     slug: 'tampa-bay-cleaning-guide',
-    title: 'Tampa Bay & St. Pete Cleaning Guide: Humidity & Sand | Sweet Maid',
+    title: 'Tampa Bay & St. Pete Cleaning Guide | Sweet Maid',
     h1: 'The Tampa Bay & St. Pete Coastal Home Cleaning Guide',
     metaDescription: 'Expert tips on managing coastal humidity, quartz beach sand, and AC duct mildew for homes in Tampa, St. Petersburg, Clearwater, and Hillsborough County.',
     excerpt: 'How to defend Gulf Coast floors from abrasive quartz sand, eliminate AC vent mildew spores, and handle coastal moisture.',
@@ -113,7 +113,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
   'south-florida-cleaning-guide': {
     slug: 'south-florida-cleaning-guide',
-    title: 'South Florida High-Rise & Luxury Home Cleaning Guide | Sweet Maid',
+    title: 'South Florida Luxury Home Cleaning Guide | Sweet Maid',
     h1: 'South Florida Coastal Home & High-Rise Deep Cleaning Guide',
     metaDescription: 'Care guidelines for natural marble floors, coastal balcony glass, and subtropical humidity prevention across Miami, Fort Lauderdale, and Boca Raton.',
     excerpt: 'Expert techniques for protecting natural stone, handling ocean salt air on balcony glass, and preventing subtropical humidity issues.',
@@ -168,7 +168,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
       <h2 class="text-2xl font-bold text-gray-900 font-serif mt-8 mb-4">6. Private Elevator Foyer & High-Rise Entry Sanitation</h2>
       <p class="text-gray-700 mb-4 leading-relaxed">
-        Many premier condominiums in Sunny Isles and Miami Beach offer private elevator vestibules that open directly into the residence. These specialized entry foyers experience concentrated foot traffic carrying street dust, damp rainwater, and footwear contaminants directly into interior living spaces.
+        Many luxury condominiums in Sunny Isles and Miami Beach offer private elevator vestibules that open directly into the residence. These specialized entry foyers experience concentrated foot traffic carrying street dust, damp rainwater, and footwear contaminants directly into interior living spaces.
       </p>
       <p class="text-gray-700 mb-4 leading-relaxed">
         Dedicated cleaning protocols for elevator foyers include daily spot mopping with residue-free neutral cleaners, polishing brass threshold plates, and sanitizing elevator call buttons. Maintaining immaculate entry vestibules ensures that the arrival experience always matches the luxury standards of the home within.
@@ -176,7 +176,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
       <h2 class="text-2xl font-bold text-gray-900 font-serif mt-8 mb-4">7. Exotic Hardwood Flooring & Engineered Wood Expansion Management</h2>
       <p class="text-gray-700 mb-4 leading-relaxed">
-        Many premier penthouses and historic Mediterranean estates in Coral Gables feature wide-plank French oak, Brazilian cherry (jatoba), or teak hardwood flooring. In tropical South Florida, sudden atmospheric fluctuations between outdoor humidity spikes and chilled air-conditioned interiors cause natural wood fibers to expand and contract.
+        Many upscale penthouses and historic Mediterranean estates in Coral Gables feature wide-plank French oak, Brazilian cherry (jatoba), or teak hardwood flooring. In tropical South Florida, sudden atmospheric fluctuations between outdoor humidity spikes and chilled air-conditioned interiors cause natural wood fibers to expand and contract.
       </p>
       <p class="text-gray-700 mb-4 leading-relaxed">
         Saturated wet mopping is strictly prohibited on these artisanal timber floors, as standing water seeps into tongue-and-groove joints, causing cupping and edge crowning. Professional housekeepers utilize barely-damp microfiber mops misted with pH-neutral timber conditioners that dissolve surface oils while drying within ninety seconds. Maintaining stable interior relative humidity between 50% and 55% preserves hardwood joints indefinitely.
@@ -212,7 +212,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
   'central-florida-cleaning-guide': {
     slug: 'central-florida-cleaning-guide',
-    title: 'Orlando & Central Florida Vacation Rental Cleaning Guide | Sweet Maid',
+    title: 'Orlando Vacation Rental Turnover Cleaning Guide | Sweet Maid',
     h1: 'Central Florida Airbnb & Vacation Rental Turnover Cleaning Guide',
     metaDescription: 'Turnover cleaning standards, rapid guest changeovers, and themed suite sanitation for vacation rentals in Orlando, Kissimmee, and Davenport.',
     excerpt: 'Mastering rapid turnover schedules, themed suite sanitation, and guest-ready standards for vacation rentals near Orlando theme parks.',
@@ -290,7 +290,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
       </p>
 
       <div class="my-8 p-6 bg-pink-50/70 rounded-2xl border border-pink-200">
-        <h3 class="text-lg font-bold text-pink-800 mb-2">🏰 Central Florida Host & Homeowner Best Practices</h3>
+        <h3 class="text-lg font-bold text-pink-800 mb-2">🏰 Central Florida Host & Homeowner Key Protocols</h3>
         <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
           <li>Use 100% white cotton hotel-grade linens to allow high-temp sanitizing washes.</li>
           <li>Disinfect all gaming controllers, themed bunk handrails, and pool loungers on every turn.</li>
@@ -311,7 +311,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
   'southwest-florida-cleaning-guide': {
     slug: 'southwest-florida-cleaning-guide',
-    title: 'Sarasota & SWFL Home Care Guide: Lanais & Salt Mist | Sweet Maid',
+    title: 'Sarasota & SWFL Home Care Guide | Sweet Maid',
     h1: 'Southwest Florida Home Maintenance: Lanai Care and Seasonal Cleanings',
     metaDescription: 'Essential care for screened lanais, sliding door tracks, and seasonal resident opening protocols in Sarasota, Bradenton, Lakewood Ranch, and Venice.',
     excerpt: 'Essential maintenance strategies for screened lanais, sliding door tracks, and seasonal resident opening protocols in Sarasota and Manatee County.',
@@ -371,7 +371,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
       <h2 class="text-2xl font-bold text-gray-900 font-serif mt-8 mb-4">7. Summer Outdoor Kitchens and Stainless Steel BBQ Care</h2>
       <p class="text-gray-700 mb-4 leading-relaxed">
-        Covered outdoor summer kitchens featuring granite worktops, built-in gas burners, stainless warming drawers, and bar sinks are standard across premier gated enclaves in Lakewood Ranch and Venice. Because outdoor kitchens face extreme humidity and temperature cycling, cooking oils turn rancid quickly on prep surfaces.
+        Covered outdoor summer kitchens featuring granite worktops, built-in gas burners, stainless warming drawers, and bar sinks are standard across upscale gated enclaves in Lakewood Ranch and Venice. Because outdoor kitchens face extreme humidity and temperature cycling, cooking oils turn rancid quickly on prep surfaces.
       </p>
       <p class="text-gray-700 mb-4 leading-relaxed">
         Detailing summer kitchens requires food-grade citrus degreasers on prep slabs followed by specialized non-streaking stainless metal polishes on refrigerator doors and grill hoods. Clearing grease catchment trays beneath barbecue grills prevents pest infiltration and keeps outdoor cooking stations sanitary for family dining.
@@ -424,7 +424,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
   'first-coast-cleaning-guide': {
     slug: 'first-coast-cleaning-guide',
-    title: 'First Coast Cleaning Guide: Pine Pollen & Coastal Care | Sweet Maid',
+    title: 'First Coast Home Cleaning Guide | Sweet Maid',
     h1: 'First Coast Home Care: Battling Pine Pollen and Coastal Humidity',
     metaDescription: 'Seasonal cleaning strategies for battling yellow pine pollen, Atlantic coastal mist, and red clay soils in Jacksonville, St. Augustine, and Ponte Vedra.',
     excerpt: 'Navigating seasonal yellow pine pollen, Atlantic sea spray, and red clay soil protection across Jacksonville and St. Augustine.',
@@ -540,7 +540,7 @@ export const BLOG_POSTS_DATA: Record<string, BlogPost> = {
 
   'florida-keys-cleaning-guide': {
     slug: 'florida-keys-cleaning-guide',
-    title: 'Florida Keys Island Home Maintenance & Cleaning Playbook | Sweet Maid',
+    title: 'Florida Keys Home Cleaning Playbook | Sweet Maid',
     h1: 'Florida Keys Island Home Cleaning & Marine Air Maintenance',
     metaDescription: 'Specialized island home maintenance defending against extreme marine salt corrosion, coral rock dust, and vacation rental turnovers in the Florida Keys.',
     excerpt: 'Specialized cleaning strategies for defending against extreme marine salt corrosion, coral dust, and sportfishing turnovers in the Keys.',

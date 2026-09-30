@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { serviceSlugs, resolveAnyLocation, formatName } from '@/lib/data';
 import { miamiBrowardSlugs, is305Area } from '@/lib/miami_broward_slugs';
 import { getTemplate, extractSections, localizedReplace, serviceH1Map, generatePageImageSchema } from '@/lib/template';
-import { generateSeoContentPack } from '@/lib/seo_engine';
+import { generateSeoContentPack, formatLocationTitle, formatLocationMeta } from '@/lib/seo_engine';
 import { getLongboatMetadata, getLongboatJsonLd, transformLongboatHtml } from '@/lib/longboat_key_renderer';
 
 
@@ -16,21 +16,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   if (slug === 'bradenton-fl') {
+    const title = formatLocationTitle('Bradenton');
+    const desc = formatLocationMeta('Bradenton');
     return {
-      title: 'Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service',
-      description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans. Get a free estimate today.',
+      title,
+      description: desc,
       alternates: { canonical: 'https://www.sweetmaidcleaning.com/bradenton-fl/' },
       openGraph: {
-        title: 'Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service',
-        description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans.',
+        title,
+        description: desc,
         url: 'https://www.sweetmaidcleaning.com/bradenton-fl/',
         type: 'website',
         images: ['https://www.sweetmaidcleaning.com/images/logo.png']
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Cleaning Services in Bradenton, FL | Sweet Maid Cleaning Service',
-        description: 'Looking for trusted house cleaning in Bradenton, FL? Sweet Maid offers professional maid services, deep cleaning, and move-out cleans.',
+        title,
+        description: desc,
         images: ['https://www.sweetmaidcleaning.com/images/logo.png']
       }
     };
@@ -72,10 +74,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const locData = resolveAnyLocation(slug);
     if (!locData) return {};
 
-    const cleanName = formatName(locData.name);
-    const seoPack = generateSeoContentPack(cleanName, slug, 'House Cleaning', 'house-cleaning');
-    const title = seoPack.metaTitle;
-    const desc = seoPack.heroSub.replace(/<[^>]+>/g, '');
+    const cleanName = formatName(locData.name).replace(/\s*\(.*?\)/g, '').trim();
+    const title = formatLocationTitle(cleanName);
+    const desc = formatLocationMeta(cleanName);
 
     return {
       title,

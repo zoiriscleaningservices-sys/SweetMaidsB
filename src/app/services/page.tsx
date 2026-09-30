@@ -4,13 +4,13 @@ import { BUSINESS_INFO, CANONICAL_HOST, PRICING_FROM } from '@/config/site-struc
 
 export const metadata: Metadata = {
   title: 'Professional Cleaning & Maid Services in Florida | Sweet Maid',
-  description: 'Explore 24 professional cleaning and property care services by Sweet Maid Cleaning Service. Upfront pricing from $180, family-owned care, and dependable service across Florida.',
+  description: 'Explore 24 professional cleaning and property care services by Sweet Maid. Upfront pricing from $180, family-owned care, and dependable service across Florida.',
   alternates: {
     canonical: 'https://www.sweetmaidcleaning.com/services/',
   },
   openGraph: {
     title: 'Professional Cleaning & Maid Services in Florida | Sweet Maid',
-    description: 'Explore 24 professional cleaning and property care services by Sweet Maid Cleaning Service. Upfront pricing from $180, family-owned care, and dependable service across Florida.',
+    description: 'Explore 24 professional cleaning and property care services by Sweet Maid. Upfront pricing from $180, family-owned care, and dependable service across Florida.',
     url: 'https://www.sweetmaidcleaning.com/services/',
     type: 'website',
     images: [`${CANONICAL_HOST}/images/logo.png`],
