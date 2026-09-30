@@ -20,6 +20,8 @@ export interface PilotLocationProfile {
   faqs: { q: string; a: string }[];
 }
 
+export type LocationCustomData = PilotLocationProfile;
+
 export const PILOT_LOCATIONS_DATA: Record<string, PilotLocationProfile> = {
   'bradenton-fl': {
     slug: 'bradenton-fl',
@@ -365,6 +367,7 @@ import { BATCH5_PALM_BEACH_DATA } from './locations_data/batch5_palm_beach';
 import { BATCH6_GREATER_ORLANDO_DATA } from './locations_data/batch6_greater_orlando';
 import { BATCH7_CENTRAL_INLAND_DATA } from './locations_data/batch7_central_inland';
 import { BATCH8_SPACE_ATLANTIC_DATA } from './locations_data/batch8_space_atlantic';
+import { BATCH9_FIRST_COAST_DATA } from './locations_data/batch9_first_coast';
 
 Object.assign(
   PILOT_LOCATIONS_DATA,
@@ -375,7 +378,8 @@ Object.assign(
   BATCH5_PALM_BEACH_DATA,
   BATCH6_GREATER_ORLANDO_DATA,
   BATCH7_CENTRAL_INLAND_DATA,
-  BATCH8_SPACE_ATLANTIC_DATA
+  BATCH8_SPACE_ATLANTIC_DATA,
+  BATCH9_FIRST_COAST_DATA
 );
 
 

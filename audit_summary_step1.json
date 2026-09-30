@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T18:33:42.663Z",
+  "timestamp": "2026-09-30T18:41:57.489Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
   "duplicateTitlesCount": 0,
@@ -612,7 +612,7 @@
     },
     {
       "url": "/deland-fl/",
-      "title": "Cleaning Services in Deland, FL | Sweet Maid",
+      "title": "Cleaning Services in DeLand, FL | Sweet Maid",
       "length": 44
     },
     {
@@ -627,7 +627,7 @@
     },
     {
       "url": "/debary-fl/",
-      "title": "Cleaning Services in Debary, FL | Sweet Maid",
+      "title": "Cleaning Services in DeBary, FL | Sweet Maid",
       "length": 44
     },
     {
@@ -659,6 +659,11 @@
       "url": "/titusville-fl/",
       "title": "Cleaning Services in Titusville, FL | Sweet Maid",
       "length": 48
+    },
+    {
+      "url": "/cocoa-fl/",
+      "title": "Cleaning Services in Cocoa, FL | Sweet Maid",
+      "length": 43
     },
     {
       "url": "/cocoa-beach-fl/",
@@ -719,6 +724,11 @@
       "url": "/middleburg-fl/",
       "title": "Cleaning Services in Middleburg, FL | Sweet Maid",
       "length": 48
+    },
+    {
+      "url": "/yulee-fl/",
+      "title": "Cleaning Services in Yulee, FL | Sweet Maid",
+      "length": 43
     },
     {
       "url": "/callahan-fl/",
@@ -902,16 +912,6 @@
       "url": "/oviedo-fl/",
       "meta": "Trusted cleaning services in Oviedo, FL. Family house cleaning, Live Oak Reserve estate care, and tile grout scrubbing. Free quote today.",
       "length": 137
-    },
-    {
-      "url": "/indian-harbour-beach-fl/",
-      "meta": "Professional cleaning services in Indian Harbour Beach, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
-      "length": 162
-    },
-    {
-      "url": "/st-augustine-beach-fl/",
-      "meta": "Professional cleaning services in St. Augustine Beach, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",
-      "length": 161
     },
     {
       "url": "/move-in-out-cleaning/",
