@@ -528,6 +528,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
     newContent = newContent.replace(/\/florida-fl\/?/gi, '/bradenton-fl/');
     newContent = newContent.replace(/\/Florida-fl\/?/gi, '/bradenton-fl/');
     newContent = newContent.replace(/\/Bradenton-fl\/?/gi, '/bradenton-fl/');
+    newContent = newContent.replace(/\/Bradenton-beach-fl\/?/gi, '/bradenton-beach-fl/');
     newContent = newContent.replace(/\/Florida\//gi, '/');
     
     // Inject exact keyword into generic paragraph descriptions to fulfill "top to bottom" request
