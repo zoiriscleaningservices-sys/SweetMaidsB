@@ -59,6 +59,8 @@ export const EXACT_REDIRECTS: RedirectRule[] = [
   { source: '/florida-beach-cleaning/', destination: '/locations/' },
   { source: '/florida-cleaning', destination: '/locations/' },
   { source: '/florida-cleaning/', destination: '/locations/' },
+  { source: '/florida-fl', destination: '/bradenton-fl/' },
+  { source: '/florida-fl/', destination: '/bradenton-fl/' },
 
   // Prompt Explicit Examples
   { source: '/lakewood-ranch-cleaning', destination: '/lakewood-ranch-fl/' },
