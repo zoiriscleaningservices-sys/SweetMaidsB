@@ -7,7 +7,7 @@ import { generateSeoContentPack } from './seo_engine';
 import { generateLocalBlogContent } from './blog_engine';
 import { generateLocalAboutContent } from './about_engine';
 import { generateLocalSeoReviewsHtml } from './reviews_engine';
-import { getRegionForCity, getSiblingCities, CORE_SERVICES } from '../config/site-structure';
+import { getRegionForCity, getSiblingCities, CORE_SERVICES, CITY_PAGES } from '../config/site-structure';
 
 // Service to H1 mapping using clean transactional search terms
 export const serviceH1Map: Record<string, string> = {
@@ -812,14 +812,39 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/href="\/about\/"/g, 'href="/about/"');
   newContent = newContent.replace(/href="\/[^/]+\/gallery\/"/g, 'href="/gallery/"');
   newContent = newContent.replace(/href="\/gallery\/"/g, 'href="/gallery/"');
-  newContent = newContent.replace(/href="\/[^/]+\/blog\/"/g, 'href="/blog/"');
   newContent = newContent.replace(/href="\/blog\/"/g, 'href="/blog/"');
-
-  // Explicitly fix Home links and logos - ALWAYS navigate to root '/' across ALL pages
-  newContent = newContent.replace(/<a href="[^"]+"([^>]*)>Home<\/a>/gi, '<a href="/"$1>Home</a>');
-  newContent = newContent.replace(/<a href="[^"]+"([^>]*)class="flex items-center group">/gi, '<a href="/"$1class="flex items-center group">');
+  // Normalize legacy and external home domain links to clean relative root
   newContent = newContent.replace(/href="\/home\/"/g, 'href="/"');
   newContent = newContent.replace(/href="https:\/\/www\.sweetmaidcleaning\.com\/"/g, 'href="/"');
+
+  // Header Navigation: Route Home buttons and Header Logo to the location's main page when on a location permalink, or root '/' for sitewide pages
+  const isLocationSpecific = Boolean(
+    loc_slug &&
+    loc_slug !== 'home' &&
+    loc_slug !== 'florida' &&
+    !serviceSlugs.includes(loc_slug) &&
+    (CITY_PAGES[loc_slug] || resolveAnyLocation(loc_slug) || loc_slug === 'bradenton-fl' || loc_slug === 'longboat-key-fl')
+  );
+  const locationHomeUrl = isLocationSpecific ? `/${loc_slug}/` : '/';
+
+  // 1. Desktop Nav "Home" link
+  newContent = newContent.replace(/<a\s+([^>]*?)href="[^"]*"([^>]*?)>\s*Home\s*<\/a>/gi, `<a $1href="${locationHomeUrl}"$2>Home</a>`);
+
+  // 2. Mobile Drawer Nav "Home" link
+  newContent = newContent.replace(
+    /<a\s+([^>]*?)href="[^"]*"([^>]*?)>((?:(?!<\/a>)[\s\S])*?<span[^>]*>\s*Home\s*<\/span>(?:(?!<\/a>)[\s\S])*?)<\/a>/gi,
+    `<a $1href="${locationHomeUrl}"$2>$3</a>`
+  );
+
+  // 3. Header Logo Link (Desktop & Mobile header bar)
+  newContent = newContent.replace(
+    /<a\s+([^>]*?)href="[^"]*"([^>]*?class="[^"]*group[^"]*"[^>]*?)>([\s\S]*?<img[^>]*?>[\s\S]*?)<\/a>/i,
+    `<a $1href="${locationHomeUrl}"$2>$3</a>`
+  );
+  newContent = newContent.replace(
+    /<a\s+([^>]*?class="[^"]*group[^"]*"[^>]*?)href="[^"]*"([^>]*?)>([\s\S]*?<img[^>]*?>[\s\S]*?)<\/a>/i,
+    `<a $1href="${locationHomeUrl}"$2>$3</a>`
+  );
 
   // Replace Logo with the new uploaded brand logo
   newContent = newContent.replace(/https:\/\/i\.ibb\.co\/PzPDfC1N\/Whats-App-Image-2026-02-09-at-4-52-59-PM-Picsart-Background-Remover\.png/g, '/images/logo.png');
