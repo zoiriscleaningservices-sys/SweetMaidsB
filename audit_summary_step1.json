@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T18:04:56.948Z",
+  "timestamp": "2026-09-30T18:09:50.009Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
   "duplicateTitlesCount": 0,
@@ -104,6 +104,11 @@
       "url": "/miami-beach-fl/",
       "title": "Cleaning Services in Miami Beach, FL | Sweet Maid",
       "length": 49
+    },
+    {
+      "url": "/doral-fl/",
+      "title": "Cleaning Services in Doral, FL | Sweet Maid",
+      "length": 43
     },
     {
       "url": "/aventura-fl/",
@@ -858,6 +863,16 @@
   ],
   "metaLengthOutsideRange": [],
   "metaLengthOutsideOptimal": [
+    {
+      "url": "/doral-fl/",
+      "meta": "Trusted cleaning services in Doral, FL. Modern townhouse housekeeping, porcelain tile care, and move-out turnovers. Free instant quote.",
+      "length": 135
+    },
+    {
+      "url": "/kendall-fl/",
+      "meta": "Dependable cleaning services in Kendall, FL. Family house cleaning, pet-friendly sanitation, and deep kitchen resets. Request a free quote.",
+      "length": 139
+    },
     {
       "url": "/lauderdale-by-the-sea-fl/",
       "meta": "Professional cleaning services in Lauderdale-by-the-sea, FL. Family-owned recurring house cleaning, deep cleaning resets, and move-out turnovers. Get a free quote.",

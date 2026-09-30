@@ -10,7 +10,7 @@ slug,city,county,region,current_title,current_h1,word_count
 "cortez-fl","Cortez","Manatee County","Manatee County (Bradenton Base)","Cleaning Services in Cortez, FL | Sweet Maid","Cleaning Services in Cortez, FL",1591
 "bayshore-gardens-fl","Bayshore Gardens","Manatee County","Manatee County (Bradenton Base)","Cleaning Services in Bayshore Gardens, FL | Sweet Maid","Cleaning Services in Bayshore Gardens, FL",1639
 "whitfield-fl","Whitfield","Manatee County","Manatee County (Bradenton Base)","Cleaning Services in Whitfield, FL | Sweet Maid","Cleaning Services in Whitfield, FL",1615
-"longboat-key-fl","Longboat Key","Manatee / Sarasota County","Manatee County (Bradenton Base)","Cleaning Services in Longboat Key, FL | Sweet Maid","Cleaning Services in Longboat Key, FL",1575
+"longboat-key-fl","Longboat Key","Manatee / Sarasota County","Manatee County (Bradenton Base)","Cleaning Services in Longboat Key, FL | Sweet Maid","Cleaning Services in Longboat Key, FL",1721
 "myakka-city-fl","Myakka City","Manatee County","Manatee County (Bradenton Base)","Cleaning Services in Myakka City, FL | Sweet Maid","Cleaning Services in Myakka City, FL",1643
 "sarasota-fl","Sarasota","Sarasota County","Sarasota County","Cleaning Services in Sarasota, FL | Sweet Maid","Cleaning Services in Sarasota, FL",1929
 "venice-fl","Venice (incl. South Venice)","Sarasota County","Sarasota County","Cleaning Services in Venice, FL | Sweet Maid","Cleaning Services in Venice, FL",2002
@@ -24,25 +24,25 @@ slug,city,county,region,current_title,current_h1,word_count
 "palmer-ranch-fl","Palmer Ranch","Sarasota County","Sarasota County","Cleaning Services in Palmer Ranch, FL | Sweet Maid","Cleaning Services in Palmer Ranch, FL",1946
 "englewood-fl","Englewood","Sarasota County","Sarasota County","Cleaning Services in Englewood, FL | Sweet Maid","Cleaning Services in Englewood, FL",1919
 "miami-fl","Miami","Miami-Dade County","Miami-Dade County","Cleaning Services in Miami, FL | Sweet Maid Cleaning Service","Cleaning Services in Miami, FL",1918
-"homestead-fl","Homestead","Miami-Dade County","Miami-Dade County","Cleaning Services in Homestead, FL | Sweet Maid","Cleaning Services in Homestead, FL",1807
-"miami-beach-fl","Miami Beach","Miami-Dade County","Miami-Dade County","Cleaning Services in Miami Beach, FL | Sweet Maid","Cleaning Services in Miami Beach, FL",1858
-"coral-gables-fl","Coral Gables","Miami-Dade County","Miami-Dade County","Cleaning Services in Coral Gables, FL | Sweet Maid","Cleaning Services in Coral Gables, FL",1849
-"doral-fl","Doral","Miami-Dade County","Miami-Dade County","Cleaning Services in Doral, FL | Sweet Maid Cleaning Service","Cleaning Services in Doral, FL",1804
-"aventura-fl","Aventura","Miami-Dade County","Miami-Dade County","Cleaning Services in Aventura, FL | Sweet Maid","Cleaning Services in Aventura, FL",1807
-"kendall-fl","Kendall","Miami-Dade County","Miami-Dade County","Cleaning Services in Kendall, FL | Sweet Maid","Cleaning Services in Kendall, FL",1805
-"pinecrest-fl","Pinecrest","Miami-Dade County","Miami-Dade County","Cleaning Services in Pinecrest, FL | Sweet Maid","Cleaning Services in Pinecrest, FL",1805
-"key-biscayne-fl","Key Biscayne","Miami-Dade County","Miami-Dade County","Cleaning Services in Key Biscayne, FL | Sweet Maid","Cleaning Services in Key Biscayne, FL",1855
-"south-miami-fl","South Miami","Miami-Dade County","Miami-Dade County","Cleaning Services in South Miami, FL | Sweet Maid","Cleaning Services in South Miami, FL",1854
-"bal-harbour-fl","Bal Harbour","Miami-Dade County","Miami-Dade County","Cleaning Services in Bal Harbour, FL | Sweet Maid","Cleaning Services in Bal Harbour, FL",1853
-"sunny-isles-beach-fl","Sunny Isles Beach","Miami-Dade County","Miami-Dade County","Cleaning Services in Sunny Isles Beach, FL | Sweet Maid","Cleaning Services in Sunny Isles Beach, FL",1903
-"cutler-bay-fl","Cutler Bay","Miami-Dade County","Miami-Dade County","Cleaning Services in Cutler Bay, FL | Sweet Maid","Cleaning Services in Cutler Bay, FL",1850
-"palmetto-bay-fl","Palmetto Bay","Miami-Dade County","Miami-Dade County","Cleaning Services in Palmetto Bay, FL | Sweet Maid","Cleaning Services in Palmetto Bay, FL",1850
+"homestead-fl","Homestead","Miami-Dade County","Miami-Dade County","Cleaning Services in Homestead, FL | Sweet Maid","Cleaning Services in Homestead, FL",1896
+"miami-beach-fl","Miami Beach","Miami-Dade County","Miami-Dade County","Cleaning Services in Miami Beach, FL | Sweet Maid","Cleaning Services in Miami Beach, FL",1940
+"coral-gables-fl","Coral Gables","Miami-Dade County","Miami-Dade County","Cleaning Services in Coral Gables, FL | Sweet Maid","Cleaning Services in Coral Gables, FL",1929
+"doral-fl","Doral","Miami-Dade County","Miami-Dade County","Cleaning Services in Doral, FL | Sweet Maid","Cleaning Services in Doral, FL",1894
+"aventura-fl","Aventura","Miami-Dade County","Miami-Dade County","Cleaning Services in Aventura, FL | Sweet Maid","Cleaning Services in Aventura, FL",1897
+"kendall-fl","Kendall","Miami-Dade County","Miami-Dade County","Cleaning Services in Kendall, FL | Sweet Maid","Cleaning Services in Kendall, FL",1899
+"pinecrest-fl","Pinecrest","Miami-Dade County","Miami-Dade County","Cleaning Services in Pinecrest, FL | Sweet Maid","Cleaning Services in Pinecrest, FL",1894
+"key-biscayne-fl","Key Biscayne","Miami-Dade County","Miami-Dade County","Cleaning Services in Key Biscayne, FL | Sweet Maid","Cleaning Services in Key Biscayne, FL",1940
+"south-miami-fl","South Miami","Miami-Dade County","Miami-Dade County","Cleaning Services in South Miami, FL | Sweet Maid","Cleaning Services in South Miami, FL",1940
+"bal-harbour-fl","Bal Harbour","Miami-Dade County","Miami-Dade County","Cleaning Services in Bal Harbour, FL | Sweet Maid","Cleaning Services in Bal Harbour, FL",1949
+"sunny-isles-beach-fl","Sunny Isles Beach","Miami-Dade County","Miami-Dade County","Cleaning Services in Sunny Isles Beach, FL | Sweet Maid","Cleaning Services in Sunny Isles Beach, FL",1986
+"cutler-bay-fl","Cutler Bay","Miami-Dade County","Miami-Dade County","Cleaning Services in Cutler Bay, FL | Sweet Maid","Cleaning Services in Cutler Bay, FL",1938
+"palmetto-bay-fl","Palmetto Bay","Miami-Dade County","Miami-Dade County","Cleaning Services in Palmetto Bay, FL | Sweet Maid","Cleaning Services in Palmetto Bay, FL",1946
 "key-largo-fl","Key Largo (incl. North Key Largo)","Monroe County","Florida Keys & Monroe County","Cleaning Services in Key Largo, FL | Sweet Maid","Cleaning Services in Key Largo, FL",2090
-"tavernier-fl","Tavernier","Monroe County","Florida Keys & Monroe County","Cleaning Services in Tavernier, FL | Sweet Maid","Cleaning Services in Tavernier, FL",1810
-"islamorada-fl","Islamorada","Monroe County","Florida Keys & Monroe County","Cleaning Services in Islamorada, FL | Sweet Maid","Cleaning Services in Islamorada, FL",1814
-"marathon-fl","Marathon","Monroe County","Florida Keys & Monroe County","Cleaning Services in Marathon, FL | Sweet Maid","Cleaning Services in Marathon, FL",1814
-"big-pine-key-fl","Big Pine Key","Monroe County","Florida Keys & Monroe County","Cleaning Services in Big Pine Key, FL | Sweet Maid","Cleaning Services in Big Pine Key, FL",1913
-"key-west-fl","Key West","Monroe County","Florida Keys & Monroe County","Cleaning Services in Key West, FL | Sweet Maid","Cleaning Services in Key West, FL",1866
+"tavernier-fl","Tavernier","Monroe County","Florida Keys & Monroe County","Cleaning Services in Tavernier, FL | Sweet Maid","Cleaning Services in Tavernier, FL",1919
+"islamorada-fl","Islamorada","Monroe County","Florida Keys & Monroe County","Cleaning Services in Islamorada, FL | Sweet Maid","Cleaning Services in Islamorada, FL",1913
+"marathon-fl","Marathon","Monroe County","Florida Keys & Monroe County","Cleaning Services in Marathon, FL | Sweet Maid","Cleaning Services in Marathon, FL",1924
+"big-pine-key-fl","Big Pine Key","Monroe County","Florida Keys & Monroe County","Cleaning Services in Big Pine Key, FL | Sweet Maid","Cleaning Services in Big Pine Key, FL",2003
+"key-west-fl","Key West","Monroe County","Florida Keys & Monroe County","Cleaning Services in Key West, FL | Sweet Maid","Cleaning Services in Key West, FL",1967
 "tampa-fl","Tampa","Hillsborough County","Hillsborough County","Cleaning Services in Tampa, FL | Sweet Maid","Cleaning Services in Tampa, FL",1890
 "fish-hawk-fl","Fish Hawk (incl. Lithia)","Hillsborough County","Hillsborough County","Cleaning Services in FishHawk, FL | Sweet Maid","Cleaning Services in FishHawk, FL",1983
 "brandon-fl","Brandon","Hillsborough County","Hillsborough County","Cleaning Services in Brandon, FL | Sweet Maid","Cleaning Services in Brandon, FL",1902
