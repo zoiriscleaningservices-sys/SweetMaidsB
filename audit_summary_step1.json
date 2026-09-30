@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T18:19:35.809Z",
+  "timestamp": "2026-09-30T18:29:17.454Z",
   "totalLocations": 230,
   "totalOtherPagesAudited": 60,
   "duplicateTitlesCount": 0,
@@ -414,6 +414,11 @@
       "url": "/winter-park-fl/",
       "title": "Cleaning Services in Winter Park, FL | Sweet Maid",
       "length": 49
+    },
+    {
+      "url": "/ocoee-fl/",
+      "title": "Cleaning Services in Ocoee, FL | Sweet Maid",
+      "length": 43
     },
     {
       "url": "/apopka-fl/",
@@ -892,6 +897,11 @@
       "url": "/oakland-park-fl/",
       "meta": "Detailed cleaning services in Oakland Park, FL. Mid-Century bungalow care, terrazzo polishing, and kitchen deep cleaning. Free quote today.",
       "length": 139
+    },
+    {
+      "url": "/oviedo-fl/",
+      "meta": "Trusted cleaning services in Oviedo, FL. Family house cleaning, Live Oak Reserve estate care, and tile grout scrubbing. Free quote today.",
+      "length": 137
     },
     {
       "url": "/indian-harbour-beach-fl/",
