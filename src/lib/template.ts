@@ -1141,7 +1141,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
             </div>
 
             <div class="field consent-field">
-              <label class="consent-label">
+              <label class="consent-label" for="smsConsent">
                 <input type="checkbox" id="smsConsent" name="smsConsent" required>
                 <span>I consent to receive SMS notifications and alerts from Sweet Maid Cleaning Service.</span>
               </label>

@@ -254,7 +254,7 @@ html, body {
   }
 }
 
-.quote-card input,
+.quote-card input:not([type="checkbox"]),
 .quote-card select {
   width: 100%;
   box-sizing: border-box;
@@ -272,12 +272,12 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.quote-card input::placeholder {
+.quote-card input:not([type="checkbox"])::placeholder {
   color: var(--placeholder);
   font-size: 15px;
 }
 
-.quote-card input:focus,
+.quote-card input:not([type="checkbox"]):focus,
 .quote-card select:focus {
   border-color: var(--teal);
   box-shadow: 0 0 0 3px rgba(91, 201, 214, 0.2);
@@ -296,33 +296,39 @@ html, body {
 }
 
 .quote-card .consent-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 13px;
-  line-height: 1.45;
-  font-weight: 400;
-  color: #4b5563;
-  cursor: pointer;
-  user-select: none;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  font-size: 13.5px !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  color: #374151 !important;
+  cursor: pointer !important;
+  user-select: none !important;
 }
 
 @media (min-width: 640px) {
   .quote-card .consent-label {
-    font-size: 14px;
+    font-size: 14px !important;
   }
 }
 
+.quote-card input[type="checkbox"],
 .quote-card .consent-label input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
-  min-height: 20px;
-  margin-top: 2px;
-  flex-shrink: 0;
-  accent-color: var(--teal-dark);
-  cursor: pointer;
-  border-radius: 4px;
+  -webkit-appearance: checkbox !important;
+  appearance: checkbox !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  padding: 0 !important;
+  margin: 2px 0 0 0 !important;
+  accent-color: #ec4899 !important;
+  cursor: pointer !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  box-sizing: border-box !important;
 }
 
 .quote-card .consent-label a {
