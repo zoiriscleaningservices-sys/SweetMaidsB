@@ -194,12 +194,35 @@ export default function ClientInteractions() {
     // 4. Native Quote Form Webhook Submission Handler
     const quoteForm = document.getElementById('quoteForm') as HTMLFormElement | null;
     const successCard = document.getElementById('successCard') as HTMLElement | null;
+    const errorCard = document.getElementById('quoteFormError') as HTMLElement | null;
+
+    // Check if redirected with ?quote_success=1 from native form submission
+    if (typeof window !== 'undefined' && window.location.search.includes('quote_success=1')) {
+      if (quoteForm) quoteForm.style.display = 'none';
+      if (successCard) {
+        successCard.style.display = 'block';
+        setTimeout(() => {
+          successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 120);
+      }
+    }
 
     if (quoteForm) {
+      // Keep hidden pageUrl input in sync with current full URL
+      const pageUrlInput = quoteForm.querySelector<HTMLInputElement>('input[name="pageUrl"]');
+      if (pageUrlInput && typeof window !== 'undefined') {
+        pageUrlInput.value = window.location.href;
+      }
+
       const onSubmit = async function (e: Event) {
         e.preventDefault();
         const submitBtn = quoteForm.querySelector('.submit-btn') as HTMLButtonElement | null;
         const originalBtnText = submitBtn ? submitBtn.textContent : 'Get My Free Quote →';
+
+        if (errorCard) {
+          errorCard.style.display = 'none';
+          errorCard.textContent = '';
+        }
 
         const serviceInput = quoteForm.querySelector<HTMLSelectElement>('[name="service"]');
         const fullNameInput = quoteForm.querySelector<HTMLInputElement>('[name="fullName"]');
@@ -208,13 +231,38 @@ export default function ClientInteractions() {
         const addressInput = quoteForm.querySelector<HTMLInputElement>('[name="address"]');
         const smsConsentInput = quoteForm.querySelector<HTMLInputElement>('[name="smsConsent"]');
 
+        const service = serviceInput?.value || '';
+        const fullName = fullNameInput?.value?.trim() || '';
+        const phone = phoneInput?.value?.trim() || '';
+        const email = emailInput?.value?.trim() || '';
+        const address = addressInput?.value?.trim() || '';
+        const smsConsent = smsConsentInput ? smsConsentInput.checked : false;
+
+        if (!fullName || !phone || !email) {
+          if (errorCard) {
+            errorCard.textContent = 'Please fill out all required fields (Name, Phone, Email).';
+            errorCard.style.display = 'block';
+          }
+          return;
+        }
+
+        if (!smsConsent) {
+          if (errorCard) {
+            errorCard.textContent = 'Please confirm SMS consent to receive your free quote notification.';
+            errorCard.style.display = 'block';
+          }
+          smsConsentInput?.focus();
+          return;
+        }
+
         const payload = {
-          service: serviceInput?.value || '',
-          fullName: fullNameInput?.value || '',
-          phone: phoneInput?.value || '',
-          email: emailInput?.value || '',
-          address: addressInput?.value || '',
-          smsConsent: smsConsentInput ? smsConsentInput.checked : false,
+          service: service || 'residential',
+          fullName,
+          name: fullName,
+          phone,
+          email,
+          address,
+          smsConsent,
           pageUrl: typeof window !== 'undefined' ? window.location.href : '',
         };
 
@@ -223,13 +271,39 @@ export default function ClientInteractions() {
           submitBtn.textContent = 'Sending...';
         }
 
+        let isSuccess = false;
+
+        // 1. Primary: First-party Next.js server route (immune to browser ad-blockers)
         try {
-          await fetch('https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/1a10b6de-bddd-4c0b-9532-1fca30defaad', {
+          const res = await fetch('/api/quote/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
+          if (res.ok) {
+            isSuccess = true;
+          }
+        } catch (apiErr) {
+          console.warn('First-party API quote route submission note:', apiErr);
+        }
 
+        // 2. Secondary fallback: Direct LeadConnector webhook
+        if (!isSuccess) {
+          try {
+            const hookRes = await fetch('https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/1a10b6de-bddd-4c0b-9532-1fca30defaad', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (hookRes.ok) {
+              isSuccess = true;
+            }
+          } catch (hookErr) {
+            console.error('Direct LeadConnector webhook submission failed:', hookErr);
+          }
+        }
+
+        if (isSuccess) {
           // Dismiss mobile keyboard if open
           if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
             document.activeElement.blur();
@@ -243,13 +317,17 @@ export default function ClientInteractions() {
               successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 80);
           }
-        } catch (err) {
-          console.error('Form submission failed:', err);
+        } else {
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = originalBtnText || 'Get My Free Quote →';
           }
-          alert('Something went wrong submitting your request. Please call us instead.');
+          if (errorCard) {
+            errorCard.textContent = 'Something went wrong submitting your request. Please call us directly at (941) 222-2080 or (305) 851-6959.';
+            errorCard.style.display = 'block';
+          } else {
+            alert('Something went wrong submitting your request. Please call us directly at (941) 222-2080.');
+          }
         }
       };
 
@@ -259,18 +337,20 @@ export default function ClientInteractions() {
 
     // Smooth scroll to #quote if hash is present in URL
     const scrollToQuoteIfPresent = () => {
-      if (typeof window !== 'undefined' && window.location.hash === '#quote') {
+      if (typeof window !== 'undefined' && (window.location.hash === '#quote' || window.location.search.includes('quote_success=1'))) {
         setTimeout(() => {
-          const quoteEl = document.getElementById('quote');
-          if (quoteEl) {
-            quoteEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const targetEl = document.getElementById('successCard')?.style.display !== 'none' && document.getElementById('successCard')
+            ? document.getElementById('successCard')
+            : document.getElementById('quote');
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }, 350);
       }
     };
     scrollToQuoteIfPresent();
 
-    // Intercept in-page clicks to #quote for smooth scrolling
+    // Intercept in-page clicks to #quote for smooth scrolling or cross-page redirection
     const onAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest('a') as HTMLAnchorElement | null;
       if (!target) return;
@@ -281,6 +361,9 @@ export default function ClientInteractions() {
           e.preventDefault();
           quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           history.pushState(null, '', '#quote');
+        } else {
+          e.preventDefault();
+          window.location.href = '/#quote';
         }
       }
     };

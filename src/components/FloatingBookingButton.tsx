@@ -14,7 +14,20 @@ export default function FloatingBookingButton() {
   const phoneNumber = is305 ? "3058516959" : "9412222080";
   const phoneDisplay = is305 ? "(305) 851-6959" : "(941) 222-2080";
 
-  const hasLocalQuote = !["locations", "privacy-policy", "terms-and-conditions", "privacy", "terms"].includes(slug);
+  const excludedSlugs = [
+    "locations", "privacy-policy", "terms-and-conditions", "privacy", "terms",
+    "services", "about", "blog", "sitemap"
+  ];
+  const [hasLocalQuote, setHasLocalQuote] = useState(!excludedSlugs.includes(slug));
+
+  useEffect(() => {
+    if (excludedSlugs.includes(slug)) {
+      setHasLocalQuote(false);
+    } else {
+      setHasLocalQuote(Boolean(document.getElementById('quote')));
+    }
+  }, [pathname, slug]);
+
   const quoteHref = hasLocalQuote ? "#quote" : "/#quote";
 
   // Hide floating action button completely on booking and checkout pages so it never blocks the pricing summary or payment inputs
@@ -65,9 +78,17 @@ export default function FloatingBookingButton() {
         {/* Action Button: Get Your Free Quote on desktop and mobile */}
         <a
           href={quoteHref}
-          onClick={() => {
+          onClick={(e) => {
             setHasClicked(true);
             setTimeout(() => setHasClicked(false), 3000);
+            if (hasLocalQuote) {
+              const quoteSection = document.getElementById('quote');
+              if (quoteSection) {
+                e.preventDefault();
+                quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.pushState(null, '', '#quote');
+              }
+            }
           }}
           aria-label="Get your free cleaning quote"
           className="group relative flex items-center gap-2.5 sm:gap-3 bg-gradient-to-br from-pink-500 via-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-[2rem] shadow-[0_10px_35px_rgba(236,72,153,0.5)] hover:shadow-[0_15px_45px_rgba(236,72,153,0.7)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] border-2 border-pink-200/50"

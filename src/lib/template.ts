@@ -1098,7 +1098,8 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   const nativeQuoteFormHtml = `
         <!-- Contact Form -->
         <div class="w-full">
-          <form class="quote-card" id="quoteForm">
+          <form class="quote-card" id="quoteForm" action="/api/quote/" method="POST">
+            <input type="hidden" name="pageUrl" id="quoteFormPageUrl" value="">
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 font-serif">Get a Free Quote</h2>
             <p class="text-gray-600 text-sm mb-6 leading-relaxed">Fill out the form below and we'll get back to you within 24 hours with a personalized quote.</p>
 
@@ -1139,8 +1140,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
               <small style="display:block; margin-top:6px; font-size:13px; color:#9aa2ad;">Optional</small>
             </div>
 
-            <button type="submit" class="submit-btn">Get My Free Quote →</button>
-
             <div class="field consent-field">
               <label class="consent-label">
                 <input type="checkbox" id="smsConsent" name="smsConsent" required>
@@ -1153,6 +1152,10 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
               </div>
             </div>
 
+            <div id="quoteFormError" class="quote-form-error" style="display:none;" role="alert"></div>
+
+            <button type="submit" class="submit-btn">Get My Free Quote →</button>
+
             <div class="trust-row">
               <span>Family-Owned &amp; Operated</span>
               <span>•</span>
@@ -1164,7 +1167,7 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
             </div>
           </form>
 
-          <div class="success-card" id="successCard">
+          <div class="success-card" id="successCard" style="display:none;">
             <div class="success-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 13l4 4L19 7" stroke="#1f2937" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
