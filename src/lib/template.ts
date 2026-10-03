@@ -1100,6 +1100,17 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
         <div class="w-full">
           <form class="quote-card" id="quoteForm" action="/api/quote/" method="POST">
             <input type="hidden" name="pageUrl" id="quoteFormPageUrl" value="">
+            <input type="hidden" name="form_timestamp" id="quoteFormTimestamp" value="">
+            <input type="hidden" name="recaptcha_token" id="quoteFormRecaptchaToken" value="">
+
+            <!-- Honeypot anti-spam fields (invisible to real humans, traps automated spam bots) -->
+            <div class="hp-field" style="position:absolute !important; left:-9999px !important; top:-9999px !important; width:1px !important; height:1px !important; opacity:0 !important; overflow:hidden !important; pointer-events:none !important;" aria-hidden="true">
+              <label for="company_website">Do not fill this field</label>
+              <input type="text" id="company_website" name="website_url" tabindex="-1" autocomplete="off" value="">
+              <label for="secondary_verification">Leave this empty</label>
+              <input type="text" id="secondary_verification" name="notes_verification" tabindex="-1" autocomplete="off" value="">
+            </div>
+
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 font-serif">Get a Free Quote</h2>
             <p class="text-gray-600 text-sm mb-6 leading-relaxed">Fill out the form below and we'll get back to you within 24 hours with a personalized quote.</p>
 

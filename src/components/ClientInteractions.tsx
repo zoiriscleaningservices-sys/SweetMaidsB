@@ -191,6 +191,28 @@ export default function ClientInteractions() {
       });
     }
 
+    // 0.1 Defer Google reCAPTCHA v3 script loading
+    const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6Lc0B90tAAAAAHWP0dgtwast_UDAS_LKXl8_30b-';
+    const loadRecaptcha = () => {
+      if (document.getElementById('recaptcha-v3-script')) return;
+      const script = document.createElement('script');
+      script.id = 'recaptcha-v3-script';
+      script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(RECAPTCHA_SITE_KEY)}`;
+      script.async = true;
+      document.head.appendChild(script);
+    };
+
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(loadRecaptcha, { timeout: 3500 });
+      } else {
+        setTimeout(loadRecaptcha, 2500);
+      }
+      ['scroll', 'touchstart', 'mousemove', 'click'].forEach(evt => {
+        window.addEventListener(evt, loadRecaptcha, { once: true, passive: true });
+      });
+    }
+
     // 4. Native Quote Form Webhook Submission Handler
     const quoteForm = document.getElementById('quoteForm') as HTMLFormElement | null;
     const successCard = document.getElementById('successCard') as HTMLElement | null;
@@ -214,6 +236,12 @@ export default function ClientInteractions() {
         pageUrlInput.value = window.location.href;
       }
 
+      // Initialize form timestamp to measure interaction time (protects against instant bot submissions)
+      const timestampInput = quoteForm.querySelector<HTMLInputElement>('input[name="form_timestamp"]');
+      if (timestampInput && !timestampInput.value) {
+        timestampInput.value = String(Date.now());
+      }
+
       const onSubmit = async function (e: Event) {
         e.preventDefault();
         const submitBtn = quoteForm.querySelector('.submit-btn') as HTMLButtonElement | null;
@@ -222,6 +250,20 @@ export default function ClientInteractions() {
         if (errorCard) {
           errorCard.style.display = 'none';
           errorCard.textContent = '';
+        }
+
+        // 1. Client-Side Honeypot Trap
+        const websiteInput = quoteForm.querySelector<HTMLInputElement>('input[name="website_url"]');
+        const notesInput = quoteForm.querySelector<HTMLInputElement>('input[name="notes_verification"]');
+        if ((websiteInput && websiteInput.value.trim().length > 0) || (notesInput && notesInput.value.trim().length > 0)) {
+          // Silent bot trap: mock success without triggering LeadConnector
+          quoteForm.reset();
+          quoteForm.style.display = 'none';
+          if (successCard) {
+            successCard.style.display = 'block';
+            successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
         }
 
         const serviceInput = quoteForm.querySelector<HTMLSelectElement>('[name="service"]');
@@ -255,6 +297,28 @@ export default function ClientInteractions() {
           return;
         }
 
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+        }
+
+        // 2. Obtain Google reCAPTCHA v3 token
+        let recaptchaToken = '';
+        if (typeof window !== 'undefined' && typeof (window as any).grecaptcha !== 'undefined') {
+          try {
+            recaptchaToken = await new Promise<string>((resolve) => {
+              (window as any).grecaptcha.ready(() => {
+                (window as any).grecaptcha
+                  .execute(RECAPTCHA_SITE_KEY, { action: 'quote_request' })
+                  .then(resolve)
+                  .catch(() => resolve(''));
+              });
+            });
+          } catch (recaptchaErr) {
+            console.warn('reCAPTCHA execution error:', recaptchaErr);
+          }
+        }
+
         const payload = {
           service: service || 'residential',
           fullName,
@@ -264,16 +328,15 @@ export default function ClientInteractions() {
           address,
           smsConsent,
           pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+          website_url: websiteInput?.value || '',
+          notes_verification: notesInput?.value || '',
+          form_timestamp: timestampInput?.value || String(Date.now() - 5000),
+          recaptcha_token: recaptchaToken,
         };
-
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending...';
-        }
 
         let isSuccess = false;
 
-        // 1. Primary: First-party Next.js server route (immune to browser ad-blockers)
+        // 3. Primary: First-party Next.js server route (server-side honeypot, time-check, reCAPTCHA, and pattern filters)
         try {
           const res = await fetch('/api/quote/', {
             method: 'POST',
@@ -281,26 +344,13 @@ export default function ClientInteractions() {
             body: JSON.stringify(payload)
           });
           if (res.ok) {
-            isSuccess = true;
+            const data = await res.json().catch(() => ({ success: true }));
+            if (data.success !== false) {
+              isSuccess = true;
+            }
           }
         } catch (apiErr) {
           console.warn('First-party API quote route submission note:', apiErr);
-        }
-
-        // 2. Secondary fallback: Direct LeadConnector webhook
-        if (!isSuccess) {
-          try {
-            const hookRes = await fetch('https://services.leadconnectorhq.com/hooks/RGNEnMA6xLejdcbEGm3v/webhook-trigger/1a10b6de-bddd-4c0b-9532-1fca30defaad', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-            if (hookRes.ok) {
-              isSuccess = true;
-            }
-          } catch (hookErr) {
-            console.error('Direct LeadConnector webhook submission failed:', hookErr);
-          }
         }
 
         if (isSuccess) {
