@@ -142,7 +142,7 @@ export default async function LocationOrServicePage({ params }: { params: Promis
     return <div dangerouslySetInnerHTML={{ __html: localizedHtml }} />;
   } else {
     if (slug === 'bradenton-fl') {
-      const rawHtml = getTemplate('bradenton') || getTemplate('house-cleaning');
+      const rawHtml = getTemplate('house-cleaning');
       if (!rawHtml) notFound();
       const bodyContent = extractSections(rawHtml);
       const localizedHtml = localizedReplace(bodyContent, 'Bradenton', 'bradenton-fl', false, 'house-cleaning');

@@ -1372,22 +1372,13 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       `<a href="#quote" onclick="closeMenu()" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Get your free cleaning quote"><i class="fa-solid fa-file-invoice-dollar text-white"></i> Get Your Free Quote</a>`
     );
   }
-  // 5. Clean, fully accessible, non-duplicated footer legal & navigation row
+  // 5. Clean, fully accessible footer legal & navigation row aligned like other pages
   const footerPhone = is305Area(loc_slug, clean_name) ? '(305) 851-6959' : '(941) 222-2080';
   newContent = newContent.replace(
     /<div class="flex flex-wrap gap-x-6 gap-y-2 items-center">[\s\S]*?<\/div>/i,
-    `<div class="flex flex-wrap gap-x-6 gap-y-2 items-center">
-          <a href="/" class="hover:text-pink-400 transition-colors" aria-label="Sweet Maid Homepage">Home</a>
-          <a href="/about/" class="hover:text-pink-400 transition-colors" aria-label="About Sweet Maid">About Us</a>
-          <a href="/services/" class="hover:text-pink-400 transition-colors" aria-label="All Sweet Maid Cleaning Services">Services</a>
-          <a href="/locations/" class="hover:text-pink-400 transition-colors" aria-label="All Florida Cleaning Locations">Locations</a>
-          <a href="/book-online/" class="hover:text-pink-400 transition-colors" aria-label="Book Cleaning Online">Book Online</a>
-          <a href="/blog/" class="hover:text-pink-400 transition-colors" aria-label="Cleaning Guides Blog">Blog</a>
-          <a href="/gallery/" class="hover:text-pink-400 transition-colors" aria-label="Before and After Cleaning Gallery">Gallery</a>
-          <a href="/privacy-policy/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Privacy Policy">Privacy Policy</a>
-          <a href="/terms-and-conditions/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Terms and Conditions">Terms & Conditions</a>
-          <a href="/sitemap.xml" class="hover:text-pink-400 transition-colors" aria-label="Website Sitemap">Sitemap</a>
-          <a href="#quote" class="hover:text-pink-400 font-bold" aria-label="Call Sweet Maid Cleaning Service">Call Now: ${footerPhone}</a>
+    `<div class="flex gap-6">
+          <a href="/sitemap.xml" class="hover:text-pink-400">Sitemap</a>
+          <a href="#quote" class="hover:text-pink-400 font-bold">Call Now: ${footerPhone}</a>
         </div>`
   );
 
