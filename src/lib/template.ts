@@ -918,16 +918,6 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       `<div id="mobile-nearby-list" class="grid grid-cols-1 gap-2 p-3 mt-1 bg-pink-50/30 rounded-2xl border border-pink-100/50">\n${mobileNearbyHtml}\n</div>\n          </div>\n        </div>\n\n        <a href="/blog/`
     );
 
-    // Also update footer "Locations We Serve" grid with the top 28 closest neighboring locations
-    const nearestFooterLocations = getNearestLocations(loc_slug, 28);
-    const footerGridHtml = nearestFooterLocations.map(c => 
-      `<a href="${getNearbyUrl(c.slug)}" class="hover:text-pink-400 transition-colors">${c.name}</a>`
-    ).join('\n');
-
-    newContent = newContent.replace(
-      /(<div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">)[\s\S]*?(<\/div>)/i,
-      `$1\n${footerGridHtml}\n$2`
-    );
   } else {
     // Zero-City Navigation for Login Page: Pure cleaning services keywords only
     const loginDesktopNearbyHtml = `
@@ -981,8 +971,42 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
   newContent = newContent.replace(/<!--\s*City Search Script\s*-->\s*<script[^>]*src=["'][^"']*city-search\.js["'][^>]*><\/script>/gi, '');
   newContent = newContent.replace(/<!--\s*Let Us Contact You Form\s*-->[\s\S]*?<\/form>\s*<\/div>\s*<\/div>/gi, '');
 
-  // Re-organize Footer Layout: Clean 5-column layout with Company Info (2 cols), Our Services (2 cols), and Florida Locations (1 col)
-  const FOOTER_LOCATIONS_COL = `<div class="lg:col-span-1">
+  // Re-organize Footer Layout: Clean 5-column layout with Company Info (2 cols), Our Services (2 cols), and Localized Nearby Areas / Florida Locations (1 col)
+  const isCityLocationPage = Boolean(
+    loc_slug &&
+    loc_slug !== 'home' &&
+    clean_name &&
+    clean_name.toLowerCase() !== 'florida' &&
+    !serviceSlugs.includes(loc_slug)
+  );
+
+  let footerLocationsCol = '';
+
+  if (isCityLocationPage) {
+    const displayCityName = clean_name.replace(/\s*\(.*?\)/g, '').trim();
+    const nearestFooter = getNearestLocations(loc_slug, 8);
+    const nearbyLinksHtml = nearestFooter.map(c => {
+      const href = getNearbyUrl(c.slug);
+      return `<li><a href="${href}" class="text-gray-600 hover:text-pink-500 transition-colors">${c.name}</a></li>`;
+    }).join('\n            ');
+
+    footerLocationsCol = `<div class="lg:col-span-1">
+          <h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">
+            <span class="w-1 h-6 bg-pink-300 rounded-full"></span><a href="/locations/" class="hover:text-pink-500 transition-colors" aria-label="Browse cleaning locations near ${displayCityName}">Nearby ${displayCityName}</a>
+          </h4>
+          <ul class="space-y-2 text-xs">
+            ${nearbyLinksHtml}
+            <li class="pt-2">
+              <a href="/locations/" class="inline-flex items-center gap-1.5 font-bold text-pink-600 hover:text-pink-700 transition-colors" aria-label="View all Florida cleaning locations">
+                <span>View All Locations</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </li>
+          </ul>
+        </div>`;
+  } else {
+    // Statewide pages (Home, /services/, top-level service pages)
+    footerLocationsCol = `<div class="lg:col-span-1">
           <h4 class="text-gray-800 font-bold text-lg mb-6 flex items-center gap-2">
             <span class="w-1 h-6 bg-pink-300 rounded-full"></span><a href="/locations/" class="hover:text-pink-500 transition-colors" aria-label="Browse all Florida cleaning locations">Florida Locations</a>
           </h4>
@@ -996,18 +1020,19 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
             <li><a href="/fort-lauderdale-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Fort Lauderdale</a></li>
             <li><a href="/miami-fl/" class="text-gray-600 hover:text-pink-500 transition-colors">Miami &amp; South FL</a></li>
             <li class="pt-2">
-              <a href="/locations/" class="inline-flex items-center gap-1.5 font-bold text-pink-600 hover:text-pink-700 transition-colors" aria-label="View all 229 Florida cleaning locations">
-                <span>View All 229 Cities</span>
+              <a href="/locations/" class="inline-flex items-center gap-1.5 font-bold text-pink-600 hover:text-pink-700 transition-colors" aria-label="View all 230 Florida cleaning locations">
+                <span>View All 230 Cities</span>
                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
               </a>
             </li>
           </ul>
         </div>`;
+  }
 
-  // Replace legacy Locations We Serve block with clean Florida Locations column
+  // Replace legacy Locations We Serve block with localized Locations column
   newContent = newContent.replace(
     /<div class="lg:col-span-2">\s*<h4[^>]*>\s*<span[^>]*><\/span>Locations We Serve[\s\S]*?<\/div>\s*<\/div>/i,
-    FOOTER_LOCATIONS_COL
+    footerLocationsCol
   );
 
   // Link "Our Services" header in footer to /services/
@@ -1347,10 +1372,23 @@ export function localizedReplace(content: string, clean_name: string, loc_slug: 
       `<a href="#quote" onclick="closeMenu()" class="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white text-center rounded-2xl py-4 font-bold shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all flex items-center justify-center gap-2" aria-label="Get your free cleaning quote"><i class="fa-solid fa-file-invoice-dollar text-white"></i> Get Your Free Quote</a>`
     );
   }
-  // 5. Footer Links: Add full canonical navigation links to footer row
+  // 5. Clean, fully accessible, non-duplicated footer legal & navigation row
+  const footerPhone = is305Area(loc_slug, clean_name) ? '(305) 851-6959' : '(941) 222-2080';
   newContent = newContent.replace(
-    /(<footer[\s\S]*?)(<a\s+[^>]*href="\/sitemap\.xml"[^>]*>Sitemap<\/a>)/i,
-    `$1<a href="/" class="hover:text-pink-400 transition-colors" aria-label="Sweet Maid Homepage">Home</a>\n          <a href="/about/" class="hover:text-pink-400 transition-colors" aria-label="About Sweet Maid">About Us</a>\n          <a href="/services/" class="hover:text-pink-400 font-semibold transition-colors" aria-label="All Sweet Maid Cleaning Services">Services</a>\n          <a href="/locations/" class="hover:text-pink-400 font-semibold transition-colors" aria-label="All Florida Cleaning Locations">Locations</a>\n          <a href="/book-online/" class="hover:text-pink-400 transition-colors" aria-label="Book Cleaning Online">Book Online</a>\n          <a href="/blog/" class="hover:text-pink-400 transition-colors" aria-label="Cleaning Guides Blog">Blog</a>\n          <a href="/gallery/" class="hover:text-pink-400 transition-colors" aria-label="Before and After Cleaning Gallery">Gallery</a>\n          <a href="/privacy-policy/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Privacy Policy">Privacy Policy</a>\n          <a href="/terms-and-conditions/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Terms and Conditions">Terms & Conditions</a>\n          $2`
+    /<div class="flex flex-wrap gap-x-6 gap-y-2 items-center">[\s\S]*?<\/div>/i,
+    `<div class="flex flex-wrap gap-x-6 gap-y-2 items-center">
+          <a href="/" class="hover:text-pink-400 transition-colors" aria-label="Sweet Maid Homepage">Home</a>
+          <a href="/about/" class="hover:text-pink-400 transition-colors" aria-label="About Sweet Maid">About Us</a>
+          <a href="/services/" class="hover:text-pink-400 transition-colors" aria-label="All Sweet Maid Cleaning Services">Services</a>
+          <a href="/locations/" class="hover:text-pink-400 transition-colors" aria-label="All Florida Cleaning Locations">Locations</a>
+          <a href="/book-online/" class="hover:text-pink-400 transition-colors" aria-label="Book Cleaning Online">Book Online</a>
+          <a href="/blog/" class="hover:text-pink-400 transition-colors" aria-label="Cleaning Guides Blog">Blog</a>
+          <a href="/gallery/" class="hover:text-pink-400 transition-colors" aria-label="Before and After Cleaning Gallery">Gallery</a>
+          <a href="/privacy-policy/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Privacy Policy">Privacy Policy</a>
+          <a href="/terms-and-conditions/" class="hover:text-pink-400 transition-colors" aria-label="Read Sweet Maid Terms and Conditions">Terms & Conditions</a>
+          <a href="/sitemap.xml" class="hover:text-pink-400 transition-colors" aria-label="Website Sitemap">Sitemap</a>
+          <a href="#quote" class="hover:text-pink-400 font-bold" aria-label="Call Sweet Maid Cleaning Service">Call Now: ${footerPhone}</a>
+        </div>`
   );
 
   newContent = newContent.replace(/<a\s+(?![^>]*aria-label)([^>]*href="\/services\/?"[^>]*)>/gi, '<a aria-label="Browse Florida Cleaning Services Directory" $1>');
